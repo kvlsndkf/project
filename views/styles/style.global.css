@@ -18,64 +18,114 @@ body {
 
     /* Cor */
     --white: #FFFFFF;
-    --dark-white: #DCDDDE;
-    --light-gray: #ADB0B3;
-    --silver: #9B9B9B;
-    --disable-gray: #72767D;
-    --gray: #40444B;
-    --dark-gray: #36393F;
-    --blabk-bg: #202225;
-    --black-title: #050607;
     --black: #000000;
-    --pink: #EB459F;
+    --gray1: #202225;
+    --gray2: #303339;
+    --gray3: #40444B;
+    --gray4: #4F5660;
+    --gray5: #72767D;
+    --gray6: #ADB0B3;
+    --gray7: #DCDDDE;
+    --gray-background: #050607;
+    --bg-modal: #36393F;
+    --bg-list: #2F3136;
+    --silver: #9B9B9B;
+    --bronze: #A97142;
+    --fuchsia: #EB459F;
     --red: #ED4245;
-    --brown: #A97142;
     --yellow: #FFC619;
-    --blue: #00AFF4;
+    --ocean: #29CC7A;
+    --green: #3BA561;
+    --blue-sky: #00AFF4;
     --sea-blue: #3F70DD;
     --deep-blue: #176E90;
-    --blue-sky: #5883F2;
-    --blue-gray: #8080FF;
-    --night-blue: #404EED;
-    --violet: #B377F3;
+    --little-blue: #5883F2;
+    --primary: #8080FF;
+    --blue: #404EED;
+    --purple-light: #B377F3;
+
+    /* Gradientes */
+    --gradient-purple: linear-gradient(180deg, #CD83CB 0%, #B674F1 100%);
+    --gradient-little-blue: linear-gradient(180deg, #9FA9FF 0%, #DBF3FA 100%);
+    --gradient-blue: linear-gradient(90deg, #3F70DD 0%, #B377F3 100%);
     
     /* Tamanho */
-    --h1: 56px;
-    --h2: 48px;
     --h3: 40px;
     --h4: 32px;
     --h5: 22px;
     --h6: 20px;
-    --Title: 18px;
+    --title: 18px;
     --p: 16px;
-    --nav: 14px;
-    --small: 12px;
+    --small: 14px;
+    --tiny: 12px;
+
+    /* Line Height(Caixa Alta) */
+    --lh-h3: 48px;
+    --lh-h4: 40px;
+    --lh-h5: 24px;
+    --lh-p: 18px;
+    --lh-small: 16px; 
 
     /* Peso */
     --regular: 400;
     --medium: 500;
     --semi-bold: 600;
     --bold: 700;
-    --extra-bold: 800;
+    --black: 800;
 
     /* Fontes */
-    --font-medium: 'GintoNord Medium';
-    --font-bold: 'GintoNord Bold';
-    --font-thin: 'GintoNord Medium';
+    --gintoNord-medium: 'GintoNord Medium';
+    --gintoNord-bold: 'GintoNord Bold';
+    --gintoNord-thin: 'GintoNord Thin';
+    --gintoNormal-medium: 'GintoNormal Medium';
+    --gintoNormal-bold: 'GintoNormal Bold';
+    --gintoNormal-thin: 'GintoNormal Thin';
+    --whitney-medium: 'Whitney Medium';
+    --whitney-bold: 'Whitney Bold';
+    --whitney-light: 'Whitney Light';
+    --roboto: 'Roboto';
 }
 
 /* Referenciamentos das Fontes */
+
+/* Fontes GintoNord */
 @font-face {
     font-family: 'GintoNord Medium';
     src: url(./fonts/ABCGintoNord-Medium-Trial.otf);
 }
-
 @font-face {
     font-family: 'GintoNord Bold';
     src: url(./fonts/ABCGintoNord-Bold-Trial.otf);
 }
-
 @font-face {
     font-family: 'GintoNord Thin';
     src: url(./fonts/ABCGintoNord-Thin-Trial.otf);
+}
+
+/* Fontes GintoNormal */
+@font-face {
+    font-family: 'GintoNormal Medium';
+    src: url(./fonts/ABCGintoNormal-Medium-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Bold';
+    src: url(./fonts/ABCGintoNormal-Bold-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Thin';
+    src: url(./fonts/ABCGintoNormal-Thin-Trial.otf);
+}
+
+/* Fontes Whitney */
+@font-face {
+    font-family: 'Whitney Medium';
+    src: url(./fonts/whitneymedium.otf);
+}
+@font-face {
+    font-family: 'Whitney Bold';
+    src: url(./fonts/whitneybold.otf);
+}
+@font-face {
+    font-family: 'Whitney Light';
+    src: url(./fonts/whitneylight.otf);
 }
