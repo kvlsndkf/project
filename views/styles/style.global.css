@@ -1,0 +1,81 @@
+/* CSS Global */
+
+/* Início */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;  
+}
+  
+body {
+     font-size: 100%;
+     height: 100%;
+}
+
+/* Raíz do Arquivo */
+:root{
+
+    /* Cor */
+    --white: #FFFFFF;
+    --dark-white: #DCDDDE;
+    --light-gray: #ADB0B3;
+    --silver: #9B9B9B;
+    --disable-gray: #72767D;
+    --gray: #40444B;
+    --dark-gray: #36393F;
+    --blabk-bg: #202225;
+    --black-title: #050607;
+    --black: #000000;
+    --pink: #EB459F;
+    --red: #ED4245;
+    --brown: #A97142;
+    --yellow: #FFC619;
+    --blue: #00AFF4;
+    --sea-blue: #3F70DD;
+    --deep-blue: #176E90;
+    --blue-sky: #5883F2;
+    --blue-gray: #8080FF;
+    --night-blue: #404EED;
+    --violet: #B377F3;
+    
+    /* Tamanho */
+    --h1: 56px;
+    --h2: 48px;
+    --h3: 40px;
+    --h4: 32px;
+    --h5: 22px;
+    --h6: 20px;
+    --Title: 18px;
+    --p: 16px;
+    --nav: 14px;
+    --small: 12px;
+
+    /* Peso */
+    --regular: 400;
+    --medium: 500;
+    --semi-bold: 600;
+    --bold: 700;
+    --extra-bold: 800;
+
+    /* Fontes */
+    --font-medium: 'GintoNord Medium';
+    --font-bold: 'GintoNord Bold';
+    --font-thin: 'GintoNord Medium';
+}
+
+/* Referenciamentos das Fontes */
+@font-face {
+    font-family: 'GintoNord Medium';
+    src: url(./fonts/ABCGintoNord-Medium-Trial.otf);
+}
+
+@font-face {
+    font-family: 'GintoNord Bold';
+    src: url(./fonts/ABCGintoNord-Bold-Trial.otf);
+}
+
+@font-face {
+    font-family: 'GintoNord Thin';
+    src: url(./fonts/ABCGintoNord-Thin-Trial.otf);
+}
