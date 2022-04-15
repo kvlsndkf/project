@@ -18,7 +18,6 @@ body {
 
     /* Cor */
     --white: #FFFFFF;
-    --black: #000000;
     --gray1: #202225;
     --gray2: #303339;
     --gray3: #40444B;
@@ -59,6 +58,7 @@ body {
     --small: 14px;
     --tiny: 12px;
     --miniscule: 10px;
+    --little-tiny: 8px;
 
     /* Line Height(Caixa Alta) */
     --lh-bigger: 48px;
@@ -66,6 +66,8 @@ body {
     --lh-medium: 24px;
     --lh-little: 18px;
     --lh-tiny: 16px; 
+    --lh-miniscule: 12px;
+    --lh-little-tiny: 9px;
 
     /* Peso */
     --regular: 400;

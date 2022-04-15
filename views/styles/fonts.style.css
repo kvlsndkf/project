@@ -1,0 +1,148 @@
+
+/* Ginto Normal */
+.normal-18-black-title-2{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--title);
+    line-height: var(--lh-medium);
+}
+
+.normal32-black-landingpagetitle-2{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--h4);
+    line-height: var(--lh-big);
+}
+
+.normal-22-black-title-1{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--h5);
+    line-height: var(--lh-medium);  
+}
+
+.normal-20-bold-modaltitle{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--bold);
+    font-size: var(--h6);
+    line-height: var(--lh-medium);
+}
+
+.normal-20-normal-landingpagetitle-1{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--h6);
+    line-height: var(--lh-medium);
+}
+
+.normal-18-bold-title-2{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--bold);
+    font-size: var(--title);
+    line-height: var(--lh-medium);
+}
+
+.normal-16-bold-title-3{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--bold);
+    font-size: var(--p);
+    line-height: var(--lh-little);
+}
+
+.normal-14-bold-p{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--bold);
+    font-size: var(--small);
+    line-height: var(--lh-little);
+}
+
+.normal-14-medium-p{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--small);
+    line-height: var(--lh-little);
+}
+
+.normal-14-regular-p{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--gintoNormal-medium);
+    font-size: var(--small);
+    line-height: var(--lh-little);
+}
+
+.normal-12-bold-tiny{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--bold);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+.normal-12-medium-tiny{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+.normal-12-regular-tinyinput{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+
+/* Whitney */
+.whitney-16-medium-text{
+    font-family: var(--whitney-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--p);
+    line-height: var(--lh-medium);
+}
+
+.whitney-12-regular-tiny{
+    font-family: var(--whitney-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-medium);
+}
+
+.whitney-10-bold-tiny{
+    font-family: var(--whitney-medium);
+    font-style: normal;
+    font-weight: var(--bold);
+    font-size: var(--miniscule);
+    line-height: var(--lh-miniscule);
+}
+
+.whitney-8-medium-littletiny{
+    font-family: var(--whitney-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--little-tiny);
+    line-height: var(--lh-little-tiny);
+}
+
+.nord-40-black-display{
+    font-family: var(--gintoNord-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--h3);
+    line-height: var(--lh-bigger);
+}
+
