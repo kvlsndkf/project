@@ -58,13 +58,14 @@ body {
     --p: 16px;
     --small: 14px;
     --tiny: 12px;
+    --miniscule: 10px;
 
     /* Line Height(Caixa Alta) */
-    --lh-h3: 48px;
-    --lh-h4: 40px;
-    --lh-h5: 24px;
-    --lh-p: 18px;
-    --lh-small: 16px; 
+    --lh-bigger: 48px;
+    --lh-big: 40px;
+    --lh-medium: 24px;
+    --lh-little: 18px;
+    --lh-tiny: 16px; 
 
     /* Peso */
     --regular: 400;
