@@ -1,5 +1,13 @@
 
 /* Ginto Normal */
+.normal-40-black-display{
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--h3);
+    line-height: var(--lh-big);
+}
+
 .normal-18-black-title-2{
     font-family: var(--gintoNormal-medium);
     font-style: normal;
