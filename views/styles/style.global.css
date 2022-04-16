@@ -1,0 +1,134 @@
+/* CSS Global */
+
+/* Início */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;  
+}
+  
+body {
+     font-size: 100%;
+     height: 100%;
+}
+
+/* Raíz do Arquivo */
+:root{
+
+    /* Cor */
+    --white: #FFFFFF;
+    --gray1: #202225;
+    --gray2: #303339;
+    --gray3: #40444B;
+    --gray4: #4F5660;
+    --gray5: #72767D;
+    --gray6: #ADB0B3;
+    --gray7: #DCDDDE;
+    --gray-background: #050607;
+    --bg-modal: #36393F;
+    --bg-list: #2F3136;
+    --silver: #9B9B9B;
+    --bronze: #A97142;
+    --fuchsia: #EB459F;
+    --red: #ED4245;
+    --yellow: #FFC619;
+    --ocean: #29CC7A;
+    --green: #3BA561;
+    --blue-sky: #00AFF4;
+    --sea-blue: #3F70DD;
+    --deep-blue: #176E90;
+    --little-blue: #5883F2;
+    --primary: #8080FF;
+    --blue: #404EED;
+    --purple-light: #B377F3;
+
+    /* Gradientes */
+    --gradient-purple: linear-gradient(180deg, #CD83CB 0%, #B674F1 100%);
+    --gradient-little-blue: linear-gradient(180deg, #9FA9FF 0%, #DBF3FA 100%);
+    --gradient-blue: linear-gradient(90deg, #3F70DD 0%, #B377F3 100%);
+    
+    /* Tamanho */
+    --h3: 40px;
+    --h4: 32px;
+    --h5: 22px;
+    --h6: 20px;
+    --title: 18px;
+    --p: 16px;
+    --small: 14px;
+    --tiny: 12px;
+    --miniscule: 10px;
+    --little-tiny: 8px;
+
+    /* Line Height(Caixa Alta) */
+    --lh-bigger: 48px;
+    --lh-big: 40px;
+    --lh-medium: 24px;
+    --lh-little: 18px;
+    --lh-tiny: 16px; 
+    --lh-miniscule: 12px;
+    --lh-little-tiny: 9px;
+
+    /* Peso */
+    --regular: 400;
+    --medium: 500;
+    --semi-bold: 600;
+    --bold: 700;
+    --black: 800;
+
+    /* Fontes */
+    --gintoNord-medium: 'GintoNord Medium';
+    --gintoNord-bold: 'GintoNord Bold';
+    --gintoNord-thin: 'GintoNord Thin';
+    --gintoNormal-medium: 'GintoNormal Medium';
+    --gintoNormal-bold: 'GintoNormal Bold';
+    --gintoNormal-thin: 'GintoNormal Thin';
+    --whitney-medium: 'Whitney Medium';
+    --whitney-bold: 'Whitney Bold';
+    --whitney-light: 'Whitney Light';
+    --roboto: 'Roboto';
+}
+
+/* Referenciamentos das Fontes */
+
+/* Fontes GintoNord */
+@font-face {
+    font-family: 'GintoNord Medium';
+    src: url(./fonts/ABCGintoNord-Medium-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNord Bold';
+    src: url(./fonts/ABCGintoNord-Bold-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNord Thin';
+    src: url(./fonts/ABCGintoNord-Thin-Trial.otf);
+}
+
+/* Fontes GintoNormal */
+@font-face {
+    font-family: 'GintoNormal Medium';
+    src: url(./fonts/ABCGintoNormal-Medium-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Bold';
+    src: url(./fonts/ABCGintoNormal-Bold-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Thin';
+    src: url(./fonts/ABCGintoNormal-Thin-Trial.otf);
+}
+
+/* Fontes Whitney */
+@font-face {
+    font-family: 'Whitney Medium';
+    src: url(./fonts/whitneymedium.otf);
+}
+@font-face {
+    font-family: 'Whitney Bold';
+    src: url(./fonts/whitneybold.otf);
+}
+@font-face {
+    font-family: 'Whitney Light';
+    src: url(./fonts/whitneylight.otf);
+}
