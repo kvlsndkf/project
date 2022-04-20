@@ -1,0 +1,217 @@
+CREATE TABLE users(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , email VARCHAR(100) NOT NULL
+    , password VARCHAR(100) NOT NULL
+    , photo VARCHAR(100) NOT NULL
+    , type_user VARCHAR(40) NOT NULL
+    , is_confirmed BOOLEAN NOT NULL
+    , is_blocked BOOLEAN NOT NULL
+    , github VARCHAR(100)
+    , linkedin VARCHAR(100)
+    , facebook VARCHAR(100)
+    , instagram VARCHAR(100)
+    , profile_link VARCHAR(100)
+    , blocking_reason VARCHAR(100)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , blocked_at DATETIME
+)
+
+CREATE TABLE companies(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , name VARCHAR(100) NOT NULL
+    , district VARCHAR(100) NOT NULL
+    , city VARCHAR(100) NOT NULL
+    , about VARCHAR(474) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , user_id INT NOT NULL
+    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)
+
+CREATE TABLE students(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , first_name VARCHAR(100) NOT NULL
+    , surname VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , user_id INT NOT NULL
+    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    , course_id INT NOT NULL
+    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+    , module_id INT NOT NULL
+    , FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
+)
+
+CREATE TABLE teachers(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , name VARCHAR(100) NOT NULL
+    , photo VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE modules(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , name VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE courses(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , name VARCHAR(100) NOT NULL
+    , about VARCHAR(474) NOT NULL
+    , photo VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE subjects(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , name VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE schools(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , name VARCHAR(100) NOT NULL
+    , district VARCHAR(100) NOT NULL
+    , city VARCHAR(100) NOT NULL
+    , have_account BOOLEAN NOT NULL
+    , about VARCHAR(237) NOT NULL
+    , github VARCHAR(100)
+    , linkedin VARCHAR(100)
+    , facebook VARCHAR(100)
+    , instagram VARCHAR(100)
+    , photo VARCHAR(100)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE schoolsHasStudents(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , student_id INT NOT NULL
+    , FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+    , school_id INT NOT NULL
+    , FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE CASCADE
+)
+
+CREATE TABLE usersHasPreferences(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , user_id INT NOT NULL
+    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    , preference_id INT NOT NULL
+    , FOREIGN KEY (preference_id) REFERENCES courses(id) ON DELETE CASCADE
+)
+
+CREATE TABLE schoolsHasTeachers(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , school_id INT NOT NULL
+    , FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE CASCADE
+    , teacher_id INT NOT NULL
+    , FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE
+)
+
+CREATE TABLE schoolsHasCourses(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , school_id INT NOT NULL
+    , FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE CASCADE
+    , course_id INT NOT NULL
+    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+)
+
+CREATE TABLE coursesHasTeachers(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , course_id INT NOT NULL
+    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+    , teacher_id INT NOT NULL
+    , FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE
+)
+
+CREATE TABLE coursesHasSubjects(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , course_id INT NOT NULL
+    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+    , subject_id INT NOT NULL
+    , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+)
+
+CREATE TABLE subjectsHasModules(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , subject_id INT NOT NULL
+    , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+    , module_id INT NOT NULL
+    , FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
+)
+
+CREATE TABLE denunciations(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , reason VARCHAR(30) NOT NULL
+    , post_link VARCHAR(100) NOT NULL 
+    , status VARCHAR(30) NOT NULL
+    , created_at DATETIME NOT NULL
+    , conclusion VARCHAR(192) 
+    , context VARCHAR(30)
+    , updated_at DATETIME
+    , created_by_id INT NOT NULL
+    , FOREIGN KEY (created_by_id) REFERENCES users(id) ON DELETE CASCADE
+    , denounced_id INT NOT NULL
+    , FOREIGN KEY (denounced_id) REFERENCES users(id) ON DELETE CASCADE
+)
+
+CREATE TABLE solicitations(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , contact VARCHAR(100) NOT NULL
+    , category VARCHAR(30) NOT NULL
+    , register_link VARCHAR(100) NOT NULL
+    , title VARCHAR(50) NOT NULL
+    , description VARCHAR(192) NOT NULL
+    , status VARCHAR(30) NOT NULL
+    , conclusion VARCHAR(192) 
+    , context VARCHAR(30)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE messages(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , contact VARCHAR(100) NOT NULL
+    , message VARCHAR(192) NOT NULL
+    , status VARCHAR(30) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
