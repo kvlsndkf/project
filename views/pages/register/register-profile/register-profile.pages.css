@@ -1,3 +1,7 @@
+html {
+    background-color: var(--bg-modal);
+}
+
 /* FORMATAÇÃO DE LINKS */
 
 a, a:hover, a:focus, a:active, a:focus {
