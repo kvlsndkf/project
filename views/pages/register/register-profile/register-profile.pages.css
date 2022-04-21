@@ -1,0 +1,99 @@
+html {
+    background-color: var(--bg-modal);
+}
+
+/* FORMATAÇÃO DE LINKS */
+
+a, a:hover, a:focus, a:active, a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* CORPO GERAL*/
+
+.body-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* CONTEÚDO */
+
+/* Botão de voltar setinha */
+
+.back-button {
+    position: fixed;
+    z-index: 1;
+}
+
+/* Logo */
+
+.logo-help {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+/* Título "O que você é?" */
+
+.title-o-que {
+    margin-bottom: 50px;
+}
+
+/* CARDS */
+
+/* Corpo dos cards */
+
+.card-profile {
+    height: 288px;
+    width: 288px;
+    border-radius: 10px;
+    transition: box-shadow .3s;
+    border-radius:10px;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.card-profile:hover {
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.250); 
+}
+
+/* Texto do card */
+
+.card-text {
+    margin-top: 20px;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+/* Conteúdo do card (Texto + Imagem) */
+
+.card-content {
+    margin-top: 62px;
+    display: inline-block;
+    margin-left: 84px;
+    text-decoration: none;
+}
+
+/* BARRA DE ROLAGEM */
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+  ::-webkit-scrollbar-track {
+    background: #40444B;
+}
+
+  ::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+    
+}
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8080FF;
+}

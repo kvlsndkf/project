@@ -1,0 +1,15 @@
+.background-color{
+    background-color: var(--bg-modal);
+}
+
+.gray-title {
+    color: var(--gray7);
+}
+
+.white-title {
+    color: var(--white);
+}
+
+.gray-card {
+    background-color: var(--gray3);
+}

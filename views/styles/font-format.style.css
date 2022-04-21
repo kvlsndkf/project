@@ -1,0 +1,13 @@
+.display {
+    font-size: var(--h3);
+    line-height: var(--lh-bigger);
+    font-weight: var(--black);
+    font-family: var(--gintoNord-bold);
+}
+
+.title1 {
+    font-size: var(--h5);
+    font-weight: var(--black);
+    font-family: var(--gintoNormal-bold);
+}
+
