@@ -197,8 +197,8 @@
         margin-left: 5px;
         margin-right: 5px;
     }
-    .copyright-text{
-        
+    .seta-anchor{
+        display: none;
     }
 }
 
@@ -406,6 +406,17 @@
         margin-left: 25px;
         margin-right: 25px;
         cursor: pointer;
+    }
+
+    .seta-anchor{
+        width: 50px;
+        height: 50px;
+        margin-top: 45px;
+        margin-right: -50px;
+    }
+    .seta-anchor:hover{
+        transform: scale(1.1);
+        transition: all 0.5s;
     }
 
     .footer-linha{

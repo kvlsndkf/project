@@ -217,6 +217,10 @@
                         <a href="#" class="a-class white footer-options normal-14-bold-p white">Fale Conosco</a>
                         <a href="#" class="a-class white footer-options normal-14-bold-p white">Sobre a Empresa</a>
 
+                        <a href="#tela1" class="seta-anchor">
+                            <img src="./img/botão âncora.svg" class="seta-img">
+                        </a>
+
                     </div>
 
                     <hr class="footer-linha">
