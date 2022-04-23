@@ -55,7 +55,6 @@ class Teacher
         $this->updatedAt = $updatedAt;
     }
     //----------------------------
-
     //methods
     /**
      * @method registerTeacher() registers the teachers by 
@@ -79,7 +78,7 @@ class Teacher
             echo $e->getMessage();
         }
     }
-
+    
     //----------------------------
     /**
      * @method listTeacher() lists the teacher by 
