@@ -1,0 +1,22 @@
+/* Classe a ser usada para todos os botões.
+Outras coisas como: cor, e posição, devem ser adicionados a parte. */
+
+.botao-g{
+    border: none;
+    width: 420px;
+    height: 38px;
+    border-radius: 8px;
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--gintoNormal-medium);
+    font-size: var(--small);
+    line-height: var(--lh-little);
+}
+
+
+    
+
+
+
+
+

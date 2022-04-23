@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../../styles/fonts.style.css">
     <link rel="stylesheet" href="../../styles/style.global.css">
     <link rel="stylesheet" href="./login-style.css">
-    <link rel="stylesheet" href="../../styles/additional.styles.css">
+    <link rel="stylesheet" href="../../styles/input.style.css">
+    <link rel="stylesheet" href="../../styles/button.style.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
