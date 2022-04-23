@@ -1,0 +1,78 @@
+/* Criei uma classe para o Body */
+.body{
+    margin-top: 65px;
+    background-image: url(./img/fundo.svg);
+    background-color: #7a73ff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/* Parte da NavBar */
+
+  
+/* Parte do form */
+.bem-vindo{
+    margin-left: 125px;
+    margin-top: 122px;
+    width: 192px;
+    height: 24px;
+    color: var(--white) ;
+}
+
+
+.email{
+    margin-top: 13px;
+}
+
+.senha{
+    margin-top: 10px;
+}
+
+.inputEmail{
+    padding-top: 30px;
+    color: var(--gray7);
+}
+
+.inputPass{
+    padding-top: 30px;
+    color: var(--gray7);
+    
+}
+
+.placeholder::placeholder{
+    color:var(--gray6);
+}
+
+
+.bt{
+    margin-top: 35px;
+    background-color: #8080FF;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.bt:hover{
+    box-shadow: 6px 6px 3px #ffa718;
+}
+
+.final{
+    margin-left: 114px;
+    color: #1d2cc2;
+   
+}
+
+.link{
+    color:#ffa718;
+}
+
+a:hover{
+    color:#1d2cc2  !important;   
+
+}
+
+/* Fim do form */
+
+
+
