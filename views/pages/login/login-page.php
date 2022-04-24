@@ -21,36 +21,41 @@
 </head>
 
 <body class="body">
-    
 
- <div class="container">
-     
-     <nav class="navbarlogin">
 
-         <a class="botaonavvoltar" href="#">
-             <img src="../../images/./components/seta-voltar.svg" alt="">
-         </a>
 
-     </nav>
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+        
+                <form action="#" class="form">
 
-     <p class="normal-20-bold-modaltitle bem-vindo">
-         Bem vindo de volta!
-     </p>
+                    <nav class="navbarlogin">
 
-     <form action="#" class="form">
+                        <a class="botaonavvoltar" href="#">
+                            <img src="../../images/./components/seta-voltar.svg" alt="">
+                        </a>
 
-         <h6 class="normal-16-bold-title-3 inputEmail">Email</h6>
-         <input type="email" class="input email placeholder" placeholder="email@email.com" name="email" required><br>
+                    </nav>
+                    <h6 class="normal-20-bold-modaltitle bem-vindo">
+                        Bem vindo de volta!
+                    </h6>
 
-         <h6 class="normal-14-medium-p inputPass">Senha</h6>
-         <input type="password" class="input senha placeholder" placeholder="********" required><br>
+                    <h6 class="normal-16-bold-title-3 inputEmail">Email</h6>
+                    <input type="email" class="input email placeholder" placeholder="email@email.com" name="email" required><br>
 
-         <a href=""><button class="botao-g normal-14-regular-p bt">Entrar</button></a>
-         <h6 class="normal-14-medium-p final">Novo por aqui? <a href="#" class="normal-14-medium-p link"> Crie uma conta!</a></h6>
+                    <h6 class="normal-14-medium-p inputPass">Senha</h6>
+                    <input type="password" class="input senha placeholder" placeholder="********" required><br>
 
-     </form>
-     
- </div>
+                    <a href=""><button class="botao-g normal-14-regular-p bt">Entrar</button></a>
+                    <h6 class="normal-14-medium-p final">Novo por aqui? <a href="#" class="normal-14-medium-p link"> Crie uma conta!</a></h6>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

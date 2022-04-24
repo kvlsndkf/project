@@ -1,6 +1,6 @@
 /* Criei uma classe para o Body */
 .body{
-    margin-top: 65px;
+
     background-image: url(./img/fundo.svg);
     background-color: #7a73ff;
     background-repeat: no-repeat;
@@ -9,26 +9,38 @@
     position: relative;
 }
 
-/* Parte da NavBar */
 
-  
 /* Parte do form */
+
+.form{
+    margin-left: 50px;
+}
+
 .bem-vindo{
-    margin-left: 125px;
-    margin-top: 122px;
+    margin-left: 110px;
+    margin-top: 145px;
     width: 192px;
     height: 24px;
     color: var(--white) ;
 }
 
+.card{
+    border: none !important;
+    width: 600px;
+    height: 657px;
+   
+}
+
+.card-body{
+    background-color: var(--bg-modal);
+    height: 100% !important;
+}
 
 .email{
+    margin-right: 100px;
     margin-top: 13px;
 }
 
-.senha{
-    margin-top: 10px;
-}
 
 .inputEmail{
     padding-top: 30px;
@@ -36,7 +48,7 @@
 }
 
 .inputPass{
-    padding-top: 30px;
+    padding-top: 20px;
     color: var(--gray7);
     
 }
@@ -54,21 +66,21 @@
 }
 
 .bt:hover{
-    box-shadow: 6px 6px 3px #ffa718;
+    box-shadow: 6px 6px 3px var(--blue-sky);
 }
 
 .final{
     margin-left: 114px;
-    color: #1d2cc2;
+    color: var(--gray7);
    
 }
 
 .link{
-    color:#ffa718;
+    color: var(--blue-sky);
 }
 
 a:hover{
-    color:#1d2cc2  !important;   
+    color: var(--blue-sky) !important;   
 
 }
 
