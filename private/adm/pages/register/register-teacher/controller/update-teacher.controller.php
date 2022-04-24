@@ -14,7 +14,7 @@ if (isset($_POST['update'])) {
 
         if ($teacherPhoto['size'] > 2097152) {
             $_SESSION['statusAlert'] = "Arquivo muito grande. Máximo: 2MB.";
-            header('Location: /project/private/adm/pages/register/register-teacher/form-teacher.page.php');
+            header('Location: /project/private/adm/pages/register/register-teacher/list-teacher.page.php');
         }
 
         if ($teacherPhoto['error']) {

@@ -14,7 +14,7 @@
     </p>
 
     <p>
-        <a href="#">Módulos</a>
+        <a href="../register-module/list-module.page.php">Módulos</a>
     </p>
 
     <p>

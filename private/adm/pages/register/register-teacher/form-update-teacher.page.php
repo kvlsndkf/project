@@ -18,19 +18,19 @@ if (isset($_GET['updateTeacher'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar professor | Heelp!</title>
+    <title>Editar professor | Heelp!</title>
     
 </head>
 
 <body>
     <form action="./controller/update-teacher.controller.php?updateTeacher=<?php echo $rowCat['id'] ?>" method="POST" enctype="multipart/form-data">
-        <label>Atualizar do professor</label>
+        <label>Editar professor</label>
         <p>
             <label>Nome professor</label>
             <input type="text" name="updateName" id="updateName" value="<?php echo $rowCat['name'] ?>">
@@ -47,7 +47,7 @@ if (isset($_GET['updateTeacher'])) {
         </p>
 
         <input type="submit" value="Editar" name="update">
-        <input type="reset" value="Limpar">
+        <a href="./list-teacher.page.php"><button type="button">Cancelar</button></a>
     </form>
 </body>
 
