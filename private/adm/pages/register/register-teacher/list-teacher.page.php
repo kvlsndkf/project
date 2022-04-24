@@ -198,11 +198,11 @@ try {
         //botão para avançar
         if ($next_page <= $page_qnt) { ?>
             <li class="page-item">
-                <a class="page-link" href="list-teacher.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Prox</a>
+                <a class="page-link" href="list-teacher.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
             </li>
         <?php    } else { ?>
             <li class="page-item disabled">
-                <a class="page-link disable" href="#" tabindex="-1" aria-disabled="true">Prox</a>
+                <a class="page-link disable" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
             </li>
         <?php }  ?>
     </ul>
