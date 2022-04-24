@@ -4,6 +4,8 @@ require_once('/xampp/htdocs' . '/project/classes/schools/Teacher.class.php');
 
 session_start();
 
+$connection = Connection::connection();
+
 try {
     $search = $_GET['searchTeacher'] ?? '';
     $teacher = new Teacher();
@@ -141,6 +143,69 @@ try {
         </p>
         <?php echo '<hr>'; ?>
     <?php } ?>
+
+    <!-- Paginação ⬇️ -->
+    <?php
+    //Receber o numero de página
+    $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+    $page = (!empty($current_page)) ? $current_page : 1;
+
+    //Setar a quantidade de registros por página
+    $limit_result = 10;
+
+    //Calcular o inicio da vizualização
+    $start = ($limit_result * $page) - $limit_result;
+
+    //Contar a quantidade de registros no bd 
+    $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM teachers";
+    $result_qnt_register = $connection->prepare($query_qnt_register);
+    $result_qnt_register->execute();
+    $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+
+    //Quantidade de páginas
+    $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+    //Maximo de links
+    $max_links = 5;
+
+    $prev_page = $page - 1;
+
+    $next_page = $page + 1;
+
+    ?>
+
+    <ul class="pagination">
+        <?php
+        //botão para voltar
+        if ($prev_page != 0) { ?>
+            <li class="page-item">
+                <a class="page-link" href="list-teacher.page.php?page=<?php echo $prev_page; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
+            </li>
+        <?php    } else { ?>
+            <li class="page-item disabled">
+                <a class="page-link disable" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+            </li>
+        <?php }  ?>
+
+        <?php
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
+            <li class="page-item"><a class="page-link" href="list-teacher.page.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+        <?php }
+        ?>
+
+        <?php
+        //botão para avançar
+        if ($next_page <= $page_qnt) { ?>
+            <li class="page-item">
+                <a class="page-link" href="list-teacher.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Prox</a>
+            </li>
+        <?php    } else { ?>
+            <li class="page-item disabled">
+                <a class="page-link disable" href="#" tabindex="-1" aria-disabled="true">Prox</a>
+            </li>
+        <?php }  ?>
+    </ul>
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
