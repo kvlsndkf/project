@@ -98,7 +98,7 @@ class Teacher
             $page = (!empty($current_page)) ? $current_page :1;
 
             //Setar a quantidade de registros por página
-            $limit_result = 10;
+            $limit_result = 9;
 
             //Calcular o inicio da vizualização
             $start = ($limit_result * $page) - $limit_result;
@@ -177,7 +177,7 @@ class Teacher
         $page = (!empty($current_page)) ? $current_page :1;
 
         //Setar a quantidade de registros por página
-        $limit_result = 10;
+        $limit_result = 9;
 
         //Calcular o inicio da vizualização
         $start = ($limit_result * $page) - $limit_result;
