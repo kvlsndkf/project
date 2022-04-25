@@ -103,7 +103,7 @@ class Teacher
             //Calcular o inicio da vizualização
             $start = ($limit_result * $page) - $limit_result;
 
-            $stmt = $connection->prepare("SELECT id, name, photo FROM teachers ORDER BY name LIMIT $start, $limit_result");
+            $stmt = $connection->prepare("SELECT * FROM teachers ORDER BY name LIMIT $start, $limit_result");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
