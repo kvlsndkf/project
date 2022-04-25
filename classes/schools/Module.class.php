@@ -213,7 +213,7 @@ class Module
 
         $connection = Connection::connection();
         try {
-            $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM teachers");
+            $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM modules");
             $stmt->execute();
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
