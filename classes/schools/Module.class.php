@@ -8,6 +8,7 @@ class Module
     public string $name;
     public string $createdAt;
     public string $updatedAt;
+    public array $resultBuildList;
 
     //getters and setters
     public function getId(): int
@@ -46,6 +47,14 @@ class Module
         $this->updatedAt = $updatedAt;
     }
     //----------------------------
+    public function getResultBuildList(): array
+    {
+        return $this->resultBuildList;
+    }
+    public function setResultBuildList(array $resultBuildList): void
+    {
+        $this->resultBuildList = $resultBuildList;
+    }
     //----------------------------
     //methods
     /**
@@ -183,6 +192,35 @@ class Module
             array_push($modules, $module);
         }
 
+        $this->setResultBuildList($modules);
         return $modules;
+    }
+
+    //----------------------------
+    /**
+     * @method countTeachers() count the teachers by 
+     * @param string $search 
+     */
+    public function countModules(string $search = ''): string
+    {
+        $searching = (!is_null($search) && !empty($search));
+
+        if ($searching) {
+            $resultBuildList = $this->getResultBuildList();
+            $totalSearch = count($resultBuildList);
+            return "Resultado da pesquisa " . $totalSearch;
+        }
+
+        $connection = Connection::connection();
+        try {
+            $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM teachers");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return "Total " . $result[0]['total'];
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
