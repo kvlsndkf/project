@@ -9,7 +9,9 @@ $connection = Connection::connection();
 try {
     $search = $_GET['searchTeacher'] ?? '';
     $teacher = new Teacher();
+
     $listTeachers = $teacher->listTeacher($search);
+    $countTeachers = $teacher->countTeachers($search);
 
     $optionOfSearch = array();
     foreach ($listTeachers as $row) {
@@ -118,8 +120,7 @@ try {
 
     <!-- Contador de professores ⬇️ -->
     <p>
-        Total
-        <?php echo count($listTeachers); ?>
+        <?php echo $countTeachers ?>
     </p>
 
     <!-- Lista de professores ⬇️ -->

@@ -7,7 +7,9 @@ session_start();
 try {
     $search = $_GET['searchModule'] ?? '';
     $module = new Module();
+
     $listModules = $module->listModule($search);
+    $countModules = $module->countModules($search);
 
     $optionOfSearch = array();
     foreach ($listModules as $row) {
@@ -72,8 +74,7 @@ try {
 
     <!-- Contador de módulos ⬇️ -->
     <p>
-        Total
-        <?php echo count($listModules); ?>
+        <?php echo $countModules ?>
     </p>
 
     <!-- Lista de módulos ⬇️ -->
