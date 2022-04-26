@@ -320,7 +320,6 @@
         /* align-items: center; */
         justify-content: center;
         background-color: var(--gray1);
-        height: 249px;
     }
 
     .footer{
@@ -329,10 +328,10 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        height: 150px;
     }
 
     .footer-options{
+        margin-top: 75px;
         display: block;
         letter-spacing: 1px;
         margin-left: 25px;
@@ -374,11 +373,32 @@
     /* Config Toggle */
     @media (max-width: 858px){
         /* Nav */
+        .logo-heelp{
+            margin-left: -15px;
+            width: 10px;
+        }
+        .logo-text{
+            font-size: medium;
+            width: 20px;
+        }
+        .a-class{
+            font-size: medium;
+        }
         .checkbtn{
             display: none;
         }
         .nav-list{
             display: none
+        }
+        .nav-options{
+            margin-left: -15px;
+            font-size: medium;
+        }
+        .cadastrar-btn{
+            height: 30px;
+            width: 80px;
+            font-size: small;
+            letter-spacing: 0px
         }
         /* tela1 */
         .heelp-slogan{
@@ -472,7 +492,7 @@
         } 
         .img6{
             margin-top: 45px;
-            margin-left: 18vw;
+            margin-left: 8vw;
             margin-bottom: 35px;
         }
         /* footer */
@@ -485,6 +505,7 @@
             margin-right: 5px;
         }
         .seta-anchor{
-            margin-right: 50px;
+            margin-top: 20px;
+            margin-left: 40vw;
         }
     }
