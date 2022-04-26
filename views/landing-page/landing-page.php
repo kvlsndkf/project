@@ -14,7 +14,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <!-- Títilo e Ícone -->
-        <title>Heelp</title>
+        <title>Heelp!</title>
         <link rel="icon" href="./img/Logo-Blue.svg" type="image/icon type">
 
         <!-- Scripts -->
@@ -41,7 +41,7 @@
 
                     <!-- Logo -->
                     <a href="#" class="a-class logo-heelp">
-                        <img src="./img/Logo.svg" class="logo-img" alt="Logo Heelp!">
+                        <img src="./img/Logo-t.svg" class="logo-img" alt="Logo Heelp!">
                         <p class="logo-text normal-22-black-title-1 white">heelp!</p>
                     </a>
 
@@ -118,9 +118,7 @@
 
             <div id="tela3">
                 <div class="linha">
-                    <div class="col">
                         <img src="./img/landing-img2.svg" class="img2">
-                    </div>
                     <div class="col">
                         <h4 class="heelp-net white nord-40-black-display">Networking</h4>
                         <h5 class="heelp-net-text white normal32-black-landingpagetitle-2" id="xp">Se conectando que você consegue os melhores resultados.</h5>
@@ -217,10 +215,12 @@
                         <a href="#" class="a-class white footer-options normal-14-bold-p white">Fale Conosco</a>
                         <a href="#" class="a-class white footer-options normal-14-bold-p white">Sobre a Empresa</a>
 
+                        
+                    </div>
+                    <div class="div-da-seta">
                         <a href="#tela1" class="seta-anchor">
                             <img src="./img/botão âncora.svg" class="seta-img">
                         </a>
-
                     </div>
 
                     <hr class="footer-linha">
@@ -237,7 +237,7 @@
         <script>
             var nav = document.getElementById('nav');
             window.addEventListener("scroll", function(event) {
-                if(window.pageYOffset>500){
+                if(window.pageYOffset>0){
 
                     nav.style.background = "#8080FF";
 
