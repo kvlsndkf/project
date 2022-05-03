@@ -544,4 +544,13 @@
         .img4, .img3{
             margin-left: 45px;
         }
+        .div-da-seta{
+            margin-left: 15px;
+        }
+        .footer-linha{
+            margin-top: 50px;
+        }
+        .copyright-text{
+            text-align: center;
+        }
     }
