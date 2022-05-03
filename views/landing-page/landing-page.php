@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../styles/style.global.css">
         <link rel="stylesheet" href="../styles/fonts.style.css">
         <link rel="stylesheet" href="./landing-page-styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <!-- Títilo e Ícone -->
@@ -41,7 +42,7 @@
 
                     <!-- Logo -->
                     <a href="#" class="a-class logo-heelp">
-                        <img src="./img/Logo-t.svg" class="logo-img" alt="Logo Heelp!">
+                        <img src="./img/Logo-Transparente.svg" class="logo-img" alt="Logo Heelp!">
                         <p class="logo-text normal-22-black-title-1 white">heelp!</p>
                     </a>
 
@@ -96,7 +97,7 @@
                     <div class="row">
                         <div class="col-md">
                             
-                            <img src="./img/landing-img1.svg" class="img1">
+                            <img src="./img/foto1-ajuda.svg" class="img1">
 
                         </div>
 
@@ -118,7 +119,7 @@
 
             <div id="tela3">
                 <div class="linha">
-                        <img src="./img/landing-img2.svg" class="img2">
+                        <img src="./img/foto2-networking.svg" class="img2">
                     <div class="col">
                         <h4 class="heelp-net white nord-40-black-display">Networking</h4>
                         <h5 class="heelp-net-text white normal32-black-landingpagetitle-2" id="xp">Se conectando que você consegue os melhores resultados.</h5>
@@ -137,7 +138,7 @@
                     <div class="row">
 
                         <div class="col coln1">
-                            <img src="./img/landing-img3.svg" class="img3">
+                            <img src="./img/foto3-desafios.svg" class="img3">
                         </div>
 
                         <div class="col-5 coln2">
@@ -146,7 +147,7 @@
                         </div>
 
                         <div class="col coln3">
-                            <img src="./img/landing-img4.svg" class="img4">
+                            <img src="./img/foto4-xp.svg" class="img4">
                         </div>
 
                     </div>
@@ -177,11 +178,11 @@
                             </div>
 
                             <div class="col">
-                                <img src="./img/landing-img5.svg" class="img5">
+                                <img src="./img/foto5-seta-circulo.svg" class="img5">
                             </div>
 
                             <div class="col">
-                                <img src="./img/landing-img6.svg" class="img6">
+                                <img src="./img/foto6-ranking.svg" class="img6">
                             </div>
 
                         </div>
@@ -196,7 +197,7 @@
                     <h5 class="heelp-peca-title white normal32-black-landingpagetitle-2">Ei! Não perca tempo...</h5>
                     <h6 class="heelp-peca-text white nord-40-black-display">Peça um heelp!</h6>
 
-                    <a href="#" class="a-class heelp-peca-btn normal-14-bold-p gray1">
+                    <a href="#" class="heelp-peca-btn normal-14-bold-p gray1">
                         <div class="cadastrar-btn">
                             Cadastre-se
                         </div>

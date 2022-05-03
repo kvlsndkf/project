@@ -62,13 +62,12 @@
     /* Nav Itens */
     .a-class{
         text-decoration: none;
-        transition: 0.5s;
     }
 
     .a-class:hover{
         transform: scale(1.1);
         transition: all 0.5s;
-        color: var(--blue-sky);
+        /* color: var(--blue-sky); */
     }
 
     .nav{
@@ -107,11 +106,27 @@
     .nav-options{
         letter-spacing: 1px;
         margin-left: 32px;
+        transition: 0.5s;
     }
 
     .nav-options:hover{
-        color: var(--blue-sky);
+        color: var(--gray2);
+        /* animation: pulse;
+        animation-duration: 1.5s;
+        transform: scale(1.1);
+        transition: 0.5s; */
     }
+
+/* 
+    .animation{
+        transition: 0.5s;
+    }
+
+    .animation:hover{
+        color: var(--gray2);
+        transform: scale(1.1);
+        transition: all 0.5s;
+    } */
 
     /* Botao Cadastre-se da NavBar */
     .cadastrar-btn{
@@ -132,7 +147,7 @@
 
     .cadastrar-btn:hover{
         transform: scale(1.1);
-        transition: all 0.5s;
+        transition: 0.5s;
     }   
 
     
@@ -311,8 +326,14 @@
         margin-top: 35px;
         margin-right: 25px;
         letter-spacing: 1px;
+        text-decoration: none;
     }
-    
+
+    .heelp-peca-btn:hover{
+        animation: swing;
+        animation-duration: 1.5s;
+    }
+
 /* Tela 7 - Footer */
     #tela7{
         display: flex;
@@ -339,6 +360,12 @@
         cursor: pointer;
     }
 
+    .footer-options:hover{
+        transform: scale(1.1);
+        transition: all 0.5s;
+        color: var(--primary);
+    }
+
     .div-da-seta{
         height: 35px;
         display: flex;
@@ -352,8 +379,11 @@
         margin-top: -50px;
     }
     .seta-anchor:hover{
-        transform: scale(1.2);
-        transition: all 0.5s;
+        /* transform: scale(1.2);
+        transition: all 0.5s; */
+    
+        animation: bounce;
+        animation-duration: 1.5s;
     }
     
     .footer-linha{
@@ -395,9 +425,9 @@
             font-size: medium;
         }
         .cadastrar-btn{
-            height: 30px;
-            width: 80px;
-            font-size: small;
+            height: 40px;
+            width: 100px;
+            font-size: var(--p);
             letter-spacing: 0px
         }
         /* tela1 */
@@ -462,9 +492,6 @@
             justify-content: center;
             height: 1000px;
         }
-        .heelp-xp{
-            
-        }
         .heelp-xp, .heelp-xp-title{
             margin-top: 0;
             padding-top: 0;
@@ -507,5 +534,14 @@
         .seta-anchor{
             margin-top: 20px;
             margin-left: 40vw;
+        }
+    }
+
+    @media  (max-width: 500px) {
+        #tela4, .heelp-xp-title, .heelp-xp-text{
+            max-width: 375px;
+        }
+        .img4, .img3{
+            margin-left: 45px;
         }
     }
