@@ -18,7 +18,7 @@
     </p>
 
     <p>
-        <a href="#">Etec's</a>
+        <a href="../register-school/list-school.page.php">Etec's</a>
     </p>
 
     <p>
