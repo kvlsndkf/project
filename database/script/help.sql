@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Abr-2022 às 04:17
+-- Tempo de geração: 30-Abr-2022 às 01:46
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -137,10 +137,9 @@ CREATE TABLE `modules` (
 CREATE TABLE `schools` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `district` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `have_account` tinyint(1) NOT NULL,
-  `about` varchar(237) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `have_account` varchar(12) NOT NULL,
+  `about` varchar(237) DEFAULT NULL,
   `github` varchar(100) DEFAULT NULL,
   `linkedin` varchar(100) DEFAULT NULL,
   `facebook` varchar(100) DEFAULT NULL,
@@ -279,7 +278,7 @@ CREATE TABLE `teachers` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `photo` varchar(100) NOT NULL,
   `type_user` varchar(40) NOT NULL,
   `is_confirmed` tinyint(1) NOT NULL,
