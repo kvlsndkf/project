@@ -107,7 +107,7 @@ try {
     $start = ($limit_result * $page) - $limit_result;
 
     //Contar a quantidade de registros no bd 
-    $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules";
+    $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules WHERE name LIKE '%$search%' ORDER BY name";
     $result_qnt_register = $connection->prepare($query_qnt_register);
     $result_qnt_register->execute();
     $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
@@ -126,7 +126,7 @@ try {
         //botão para voltar
         if ($prev_page != 0) { ?>
             <li class="page-item">
-                <a class="page-link" href="./list-module.page.php?page=<?php echo $prev_page; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
+                <a class="page-link" href="./search-module.page.php?page=<?php echo $prev_page; ?> &searchModule=<?php echo $search; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
             </li>
         <?php    } else { ?>
             <li class="page-item disabled">
@@ -137,7 +137,7 @@ try {
         <?php
         //Apresentar a paginação
         for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
-            <li class="page-item"><a class="page-link" href="./list-module.page.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            <li class="page-item"><a class="page-link" href="./search-module.page.php?page=<?php echo $i; ?> &searchModule=<?php echo $search; ?>"><?php echo $i; ?></a></li>
         <?php }
         ?>
 
@@ -145,7 +145,7 @@ try {
         //botão para avançar
         if ($next_page <= $page_qnt) { ?>
             <li class="page-item">
-                <a class="page-link" href="./list-module.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
+                <a class="page-link" href="./search-module.page.php?page=<?php echo $next_page; ?> &searchModule=<?php echo $search; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
             </li>
         <?php    } else { ?>
             <li class="page-item disabled">

@@ -138,8 +138,17 @@ class Module
                 $result = $this->searchModule($search);
                 return $this->buildModuleList($result);
             }
+            //Receber o numero de página
+            $current_page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page :1;
 
-            $stmt = $connection->prepare("SELECT id, name FROM modules ORDER BY name");
+            //Setar a quantidade de registros por página
+            $limit_result = 12;
+
+            //Calcular o inicio da vizualização
+            $start = ($limit_result * $page) - $limit_result;
+
+            $stmt = $connection->prepare("SELECT id, name FROM modules ORDER BY name LIMIT $start, $limit_result");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -158,8 +167,18 @@ class Module
     {
         $connection = Connection::connection();
 
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page :1;
+
+        //Setar a quantidade de registros por página
+        $limit_result = 12;
+
+        //Calcular o inicio da vizualização
+        $start = ($limit_result * $page) - $limit_result;
+
         try {
-            $stmt = $connection->prepare("SELECT * FROM modules WHERE name LIKE '%$search%' ORDER BY name");
+            $stmt = $connection->prepare("SELECT * FROM modules WHERE name LIKE '%$search%' ORDER BY name LIMIT $start, $limit_result");
 
             $stmt->execute();
 

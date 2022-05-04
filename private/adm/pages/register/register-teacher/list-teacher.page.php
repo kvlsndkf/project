@@ -163,9 +163,6 @@ try {
     //Quantidade de páginas
     $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
 
-    //Maximo de links
-    $max_links = 5;
-
     $prev_page = $page - 1;
 
     $next_page = $page + 1;
