@@ -1,54 +1,64 @@
-/* Criei uma classe para o Body */
 .body{
-
-    background-image: url(./img/fundo.svg);
-    background-color: #7a73ff;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display:inline-flex;
+    background: url(./img/fundo2.svg) no-repeat;
+    background-position: right;
     position: relative;
+    justify-content: center;
+}
+
+.row{
+    width: 100vw;
+    height: 100vh;
+}
+.container1{
+    display: flex;
+    height:100vh;
+    width: 100vh;
+}
+
+.navbar{
+    padding: 0 0 !important;   
 }
 
 
-/* Parte do form */
+
+.formg{
+   display:inline-flex;
+    width: 85%;
+    background-color: var(--bg-modal);
+}
+
 
 .form{
-    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
 }
 
-.bem-vindo{
-    margin-left: 110px;
-    margin-top: 145px;
+
+.title{
+
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
     width: 192px;
     height: 24px;
-    color: var(--white) ;
+    color: var(--white);
 }
-
-.card{
-    border: none !important;
-    width: 600px;
-    height: 657px;
-   
-}
-
-.card-body{
-    background-color: var(--bg-modal);
-    height: 100% !important;
-}
-
-.email{
-    margin-right: 100px;
-    margin-top: 13px;
-}
-
 
 .inputEmail{
-    padding-top: 30px;
+    padding-top: 40px;
     color: var(--gray7);
 }
 
 .inputPass{
-    padding-top: 20px;
+    padding-top: 30px;
     color: var(--gray7);
     
 }
@@ -57,22 +67,24 @@
     color:var(--gray6);
 }
 
-
 .bt{
     margin-top: 35px;
     background-color: #8080FF;
     color: var(--white);
     margin-bottom: 10px;
+    border: none;
 }
 
-.bt:hover{
-    box-shadow: 6px 6px 3px var(--blue-sky);
+.bt:hover{ 
+    filter: brightness(1.2);
+    cursor: pointer;
 }
+
 
 .final{
-    margin-left: 114px;
     color: var(--gray7);
-   
+    text-align: center;
+ 
 }
 
 .link{
@@ -84,7 +96,51 @@ a:hover{
 
 }
 
-/* Fim do form */
+@media screen and (max-width: 800px) {
+    .body{
+        background: none;
+    }
+    .form{
+        display: flex;
+        
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: var(--bg-modal);
+
+    }
+    .container1{
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+    
+    .formg{
+        display:inline-flex;
+         width: 100%;
+         background-color: var(--bg-modal);
+     }
+}
+/* Caso haja barra de rolagem */
+
+::-webkit-scrollbar {
+    width: 15px;
+    }
+    
+    ::-webkit-scrollbar-track {
+    background: var(--gray3);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+    
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background: #8080FF;
+    }
 
 
 
+    
