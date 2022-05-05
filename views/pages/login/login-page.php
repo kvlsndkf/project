@@ -22,37 +22,41 @@
 
 <body class="body">
     <div class="row">
+
         <div class="container1">
+
             <div class="formg">
+                    <div class="setalogin">
+                        <a class="setavoltar" href="#">
+                            <img src="../../images/./components/seta-voltar.svg" alt="">
+                        </a>
+                    </div>
                 <form action="#" class="form">
                     <div class="form-header">
-                        <div class="navbar">
-                            <nav class="navbarlogin">
-                                <a class="botaonavvoltar" href="#">
-                                    <img src="../../images/./components/seta-voltar.svg" alt="">
-                                </a>
-                            </nav>
-                        </div>
-                        <div class="title">
+                        <div class="titleg">
                             <h6 class="normal-20-bold-modaltitle">
                                 Bem vindo de volta!
                             </h6>
                         </div>
 
-                        <div class="input-box">
+                        <div class="grupo-form">
+
+
                             <h6 class="normal-16-bold-title-3 inputEmail">Email</h6>
-                            <input type="email" id="" class="input email placeholder" placeholder="email@email.com" name="email" required>
-                        </div>
+                            <div class="input-box">
+                                <input type="email" id="" class="input email placeholder " placeholder="email@email.com" name="email" required>
+                            </div>
 
-                        <div class="input-box">
+
                             <h6 class="normal-14-medium-p inputPass">Senha</h6>
-                            <input type="password" id="" class="input senha placeholder" placeholder="********" required>
-                        </div>
+                            <div class="input-box">
+                                <input type="password" id="" class="input senha placeholder" placeholder="********" required>
+                            </div>
 
-                        <div class="button-enter">
-                            <a href="#"><button class="botao-g normal-14-regular-p bt" id="">Entrar</button></a>
+                            <div class="button-enter">
+                                <a href="#"><button class="botao-g normal-14-regular-p bt" id="">Entrar</button></a>
+                            </div>
                         </div>
-
                         <div class="criar-conta">
                             <h6 class="normal-14-medium-p final">Novo por aqui? <a href="#" class="normal-14-medium-p link"> Crie uma conta!</a></h6>
                         </div>
@@ -76,3 +80,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     -->
 </body>
+
+</html>
+
+</html>

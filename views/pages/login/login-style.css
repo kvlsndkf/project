@@ -18,22 +18,22 @@
     width: 100vh;
 }
 
-.navbar{
-    padding: 0 0 !important;   
+
+.setalogin{
+    padding-bottom: 50%;
 }
 
 
-
 .formg{
-   display:inline-flex;
+    display:inline-flex;
     width: 85%;
     background-color: var(--bg-modal);
 }
 
 
+
 .form{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-right: auto;
@@ -42,7 +42,7 @@
 }
 
 
-.title{
+.titleg{
 
     flex-direction: column;
     margin-right: auto;
@@ -55,6 +55,7 @@
 .inputEmail{
     padding-top: 40px;
     color: var(--gray7);
+    
 }
 
 .inputPass{
@@ -67,12 +68,18 @@
     color:var(--gray6);
 }
 
+
+.input-box{
+    justify-content: center;
+}
+
 .bt{
     margin-top: 35px;
     background-color: #8080FF;
     color: var(--white);
     margin-bottom: 10px;
     border: none;
+    max-width: 100%;
 }
 
 .bt:hover{ 
@@ -96,19 +103,39 @@ a:hover{
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 925px) {
     .body{
         background: none;
     }
-    .form{
+    .formg{
         display: flex;
-        
         flex-direction: column;
-        align-items: center;
-        width: 100%;
+        width: 50%;
         background-color: var(--bg-modal);
+        padding: 50%;
 
     }
+
+    .input{
+        color: var(--gray6);
+        background-color: var(--gray2);
+        width: 100%;
+        max-width: 70%;
+        min-width: none;
+        
+    }
+    .bt{
+        margin-top: 35px;
+        background-color: #8080FF;
+        color: var(--white);
+        margin-bottom: 10px;
+        border: none;
+
+        width: 100%;
+        max-width: 82%;
+        
+    }
+
     .container1{
         height: 100vh;
         width: 100vw;
@@ -120,7 +147,80 @@ a:hover{
          width: 100%;
          background-color: var(--bg-modal);
      }
+
+     .input-box{
+         margin: 0 auto;
+         display: table;
+     }
+     .grupo-form{
+         margin-left: 15%;
+     }
+
+     .setalogin{
+        padding-bottom: 50%;
+    }
+    
 }
+
+@media screen and (max-width: 280px) {
+    .body{
+        background: none;
+    }
+    .formg{
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        background-color: var(--bg-modal);
+        padding: 50%;
+
+    }
+
+    .input{
+        color: var(--gray6);
+        background-color: var(--gray2);
+        width: 100%;
+        max-width: 50%;
+        min-width: none;
+        
+    }
+    .bt{
+        margin-top: 35px;
+        background-color: #8080FF;
+        color: var(--white);
+        margin-bottom: 10px;
+        border: none;
+
+        width: 100%;
+        max-width: 67%;
+        
+    }
+
+    .container1{
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+    
+    .formg{
+        display:inline-flex;
+         width: 100%;
+         background-color: var(--bg-modal);
+     }
+
+     .input-box{
+         margin: 0 auto;
+         display: table;
+     }
+     .grupo-form{
+         margin-left: 25%;
+     }
+
+     .setalogin{
+        padding-bottom: 50%;
+    }
+    
+}
+
 /* Caso haja barra de rolagem */
 
 ::-webkit-scrollbar {
@@ -140,7 +240,3 @@ a:hover{
     ::-webkit-scrollbar-thumb:hover {
     background: #8080FF;
     }
-
-
-
-    
