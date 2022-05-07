@@ -39,6 +39,9 @@
             <!-- NavBar -->
             <header>
                 <nav class="nav" id="nav">
+                    <div class="container">
+                        <div class="content-navbar">
+
 
                     <!-- Logo -->
                     <a href="#" class="a-class logo-heelp">
@@ -70,7 +73,8 @@
                             </a>
                         </li>
                     </ul>
-
+                </div>
+                </div>
                 </nav>
             </header>
 
@@ -225,8 +229,10 @@
                     </div>
 
                     <hr class="footer-linha">
-
-                    <p class="copyright-text whitney-16-medium-text">Copyright © Cold Wolf - 2022. Todos os direitos reservados.</p>
+            
+                    <a href="#" class="a-copyright">
+                        <p class="copyright-text whitney-16-medium-text">Copyright © Cold Wolf - 2022. Todos os direitos reservados.</p>
+                    </a>
 
                 </div>
 

@@ -46,7 +46,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        margin-left: 35px;
+        /* margin-left: 35px; */
     }
 
     .logo-text{
@@ -57,6 +57,13 @@
         margin-top: -5px;
         margin-right: 10px;
         width: 45px;
+    }
+
+    .content-navbar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 
     /* Nav Itens */
@@ -73,34 +80,37 @@
     .nav{
         display: flex;
         justify-content: space-around;
-        height: 12vh;
+        height: 12%;
         flex-wrap: wrap;
         position: fixed;
         width: 100%;
         transition: 0.3s ease-in-out;
+        animation: fadeInDown;
+        animation-duration: 1s;
     }
 /* 
     .nav-active {
         background-color:var(--red);
     } */
+    
+        .nav-list{
+            margin-top: 1%;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            margin-right: -5%;
+            /* margin-left: 10px; */
+        }
 
     .nav-list2{
-        margin-top: 10px;
+        margin-top: 1%;
         list-style: none;
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: center;
-    }
-
-    .nav-list{
-        margin-top: 10px;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: center;
-        margin-left: 10px;
     }
 
     .nav-options{
@@ -160,11 +170,15 @@
     .heelp-slogan{
         text-align: center;
         margin-top: 35vh;
+        animation: fadeInDown;
+        animation-duration: 2s;
     }
     
     .heelp-text{
         font-weight: var(--regular);
         text-align: center;
+        animation: fadeInDown;
+        animation-duration: 2s;
     }
 
 /* Tela 2 - Comunidade */
@@ -172,6 +186,8 @@
     .heelp-com{
         text-align: center;
         margin-top: 125px;
+        animation: fadeIn;
+        animation-duration: 1s;
     }
     
     .img1{
@@ -391,24 +407,30 @@
         width: 90vw;
         margin-left: 5vw;
     }
-    
-    .copyright-text{
+
+    .a-copyright{
         margin-top: 25px;
         margin-bottom: 25px;
         color: var(--gray5);
         align-self: center;
-        /* margin-left: 36.5vw; */
+        text-decoration: none;
+    }
+    
+    .a-copyright:hover{
+        color: var(--gray5);
+        transform: scale(1.05);
+        transition: 1s;
     }
     
     /* Config Toggle */
     @media (max-width: 858px){
         /* Nav */
         .logo-heelp{
-            margin-left: -15px;
+            margin-left: 30px;
             width: 10px;
         }
         .logo-text{
-            font-size: medium;
+            font-size: large;
             width: 20px;
         }
         .a-class{
@@ -421,14 +443,15 @@
             display: none
         }
         .nav-options{
-            margin-left: -15px;
+            /* margin-left: -15px; */
             font-size: medium;
         }
         .cadastrar-btn{
             height: 40px;
             width: 100px;
             font-size: var(--p);
-            letter-spacing: 0px
+            letter-spacing: 0px;
+            margin-right: 15px
         }
         /* tela1 */
         .heelp-slogan{
