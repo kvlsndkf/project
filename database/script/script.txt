@@ -72,6 +72,8 @@ CREATE TABLE schools(
     , name VARCHAR(100) NOT NULL
     , address VARCHAR(100) NOT NULL
     , have_account VARCHAR(12) NOT NULL
+    , in_sp_city VARCHAR(14)
+    , not_in_sp_city VARCHAR(14) 
     , about VARCHAR(237)
     , github VARCHAR(100)
     , linkedin VARCHAR(100)
