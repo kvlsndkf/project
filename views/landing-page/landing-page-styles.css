@@ -50,12 +50,12 @@
     }
 
     .logo-text{
-        margin-top: 10px;
+        margin-top: 3px;
     }
 
     .logo-img{
         margin-top: -5px;
-        margin-right: 10px;
+        margin-right: 5px;
         width: 45px;
     }
 
@@ -80,6 +80,7 @@
     .nav{
         display: flex;
         justify-content: space-around;
+        align-items: center;
         height: 12%;
         flex-wrap: wrap;
         position: fixed;
@@ -186,7 +187,7 @@
     .heelp-com{
         text-align: center;
         margin-top: 125px;
-        animation: fadeIn;
+        animation: fadeInDown;
         animation-duration: 1s;
     }
     
@@ -196,11 +197,15 @@
         max-width: 650px;
         max-height: 358px;
         margin-bottom: 100px;
+        animation: fadeInLeft;
+        animation-duration: 1s;
     }
 
     .heelp-com-title{
         margin-left: 25px;
         margin-top: 130px;
+        animation: fadeInDown;
+        animation-duration: 1s;
     }
     
     .heelp-com-text{
@@ -212,11 +217,15 @@
         margin-left: 25px;
         margin-top: 20px;
         letter-spacing: 1px;
+        animation: fadeInDown;
+        animation-duration: 1s;
     }
     
     .heelp-com-title2{
         margin-top: 30px;
         margin-left: 25px;
+        animation: fadeInDown;
+        animation-duration: 1s;
     }
 
     /* Tela 3 - Networking */
@@ -240,26 +249,31 @@
         margin-right: 30px;
         margin-bottom: 30px;
         margin-left: 25%;
+        animation: fadeInLeft;
+        animation-duration: 1s;
     }
 
     .heelp-net{
         margin-top: 25px;
+        animation: fadeInRight;
+        animation-duration: 1s;
     }
 
     .heelp-net-text{
         max-width: 480px;
         margin-bottom: 30px;
+        animation: fadeInRight;
+        animation-duration: 1s;
     }
 
     /* Tela 4 - Desafios */
-    #tela4{
-        
-    }
 
     .heelp-xp{
         text-align: center;
         margin-top: 75px;
         margin-bottom: 75px;
+        animation: fadeInDown;
+        animation-duration: 1s;
     }
 
     .heelp-xp-title{
@@ -267,6 +281,8 @@
         text-align: center;
         margin-top: 50px;
         max-width: 500px;
+        animation: fadeIn;
+        animation-duration: 1s;
     }
 
     .heelp-xp-text{
@@ -279,12 +295,25 @@
         font-size: var(--h6);
         font-weight: 800;
         letter-spacing: 1px;
+        animation: fadeIn;
+        animation-duration: 1s;
     }
 
     .img3, .img4{
         margin-top: 30px;
         width: 300px;
-        margin-bottom: 30px;
+        margin-bottom: 10vh;
+    }
+
+    .img3{
+        animation: fadeInLeft;
+        animation-duration: 1s;
+    }
+
+    .img4{
+        float: right;
+        animation: fadeInRight;
+        animation-duration: 1s;
     }
     
     /* Tela 5 - Empresas */
@@ -295,10 +324,14 @@
 
     .heelp-emp{
         padding-top: 75px;
+        animation: fadeInDown;
+        animation-duration: 1s;
     }
 
     .heelp-emp-title{
         margin-top: 75px;
+        animation: fadeIn;
+        animation-duration: 1s;
     }
 
     .heelp-emp-text{
@@ -307,6 +340,8 @@
         letter-spacing: 1px;
         font-weight: 500;
         font-size: 20px;
+        animation: fadeIn;
+        animation-duration: 1s;
     }
 
     .heelp-emp-destaque{
@@ -314,17 +349,25 @@
         font-size: var(--h3);
         margin-top: 75px;
         width: 480px;
+        animation: fadeInDown;
+        animation-duration: 1s;
     }
 
     .img5{
         margin-top: 35vh;
         margin-left: 100px;
+        animation: fadeIn;
+        animation-duration: 1s;
     }
     
     .img6{
         margin-top: 100px;
         margin-left: 30px;
+        margin-bottom: 10vh;
         position: static;
+        float: right;
+        animation: fadeInRight;
+        animation-duration: 1s;
     }
 
     /* Tela 6 - Propaganda */
@@ -409,7 +452,7 @@
     }
 
     .a-copyright{
-        margin-top: 25px;
+        margin-top: 50vh;
         margin-bottom: 25px;
         color: var(--gray5);
         align-self: center;
@@ -425,6 +468,9 @@
     /* Config Toggle */
     @media (max-width: 858px){
         /* Nav */
+        .nav{
+            height: 10%;
+        }
         .logo-heelp{
             margin-left: 30px;
             width: 10px;
@@ -443,7 +489,7 @@
             display: none
         }
         .nav-options{
-            /* margin-left: -15px; */
+            /* margin-left: -15px; */   
             font-size: medium;
         }
         .cadastrar-btn{
@@ -451,7 +497,6 @@
             width: 100px;
             font-size: var(--p);
             letter-spacing: 0px;
-            margin-right: 15px
         }
         /* tela1 */
         .heelp-slogan{
@@ -491,8 +536,8 @@
             flex-direction: column;
             flex-wrap: wrap;
         }
-        .img2{
-            margin-left: 0;
+        .img2{  
+            margin-left: 10vw;
             padding-left: 0;
         }
         .heelp-net{
@@ -506,7 +551,8 @@
             margin-bottom: 50px;
         }
         .img3, .img4{
-            margin-left: 18%;
+            /* margin-left: 18%; */
+            float: none;
         }
         #tela4{
             display: flex;
@@ -515,8 +561,11 @@
             justify-content: center;
             height: 1000px;
         }
+        .heelp-xp-title{
+            margin-top: 0px;
+        }
         .heelp-xp, .heelp-xp-title{
-            margin-top: 0;
+            /* margin-top: 0; */
             padding-top: 0;
         }
         .heelp-xp-title, .heelp-xp-text{
@@ -538,12 +587,14 @@
         }
         .img5{
             margin-top: 35px;
-            margin-left: 35vw;
+            margin-left: 30vw;
+            float: none;
         } 
         .img6{
             margin-top: 45px;
             margin-left: 8vw;
             margin-bottom: 35px;
+            float: none;
         }
         /* footer */
         #tela7{
@@ -561,6 +612,10 @@
     }
 
     @media  (max-width: 500px) {
+        .nav{
+            height: 18vh;
+            width: 100vw;
+        }
         #tela4, .heelp-xp-title, .heelp-xp-text{
             max-width: 375px;
         }
@@ -571,9 +626,10 @@
             margin-left: 15px;
         }
         .footer-linha{
-            margin-top: 50px;
+            margin-top: 40px;
         }
         .copyright-text{
             text-align: center;
+            margin-top: -15px;
         }
     }

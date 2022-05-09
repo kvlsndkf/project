@@ -139,7 +139,7 @@
                     
                     <h4 class="heelp-xp normal32-black-landingpagetitle-2 gray1">Complete os desafios e conquiste XP</h4>
 
-                    <div class="row">
+                    <div class="row g-0 row-tela4">
 
                         <div class="col coln1">
                             <img src="./img/foto3-desafios.svg" class="img3">
