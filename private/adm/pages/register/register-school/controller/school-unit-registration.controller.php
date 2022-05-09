@@ -11,6 +11,8 @@ if (isset($_POST['register'])) {
 
         $school->setName($_POST['name']);
         $school->setAddress(($_POST['address']));
+        $school->setInSpCity($_POST['districtSchool'] ?? '');
+        $school->setNotInSpCity($_POST['citySchool'] ?? '');
         $school->setHaveAccount(isset($_POST['createAccount']));
 
         $school->registerSchool($school);
@@ -50,6 +52,8 @@ if (isset($_POST['register'])) {
                 $school = new School();
                 $school->setName($_POST['name']);
                 $school->setAddress(($_POST['address']));
+                $school->setInSpCity($_POST['districtSchool'] ?? '');
+                $school->setNotInSpCity($_POST['citySchool'] ?? '');
                 $school->setHaveAccount(($_POST['createAccount']));
                 $school->setAbout($_POST['about']);
                 $school->setGithub($_POST['github']);

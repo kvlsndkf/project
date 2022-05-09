@@ -89,9 +89,9 @@ try {
         </p>
 
         <p>
-            <input type="checkbox" name="isInTheState" id="checkDistrict" value="Sim" onclick="visibilityDistrict()"> Sim
+            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" onclick="visibilityDistrict()"> Sim
 
-            <input type="checkbox" name="isNotInTheState" id="checkCity" value="Não" onclick="visibilityCity()"> Não
+            <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" onclick="visibilityCity()"> Não
         </p>
 
         <p id="textDistrict" style="display:none">
@@ -167,22 +167,22 @@ try {
                         <label>Links</label>
                         <p>
                             Linkedin
-                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled required>
+                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled required autocomplete="off">
                         </p>
 
                         <p>
                             GitHub
-                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled required>
+                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled required autocomplete="off">
                         </p>
 
                         <p>
                             Facebook
-                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled required>
+                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled required autocomplete="off">
                         </p>
 
                         <p>
                             Instagram
-                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled required>
+                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled required autocomplete="off">
                         </p>
 
                         <li>
@@ -191,7 +191,7 @@ try {
 
                         <p>
                             <label>Foto</label>
-                            <input type="file" name="photo" id="photo" required>
+                            <input type="file" name="photo" id="photo" disabled required>
                         </p>
 
                         <li>
@@ -260,7 +260,7 @@ try {
 
             // Listen to StackEdit events and apply the changes to the textarea.
             stackedit.on('fileChange', (file) => {
-                el.value = file.content.text;
+                el.value = file.content.html;
             });
 
             // In silent mode, the `fileChange` event is emitted only once.
