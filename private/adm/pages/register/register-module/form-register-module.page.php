@@ -16,7 +16,7 @@
     <form action="./controller/module-unit-registration.controller.php" method="post">
         <p>
             Nome
-            <input type="text" name="name" id="name" placeholder="Digite o nome do módulo" required>
+            <input type="text" name="name" id="name" placeholder="Digite o nome do módulo" required autocomplete="off">
         </p>
         <p>
             <button type="submit" name="register">Cadastrar</button>

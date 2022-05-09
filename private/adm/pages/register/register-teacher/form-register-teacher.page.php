@@ -68,7 +68,7 @@ session_start();
         <label>Cadastro unitário professor</label>
         <p>
             <label>Nome professor</label>
-            <input type="text" name="name" id="name" placeholder="Digite o nome do professor" required autofocus>
+            <input type="text" name="name" id="name" placeholder="Digite o nome do professor" required autofocus autocomplete="off">
         </p>
 
         <p>

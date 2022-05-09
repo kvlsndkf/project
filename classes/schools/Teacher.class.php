@@ -134,7 +134,7 @@ class Teacher
         $connection = Connection::connection();
 
         try {
-            $abc = unlink("/xampp/htdocs" . $path);
+            unlink("/xampp/htdocs" . $path);
 
             $stmt = $connection->prepare("DELETE FROM teachers WHERE id='$id'");
 
