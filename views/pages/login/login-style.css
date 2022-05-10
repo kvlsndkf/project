@@ -3,31 +3,39 @@
     height: 100vh;
     display:inline-flex;
     background: url(./img/fundo2.svg) no-repeat;
-    background-position: right;
+    background-position: center right;
     position: relative;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
-.row{
-    width: 100vw;
-    height: 100vh;
+.voltar{
+    position: absolute;
+    width: 22%;
+    padding: 20px 0px;
 }
+
+
 .container1{
     display: flex;
-    height:100vh;
-    width: 100vh;
-}
-
-
-.setalogin{
-    padding-bottom: 50%;
+    
 }
 
 
 .formg{
-    display:inline-flex;
-    width: 85%;
+    overflow: hidden;
+    display: flex;
+    
+    width: 47%;
     background-color: var(--bg-modal);
+    
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 
@@ -43,7 +51,6 @@
 
 
 .titleg{
-
     flex-direction: column;
     margin-right: auto;
     margin-left: auto;
@@ -109,10 +116,11 @@ a:hover{
     }
     .formg{
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
         width: 50%;
-        background-color: var(--bg-modal);
-        padding: 50%;
 
     }
 
@@ -121,7 +129,6 @@ a:hover{
         background-color: var(--gray2);
         width: 100%;
         max-width: 70%;
-        min-width: none;
         
     }
     .bt{
@@ -156,8 +163,14 @@ a:hover{
          margin-left: 15%;
      }
 
-     .setalogin{
-        padding-bottom: 50%;
+     .voltar{
+        position: absolute;
+        width: 22%;
+        padding: 20px 0px;
+    }
+    img{
+        margin-bottom: 90vh;
+        margin-right: 32vw;
     }
     
 }
@@ -170,8 +183,11 @@ a:hover{
         display: flex;
         flex-direction: column;
         width: 25%;
-        background-color: var(--bg-modal);
-        padding: 50%;
+        align-items: center;
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
+        width: 25%;
 
     }
 
@@ -195,10 +211,12 @@ a:hover{
         
     }
 
-    .container1{
-        height: 100vh;
-        width: 100vw;
-        overflow: hidden;
+    .container2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
     }
     
     .formg{
@@ -215,8 +233,15 @@ a:hover{
          margin-left: 25%;
      }
 
-     .setalogin{
-        padding-bottom: 50%;
+     .voltar{
+        position: absolute;
+        width: 22%;
+        padding: 20px 0px;
+        justify-content: flex-start;
+    }
+    img{
+        margin-bottom: 550px;
+        margin-right: 65vw;
     }
     
 }
@@ -240,3 +265,4 @@ a:hover{
     ::-webkit-scrollbar-thumb:hover {
     background: #8080FF;
     }
+
