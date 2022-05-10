@@ -1,0 +1,634 @@
+/* CORES */
+    .white{
+        color: var(--white);
+    }
+
+    .gray1{
+        color: var(--gray1);
+    }
+
+/* Foto de Fundo */
+    .bg{
+        background: url("./img/background.svg") no-repeat center center;
+        background-size: cover;
+        height: 85vh;
+        width: 100%;
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+
+/* Scroll Bar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--gray7);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #bfbfff;
+        border-radius: 5px;
+
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #8080FF;
+    } 
+
+/* Navbar */
+
+    /* Logo */
+    .logo-heelp{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        /* margin-left: 35px; */
+    }
+
+    .logo-text{
+        margin-top: 3px;
+    }
+
+    .logo-img{
+        margin-top: -5px;
+        margin-right: 5px;
+        width: 45px;
+    }
+
+    .content-navbar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Nav Itens */
+    .a-class{
+        text-decoration: none;
+    }
+
+    .a-class:hover{
+        transform: scale(1.1);
+        transition: all 0.5s;
+        /* color: var(--blue-sky); */
+    }
+
+    .nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 12%;
+        flex-wrap: wrap;
+        position: fixed;
+        width: 100%;
+        transition: 0.3s ease-in-out;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+/* 
+    .nav-active {
+        background-color:var(--red);
+    } */
+    
+        .nav-list{
+            margin-top: 1%;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            margin-right: -5%;
+            /* margin-left: 10px; */
+        }
+
+    .nav-list2{
+        margin-top: 1%;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .nav-options{
+        letter-spacing: 1px;
+        margin-left: 32px;
+        transition: 0.5s;
+    }
+
+    .nav-options:hover{
+        color: var(--gray2);
+        /* animation: pulse;
+        animation-duration: 1.5s;
+        transform: scale(1.1);
+        transition: 0.5s; */
+    }
+
+/* 
+    .animation{
+        transition: 0.5s;
+    }
+
+    .animation:hover{
+        color: var(--gray2);
+        transform: scale(1.1);
+        transition: all 0.5s;
+    } */
+
+    /* Botao Cadastre-se da NavBar */
+    .cadastrar-btn{
+        height: 40px;
+        max-height: 40px;
+        width: 130px;
+        max-width: 130px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--white);
+        border-radius: 20px;
+        margin-top: -20px;
+        margin-left: 30px;
+        transition: 0.3s;
+    }
+
+    .cadastrar-btn:hover{
+        transform: scale(1.1);
+        transition: 0.5s;
+    }   
+
+    
+    /* Tela 1 - Início */
+
+    #tela1{
+        height: 75vh;
+    }
+
+    .heelp-slogan{
+        text-align: center;
+        margin-top: 35vh;
+        animation: fadeInDown;
+        animation-duration: 2s;
+    }
+    
+    .heelp-text{
+        font-weight: var(--regular);
+        text-align: center;
+        animation: fadeInDown;
+        animation-duration: 2s;
+    }
+
+/* Tela 2 - Comunidade */
+
+    .heelp-com{
+        text-align: center;
+        margin-top: 125px;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+    
+    .img1{
+        margin-top: 50px;
+        width: 575px;
+        max-width: 650px;
+        max-height: 358px;
+        margin-bottom: 100px;
+        animation: fadeInLeft;
+        animation-duration: 1s;
+    }
+
+    .heelp-com-title{
+        margin-left: 25px;
+        margin-top: 130px;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+    
+    .heelp-com-text{
+        font-family: var(--gintoNormal-thin);
+        font-style: normal;
+        font-weight: 600;
+        font-size: var(--h6);
+        line-height: var(--lh-medium);
+        margin-left: 25px;
+        margin-top: 20px;
+        letter-spacing: 1px;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+    
+    .heelp-com-title2{
+        margin-top: 30px;
+        margin-left: 25px;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+
+    /* Tela 3 - Networking */
+    
+    #tela3{
+        background-color: var(--primary);
+        width: 100%;
+    }
+
+    .linha{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        /* max-width: fit-content; */
+        /* max-height: 254px; */
+    }
+
+    .img2{
+        margin-top: 30px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        margin-left: 25%;
+        animation: fadeInLeft;
+        animation-duration: 1s;
+    }
+
+    .heelp-net{
+        margin-top: 25px;
+        animation: fadeInRight;
+        animation-duration: 1s;
+    }
+
+    .heelp-net-text{
+        max-width: 480px;
+        margin-bottom: 30px;
+        animation: fadeInRight;
+        animation-duration: 1s;
+    }
+
+    /* Tela 4 - Desafios */
+
+    .heelp-xp{
+        text-align: center;
+        margin-top: 75px;
+        margin-bottom: 75px;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+
+    .heelp-xp-title{
+        align-self: center;
+        text-align: center;
+        margin-top: 50px;
+        max-width: 500px;
+        animation: fadeIn;
+        animation-duration: 1s;
+    }
+
+    .heelp-xp-text{
+        align-self: center;
+        text-align: center;
+        margin-top: 30px;
+        max-width: 500px;
+        margin-right: 0px;
+        font-family: var(--gintoNormal-thin);
+        font-size: var(--h6);
+        font-weight: 800;
+        letter-spacing: 1px;
+        animation: fadeIn;
+        animation-duration: 1s;
+    }
+
+    .img3, .img4{
+        margin-top: 30px;
+        width: 300px;
+        margin-bottom: 10vh;
+    }
+
+    .img3{
+        animation: fadeInLeft;
+        animation-duration: 1s;
+    }
+
+    .img4{
+        float: right;
+        animation: fadeInRight;
+        animation-duration: 1s;
+    }
+    
+    /* Tela 5 - Empresas */
+    #tela5{
+        
+        background-color: #f2f2f2;
+    }
+
+    .heelp-emp{
+        padding-top: 75px;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+
+    .heelp-emp-title{
+        margin-top: 75px;
+        animation: fadeIn;
+        animation-duration: 1s;
+    }
+
+    .heelp-emp-text{
+        margin-top: 20px;
+        width: 480px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-size: 20px;
+        animation: fadeIn;
+        animation-duration: 1s;
+    }
+
+    .heelp-emp-destaque{
+        font-family: var(--gintoNord-bold);
+        font-size: var(--h3);
+        margin-top: 75px;
+        width: 480px;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+
+    .img5{
+        margin-top: 35vh;
+        margin-left: 100px;
+        animation: fadeIn;
+        animation-duration: 1s;
+    }
+    
+    .img6{
+        margin-top: 100px;
+        margin-left: 30px;
+        margin-bottom: 10vh;
+        position: static;
+        float: right;
+        animation: fadeInRight;
+        animation-duration: 1s;
+    }
+
+    /* Tela 6 - Propaganda */
+    #tela6{
+        letter-spacing: 1px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 262px;
+        background-image: var(--gradient-blue);
+    }
+
+    .heelp-peca-btn{
+        margin-top: 35px;
+        margin-right: 25px;
+        letter-spacing: 1px;
+        text-decoration: none;
+    }
+
+    .heelp-peca-btn:hover{
+        animation: swing;
+        animation-duration: 1.5s;
+    }
+
+/* Tela 7 - Footer */
+    #tela7{
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
+        background-color: var(--gray1);
+    }
+
+    .footer{
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-options{
+        margin-top: 75px;
+        display: block;
+        letter-spacing: 1px;
+        margin-left: 25px;
+        margin-right: 25px;
+        cursor: pointer;
+    }
+
+    .footer-options:hover{
+        transform: scale(1.1);
+        transition: all 0.5s;
+        color: var(--primary);
+    }
+
+    .div-da-seta{
+        height: 35px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .seta-anchor{
+        width: 50px;
+        height: 50px;
+        margin-left: 88vw;
+        margin-top: -50px;
+    }
+    .seta-anchor:hover{
+        /* transform: scale(1.2);
+        transition: all 0.5s; */
+    
+        animation: bounce;
+        animation-duration: 1.5s;
+    }
+    
+    .footer-linha{
+        border: 1px solid var(--bg-list);
+        width: 90vw;
+        margin-left: 5vw;
+    }
+
+    .a-copyright{
+        margin-bottom: 25px;
+        color: var(--gray5);
+        align-self: center;
+        text-decoration: none;
+    }
+    
+    .a-copyright:hover{
+        color: var(--gray5);
+        transform: scale(1.05);
+        transition: 1s;
+    }
+    
+    /* Config Toggle */
+    @media (max-width: 858px){
+        /* Nav */
+        .nav{
+            height: 10%;
+        }
+        .logo-heelp{
+            margin-left: 30px;
+            width: 10px;
+        }
+        .logo-text{
+            font-size: large;
+            width: 20px;
+        }
+        .a-class{
+            font-size: medium;
+        }
+        .checkbtn{
+            display: none;
+        }
+        .nav-list{
+            display: none
+        }
+        .nav-options{
+            /* margin-left: -15px; */   
+            font-size: medium;
+        }
+        .cadastrar-btn{
+            height: 40px;
+            width: 100px;
+            font-size: var(--p);
+            letter-spacing: 0px;
+        }
+        /* tela1 */
+        .heelp-slogan{
+            font-size: 30px;
+        }
+        /* tela2 */
+        #tela2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            word-wrap: break-word;
+        }
+        .img1{
+            align-self: center;
+            height: 55vh;
+            width: 70vw;
+            margin-left: 15%;
+            margin-bottom: 0px;
+            /* margin-left: 10vw; */
+        }
+        .heelp-com-title{
+            margin-top: 0px;
+        }
+        .heelp-com-text{
+            margin-bottom: 30px;
+        }
+        /* tela3 */
+        #tela3{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .linha{
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        .img2{  
+            margin-left: 10vw;
+            padding-left: 0;
+        }
+        .heelp-net{
+            margin-left: 15vw;
+        }
+        .heelp-net-text{
+            margin-left: 15vw;
+        }
+        /* tela4 */
+        .img3{
+            margin-bottom: 50px;
+        }
+        .img3, .img4{
+            /* margin-left: 18%; */
+            float: none;
+        }
+        #tela4{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 1000px;
+        }
+        .heelp-xp-title{
+            margin-top: 0px;
+        }
+        .heelp-xp, .heelp-xp-title{
+            /* margin-top: 0; */
+            padding-top: 0;
+        }
+        .heelp-xp-title, .heelp-xp-text{
+            word-wrap: break-word;
+            width: 450px;
+            padding-left: 0;
+        }
+        /* tela5 */
+        #tela5{
+            word-wrap: break-word;
+        }
+        .heelp-emp, .heelp-emp-destaque, .heelp-emp-title, .heelp-emp-text{
+            margin-left: 10%;
+            word-wrap: break-word;
+            max-width: 80vw;
+        }
+        .heelp-emp-destaque{
+            font-size: var(--h5);
+        }
+        .img5{
+            margin-top: 35px;
+            margin-left: 30vw;
+            float: none;
+        } 
+        .img6{
+            margin-top: 45px;
+            margin-left: 8vw;
+            margin-bottom: 35px;
+            float: none;
+        }
+        /* footer */
+        #tela7{
+            display: block;
+        }
+        .footer-options{
+            display: block;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .seta-anchor{
+            margin-top: 20px;
+            margin-left: 40vw;
+        }
+    }
+
+    @media  (max-width: 500px) {
+        .nav{
+            height: 18vh;
+            width: 100vw;
+        }
+        #tela4, .heelp-xp-title, .heelp-xp-text{
+            max-width: 375px;
+        }
+        .img4, .img3{
+            margin-left: 45px;
+        }
+        .div-da-seta{
+            margin-left: 15px;
+        }
+        .footer-linha{
+            margin-top: 40px;
+        }
+        .copyright-text{
+            text-align: center;
+            margin-top: -15px;
+        }
+    }
