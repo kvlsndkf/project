@@ -21,20 +21,19 @@
 </head>
 
 <body class="body">
-    
+
     <div class="formg">
 
-        <div class="voltar">
-            <div class="container2">
-                <a class="" href="#">
-                    <img src="../../images/./components/seta-voltar.svg" alt="">
-                </a>
-            </div>
-        </div>       
-
-        <div class="container container2">           
-
+        <div class="container container2">
             <form action="#" class="form">
+                <div class="voltar">
+                    <div>
+                        <a class="" href="#">
+                            <img src="../../images/./components/seta-voltar.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+
                 <div class="form-header">
                     <div class="titleg">
                         <h6 class="normal-20-bold-modaltitle">
