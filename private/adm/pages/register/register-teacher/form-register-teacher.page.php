@@ -83,7 +83,7 @@ session_start();
                         </div>
                         <p>
                             <label class="normal-14-medium-p nome-professor">Nome professor</label>
-                            <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome do professor" autocomplete="off" required autofocus>
+                            <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome completo do professor" autocomplete="off" required autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="6">
                         </p>
                             <hr class="hr"/>
                         <p>
