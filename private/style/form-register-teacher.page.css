@@ -1,0 +1,131 @@
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+.my-container {
+    width: 100%;
+    height: 100%;
+    background: url("../adm/pages/register/image/form-teacher/background/bg-stars.svg") repeat-y, linear-gradient(0deg, rgba(219,243,250,1) 0%, rgba(159,169,255,1) 100%);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-content: center; 
+}
+
+.form-base {
+    width: 500px;
+    height: fit-content;
+    align-self: center;
+    padding: 40px;
+    color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-header {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+}
+
+.arrow {
+    margin-right: 12px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: -5px;
+}
+
+::placeholder {
+    color: #ADB0B3;
+}
+
+.input-text {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    background-color: var(--gray-2);
+    border: solid 1px #202225;
+    border-radius: 2px;
+    color: var(--white);
+    -webkit-transition: 0.5s;
+}
+
+.input-text:focus {
+    border: solid 1px var(--blue-sky);
+    outline: none;
+}
+
+.title-header {
+    margin-bottom: 28px;
+}  
+
+.nome-professor {
+    margin-bottom: 8px;
+}
+
+.hr {
+    margin-top: 28px;
+    margin-bottom: 28px;
+    background-color: #40444B;
+}
+
+.foto-text {
+    margin-bottom: 12px;
+}
+
+.register {
+    margin-top: 60px;
+    color: var(--white);
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--primary);
+    transition-duration: 0.3s;
+}
+
+.register:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.clean {
+    margin-top: 10px;
+    width: 100%;
+    color: var(--primary);
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--white);
+    transition-duration: 0.3s;
+}
+
+.clean:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.photo {
+    display: none;
+}
+
+.add-arch {
+    background-color: var(--purple-light);
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.add-arch:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
