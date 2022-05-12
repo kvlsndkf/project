@@ -43,8 +43,20 @@
                     <i class="fas fa-bars"></i>
                 </label>
                 
+                
+                
                 <!-- Conteúdo Navbar -->
                 <ul class="sidebar-ul">
+
+                    <!-- Logo Heelp! do Responsivo -->
+                    <li class="sidebar-li sidebar-li-logo">
+                        <a href="#" class="logo-heelp-responsividade">
+                            <img src="../../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
+                            <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
+                        </a>
+                    </li>
+
+                    <!-- Opções da NavBar -->
                     <li class="sidebar-li">
                         <div class="sidebar-button">
                             <a href="./registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">

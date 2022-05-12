@@ -59,6 +59,12 @@
     align-items: center;
 }
 
+.logo-heelp-responsividade{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+}
+
 .logo-heelp:hover{
     transform: translateX(15px);
     transition: 0.5s;
@@ -244,8 +250,9 @@
         margin-left: -15px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 25px;
+        padding-left: 20%;
+        padding-right: 20%;
+        padding-top: 5%;
         right: -110%;
         transition: all 0.5s;
         overflow-y: scroll;
@@ -259,17 +266,33 @@
     .checkbtn{
         display: block;
     }
+    .sidebar-ul::-webkit-scrollbar {
+        width: 5px;
+    }
+    .logo-heelp{
+        display: none;
+    }
+    .logo-heelp-responsividade{
+        display: flex;
+        margin-top: 2vh;
+        margin-bottom: 25px;
+    }
+    .sidebar-li-logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .add-info-text-responsividade{
         display: block;
         margin-left: 25px;
         margin-right: 25px;
     }
     .sidebar-button{
-        width: 120%;
+        width: 100%;
         margin-top: 0;
     }
     .sidebar-linha{
-        width: 120%;
+        width: 100%;
     }
     .sidebar-a, .sidebar-button, .sidebar-categoria, .sidebar-img{
         margin-left: 0;
@@ -278,9 +301,6 @@
         align-self: center;
     }
     .corpo{
-        /* background-color: var(--gray1);
-        height: 100vh;
-        width: 100%; */
         padding-left: 0;
     }
 }
