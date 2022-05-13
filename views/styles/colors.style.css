@@ -13,3 +13,11 @@
 .gray-card {
     background-color: var(--gray3);
 }
+
+.gray-text-6 {
+    color: var(--gray6);
+}
+
+.bg-modal-gray {
+    background-color: var(--bg-modal);
+}
