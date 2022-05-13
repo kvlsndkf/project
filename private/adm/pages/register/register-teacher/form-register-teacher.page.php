@@ -15,6 +15,7 @@ session_start();
         <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
         <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
         <link rel="shortcut icon" href="../../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <title>Cadastrar professor | Heelp!</title>
 
@@ -72,41 +73,58 @@ session_start();
                     </div>
                 <?php unset($_SESSION['statusAlert']);
                 } ?>
-
-                <div class="form-base bg-modal-gray">
-                    <form action="./controller/teacher-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
-                        <div class="form-header">
-                            <a href="#">
-                                <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
-                            </a>
-                            <label class="normal-20-bold-modaltitle title-header">Cadastro unitário professor</label>
-                        </div>
-                        <p>
-                            <label class="normal-14-medium-p nome-professor">Nome professor</label>
-                            <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome completo do professor" autocomplete="off" required autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="6">
-                        </p>
-                            <hr class="hr"/>
-                        <p>
-                            <label class="normal-14-medium-p foto-text">Foto</label><br/>
-                            <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
-                            <input type="file" class="photo" name="photo" id="photo" required>
-                            <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
-                        </p>
-                        <input type="submit" value="Cadastrar" class="register normal-14-bold-p" name="register">
-                        <input type="reset" value="Limpar" class="clean normal-14-bold-p">
-                    </form>
+                <div class="page-container d-flex align-items-center justify-content-center">
+                    <div class="form-base bg-modal-gray align-self-center my-auto">
+                        <form action="./controller/teacher-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
+                            <div class="form-header">
+                                <a href="./search-teacher.page.php">
+                                    <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                                </a>
+                                <label class="normal-20-bold-modaltitle title-header" id="teste">Cadastro unitário professor</label>
+                            </div>
+                            <p>
+                                <label class="normal-14-medium-p nome-professor">Nome professor</label>
+                                <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome completo do professor" autocomplete="off" required autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="6">
+                            </p>
+                                <hr class="hr"/>
+                            <p>
+                                <label class="normal-14-medium-p foto-text">Foto</label><br/>
+                                <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+                                <input type="file" class="photo" name="photo" id="photo" required>
+                                <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                            </p>
+                            <input type="submit" value="Cadastrar" class="register normal-14-bold-p" name="register" onclick = "GFG_Fun()">
+                            <input type="reset" value="Limpar" id="reset" class="clean normal-14-bold-p">
+                        </form>
+                    </div>
                 </div>
-            <!-- </div> -->
         </div>
         <!-- JS arquvio selecionado -->
-        <script>
+        <script type="text/javascript">
             let inputFile = document.getElementById('photo');
             let fileNameField = document.getElementById('file-name');
             inputFile.addEventListener('change', function(event){
                 let uploadedFileName = event.target.files[0].name;
                 fileNameField.textContent = uploadedFileName;
-            })
-        </script>
+            });
+            
+            document.getElementById("reset").addEventListener("click", function(){
+            document.getElementById("file-name").innerText = "Nenhum arquivo selecionado";});
+
+            var down = document.getElementById('file-name');
+            var file = document.getElementById("photo");
+            var uploadedFileName = event.target.files[0].name;
+            
+            
+            function GFG_Fun() {
+                if(file.files.length == 0 ){
+                    down.style.color = "#ED4245";
+                    down.innerText = "SELECIONE UM ARQUIVO!";
+                } else {
+                    true
+                }
+            }
+        </script> 
         <!-- 
             JS Bootstrap ⬇️
         -->
