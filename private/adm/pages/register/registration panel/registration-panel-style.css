@@ -1,0 +1,348 @@
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8080FF;
+} 
+
+/* CSS da Página */
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+/* NavBar Lateral */
+.sidebar{
+    position: fixed;
+    width: 20vw;
+    height: 100%;
+    background-color: var(--gray1);
+    padding: 20px 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+/* Scroll da Navbar */
+.sidebar::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Menu Sanduíche */
+.checkbtn{
+    font-size: var(--h4);
+    color: var(--white);
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+/* Componentes da Navbar */
+.logo-heelp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-heelp-responsividade{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-heelp:hover{
+    transform: translateX(15px);
+    transition: 0.5s;
+}
+
+.logo-heelp-img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-heelp-text{
+    color: var(--primary);
+}
+
+.sidebar-ul .sidebar-li{
+    list-style: none;
+    padding: 1vw 0;
+}
+
+.sidebar-button{
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 35px;
+    margin-top: 35px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-button:hover {
+    transform: scale(1.05);
+    transition-duration: 1s;
+}
+
+.sidebar-button-a{
+    color: var(--white);
+    font-weight: 400;
+}
+
+.sidebar-a{
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    transition: 0.2s; /* Animação */
+    width: 100%;
+    height: auto; 
+}
+
+.sidebar-a:hover{
+    transform: translateX(25px);
+}
+
+.sidebar-linha{
+    width: 18vw;
+    border: none;
+    background-color: var(--gray4);
+    margin-top: 25px;
+    height: 1px;
+    box-shadow: none;
+}
+
+.sidebar-categoria{
+    color: var(--gray6);
+    font-weight: 400;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.sidebar-option{
+    font-weight: 400;
+}
+
+
+.sidebar-img{
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+/* Corpo da Página */
+.corpo{
+    background-color: var(--gray1);
+    height: 100vh;
+    width: 100%;
+    padding-left: 20vw;
+}
+
+/* Cabeçalho */
+.add-info-text{
+    color: white;
+    font-weight: 500;
+    margin-left: 5vw;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    z-index: 2;
+}
+
+.add-info-text-responsividade{
+    display: none;
+}
+
+/* Parte de Listagem */
+.conteudo{
+    padding: 40px;
+    background-color: var(--white);
+    border-radius: 20px 20px 0 0;
+}
+
+.cad-option{
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cad-option:hover{
+    transform: scale(1.05);
+    transition: 1s;
+}
+
+.cad-a{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nome-cad{
+    color: var(--white);
+    margin-left: 40px;
+}
+
+.img-cad{
+    margin-right: 10px;
+}
+
+.prof-cad{
+    background-color: var(--ocean);
+}
+
+.mod-cad{
+    background-color: var(--primary);
+}
+
+.school-cad{
+    background-color: var(--fuchsia);
+}
+
+.course-cad{
+    background-color: var(--little-blue);
+}
+
+.subject-cad{
+    background-color: var(--blue);
+}
+
+@media (max-width: 1000px){
+    .sidebar{
+        width: 100%;
+        height: 15vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .sidebar-ul{
+        margin-top: 100vh;
+        position: fixed;
+        background-color: var(--gray1);
+        height: 85vh;
+        width: 100vw;
+        margin-left: -15px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 20%;
+        padding-right: 20%;
+        padding-top: 5%;
+        right: -110%;
+        transition: all 0.5s;
+        overflow-y: scroll;
+    }
+    .sidebar-li{
+        line-height: 15vh;
+    }
+    #check:checked ~ .sidebar-ul{
+        right: 0;
+    }
+    .checkbtn{
+        display: block;
+    }
+    .sidebar-ul::-webkit-scrollbar {
+        width: 5px;
+    }
+    .logo-heelp{
+        display: none;
+    }
+    .logo-heelp-responsividade{
+        display: flex;
+        margin-top: 2vh;
+        margin-bottom: 25px;
+    }
+    .sidebar-li-logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .add-info-text-responsividade{
+        display: block;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    .sidebar-button{
+        width: 100%;
+        margin-top: 0;
+    }
+    .sidebar-linha{
+        width: 100%;
+    }
+    .sidebar-a, .sidebar-button, .sidebar-categoria, .sidebar-img{
+        margin-left: 0;
+    }
+    .sidebar-categoria{
+        align-self: center;
+    }
+    .corpo{
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 500px){
+    .nome-cad{
+        margin-left: 30px;
+        font-size: var(--h4);
+    }
+    .img-cad{
+        width: 125px;
+    }
+}
+
+@media (max-width: 415px){
+    .cad-option{
+        height: 100px;
+    }
+    .nome-cad{
+        font-size: var(--h5);
+    }
+    .img-cad{
+        width: 100px;
+    }
+}
+
+@media (max-width: 340px){
+    .nome-cad{
+        margin-left: 20px;
+        font-size: var(--h6);
+    }
+    .img-cad{
+        width: 75px;
+    }
+}
+
+@media (max-width: 285px){
+    .nome-cad{
+        margin-left: 10px;
+        font-size: var(--title);
+    }
+    .img-cad{
+        width: 75px;
+    }
+}
