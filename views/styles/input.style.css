@@ -2,7 +2,7 @@
 Outras coisas como: cor, e posição, devem ser adicionados a parte.  */
 
 .input{
-    color: var(--gray6);
+    color: var(--white);
     background-color: var(--gray2);
     outline: unset;
     padding: 10px;
@@ -10,4 +10,9 @@ Outras coisas como: cor, e posição, devem ser adicionados a parte.  */
     height: 32px;
     border: 1.5px solid var(--gray1);
     border-radius: 2px;
+}
+
+input:focus{
+    border: solid 1px var(--blue-sky);
+    outline: none;
 }

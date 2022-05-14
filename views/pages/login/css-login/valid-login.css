@@ -1,0 +1,14 @@
+/* Parte de validação do form */
+
+.error{
+    color: var(--red);
+}
+
+span.error{
+    padding: 0;
+    
+} 
+
+span.error.active{
+    padding: 2px;
+}

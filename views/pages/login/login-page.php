@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="../../styles/fonts.style.css">
     <link rel="stylesheet" href="../../styles/style.global.css">
-    <link rel="stylesheet" href="./login-style.css">
+    <link rel="stylesheet" href="./css-login/login-style.css">
     <link rel="stylesheet" href="../../styles/input.style.css">
     <link rel="stylesheet" href="../../styles/button.style.css">
+    <link rel="stylesheet" href="./css-login/valid-login.css">
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -46,13 +48,15 @@
 
                         <h6 class="normal-16-bold-title-3 inputEmail">Email</h6>
                         <div class="input-box">
-                            <input type="email" id="" class="input email placeholder " placeholder="email@email.com" name="email" required>
+                            <input  required type="email" id="" class="input email" placeholder="email@email.com" name="email">
+                            <br><span class="error normal-14-medium-p"></span>
                         </div>
 
 
                         <h6 class="normal-14-medium-p inputPass">Senha</h6>
                         <div class="input-box">
-                            <input type="password" id="" class="input senha placeholder" placeholder="********" required>
+                            <input required type="password" id="" class="input senha" placeholder="********">
+                            <br><span class="error normal-14-medium-p"></span>
                         </div>
 
                         <div class="button-enter">
@@ -75,7 +79,7 @@
 
 
 
-
+   
 
     <!-- Optional JavaScript; choose one of the two! -->
 

@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: inline-flex;
-  background: url(./img/fundo2.svg) no-repeat;
+  background: url(../img/fundo2.svg) no-repeat;
   background-position: center right;
   position: relative;
   /* justify-content: center; */
@@ -65,7 +65,7 @@
   color: var(--gray7);
 }
 
-.placeholder::placeholder {
+.input::placeholder {
   color: var(--gray6);
 }
 
@@ -98,6 +98,39 @@
 
 a:hover {
   color: var(--blue-sky) !important;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1440px){
+  .voltar {
+    left: 100px;
+    position: absolute;
+    top: 0;
+    margin: 20px;
+  }
+
+}
+
+
+
+@media screen and (max-width: 1366px){
+  .voltar {
+    left: 93px;
+    position: absolute;
+    top: 0;
+    margin: 20px;
+  }
+
+}
+
+@media screen and (max-width: 1024px){
+  .voltar {
+    left: 9px;
+    position: absolute;
+    top: 0;
+    margin: 20px;
+  }
+
 }
 
 @media screen and (max-width: 925px) {
@@ -182,7 +215,7 @@ a:hover {
     color: var(--gray6);
     background-color: var(--gray2);
     width: 100%;
-    max-width: 70%;
+    max-width: 75%;
   }
   .bt {
     margin-top: 35px;
@@ -192,7 +225,7 @@ a:hover {
     border: none;
 
     width: 100%;
-    max-width: 82%;
+    max-width: 89%;
   }
 
   .container1 {
@@ -513,3 +546,4 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #8080ff;
 }
+
