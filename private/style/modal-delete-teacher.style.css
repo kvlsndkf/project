@@ -1,0 +1,44 @@
+.button {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.button:hover {
+    filter: brightness(1.2) !important; 
+}
+
+.body-modal {
+    background-color: var(--bg-modal);
+    overflow-wrap: break-word;
+}
+
+.start {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.excluir {
+    background-color: var(--red);
+}
+
+.cancelar {
+    color: var(--bg-list);
+    background-color: var(--white);
+    margin-top: 10px;
+}
+
+.span {
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.teste {
+    padding: 40px;
+    background-color: var(--bg-modal);
+}
+
+.modal-buttons {
+    margin-top: 60px;
+}
