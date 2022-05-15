@@ -18,9 +18,9 @@
 }
 
 .respo-cabe{
-    display: flex;
     flex-direction: row;
     align-items: center;
+    display: none;
 }
 
 .sidebar-button{
@@ -368,6 +368,9 @@
     }
     .sidebar-ul::-webkit-scrollbar {
         width: 5px;
+    }
+    .respo-cabe{
+        display: flex;
     }
     .logo-heelp{
         display: none;
