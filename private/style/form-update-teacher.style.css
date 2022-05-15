@@ -91,8 +91,7 @@ body, html {
 }
 
 .register:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
 .clean {
@@ -108,8 +107,7 @@ body, html {
 }
 
 .clean:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
 .photo {
@@ -128,8 +126,7 @@ body, html {
 }
 
 .add-arch:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
 .img-container {
