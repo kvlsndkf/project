@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;  
+}
+
 /* Scroll Bar */
 ::-webkit-scrollbar {
     width: 10px;
@@ -144,7 +151,6 @@
     font-weight: 400;
 }
 
-
 .sidebar-img{
     margin-right: 10px;
     margin-left: 15px;
@@ -156,6 +162,7 @@
     height: 100vh;
     width: 100%;
     padding-left: 20vw;
+    box-sizing: border-box;
 }
 
 /* Cabeçalho */
@@ -169,6 +176,10 @@
 }
 
 .add-info-text-responsividade{
+    display: none;
+}
+
+.seta-voltar-a-responsividade{
     display: none;
 }
 
@@ -286,6 +297,9 @@
         display: block;
         margin-left: 25px;
         margin-right: 25px;
+    }
+    .seta-voltar-a-responsividade{
+        display: block;
     }
     .sidebar-button{
         width: 100%;
