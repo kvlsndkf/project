@@ -7,13 +7,13 @@ const modalTemplate = `
           <span class="modal-title normal-20-bold-modaltitle white-title" id="exampleModalLabel">Excluir professor</span>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="d-flex">
-          <div>
-            <img src="../../../images/components/delete-badge.svg" alt="aaa">
-          </div>
-          <p class="normal-14-bold-p white-title span">
-            Tem certeza de que deseja excluir esse professor permanentemente?
-          </p>
+        <div>
+            <p class="normal-14-bold-p white-title">
+              Tem certeza de que deseja excluir esse professor permanentemente?
+            </p>
+        </div>
+        <div class="warning-container">
+          <span class="warning-text normal-14-bold-p red-title">Atenção: </span><span class="normal-14-bold-p white-title">O professor também será removido das Etec's vincluladas.</span>
         </div>
         <div class="modal-buttons">
           <a class="btn btn-danger button normal-14-bold-p excluir" id="delete-button">Excluir</a>

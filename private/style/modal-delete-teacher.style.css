@@ -29,16 +29,18 @@
     margin-top: 10px;
 }
 
-.span {
-    padding-left: 14px;
-    padding-right: 14px;
-}
-
-.teste {
-    padding: 40px;
-    background-color: var(--bg-modal);
-}
+    .teste {
+        padding: 40px;
+        background-color: var(--bg-modal);
+    }
 
 .modal-buttons {
     margin-top: 60px;
+}
+
+.warning-container {
+    background-color: var(--red-alert);
+    padding: 14px 18px 14px 18px;
+    border: solid 2px var(--red);
+    border-radius: 10px;
 }
