@@ -13,7 +13,7 @@ const modalTemplate = `
             </p>
         </div>
         <div class="warning-container">
-          <span class="warning-text normal-14-bold-p red-title">Atenção: </span><span class="normal-14-bold-p white-title">O professor também será removido das Etec's vincluladas.</span>
+          <span class="warning-text normal-12-bold-tiny red-title">Atenção: </span><span class="normal-12-bold-tiny white-title">O professor também será removido das Etec's vincluladas.</span>
         </div>
         <div class="modal-buttons">
           <a class="btn btn-danger button normal-14-bold-p excluir" id="delete-button">Excluir</a>
