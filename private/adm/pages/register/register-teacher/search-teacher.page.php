@@ -35,7 +35,7 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professores - Heelp!</title>
+    <title>Professores | Heelp!</title>
     <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
 
     <!-- CSS Bootstrap -->
@@ -283,18 +283,18 @@ try {
     
                                             <!-- Parte do Update e Delete -->
                                             <div class="drop-edit-exclud-content">
-                                                <div class="drop-edit-exclud-option">
-                                                    <a href="./form-update-teacher.page.php?updateTeacher=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                                <a href="./form-update-teacher.page.php?updateTeacher=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                                    <div class="drop-edit-exclud-option">
                                                         <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
                                                         <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
-                                                    </a>
-                                                </div>
-                                                <div class="drop-edit-exclud-option">
-                                                    <a href="./controller/delete-teacher.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                                    </div>
+                                                </a>
+                                                <a href="./controller/delete-teacher.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                                    <div class="drop-edit-exclud-option">
                                                         <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
                                                         <p class="drop-edit-exclud-text normal-14-bold-p">Excluir</p>
-                                                    </a>
-                                                </div>
+                                                    </div>
+                                                </a>
                                             </div>
     
                                         </div>

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
         <!-- Título e Ícone -->
-        <title>ADM - Heelp!</title>
+        <title>Adicionar Informações | Heelp!</title>
         <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
 
         <!-- JavaScript -->
