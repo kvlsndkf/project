@@ -30,6 +30,13 @@ try {
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../style/modal-delete.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+    <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
     <title>Módulos | Heelp!</title>
 
     <!-- CSS Bootstrap -->

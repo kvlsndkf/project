@@ -13,8 +13,6 @@
 
 .primary-title {
     color: var(--primary);
-
-
 }
 
 .gray-card {
@@ -35,4 +33,8 @@
 
 .bg-primary {
     background-color: var(--primary);
+}
+
+.red-title {
+    color: var(--red);
 }

@@ -16,7 +16,7 @@ const modalTemplate = `
           <span class="warning-text normal-12-bold-tiny red-title">Atenção: </span><span class="normal-12-bold-tiny white-title">O professor também será removido das Etec's vincluladas.</span>
         </div>
         <div class="modal-buttons">
-          <a class="btn btn-danger button normal-14-bold-p excluir" id="delete-button">Excluir</a>
+          <a class="btn btn-danger button normal-14-bold-p" id="delete-button">Excluir</a>
           <button type="button" class="btn btn-secondary button cancelar normal-14-bold-p" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
