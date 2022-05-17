@@ -101,7 +101,7 @@ try {
                     <!-- Opções da NavBar -->
                     <li class="sidebar-li">
                         <div class="sidebar-button">
-                            <a href="./registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                            <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
                                 <p class="sidebar-button-text">Adicionar Informações +</p> 
                             </a>
                         </div>
