@@ -143,3 +143,12 @@ body, html {
     width: 100%;
     border-radius: 8px;
 }
+
+.name {
+    margin-bottom: 8px;
+}
+
+.input-name-module {
+    margin-top: 8px;
+    margin-bottom: 60px;
+}
