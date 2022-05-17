@@ -10,8 +10,9 @@
     color: var(--white);
 }
 
-.red-title {
-    color: var(--red);
+
+.primary-title {
+    color: var(--primary);
 }
 
 .gray-card {
@@ -24,4 +25,16 @@
 
 .bg-modal-gray {
     background-color: var(--bg-modal);
+}
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.red-title {
+    color: var(--red);
 }
