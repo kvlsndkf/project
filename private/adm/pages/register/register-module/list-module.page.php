@@ -69,7 +69,7 @@ try {
     </a>
 
     <!-- Barra de pesquisa ⬇️ -->
-    <form action="./search-module.page.php" method="GET">
+    <form action="./list-module.page.php" method="GET">
         <input type="text" name="searchModule" id="searchModule" placeholder="Pesquise por módulos" autocomplete="off">
         <input type="submit" value="Pesquisar">
     </form>
@@ -106,18 +106,20 @@ try {
     //Calcular o inicio da vizualização
     $start = ($limit_result * $page) - $limit_result;
 
-    //Contar a quantidade de registros no bd 
-    $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules";
-    $result_qnt_register = $connection->prepare($query_qnt_register);
-    $result_qnt_register->execute();
-    $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+    if($search == null){
 
-    //Quantidade de páginas
-    $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+        //Contar a quantidade de registros no bd 
+        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules";
+        $result_qnt_register = $connection->prepare($query_qnt_register);
+        $result_qnt_register->execute();
+        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
 
-    $prev_page = $page - 1;
+        //Quantidade de páginas
+        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
 
-    $next_page = $page + 1;
+        $prev_page = $page - 1;
+
+        $next_page = $page + 1;
 
     ?>
 
@@ -153,6 +155,60 @@ try {
             </li>
         <?php }  ?>
     </ul>
+
+    <?php }else { 
+        
+            //Contar a quantidade de registros no bd 
+            $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules WHERE name LIKE '%$search%' ORDER BY name";
+            $result_qnt_register = $connection->prepare($query_qnt_register);
+            $result_qnt_register->execute();
+            $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+
+            //Quantidade de páginas
+            $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+            $prev_page = $page - 1;
+
+            $next_page = $page + 1;
+
+        ?>
+    <ul class="pagination">
+        <?php
+        //botão para voltar
+        if ($prev_page != 0) { ?>
+            <li class="page-item">
+                <a class="page-link" href="./list-module.page.php?page=<?php echo $prev_page; ?> &searchModule=<?php echo $search; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
+            </li>
+        <?php    } else { ?>
+            <li class="page-item disabled">
+                <a class="page-link disable" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+            </li>
+        <?php }  ?>
+
+        <?php
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
+            <li class="page-item"><a class="page-link" href="./list-module.page.php?page=<?php echo $i; ?> &searchModule=<?php echo $search; ?>"><?php echo $i; ?></a></li>
+        <?php }
+        ?>
+
+        <?php
+        //botão para avançar
+        if ($next_page <= $page_qnt) { ?>
+            <li class="page-item">
+                <a class="page-link" href="./list-module.page.php?page=<?php echo $next_page; ?> &searchModule=<?php echo $search; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
+            </li>
+        <?php    } else { ?>
+            <li class="page-item disabled">
+                <a class="page-link disable" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
+            </li>
+        <?php }  ?>
+    </ul>
+
+    <?php }
+
+    ?>
+    <!--Fim da Paginação -->
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
