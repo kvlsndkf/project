@@ -52,6 +52,8 @@ try {
         <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
         <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
         <link rel="stylesheet" href="../register.styles.css">
+        <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
+        <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
         
     </head>
 
@@ -99,7 +101,7 @@ try {
                     <!-- Opções da NavBar -->
                     <li class="sidebar-li">
                         <div class="sidebar-button">
-                            <a href="./registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                            <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
                                 <p class="sidebar-button-text">Adicionar Informações +</p> 
                             </a>
                         </div>
