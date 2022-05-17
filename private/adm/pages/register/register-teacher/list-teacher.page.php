@@ -27,7 +27,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
+  
     <head>
 
         <!-- Base -->
@@ -393,7 +393,6 @@ try {
                     </div>
 
                 </div>
-
             </div>
 
             <!-- Fim Wrapper -->

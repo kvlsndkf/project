@@ -10,6 +10,10 @@
     color: var(--white);
 }
 
+.red-title {
+    color: var(--red);
+}
+
 .gray-card {
     background-color: var(--gray3);
 }
