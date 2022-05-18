@@ -10,6 +10,31 @@
     color: var(--white);
 }
 
+
+.primary-title {
+    color: var(--primary);
+}
+
 .gray-card {
     background-color: var(--gray3);
+}
+
+.gray-text-6 {
+    color: var(--gray6);
+}
+
+.bg-modal-gray {
+    background-color: var(--bg-modal);
+}
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.red-title {
+    color: var(--red);
 }

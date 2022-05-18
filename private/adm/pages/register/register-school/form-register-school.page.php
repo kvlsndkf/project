@@ -151,9 +151,14 @@ try {
                         <div>
                             <p>
                                 Sobre
+                                <br>
+                                <a href="https://erratic-wave-2e1.notion.site/Sintaxe-para-formata-o-de-texto-6b263bfb57f14b7796b684ca543eb4dc" target="_blank">
+                                    Quer dicas de como escrever um texto com a sua cara? Clique aqui!
+                                </a>
                             </p>
 
                             <p>
+                                <textarea class="d-none" cols="30" rows="5" id="forDataBase" name="aboutForDatabase"></textarea>
                                 <textarea class="d-none" cols="30" rows="5" id="textarea" name="about"></textarea>
                                 <input type="button" id="about" value="Escrever sobre a Etec" disabled required onclick="aboutSchool()">
                             <div id="divAbout"></div>
@@ -247,20 +252,26 @@ try {
 
     <script>
         function aboutSchool() {
-            const el = document.getElementById('textarea');
+            const forDatabase = document.getElementById('forDataBase');
+            const forPage = document.getElementById('textarea');
             const stackedit = new Stackedit();
 
             // Open the iframe
             stackedit.openFile({
                 name: 'Filename', // with an optional filename
                 content: {
-                    text: el.value // and the Markdown content.
+                    text: forPage.value // and the Markdown content.
                 }
             });
 
             // Listen to StackEdit events and apply the changes to the textarea.
             stackedit.on('fileChange', (file) => {
-                el.value = file.content.html;
+                forPage.value = file.content.text;
+            });
+
+            // Listen to StackEdit events and apply the changes to the textarea.
+            stackedit.on('fileChange', (file) => {
+                forDatabase.value = file.content.html;
             });
 
             // In silent mode, the `fileChange` event is emitted only once.

@@ -1,0 +1,56 @@
+/* Classe a ser usada para todos os botões.
+Outras coisas como: cor, e posição, devem ser adicionados a parte. */
+
+.botao-g{
+    border: none;
+    width: 420px;
+    height: 38px;
+    border-radius: 8px;
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--gintoNormal-medium);
+    font-size: var(--small);
+    line-height: var(--lh-little);
+}
+
+.button-wide {
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition-duration: 0.3s;
+}
+
+.button-wide:hover {
+    filter: brightness(1.2);
+}
+
+.button-white-primary-text {
+    width: 100%;
+    color: var(--primary);
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--white);
+    transition-duration: 0.3s;
+}
+
+.button-primary-white-text {
+    color: var(--white);
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--primary);
+    transition-duration: 0.3s;
+}
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Teacher.class.php');
 require_once('/xampp/htdocs' . '/project/classes/places/Place.class.php');
+require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
 
 session_start();
 
@@ -12,20 +13,13 @@ try {
     $place = new Place();
     $places = $place->getPlaces();
 
-    $connection = Connection::connection();
+    $school = new School();
 
-    //update teacher
     if (isset($_GET['updateSchool'])) {
-
         $id = $_GET['updateSchool'];
-
-        $stmt = $connection->prepare("SELECT * FROM schools WHERE id = $id");
-
-        $stmt->execute();
-        $rowCat = $stmt->fetch(PDO::FETCH_ASSOC);
-    } else {
-        $rowCat['name'] = " ";
-        $rowCat['photo'] = " ";
+        $updateSchool = $school->searchSchoolForUpdate($id);
+        $teachersUsedBySchool = $school->selectTeachersUsedBySchool($id);
+        $teacherAvailable = $school->selectAvailableTeachersForSchool($id);
     }
 } catch (Exception $e) {
     echo $e->getMessage();
@@ -94,10 +88,10 @@ try {
 
     <label>Cadastro Etec</label>
 
-    <form action="./controller/update-teacher.controller.php?updateTeacher=<?php echo $rowCat['id'] ?>" method="POST" enctype="multipart/form-data">
+    <form action="./controller/update-school.controller.php?updateSchool=<?php echo $updateSchool['id'] ?>" method="POST" enctype="multipart/form-data">
         <p>
             Nome Etec
-            <input type="text" name="updateName" id="updateName" autocomplete="off" required value="<?php echo $rowCat['name'] ?>">
+            <input type="text" name="updateName" id="updateName" autocomplete="off" required value="<?php echo $updateSchool['name'] ?>">
         </p>
 
         <p>
@@ -105,43 +99,53 @@ try {
         </p>
 
         <p>
-            <?php $checked = !empty($rowCat['in_sp_city']) ? 'checked' : ''; ?>
-            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" <?php echo $checked ?> onclick="visibilityDistrict()"> Sim
+            <?php $checkedDistrict = !empty($updateSchool['in_sp_city']) ? 'checked' : 'disabled'; ?>
+            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" <?php echo $checkedDistrict ?> onclick="visibilityDistrict()"> Sim
 
-            <?php $checked = !empty($rowCat['not_in_sp_city']) ? 'checked' : ''; ?>
-            <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" <?php echo $checked ?> onclick="visibilityCity()"> Não
+            <?php $checkedCity = !empty($updateSchool['not_in_sp_city']) ? 'checked' : 'disabled'; ?>
+            <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" <?php echo $checkedCity ?> onclick="visibilityCity()"> Não
         </p>
 
-        <?php $display = !empty($rowCat['in_sp_city']) ? 'display:block' : 'display:none'; ?>
-        <p id="textDistrict" style="<?php echo $display ?>">
-            <?php $disable = !empty($rowCat['in_sp_city']) ? '' : 'disabled'; ?>
+        <?php $displaySelectDistrict = !empty($updateSchool['in_sp_city']) ? 'display:block' : 'display:none'; ?>
+        <p id="textDistrict" style="<?php echo $displaySelectDistrict ?>">
+            <?php $disableDistrict = !empty($updateSchool['in_sp_city']) ? '' : 'disabled'; ?>
             Distrito
-            <select name="address" id="district" class="select-district" style="width: 100%" <?php echo $disable ?>>
-                <option selected="selected">Selecione o respectivo distrito</option>
-                <?php foreach ($places->districts as $row) { ?>
-                    <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
+            <select name="address" id="district" class="select-district" style="width: 100%" <?php echo $disableDistrict ?>>
+                <optgroup label="Local atual">
+                    <option value="<?php echo $updateSchool['address'] ?>"> <?php echo $updateSchool['address'] ?> </option>
+                </optgroup>
+
+                <optgroup label="Distritos disponíveis">
+                    <?php foreach ($places->districts as $row) { ?>
+                        <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                    <?php } ?>
+                </optgroup>
             </select>
         </p>
 
-        <?php $display = !empty($rowCat['not_in_sp_city']) ? 'display:block' : 'display:none'; ?>
-        <p id="textCity" style="<?php echo $display ?>">
-            <?php $disable = !empty($rowCat['not_in_sp_city']) ? '' : 'disabled'; ?>
+        <?php $displaySelectCity = !empty($updateSchool['not_in_sp_city']) ? 'display:block' : 'display:none'; ?>
+        <p id="textCity" style="<?php echo $displaySelectCity ?>">
+            <?php $disableCity = !empty($updateSchool['not_in_sp_city']) ? '' : 'disabled'; ?>
             Município
-            <select name="address" id="city" class="select-city" style="width: 100%" <?php echo $disable ?>>
-                <option selected="selected">Selecione o respectivo município</option>
-                <?php foreach ($places->cities as $row) { ?>
-                    <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
+            <select name="address" id="city" class="select-city" style="width: 100%" <?php echo $disableCity ?>>
+                <optgroup label="Local atual">
+                    <option value="<?php echo $updateSchool['address'] ?>"> <?php echo $updateSchool['address'] ?> </option>
+                </optgroup>
+
+                <optgroup label="Municípios disponíveis">
+                    <?php foreach ($places->cities as $row) { ?>
+                        <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                    <?php } ?>
+                </optgroup>
             </select>
         </p>
 
         <p>
-            <?php $checked = $rowCat['have_account'] === "Com conta" ? 'checked' : ''; ?>
-            <input type="checkbox" name="createAccount" id="createAccount" <?php echo $checked ?> onclick="createdAccount()" value="createdAccount">
+            <?php $checkedAccount = $updateSchool['have_account'] === "Com conta" ? 'checked' : ''; ?>
+            <input type="checkbox" name="createAccount" id="createAccount" <?php echo $checkedAccount ?> onclick="createdAccount()" value="createdAccount">
+            <input type="hidden" name="haveAccount" value="<?php echo $updateSchool['have_account'] ?>">
             Criar um perfil para a Etec?
         </p>
-
 
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -158,14 +162,22 @@ try {
                             <label>Selecione os professores a que ela pertence</label>
                         </p>
                         <p>
-                            <?php $disable = $rowCat['have_account'] === "Com conta" ? '' : 'disabled'; ?>
-                            <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" style="width: 100%" multiple="multiple" <?php echo $disable ?> required>
-                                <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
-                                    $row = $listTeachersOfSelect[$i] ?>
-                                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                                <?php } ?>
+                            <?php $disableSelectTeachers = $updateSchool['have_account'] === "Com conta" ? '' : 'disabled'; ?>
+                            <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" style="width: 100%" multiple="multiple" <?php echo $disableSelectTeachers ?> required>
+                                <optgroup label="Professores selecionados">
+                                    <?php foreach ($teachersUsedBySchool as $row) { ?>
+                                        <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
+                                    <?php } ?>
+                                </optgroup>
+
+                                <optgroup label="Professores disponíveis">
+                                    <?php foreach ($teacherAvailable as $row) { ?>
+                                        <option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
+                                    <?php } ?>
+                                </optgroup>
                             </select>
                         </p>
+
 
                         <li>
                             <hr class="dropdown-divider">
@@ -174,13 +186,18 @@ try {
                         <div>
                             <p>
                                 Sobre
+                                <br>
+                                <a href="https://erratic-wave-2e1.notion.site/Sintaxe-para-formata-o-de-texto-6b263bfb57f14b7796b684ca543eb4dc" target="_blank">
+                                    Quer dicas de como escrever um texto com a sua cara? Clique aqui!
+                                </a>
                             </p>
 
                             <p>
-                                <?php $disable = $rowCat['have_account'] === "Com conta" ? : 'disabled'; ?>
-                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="about"></textarea>
-                                <input type="button" id="about" value="Escrever sobre a Etec" <?php echo $disable ?> required onclick="aboutSchool()">
-                            <div id="divAbout"></div>
+                                <?php $disableAbout = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
+                                <textarea class="d-none" cols="30" rows="5" id="forDataBase" name="aboutForDatabase" value="<?php echo $updateSchool['about'] ?>"></textarea>
+                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="about" value="<?php echo $updateSchool['about'] ?>"></textarea>
+                                <input type="button" id="about" value="Escrever sobre a Etec" <?php echo $disableAbout ?> required onclick="aboutSchool()">
+                            <div id="divAbout"><?php echo $updateSchool['about'] ?></div>
                             </p>
                         </div>
 
@@ -190,27 +207,27 @@ try {
 
                         <label>Links</label>
                         <p>
-                            <?php $disable = $rowCat['have_account'] === "Com conta" ? : 'disabled'; ?>
+                            <?php $disableLinkedin = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Linkedin
-                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" <?php echo $disable ?> required autocomplete="off">
+                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?> required autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
                         </p>
 
                         <p>
-                            <?php $disable = $rowCat['have_account'] === "Com conta" ? : 'disabled'; ?>
+                            <?php $disableGithub = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             GitHub
-                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" <?php echo $disable ?> required autocomplete="off">
+                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" <?php echo $disableGithub ?> required autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
                         </p>
 
                         <p>
-                            <?php $disable = $rowCat['have_account'] === "Com conta" ? : 'disabled'; ?>
+                            <?php $disableFacebook = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Facebook
-                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" <?php echo $disable ?> required autocomplete="off">
+                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?> required autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
                         </p>
 
                         <p>
-                            <?php $disable = $rowCat['have_account'] === "Com conta" ? : 'disabled'; ?>
+                            <?php $disableInstagram = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Instagram
-                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" <?php echo $disable ?> required autocomplete="off">
+                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" <?php echo $disableInstagram ?> required autocomplete="off" value="<?php echo $updateSchool['instagram'] ?>">
                         </p>
 
                         <li>
@@ -218,9 +235,16 @@ try {
                         </li>
 
                         <p>
-                            <?php $disable = $rowCat['have_account'] === "Com conta" ? : 'disabled'; ?>
+                            <?php $imageSelected = $updateSchool['photo'];
+                            $imageDefault = !empty($updateSchool['photo']) ? $imageSelected : '../../../images/ilustrations/no-image.svg'; ?>
                             <label>Foto</label>
-                            <input type="file" name="photo" id="photo" <?php echo $disable ?> required>
+                            <img width="100" src="<?php echo $imageDefault ?>" alt="Foto <?php echo $updateSchool['name'] ?>">
+                        </p>
+
+                        <p>
+                            <?php $disablePhoto = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
+                            <input type="file" name="updatePhoto" id="photo" <?php echo $disablePhoto ?> required>
+                            <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php echo $updateSchool['photo'] ?>">
                         </p>
 
                         <li>
@@ -233,8 +257,8 @@ try {
         </div>
 
 
-        <button type="submit" name="register">Cadastrar</button>
-        <button type="reset">Limpar</button>
+        <input type="submit" value="Editar" name="update">
+        <a href="./list-school.page.php"><button type="button">Cancelar</button></a>
 
     </form>
 
@@ -276,20 +300,26 @@ try {
 
     <script>
         function aboutSchool() {
-            const el = document.getElementById('textarea');
+            const forDatabase = document.getElementById('forDataBase');
+            const forPage = document.getElementById('textarea');
             const stackedit = new Stackedit();
 
             // Open the iframe
             stackedit.openFile({
                 name: 'Filename', // with an optional filename
                 content: {
-                    text: el.value // and the Markdown content.
+                    text: forPage.value // and the Markdown content.
                 }
             });
 
             // Listen to StackEdit events and apply the changes to the textarea.
             stackedit.on('fileChange', (file) => {
-                el.value = file.content.html;
+                forPage.value = file.content.text;
+            });
+
+            // Listen to StackEdit events and apply the changes to the textarea.
+            stackedit.on('fileChange', (file) => {
+                forDatabase.value = file.content.html;
             });
 
             // In silent mode, the `fileChange` event is emitted only once.

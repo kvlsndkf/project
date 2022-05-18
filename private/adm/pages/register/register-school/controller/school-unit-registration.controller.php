@@ -18,7 +18,6 @@ if (isset($_POST['register'])) {
         $school->registerSchool($school);
     }
 
-
     if (isset($_POST['createAccount']) && isset($_FILES['photo'])) {
         $schoolPhoto = $_FILES['photo'];
         $namePhoto = $schoolPhoto['name'];
@@ -44,7 +43,6 @@ if (isset($_POST['register'])) {
             $pathToSave = "/project/private/adm/pages/register/upload/schools/" . $nameId . "." . $extensionPhoto;
             $path = "/xampp/htdocs/project/private/adm/pages/register/upload/schools/" . $nameId . "." . $extensionPhoto;
             $success = move_uploaded_file($schoolPhoto["tmp_name"], $path);
-
             if ($success) {
                 $teacher = new Teacher();
                 $teacher = $_POST['idTeachers'];
@@ -55,7 +53,7 @@ if (isset($_POST['register'])) {
                 $school->setInSpCity($_POST['districtSchool'] ?? '');
                 $school->setNotInSpCity($_POST['citySchool'] ?? '');
                 $school->setHaveAccount(($_POST['createAccount']));
-                $school->setAbout($_POST['about']);
+                $school->setAbout($_POST['aboutForDatabase']);
                 $school->setGithub($_POST['github']);
                 $school->setLinkedin($_POST['linkedin']);
                 $school->setFacebook($_POST['facebook']);

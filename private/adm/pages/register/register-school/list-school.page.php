@@ -9,14 +9,13 @@ try {
     $filter = $_GET['filterSchool'] ?? '';
 
     $school = new School();
-
     $listSchools = $school->listSchool($search, $filter);
     $countSchools = $school->countSchools($search, $filter);
     $listSchoolsOfSearch = $school->listSchoolOfSearchBar();
 
-    $optionOfSearch = array();
+    $optionOfSearchSchool = array();
     foreach ($listSchoolsOfSearch as $row) {
-        $optionOfSearch[] = array(
+        $optionOfSearchSchool[] = array(
             'label' => $row->name,
             'value' => $row->name
         );
@@ -168,12 +167,6 @@ try {
             <?php echo $row->address; ?>, São Paulo
         </p>
 
-
-        <p>
-            Sobre
-            <?php echo $row->about; ?>
-        </p>
-
         <?php $style = $row->haveAccount == "Sem conta" ? 'badge rounded-pill bg-warning text-dark' : 'badge rounded-pill bg-help-primary'; ?>
         <span class="<?php echo $style; ?>"><?php echo $row->haveAccount; ?></span>
 
@@ -182,14 +175,73 @@ try {
 
         <br><br>
 
-        <button type="button" class="btn btn-primary">Ver mais detalhes</button>
+        <form action="./list-school.page.php?id=<?php echo $row->id; ?>" method="get">
+        </form>
 
+        <button type="submit" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">Ver mais detalhes</button>
         <p>
             <a href="./form-update-school.page.php?updateSchool=<?php echo $row->id; ?>">Editar</a>
             <a href="./controller/delete-school.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
         </p>
         <hr>
     <?php } ?>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalhes da Etec</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        <a href="" id="school-edit">Editar</a>
+                        <a href="" id="school-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
+                    </p>
+                    <img src="" alt="" id="photo-school">
+                    <div id="name-school"></div>
+                    <div id="address-school">, São Paulo</div>
+
+                    <!-- <label for="" id="id-school"></label> -->
+
+
+                    <div id="body-modal-have-account">
+                        <a id="linkedin-school" target="_blank" href="">
+                            <img src="../../../images/icons/linkedin.svg" alt="Logo linkedin">
+                        </a>
+
+                        <a id="github-school" target="_blank" href="">
+                            <img src="../../../images/icons/github.svg" alt="Logo github">
+                        </a>
+
+                        <a id="facebook-school" target="_blank" href="">
+                            <img src="../../../images/icons/facebook.svg" alt="Logo facebook">
+                        </a>
+
+                        <a id="instagram-school" target="_blank" href="">
+                            <img src="../../../images/icons/instagram.svg" alt="Logo instagram">
+                        </a>
+                        <br>
+                        <label>Sobre</label>
+                        <div id="about-school"></div>
+
+                        <div>----- Fazer um divider aqui please! ------</div>
+
+                        <label for="">Professores</label>
+                        <div id="teachers-list">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -203,8 +255,8 @@ try {
     <!-- JS Search bar ⬇️ -->
     <script>
         const field = document.getElementById('searchSchool');
-        const ac = new Autocomplete(field, {
-            data: <?php echo json_encode($optionOfSearch); ?>,
+        const acc = new Autocomplete(field, {
+            data: <?php echo json_encode($optionOfSearchSchool); ?>,
             maximumItems: 8,
             treshold: 1,
         });
@@ -212,6 +264,76 @@ try {
 
     <!-- JS Button Filter -->
     <script src="../../js/button-filter.js"></script>
+
+    <script>
+        async function schoolModal(self) {
+            //pegando o id
+            const id = self.getAttribute("data-id");
+            //enviando o id para fazer a query da escola pelo id
+            const dados = await fetch('./controller/json-school.controller.php?idSchool=' + id);
+
+            const json_school = await dados.json();
+            const convert_into_string = JSON.stringify(json_school);
+            const object_school = JSON.parse(convert_into_string);
+
+            console.log(object_school);
+
+            const haveAccount = object_school['school'][0]['haveAccount'];
+
+            console.log(haveAccount);
+
+            var photo = document.getElementById('photo-school');
+            var bodyModal = document.getElementById('body-modal-have-account');
+
+            document.getElementById('school-edit').href = "./form-update-school.page.php?updateSchool=" + object_school['school'][0]['id'];
+            document.getElementById('school-delete').href = "./controller/delete-school.controller.php?id=" + object_school['school'][0]['id'];
+
+            if (haveAccount == "Sem conta") {
+                document.getElementById('name-school').innerHTML = object_school['school'][0]['name'];
+                document.getElementById('address-school').innerHTML = object_school['school'][0]['address'] + ", São Paulo";
+
+                photo.style.display = "none";
+                bodyModal.style.display = "none";
+
+            } else {
+                photo.style.display = "";
+                bodyModal.style.display = "";
+
+                document.getElementById('photo-school').src = object_school['school'][0]['photo'];
+                document.getElementById('name-school').innerHTML = object_school['school'][0]['name'];
+                document.getElementById('address-school').innerHTML = object_school['school'][0]['address'] + ", São Paulo";
+                document.getElementById('about-school').innerHTML = object_school['school'][0]['about'];
+                document.getElementById('linkedin-school').href = object_school['school'][0]['linkedin'];
+                document.getElementById('github-school').href = object_school['school'][0]['github'];
+                document.getElementById('facebook-school').href = object_school['school'][0]['facebook'];
+                document.getElementById('instagram-school').href = object_school['school'][0]['instagram'];
+            }
+
+            const teachersList = document.getElementById("teachers-list");
+            teachersList.innerHTML = "";
+
+            array_teachers = object_school['teachers'];
+
+
+            for (i = 0; i < array_teachers.length; i++) {
+                const divElement = document.createElement("div");
+                divElement.className = "";
+                const tElement = document.createElement("p");
+                tElement.className = "";
+                const photoElement = document.createElement("img");
+                photoElement.className = "";
+
+                tElement.innerHTML = array_teachers[i]['name'];
+                photoElement.src = array_teachers[i]['photo'];
+
+                divElement.id = i;
+                divElement.appendChild(tElement);
+                divElement.appendChild(photoElement);
+
+                document.getElementById("teachers-list").appendChild(divElement);
+            }
+        }
+    </script>
 </body>
 
 </html>
