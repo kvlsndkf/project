@@ -172,22 +172,22 @@ try {
                         <label>Links</label>
                         <p>
                             Linkedin
-                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled required autocomplete="off">
+                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
                         </p>
 
                         <p>
                             GitHub
-                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled required autocomplete="off">
+                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
                         </p>
 
                         <p>
                             Facebook
-                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled required autocomplete="off">
+                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
                         </p>
 
                         <p>
                             Instagram
-                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled required autocomplete="off">
+                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
                         </p>
 
                         <li>
