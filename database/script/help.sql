@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Abr-2022 às 01:46
+-- Tempo de geração: 19-Maio-2022 às 13:22
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -128,6 +128,15 @@ CREATE TABLE `modules` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `modules`
+--
+
+INSERT INTO `modules` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(19, '2 Módulo', '2022-05-17 14:45:54', NULL),
+(21, '3° Mó', '2022-05-17 16:42:38', NULL),
+(22, '3° Módulo', '2022-05-17 16:42:48', '2022-05-17 16:43:05');
+
 -- --------------------------------------------------------
 
 --
@@ -139,7 +148,10 @@ CREATE TABLE `schools` (
   `name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
   `have_account` varchar(12) NOT NULL,
+  `in_sp_city` varchar(14) DEFAULT NULL,
+  `not_in_sp_city` varchar(14) DEFAULT NULL,
   `about` varchar(237) DEFAULT NULL,
+  `about_textarea` varchar(255) DEFAULT NULL,
   `github` varchar(100) DEFAULT NULL,
   `linkedin` varchar(100) DEFAULT NULL,
   `facebook` varchar(100) DEFAULT NULL,
@@ -268,6 +280,16 @@ CREATE TABLE `teachers` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `name`, `photo`, `created_at`, `updated_at`) VALUES
+(14, 'Nielsen Costa Gomes', '/project/private/adm/pages/register/upload/teachers/6283dc24a4bd2.jpg', '2022-05-17 14:32:20', NULL),
+(15, 'Fabiana Soares Costa Souza', '/project/private/adm/pages/register/upload/teachers/6283dc3e8980f.jpg', '2022-05-17 14:32:46', '2022-05-17 16:42:08'),
+(16, 'Lindyssei Arquimedes Romário', '/project/private/adm/pages/register/upload/teachers/6283dc5aeb64d.png', '2022-05-17 14:33:14', NULL),
+(21, 'Gabriel Borges', '/project/private/adm/pages/register/upload/teachers/6283fa4c71b40.jpg', '2022-05-17 16:41:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -484,13 +506,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT de tabela `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshascourses`
@@ -508,7 +530,7 @@ ALTER TABLE `schoolshasstudents`
 -- AUTO_INCREMENT de tabela `schoolshasteachers`
 --
 ALTER TABLE `schoolshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT de tabela `solicitations`
@@ -538,7 +560,7 @@ ALTER TABLE `subjectshasmodules`
 -- AUTO_INCREMENT de tabela `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `users`

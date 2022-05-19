@@ -75,6 +75,7 @@ CREATE TABLE schools(
     , in_sp_city VARCHAR(14)
     , not_in_sp_city VARCHAR(14) 
     , about VARCHAR(237)
+    , about_textarea(255)
     , github VARCHAR(100)
     , linkedin VARCHAR(100)
     , facebook VARCHAR(100)
