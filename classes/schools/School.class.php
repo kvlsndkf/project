@@ -254,11 +254,6 @@ class School extends Social
             $school->address = $row['address'];
             $school->haveAccount = $row['have_account'];
             $school->about = $row['about'];
-            // $school->github = $row['github'];
-            // $school->linkedin = $row['linkedin'];
-            // $school->facebook = $row['facebook'];
-            // $school->instagram = $row['instagram'];
-            // $school->photo = $row['photo'];
             array_push($schools, $school);
         }
 
@@ -521,7 +516,7 @@ class School extends Social
                 $insertTeacher->execute();
             }
 
-            $_SESSION['statusPositive'] = "Etec cadastrada com sucesso.";
+            $_SESSION['statusPositive'] = "Etec atualizada com sucesso.";
             header('Location: /project/private/adm/pages/register/register-school/list-school.page.php');
         } catch (Exception $e) {
             echo $e->getMessage();
