@@ -247,7 +247,7 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- JS Modal Excluir ⬇️ -->
-    <script src="../../js/delete-teacher.js"></script>
+    <script src="../../js/delete-school.js"></script>
 
     <!-- JS Search bar -->
     <script src="../../js/autocomplete.js"></script>
@@ -266,31 +266,42 @@ try {
     <script src="../../js/button-filter.js"></script>
 
     <script>
+        function assingValueInElementById(name, atr, value) {
+            document.getElementById(name)[atr] = value;
+        }
+
+        function assingOptionalValueInElementById(name, atr, value) {
+            const element = document.getElementById(name);
+
+            if (!value) {
+                element.style.display = "none";
+            } else {
+                element[atr] = value;
+                element.style.display = "inline";
+            }
+
+        }
+
         async function schoolModal(self) {
-            //pegando o id
             const id = self.getAttribute("data-id");
-            //enviando o id para fazer a query da escola pelo id
             const dados = await fetch('./controller/json-school.controller.php?idSchool=' + id);
 
             const json_school = await dados.json();
             const convert_into_string = JSON.stringify(json_school);
             const object_school = JSON.parse(convert_into_string);
+            const school = object_school['school'][0];
 
-            console.log(object_school);
-
-            const haveAccount = object_school['school'][0]['haveAccount'];
-
-            console.log(haveAccount);
+            const haveAccount = school['haveAccount'];
 
             var photo = document.getElementById('photo-school');
             var bodyModal = document.getElementById('body-modal-have-account');
 
-            document.getElementById('school-edit').href = "./form-update-school.page.php?updateSchool=" + object_school['school'][0]['id'];
-            document.getElementById('school-delete').href = "./controller/delete-school.controller.php?id=" + object_school['school'][0]['id'];
+            document.getElementById('school-edit').href = "./form-update-school.page.php?updateSchool=" + school['id'];
+            document.getElementById('school-delete').href = "./controller/delete-school.controller.php?id=" + school['id'];
 
             if (haveAccount == "Sem conta") {
-                document.getElementById('name-school').innerHTML = object_school['school'][0]['name'];
-                document.getElementById('address-school').innerHTML = object_school['school'][0]['address'] + ", São Paulo";
+                document.getElementById('name-school').innerHTML = school['name'];
+                document.getElementById('address-school').innerHTML = school['address'] + ", São Paulo";
 
                 photo.style.display = "none";
                 bodyModal.style.display = "none";
@@ -299,14 +310,21 @@ try {
                 photo.style.display = "";
                 bodyModal.style.display = "";
 
-                document.getElementById('photo-school').src = object_school['school'][0]['photo'];
-                document.getElementById('name-school').innerHTML = object_school['school'][0]['name'];
-                document.getElementById('address-school').innerHTML = object_school['school'][0]['address'] + ", São Paulo";
-                document.getElementById('about-school').innerHTML = object_school['school'][0]['about'];
-                document.getElementById('linkedin-school').href = object_school['school'][0]['linkedin'];
-                document.getElementById('github-school').href = object_school['school'][0]['github'];
-                document.getElementById('facebook-school').href = object_school['school'][0]['facebook'];
-                document.getElementById('instagram-school').href = object_school['school'][0]['instagram'];
+                const linkedin = school['linkedin'];
+
+                const github = school['github'];
+                const facebook = school['facebook'];
+                const instagram = school['instagram'];
+
+                assingOptionalValueInElementById('linkedin-school', 'href', linkedin);
+                assingOptionalValueInElementById('github-school', 'href', github);
+                assingOptionalValueInElementById('facebook-school', 'href', facebook);
+                assingOptionalValueInElementById('instagram-school', 'href', instagram);
+
+                assingValueInElementById('photo-school', "src", school['photo']);
+                assingValueInElementById('name-school', 'innerHTML', school['name']);
+                assingValueInElementById('address-school', 'innerHTML', school['address'] + ", São Paulo");
+                assingValueInElementById('about-school', 'innerHTML', school['about']);
             }
 
             const teachersList = document.getElementById("teachers-list");
