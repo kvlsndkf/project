@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="school-cad cad-option">
-                        <a href="#" class="cad-a">
+                        <a href="../register-school/list-school.page.php" class="cad-a">
                             <p class="nome-cad normal-40-black-display">ETECs</p>
                             <img src="./img/school-img.svg" class="img-cad">
                         </a>
