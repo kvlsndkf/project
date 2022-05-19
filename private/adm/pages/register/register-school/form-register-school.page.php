@@ -159,7 +159,7 @@ try {
 
                             <p>
                                 <textarea class="d-none" cols="30" rows="5" id="forDataBase" name="aboutForDatabase"></textarea>
-                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="about"></textarea>
+                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="aboutForTextArea"></textarea>
                                 <input type="button" id="about" value="Escrever sobre a Etec" disabled required onclick="aboutSchool()">
                             <div id="divAbout"></div>
                             </p>

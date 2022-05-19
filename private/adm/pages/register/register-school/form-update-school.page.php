@@ -195,8 +195,8 @@ try {
                             <p>
                                 <?php $disableAbout = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                                 <textarea class="d-none" cols="30" rows="5" id="forDataBase" name="aboutForDatabase" value="<?php echo $updateSchool['about'] ?>"></textarea>
-                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="about" value="<?php echo $updateSchool['about'] ?>"></textarea>
-                                <input type="button" id="about" value="Escrever sobre a Etec" <?php echo $disableAbout ?> required onclick="aboutSchool()">
+                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="aboutForTextArea" value="<?php echo $updateSchool['about_textarea'] ?>"></textarea>
+                                <input  type="button" id="about" value="Escrever sobre a Etec" <?php echo $disableAbout; ?> onclick="aboutSchool()">
                             <div id="divAbout"><?php echo $updateSchool['about'] ?></div>
                             </p>
                         </div>
@@ -209,25 +209,25 @@ try {
                         <p>
                             <?php $disableLinkedin = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Linkedin
-                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?> required autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
+                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?>  autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
                         </p>
 
                         <p>
                             <?php $disableGithub = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             GitHub
-                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" <?php echo $disableGithub ?> required autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
+                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" <?php echo $disableGithub ?>  autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
                         </p>
 
                         <p>
                             <?php $disableFacebook = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Facebook
-                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?> required autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
+                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?>  autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
                         </p>
 
                         <p>
                             <?php $disableInstagram = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Instagram
-                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" <?php echo $disableInstagram ?> required autocomplete="off" value="<?php echo $updateSchool['instagram'] ?>">
+                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" <?php echo $disableInstagram ?> autocomplete="off" value="<?php echo $updateSchool['instagram'] ?>">
                         </p>
 
                         <li>
@@ -243,7 +243,8 @@ try {
 
                         <p>
                             <?php $disablePhoto = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                            <input type="file" name="updatePhoto" id="photo" <?php echo $disablePhoto ?> required>
+                            <?php $requiredPhoto = empty($updateSchool['photo']) ? 'required' : '' ?>
+                            <input type="file" name="updatePhoto" id="photo" <?php echo $disablePhoto; ?> <?php echo $requiredPhoto; ?>>
                             <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php echo $updateSchool['photo'] ?>">
                         </p>
 
