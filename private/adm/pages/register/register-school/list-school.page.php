@@ -33,8 +33,7 @@ try {
     <meta charset="UTF-8">
     <title>Etec's | Heelp!</title>
 
-    <!-- CSS Stack Edit -->
-    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+
 
     <link rel="stylesheet" href="../../../../style/style.css">
 
@@ -43,6 +42,9 @@ try {
 
     <!-- CSS Search Bar -->
     <link rel="stylesheet" href="../../../../style/search-bar.style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks/dist/css/stacks.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks-editor/dist/styles.css">
 </head>
 
 <body>

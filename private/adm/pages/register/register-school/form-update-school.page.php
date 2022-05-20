@@ -34,7 +34,8 @@ try {
     <meta charset="UTF-8">
     <title>Editar Etec | Heelp!</title>
 
-    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks/dist/css/stacks.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks-editor/dist/styles.css">
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -186,18 +187,16 @@ try {
                         <div>
                             <p>
                                 Sobre
-                                <br>
-                                <a href="https://erratic-wave-2e1.notion.site/Sintaxe-para-formata-o-de-texto-6b263bfb57f14b7796b684ca543eb4dc" target="_blank">
-                                    Quer dicas de como escrever um texto com a sua cara? Clique aqui!
-                                </a>
+                            <div>
+                                <?php echo $updateSchool['about'] ?>
+                            </div>
                             </p>
 
                             <p>
                                 <?php $disableAbout = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                                <textarea class="d-none" cols="30" rows="5" id="forDataBase" name="aboutForDatabase" value="<?php echo $updateSchool['about'] ?>"></textarea>
-                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="aboutForTextArea" value="<?php echo $updateSchool['about_textarea'] ?>"></textarea>
-                                <input  type="button" id="about" value="Escrever sobre a Etec" <?php echo $disableAbout; ?> onclick="aboutSchool()">
-                            <div id="divAbout"><?php echo $updateSchool['about'] ?></div>
+                                <textarea id="forDataBase" name="aboutForDatabase"class="d-none"></textarea>
+                                <input type="button" id="about" value="Atualizar sobre a Etec" <?php echo $disableAbout; ?> onclick="aboutSchool()">
+                            <div id="editor-container" style="display: none"></div>
                             </p>
                         </div>
 
@@ -209,19 +208,19 @@ try {
                         <p>
                             <?php $disableLinkedin = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Linkedin
-                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?>  autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
+                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?> autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
                         </p>
 
                         <p>
                             <?php $disableGithub = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             GitHub
-                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" <?php echo $disableGithub ?>  autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
+                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" <?php echo $disableGithub ?> autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
                         </p>
 
                         <p>
                             <?php $disableFacebook = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                             Facebook
-                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?>  autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
+                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?> autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
                         </p>
 
                         <p>
@@ -296,39 +295,41 @@ try {
     <!-- JS Visibility Inputs -->
     <script type="text/javascript" src="../../js/visibility-inputs.js"></script>
 
-    <!-- JS StackEdit -->
-    <script src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+    <script src="https://unpkg.com/@stackoverflow/stacks/dist/js/stacks.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@latest/highlight.min.js"></script>
+    <script src="https://unpkg.com/@stackoverflow/stacks-editor/dist/app.bundle.js"></script>
 
     <script>
         function aboutSchool() {
-            const forDatabase = document.getElementById('forDataBase');
-            const forPage = document.getElementById('textarea');
-            const stackedit = new Stackedit();
 
-            // Open the iframe
-            stackedit.openFile({
-                name: 'Filename', // with an optional filename
-                content: {
-                    text: forPage.value // and the Markdown content.
-                }
-            });
+            new window.stacksEditor.StacksEditor(
+                document.querySelector("#editor-container"),
+                document.querySelector("#forDataBase").value, {}
+            );
 
-            // Listen to StackEdit events and apply the changes to the textarea.
-            stackedit.on('fileChange', (file) => {
-                forPage.value = file.content.text;
-            });
+            document.getElementById("editor-container").style.display = "block";
+            const node = document.querySelector("[data-key='insertImage']");
+            const div = document.querySelector(".ml24");
+            const help = document.querySelector("[data-key='Help']");
+            const table = document.querySelector("[data-key='insertTable']");
+            const link = document.querySelector("[data-key='toggleLink']");
+            const blockCode = document.querySelector("[data-key='toggleCodeblock']");
+            const blockquote = document.querySelector("[data-key='toggleBlockquote']");
 
-            // Listen to StackEdit events and apply the changes to the textarea.
-            stackedit.on('fileChange', (file) => {
-                forDatabase.value = file.content.html;
-            });
+            node.parentNode.removeChild(node);
+            div.innerHTML = "";
+            help.parentNode.removeChild(help);
+            table.parentNode.removeChild(table);
+            link.parentNode.removeChild(link);
+            blockCode.parentNode.removeChild(blockCode);
+            blockquote.parentNode.removeChild(blockquote);
 
-            // In silent mode, the `fileChange` event is emitted only once.
-            stackedit.on('fileChange', (file) => {
-                const divEl = document.getElementById("divAbout");
-                divEl.innerHTML = file.content.html;
-                console.log(file);
-            });
+            document.getElementById("editor-container").addEventListener("keyup", touchHandler, false);
+
+            function touchHandler(e) {
+                // document.querySelector("#forTextArea").innerText = event.target.innerText;
+                document.querySelector("#forDataBase").innerHTML = event.target.innerHTML;
+            }
         }
     </script>
 </body>

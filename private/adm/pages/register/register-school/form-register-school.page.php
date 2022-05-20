@@ -24,11 +24,15 @@ try {
     <meta charset="UTF-8">
     <title>Cadastrar Etec | Heelp!</title>
 
-    <link rel="stylesheet" href="https://stackedit.io/style.css" />
-
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks/dist/css/stacks.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks-editor/dist/styles.css">
+
+    <!-- JS Disabled Inputs -->
+    <script type="text/javascript" src="../../js/disabled-inputs.js"></script>
 </head>
 
 <body>
@@ -151,18 +155,15 @@ try {
                         <div>
                             <p>
                                 Sobre
-                                <br>
-                                <a href="https://erratic-wave-2e1.notion.site/Sintaxe-para-formata-o-de-texto-6b263bfb57f14b7796b684ca543eb4dc" target="_blank">
-                                    Quer dicas de como escrever um texto com a sua cara? Clique aqui!
-                                </a>
                             </p>
 
                             <p>
-                                <textarea class="d-none" cols="30" rows="5" id="forDataBase" name="aboutForDatabase"></textarea>
-                                <textarea class="d-none" cols="30" rows="5" id="textarea" name="aboutForTextArea"></textarea>
-                                <input type="button" id="about" value="Escrever sobre a Etec" disabled required onclick="aboutSchool()">
-                            <div id="divAbout"></div>
+                                <textarea id="forDataBase" name="aboutForDatabase" class="d-none"></textarea>
+                                <input type="hidden" id="about" disabled>
+                            <div id="editor-container" style="display: none"></div>
                             </p>
+
+
                         </div>
 
                         <li>
@@ -241,47 +242,44 @@ try {
         });
     </script>
 
-    <!-- JS Disabled Inputs -->
-    <script type="text/javascript" src="../../js/disabled-inputs.js"></script>
-
     <!-- JS Visibility Inputs -->
     <script type="text/javascript" src="../../js/visibility-inputs.js"></script>
 
-    <!-- JS StackEdit -->
-    <script src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+    <script src="https://unpkg.com/@stackoverflow/stacks/dist/js/stacks.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@latest/highlight.min.js"></script>
+    <script src="https://unpkg.com/@stackoverflow/stacks-editor/dist/app.bundle.js"></script>
 
     <script>
-        function aboutSchool() {
-            const forDatabase = document.getElementById('forDataBase');
-            const forPage = document.getElementById('textarea');
-            const stackedit = new Stackedit();
+        new window.stacksEditor.StacksEditor(
+            document.querySelector("#editor-container"),
+            document.querySelector("#forDataBase").value,
+            {}
+        );
 
-            // Open the iframe
-            stackedit.openFile({
-                name: 'Filename', // with an optional filename
-                content: {
-                    text: forPage.value // and the Markdown content.
-                }
-            });
+        const node = document.querySelector("[data-key='insertImage']");
+        const div = document.querySelector(".ml24");
+        const help = document.querySelector("[data-key='Help']");
+        const table = document.querySelector("[data-key='insertTable']");
+        const link = document.querySelector("[data-key='toggleLink']");
+        const blockCode = document.querySelector("[data-key='toggleCodeblock']");
+        const blockquote = document.querySelector("[data-key='toggleBlockquote']");
+        
+        node.parentNode.removeChild(node);
+        div.innerHTML = "";
+        help.parentNode.removeChild(help);
+        table.parentNode.removeChild(table);
+        link.parentNode.removeChild(link);
+        blockCode.parentNode.removeChild(blockCode);
+        blockquote.parentNode.removeChild(blockquote);
 
-            // Listen to StackEdit events and apply the changes to the textarea.
-            stackedit.on('fileChange', (file) => {
-                forPage.value = file.content.text;
-            });
+        document.getElementById("editor-container").addEventListener("keyup", touchHandler, false);
 
-            // Listen to StackEdit events and apply the changes to the textarea.
-            stackedit.on('fileChange', (file) => {
-                forDatabase.value = file.content.html;
-            });
-
-            // In silent mode, the `fileChange` event is emitted only once.
-            stackedit.on('fileChange', (file) => {
-                const divEl = document.getElementById("divAbout");
-                divEl.innerHTML = file.content.html;
-                console.log(file);
-            });
+        function touchHandler(e) {
+            // document.querySelector("#forTextArea").innerText = event.target.innerText;
+            document.querySelector("#forDataBase").innerHTML = event.target.innerHTML;
         }
     </script>
+
 </body>
 
 </html>
