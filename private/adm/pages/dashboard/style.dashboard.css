@@ -49,3 +49,25 @@
 .button-container {
     max-width: 300px;
 }
+
+.dashboard-chart {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.dashboard-chart-container {
+    border: 1px solid var(--gray7);
+    border-radius: 10px;
+    max-width: fit-content;
+    max-height: fit-content;
+    padding-top: 28px;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 28px;
+    margin-top: 20px;
+}
+
+.chart-title {
+    width: 100%;
+    text-align: center;
+}
