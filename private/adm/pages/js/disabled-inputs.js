@@ -3,6 +3,7 @@ function createdAccount() {
   
     if (checkBox.checked) {
         document.getElementById("idTeachers").disabled = false;
+        document.getElementById("editor-container").style.display = "block";
         document.getElementById("about").disabled = false;
         document.getElementById("linkedin").disabled = false;
         document.getElementById("github").disabled = false;
@@ -11,6 +12,7 @@ function createdAccount() {
         document.getElementById("photo").disabled = false;
     } else {
         document.getElementById("idTeachers").disabled = true;
+        document.getElementById("editor-container").style.display = "none";
         document.getElementById("about").disabled = true;
         document.getElementById("linkedin").disabled = true;
         document.getElementById("github").disabled = true;
