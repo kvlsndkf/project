@@ -11,7 +11,6 @@ class School extends Social
     public string $haveAccount;
     public string $photo = "";
     public string $about = "";
-    public string $aboutTextArea = "";
     public string $createdAt;
     public string $updatedAt;
     public array $teacher = [];
@@ -133,15 +132,6 @@ class School extends Social
         $this->notInSpCity = $notInSpCity;
     }
     //----------------------------
-    public function getAboutTextArea(): string
-    {
-        return $this->aboutTextArea;
-    }
-    public function setAboutTextArea(string $aboutTextArea): void
-    {
-        $this->aboutTextArea = $aboutTextArea;
-    }
-    //----------------------------
     //methods
 
     /**
@@ -153,8 +143,8 @@ class School extends Social
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("INSERT INTO schools(name, address, have_account, in_sp_city, not_in_sp_city, about, about_textarea, github, linkedin, facebook, instagram, photo, created_at)
-                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+            $stmt = $connection->prepare("INSERT INTO schools(name, address, have_account, in_sp_city, not_in_sp_city, about, github, linkedin, facebook, instagram, photo, created_at)
+                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
 
             $stmt->bindValue(1, $school->getName());
             $stmt->bindValue(2, $school->getAddress());
@@ -162,12 +152,11 @@ class School extends Social
             $stmt->bindValue(4, $school->getInSpCity());
             $stmt->bindValue(5, $school->getNotInSpCity());
             $stmt->bindValue(6, $school->getAbout());
-            $stmt->bindValue(7, $school->getAboutTextArea());
-            $stmt->bindValue(8, $school->getGithub());
-            $stmt->bindValue(9, $school->getLinkedin());
-            $stmt->bindValue(10, $school->getFacebook());
-            $stmt->bindValue(11, $school->getInstagram());
-            $stmt->bindValue(12, $school->getPhoto());
+            $stmt->bindValue(7, $school->getGithub());
+            $stmt->bindValue(8, $school->getLinkedin());
+            $stmt->bindValue(9, $school->getFacebook());
+            $stmt->bindValue(10, $school->getInstagram());
+            $stmt->bindValue(11, $school->getPhoto());
 
             $stmt->execute();
             $idSchool = $connection->lastInsertId();
@@ -438,7 +427,7 @@ class School extends Social
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("UPDATE schools SET name = ?, address = ?, have_account = ?, in_sp_city = ?, not_in_sp_city = ?, about = ?, about_textarea = ?, github = ?, linkedin = ?, facebook = ?, instagram = ?, photo = ?, updated_at = NOW()
+            $stmt = $connection->prepare("UPDATE schools SET name = ?, address = ?, have_account = ?, in_sp_city = ?, not_in_sp_city = ?, about = ?, github = ?, linkedin = ?, facebook = ?, instagram = ?, photo = ?, updated_at = NOW()
                                          WHERE id = $id");
 
             $stmt->bindValue(1, $school->getName());
@@ -447,12 +436,11 @@ class School extends Social
             $stmt->bindValue(4, $school->getInSpCity());
             $stmt->bindValue(5, $school->getNotInSpCity());
             $stmt->bindValue(6, $school->getAbout());
-            $stmt->bindValue(7, $school->getAboutTextArea());
-            $stmt->bindValue(8, $school->getGithub());
-            $stmt->bindValue(9, $school->getLinkedin());
-            $stmt->bindValue(10, $school->getFacebook());
-            $stmt->bindValue(11, $school->getInstagram());
-            $stmt->bindValue(12, $school->getPhoto());
+            $stmt->bindValue(7, $school->getGithub());
+            $stmt->bindValue(8, $school->getLinkedin());
+            $stmt->bindValue(9, $school->getFacebook());
+            $stmt->bindValue(10, $school->getInstagram());
+            $stmt->bindValue(11, $school->getPhoto());
 
             $stmt->execute();
 
