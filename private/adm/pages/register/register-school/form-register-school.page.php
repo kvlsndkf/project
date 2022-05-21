@@ -92,15 +92,15 @@ try {
         </p>
 
         <p>
-            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" onclick="visibilityDistrict()"> Sim
+            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" required onclick="visibilityDistrict()"> Sim
 
-            <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" onclick="visibilityCity()"> Não
+            <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" required onclick="visibilityCity()"> Não
         </p>
 
         <p id="textDistrict" style="display:none">
             Distrito
-            <select name="address" id="district" class="select-district" style="width: 100%" disabled>
-                <option selected="selected">Selecione o respectivo distrito</option>
+            <select name="address" id="district" class="select-district" style="width: 100%" disabled required>
+                <option value="" selected disabled>Selecione o respectivo distrito</option>
                 <?php foreach ($places->districts as $row) { ?>
                     <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
                 <?php } ?>
@@ -110,8 +110,8 @@ try {
 
         <p id="textCity" style="display:none">
             Município
-            <select name="address" id="city" class="select-city" style="width: 100%" disabled>
-                <option selected="selected">Selecione o respectivo município</option>
+            <select name="address" id="city" class="select-city" style="width: 100%" disabled required>
+                <option value="" selected disabled>Selecione o respectivo município</option>
                 <?php foreach ($places->cities as $row) { ?>
                     <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
                 <?php } ?>
