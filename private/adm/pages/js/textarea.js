@@ -8,7 +8,7 @@ function colorDiv() {
 
 function count(e) {
     const inputLength = textarea.value.length;
-    const maxChars = 5;
+    const maxChars = 250;
 
     counter.innerText = maxChars - inputLength;
 
