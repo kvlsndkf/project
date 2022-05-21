@@ -5,7 +5,7 @@ require_once('/xampp/htdocs' . '/project/classes/schools/Teacher.class.php');
 session_start();
 
 if (isset($_POST['update'])) {
-
+    
     if (is_uploaded_file($_FILES['updatePhoto']['tmp_name'])) {
         $teacherPhoto = $_FILES['updatePhoto'];
         $namePhoto = $teacherPhoto['name'];

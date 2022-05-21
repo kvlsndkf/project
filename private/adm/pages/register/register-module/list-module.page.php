@@ -45,7 +45,7 @@ try {
     <link rel="stylesheet" href="../../../../style/search-bar.style.css">
 </head>
 
-<body class="container">
+<body>
     <!-- Mensagem de sucesso ⬇️ -->
     <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
 
