@@ -35,8 +35,7 @@ if (isset($_POST['update'])) {
             $school->setInSpCity($_POST['districtSchool'] ?? '');
             $school->setNotInSpCity($_POST['citySchool'] ?? '');
             $school->setHaveAccount(($_POST['createAccount']));
-            $school->setAbout($_POST['aboutForDatabase']);
-            // $school->setAboutTextArea($_POST['aboutForTextArea']);
+            $school->setAbout($_POST['about']);
             $school->setGithub($_POST['github']);
             $school->setLinkedin($_POST['linkedin']);
             $school->setFacebook($_POST['facebook']);
@@ -83,7 +82,7 @@ if (isset($_POST['update'])) {
                     $school->setInSpCity($_POST['districtSchool'] ?? '');
                     $school->setNotInSpCity($_POST['citySchool'] ?? '');
                     $school->setHaveAccount(($_POST['createAccount']));
-                    $school->setAbout($_POST['aboutForDatabase']);
+                    $school->setAbout($_POST['about']);
                     $school->setGithub($_POST['github']);
                     $school->setLinkedin($_POST['linkedin']);
                     $school->setFacebook($_POST['facebook']);
