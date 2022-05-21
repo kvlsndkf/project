@@ -43,8 +43,6 @@ try {
     <!-- CSS Search Bar -->
     <link rel="stylesheet" href="../../../../style/search-bar.style.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks/dist/css/stacks.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks-editor/dist/styles.css">
 </head>
 
 <body>
@@ -209,8 +207,6 @@ try {
                     <div id="name-school"></div>
                     <div id="address-school">, São Paulo</div>
 
-                    <!-- <label for="" id="id-school"></label> -->
-
 
                     <div id="body-modal-have-account">
                         <a id="linkedin-school" target="_blank" href="">
@@ -232,7 +228,9 @@ try {
                         <label>Sobre</label>
                         <div id="about-school"></div>
 
-                        <div>----- Fazer um divider aqui please! ------</div>
+                        <br>
+                        <br>
+                        <hr>
 
                         <label for="">Professores</label>
                         <div id="teachers-list">

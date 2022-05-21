@@ -33,10 +33,9 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Editar Etec | Heelp!</title>
-
-    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks/dist/css/stacks.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks-editor/dist/styles.css">
-
+    
+    <link rel="stylesheet" href="../../../../style/style.css">
+    
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -187,16 +186,16 @@ try {
                         <div>
                             <p>
                                 Sobre
-                            <div>
-                                <?php echo $updateSchool['about'] ?>
-                            </div>
                             </p>
 
+                            <div id="contentTextArea">
+                            <?php $disableAbout = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
+                                <textarea name="about" id="about" cols="30" rows="10" placeholder="Digite sobre a etec" <?php echo $disableAbout; ?> onclick="colorDiv()"><?php echo$updateSchool['about'] ?></textarea>
+                                <div><span id="counterTextArea">250</span></div>
+                            </div>
+
                             <p>
-                                <?php $disableAbout = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                                <textarea id="forDataBase" name="aboutForDatabase"class="d-none"></textarea>
-                                <input type="button" id="about" value="Atualizar sobre a Etec" <?php echo $disableAbout; ?> onclick="aboutSchool()">
-                            <div id="editor-container" style="display: none"></div>
+                                
                             </p>
                         </div>
 
@@ -295,43 +294,8 @@ try {
     <!-- JS Visibility Inputs -->
     <script type="text/javascript" src="../../js/visibility-inputs.js"></script>
 
-    <script src="https://unpkg.com/@stackoverflow/stacks/dist/js/stacks.min.js"></script>
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@latest/highlight.min.js"></script>
-    <script src="https://unpkg.com/@stackoverflow/stacks-editor/dist/app.bundle.js"></script>
-
-    <script>
-        function aboutSchool() {
-
-            new window.stacksEditor.StacksEditor(
-                document.querySelector("#editor-container"),
-                document.querySelector("#forDataBase").value, {}
-            );
-
-            document.getElementById("editor-container").style.display = "block";
-            const node = document.querySelector("[data-key='insertImage']");
-            const div = document.querySelector(".ml24");
-            const help = document.querySelector("[data-key='Help']");
-            const table = document.querySelector("[data-key='insertTable']");
-            const link = document.querySelector("[data-key='toggleLink']");
-            const blockCode = document.querySelector("[data-key='toggleCodeblock']");
-            const blockquote = document.querySelector("[data-key='toggleBlockquote']");
-
-            node.parentNode.removeChild(node);
-            div.innerHTML = "";
-            help.parentNode.removeChild(help);
-            table.parentNode.removeChild(table);
-            link.parentNode.removeChild(link);
-            blockCode.parentNode.removeChild(blockCode);
-            blockquote.parentNode.removeChild(blockquote);
-
-            document.getElementById("editor-container").addEventListener("keyup", touchHandler, false);
-
-            function touchHandler(e) {
-                // document.querySelector("#forTextArea").innerText = event.target.innerText;
-                document.querySelector("#forDataBase").innerHTML = event.target.innerHTML;
-            }
-        }
-    </script>
+    <!-- JS Count Characters TextArea -->
+    <script type="text/javascript" src="../../js/textarea.js"></script>
 </body>
 
 </html>
