@@ -1,3 +1,11 @@
 .bg-help-primary{
     background-color: #8080FF;
 }
+
+.border-div{
+    border: 2px solid #00AFF4;
+}
+
+.border-div-error{
+    border: 2px solid #ED4245;
+}
