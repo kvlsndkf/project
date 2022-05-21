@@ -8,13 +8,14 @@ function colorDiv() {
 
 function count(e) {
     const inputLength = textarea.value.length;
-    const maxChars = 250;
+    const maxChars = 5;
 
     counter.innerText = maxChars - inputLength;
 
     if (inputLength >= maxChars) {
         e.preventDefault();
         div.classList.add("border-div-error");
+        counter.classList.add("font-color-red");
 
         textarea.setAttribute('readonly', 'true');
 
@@ -24,6 +25,7 @@ function count(e) {
         }
     } else {
         div.classList.remove("border-div-error");
+        counter.classList.remove("font-color-red");
     }
 
 };
