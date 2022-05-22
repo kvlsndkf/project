@@ -154,7 +154,7 @@
                     </div>   
 
                     <div class="subject-cad cad-option">
-                        <a href="#" class="cad-a">
+                        <a href="../register-subject/list-subject.page.php" class="cad-a">
                             <p class="nome-cad normal-40-black-display">Matérias</p>
                             <img src="./img/subject-img.svg" class="img-cad">
                         </a>
