@@ -12,6 +12,7 @@ class Course
     public string $updatedAt;
     public array $teacher;
     public array $school;
+    public array $subject;
 
     //getters and setters
     public function getId()
@@ -86,6 +87,15 @@ class Course
         $this->school = $school;
     }
     //----------------------------
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+    //----------------------------
     public function getResultBuildList(): array
     {
         return $this->resultBuildList;
@@ -102,7 +112,7 @@ class Course
      * @param Course $course
      * @param int $id
      */
-    public function registerCourse(Course $school)
+    public function registerCourse(Course $course)
     {
         $connection = Connection::connection();
 
@@ -110,9 +120,9 @@ class Course
             $stmt = $connection->prepare("INSERT INTO courses(name, about, photo, created_at)
                                          VALUES (?, ?, ?, NOW())");
 
-            $stmt->bindValue(1, $school->getName());
-            $stmt->bindValue(2, $school->getAbout());
-            $stmt->bindValue(3, $school->getPhoto());
+            $stmt->bindValue(1, $course->getName());
+            $stmt->bindValue(2, $course->getAbout());
+            $stmt->bindValue(3, $course->getPhoto());
 
             $stmt->execute();
             $idCourse = $connection->lastInsertId();
@@ -125,6 +135,7 @@ class Course
         try {
             $teacher = $this->getTeacher();
             $school = $this->getSchool();
+            $subject = $this->getSubject();
             $idCourse = $this->getId();
 
             if (!empty($teacher)) {
@@ -144,13 +155,27 @@ class Course
             if (!empty($school)) {
                 for ($i = 0; $i < count($school); $i++) {
                     if (!empty($idCourse)) {
-                        $registerTeacher = $connection->prepare("INSERT INTO schoolsHasCourses(created_at, school_id, course_id)
+                        $registerSchool = $connection->prepare("INSERT INTO schoolsHasCourses(created_at, school_id, course_id)
                                                     VALUES (NOW(), ?, ?)");
 
-                        $registerTeacher->bindValue(1, $school[$i]);
-                        $registerTeacher->bindValue(2, $idCourse);
+                        $registerSchool->bindValue(1, $school[$i]);
+                        $registerSchool->bindValue(2, $idCourse);
 
-                        $registerTeacher->execute();
+                        $registerSchool->execute();
+                    }
+                }
+            }
+
+            if (!empty($subject)) {
+                for ($i = 0; $i < count($subject); $i++) {
+                    if (!empty($idCourse)) {
+                        $registerSubject = $connection->prepare("INSERT INTO coursesHasSubjects(created_at, course_id, subject_id)
+                                                    VALUES (NOW(), ?, ?)");
+
+                        $registerSubject->bindValue(1, $idCourse);
+                        $registerSubject->bindValue(2, $subject[$i]);
+
+                        $registerSubject->execute();
                     }
                 }
             }
@@ -186,7 +211,7 @@ class Course
         }
     }
 
-    
+
     //----------------------------
     /**
      * @method listSchoolForModal() list the school inside the modal by 
@@ -293,6 +318,28 @@ class Course
 
         try {
             $stmt = $connection->prepare("SELECT COUNT(school_id) AS total FROM schoolsHasCourses WHERE course_id='$id'");
+
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result[0]['total'];
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    //----------------------------
+    /**
+     * @method countTeachersInSchool() counts the teachers to appear inside the card chips by 
+     * @param int $id 
+     */
+    public function countSubjectsInCourse(int $id)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT COUNT(subject_id) AS total FROM coursesHasSubjects WHERE course_id='$id'");
 
             $stmt->execute();
 
@@ -437,6 +484,51 @@ class Course
 
     //----------------------------
     /**
+     * @method selectTeachersUsedBySchool() selects the teachers being used by the school by 
+     * @param int $id 
+     */
+    public function selectSubjectsUsedByCourse(int $id): array
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT s.id, s.name FROM courseshassubjects cs
+                                         INNER JOIN subjects s
+                                         ON s.id = cs.subject_id
+                                         WHERE cs.course_id = $id
+                                     ");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
+
+    //----------------------------
+    /**
+     * @method selectAvailableTeachersForSchool() selects teachers that are not being used by the school by 
+     * @param int $idSchool
+     */
+    public function selectAvailableSubjectsForCourse(int $idCourse): array
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT DISTINCT s.id, s.name FROM subjects s
+                                        WHERE s.id 
+                                        NOT IN ( 
+                                        SELECT s.id FROM courseshassubjects cs
+                                        INNER JOIN subjects s
+                                        ON s.id = cs.subject_id
+                                        WHERE cs.course_id = $idCourse)
+                                        ");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
+
+    //----------------------------
+    /**
      * @method updateSchool() updates the school by 
      * @param School $school 
      * @param int $id 
@@ -461,9 +553,10 @@ class Course
         try {
             $teachers = $this->getTeacher();
             $schools = $this->getSchool();
+            $subjects = $this->getSubject();
 
             if (!empty($teachers)) {
-                
+
                 $courseHasTeachersQuery = $connection->prepare(
                     "SELECT ct.teacher_id FROM coursesHasTeachers ct
                      LEFT JOIN teachers t
@@ -481,10 +574,10 @@ class Course
 
                 $arrayToDelete = array_diff($arrayQuery, $teachers);
                 $arrayToInsert = array_diff($teachers, $arrayQuery);
-                
+
                 if (count($arrayToDelete) > 0) {
                     $idTeacherToDelete = [];
-                    
+
                     foreach ($arrayToDelete as $row => $value) {
                         array_push($idTeacherToDelete, $value);
                     }
@@ -581,6 +674,65 @@ class Course
                 }
             }
 
+            if (!empty($subjects)) {
+                $courseHasSubjectsQuery = $connection->prepare(
+                    "SELECT cs.subject_id FROM coursesHasSubjects cs
+                     LEFT JOIN subjects s
+                     ON cs.subject_id = s.id
+                     WHERE course_id = $id"
+                );
+
+                $courseHasSubjectsQuery->execute();
+
+                $fetchSubjects = $courseHasSubjectsQuery->fetchAll(PDO::FETCH_ASSOC);
+
+                $arrayQuery = array_map(function ($item) {
+                    return $item['subject_id'];
+                }, $fetchSubjects);
+
+                $arrayToDelete = array_diff($arrayQuery, $subjects);
+                $arrayToInsert = array_diff($subjects, $arrayQuery);
+
+                if (count($arrayToDelete) > 0) {
+                    $idSubjectToDelete = [];
+
+                    foreach ($arrayToDelete as $row => $value) {
+                        array_push($idSubjectToDelete, $value);
+                    }
+
+                    $deleteSubject = $connection->prepare("DELETE FROM coursesHasSubjects WHERE subject_id IN (" . implode(', ', $idSubjectToDelete) . ") AND course_id='$id'");
+                    $deleteSubject->execute();
+                }
+
+                if (count($arrayToInsert) > 0) {
+                    $queryValues = [];
+                    $idSubjectToInsert = [];
+
+                    foreach ($arrayToInsert as $row => $value) {
+                        array_push($queryValues, '(NOW(), ?, ?)');
+                        array_push($idSubjectToInsert, $value);
+                    }
+
+                    $insertSubject = $connection->prepare(
+                        "INSERT INTO coursesHasSubjects(created_at, course_id, subject_id) 
+                            VALUES " . implode(', ', $queryValues)
+                    );
+
+                    $idCoursePosition = 1;
+                    $idSubjectPosition = 2;
+
+                    for ($i = 0; $i < count($arrayToInsert); $i++) {
+                        $insertSubject->bindValue($idCoursePosition, $id);
+                        $insertSubject->bindValue($idSubjectPosition, $idSubjectToInsert[$i]);
+
+                        $idCoursePosition += 2;
+                        $idSubjectPosition += 2;
+                    }
+
+                    $insertSubject->execute();
+                }
+            }
+
             $_SESSION['statusPositive'] = "Curso atualizado com sucesso.";
             header('Location: /project/private/adm/pages/register/register-course/list-course.page.php');
         } catch (Exception $e) {
@@ -614,7 +766,7 @@ class Course
         }
     }
 
-     //----------------------------
+    //----------------------------
     /**
      * @method listSchoolOfSearchBar() list schools for search bar  
      */
