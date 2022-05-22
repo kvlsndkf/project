@@ -58,13 +58,8 @@
 .dashboard-chart-container {
     border: 1px solid var(--gray7);
     border-radius: 10px;
-    max-width: fit-content;
-    max-height: fit-content;
-    /* padding-top: 28px;
-    padding-left: 120px;
-    padding-right: 120px;
-    padding-bottom: 28px; */
 }
+
 
 .chart-title {
     width: 100%;
@@ -154,13 +149,16 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
 }
 
 .container2 {
     margin-top: 20px;
 }
 
-@media screen and (min-width: 280px) {
+/* GRÁFICO */
+
+/* @media screen and (min-width: 280px) {
     .dashboard-chart {
         width: 150px;
         height: 150px;
@@ -193,72 +191,122 @@
         width: 600px;
         height: 600px;
     }
-}
+} */
 
-
+/* TOP 10 */
 
 @media screen and (min-width: 576px) {
     .top10 {
-        width: 300px;
-        height: 300px;
+        max-width: 100%;
+        height: fit-content;
+
     }
 }
 
 @media screen and (min-width: 768px) {
     .top10 {
-        width: 400px;
-        height: 400px;
+        max-width: 100%;
+        height: fit-content;
     }
 }
 
 @media screen and (min-width: 992px) {
     .top10 {
-        width: 500px;
-        height: 500px;
+        max-width: 350px;
+        height: fit-content;
     }
 }
 
 @media screen and (min-width: 1200px) {
     .top10 {
-        width: 400px;
-        height: 400px;
+        max-width: 400px;
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .top10 {
+        max-width: 500px;
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 1850px) {
+    .top10 {
+        max-width: 690px;
+        height: fit-content;
     }
 }
 
 
+
+/* CONTAINER GRÁFICO */
 
 
 @media screen and (min-width: 280px) {
     .dashboard-chart-container {
-        min-width: 200px;
-        min-height: 200px;
+        padding: 5% 5% 5% 5%;
+        margin-bottom: 20px;
     }
 }
 
 @media screen and (min-width: 576px) {
     .dashboard-chart-container {
-        width: 100px;
+        padding: 5% 5% 5% 5%;
+        margin-bottom: 20px;
 
     }
 }
 
 @media screen and (min-width: 768px) {
     .dashboard-chart-container {
-        width: 400px;
-
+        padding: 5% 5% 5% 5%;
     }
 }
 
 @media screen and (min-width: 992px) {
     .dashboard-chart-container {
-        width: 500px;
+        padding: 5% 5% 5% 5%;
 
     }
 }
 
 @media screen and (min-width: 1200px) {
     .dashboard-chart-container {
-        width: 600px;
-        height: 550px;
+        padding: 5% 5% 5% 5%;
+
     }
 }
+
+
+/* CARDS */
+
+@media screen and (min-width: 992px) {
+    .dash-cards {
+        max-width: 244px;
+        max-height: 104px;
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .dash-cards {
+        max-width: 244px;
+        max-height: 104px;
+    }
+}
+
+@media screen and (max-width: 1289px) {
+    .company-total {
+        margin-top: 10px;
+    }
+}
+
+/* @media screen and (max-width: 991px) {
+    .report , .students-total {
+        margin-right: 10px;
+    }
+    .requested-info , .company-total {
+        margin-left: 10px;
+    }
+} */
