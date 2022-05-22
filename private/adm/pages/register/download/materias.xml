@@ -15,8 +15,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8976</WindowHeight>
-  <WindowWidth>23040</WindowWidth>
+  <WindowHeight>5556</WindowHeight>
+  <WindowWidth>17256</WindowWidth>
   <WindowTopX>32767</WindowTopX>
   <WindowTopY>32767</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -33,26 +33,11 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Planilha1">
-  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="14.4">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="14.55">
    <Column ss:AutoFitWidth="0" ss:Width="97.800000000000011"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Nome das matérias</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Máteria legal</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Matéria meio legal</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Matéria chata</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Helena</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">Linda</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -62,6 +47,7 @@
     <PageMargins x:Bottom="0.78740157499999996" x:Left="0.511811024"
      x:Right="0.511811024" x:Top="0.78740157499999996"/>
    </PageSetup>
+   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
