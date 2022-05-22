@@ -23,21 +23,38 @@ if (isset($_GET['updateModule'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../../style/form-update-teacher.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/button.style.css">
+    <link rel="shortcut icon" href="../../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
     <title>Editar módulo | Heelp!</title>
 
 </head>
 
 <body>
-    <form action="./controller/update-module.controller.php?updateModule=<?php echo $rowCat['id'] ?>" method="POST" enctype="multipart/form-data">
-        <label>Editar módulo</label>
-        <p>
-            <label>Nome módulo</label>
-            <input type="text" name="updateName" id="updateName" value="<?php echo $rowCat['name'] ?>">
-        </p>
+    <div class="my-container">
+        <div class="page-container">
+            <div class="form-base bg-modal-gray">
+                <form action="./controller/update-module.controller.php?updateModule=<?php echo $rowCat['id'] ?>" method="POST" enctype="multipart/form-data">
+                    <div class="form-header">
+                        <a href="./list-module.page.php">
+                            <img src="../../../images/components/arrow.svg" class="module-arrow" alt="Botão de voltar">
+                        </a>
+                        <label class="normal-20-bold-modaltitle title-header">Editar módulo</label>
+                    </div>
+                    <p>
+                        <label class="normal-14-medium-p name">Nome módulo</label><br/>
+                        <input type="text" name="updateName" id="updateName" class="input-name-module normal-12-regular-tinyinput input-text" value="<?php echo $rowCat['name'] ?>"required autocomplete="off" autofocus minlength="4">
+                    </p>
 
-        <input type="submit" value="Editar" name="update">
-        <a href="./list-module.page.php"><button type="button">Cancelar</button></a>
-    </form>
+                    <input type="submit" class="register normal-14-bold-p" value="Editar" name="update">
+                    <a href="./list-module.page.php"><button type="button" class="clean normal-14-bold-p">Cancelar</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

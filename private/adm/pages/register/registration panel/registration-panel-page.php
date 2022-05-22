@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
         <!-- Título e Ícone -->
-        <title>ADM - Heelp!</title>
+        <title>Adicionar Informações | Heelp!</title>
         <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
 
         <!-- JavaScript -->
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="school-cad cad-option">
-                        <a href="#" class="cad-a">
+                        <a href="../register-school/list-school.page.php" class="cad-a">
                             <p class="nome-cad normal-40-black-display">ETECs</p>
                             <img src="./img/school-img.svg" class="img-cad">
                         </a>

@@ -88,6 +88,7 @@ body, html {
     padding-bottom: 10px;
     background-color: var(--primary);
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .register:hover {
@@ -104,6 +105,7 @@ body, html {
     padding-bottom: 10px;
     background-color: var(--white);
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .clean:hover {
@@ -142,4 +144,20 @@ body, html {
     height: 100%;
     width: 100%;
     border-radius: 8px;
+}
+
+.name {
+    margin-bottom: 8px;
+}
+
+.input-name-module {
+    margin-top: 8px;
+    margin-bottom: 60px;
+}
+
+.module-arrow {
+    margin-right: 12px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 4px;
 }
