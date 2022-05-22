@@ -18,6 +18,9 @@ try {
 
         $teachersUsedByCourse = $course->selectTeachersUsedByCourse($id);
         $teacherAvailable = $course->selectAvailableTeachersForCourse($id);
+
+        $subjectsUsedByCourse = $course->selectSubjectsUsedByCourse($id);
+        $subjectAvailable = $course->selectAvailableSubjectsForCourse($id);
     }
 } catch (Exception $e) {
     echo $e->getMessage();
@@ -138,6 +141,26 @@ Mensagem de alerta ⬇️
             </select>
         </p>
 
+        <p>
+            <label>Selecione as matérias deste curso</label>
+        </p>
+
+        <p>
+            <select name="idSubjects[]" id="idSubjects" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
+                <optgroup label="Matérias selecionadas">
+                    <?php foreach ($subjectsUsedByCourse as $row) { ?>
+                        <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
+                    <?php } ?>
+                </optgroup>
+
+                <optgroup label="Matérias disponíveis">
+                    <?php foreach ($subjectAvailable as $row) { ?>
+                        <option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
+                    <?php } ?>
+                </optgroup>
+            </select>
+        </p>
+
         <div>
             <p>
                 Sobre
@@ -184,6 +207,11 @@ Mensagem de alerta ⬇️
 
         $(".school-select").select2({
             placeholder: "Selecione os professores",
+            allowClear: true
+        });
+
+        $(".subject-select").select2({
+            placeholder: "Selecione as matérias",
             allowClear: true
         });
     </script>
