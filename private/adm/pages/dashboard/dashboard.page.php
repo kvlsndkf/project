@@ -71,7 +71,7 @@
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="dashboard.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
                         <p class="normal-18-bold-title-2 sidebar-option sidebar-option-current">Dashboard</p>
                     </a>

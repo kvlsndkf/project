@@ -46,6 +46,11 @@
     cursor: pointer;
 }
 
+.adm-email-button:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
 .button-container {
     max-width: 300px;
 }
@@ -301,6 +306,8 @@
         margin-top: 10px;
     }
 }
+
+
 
 /* @media screen and (max-width: 991px) {
     .report , .students-total {
