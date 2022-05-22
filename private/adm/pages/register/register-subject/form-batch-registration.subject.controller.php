@@ -15,7 +15,6 @@
         <button>Baixar modelo de planilha</button>
     </a>
     <form action="./controller/subject-batch-resgistration.controller.php" name="subject-batch-registration" method="post" enctype="multipart/form-data">
-
         <br />
         <br />
         <input type="file" name="subject-table-file">

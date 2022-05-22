@@ -30,7 +30,7 @@ try {
     <form action="./controller/update-subject.controller.php?updateSubject=<?php echo $updateSubject['id'] ?>" method="post">
         <p>
             Nome
-            <input type="text" name="updateName" id="updateName" autofocus autocomplete="off" value="<?php echo $updateSubject['name'] ?>">
+            <input type="text" name="updateName" id="updateName" required autofocus autocomplete="off" value="<?php echo $updateSubject['name'] ?>">
         </p>
 
         <p>

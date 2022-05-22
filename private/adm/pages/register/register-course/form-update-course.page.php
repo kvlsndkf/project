@@ -98,7 +98,7 @@ Mensagem de alerta ⬇️
     <form action="./controller/update-course.controller.php?updateCourse=<?php echo $updateCourse['id'] ?>" method="post" enctype="multipart/form-data">
         <p>
             Nome
-            <input type="text" name="updateName" id="updateName" autocomplete="off" value="<?php echo $updateCourse['name'] ?>">
+            <input type="text" name="updateName" id="updateName" required autocomplete="off" value="<?php echo $updateCourse['name'] ?>">
         </p>
 
         <p>
@@ -106,7 +106,7 @@ Mensagem de alerta ⬇️
         </p>
 
         <p>
-            <select name="idSchools[]" id="idSchools" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
+            <select name="idSchools[]" id="idSchools" class="multiple-select w-100" required style="width: 100%" multiple="multiple" required>
                 <optgroup label="Etec's selecionadas">
                     <?php foreach ($schoolsUsedByCourse as $row) { ?>
                         <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
@@ -126,7 +126,7 @@ Mensagem de alerta ⬇️
         </p>
 
         <p>
-            <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
+            <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" required style="width: 100%" multiple="multiple" required>
                 <optgroup label="Professores selecionados">
                     <?php foreach ($teachersUsedByCourse as $row) { ?>
                         <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
@@ -146,7 +146,7 @@ Mensagem de alerta ⬇️
         </p>
 
         <p>
-            <select name="idSubjects[]" id="idSubjects" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
+            <select name="idSubjects[]" id="idSubjects" class="multiple-select w-100" required style="width: 100%" multiple="multiple" required>
                 <optgroup label="Matérias selecionadas">
                     <?php foreach ($subjectsUsedByCourse as $row) { ?>
                         <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
@@ -167,7 +167,7 @@ Mensagem de alerta ⬇️
             </p>
 
             <div id="contentTextArea">
-                <textarea name="about" id="about" cols="30" rows="10" onclick="colorDiv()"><?php echo $updateCourse['about'] ?></textarea>
+                <textarea name="about" id="about" cols="30" rows="10" required onclick="colorDiv()"><?php echo $updateCourse['about'] ?></textarea>
                 <div><span id="counterTextArea">250</span></div>
             </div>
         </div>
