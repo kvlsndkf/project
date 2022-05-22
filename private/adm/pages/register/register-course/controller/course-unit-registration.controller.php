@@ -3,6 +3,7 @@ include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Teacher.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
+require_once('/xampp/htdocs' . '/project/classes/schools/Subject.class.php');
 
 session_start();
 
@@ -41,6 +42,9 @@ if (isset($_POST['register'])) {
                 $school = new School();
                 $school = $_POST['idSchools'];
 
+                $subject = new Subject();
+                $subject = $_POST['idSubjects'];
+
                 $course = new Course();
                 $course->setName($_POST['name']);
                 $course->setAbout($_POST['about']);
@@ -48,6 +52,7 @@ if (isset($_POST['register'])) {
                 $course->setPhoto($pathToSave);
                 $course->setTeacher($teacher);
                 $course->setSchool($school);
+                $course->setSubject($subject);
                 $course->registerCourse($course);
             } else {
                 $_SESSION['statusNegative'] = "Falha ao carregar a imagem, tente novamente...";

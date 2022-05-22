@@ -1,6 +1,7 @@
 <?php
 require_once('/xampp/htdocs' . '/project/classes/schools/Teacher.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
+require_once('/xampp/htdocs' . '/project/classes/schools/Subject.class.php');
 
 
 try {
@@ -9,6 +10,9 @@ try {
 
     $school = new School();
     $listSchoolsOfSelect = $school->listSchoolsOfSelectResgisterCourse();
+
+    $subject = new Subject();
+    $listSubjectsOfSelect = $subject->listSubjectsOfSelectResgisterCourse();
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -121,6 +125,19 @@ Mensagem de alerta ⬇️
             </select>
         </p>
 
+        <p>
+            <label>Selecione as matérias deste curso</label>
+        </p>
+
+        <p>
+            <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select w-100" style="width: 100%" multiple="multiple" required>
+                <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
+                    $row = $listSubjectsOfSelect[$i] ?>
+                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                <?php } ?>
+            </select>
+        </p>
+
         <div>
             <p>
                 Sobre
@@ -164,6 +181,11 @@ Mensagem de alerta ⬇️
 
         $(".school-select").select2({
             placeholder: "Selecione os professores",
+            allowClear: true
+        });
+
+        $(".subject-select").select2({
+            placeholder: "Selecione as matérias",
             allowClear: true
         });
     </script>
