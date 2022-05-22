@@ -76,7 +76,7 @@ try {
     </a>
 
     <!-- Barra de pesquisa ⬇️ -->
-    <form action="./search-module.page.php" method="GET">
+    <form action="./list-module.page.php" method="GET">
         <input type="text" name="searchModule" id="searchModule" placeholder="Pesquise por módulos" autocomplete="off">
         <input type="submit" value="Pesquisar">
     </form>

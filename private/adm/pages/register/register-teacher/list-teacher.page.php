@@ -245,7 +245,7 @@ try {
                     </a>
 
                     <!-- Barra de pesquisa ⬇️ -->
-                    <form action="./search-teacher.page.php" method="GET">
+                    <form action="./list-teacher.page.php" method="GET">
                         <input type="text" name="searchTeacher" id="searchTeacher" placeholder="Pesquise por professores" autocomplete="off" class="search-bar">
                         <input type="submit" value="🔎" class="search-button">
                     </form>

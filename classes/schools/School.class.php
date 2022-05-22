@@ -660,91 +660,223 @@ class School extends Social
         //Setar a quantidade de registros por página
         $limit_result = 9;
 
-        if ($search== null) {
-            //Contar a quantidade de registros no bd 
-            $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools";
-            $result_qnt_register = $connection->prepare($query_qnt_register);
-            $result_qnt_register->execute();
-            $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
-
-            //Quantidade de páginas
-            $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
-
-            $prev_page = $page - 1;
-
-            $next_page = $page + 1;
-
-            echo "<ul class='pagination'>";
         
-                //botão para voltar
-                if ($prev_page != 0) { 
-                    echo "<li class='page-item'>";
-                        echo "<a class='page-link' href='./list-school.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                    echo "</li>";
-                    } else { 
-                    echo "<li class='page-item disabled'>";
-                        echo "<a class='page-link disable' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                    echo "</li>";
-                }
+        //Contar a quantidade de registros no bd 
+        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools";
+        $result_qnt_register = $connection->prepare($query_qnt_register);
+        $result_qnt_register->execute();
+        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
 
-                //Apresentar a paginação
-                for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                    echo "<li class='page-item'><a class='page-link' href='./list-school.page.php?page=$i'> $i </a></li>";
-                }
+        //Quantidade de páginas
+        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+        $prev_page = $page - 1;
+
+        $next_page = $page + 1;
+
+        echo "<ul class='pagination'>";
+        
+            //botão para voltar
+            if ($prev_page != 0) { 
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+            }
+
+            //Apresentar a paginação
+            for ($i = 1; $i < $page_qnt + 1; $i++) { 
+                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i'> $i </a></li>";
+            }
                 
-                //botão para avançar
-                if ($next_page <= $page_qnt) {
-                    echo "<li class='page-item'>";
-                        echo "<a class='page-link' href='./list-school.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                    echo "</li>";
-                    } else { 
-                    echo "<li class='page-item disabled'>";
-                        echo "<a class='page-link disable' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                    echo "</li>";
-                }
-            echo "</ul>";
+            //botão para avançar
+            if ($next_page <= $page_qnt) {
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+            }
+        echo "</ul>";
+    }
+    
 
-        } else{
-            //Contar a quantidade de registros no bd 
-            $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools WHERE name LIKE '%$search%' ORDER BY name";
-            $result_qnt_register = $connection->prepare($query_qnt_register);
-            $result_qnt_register->execute();
-            $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+    //----------------------------
+    /**
+     * @method paginationSchool() paginate list of schools search
+     * @param string $search
+     */
+    public function paginationSchoolSearch(string $search)
+    {
+        $connection = Connection::connection();
 
-            //Quantidade de páginas
-            $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+        
+        //Setar a quantidade de registros por página
+        $limit_result = 9;
+        
+        //Contar a quantidade de registros no bd 
+        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools WHERE name LIKE '%$search%' ORDER BY name";
+        $result_qnt_register = $connection->prepare($query_qnt_register);
+        $result_qnt_register->execute();
+        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
 
-            $prev_page = $page - 1;
-            $next_page = $page + 1;
+        //Quantidade de páginas
+        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
 
-            echo "<ul class='pagination'>";
-                //botão para voltar
-                if ($prev_page != 0) { 
-                    echo "<li class='page-item'>";
-                        echo "<a class='page-link' href='./list-school.page.php?page=$prev_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                    echo "</li>";
-                    } else { 
-                    echo "<li class='page-item disabled'>";
-                        echo "<a class='page-link disable' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                    echo "</li>";
-                }
+        $prev_page = $page - 1;
+        $next_page = $page + 1;
 
-                //Apresentar a paginação
-                for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                    echo "<li class='page-item'><a class='page-link' href='./list-school.page.php?page=$i &searchSchool=$search'> $i </a></li>";
-                }
-                
-                //botão para avançar
-                if ($next_page <= $page_qnt) {
-                    echo "<li class='page-item'>";
-                        echo "<a class='page-link' href='./list-school.page.php?page= $next_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                    echo "</li>";
-                    } else { 
-                    echo "<li class='page-item disabled'>";
-                        echo "<a class='page-link disable' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                    echo "</li>";
-                }
-            echo "</ul>";
-        }
+        echo "<ul class='pagination'>";
+            //botão para voltar
+            if ($prev_page != 0) { 
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+            }
+
+            //Apresentar a paginação
+            for ($i = 1; $i < $page_qnt + 1; $i++) { 
+                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &searchSchool=$search'> $i </a></li>";
+            }
+            
+            //botão para avançar
+            if ($next_page <= $page_qnt) {
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+            }
+        echo "</ul>";
+    }
+
+    //----------------------------
+    /**
+     * @method paginationSchool() paginate list of schools search
+     * @param string $search
+     */
+    public function paginationSchoolfilter1(string $haveAccount)
+    {
+        $connection = Connection::connection();
+
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+        
+        //Setar a quantidade de registros por página
+        $limit_result = 9;
+        
+        //Contar a quantidade de registros no bd 
+        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools WHERE have_account LIKE '%Sem conta%' ORDER BY name";
+        $result_qnt_register = $connection->prepare($query_qnt_register);
+        $result_qnt_register->execute();
+        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+
+        //Quantidade de páginas
+        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+        $prev_page = $page - 1;
+        $next_page = $page + 1;
+
+        echo "<ul class='pagination'>";
+            //botão para voltar
+            if ($prev_page != 0) { 
+                echo "<li class='page-item'>";
+                    echo "<a class='page- pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+            }
+
+            //Apresentar a paginação
+            for ($i = 1; $i < $page_qnt + 1; $i++) { 
+                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &filterSchool=$haveAccount'> $i </a></li>";
+            }
+            
+            //botão para avançar
+            if ($next_page <= $page_qnt) {
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+            }
+        echo "</ul>";
+    }
+
+    //----------------------------
+    /**
+     * @method paginationSchool() paginate list of schools search
+     * @param string $search
+     */
+    public function paginationSchoolfilter2(string $haveAccount)
+    {
+        $connection = Connection::connection();
+
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+        
+        //Setar a quantidade de registros por página
+        $limit_result = 9;
+        
+        //Contar a quantidade de registros no bd 
+        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools WHERE have_account LIKE '%Com conta%' ORDER BY name";
+        $result_qnt_register = $connection->prepare($query_qnt_register);
+        $result_qnt_register->execute();
+        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+
+        //Quantidade de páginas
+        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+        $prev_page = $page - 1;
+        $next_page = $page + 1;
+
+        echo "<ul class='pagination'>";
+            //botão para voltar
+            if ($prev_page != 0) { 
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+            }
+
+            //Apresentar a paginação
+            for ($i = 1; $i < $page_qnt + 1; $i++) { 
+                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &filterSchool=$haveAccount'> $i </a></li>";
+            }
+            
+            //botão para avançar
+            if ($next_page <= $page_qnt) {
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+            }
+        echo "</ul>";
     }
 }

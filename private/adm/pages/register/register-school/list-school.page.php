@@ -244,7 +244,22 @@ try {
     
     <!-- Paginação ⬇️ -->
     <?php
-        $paginationSchool = $school->paginationSchool($search);
+
+        if (!empty($search) && $filter == null){
+            $paginationSchoolfilter = $school ->paginationSchoolSearch($search);
+        }else if (empty($search) && $filter == null){
+            $paginationSchoolfilter = $school ->paginationSchool($search);
+        } else {
+
+        }    
+        
+        if($filter == 'Semconta' && $search == null){
+            $paginationSchoolfilter = $school ->paginationSchoolFilter1($filter);
+        } else if ($filter == 'Comconta' && $search == null) {
+            $paginationSchoolfilter = $school ->paginationSchoolFilter2($filter);
+        } else {
+
+        }    
     ?>
 
     <!-- JS Bootstrap ⬇️ -->
