@@ -609,4 +609,42 @@ class School extends Social
 
         return $result;
     }
+
+    //----------------------------
+    public function listSchoolsOfSelectResgisterCourse()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name FROM schools
+                                            WHERE have_account = 'Com conta'");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildSchoolListSelect($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    //----------------------------
+    /**
+     * @method buildSchoolList() organize the list of teachers by 
+     * @param array $result 
+     */
+    private function buildSchoolListSelect(array | false $result)
+    {
+        $schools = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $school = new School();
+            $school->id = $row['id'];
+            $school->name = $row['name'];
+            array_push($schools, $school);
+        }
+
+        $this->setResultBuildList($schools);
+        return $schools;
+    }
 }
