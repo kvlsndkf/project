@@ -295,4 +295,40 @@ class Subject
         $_SESSION['statusPositive'] = "Cadastro em lote feito com sucesso.";
         header('Location: /project/private/adm/pages/register/register-subject/list-subject.page.php');
     }
+
+    //----------------------------
+    public function listSubjectsOfSelectResgisterCourse()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name FROM subjects");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildSubjectsListSelect($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    //----------------------------
+    /**
+     * @method buildSchoolList() organize the list of teachers by 
+     * @param array $result 
+     */
+    private function buildSubjectsListSelect(array | false $result)
+    {
+        $subjects = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $subject = new Subject();
+            $subject->id = $row['id'];
+            $subject->name = $row['name'];
+            array_push($subjects, $subject);
+        }
+
+        return $subjects;
+    }
 }
