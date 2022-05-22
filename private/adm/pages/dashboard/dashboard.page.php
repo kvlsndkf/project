@@ -141,41 +141,82 @@
                         <img src="../../../../views/images/avatars/avatar-scotty.svg" alt="">
                     </div>
                 </div>
-                <div class="dashboard-chart-container d-flex justify-content-center">
-                    <div class="dashboard-chart">
-                        <div class="chart-title">
-                            <span>Avaliação das respostas</span>
+                <div class="container1 d-flex justify-content-between">
+                    <div class="dashboard-chart-container d-flex justify-content-center">
+                        <div class="dashboard-chart">
+                            <div class="chart-title">
+                                <span class="normal-18-bold-title-2">Avaliação das respostas</span>
+                            </div>
+                            <canvas id="myChart">
+                                <script>
+                                    const labels = [
+                                        'Bem avaliadas',
+                                        'Mal avaliadas',
+                                    ];
+
+                                    const data = {
+                                        labels: labels,
+                                        datasets: [{
+                                            label: 'My First dataset',
+                                            backgroundColor: [
+                                                'rgba(128, 128, 255, 1)',
+                                                'rgba(255, 198, 25, 1)',
+                                            ],
+
+                                            data: [25, 8],
+                                        }]
+                                    };
+
+                                    const config = {
+                                        type: 'pie',
+                                        data: data,
+                                        options: {}
+                                    };
+                                </script>
+                            </canvas>
                         </div>
-                        <canvas id="myChart">
-                            <script>
-                                const labels = [
-                                    'Bem avaliadas',
-                                    'Mal avaliadas',
-                                ];
-
-                                const data = {
-                                    labels: labels,
-                                    datasets: [{
-                                        label: 'My First dataset',
-                                        backgroundColor: [
-                                            'rgba(128, 128, 255, 1)',
-                                            'rgba(255, 198, 25, 1)',
-                                        ],
-
-                                        data: [25, 8],
-                                    }]
-                                };
-
-                                const config = {
-                                    type: 'pie',
-                                    data: data,
-                                    options: {}
-                                };
-                            </script>
-                        </canvas>
                     </div>
-                </div>
+                    <!-- <div class="top10">
+                        <div class="title-top10 d-flex justify-content-center">
+                            <img src="../../images/components/trophy-icon.svg">
+                            <span class="span-top10 normal-18-black-title-2">Top 10 cursos com mais alunos</span>
+                            <img src="../../images/components/trophy-icon.svg">
+                        </div>
+                        <div class="hrtop"></div>
 
+                        <div class="top-courses">
+                            <span class="normal-14-bold-p number-rank">01°</span>
+                            <img src="../../images/icons/icon-acucar.svg" class="icon-top">
+                            <span class="normal-16-bold-title-3">Açúcar e Álcool</span>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="container2 d-flex justify-content-between">
+                    <div class="report dash-cards">
+                        <section class="section">
+                            <span class="card-num">2</span>
+                            <span class="card-label">Denúncias</span>
+                        </section>
+                    </div>
+                    <div class="requested-info dash-cards">
+                        <section class="section">
+                            <span class="card-num">3</span>
+                            <span class="card-label">Informações solicitadas</span>
+                        </section>
+                    </div>
+                    <div class="students-total dash-cards">
+                        <section class="section">
+                            <span class="card-num">10.000</span>
+                            <span class="card-label">Total de alunos</span>
+                        </section>
+                    </div>
+                    <div class="company-total dash-cards">
+                        <section class="section">
+                            <span class="card-num">10.000</span>
+                            <span class="card-label">Total de empresas</span>
+                        </section>
+                    </div>
+                </div> -->
             </div>
         </div>
         <!-- JS Bootstrap ⬇️ -->

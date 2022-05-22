@@ -50,24 +50,215 @@
     max-width: 300px;
 }
 
-.dashboard-chart {
-    max-width: 400px;
-    max-height: 400px;
-}
+/* .dashboard-chart {
+    width: 600px;
+    height: 600px;
+} */
 
 .dashboard-chart-container {
     border: 1px solid var(--gray7);
     border-radius: 10px;
     max-width: fit-content;
     max-height: fit-content;
-    padding-top: 28px;
+    /* padding-top: 28px;
     padding-left: 120px;
     padding-right: 120px;
-    padding-bottom: 28px;
-    margin-top: 20px;
+    padding-bottom: 28px; */
 }
 
 .chart-title {
     width: 100%;
     text-align: center;
+}
+
+.container1 {
+    margin-top: 20px;
+}
+
+.top10 {
+    border: 1px solid var(--gray7);
+    border-radius: 10px;
+    padding: 28px 20px 28px 20px;
+}
+
+.hrtop {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--gray7);
+    height: 1px;
+    margin-top: 13px;
+}
+
+.span-top10 {
+    margin: 0 4px 0 4px;
+}
+
+.number-rank {
+    color: var(--gray5);
+    margin-right: 10px;
+}
+
+.icon-top {
+    margin-right: 8px;
+}
+
+.top-courses {
+    margin-top: 20px;
+}
+
+.card-num {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--h3);
+    line-height: var(--lh-big);
+    color: var(--white);
+}
+
+.card-label {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--title);
+    line-height: var(--lh-medium);
+    color: var(--white);
+}
+
+.section {
+    margin-top: 18px;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.requested-info {
+    background-color: var(--primary);
+}
+
+.report {
+    background-color: var(--ocean);
+}
+
+.company-total {
+    background-color: var(--blue);
+}
+
+.students-total {
+    background-color: var(--fuchsia);
+}
+
+.dash-cards {
+    min-width: 244px;
+    min-height: 104px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container2 {
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 280px) {
+    .dashboard-chart {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .dashboard-chart {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .dashboard-chart {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .dashboard-chart {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .dashboard-chart {
+        width: 600px;
+        height: 600px;
+    }
+}
+
+
+
+@media screen and (min-width: 576px) {
+    .top10 {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .top10 {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .top10 {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .top10 {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+
+
+
+@media screen and (min-width: 280px) {
+    .dashboard-chart-container {
+        min-width: 200px;
+        min-height: 200px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .dashboard-chart-container {
+        width: 100px;
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .dashboard-chart-container {
+        width: 400px;
+
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .dashboard-chart-container {
+        width: 500px;
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .dashboard-chart-container {
+        width: 600px;
+        height: 550px;
+    }
 }
