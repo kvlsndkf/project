@@ -139,6 +139,7 @@ try {
 
         <?php $countTeachersInCourse = $course->countTeachersInCourse($row->id); ?>
         <?php $countSchoolsInCourse = $course->countSchoolsInCourse($row->id); ?>
+        <?php $countSubjectsInCourse = $course->countSubjectsInCourse($row->id); ?>
 
         <p>
             <img src="<?php echo $row->photo; ?>" alt=" <?php echo $row->name; ?>">
@@ -155,6 +156,9 @@ try {
 
         <?php $style = $countTeachersInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-primary'; ?>
         <span class="<?php echo $style; ?>"> Professores: <?php echo $countTeachersInCourse ?></span>
+
+        <?php $style = $countSubjectsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-purple'; ?>
+        <span class="<?php echo $style; ?>"> Matérias: <?php echo $countSubjectsInCourse ?></span>
 
         <br><br>
         <button type="submit" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">Ver mais detalhes</button>
@@ -205,6 +209,9 @@ try {
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Professores</a>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">Matérias</a>
+                            </li>
                         </ul>
                         <!-- Tabs navs -->
 
@@ -217,6 +224,11 @@ try {
                             </div>
                             <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
                                 <div id="teachers-list">
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                                <div id="subjects-list">
 
                                 </div>
                             </div>
@@ -321,39 +333,26 @@ try {
                 document.getElementById("teachers-list").appendChild(divElement);
             }
 
-            // assingOptionalValueInElementById('linkedin-school', 'href', linkedin);
-            // assingOptionalValueInElementById('github-school', 'href', github);
-            // assingOptionalValueInElementById('facebook-school', 'href', facebook);
-            // assingOptionalValueInElementById('instagram-school', 'href', instagram);
+            //lista de matérias
+            const subjectsList = document.getElementById("subjects-list");
+            subjectsList.innerHTML = "";
 
-            // assingValueInElementById('photo-school', "src", school['photo']);
-            // assingValueInElementById('name-school', 'innerHTML', school['name']);
-            // assingValueInElementById('address-school', 'innerHTML', school['address'] + ", São Paulo");
-            // assingValueInElementById('about-school', 'innerHTML', school['about']);
+            array_subjects = object_course['subjects'];
 
-            // const teachersList = document.getElementById("teachers-list");
-            // teachersList.innerHTML = "";
+            for (i = 0; i < array_subjects.length; i++) {
+                const divElementSubject = document.createElement("div");
+                divElementSubject.className = "div";
+                const tElementSubject = document.createElement("p");
+                tElementSubject.className = "subs";
+               
 
-            // array_teachers = object_school['teachers'];
+                tElementSubject.innerHTML = array_subjects[i]['name'];
 
+                divElementSubject.id = i;
+                divElementSubject.appendChild(tElementSubject);
 
-            // for (i = 0; i < array_teachers.length; i++) {
-            //     const divElement = document.createElement("div");
-            //     divElement.className = "";
-            //     const tElement = document.createElement("p");
-            //     tElement.className = "";
-            //     const photoElement = document.createElement("img");
-            //     photoElement.className = "";
-
-            //     tElement.innerHTML = array_teachers[i]['name'];
-            //     photoElement.src = array_teachers[i]['photo'];
-
-            //     divElement.id = i;
-            //     divElement.appendChild(tElement);
-            //     divElement.appendChild(photoElement);
-
-            //     document.getElementById("teachers-list").appendChild(divElement);
-            // }
+                document.getElementById("subjects-list").appendChild(divElementSubject);
+            }
         }
     </script>
 </body>
