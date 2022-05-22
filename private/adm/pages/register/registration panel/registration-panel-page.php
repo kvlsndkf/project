@@ -147,7 +147,7 @@
                     </div>
 
                     <div class="course-cad cad-option">
-                        <a href="#" class="cad-a">
+                        <a href="../register-course/list-course.page.php" class="cad-a">
                             <p class="nome-cad normal-40-black-display">Cursos</p>
                             <img src="./img/course-img.svg" class="img-cad">
                         </a>
