@@ -192,6 +192,15 @@
     margin: 5px;
 }
 
+.card-mod{
+    width: 315px;
+    height: 80px;
+    border-radius: 10px;
+    border: 1px solid var(--gray7);
+    margin: 5px;
+    padding: 20px;
+}
+
 .div-prof-img{
     height: 120px;
     border-radius: 10px 10px 0 0;
