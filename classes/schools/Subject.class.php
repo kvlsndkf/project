@@ -105,7 +105,7 @@ class Subject
         $connection = Connection::connection();
 
         try {
-            if (!empty($search)) {
+            if (!is_null($search) && !empty($search)) {
                 $result = $this->searchSubject($search);
                 return $this->buildSubjectList($result);
             }

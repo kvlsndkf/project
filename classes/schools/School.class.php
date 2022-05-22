@@ -198,7 +198,7 @@ class School extends Social
         $connection = Connection::connection();
 
         try {
-            if (!empty($search)) {
+            if (!is_null($search) && !empty($search)) {
                 $result = $this->searchSchool($search);
                 return $this->buildSchoolList($result);
             }

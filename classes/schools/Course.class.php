@@ -196,7 +196,7 @@ class Course
         $connection = Connection::connection();
 
         try {
-            if (!empty($search)) {
+            if (!is_null($search) && !empty($search)) {
                 $result = $this->searchCourse($search);
                 return $this->buildCourseList($result);
             }

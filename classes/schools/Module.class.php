@@ -134,7 +134,7 @@ class Module
     {
         $connection = Connection::connection();
         try {
-            if (!is_null($search)) {
+            if (!is_null($search) && !empty($search)) {
                 $result = $this->searchModule($search);
                 return $this->buildModuleList($result);
             }
