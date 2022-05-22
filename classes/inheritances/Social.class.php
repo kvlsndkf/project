@@ -1,12 +1,12 @@
 <?php
 
-class Social
+abstract class Social
 {
     //attributes
-    protected string $github;
-    protected string $instagram;
-    protected string $facebook;
-    protected string $linkedin;
+    public string $github = "";
+    public string $instagram = "";
+    public string $facebook = "";
+    public string $linkedin = "";
 
     //getters and setters
     public function getGithub()

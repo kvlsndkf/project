@@ -31,26 +31,11 @@ CREATE TABLE companies(
     , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 )
 
-CREATE TABLE students(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , first_name VARCHAR(100) NOT NULL
-    , surname VARCHAR(100) NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , user_id INT NOT NULL
-    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    , course_id INT NOT NULL
-    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
-    , module_id INT NOT NULL
-    , FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
-)
-
 CREATE TABLE teachers(
     id INT NOT NULL AUTO_INCREMENT
     , PRIMARY KEY (id)
-    , name VARCHAR(100) NOT NULL
-    , photo VARCHAR(100) NOT NULL
+    , name VARCHAR(255) NOT NULL
+    , photo text NOT NULL
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
 )
@@ -84,18 +69,34 @@ CREATE TABLE subjects(
 CREATE TABLE schools(
     id INT NOT NULL AUTO_INCREMENT
     , PRIMARY KEY (id)
-    , name VARCHAR(100) NOT NULL
-    , district VARCHAR(100) NOT NULL
-    , city VARCHAR(100) NOT NULL
-    , have_account BOOLEAN NOT NULL
-    , about VARCHAR(237) NOT NULL
-    , github VARCHAR(100)
-    , linkedin VARCHAR(100)
-    , facebook VARCHAR(100)
-    , instagram VARCHAR(100)
-    , photo VARCHAR(100)
+    , name VARCHAR(255) NOT NULL
+    , address VARCHAR(255) NOT NULL
+    , have_account VARCHAR(12) NOT NULL
+    , in_sp_city VARCHAR(14)
+    , not_in_sp_city VARCHAR(14) 
+    , about text
+    , github text
+    , linkedin text
+    , facebook text
+    , instagram text
+    , photo text
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
+)
+
+CREATE TABLE students(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY (id)
+    , first_name VARCHAR(100) NOT NULL
+    , surname VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , user_id INT NOT NULL
+    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    , course_id INT NOT NULL
+    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+    , module_id INT NOT NULL
+    , FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
 )
 
 CREATE TABLE schoolsHasStudents(

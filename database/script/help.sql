@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Abr-2022 às 04:17
+-- Tempo de geração: 21-Maio-2022 às 03:34
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -136,16 +136,17 @@ CREATE TABLE `modules` (
 
 CREATE TABLE `schools` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `district` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `have_account` tinyint(1) NOT NULL,
-  `about` varchar(237) NOT NULL,
-  `github` varchar(100) DEFAULT NULL,
-  `linkedin` varchar(100) DEFAULT NULL,
-  `facebook` varchar(100) DEFAULT NULL,
-  `instagram` varchar(100) DEFAULT NULL,
-  `photo` varchar(100) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `have_account` varchar(12) NOT NULL,
+  `in_sp_city` varchar(14) DEFAULT NULL,
+  `not_in_sp_city` varchar(14) DEFAULT NULL,
+  `about` text DEFAULT NULL,
+  `github` text DEFAULT NULL,
+  `linkedin` text DEFAULT NULL,
+  `facebook` text DEFAULT NULL,
+  `instagram` text DEFAULT NULL,
+  `photo` text DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -264,8 +265,8 @@ CREATE TABLE `subjectshasmodules` (
 
 CREATE TABLE `teachers` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `photo` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `photo` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -279,7 +280,7 @@ CREATE TABLE `teachers` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `photo` varchar(100) NOT NULL,
   `type_user` varchar(40) NOT NULL,
   `is_confirmed` tinyint(1) NOT NULL,
@@ -485,13 +486,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT de tabela `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshascourses`
@@ -509,7 +510,7 @@ ALTER TABLE `schoolshasstudents`
 -- AUTO_INCREMENT de tabela `schoolshasteachers`
 --
 ALTER TABLE `schoolshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT de tabela `solicitations`
@@ -539,7 +540,7 @@ ALTER TABLE `subjectshasmodules`
 -- AUTO_INCREMENT de tabela `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `users`
