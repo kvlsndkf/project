@@ -221,16 +221,21 @@ class Module
      * @param string $search 
      */
     public function countModules(string $search = ''): string
-    {
+    {   
+        $connection = Connection::connection();
+        
         $searching = (!is_null($search) && !empty($search));
 
         if ($searching) {
-            $resultBuildList = $this->getResultBuildList();
-            $totalSearch = count($resultBuildList);
-            return "Resultado da pesquisa " . $totalSearch;
+            $stmt = $connection->prepare("SELECT COUNT(id) AS resultado FROM modules WHERE name LIKE '%$search%'");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return "Resultado da pesquisa " . $result[0]['resultado'];
         }
 
-        $connection = Connection::connection();
+        
         try {
             $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM modules");
             $stmt->execute();
