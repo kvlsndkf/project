@@ -17,7 +17,7 @@
     <form action="./controller/subject-batch-resgistration.controller.php" name="subject-batch-registration" method="post" enctype="multipart/form-data">
         <br />
         <br />
-        <input type="file" name="subject-table-file">
+        <input type="file" name="subject-table-file" required>
         <br />
         <br />
         <input type="submit" value="Salvar">
