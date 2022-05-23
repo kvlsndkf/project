@@ -98,7 +98,7 @@ class Teacher
     {
         $connection = Connection::connection();
         try {
-            if (!is_null($search)) {
+            if (!is_null($search) && !empty($search)) {
                 $result = $this->searchTeacher($search);
                 return $this->buildTeacherList($result);
             }
