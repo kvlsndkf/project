@@ -161,43 +161,6 @@
     margin-top: 20px;
 }
 
-/* GRÁFICO */
-
-/* @media screen and (min-width: 280px) {
-    .dashboard-chart {
-        width: 150px;
-        height: 150px;
-    }
-}
-
-@media screen and (min-width: 576px) {
-    .dashboard-chart {
-        width: 300px;
-        height: 300px;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .dashboard-chart {
-        width: 400px;
-        height: 400px;
-    }
-}
-
-@media screen and (min-width: 992px) {
-    .dashboard-chart {
-        width: 500px;
-        height: 500px;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .dashboard-chart {
-        width: 600px;
-        height: 600px;
-    }
-} */
-
 /* TOP 10 */
 
 @media screen and (min-width: 576px) {
@@ -288,7 +251,7 @@
 
 @media screen and (min-width: 992px) {
     .dash-cards {
-        max-width: 244px;
+        min-width: 244px;
         max-height: 104px;
 
     }
@@ -301,19 +264,21 @@
     }
 }
 
+@media screen and (min-width: 1600px) {
+    .dash-cards {
+        min-width: 350px;
+        max-height: 104px;
+    }
+}
+
 @media screen and (max-width: 1289px) {
     .company-total {
         margin-top: 10px;
     }
 }
 
-
-
-/* @media screen and (max-width: 991px) {
-    .report , .students-total {
-        margin-right: 10px;
+@media screen and (max-width:1000px) {
+    .dashboard-title {
+        display: none;
     }
-    .requested-info , .company-total {
-        margin-left: 10px;
-    }
-} */
+}
