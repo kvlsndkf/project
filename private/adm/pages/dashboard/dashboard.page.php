@@ -154,7 +154,9 @@
                                             'Bem avaliadas',
                                             'Mal avaliadas',
                                         ];
-
+                                        
+                                        
+                                
                                         const data = {
                                             labels: labels,
                                             datasets: [{
