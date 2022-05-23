@@ -129,7 +129,7 @@
                 <!-- Card ajuda adminsitrador -->
                 <div class="help-adm-email-container d-flex justify-content-between">
                     <div class="main-help-adm align-self-center ms-4 ms-sm-4 ms-md-4 ms-lg-4 ms-xl-4 me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
-                        <span class="span-help-adm normal-22-black-title-1 white-title">Olá adminsitrador, precisando de ajuda? Entre em contato com a gente!</span>
+                        <span class="span-help-adm normal-22-black-title-1 white-title">Olá adminisitrador, precisando de ajuda? Entre em contato com a gente!</span>
                         <br />
                         <div class="button-container">
                             <div class="adm-email-button white-title normal-14-bold-p">
