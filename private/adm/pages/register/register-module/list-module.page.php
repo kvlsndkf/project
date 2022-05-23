@@ -193,6 +193,50 @@ try {
                 <?php unset($_SESSION['statusPositive']);
                 } ?>
 
+                <!-- Mensagem de erro ⬇️ -->
+                <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </symbol>
+                    </svg>
+
+                    <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <div>
+                            <strong>Ops...</strong>
+                            <?php echo $_SESSION['statusNegative']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                <?php unset($_SESSION['statusNegative']);
+                } ?>
+
+                <!-- Mensagem de alerta ⬇️ -->
+                <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </symbol>
+                    </svg>
+
+                    <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <div>
+                            <strong>Ops...</strong>
+                            <?php echo $_SESSION['statusAlert']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                <?php unset($_SESSION['statusAlert']);
+                } ?>
+
                 <!-- Cadastro módulo ⬇️ -->
                 <a href="./form-register-module.page.php" class="unit-card-a">
                     <div class="unit-card">
@@ -255,8 +299,8 @@ try {
 
                         </div>
                     <?php } ?>
-                    
-                </div>                <!-- Paginação ⬇️ -->
+
+                </div> <!-- Paginação ⬇️ -->
                 <?php
                 //Receber o numero de página
                 $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
@@ -286,59 +330,59 @@ try {
 
                 ?>
 
+                    <div class="div-pagination">
+                        <ul class="pagination">
+                            <?php
+                            //botão para voltar
+                            if ($prev_page != 0) { ?>
+                                <li class="page-item">
+                                    <a class="page-link pagination-last normal-14-medium-p" href="./list-module.page.php?page=<?php echo $prev_page; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
+                                </li>
+                            <?php    } else { ?>
+                                <li class="page-item disabled">
+                                    <a class="page-link disable pagination-last normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                </li>
+                            <?php }  ?>
+
+                            <?php
+                            //Apresentar a paginação
+                            for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
+                                <li class="page-item"><a class="page-link pagination-page normal-14-medium-p" href="./list-module.page.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                            <?php }
+                            ?>
+
+                            <?php
+                            //botão para avançar
+                            if ($next_page <= $page_qnt) { ?>
+                                <li class="page-item">
+                                    <a class="page-link pagination-next normal-14-medium-p" href="./list-module.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
+                                </li>
+                            <?php    } else { ?>
+                                <li class="page-item disabled">
+                                    <a class="page-link disable pagination-next normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
+                                </li>
+                            <?php }  ?>
+                        </ul>
+                    <?php } else {
+
+                    //Contar a quantidade de registros no bd 
+                    $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules WHERE name LIKE '%$search%' ORDER BY name";
+                    $result_qnt_register = $connection->prepare($query_qnt_register);
+                    $result_qnt_register->execute();
+                    $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+
+                    $limit_result = 12;
+
+                    //Quantidade de páginas
+                    $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+                    $prev_page = $page - 1;
+
+                    $next_page = $page + 1;
+
+                    ?>
                         <div class="div-pagination">
                             <ul class="pagination">
-                                <?php
-                                //botão para voltar
-                                if ($prev_page != 0) { ?>
-                                    <li class="page-item">
-                                        <a class="page-link pagination-last normal-14-medium-p" href="./list-module.page.php?page=<?php echo $prev_page; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
-                                    </li>
-                                <?php    } else { ?>
-                                    <li class="page-item disabled">
-                                        <a class="page-link disable pagination-last normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-                                    </li>
-                                <?php }  ?>
-
-                                <?php
-                                //Apresentar a paginação
-                                for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
-                                    <li class="page-item"><a class="page-link pagination-page normal-14-medium-p" href="./list-module.page.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-                                <?php }
-                                ?>
-
-                                <?php
-                                //botão para avançar
-                                if ($next_page <= $page_qnt) { ?>
-                                    <li class="page-item">
-                                        <a class="page-link pagination-next normal-14-medium-p" href="./list-module.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
-                                    </li>
-                                <?php    } else { ?>
-                                    <li class="page-item disabled">
-                                        <a class="page-link disable pagination-next normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
-                                    </li>
-                                <?php }  ?>
-                            </ul>
-                        <?php } else {
-
-                        //Contar a quantidade de registros no bd 
-                        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules WHERE name LIKE '%$search%' ORDER BY name";
-                        $result_qnt_register = $connection->prepare($query_qnt_register);
-                        $result_qnt_register->execute();
-                        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
-
-                        $limit_result = 12;
-
-                        //Quantidade de páginas
-                        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
-
-                        $prev_page = $page - 1;
-
-                        $next_page = $page + 1;
-
-                        ?>
-                            <div class="div-pagination">
-                                <ul class="pagination">
                                 <?php
                                 //botão para voltar
                                 if ($prev_page != 0) { ?>
@@ -376,31 +420,31 @@ try {
 
 
 
-                </div>
+                        </div>
+                    </div>
             </div>
+
+            <!-- Fim Wrapper -->
         </div>
 
-        <!-- Fim Wrapper -->
-    </div>
+        <!-- JS Bootstrap ⬇️ -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- JS Bootstrap ⬇️ -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- JS Modal Excluir ⬇️ -->
+        <script src="../../js/delete-module.js"></script>
 
-    <!-- JS Modal Excluir ⬇️ -->
-    <script src="../../js/delete-module.js"></script>
+        <!-- JS Search bar -->
+        <script src="../../js/autocomplete.js"></script>
 
-    <!-- JS Search bar -->
-    <script src="../../js/autocomplete.js"></script>
-
-    <!-- JS Search bar ⬇️ -->
-    <script>
-        const field = document.getElementById('searchModule');
-        const ac = new Autocomplete(field, {
-            data: <?php echo json_encode($optionOfSearch); ?>,
-            maximumItems: 8,
-            treshold: 1,
-        });
-    </script>
+        <!-- JS Search bar ⬇️ -->
+        <script>
+            const field = document.getElementById('searchModule');
+            const ac = new Autocomplete(field, {
+                data: <?php echo json_encode($optionOfSearch); ?>,
+                maximumItems: 8,
+                treshold: 1,
+            });
+        </script>
 </body>
 
 </html>
