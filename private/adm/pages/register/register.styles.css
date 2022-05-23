@@ -383,6 +383,7 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 25px;
+    margin-bottom: 50px;
 }
 
 .filtro-option, .filtro-option-2{
@@ -415,6 +416,14 @@
 .bg-help-primary{
     background-color: var(--primary);
 }
+
+.filtro-text-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+
 
 @media only screen and  (max-width: 1000px){
     .sidebar{

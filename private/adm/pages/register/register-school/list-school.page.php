@@ -251,6 +251,9 @@ try {
         </form>
 
         <!-- Filtro ⬇️ -->
+        <div class="filtro-text-div">
+            <p class="filtro-text normal-18-black-title-2">Filtros:</p>
+        </div>
         <div class="filtro-school">
             
             <form action="./list-school.page.php" method="GET">
@@ -306,7 +309,7 @@ try {
 
                             <!-- Parte do Update e Delete -->
                             <div class="drop-edit-exclud-content">
-                                <a href="./form-update-school.page.php?updateTeacher=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                <a href="./form-update-school.page.php?updateSchool=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
                                     <div class="drop-edit-exclud-option">
                                         <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
