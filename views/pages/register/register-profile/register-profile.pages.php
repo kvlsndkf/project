@@ -24,7 +24,7 @@
                         <div class="card-profile-container d-flex justify-content-center">
                             <div class="card-container row">
                                 <div class="d-flex justify-content-lg-between justify-content-md-between justify-content-sm-center justify-content-center col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4 mb-sm-4 mb-md-4 gx-md-5 gx-lg-5 gx-xl-5">
-                                    <a href="#">
+                                    <a href="../register-student/step1-register-student.page.php">
                                         <div class="card-profile gray-card card-profile-aluno">
                                             <div class="card-content">
                                                 <img src="../../../images/profiles/profile-aluno.svg" alt="Avatar do aluno" class="avt-pic">
