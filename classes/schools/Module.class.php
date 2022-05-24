@@ -247,4 +247,41 @@ class Module
             echo $e->getMessage();
         }
     }
+
+    //----------------------------
+    public function listModulesOfSelectResgisterUser()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name FROM modules");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildModuleListSelect($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    //----------------------------
+    /**
+     * @method buildSchoolList() organize the list of teachers by 
+     * @param array $result 
+     */
+    private function buildModuleListSelect(array | false $result)
+    {
+        $modules = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $module = new Module();
+            $module->id = $row['id'];
+            $module->name = $row['name'];
+            array_push($modules, $module);
+        }
+
+        $this->setResultBuildList($modules);
+        return $modules;
+    }
 }
