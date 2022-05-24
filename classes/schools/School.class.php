@@ -341,9 +341,23 @@ class School extends Social
         }
 
         if ($filtering) {
-            $resultBuildList = $this->getResultBuildList();
-            $totalFilter = count($resultBuildList);
-            return "Filtrado " . $totalFilter;
+            if ($filter == "Comconta"){
+            $stmt = $connection->prepare("SELECT COUNT(id) AS filtrado FROM schools WHERE have_account LIKE '%Com conta%'");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return "Filtrado " . $result[0]['filtrado'];
+            }
+
+            if ($filter == "Semconta"){
+                $stmt = $connection->prepare("SELECT COUNT(id) AS filtrado FROM schools WHERE have_account LIKE '%Sem conta%'");
+                $stmt->execute();
+    
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+                return "Filtrado " . $result[0]['filtrado'];
+            }
         }
 
         try {
@@ -568,14 +582,14 @@ class School extends Social
 
         if ($filter == "Comconta") {
 
-            $stmt = $connection->prepare("SELECT * FROM schools WHERE have_account = 'Com conta' ORDER BY name LIMIT $start, $limit_result");
+            $stmt = $connection->prepare("SELECT * FROM schools WHERE have_account LIKE '%Com conta%' ORDER BY name LIMIT $start, $limit_result");
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         if ($filter == "Semconta") {
-            $stmt = $connection->prepare("SELECT * FROM schools WHERE have_account = 'Sem conta' ORDER BY name LIMIT $start, $limit_result");
+            $stmt = $connection->prepare("SELECT * FROM schools WHERE have_account LIKE '%Sem conta%' ORDER BY name LIMIT $start, $limit_result");
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -796,7 +810,7 @@ class School extends Social
             //botão para voltar
             if ($prev_page != 0) { 
                 echo "<li class='page-item'>";
-                    echo "<a class='page- pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
                 echo "</li>";
                 } else { 
                 echo "<li class='page-item disabled'>";
