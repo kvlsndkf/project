@@ -241,7 +241,26 @@ try {
             </div>
         </div>
     </div>
+    
+    <!-- Paginação ⬇️ -->
+    <?php
 
+        if (!empty($search) && $filter == null){
+            $paginationSchoolfilter = $school ->paginationSchoolSearch($search);
+        }else if (empty($search) && $filter == null){
+            $paginationSchoolfilter = $school ->paginationSchool($search);
+        } else {
+
+        }    
+        
+        if($filter == 'Semconta' && $search == null){
+            $paginationSchoolfilter = $school ->paginationSchoolFilter1($filter);
+        } else if ($filter == 'Comconta' && $search == null) {
+            $paginationSchoolfilter = $school ->paginationSchoolFilter2($filter);
+        } else {
+
+        }    
+    ?>
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
