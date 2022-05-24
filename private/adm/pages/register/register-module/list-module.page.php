@@ -227,14 +227,6 @@ try {
                 <?php unset($_SESSION['statusNegative']);
                 } ?>
 
-                <!-- Cadastro módulo ⬇️ -->
-                <a href="./form-register-module.page.php" class="unit-card-a">
-                    <div class="unit-card">
-                        <p class="unit-card-text normal-18-black-title-2">Clique aqui para fazer o cadastro unitário</p>
-                        <img src="../../../images/unit-card-img.svg" class="unit-card-img">
-                    </div>
-                </a>
-
         <!-- Contador de módulos ⬇️ -->
         <p class="contador-prof normal-18-black-title-2">
             <?php echo $countModules ?>
