@@ -50,7 +50,6 @@ try {
             <input type="text" name="firstName" id="firstName" required autocomplete="off" autofocus value="<?php echo $firstName; ?>">
         </div>
         <br>
-        <br>
 
 
         <div>
@@ -60,13 +59,12 @@ try {
             <input type="text" name="surname" id="surname" required autocomplete="off" value="<?php echo $surname; ?>">
         </div>
         <br>
-        <br>
 
 
         <div>
             Etec
             <p>
-                <select name="idSchool" id="idSchool" class="select-school" style="width: 100%" required>
+                <select name="idSchool" id="idSchool" class="select-school" style="width: 100%" data-id="<?php echo $row->id; ?>" onchange="schoolValue(this);" required>
                     <option value="" selected disabled>Selecione a etec</option>
                     <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
                         $row = $listSchoolsOfSelect[$i] ?>
@@ -75,7 +73,6 @@ try {
                 </select>
             </p>
         </div>
-        <br>
         <br>
 
         <div>
@@ -91,7 +88,6 @@ try {
             </p>
         </div>
         <br>
-        <br>
 
 
         <div>
@@ -106,7 +102,6 @@ try {
                 </select>
             </p>
         </div>
-        <br>
         <br>
 
 
@@ -157,7 +152,14 @@ try {
             placeholder: "Selecione a escola",
             allowClear: true
         });
+
+        $(".select-course").select2({
+            placeholder: "Selecione o curso",
+            allowClear: true
+        });
     </script>
+
+<script src="../../../js/filterCoursesBySchool.js"></script>
 </body>
 
 </html>
