@@ -251,9 +251,6 @@ try {
         </form>
 
         <!-- Filtro ⬇️ -->
-        <div class="filtro-text-div">
-            <p class="filtro-text normal-18-black-title-2">Filtros:</p>
-        </div>
         <div class="filtro-school">
             
             <form action="./list-school.page.php" method="GET">
