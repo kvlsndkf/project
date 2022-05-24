@@ -198,7 +198,7 @@ class School extends Social
         $connection = Connection::connection();
 
         try {
-            if (!empty($search)) {
+            if (!is_null($search) && !empty($search)) {
                 $result = $this->searchSchool($search);
                 return $this->buildSchoolList($result);
             }
@@ -776,6 +776,21 @@ class School extends Social
                 echo "</li>";
             }
         echo "</ul>";
+
+    public function listSchoolsOfSelectResgisterCourse()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name FROM schools
+                                            WHERE have_account = 'Com conta'");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildSchoolListSelect($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     //----------------------------
@@ -892,5 +907,23 @@ class School extends Social
                 echo "</li>";
             }
         echo "</ul>";
+
+     * @method buildSchoolList() organize the list of schools by 
+     * @param array $result 
+     */
+    private function buildSchoolListSelect(array | false $result)
+    {
+        $schools = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $school = new School();
+            $school->id = $row['id'];
+            $school->name = $row['name'];
+            array_push($schools, $school);
+        }
+
+        $this->setResultBuildList($schools);
+        return $schools;
     }
 }
