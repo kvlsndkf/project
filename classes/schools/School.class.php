@@ -777,6 +777,12 @@ class School extends Social
             }
         echo "</ul>";
 
+    }
+
+    //----------------------------
+    /** 
+     * 
+    */
     public function listSchoolsOfSelectResgisterCourse()
     {
         $connection = Connection::connection();
@@ -907,7 +913,9 @@ class School extends Social
                 echo "</li>";
             }
         echo "</ul>";
+    }
 
+    /**
      * @method buildSchoolList() organize the list of schools by 
      * @param array $result 
      */
