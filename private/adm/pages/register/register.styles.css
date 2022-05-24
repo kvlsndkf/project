@@ -529,7 +529,9 @@
 @media (max-width: 390px){
     .filtro-school{
         flex-direction: column;
+        align-items: center;
         justify-content: center;
+        width: 200px;
     }
     .filtro-option, .filtro-option-2{
         margin: 5px;
