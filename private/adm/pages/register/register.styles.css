@@ -526,7 +526,7 @@
     }
 }
 
-@media (max-width: 390px){
+@media (max-width: 300px){
     .filtro-school{
         flex-direction: column;
         align-items: center;

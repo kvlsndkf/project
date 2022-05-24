@@ -26,15 +26,16 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
+    <!-- Base -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos | Heelp!</title>
+    <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
 
-    <link rel="stylesheet" href="../../../../style/style.css">
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -46,9 +47,138 @@ try {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+
+
+    <!-- CSS Search Bar -->
+    <link rel="stylesheet" href="../../../../style/search-bar.style.css">
+
+    <!-- Script do Sanduíche -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
+    <link rel="stylesheet" href="../register.styles.css">
+
 </head>
 
 <body>
+
+
+    <!-- Inicio Wrapper -->
+    <div class="wrapper">
+
+        <!-- NavBar Lateral - SideBar -->
+        <nav class="sidebar">
+
+            <!-- Logo Heelp! -->
+            <a href="#" class="logo-heelp">
+                <img src="../../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
+                <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
+            </a>
+
+            <!-- Texto nº2 para Responsividade -->
+            <div class="respo-cabe">
+                <a href="../registration panel/registration-panel-page.php" class="seta-voltar-a seta-voltar-a-responsividade">
+                    <img src="../../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
+                </a>
+                <p class="add-info-text add-info-text-responsividade normal-22-black-title-1">Cursos</p>
+            </div>
+
+            <!-- Menu Sanduíche da Responsividade -->
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+
+
+
+            <!-- Conteúdo Navbar -->
+            <ul class="sidebar-ul">
+
+                <!-- Logo Heelp! do Responsivo -->
+                <li class="sidebar-li sidebar-li-logo">
+                    <a href="#" class="logo-heelp-responsividade">
+                        <img src="../../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
+                        <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
+                    </a>
+                </li>
+
+                <!-- Opções da NavBar -->
+                <li class="sidebar-li">
+                    <div class="sidebar-button">
+                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                            <p class="sidebar-button-text">Adicionar Informações +</p>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="sidebar-li">
+                    <a href="#" class="sidebar-a">
+                        <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
+                    </a>
+                    <hr class="sidebar-linha">
+                </li>
+
+                <li class="sidebar-li">
+                    <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
+                    <a href="#" class="sidebar-a">
+                        <img class="sidebar-img" src="../../../../../views/images/components/denuncia-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Denuncias</p>
+                    </a>
+                </li>
+
+                <li class="sidebar-li">
+                    <a href="#" class="sidebar-a">
+                        <img class="sidebar-img" src="../../../../../views/images/components/informacoes-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Informações</p>
+                    </a>
+                </li>
+
+                <li class="sidebar-li">
+                    <a href="#" class="sidebar-a">
+                        <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
+                    </a>
+                </li>
+
+                <li class="sidebar-li">
+                    <p class="sidebar-categoria normal-14-bold-p">Contas</p>
+                    <a href="#" class="sidebar-a">
+                        <img class="sidebar-img" src="../../../../../views/images/components/listagem-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Listagem</p>
+                    </a>
+                    <hr class="sidebar-linha">
+                </li>
+
+                <li class="sidebar-li">
+                    <a href="#" class="sidebar-a">
+                        <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Sair</p>
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <!-- Corpo -->
+        <div class="corpo">
+
+            <div class="cabecalho">
+                <a href="../registration panel/registration-panel-page.php" class="seta-voltar-a">
+                    <img src="../../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
+                </a>
+                <p class="add-info-text normal-22-black-title-1">Cursos</p>
+            </div>
+
+            <!-- Parte Branca -->
+            <div class="conteudo">
+
+
     <!-- Mensagem de sucesso ⬇️ -->
     <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
 
@@ -116,20 +246,21 @@ try {
     } ?>
 
     <!-- Cadastro curso ⬇️ -->
-    <a href="./form-register-course.page.php">
-        <div class="bg-primary text-white p-5">
-            Cadastro curso
+    <a href="./form-register-course.page.php" class="unit-card-a">
+        <div class="unit-card">
+            <p class="unit-card-text normal-18-black-title-2">Clique aqui para fazer o cadastro unitário</p>
+            <img src="../../../images/unit-card-img.svg" class="unit-card-img">
         </div>
     </a>
 
     <!-- Barra de pesquisa ⬇️ -->
     <form action="./list-course.page.php" method="GET">
-        <input type="text" name="searchCourse" id="searchCourse" placeholder="Pesquise por cursos" autocomplete="off">
-        <input type="submit" value="Pesquisar">
+        <input type="text" name="searchCourse" id="searchCourse" placeholder="Pesquise por cursos" autocomplete="off" class="search-bar">
+        <input type="submit" value="🔎" class="search-button">
     </form>
 
     <!-- Contador de cursos ⬇️ -->
-    <p>
+    <p class="contador-prof normal-18-black-title-2">
         <?php echo $countCourses ?>
     </p>
 
@@ -238,6 +369,13 @@ try {
                 </div>
             </div>
         </div>
+    </div>
+
+
+    
+    </div>
+        </div>
+        <!-- Fim Wrapper -->
     </div>
 
     <!-- JS Bootstrap ⬇️ -->
