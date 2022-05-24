@@ -165,17 +165,6 @@ CREATE TABLE coursesHasSubjects(
     , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
 )
 
-CREATE TABLE subjectsHasModules(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , subject_id INT NOT NULL
-    , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
-    , module_id INT NOT NULL
-    , FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
-)
-
 CREATE TABLE denunciations(
     id INT NOT NULL AUTO_INCREMENT
     , PRIMARY KEY (id)
