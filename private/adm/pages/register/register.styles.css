@@ -377,13 +377,15 @@
 }
 
 .filtro-school{
+    width: 300px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
-    margin: 25px;
+    /* margin: 15px; */
     margin-bottom: 50px;
+    margin-left: 0;
 }
 
 .filtro-option, .filtro-option-2{
@@ -393,6 +395,7 @@
 .filtro-option{
     background-color: var(--primary);
     color: var(--white);
+    border-radius: 30px;
 }
 
 .filtro-option:hover{
@@ -404,6 +407,7 @@
 .filtro-option-2{
     border-color: var(--primary);
     color: var(--primary);
+    border-radius: 30px;
 }
 
 .filtro-option-2:hover{
