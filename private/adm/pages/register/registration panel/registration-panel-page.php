@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
         <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
         <link rel="stylesheet" href="./registration-panel-style.css">
+        <link rel="stylesheet" href="../../dashboard/style.dashboard.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
         <!-- Título e Ícone -->
@@ -66,7 +67,7 @@
                     </li>
 
                     <li class="sidebar-li">
-                        <a href="#" class="sidebar-a">
+                        <a href="../../dashboard/dashboard.page.php" class="sidebar-a-items">
                             <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                             <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                         </a>

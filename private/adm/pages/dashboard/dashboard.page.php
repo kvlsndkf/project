@@ -64,14 +64,14 @@
                 <!-- Opções da NavBar -->
                 <li class="sidebar-li">
                     <div class="sidebar-button">
-                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                        <a href="../register/registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
                             <p class="sidebar-button-text">Adicionar Informações +</p>
                         </a>
                     </div>
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="dashboard.page.php" class="sidebar-a">
+                    <a href="dashboard.page.php" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
                         <p class="normal-18-bold-title-2 sidebar-option sidebar-option-current">Dashboard</p>
                     </a>
