@@ -647,4 +647,23 @@ class School extends Social
         $this->setResultBuildList($schools);
         return $schools;
     }
+
+
+    public function schoolsHasCourses()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT DISTINCT s.id, s.name FROM schools s
+                                                INNER JOIN schoolsHasCourses sc
+                                                ON s.id = sc.school_id
+                                        ");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildSchoolListSelect($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }
