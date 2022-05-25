@@ -5,7 +5,7 @@ require_once('/xampp/htdocs' . '/project/classes/schools/Module.class.php');
 
 try {
     $school = new School();
-    $listSchoolsOfSelect = $school->listSchoolsOfSelectResgisterCourse();
+    $listSchoolsOfSelect = $school->schoolsHasCourses();
 
     $module = new Module();
     $listModulesOfSelect = $module->listModulesOfSelectResgisterUser();
@@ -64,11 +64,15 @@ try {
         <div>
             Etec
             <p>
-                <select name="idSchool" id="idSchool" class="select-school" style="width: 100%" data-id="<?php echo $row->id; ?>" onchange="schoolValue(this);" required>
-                    <option value="" selected disabled>Selecione a etec</option>
+                <?php
+                $nameSchool =  !is_null(Cookie::reader('nameSchool')) ? Cookie::reader('nameSchool') : "Selecione a escola";
+                $schoolDisabled = $nameSchool === "Selecione a escola" ? 'disabled' : "";
+                ?>
+                <select name="nameSchool" id="nameSchool" class="select-school" style="width: 100%" onchange="schoolValue()" required>
+                    <option value="<?php echo $nameSchool; ?>" <?php echo $schoolDisabled; ?> selected><?php echo $nameSchool ?></option>
                     <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
                         $row = $listSchoolsOfSelect[$i] ?>
-                        <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                        <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
                     <?php } ?>
                 </select>
             </p>
@@ -78,12 +82,8 @@ try {
         <div>
             Curso
             <p>
-                <select name="idCourse" id="idCourse" class="select-course" style="width: 100%" required>
-                    <option value="" selected disabled>Selecione o curso</option>
-                    <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
-                        $row = $listSchoolsOfSelect[$i] ?>
-                        <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                    <?php } ?>
+                <select name="nameCourse" id="nameCourse" class="select-course" style="width: 100%" disabled required>
+                    <option value="" disabled selected>Selecione o curso</option>
                 </select>
             </p>
         </div>
@@ -93,11 +93,15 @@ try {
         <div>
             Módulo
             <p>
-                <select name="idModule" id="idModule" class="select-module" style="width: 100%" required>
-                    <option value="" selected disabled>Selecione o modulo</option>
+                <?php 
+                    $nameModule =  !is_null(Cookie::reader('nameModule')) ? Cookie::reader('nameModule') : "Selecione o módulo";
+                    $moduleDisabled = $nameModule === "Selecione o módulo" ? 'disabled' : "";
+                ?>
+                <select name="nameModule" id="nameModule" class="select-module" style="width: 100%" required>
+                    <option value="<?php echo $nameModule; ?>" <?php echo $moduleDisabled ?> selected><?php echo $nameModule; ?></option>
                     <?php for ($i = 0; $i < count($listModulesOfSelect); $i++) {
                         $row = $listModulesOfSelect[$i] ?>
-                        <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                        <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
                     <?php } ?>
                 </select>
             </p>
@@ -144,22 +148,69 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(".select-school").select2({
-            placeholder: "Selecione a escola",
             allowClear: true
         });
 
         $(".select-module").select2({
-            placeholder: "Selecione a escola",
             allowClear: true
         });
 
         $(".select-course").select2({
-            placeholder: "Selecione o curso",
             allowClear: true
         });
     </script>
 
-<script src="../../../js/filterCoursesBySchool.js"></script>
+    <script>
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        async function schoolValue() {
+            const select = document.getElementById("nameSchool");
+            const courseList = document.getElementById("nameCourse");
+            const courseCookie = getCookie('nameCourse');
+            const course = decodeURI(courseCookie);
+
+            if (select.value != "Selecione a escola") {
+                console.log("value", select.value);
+                courseList.disabled = false;
+                const dados = await fetch('./controller/json-step2.controller.php?nameSchool=' + select.value);
+
+                const json_school = await dados.json();
+                const convert_into_string = JSON.stringify(json_school);
+                const object_school = JSON.parse(convert_into_string);
+
+                courseList.innerHTML = "";
+
+                array_courses = object_school['course'];
+
+                for (i = 0; i < array_courses.length; i++) {
+                    const optionElement = document.createElement("option");
+
+                    optionElement.value = array_courses[i]['name'];
+                    optionElement.textContent = array_courses[i]['name'];
+                    optionElement.selected = course == array_courses[i]['name'];
+
+                    courseList.appendChild(optionElement);
+                }
+
+                return;
+            }
+            courseList.disabled = true;
+
+        }
+
+        (async function() {
+            await schoolValue();
+        }());
+    </script>
 </body>
 
 </html>
