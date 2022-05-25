@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Abr-2022 às 04:17
+-- Tempo de geração: 22-Maio-2022 às 04:03
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -136,16 +136,17 @@ CREATE TABLE `modules` (
 
 CREATE TABLE `schools` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `district` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `have_account` tinyint(1) NOT NULL,
-  `about` varchar(237) NOT NULL,
-  `github` varchar(100) DEFAULT NULL,
-  `linkedin` varchar(100) DEFAULT NULL,
-  `facebook` varchar(100) DEFAULT NULL,
-  `instagram` varchar(100) DEFAULT NULL,
-  `photo` varchar(100) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `have_account` varchar(12) NOT NULL,
+  `in_sp_city` varchar(14) DEFAULT NULL,
+  `not_in_sp_city` varchar(14) DEFAULT NULL,
+  `about` text DEFAULT NULL,
+  `github` text DEFAULT NULL,
+  `linkedin` text DEFAULT NULL,
+  `facebook` text DEFAULT NULL,
+  `instagram` text DEFAULT NULL,
+  `photo` text DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -245,27 +246,13 @@ CREATE TABLE `subjects` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `subjectshasmodules`
---
-
-CREATE TABLE `subjectshasmodules` (
-  `id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `subject_id` int(11) NOT NULL,
-  `module_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `teachers`
 --
 
 CREATE TABLE `teachers` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `photo` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `photo` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -279,7 +266,7 @@ CREATE TABLE `teachers` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `photo` varchar(100) NOT NULL,
   `type_user` varchar(40) NOT NULL,
   `is_confirmed` tinyint(1) NOT NULL,
@@ -414,14 +401,6 @@ ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `subjectshasmodules`
---
-ALTER TABLE `subjectshasmodules`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `subject_id` (`subject_id`),
-  ADD KEY `module_id` (`module_id`);
-
---
 -- Índices para tabela `teachers`
 --
 ALTER TABLE `teachers`
@@ -455,7 +434,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT de tabela `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `courseshassubjects`
@@ -467,7 +446,7 @@ ALTER TABLE `courseshassubjects`
 -- AUTO_INCREMENT de tabela `courseshasteachers`
 --
 ALTER TABLE `courseshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de tabela `denunciations`
@@ -485,19 +464,19 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT de tabela `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshascourses`
 --
 ALTER TABLE `schoolshascourses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshasstudents`
@@ -509,7 +488,7 @@ ALTER TABLE `schoolshasstudents`
 -- AUTO_INCREMENT de tabela `schoolshasteachers`
 --
 ALTER TABLE `schoolshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT de tabela `solicitations`
@@ -527,19 +506,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT de tabela `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `subjectshasmodules`
---
-ALTER TABLE `subjectshasmodules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `users`
@@ -612,13 +585,6 @@ ALTER TABLE `students`
   ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `students_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `students_ibfk_3` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`) ON DELETE CASCADE;
-
---
--- Limitadores para a tabela `subjectshasmodules`
---
-ALTER TABLE `subjectshasmodules`
-  ADD CONSTRAINT `subjectshasmodules_ibfk_1` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `subjectshasmodules_ibfk_2` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `usershaspreferences`

@@ -2,7 +2,6 @@
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 $connection = Connection::connection();
 
-//update teacher
 if (isset($_GET['updateModule'])) {
 
     $id = $_GET['updateModule'];

@@ -98,13 +98,13 @@ class Teacher
     {
         $connection = Connection::connection();
         try {
-            if (!is_null($search)) {
+            if (!is_null($search) && !empty($search)) {
                 $result = $this->searchTeacher($search);
                 return $this->buildTeacherList($result);
             }
             //Receber o numero de página
-            $current_page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
-            $page = (!empty($current_page)) ? $current_page :1;
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
 
             //Setar a quantidade de registros por página
             $limit_result = 9;
@@ -134,7 +134,7 @@ class Teacher
         $connection = Connection::connection();
 
         try {
-            $abc = unlink("/xampp/htdocs" . $path);
+            unlink("/xampp/htdocs" . $path);
 
             $stmt = $connection->prepare("DELETE FROM teachers WHERE id='$id'");
 
@@ -182,8 +182,8 @@ class Teacher
         $connection = Connection::connection();
 
         //Receber o numero de página
-        $current_page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
-        $page = (!empty($current_page)) ? $current_page :1;
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
 
         //Setar a quantidade de registros por página
         $limit_result = 9;
@@ -236,16 +236,21 @@ class Teacher
      * @param string $search 
      */
     public function countTeachers(string $search = ''): string
-    {
+    {   
+        $connection = Connection::connection();
+        
         $searching = (!is_null($search) && !empty($search));
 
         if ($searching) {
-            $resultBuildList = $this->getResultBuildList();
-            $totalSearch = count($resultBuildList);
-            return "Resultado da pesquisa " . $totalSearch;
+            $stmt = $connection->prepare("SELECT COUNT(id) AS resultado FROM teachers WHERE name LIKE '%$search%'");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return "Resultado da pesquisa " . $result[0]['resultado'];
         }
 
-        $connection = Connection::connection();
+        
         try {
             $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM teachers");
             $stmt->execute();
@@ -253,6 +258,21 @@ class Teacher
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return "Total " . $result[0]['total'];
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+    //----------------------------
+    public function listTeachersOfSelectResgisterSchool()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name, photo FROM teachers");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildTeacherList($result);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

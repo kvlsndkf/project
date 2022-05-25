@@ -112,6 +112,7 @@
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
+
                 </li>
 
             </ul>
@@ -139,6 +140,7 @@
                         <p class="nome-cad normal-40-black-display">Módulos</p>
                         <img src="./img/module-img.svg" class="img-cad">
                     </a>
+
 
                 </div>
 
