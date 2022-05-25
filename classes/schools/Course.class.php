@@ -784,4 +784,27 @@ class Course
             echo $e->getMessage();
         }
     }
+
+    //----------------------------
+    /**
+     * @method selectTeachersUsedBySchool() selects the teachers being used by the school by 
+     * @param int $id 
+     */
+    public function selectCoursesUsedBySchool(string $name): array
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT c.id, c.name, c.photo FROM schoolsHasCourses sc
+                                         INNER JOIN courses c
+                                         ON c.id = sc.course_id
+                                         INNER JOIN schools s
+                                         ON s.id = sc.school_id
+                                         WHERE s.name = '$name'
+                                     ");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
 }
