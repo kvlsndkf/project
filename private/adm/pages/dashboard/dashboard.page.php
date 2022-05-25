@@ -63,12 +63,13 @@
 
                 <!-- Opções da NavBar -->
                 <li class="sidebar-li">
-                    <div class="sidebar-button">
-                        <a href="../register/registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                    <a href="../register/registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                        <div class="sidebar-button">
                             <p class="sidebar-button-text">Adicionar Informações +</p>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </li>
+
 
                 <li class="sidebar-li">
                     <a href="dashboard.page.php" class="sidebar-a-items">
@@ -154,9 +155,9 @@
                                             'Bem avaliadas',
                                             'Mal avaliadas',
                                         ];
-                                        
-                                        
-                                
+
+
+
                                         const data = {
                                             labels: labels,
                                             datasets: [{
@@ -195,8 +196,8 @@
                         </div>
                     </div>
                 </div>
-                
-                    <div class="container2">
+
+                <div class="container2">
                     <div class="row d-lg-flex justify-content-lg-between">
                         <div class="report dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <section class="section">
