@@ -212,6 +212,14 @@
     margin-bottom: 4px;
 }
 
+.img-curso{
+    width: 32px;
+    height: 32px;
+    margin-top: 5px;
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
 .div-prof-img{
     height: 120px;
     border-radius: 10px 10px 0 0;

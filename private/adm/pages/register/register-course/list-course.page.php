@@ -265,41 +265,75 @@ try {
     </p>
 
     <!-- Lista de professores ⬇️ -->
-    <?php for ($i = 0; $i < count($listCourses); $i++) {
-        $row = $listCourses[$i] ?>
+    <div class="list-prof">
 
-        <?php $countTeachersInCourse = $course->countTeachersInCourse($row->id); ?>
-        <?php $countSchoolsInCourse = $course->countSchoolsInCourse($row->id); ?>
-        <?php $countSubjectsInCourse = $course->countSubjectsInCourse($row->id); ?>
+        <?php for ($i = 0; $i < count($listCourses); $i++) {
+            $row = $listCourses[$i] ?>
 
-        <p>
-            <img src="<?php echo $row->photo; ?>" alt=" <?php echo $row->name; ?>">
+            <!-- Card da Listagem -->
+            <div class="card-school">
 
-        </p>
+                <?php $countTeachersInCourse = $course->countTeachersInCourse($row->id); ?>
+                <?php $countSchoolsInCourse = $course->countSchoolsInCourse($row->id); ?>
+                <?php $countSubjectsInCourse = $course->countSubjectsInCourse($row->id); ?>
 
-        <p>
-            Curso
-            <?php echo $row->name; ?>
-        </p>
+                <div class="info-prof">
+                    <div class="info-prof-cima">
+                        <p class="img-curso">
+                            <img src="<?php echo $row->photo; ?>" alt=" <?php echo $row->name; ?>">
+                        </p>   
 
-        <?php $style = $countSchoolsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-primary'; ?>
-        <span class="<?php echo $style; ?>"> Etec's: <?php echo $countSchoolsInCourse ?></span>
+                        <!-- Mais Opções -->
+                        <div class="drop-edit-exclud">
+                            <img src="../../../../../views/images/components/three-dots.svg">
 
-        <?php $style = $countTeachersInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-primary'; ?>
-        <span class="<?php echo $style; ?>"> Professores: <?php echo $countTeachersInCourse ?></span>
+                            <!-- Parte do Update e Delete -->
+                            <div class="drop-edit-exclud-content">
+                                <a href="./form-update-course.page.php?updateCourse=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                    <div class="drop-edit-exclud-option">
+                                        <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
+                                    </div>
+                                </a>
+                                <a href="./controller/delete-course.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                    <div class="drop-edit-exclud-option">
+                                        <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text normal-14-bold-p">Excluir</p>
+                                    </div>
+                                </a>
+                            </div>
 
-        <?php $style = $countSubjectsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-purple'; ?>
-        <span class="<?php echo $style; ?>"> Matérias: <?php echo $countSubjectsInCourse ?></span>
+                        </div>
+                    </div>
 
-        <br><br>
-        <button type="submit" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">Ver mais detalhes</button>
+                
 
-        <p>
-            <a href="./form-update-course.page.php?updateCourse=<?php echo $row->id; ?>">Editar</a>
-            <a href="./controller/delete-course.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
-        </p>
-        <hr>
-    <?php } ?>
+                    <p class="prof-name normal-14-medium-p">Curso</p>
+                    <p class="prof-text school-name normal-14-bold-p"><?php echo $row->name; ?> </p>
+
+                    <hr>
+
+                <?php $style = $countSchoolsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-primary'; ?>
+                <span class="<?php echo $style; ?>"> Etec's: <?php echo $countSchoolsInCourse ?></span>
+
+                <?php $style = $countTeachersInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-primary'; ?>
+                <span class="<?php echo $style; ?>"> Professores: <?php echo $countTeachersInCourse ?></span>
+
+                <?php $style = $countSubjectsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-purple'; ?>
+                <span class="<?php echo $style; ?>"> Matérias: <?php echo $countSubjectsInCourse ?></span>
+
+                <br><br>
+                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">
+                    <p class="more-details-button-text normal-14-bold-p">Ver mais detalhes</p> 
+                </button>
+            
+                </div>
+
+            </div>
+             
+        <?php } ?>
+    
+    </div>
 
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
