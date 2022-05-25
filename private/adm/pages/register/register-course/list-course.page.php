@@ -326,7 +326,7 @@ try {
                 <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">
                     <p class="more-details-button-text normal-14-bold-p">Ver mais detalhes</p> 
                 </button>
-            
+
                 </div>
 
             </div>
