@@ -100,7 +100,7 @@ try {
                     </a>
                     <label class="normal-20-bold-modaltitle title-header">Cadastro Etec</label>
                 </div>
-
+<div class="container-fluid">
                 <form action="./controller/school-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
                     <label class="normal-14-medium-p nome-professor">
                         Nome Etec
@@ -149,7 +149,7 @@ try {
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item" style="border: none;">
                             <h3 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button acc-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="accordion-button acc-btn collapsed normal-12-regular-tinyinput" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Dados para o perfil
                                 </button>
                             </h3>
@@ -158,7 +158,7 @@ try {
                                 <div class="accordion-body" style="background-color: #303339;">
 
                                     <p>
-                                        <label>Selecione os professores a que ela pertence</label>
+                                        <label class="normal-14-medium-p">Selecione os professores a que ela pertence</label>
                                     </p>
                                     <p>
                                         <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" style="width: 100%" multiple="multiple" disabled required>
@@ -174,7 +174,7 @@ try {
                                     </li>
 
                                     <div>
-                                        <p>
+                                        <p class="normal-14-medium-p">
                                             Sobre
                                         </p>
 
@@ -190,23 +190,23 @@ try {
                                         <hr class="dropdown-divider">
                                     </li>
 
-                                    <label>Links</label>
-                                    <p>
+                                    <label class="normal-14-medium-p">Links</label>
+                                    <p class="normal-14-medium-p">
                                         Linkedin
                                         <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
 
-                                    <p>
+                                    <p class="normal-14-medium-p">
                                         GitHub
                                         <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
 
-                                    <p>
+                                    <p class="normal-14-medium-p">
                                         Facebook
                                         <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
 
-                                    <p>
+                                    <p class="normal-14-medium-p">
                                         Instagram
                                         <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
@@ -215,7 +215,7 @@ try {
                                         <hr class="dropdown-divider">
                                     </li>
 
-                                    <p>
+                                    <p class="normal-14-medium-p">
                                         <label>Foto</label>
                                         <input type="file" name="photo" id="photo" disabled required>
                                     </p>
@@ -234,6 +234,7 @@ try {
                     <button type="reset">Limpar</button>
 
                 </form>
+                </div>
             </div>
         </div>
     </div>
