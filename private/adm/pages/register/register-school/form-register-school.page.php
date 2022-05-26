@@ -21,6 +21,8 @@ try {
 <html lang="pt-br">
 
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Cadastrar Etec | Heelp!</title>
 
@@ -29,191 +31,212 @@ try {
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../../style/form-register-teacher.page.css">
+    <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../../../../views/styles/font-format.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+    <link rel="shortcut icon" href="../../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="../../../../style/form-register-teacher.page.css">
     <!-- JS Disabled Inputs -->
     <script type="text/javascript" src="../../js/disabled-inputs.js"></script>
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <!-- Mensagem de erro ⬇️ -->
-    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+    <div class="my-container-er">
+        <!-- Mensagem de erro ⬇️ -->
+        <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
 
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-        </svg>
-
-        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                <use xlink:href="#exclamation-triangle-fill" />
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </symbol>
             </svg>
-            <div>
-                <strong>Ops...</strong>
-                <?php echo $_SESSION['statusNegative']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    <?php unset($_SESSION['statusNegative']);
-    } ?>
 
-    <!-- Mensagem de alerta ⬇️ -->
-    <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
-
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-        </svg>
-
-        <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                <use xlink:href="#exclamation-triangle-fill" />
-            </svg>
-            <div>
-                <strong>Ops...</strong>
-                <?php echo $_SESSION['statusAlert']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    <?php unset($_SESSION['statusAlert']);
-    } ?>
-
-    <label>Cadastro Etec</label>
-
-    <form action="./controller/school-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
-        <p>
-            Nome Etec
-            <input type="text" name="name" id="name" placeholder="Digite o nome da etec" autocomplete="off" required>
-        </p>
-
-        <p>
-            A Etec fica localizada dentro da cidade de São Paulo?
-        </p>
-
-        <p>
-            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" required onclick="visibilityDistrict()"> Sim
-
-            <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" required onclick="visibilityCity()"> Não
-        </p>
-
-        <p id="textDistrict" style="display:none">
-            Distrito
-            <select name="address" id="district" class="select-district" style="width: 100%" disabled required>
-                <option value="" selected disabled>Selecione o respectivo distrito</option>
-                <?php foreach ($places->districts as $row) { ?>
-                    <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
-            </select>
-        </p>
-
-
-        <p id="textCity" style="display:none">
-            Município
-            <select name="address" id="city" class="select-city" style="width: 100%" disabled required>
-                <option value="" selected disabled>Selecione o respectivo município</option>
-                <?php foreach ($places->cities as $row) { ?>
-                    <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
-            </select>
-        </p>
-
-        <p>
-            <input type="checkbox" name="createAccount" id="createAccount" onclick="createdAccount()" value="createdAccount">
-            Criar um perfil para a Etec?
-        </p>
-
-
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h3 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Dados para o perfil
-                    </button>
-                </h3>
-
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-
-                        <p>
-                            <label>Selecione os professores a que ela pertence</label>
-                        </p>
-                        <p>
-                            <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" style="width: 100%" multiple="multiple" disabled required>
-                                <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
-                                    $row = $listTeachersOfSelect[$i] ?>
-                                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                                <?php } ?>
-                            </select>
-                        </p>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <div>
-                            <p>
-                                Sobre
-                            </p>
-
-                            <div id="contentTextArea">
-                                <textarea name="about" id="about" cols="30" rows="10" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()"></textarea>
-                                <div><span id="counterTextArea">250</span></div>
-                            </div>
-
-
-                        </div>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <label>Links</label>
-                        <p>
-                            Linkedin
-                            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                        </p>
-
-                        <p>
-                            GitHub
-                            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                        </p>
-
-                        <p>
-                            Facebook
-                            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                        </p>
-
-                        <p>
-                            Instagram
-                            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                        </p>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <p>
-                            <label>Foto</label>
-                            <input type="file" name="photo" id="photo" disabled required>
-                        </p>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                    </div>
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <strong>Ops...</strong>
+                    <?php echo $_SESSION['statusNegative']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
+        <?php unset($_SESSION['statusNegative']);
+        } ?>
+
+        <!-- Mensagem de alerta ⬇️ -->
+        <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </symbol>
+            </svg>
+
+            <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <strong>Ops...</strong>
+                    <?php echo $_SESSION['statusAlert']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php unset($_SESSION['statusAlert']);
+        } ?>
+
+        <div class="page-container d-flex align-items-center justify-content-center">
+            <div class="form-base bg-modal-gray align-self-center my-auto">
+                <div class="form-header">
+                    <a href="./search-teacher.page.php">
+                        <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                    </a>
+                    <label class="normal-20-bold-modaltitle title-header">Cadastro Etec</label>
+                </div>
+
+                <form action="./controller/school-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
+                    <label class="normal-14-medium-p nome-professor">
+                        Nome Etec
+                        </label>
+                        <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome da ETEC" autocomplete="off" required>
+                    
+                    <br />
+                    <p class="normal-14-medium-p etec-location-label">
+                        A Etec fica localizada dentro da cidade de São Paulo?
+                    </p>
+
+                    <p>
+                        <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" required onclick="visibilityDistrict()"> <span class="normal-14-medium-p nome-professor">Sim</span>
+
+                        <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" required onclick="visibilityCity()"> <span class="normal-14-medium-p nome-professor">Não</span>
+                    </p>
+
+                    <p id="textDistrict" style="display:none">
+                        Distrito
+                        <select name="address" id="district" class="select-district" style="width: 100%" disabled required>
+                            <option value="" selected disabled>Selecione o respectivo distrito</option>
+                            <?php foreach ($places->districts as $row) { ?>
+                                <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </select>
+                    </p>
+
+
+                    <p id="textCity" style="display:none">
+                        Município
+                        <select name="address" id="city" class="select-city" style="width: 100%" disabled required>
+                            <option value="" selected disabled>Selecione o respectivo município</option>
+                            <?php foreach ($places->cities as $row) { ?>
+                                <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </select>
+                    </p>
+
+                    <span class="normal-14-medium-p nome-professor">
+                        <input type="checkbox" name="createAccount" id="createAccount" onclick="createdAccount()" value="createdAccount">
+                        Criar um perfil para a Etec?
+                    </span>
+
+                    <hr class="hr" />
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item" style="border: none;">
+                            <h3 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button acc-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Dados para o perfil
+                                </button>
+                            </h3>
+
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body" style="background-color: #303339;">
+
+                                    <p>
+                                        <label>Selecione os professores a que ela pertence</label>
+                                    </p>
+                                    <p>
+                                        <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" style="width: 100%" multiple="multiple" disabled required>
+                                            <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
+                                                $row = $listTeachersOfSelect[$i] ?>
+                                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                                            <?php } ?>
+                                        </select>
+                                    </p>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <div>
+                                        <p>
+                                            Sobre
+                                        </p>
+
+                                        <div id="contentTextArea">
+                                            <textarea name="about" id="about" cols="30" rows="10" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()"></textarea>
+                                            <div><span id="counterTextArea">250</span></div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <label>Links</label>
+                                    <p>
+                                        Linkedin
+                                        <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                    </p>
+
+                                    <p>
+                                        GitHub
+                                        <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                    </p>
+
+                                    <p>
+                                        Facebook
+                                        <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                    </p>
+
+                                    <p>
+                                        Instagram
+                                        <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                    </p>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <p>
+                                        <label>Foto</label>
+                                        <input type="file" name="photo" id="photo" disabled required>
+                                    </p>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" name="register">Cadastrar</button>
+                    <button type="reset">Limpar</button>
+
+                </form>
+            </div>
         </div>
-
-
-        <button type="submit" name="register">Cadastrar</button>
-        <button type="reset">Limpar</button>
-
-    </form>
-
-
+    </div>
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

@@ -12,6 +12,12 @@ body, html {
     height: 100%;
 }
 
+.my-container-er {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+}
+
 .page-container {
     width: 100%;
     height: 100%;
@@ -152,3 +158,112 @@ body, html {
   ::-webkit-scrollbar-thumb:hover {
     background: #8080FF;
 }
+
+/* CSS REGISTER ETEC */
+
+.accordion-body {
+    background-color: #303339;
+    border: solid 1px var(--gray1);
+    border-top: none;
+    transition: 0.2;
+}
+
+.etec-location-label {
+    margin-top: 28px;
+}
+
+.acc-btn {
+    background-color: var(--gray2);
+    color: var(--gray6);
+    border: solid #202225 1px;
+
+}
+
+.acc-btn:after {
+
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+      
+}
+
+.acc-btn:not(.collapsed) {
+    color: inherit;
+    background-color: var(--gray2);
+    color: white;
+}
+
+.acc-btn:focus {
+    box-shadow: inherit;
+}
+
+/* CSS CHECKBOX */
+
+   /* The container */
+   .container-ckb {
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .container-ckb .ckb {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    height: 18px;
+    width: 18px;
+    background-color: #303339;
+    border: solid #202225 3px;
+    border-radius: 1px;
+    outline: 3px solid #303339;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container-ckb:hover .ckb~.checkmark {
+    background-color: #40444B;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container-ckb .ckb:checked~.checkmark {
+    background-color: #00AFF4;
+
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .container-ckb .ckb:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container-ckb .checkmark:after {
+    left: 3px;
+    top: 0.3px;
+    width: 5px;
+    height: 10px;
+    border: solid #303339;
+    border-radius: 1px;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
