@@ -4,12 +4,12 @@ include_once ('/xampp/htdocs' . '/project/database/connection.php');
 class Message
 {
     //attributes
-    private int $id;
-    private string $contact;
-    private string $status;
-    private string $message;
-    private string $createdAt;
-    private string $updatedAt;
+    public int $id;
+    public string $contact;
+    public string $status;
+    public string $message;
+    public string $createdAt;
+    public string $updatedAt;
 
     //getters and setters
     public function getId()
@@ -65,5 +65,43 @@ class Message
     {
         $this->updatedAt = $updatedAt;
     }
-    //----------------------------
+    public function getResultBuildList(): array
+    {
+        return $this->resultBuildList;
+    }
+    public function setResultBuildList(array $resultBuildList): void
+    {
+        $this->resultBuildList = $resultBuildList;
+    }
+
+    //methods
+    /**
+     * @method registerMessage() registers the messages by 
+     * @param Message $message
+     */
+    public function registerMessage(Message $mensagem): void
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("INSERT INTO messages(message, contact, created_at)
+                                         VALUES (?,?, NOW())");
+                                         
+            $stmt->bindValue(1, $mensagem->getMessage());
+            $stmt->bindValue(2, $mensagem->getContact());
+            
+            
+            
+
+            $stmt->execute();
+
+            $_SESSION['statusPositive'] = "Módulo cadastrado com sucesso.";
+            header('Location:');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            
+        }
+    }
+    
+    
 }
