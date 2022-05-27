@@ -432,6 +432,10 @@
     background-color: var(--primary);
 }
 
+.bg-help-purple{
+    background-color: var(--purple-light);
+}
+
 .filtro-text-div{
     display: flex;
     flex-direction: column;
