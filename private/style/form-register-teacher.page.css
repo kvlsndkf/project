@@ -163,9 +163,6 @@ body, html {
 
 .accordion-body {
     background-color: #303339;
-    border: solid 1px var(--gray1);
-    border-top: none;
-    transition: 0.2;
 }
 
 .etec-location-label {
@@ -289,4 +286,31 @@ body, html {
 
 .label-social {
     margin-top: 8px;
+}
+
+.select2-selection--multiple {
+    background-color: red;
+}
+
+.selection {
+    background-color: #000;
+}
+
+.select2-search__field {
+    background-color: #000;
+}
+
+span.select2-container--default .select2-selection--single {
+    border: none;
+    background-color: #000;
+  }
+  
+.select2-container .select2-selection--single .select2-selection__rendered {
+    font-size: 18px;
+    background-color: #000;
+  }
+
+
+  .custom .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    background-color: #888;
 }

@@ -22,7 +22,7 @@ try {
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Cadastrar Etec | Heelp!</title>
 
@@ -99,131 +99,137 @@ try {
                     </a>
                     <label class="normal-20-bold-modaltitle title-header">Cadastro Etec</label>
                 </div>
-<div class="container">
-                <form action="./controller/school-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
-                    <label class="normal-14-medium-p nome-professor">
-                        Nome Etec
+                <div class="container">
+                    <form action="./controller/school-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
+                        <label class="normal-14-medium-p nome-professor">
+                            Nome Etec
                         </label>
                         <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome da ETEC" autocomplete="off" required>
-                    
-                    <br />
-                    <p class="normal-14-medium-p etec-location-label">
-                        A Etec fica localizada dentro da cidade de São Paulo?
-                    </p>
 
-                    <p>
-                        <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" required onclick="visibilityDistrict()"> <span class="normal-14-medium-p nome-professor">Sim</span>
-
-                        <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" required onclick="visibilityCity()"> <span class="normal-14-medium-p nome-professor">Não</span>
-                    </p>
-
-                    <p id="textDistrict" style="display:none">
-                        Distrito
-                        <select name="address" id="district" class="select-district" style="width: 100%" disabled required>
-                            <option value="" selected disabled>Selecione o respectivo distrito</option>
-                            <?php foreach ($places->districts as $row) { ?>
-                                <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                            <?php } ?>
-                        </select>
-                    </p>
-
-
-                    <p id="textCity" style="display:none">
-                        Município
-                        <select name="address" id="city" class="select-city" style="width: 100%" disabled required>
-                            <option value="" selected disabled>Selecione o respectivo município</option>
-                            <?php foreach ($places->cities as $row) { ?>
-                                <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                            <?php } ?>
-                        </select>
-                    </p>
-                    <hr class="dropdwon-divider" />
-                    <span class="normal-14-medium-p nome-professor">
-                        <input type="checkbox" name="createAccount" id="createAccount" onclick="createdAccount()" value="createdAccount">
-                        <p style="display: inline-block;">
-                            <span class="label-social">Criar um perfil para a Etec?</span>
+                        <br />
+                        <p class="normal-14-medium-p etec-location-label">
+                            A Etec fica localizada dentro da cidade de São Paulo?
                         </p>
-                    </span>
 
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item" style="border: none;">
-                            <h3 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button acc-btn collapsed normal-12-regular-tinyinput" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Dados para o perfil
-                                </button>
-                            </h3>
+                        <p>
+                            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" required onclick="visibilityDistrict()"> <span class="normal-14-medium-p nome-professor">Sim</span>
 
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="background-color: var(--bg-modal);">
+                            <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" required onclick="visibilityCity()"> <span class="normal-14-medium-p nome-professor">Não</span>
+                        </p>
 
-                                    <p>
-                                        <label class="normal-14-medium-p">Selecione os professores a que ela pertence</label>
-                                    </p>
-                                    <p>
-                                        <select name="idTeachers[]" id="idTeachers" class="multiple-select select-input bg-modal" style="width: 100%;" multiple="multiple" disabled required>
-                                            <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
-                                                $row = $listTeachersOfSelect[$i] ?>
-                                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                                            <?php } ?>
-                                        </select>
-                                    </p>
+                        <p id="textDistrict" style="display:none">
+                            Distrito
+                            <select name="address" id="district" class="select-district" style="width: 100%" disabled required>
+                                <option value="" selected disabled>Selecione o respectivo distrito</option>
+                                <?php foreach ($places->districts as $row) { ?>
+                                    <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                                <?php } ?>
+                            </select>
+                        </p>
 
-                                
-                                        <hr class="dropdown-divider">
-                                    
 
-                                    <div>
-                                        <p class="normal-14-medium-p">
-                                            Sobre
+                        <p id="textCity" style="display:none">
+                            Município
+                            <select name="address" id="city" class="select-city" style="width: 100%" disabled required>
+                                <option value="" selected disabled>Selecione o respectivo município</option>
+                                <?php foreach ($places->cities as $row) { ?>
+                                    <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                                <?php } ?>
+                            </select>
+                        </p>
+                        <hr class="dropdwon-divider" />
+                        <span class="normal-14-medium-p nome-professor">
+                            <input type="checkbox" name="createAccount" id="createAccount" onclick="createdAccount()" value="createdAccount">
+                            <p style="display: inline-block;">
+                                <span class="label-social">Criar um perfil para a Etec?</span>
+                            </p>
+                        </span>
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item" style="border: none;">
+                                <h3 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button acc-btn collapsed normal-12-regular-tinyinput" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Dados para o perfil
+                                    </button>
+                                </h3>
+
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body" style="background-color: var(--bg-modal);">
+
+                                        <p>
+                                            <label class="normal-14-medium-p">Selecione os professores a que ela pertence</label>
+                                        </p>
+                                        <p>
+                                            <select name="idTeachers[]" id="idTeachers" class="multiple-select select-input bg-modal" style="width: 100%;" multiple="multiple" disabled required>
+                                                <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
+                                                    $row = $listTeachersOfSelect[$i] ?>
+                                                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                                                <?php } ?>
+                                            </select>
                                         </p>
 
-                                        <div id="contentTextArea">
-                                            <textarea name="about" id="about" cols="30" rows="7" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()"></textarea>
-                                            <div><span id="counterTextArea">250</span></div>
-                                        </div>
 
-                                    </div>
                                         <hr class="dropdown-divider">
-                                    <label class="normal-14-medium-p">Links</label>
-                                    <p class="normal-14-medium-p">
+
+
+                                        <div>
+                                            <p class="normal-14-medium-p">
+                                                Sobre
+                                            </p>
+
+                                            <div id="contentTextArea">
+                                                <textarea name="about" id="about" cols="30" rows="7" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()"></textarea>
+                                                <div><span id="counterTextArea">250</span></div>
+                                            </div>
+
+                                        </div>
+                                        <hr class="dropdown-divider">
+                                        <label class="normal-18-bold-title-2">Links</label>
+                                        <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">Linkedin</p>
                                         <input type="text" name="linkedin" class="normal-12-regular-tinyinput input-text input-social" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                                    </p>
+                                        </p>
 
-                                    <p class="normal-14-medium-p">
+                                        <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">GitHub</p>
                                         <input type="text" name="github" class="normal-12-regular-tinyinput input-text input-social" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                                    </p>
+                                        </p>
 
-                                    <p class="normal-14-medium-p">
+                                        <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">Facebook</p>
                                         <input type="text" name="facebook" class="normal-12-regular-tinyinput input-text input-social" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                                    </p>
+                                        </p>
 
-                                    <p class="normal-14-medium-p">
+                                        <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">Instagram</p>
                                         <input type="url" name="instagram" class="normal-12-regular-tinyinput input-text input-social" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
-                                    </p>
+                                        </p>
                                         <hr class="dropdown-divider">
-                                    <p class="normal-14-medium-p">
-                                        <label>Foto</label>
-                                        <input type="file" name="photo" id="photo" disabled required>
-                                    </p>
+                                        <!-- INPUT ORIGINAL -->
+                                        <p class="normal-14-medium-p" style="display: none;">
+                                            <label>Foto</label>
+                                            <input type="file" name="photo" id="photo" disabled required>
+                                        </p>
 
-                                
+                                        <p>
+                                            <label class="normal-14-medium-p foto-text">Foto</label><br />
+                                            <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+                                            <input type="file" class="photo" name="photo" id="photo" required>
+                                            <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                                        </p>
                                         <!-- <hr class="dropdown-divider"> -->
-                                    
 
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <button type="submit" class="button-wide button-white-white-text register normal-14-bold-p" name="register">Cadastrar</button>
-                    <button type="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
+                        <button type="submit" class="button-wide button-white-white-text register normal-14-bold-p" name="register">Cadastrar</button>
+                        <button type="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
 
-                </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -259,6 +265,32 @@ try {
 
     <!-- JS Count Characters TextArea -->
     <script type="text/javascript" src="../../js/textarea.js"></script>
+    <!-- JS arquvio selecionado -->
+    <script type="text/javascript">
+            let inputFile = document.getElementById('photo');
+            let fileNameField = document.getElementById('file-name');
+            inputFile.addEventListener('change', function(event){
+                let uploadedFileName = event.target.files[0].name;
+                fileNameField.textContent = uploadedFileName;
+            });
+            
+            document.getElementById("reset").addEventListener("click", function(){
+            document.getElementById("file-name").innerText = "Nenhum arquivo selecionado";});
+
+            var down = document.getElementById('file-name');
+            var file = document.getElementById("photo");
+            var uploadedFileName = event.target.files[0].name;
+            
+            
+            function GFG_Fun() {
+                if(file.files.length == 0 ){
+                    down.style.color = "#ED4245";
+                    down.innerText = "SELECIONE UM ARQUIVO!";
+                } else {
+                    true
+                }
+            }
+        </script> 
 
 </body>
 
