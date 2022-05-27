@@ -59,11 +59,11 @@
 
                     <!-- Opções da NavBar -->
                     <li class="sidebar-li">
-                        <div class="sidebar-button">
-                            <a href="./registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                        <a href="./registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                            <div class="sidebar-button">
                                 Adicionar Informações +
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </li>
 
                     <li class="sidebar-li">

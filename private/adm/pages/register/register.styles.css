@@ -114,7 +114,7 @@
 .unit-card{
     width: 100%;
     background-color: var(--primary);
-    height: 10%;
+    height: 10vh;
     border-radius: 10px;
     display: flex;  
     flex-direction: row;

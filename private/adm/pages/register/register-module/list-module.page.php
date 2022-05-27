@@ -62,281 +62,282 @@ try {
         <!-- Inicio Wrapper -->
         <div class="wrapper">
 
-        <!-- NavBar Lateral - SideBar -->
-        <nav class="sidebar">
+            <!-- NavBar Lateral - SideBar -->
+            <nav class="sidebar">
 
-            <!-- Logo Heelp! -->
-            <a href="#" class="logo-heelp">
-                <img src="../../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
-                <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
-            </a>
-
-            <!-- Texto nº2 para Responsividade -->
-            <div class="respo-cabe">
-                <a href="../registration panel/registration-panel-page.php" class="seta-voltar-a seta-voltar-a-responsividade">
-                    <img src="../../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
+                <!-- Logo Heelp! -->
+                <a href="#" class="logo-heelp">
+                    <img src="../../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
+                    <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
                 </a>
-                <p class="add-info-text add-info-text-responsividade normal-22-black-title-1">Módulos</p>
-            </div>
 
-            <!-- Menu Sanduíche da Responsividade -->
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
-            </label>
-            
-            
-            
-            <!-- Conteúdo Navbar -->
-            <ul class="sidebar-ul">
-
-                <!-- Logo Heelp! do Responsivo -->
-                <li class="sidebar-li sidebar-li-logo">
-                    <a href="#" class="logo-heelp-responsividade">
-                        <img src="../../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
-                        <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
+                <!-- Texto nº2 para Responsividade -->
+                <div class="respo-cabe">
+                    <a href="../registration panel/registration-panel-page.php" class="seta-voltar-a seta-voltar-a-responsividade">
+                        <img src="../../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
                     </a>
-                </li>
+                    <p class="add-info-text add-info-text-responsividade normal-22-black-title-1">Módulos</p>
+                </div>
 
-                <!-- Opções da NavBar -->
-                <li class="sidebar-li">
-                    <div class="sidebar-button">
-                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
-                            <p class="sidebar-button-text">Adicionar Informações +</p> 
+                <!-- Menu Sanduíche da Responsividade -->
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+                
+                
+                <!-- Conteúdo Navbar -->
+                <ul class="sidebar-ul">
+
+                    <!-- Logo Heelp! do Responsivo -->
+                    <li class="sidebar-li sidebar-li-logo">
+                        <a href="#" class="logo-heelp-responsividade">
+                            <img src="../../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
+                            <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
                         </a>
-                    </div>
-                </li>
+                    </li>
 
-                <li class="sidebar-li">
-                    <a href="#" class="sidebar-a-items">
-                        <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
+                    <!-- Opções da NavBar -->
+                    <li class="sidebar-li">
+                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                            <div class="sidebar-button">
+                                <p class="sidebar-button-text">Adicionar Informações +</p> 
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-li">
+                        <a href="#" class="sidebar-a-items">
+                            <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
+                            <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
+                        </a>
+                        <hr class="sidebar-linha">
+                    </li>
+
+                    <li class="sidebar-li">
+                        <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
+                        <a href="#" class="sidebar-a">
+                            <img class="sidebar-img" src="../../../../../views/images/components/denuncia-img.svg" alt="">
+                            <p class="sidebar-option normal-18-bold-title-2">Denuncias</p>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-li">
+                        <a href="#" class="sidebar-a">
+                            <img class="sidebar-img" src="../../../../../views/images/components/informacoes-img.svg" alt="">
+                            <p class="sidebar-option normal-18-bold-title-2">Informações</p>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-li">
+                        <a href="#" class="sidebar-a">
+                            <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
+                            <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-li">
+                        <p class="sidebar-categoria normal-14-bold-p">Contas</p>
+                        <a href="#" class="sidebar-a">
+                            <img class="sidebar-img" src="../../../../../views/images/components/listagem-img.svg" alt="">
+                            <p class="sidebar-option normal-18-bold-title-2">Listagem</p>
+                        </a>
+                        <hr class="sidebar-linha">
+                    </li>
+
+                    <li class="sidebar-li">
+                        <a href="#" class="sidebar-a">
+                        <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
-                    <hr class="sidebar-linha">
-                </li>
+                    </li>
 
-                <li class="sidebar-li">
-                    <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
-                    <a href="#" class="sidebar-a">
-                        <img class="sidebar-img" src="../../../../../views/images/components/denuncia-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Denuncias</p>
+                </ul>
+
+            </nav>
+
+            <!-- Corpo -->
+            <div class="corpo">
+
+                <div class="cabecalho">
+                    <a href="../registration panel/registration-panel-page.php" class="seta-voltar-a">
+                        <img src="../../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
                     </a>
-                </li>
-
-                <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
-                        <img class="sidebar-img" src="../../../../../views/images/components/informacoes-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Informações</p>
-                    </a>
-                </li>
-
-                <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
-                        <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
-                    </a>
-                </li>
-
-                <li class="sidebar-li">
-                    <p class="sidebar-categoria normal-14-bold-p">Contas</p>
-                    <a href="#" class="sidebar-a">
-                        <img class="sidebar-img" src="../../../../../views/images/components/listagem-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Listagem</p>
-                    </a>
-                    <hr class="sidebar-linha">
-                </li>
-
-                <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
-                    <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
-                    <p class="sidebar-option normal-18-bold-title-2">Sair</p>
-                </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-        <!-- Corpo -->
-        <div class="corpo">
-
-            <div class="cabecalho">
-                <a href="../registration panel/registration-panel-page.php" class="seta-voltar-a">
-                    <img src="../../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
-                </a>
-                <p class="add-info-text normal-22-black-title-1">Módulos</p>  
-            </div>
-
-            <!-- Parte Branca -->
-            <div class="conteudo">
-
-        <!-- Mensagem de sucesso ⬇️ -->
-        <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
-
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                </symbol>
-            </svg>
-
-            <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
-                    <use xlink:href="#check-circle-fill" />
-                </svg>
-                <div>
-                    <strong>Tudo certo!</strong>
-                    <?php echo $_SESSION['statusPositive']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <p class="add-info-text normal-22-black-title-1">Módulos</p>  
                 </div>
-            </div>
-        <?php unset($_SESSION['statusPositive']);
-        } ?>
 
-        <!-- Cadastro módulo ⬇️ -->
-        <a href="./form-register-module.page.php" class="unit-card-a">
-            <div class="unit-card">
-                <p class="unit-card-text normal-18-black-title-2">Clique aqui para fazer o cadastro unitário</p> 
-                <img src="../../../images/unit-card-img.svg" class="unit-card-img">
-            </div>
-        </a>
+                <!-- Parte Branca -->
+                <div class="conteudo">
 
-        <!-- Barra de pesquisa ⬇️ -->
-        <form action="./search-module.page.php" method="GET">
-            <input type="text" name="searchModule" id="searchModule" placeholder="Pesquise por módulos" autocomplete="off" class="search-bar">
-            <input type="submit" value="🔎" class="search-button">
-        </form>
-                <!-- Mensagem de erro ⬇️ -->
-                <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+                    <!-- Mensagem de sucesso ⬇️ -->
+                    <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
 
-                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </symbol>
-                    </svg>
-
-                    <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                            <use xlink:href="#exclamation-triangle-fill" />
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </symbol>
                         </svg>
-                        <div>
-                            <strong>Ops...</strong>
-                            <?php echo $_SESSION['statusNegative']; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                                <use xlink:href="#check-circle-fill" />
+                            </svg>
+                            <div>
+                                <strong>Tudo certo!</strong>
+                                <?php echo $_SESSION['statusPositive']; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         </div>
-                    </div>
-                <?php unset($_SESSION['statusNegative']);
-                } ?>
+                    <?php unset($_SESSION['statusPositive']);
+                    } ?>
 
-        <!-- Contador de módulos ⬇️ -->
-        <p class="contador-prof normal-18-black-title-2">
-            <?php echo $countModules ?>
-        </p>
-
-        <!-- Lista de módulos ⬇️ -->
-        <div class="list-prof">
-
-            <?php for ($i = 0; $i < count($listModules); $i++) {
-                $row = $listModules[$i] ?>
-
-                <div class="card-mod">
-
-                <div class="info-prof-cima">
-
-                    <p class="prof-text normal-14-medium-p">
-                        Módulo
-                    </p>
-                    
-                    <!-- Mais Opções -->
-                    <div class="drop-edit-exclud">
-                        <img src="../../../../../views/images/components/three-dots.svg">
-                        
-                        <!-- Parte do Update e Delete -->
-                        <div class="drop-edit-exclud-content">
-                            <a href="./form-update-module.page.php?updateModule=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
-                                <div class="drop-edit-exclud-option">
-                                    <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
-                                    <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
-                                </div>
-                            </a>
-                            <a href="./controller/delete-module.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
-                                <div class="drop-edit-exclud-option">
-                                    <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
-                                    <p class="drop-edit-exclud-text normal-14-bold-p">Excluir</p>
-                                </div>
-                            </a>
+                    <!-- Cadastro módulo ⬇️ -->
+                    <a href="./form-register-module.page.php" class="unit-card-a">
+                        <div class="unit-card">
+                            <p class="unit-card-text normal-18-black-title-2">Clique aqui para fazer o cadastro unitário</p> 
+                            <img src="../../../images/unit-card-img.svg" class="unit-card-img">
                         </div>
-                    </div>
-                </div>
-                    
-                    <p class="prof-name normal-14-bold-p text-truncate">
-                        <?php echo $row->name; ?>
+                    </a>
+
+                    <!-- Barra de pesquisa ⬇️ -->
+                    <form action="./search-module.page.php" method="GET">
+                        <input type="text" name="searchModule" id="searchModule" placeholder="Pesquise por módulos" autocomplete="off" class="search-bar">
+                        <input type="submit" value="🔎" class="search-button">
+                    </form>
+
+                    <!-- Mensagem de erro ⬇️ -->
+                    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </symbol>
+                        </svg>
+
+                        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                                <use xlink:href="#exclamation-triangle-fill" />
+                            </svg>
+                            <div>
+                                <strong>Ops...</strong>
+                                <?php echo $_SESSION['statusNegative']; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    <?php unset($_SESSION['statusNegative']);
+                    } ?>
+
+                    <!-- Contador de módulos ⬇️ -->
+                    <p class="contador-prof normal-18-black-title-2">
+                        <?php echo $countModules ?>
                     </p>
 
-                </div>
-            <?php } ?>
-        </div>
+                    <!-- Lista de módulos ⬇️ -->
+                    <div class="list-prof">
 
-        <!-- Paginação ⬇️ -->
-        <?php
-        //Receber o numero de página
-        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
-        $page = (!empty($current_page)) ? $current_page : 1;
-        
-        //Setar a quantidade de registros por página
-        $limit_result = 12;
+                        <?php for ($i = 0; $i < count($listModules); $i++) {
+                            $row = $listModules[$i] ?>
 
-        //Calcular o inicio da vizualização
-        $start = ($limit_result * $page) - $limit_result;
+                            <div class="card-mod">
 
-        //Contar a quantidade de registros no bd 
-        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules";
-        $result_qnt_register = $connection->prepare($query_qnt_register);
-        $result_qnt_register->execute();
-        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+                            <div class="info-prof-cima">
 
-        //Quantidade de páginas
-        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+                                <p class="prof-text normal-14-medium-p">
+                                    Módulo
+                                </p>
+                                
+                                <!-- Mais Opções -->
+                                <div class="drop-edit-exclud">
+                                    <img src="../../../../../views/images/components/three-dots.svg">
+                                    
+                                    <!-- Parte do Update e Delete -->
+                                    <div class="drop-edit-exclud-content">
+                                        <a href="./form-update-module.page.php?updateModule=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                            <div class="drop-edit-exclud-option">
+                                                <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                                <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
+                                            </div>
+                                        </a>
+                                        <a href="./controller/delete-module.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                            <div class="drop-edit-exclud-option">
+                                                <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                                <p class="drop-edit-exclud-text normal-14-bold-p">Excluir</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                                <p class="prof-name normal-14-bold-p text-truncate">
+                                    <?php echo $row->name; ?>
+                                </p>
 
-        $prev_page = $page - 1;
+                            </div>
+                        <?php } ?>
+                    </div>
 
-        $next_page = $page + 1;
+                    <!-- Paginação ⬇️ -->
+                    <?php
+                    //Receber o numero de página
+                    $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+                    $page = (!empty($current_page)) ? $current_page : 1;
+                    
+                    //Setar a quantidade de registros por página
+                    $limit_result = 12;
 
-        ?>
+                    //Calcular o inicio da vizualização
+                    $start = ($limit_result * $page) - $limit_result;
 
-<div class="div-pagination">
-        <ul class="pagination">
-            <?php
-            //botão para voltar
-            if ($prev_page != 0) { ?>
-                <li class="page-item">
-                    <a class="page-link pagination-last normal-14-medium-p" href="./list-module.page.php?page=<?php echo $prev_page; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
-                </li>
-            <?php    } else { ?>
-                <li class="page-item disabled">
-                    <a class="page-link disable pagination-last normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-                </li>
-            <?php }  ?>
+                    //Contar a quantidade de registros no bd 
+                    $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules";
+                    $result_qnt_register = $connection->prepare($query_qnt_register);
+                    $result_qnt_register->execute();
+                    $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
 
-            <?php
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
-                <li class="page-item"><a class="page-link pagination-page normal-14-medium-p" href="./list-module.page.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-            <?php }
-            ?>
+                    //Quantidade de páginas
+                    $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
 
-            <?php
-            //botão para avançar
-            if ($next_page <= $page_qnt) { ?>
-                <li class="page-item">
-                    <a class="page-link pagination-next normal-14-medium-p" href="./list-module.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
-                </li>
-            <?php    } else { ?>
-                <li class="page-item disabled">
-                    <a class="page-link disable pagination-next normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
-                </li>
-            <?php }  ?>
-        </ul>
-</div>
+                    $prev_page = $page - 1;
+
+                    $next_page = $page + 1;
+
+                    ?>
+
+                    <div class="div-pagination">
+                        <ul class="pagination">
+                            <?php
+                            //botão para voltar
+                            if ($prev_page != 0) { ?>
+                                <li class="page-item">
+                                    <a class="page-link pagination-last normal-14-medium-p" href="./list-module.page.php?page=<?php echo $prev_page; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
+                                </li>
+                            <?php    } else { ?>
+                                <li class="page-item disabled">
+                                    <a class="page-link disable pagination-last normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                </li>
+                            <?php }  ?>
+
+                            <?php
+                            //Apresentar a paginação
+                            for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
+                                <li class="page-item"><a class="page-link pagination-page normal-14-medium-p" href="./list-module.page.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                            <?php }
+                            ?>
+
+                            <?php
+                            //botão para avançar
+                            if ($next_page <= $page_qnt) { ?>
+                                <li class="page-item">
+                                    <a class="page-link pagination-next normal-14-medium-p" href="./list-module.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
+                                </li>
+                            <?php    } else { ?>
+                                <li class="page-item disabled">
+                                    <a class="page-link disable pagination-next normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
+                                </li>
+                            <?php }  ?>
+                        </ul>
+                    </div>
 
 
                 </div>
@@ -344,14 +345,9 @@ try {
 
             <!-- Fim Wrapper -->
         </div>
-<<<<<<< HEAD
 
         <!-- JS Bootstrap ⬇️ -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-=======
-        <!-- Fim Wrapper -->
-    </div>
->>>>>>> qa
 
         <!-- JS Modal Excluir ⬇️ -->
         <script src="../../js/delete-module.js"></script>
