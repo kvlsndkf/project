@@ -1,3 +1,4 @@
+/* Padrão */
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +7,8 @@
 }
 
 /* Display arrumado com Bootstrap */
+
+/* Sidebar */
 .logo-heelp{
     text-decoration: none;
     display: flex;
@@ -233,7 +236,6 @@
 .prof-img{
     max-width: 315px;
     max-height: 120px;
-    /* border-radius: 10px 10px 0 0; */
 }
 
 .info-prof{
@@ -436,7 +438,32 @@
     margin-top: 25px;
 }
 
+/* HOVER MENU QUE EXISTEM PÁGINAS */
 
+.sidebar-a-items{
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    transition: 0.2s; /* Animação */
+    width: 100%;
+    height: auto; 
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+.sidebar-a-items:hover{
+    background-color: var(--gray3);
+    border-radius: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+
+/* Responsividade com o Media */
 @media only screen and  (max-width: 1000px){
     .sidebar{
         width: 100%;

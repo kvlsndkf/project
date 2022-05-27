@@ -56,6 +56,7 @@ try {
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <!-- Estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
@@ -108,15 +109,15 @@ try {
 
                 <!-- Opções da NavBar -->
                 <li class="sidebar-li">
-                    <div class="sidebar-button">
-                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                    <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                        <div class="sidebar-button">
                             <p class="sidebar-button-text">Adicionar Informações +</p>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="#" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                     </a>
@@ -309,7 +310,7 @@ try {
                 
 
                     <p class="prof-name normal-14-medium-p">Curso</p>
-                    <p class="prof-text school-name normal-14-bold-p"><?php echo $row->name; ?> </p>
+                    <p class="prof-text school-name normal-14-bold-p text-truncate"><?php echo $row->name; ?> </p>
 
                     <hr>
 
