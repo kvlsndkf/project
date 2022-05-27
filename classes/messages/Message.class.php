@@ -95,8 +95,8 @@ class Message
 
             $stmt->execute();
 
-            $_SESSION['statusPositive'] = "Módulo cadastrado com sucesso.";
-            header('Location:');
+            $_SESSION['statusPositive'] = "Mensagem Cadastrada com Sucesso.";
+            header('Location: /project/views/pages/register/form-register-message/list-message.page.php');
         } catch (Exception $e) {
             echo $e->getMessage();
             
