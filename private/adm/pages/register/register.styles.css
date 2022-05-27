@@ -257,6 +257,7 @@
 .prof-text{
     margin-bottom: 2px;
     color: var(--bg-modal);
+    max-width: 240px;
 }
 
 .drop-edit-exclud{
