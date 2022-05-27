@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="./landing-page-styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../private/style/style.css">
 
         <!-- Títilo e Ícone -->
         <title>Heelp!</title>
@@ -217,10 +218,41 @@
                         <a href="#com" class="a-class white footer-options normal-14-bold-p white">Comunidade</a>
                         <a href="#net" class="a-class white footer-options normal-14-bold-p white">Networking</a>
                         <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Desafios</a>
-                        <a href="./form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white">Fale Conosco</a>
+                        
+                        
+                        <a href="./form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Fale Conosco</a>
+                        
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form class="row g-3 needs-validation" action="./form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Deixe um email para entrarmos em contato</label>
+      <input name="contact" type="email" class="form-control" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+    </div>
+    <div  class="mb-3">
+    
+    <label for="exampleFormControlTextarea1" class="form-label">Deixe sua crítica/avaliação</label>
+
+      <div id="contentTextArea"><textarea name="message" id="about" class="form-control" cols="30" rows="10"  placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required  maxlength="240" ></textarea></div>
+      <div><span id="counterTextArea">240</span></div>
+      
+    </div>
+    <div class="col-12">
+    <input class="btn btn-primary" type="submit" value="Cadastrar"  name="register" onclick = "GFG_Fun()"></input>
+  </div>
+</form>
+    </div>
+  </div>
+</div>
+           
+
+
                         <a href="#" class="a-class white footer-options normal-14-bold-p white">Sobre a Empresa</a>
 
-                        
+
+
+             
                     </div>
                     <div class="div-da-seta">
                         <a href="#tela1" class="seta-anchor">
@@ -256,5 +288,34 @@
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+        <!--Cod Java alert-->
+<script type="text/javascript">
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+    </script> 
+
+    <!-- JS Visibility Inputs -->
+<script type="text/javascript" src="../../private/adm/pages/js/visibility-inputs.js"></script>
+<!-- JS Count Characters TextArea -->
+<script type="text/javascript" src="../../private/adm/pages/js/textarea.js"></script>
     </body>
 </html>
