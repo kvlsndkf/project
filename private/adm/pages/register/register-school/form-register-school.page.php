@@ -31,15 +31,14 @@ try {
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- CSS styles -->
     <link rel="stylesheet" href="../../../../style/form-register-teacher.page.css">
     <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../../views/styles/font-format.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/button.style.css">
     <link rel="shortcut icon" href="../../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
-
-    <!-- CSS styles -->
-    <link rel="stylesheet" href="../../../../style/form-register-teacher.page.css">
     <!-- JS Disabled Inputs -->
     <script type="text/javascript" src="../../js/disabled-inputs.js"></script>
     <!-- JS -->
@@ -100,7 +99,7 @@ try {
                     </a>
                     <label class="normal-20-bold-modaltitle title-header">Cadastro Etec</label>
                 </div>
-<div class="container-fluid">
+<div class="container">
                 <form action="./controller/school-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
                     <label class="normal-14-medium-p nome-professor">
                         Nome Etec
@@ -138,13 +137,13 @@ try {
                             <?php } ?>
                         </select>
                     </p>
-
+                    <hr class="dropdwon-divider" />
                     <span class="normal-14-medium-p nome-professor">
                         <input type="checkbox" name="createAccount" id="createAccount" onclick="createdAccount()" value="createdAccount">
-                        Criar um perfil para a Etec?
+                        <p style="display: inline-block;">
+                            <span class="label-social">Criar um perfil para a Etec?</span>
+                        </p>
                     </span>
-
-                    <hr class="hr" />
 
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item" style="border: none;">
@@ -155,13 +154,13 @@ try {
                             </h3>
 
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="background-color: #303339;">
+                                <div class="accordion-body" style="background-color: var(--bg-modal);">
 
                                     <p>
                                         <label class="normal-14-medium-p">Selecione os professores a que ela pertence</label>
                                     </p>
                                     <p>
-                                        <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" style="width: 100%" multiple="multiple" disabled required>
+                                        <select name="idTeachers[]" id="idTeachers" class="multiple-select select-input bg-modal" style="width: 100%;" multiple="multiple" disabled required>
                                             <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
                                                 $row = $listTeachersOfSelect[$i] ?>
                                                 <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
@@ -169,9 +168,9 @@ try {
                                         </select>
                                     </p>
 
-                                    <li>
+                                
                                         <hr class="dropdown-divider">
-                                    </li>
+                                    
 
                                     <div>
                                         <p class="normal-14-medium-p">
@@ -179,50 +178,41 @@ try {
                                         </p>
 
                                         <div id="contentTextArea">
-                                            <textarea name="about" id="about" cols="30" rows="10" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()"></textarea>
+                                            <textarea name="about" id="about" cols="30" rows="7" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()"></textarea>
                                             <div><span id="counterTextArea">250</span></div>
                                         </div>
 
-
                                     </div>
-
-                                    <li>
                                         <hr class="dropdown-divider">
-                                    </li>
-
                                     <label class="normal-14-medium-p">Links</label>
                                     <p class="normal-14-medium-p">
-                                        Linkedin
-                                        <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <p class="normal-14-medium-p label-social">Linkedin</p>
+                                        <input type="text" name="linkedin" class="normal-12-regular-tinyinput input-text input-social" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
 
                                     <p class="normal-14-medium-p">
-                                        GitHub
-                                        <input type="text" name="github" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <p class="normal-14-medium-p label-social">GitHub</p>
+                                        <input type="text" name="github" class="normal-12-regular-tinyinput input-text input-social" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
 
                                     <p class="normal-14-medium-p">
-                                        Facebook
-                                        <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <p class="normal-14-medium-p label-social">Facebook</p>
+                                        <input type="text" name="facebook" class="normal-12-regular-tinyinput input-text input-social" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
 
                                     <p class="normal-14-medium-p">
-                                        Instagram
-                                        <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <p class="normal-14-medium-p label-social">Instagram</p>
+                                        <input type="url" name="instagram" class="normal-12-regular-tinyinput input-text input-social" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                     </p>
-
-                                    <li>
                                         <hr class="dropdown-divider">
-                                    </li>
-
                                     <p class="normal-14-medium-p">
                                         <label>Foto</label>
                                         <input type="file" name="photo" id="photo" disabled required>
                                     </p>
 
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
+                                
+                                        <!-- <hr class="dropdown-divider"> -->
+                                    
 
                                 </div>
                             </div>
@@ -230,8 +220,8 @@ try {
                     </div>
 
 
-                    <button type="submit" name="register">Cadastrar</button>
-                    <button type="reset">Limpar</button>
+                    <button type="submit" class="button-wide button-white-white-text register normal-14-bold-p" name="register">Cadastrar</button>
+                    <button type="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
 
                 </form>
                 </div>

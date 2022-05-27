@@ -176,7 +176,6 @@ body, html {
     background-color: var(--gray2);
     color: var(--gray6);
     border: solid #202225 1px;
-
 }
 
 .acc-btn:after {
@@ -267,3 +266,27 @@ body, html {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+
+.select-input {
+    background-color: rebeccapurple;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.text-area {
+    background-color: var(--gray3);
+    color: white;
+    width: 100%;
+}
+
+.text-area:focus {
+    background-color: var(--gray2);
+}
+
+.text-area:disabled {
+    background-color: var(--gray4);
+}
+
+.label-social {
+    margin-top: 8px;
+}
