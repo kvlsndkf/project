@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Estilos -->
+        <link rel="stylesheet" href="../register.styles.css">
         <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
         <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
         <link rel="stylesheet" href="./registration-panel-style.css">

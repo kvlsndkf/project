@@ -268,7 +268,7 @@ try {
                     </div>
                 </div>
                     
-                    <p class="prof-name normal-14-bold-p">
+                    <p class="prof-name normal-14-bold-p text-truncate">
                         <?php echo $row->name; ?>
                     </p>
 

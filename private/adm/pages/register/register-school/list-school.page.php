@@ -296,7 +296,7 @@ try {
                 <!-- Info do Card -->
                 <div class="info-prof">
                     <div class="info-prof-cima">
-                        <p class="prof-name school-name normal-14-bold-p">
+                        <p class="prof-name school-name normal-14-bold-p text-truncate">
                             <?php echo $row->name; ?>
                         </p>
 
