@@ -801,10 +801,10 @@ class School extends Social
 
     //----------------------------
     /**
-     * @method paginationSchool() paginate list of schools search
-     * @param string $search
+     * @method paginationSchoolfilterNoHaveAccount() paginate list of schools don't have account 
+     * @param string $haveAccount
      */
-    public function paginationSchoolfilter1(string $haveAccount)
+    public function paginationSchoolfilterNoHaveAccount(string $haveAccount)
     {
         $connection = Connection::connection();
 
@@ -859,10 +859,10 @@ class School extends Social
 
     //----------------------------
     /**
-     * @method paginationSchool() paginate list of schools search
-     * @param string $search
+     * @method paginationSchoolfilterHaveAccount() paginate list of schools have account 
+     * @param string $haveAccount
      */
-    public function paginationSchoolfilter2(string $haveAccount)
+    public function paginationSchoolfilterHaveAccount(string $haveAccount)
     {
         $connection = Connection::connection();
 

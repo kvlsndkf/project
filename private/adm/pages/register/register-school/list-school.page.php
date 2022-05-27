@@ -423,9 +423,9 @@ try {
         }    
         
         if($filter == 'Semconta' && $search == null){
-            $paginationSchoolfilter = $school ->paginationSchoolFilter1($filter);
+            $paginationSchoolfilter = $school ->paginationSchoolfilterNoHaveAccount($filter);
         } else if ($filter == 'Comconta' && $search == null) {
-            $paginationSchoolfilter = $school ->paginationSchoolFilter2($filter);
+            $paginationSchoolfilter = $school ->paginationSchoolfilterHaveAccount($filter);
         } else {
 
         }    
