@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
     <head>
         <!-- HTML Padrão -->
         <meta charset="UTF-8">
@@ -107,67 +108,71 @@
 
                     <li class="sidebar-li">
                         <a href="#" class="sidebar-a">
+
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
-                    </li>
 
-                </ul>
+                </li>
 
-            </nav>
+            </ul>
 
-            <!-- Corpo -->
-            <div class="corpo">
+        </nav>
 
-                <p class="add-info-text normal-22-black-title-1">Adicionar Informações</p>
+        <!-- Corpo -->
+        <div class="corpo">
 
-                <!-- Parte Branca -->
-                <div class="conteudo">
+            <p class="add-info-text normal-22-black-title-1">Adicionar Informações</p>
 
-                    <div class="prof-cad cad-option">
-                        <a href="../register-teacher/list-teacher.page.php" class="cad-a">
-                            <p class="nome-cad normal-40-black-display">Professores</p>
-                            <img src="./img/prof-img.svg" class="img-cad">
-                        </a>
-                        
-                    </div>
+            <!-- Parte Branca -->
+            <div class="conteudo">
 
-                    <div class="mod-cad cad-option">
-                        <a href="../register-module/list-module.page.php" class="cad-a">
-                           <p class="nome-cad normal-40-black-display">Módulos</p>
-                            <img src="./img/module-img.svg" class="img-cad"> 
-                        </a>
-                        
-                    </div>
+                <div class="prof-cad cad-option">
+                    <a href="../register-teacher/list-teacher.page.php" class="cad-a">
+                        <p class="nome-cad normal-40-black-display">Professores</p>
+                        <img src="./img/prof-img.svg" class="img-cad">
+                    </a>
 
-                    <div class="school-cad cad-option">
-                        <a href="../register-school/list-school.page.php" class="cad-a">
-                            <p class="nome-cad normal-40-black-display">ETECs</p>
-                            <img src="./img/school-img.svg" class="img-cad">
-                        </a>
-                    </div>
+                </div>
 
-                    <div class="course-cad cad-option">
-                        <a href="../register-course/list-course.page.php" class="cad-a">
-                            <p class="nome-cad normal-40-black-display">Cursos</p>
-                            <img src="./img/course-img.svg" class="img-cad">
-                        </a>
-                    </div>   
+                <div class="mod-cad cad-option">
+                    <a href="../register-module/list-module.page.php" class="cad-a">
+                        <p class="nome-cad normal-40-black-display">Módulos</p>
+                        <img src="./img/module-img.svg" class="img-cad">
+                    </a>
 
-                    <div class="subject-cad cad-option">
-                        <a href="../register-subject/list-subject.page.php" class="cad-a">
-                            <p class="nome-cad normal-40-black-display">Matérias</p>
-                            <img src="./img/subject-img.svg" class="img-cad">
-                        </a>
-                    </div>
 
+                </div>
+
+                <div class="school-cad cad-option">
+                    <a href="#" class="cad-a">
+                        <p class="nome-cad normal-40-black-display">ETECs</p>
+                        <img src="./img/school-img.svg" class="img-cad">
+                    </a>
+                </div>
+
+                <div class="course-cad cad-option">
+                    <a href="#" class="cad-a">
+                        <p class="nome-cad normal-40-black-display">Cursos</p>
+                        <img src="./img/course-img.svg" class="img-cad">
+                    </a>
+                </div>
+
+                <div class="subject-cad cad-option">
+                    <a href="#" class="cad-a">
+                        <p class="nome-cad normal-40-black-display">Matérias</p>
+                        <img src="./img/subject-img.svg" class="img-cad">
+                    </a>
                 </div>
 
             </div>
 
-            <!-- Fim Wrapper -->
         </div>
 
-        
-    </body>
+        <!-- Fim Wrapper -->
+    </div>
+
+
+</body>
+
 </html>
