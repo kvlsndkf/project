@@ -217,7 +217,7 @@
                         <a href="#com" class="a-class white footer-options normal-14-bold-p white">Comunidade</a>
                         <a href="#net" class="a-class white footer-options normal-14-bold-p white">Networking</a>
                         <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Desafios</a>
-                        <a href="#" class="a-class white footer-options normal-14-bold-p white">Fale Conosco</a>
+                        <a href="./form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white">Fale Conosco</a>
                         <a href="#" class="a-class white footer-options normal-14-bold-p white">Sobre a Empresa</a>
 
                         
