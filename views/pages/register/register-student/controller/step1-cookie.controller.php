@@ -14,7 +14,7 @@ if (isset($_POST['step1'])) {
         $verifyEmail->execute();
 
         if ($verifyEmail->rowCount() > 0) {
-            $_SESSION['statusNegative'] = "Usuário já existente, faça o cadastro novamente.";
+            $_SESSION['statusNegative'] = "Usuário já existente, tente fazer o login.";
             return header('Location: /project/views/pages/register/register-profile/register-profile.pages.php');
         } else{
             Cookie::writer('email', $email);
