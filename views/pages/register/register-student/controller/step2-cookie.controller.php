@@ -1,6 +1,8 @@
 <?php
 require_once('/xampp/htdocs' . '/project/classes/cookies/Cookie.class.php');
 
+session_start();
+
 if(isset($_POST['step2'])){
     $firstName = $_POST['firstName'];
     $surname = $_POST['surname'];
@@ -8,6 +10,16 @@ if(isset($_POST['step2'])){
     $nameSchool = $_POST['nameSchool'];
     $nameCourse = $_POST['nameCourse'];
     $nameModule = $_POST['nameModule'];
+
+    if(!isset($nameSchool)){
+        $_SESSION['statusNegative'] = "Selecione uma Etec para continuar.";
+        return header('Location: /project/views/pages/register/register-student/step2-register-student.page.php');
+    }
+
+    if(!isset($nameModule)){
+        $_SESSION['statusNegative'] = "Selecione um módulo para continuar.";
+        return header('Location: /project/views/pages/register/register-student/step2-register-student.page.php');
+    }
 
     $linkedin = $_POST['linkedin'];
     $github = $_POST['github'];
