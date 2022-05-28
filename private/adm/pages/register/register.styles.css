@@ -201,6 +201,17 @@
     padding: 20px;
 }
 
+.card-school{
+    width: 315px;
+    border-radius: 10px;
+    border: 1px solid var(--gray7);
+    margin: 5px;
+}
+
+.school-name{
+    margin-bottom: 4px;
+}
+
 .div-prof-img{
     height: 120px;
     border-radius: 10px 10px 0 0;
@@ -341,6 +352,83 @@
     color: var(--bg-list);
 }
 
+.more-details-button{
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 35px;
+    padding-top: 15px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.more-details-button:hover{
+    transform: scale(1.05);
+    transition: 1s;
+}
+
+.more-details-button-text{
+    font-weight: 400;
+}
+
+.filtro-school{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* margin: 15px; */
+    margin-bottom: 50px;
+    margin-left: 0;
+}
+
+.filtro-option, .filtro-option-2{
+    font-weight: 400;
+}
+
+.filtro-option{
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 30px;
+}
+
+.filtro-option:hover{
+    transform: scale(1.1);
+    transition: .5s;
+    color: var(--white);
+}
+
+.filtro-option-2{
+    border-color: var(--primary);
+    color: var(--primary);
+    border-radius: 30px;
+}
+
+.filtro-option-2:hover{
+    transform: scale(1.1);
+    transition: .5s;
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.bg-help-primary{
+    background-color: var(--primary);
+}
+
+.filtro-text-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+
+
 @media only screen and  (max-width: 1000px){
     .sidebar{
         width: 100%;
@@ -435,5 +523,17 @@
     }
     .search-button{
         width: 15%;
+    }
+}
+
+@media (max-width: 300px){
+    .filtro-school{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+    }
+    .filtro-option, .filtro-option-2{
+        margin: 5px;
     }
 }

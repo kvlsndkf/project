@@ -244,11 +244,12 @@ try {
                     </div>
                 </a>
 
-                <!-- Barra de pesquisa ⬇️ -->
-                <form action="./list-teacher.page.php" method="GET">
-                    <input type="text" name="searchTeacher" id="searchTeacher" placeholder="Pesquise por professores" autocomplete="off" class="search-bar">
-                    <input type="submit" value="🔎" class="search-button">
-                </form>
+
+                    <!-- Barra de pesquisa ⬇️ -->
+                    <form action="./list-teacher.page.php" method="GET">
+                        <input type="text" name="searchTeacher" id="searchTeacher" placeholder="Pesquise por professores" autocomplete="off" class="search-bar">
+                        <input type="submit" value="🔎" class="search-button">
+                    </form>
 
                 <!-- Contador de professores ⬇️ -->
                 <p class="contador-prof normal-18-black-title-2">
