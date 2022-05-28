@@ -249,6 +249,9 @@ class Module
     }
 
     //----------------------------
+    /**
+     * @method listModulesOfSelectResgisterUser() list the modules for student registration
+     */
     public function listModulesOfSelectResgisterUser()
     {
         $connection = Connection::connection();
@@ -283,5 +286,24 @@ class Module
 
         $this->setResultBuildList($modules);
         return $modules;
+    }
+
+    //----------------------------
+    /**
+     * @method getIdModuleByName() find the module by name
+     * @param string $name 
+     */
+    public function getIdModuleByName($name)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT id FROM modules
+                                         WHERE name = '$name'
+                                     ");
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result[0]['id'];
     }
 }

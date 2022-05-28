@@ -611,6 +611,9 @@ class School extends Social
     }
 
     //----------------------------
+    /**
+     * @method listSchoolsOfSelectResgisterCourse() list the schools within the select of the course registration 
+     */
     public function listSchoolsOfSelectResgisterCourse()
     {
         $connection = Connection::connection();
@@ -629,7 +632,7 @@ class School extends Social
 
     //----------------------------
     /**
-     * @method buildSchoolList() organize the list of teachers by 
+     * @method buildSchoolListSelect() organize the list of schools by 
      * @param array $result 
      */
     private function buildSchoolListSelect(array | false $result)
@@ -648,7 +651,10 @@ class School extends Social
         return $schools;
     }
 
-
+    //----------------------------
+    /**
+     * @method schoolsHasCourses() filter the schools that have courses
+     */
     public function schoolsHasCourses()
     {
         $connection = Connection::connection();
@@ -665,5 +671,24 @@ class School extends Social
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    //----------------------------
+    /**
+     * @method getIdSchoolByName() find the school by name
+     * @param string $name 
+     */
+    public function getIdSchoolByName($name)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT id FROM schools
+                                         WHERE name = '$name'
+                                     ");
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result[0]['id'];
     }
 }
