@@ -280,9 +280,7 @@ try {
 
                 <div class="info-prof">
                     <div class="info-prof-cima">
-                        <p class="img-curso">
-                            <img src="<?php echo $row->photo; ?>" alt=" <?php echo $row->name; ?>">
-                        </p>   
+                            <img src="<?php echo $row->photo; ?>" alt=" <?php echo $row->name; ?>" class="img-curso">
 
                         <!-- Mais Opções -->
                         <div class="drop-edit-exclud">
