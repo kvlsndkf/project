@@ -42,7 +42,7 @@ try {
     <br>
     <br>
 
-    <form action="./controller/student-cookie.controller.php" method="post">
+    <form action="./controller/step2-cookie.controller.php" method="post">
         <div>
             Primeiro nome
             <br>

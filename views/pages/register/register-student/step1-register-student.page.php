@@ -19,7 +19,7 @@ require_once('/xampp/htdocs' . '/project/classes/cookies/Cookie.class.php');
     <label for="">Etapa 1/4</label>
     <br>
     <br>
-    <form action="./controller/student-cookie.controller.php" method="post">
+    <form action="./controller/step1-cookie.controller.php" method="post">
         <div>
             <label>Email</label>
             <br>
