@@ -1,4 +1,4 @@
-function validarEmail(){
+function validarEmail(e){
   const email = document.getElementById("eemail").value;
   
   // email.includes('@etec.sp.gov.br');
@@ -8,54 +8,67 @@ function validarEmail(){
   // console.log(email.includes('@help.com.br'))
 
     if((email.includes('@e')) || (email.includes('@et')) || (email.includes('@ete')) || (email.includes('@etec')) === true){
-    etec();
+    etec(e);
 
   } else if((email.includes('@h')) || (email.includes('@he')) || (email.includes('@hel')) || (email.includes('@help')) === true){
-    help();
-  }else if ((email.includes('etec@')) || email.includes('help@') === true){
-    arroba();
+    help(e);
+  }else if ((email.startsWith('etec@')) || email.startsWith('help@') === true){
+    arroba(e);
+    
+   
   }
 }
 
-function etec(){
+function etec(e){
   const email = document.getElementById("eemail").value;
 
   if((email.includes('@etec.sp.gov.br')) === true){
     true
     document.getElementById('message-aluno').style.display = "none";
   }else{
+    false
+    e.preventDefault()
+    document.getElementById('message-adm').style.display = "none";
+    document.getElementById('message-antes').style.display = "none";
     document.getElementById('message-aluno').style.display = "block";
   }
 }
 
-function help(){
+function help(e){
   const email = document.getElementById("eemail").value;
 
   if((email.includes('@help.com.br')) === true){
     true
     document.getElementById('message-adm').style.display = "none";
   }else{
+    false
+    e.preventDefault()
+    //Limpando caixa de erro
+    document.getElementById('message-aluno').style.display = "none";
+    document.getElementById('message-antes').style.display = "none";
+    //colocando novo erro
     document.getElementById('message-adm').style.display = "block";
+    
   }
 }
 
-function arroba(){
-  if((email.includes('etec@')) || email.includes('help@') === true){
+function arroba(e){
+  const email = document.getElementById("eemail").value;
+  if((email.startsWith('etec@')) || email.startsWith('help@') === true){
+    false
+    e.preventDefault()
+    document.getElementById('message-adm').style.display = "none";
+    document.getElementById('message-aluno').style.display = "none";
     document.getElementById('message-antes').style.display = "block";
+
   }else{
+    true
     document.getElementById('message-antes').style.display = "none";
   }
   
 }
 
-function buttonDisable(){
-  validarEmail();
-  if(email.length === arroba(0) || email.length === help(0) || email.length === email(0) ){
-    return false;
-} else {
-    true
-}
-}
+
   
 
 

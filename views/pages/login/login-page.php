@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="button-enter">
-                            <a href="#"><button class="botao-g normal-14-regular-p bt" id="botao" onclick="buttonDisable()" >Entrar</button></a>
+                            <a href="#"><button class="botao-g normal-14-regular-p bt" id="botao" onclick="validarEmail(event)" >Entrar</button></a>
                         </div>
                     </div>
                     <div class="criar-conta">
