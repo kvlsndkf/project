@@ -31,7 +31,7 @@
             <form action="#" class="form">
                 <div class="voltar">
                     <div>
-                        <a class="" href="#">
+                        <a class="" href="../../../views/landing-page/landing-page.php">
                             <img src="../../images/./components/seta-voltar.svg" alt="">
                         </a>
                     </div>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="criar-conta">
-                        <h6 class="normal-14-medium-p final">Novo por aqui? <a href="#" class="normal-14-medium-p link"> Crie uma conta!</a></h6>
+                        <h6 class="normal-14-medium-p final">Novo por aqui? <a href="../register/register-profile/register-profile.pages.php" class="normal-14-medium-p link"> Crie uma conta!</a></h6>
                     </div>
                 </div>
             </form>
