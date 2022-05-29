@@ -17,6 +17,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+    <script src="./validacao.js" defer></script>
     <link rel="shortcut icon" href="../../images/./logo/logo-help.svg" type="image/x-icon">
     <title>Heelp!</title>
 
@@ -30,7 +31,7 @@
             <form action="#" class="form">
                 <div class="voltar">
                     <div>
-                        <a class="" href="#">
+                        <a class="" href="../../../views/landing-page/landing-page.php">
                             <img src="../../images/./components/seta-voltar.svg" alt="">
                         </a>
                     </div>
@@ -48,23 +49,26 @@
 
                         <h6 class="normal-16-bold-title-3 inputEmail">Email</h6>
                         <div class="input-box">
-                            <input  required type="email" id="" class="input email" placeholder="email@email.com" name="email">
-                            <br><span class="error normal-14-medium-p"></span>
+                            <input  required type="email" id="eemail" class="input email" placeholder="email@email.com" name="email" autocomplete="off">
+                            <span id="message-aluno" class="error normal-14-medium-p"> E-mail institucional inválido</span>
+                            <span id="message-adm" class="error normal-14-medium-p"> E-mail de administrador inválido</span>
+                            <span id="message-antes" class="error normal-14-medium-p"> E-mail inválido</span>
+                            
                         </div>
 
 
                         <h6 class="normal-14-medium-p inputPass">Senha</h6>
                         <div class="input-box">
-                            <input required type="password" id="" class="input senha" placeholder="********">
-                            <br><span class="error normal-14-medium-p"></span>
+                            <input required type="password" id="senha" class="input senha" placeholder="********" minlength="6" autocomplete="off">
+                           
                         </div>
 
                         <div class="button-enter">
-                            <a href="#"><button class="botao-g normal-14-regular-p bt" id="">Entrar</button></a>
+                            <a href="#"><button class="botao-g normal-14-regular-p bt" id="botao" onclick="validarEmail(event)" >Entrar</button></a>
                         </div>
                     </div>
                     <div class="criar-conta">
-                        <h6 class="normal-14-medium-p final">Novo por aqui? <a href="#" class="normal-14-medium-p link"> Crie uma conta!</a></h6>
+                        <h6 class="normal-14-medium-p final">Novo por aqui? <a href="../register/register-profile/register-profile.pages.php" class="normal-14-medium-p link"> Crie uma conta!</a></h6>
                     </div>
                 </div>
             </form>

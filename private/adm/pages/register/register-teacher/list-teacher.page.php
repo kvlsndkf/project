@@ -100,15 +100,15 @@ try {
 
                 <!-- Opções da NavBar -->
                 <li class="sidebar-li">
-                    <div class="sidebar-button">
-                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                    <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                        <div class="sidebar-button">
                             <p class="sidebar-button-text">Adicionar Informações +</p>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="#" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                     </a>
@@ -300,7 +300,7 @@ try {
                                 </div>
 
                                 <!-- Nome vindo do BD -->
-                                <p class="prof-name normal-14-bold-p">
+                                <p class="prof-name normal-14-bold-p text-truncate">
                                     <?php echo $row->name; ?>
                                 </p>
                             </div>
