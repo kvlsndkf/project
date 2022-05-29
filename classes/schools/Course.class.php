@@ -784,4 +784,65 @@ class Course
             echo $e->getMessage();
         }
     }
+
+    //----------------------------
+    /**
+     * @method selectTeachersUsedBySchool() selects the teachers being used by the school by 
+     * @param int $id 
+     */
+    public function selectCoursesUsedBySchool(string $name): array
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT c.id, c.name, c.photo FROM schoolsHasCourses sc
+                                         INNER JOIN courses c
+                                         ON c.id = sc.course_id
+                                         INNER JOIN schools s
+                                         ON s.id = sc.school_id
+                                         WHERE s.name = '$name'
+                                     ");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
+
+    //----------------------------
+    /**
+     * @method filteredCourseSelect() filters all courses except the parameter 
+     * @param string $name 
+     */
+    public function filteredCourseSelect(string $name): array
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT * FROM courses
+                                         WHERE NOT name = '$name'
+                                     ");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->buildCourseList($result);
+    }
+
+    //----------------------------
+    /**
+     * @method getIdCourseByName() find the course by name 
+     * @param string $name 
+     */
+    public function getIdCourseByName($name)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT id FROM courses
+                                         WHERE name = '$name'
+                                     ");
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result[0]['id'];
+    }
 }

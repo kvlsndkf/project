@@ -2,6 +2,7 @@
 
 .error{
     color: var(--red);
+    display: none;
 }
 
 span.error{

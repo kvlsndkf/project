@@ -99,15 +99,15 @@ try {
 
                 <!-- Opções da NavBar -->
                 <li class="sidebar-li">
-                    <div class="sidebar-button">
-                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                    <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                        <div class="sidebar-button">
                             <p class="sidebar-button-text">Adicionar Informações +</p>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="#" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                     </a>
@@ -296,7 +296,7 @@ try {
                 <!-- Info do Card -->
                 <div class="info-prof">
                     <div class="info-prof-cima">
-                        <p class="prof-name school-name normal-14-bold-p">
+                        <p class="prof-name school-name normal-14-bold-p text-truncate">
                             <?php echo $row->name; ?>
                         </p>
 
@@ -407,20 +407,19 @@ try {
                 </div>
             </div>
         </div>
-    </div>
+        
+        <!-- Paginação ⬇️ -->
+        <div class="div-pagination">
+            
+            <?php
+
+if (!empty($search) && $filter == null){
+    $paginationSchoolfilter = $school ->paginationSchoolSearch($search);
+}else if (empty($search) && $filter == null){
+    $paginationSchoolfilter = $school ->paginationSchool($search);
+} else {
     
-    <!-- Paginação ⬇️ -->
-    <div class="div-pagination">
-
-    <?php
-
-        if (!empty($search) && $filter == null){
-            $paginationSchoolfilter = $school ->paginationSchoolSearch($search);
-        }else if (empty($search) && $filter == null){
-            $paginationSchoolfilter = $school ->paginationSchool($search);
-        } else {
-
-        }    
+}       
         
         if($filter == 'Semconta' && $search == null){
             $paginationSchoolfilter = $school ->paginationSchoolfilterNoHaveAccount($filter);
@@ -430,6 +429,7 @@ try {
 
         }    
     ?>
+
 
     </div>
 

@@ -56,6 +56,7 @@ try {
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <!-- Estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
@@ -108,15 +109,15 @@ try {
 
                 <!-- Opções da NavBar -->
                 <li class="sidebar-li">
-                    <div class="sidebar-button">
-                        <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                    <a href="../registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                        <div class="sidebar-button">
                             <p class="sidebar-button-text">Adicionar Informações +</p>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="../../dashboard/dashboard.page.php" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                     </a>
@@ -265,41 +266,73 @@ try {
     </p>
 
     <!-- Lista de professores ⬇️ -->
-    <?php for ($i = 0; $i < count($listCourses); $i++) {
-        $row = $listCourses[$i] ?>
+    <div class="list-prof">
 
-        <?php $countTeachersInCourse = $course->countTeachersInCourse($row->id); ?>
-        <?php $countSchoolsInCourse = $course->countSchoolsInCourse($row->id); ?>
-        <?php $countSubjectsInCourse = $course->countSubjectsInCourse($row->id); ?>
+        <?php for ($i = 0; $i < count($listCourses); $i++) {
+            $row = $listCourses[$i] ?>
 
-        <p>
-            <img src="<?php echo $row->photo; ?>" alt=" <?php echo $row->name; ?>">
+            <!-- Card da Listagem -->
+            <div class="card-school">
 
-        </p>
+                <?php $countTeachersInCourse = $course->countTeachersInCourse($row->id); ?>
+                <?php $countSchoolsInCourse = $course->countSchoolsInCourse($row->id); ?>
+                <?php $countSubjectsInCourse = $course->countSubjectsInCourse($row->id); ?>
 
-        <p>
-            Curso
-            <?php echo $row->name; ?>
-        </p>
+                <div class="info-prof">
+                    <div class="info-prof-cima">
+                            <img src="<?php echo $row->photo; ?>" alt=" <?php echo $row->name; ?>" class="img-curso">
 
-        <?php $style = $countSchoolsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-primary'; ?>
-        <span class="<?php echo $style; ?>"> Etec's: <?php echo $countSchoolsInCourse ?></span>
+                        <!-- Mais Opções -->
+                        <div class="drop-edit-exclud">
+                            <img src="../../../../../views/images/components/three-dots.svg">
 
-        <?php $style = $countTeachersInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-primary'; ?>
-        <span class="<?php echo $style; ?>"> Professores: <?php echo $countTeachersInCourse ?></span>
+                            <!-- Parte do Update e Delete -->
+                            <div class="drop-edit-exclud-content">
+                                <a href="./form-update-course.page.php?updateCourse=<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                    <div class="drop-edit-exclud-option">
+                                        <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
+                                    </div>
+                                </a>
+                                <a href="./controller/delete-course.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                    <div class="drop-edit-exclud-option">
+                                        <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text normal-14-bold-p">Excluir</p>
+                                    </div>
+                                </a>
+                            </div>
 
-        <?php $style = $countSubjectsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-purple'; ?>
-        <span class="<?php echo $style; ?>"> Matérias: <?php echo $countSubjectsInCourse ?></span>
+                        </div>
+                    </div>
 
-        <br><br>
-        <button type="submit" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">Ver mais detalhes</button>
+                
 
-        <p>
-            <a href="./form-update-course.page.php?updateCourse=<?php echo $row->id; ?>">Editar</a>
-            <a href="./controller/delete-course.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
-        </p>
-        <hr>
-    <?php } ?>
+                    <p class="prof-name normal-14-medium-p">Curso</p>
+                    <p class="prof-text school-name normal-14-bold-p text-truncate"><?php echo $row->name; ?> </p>
+
+                    <hr>
+
+                <?php $style = $countSchoolsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-primary'; ?>
+                <span class="<?php echo $style; ?>"> Etec's: <?php echo $countSchoolsInCourse ?></span>
+
+                <?php $style = $countTeachersInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-primary'; ?>
+                <span class="<?php echo $style; ?>"> Professores: <?php echo $countTeachersInCourse ?></span>
+
+                <?php $style = $countSubjectsInCourse == 0 ? 'badge rounded-pill bg-primary d-none' : 'badge rounded-pill bg-help-purple'; ?>
+                <span class="<?php echo $style; ?>"> Matérias: <?php echo $countSubjectsInCourse ?></span>
+
+                <br><br>
+                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">
+                    <p class="more-details-button-text normal-14-bold-p">Ver mais detalhes</p> 
+                </button>
+
+                </div>
+
+            </div>
+             
+        <?php } ?>
+    
+    </div>
 
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
