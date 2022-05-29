@@ -94,7 +94,7 @@ try {
         <div class="page-container d-flex align-items-center justify-content-center">
             <div class="form-base bg-modal-gray align-self-center my-auto">
                 <div class="form-header">
-                    <a href="./search-teacher.page.php">
+                    <a href="./list-school.page.php">
                         <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
                     </a>
                     <label class="normal-20-bold-modaltitle title-header">Cadastro Etec</label>
@@ -104,8 +104,10 @@ try {
                         <label class="normal-14-medium-p nome-professor">
                             Nome Etec
                         </label>
-                        <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome da ETEC" autocomplete="off" required>
-
+                        <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome da ETEC" autocomplete="off" required autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="10">
+                        <div>
+                            <span id="min-leng-name"></span>
+                        </div>
                         <br />
                         <p class="normal-14-medium-p etec-location-label">
                             A Etec fica localizada dentro da cidade de São Paulo?
@@ -178,10 +180,13 @@ try {
                                             </p>
 
                                             <div id="contentTextArea">
-                                                <textarea name="about" id="about" cols="30" rows="7" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()"></textarea>
-                                                <div><span id="counterTextArea">250</span></div>
+                                                <textarea name="about" id="about" cols="30" rows="7" placeholder="Faça um breve texto contando sobre a Etec, ele aparecerá na página de perfil da mesma" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()" minlength="100"></textarea>
+                                                <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
                                             </div>
 
+                                        </div>
+                                        <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
+                                            <span></span>
                                         </div>
                                         <hr class="dropdown-divider">
                                         <label class="normal-18-bold-title-2">Links</label>
@@ -205,29 +210,20 @@ try {
                                         <input type="url" name="instagram" class="normal-12-regular-tinyinput input-text input-social" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                         </p>
                                         <hr class="dropdown-divider">
-                                        <!-- INPUT ORIGINAL -->
-                                        <p class="normal-14-medium-p" style="display: none;">
-                                            <label>Foto</label>
-                                            <input type="file" name="photo" id="photo" disabled required>
-                                        </p>
-
-                                        <p>
+                                        <p class="normal-14-medium-p">
                                             <label class="normal-14-medium-p foto-text">Foto</label><br />
                                             <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
-                                            <input type="file" class="photo" name="photo" id="photo" required>
+                                            <input type="file" class="photo" name="photo" id="photo" disabled required>
                                             <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
                                         </p>
-                                        <!-- <hr class="dropdown-divider"> -->
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
 
 
-                        <button type="submit" class="button-wide button-white-white-text register normal-14-bold-p" name="register">Cadastrar</button>
-                        <button type="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
+                        <button type="submit" class="button-wide button-white-white-text register normal-14-bold-p" name="register" onclick="GFG_Fun(); checkLength()">Cadastrar</button>
+                        <button type="reset" id="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
 
                     </form>
                 </div>
@@ -267,31 +263,44 @@ try {
     <script type="text/javascript" src="../../js/textarea.js"></script>
     <!-- JS arquvio selecionado -->
     <script type="text/javascript">
-            let inputFile = document.getElementById('photo');
-            let fileNameField = document.getElementById('file-name');
-            inputFile.addEventListener('change', function(event){
-                let uploadedFileName = event.target.files[0].name;
-                fileNameField.textContent = uploadedFileName;
-            });
-            
-            document.getElementById("reset").addEventListener("click", function(){
-            document.getElementById("file-name").innerText = "Nenhum arquivo selecionado";});
+        let inputFile = document.getElementById('photo');
+        let fileNameField = document.getElementById('file-name');
+        inputFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            fileNameField.textContent = uploadedFileName;
+        });
 
-            var down = document.getElementById('file-name');
-            var file = document.getElementById("photo");
-            var uploadedFileName = event.target.files[0].name;
-            
-            
-            function GFG_Fun() {
-                if(file.files.length == 0 ){
-                    down.style.color = "#ED4245";
-                    down.innerText = "SELECIONE UM ARQUIVO!";
-                } else {
-                    true
-                }
+        document.getElementById("reset").addEventListener("click", function() {
+            document.getElementById("file-name").innerText = "Nenhum arquivo selecionado";
+        });
+
+        var down = document.getElementById('file-name');
+        var file = document.getElementById("photo");
+        var uploadedFileName = event.target.files[0].name;
+
+
+        function GFG_Fun() {
+            if (file.files.length == 0) {
+                down.style.color = "#ED4245";
+                down.innerText = "SELECIONE UM ARQUIVO!";
+            } else {
+                true
             }
-        </script> 
+        }
+    </script>
 
+    <!-- JS tamanho minimo text area -->
+    <script>
+        var textArea = document.getElementById('about');
+        var minLength = document.getElementById('min-length');
+
+        function checkLength() {
+            if (textArea.value.length < 100) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Mínimo de caracteres: 100";
+            }
+        }
+    </script>
 </body>
 
 </html>
