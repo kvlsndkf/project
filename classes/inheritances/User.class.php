@@ -127,4 +127,59 @@ class User extends Social
         $this->preferences = $preferences;
     }
     //----------------------------
+    //methods
+
+    public function login($email, $password){
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT id, email, password, type_user, is_confirmed, is_blocked FROM users WHERE email LIKE'%$email%'");
+        $stmt->execute();
+        $listUser = $stmt->fetch(PDO::FETCH_BOTH);
+
+        if ($stmt->rowCount() > 0) {
+            if(password_verify($password, $listUser['password'])){
+
+                if($listUser['is_confirmed'] == false){
+                    $_SESSION['statusNegative'] = "Conta não confirmada.";
+                    return header('Location: /project/views/pages/login/login-page.php');
+                } 
+
+                if($listUser['is_blocked'] == true){
+                    $_SESSION['statusNegative'] = "Conta bloqueada.";
+                    return header('Location: /project/views/pages/login/login-page.php');
+                }
+
+                if($listUser['type_user'] === 'student'){
+                    session_start();
+                    $idStudent = $listUser['id'];
+                    $typeUser = $listUser['type_user'];
+
+                    $_SESSION['idUser'] = $idStudent;
+                    $_SESSION['typeUser'] = $typeUser;
+
+                    return header('Location: /project/private/student/pages/home/home.page.php');
+                }
+
+                if($listUser['type_user'] === 'administrator'){
+                    session_start();
+                    $idAdministrator = $listUser['id'];
+                    $typeUser = $listUser['type_user'];
+
+                    $_SESSION['idUser'] = $idAdministrator;
+                    $_SESSION['typeUser'] = $typeUser;
+
+                    return header('Location: /project/private/adm/pages/dashboard/dashboard.page.php');
+                }
+
+                //se não for nenhum dos dois será a empresa parceira.
+                echo json_encode($listUser);
+            } else{
+                $_SESSION['statusNegative'] = "Senha incorreta.";
+                header('Location: /project/views/pages/login/login-page.php');
+            }
+        } else {
+            $_SESSION['statusNegative'] = "Usuário não existe, faça o cadastro.";
+            header('Location: /project/views/pages/login/login-page.php');
+        }
+    }
 }
