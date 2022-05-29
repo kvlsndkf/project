@@ -144,6 +144,13 @@
 
                 </div>
 
+                <div class="subject-cad cad-option">
+                    <a href="../register-subject/list-subject.page.php" class="cad-a">
+                        <p class="nome-cad normal-40-black-display">Matérias</p>
+                        <img src="./img/subject-img.svg" class="img-cad">
+                    </a>
+                </div>
+
                 <div class="school-cad cad-option">
                     <a href="../register-school/list-school.page.php" class="cad-a">
                         <p class="nome-cad normal-40-black-display">ETECs</p>
@@ -155,13 +162,6 @@
                     <a href="../register-course/list-course.page.php" class="cad-a">
                         <p class="nome-cad normal-40-black-display">Cursos</p>
                         <img src="./img/course-img.svg" class="img-cad">
-                    </a>
-                </div>
-
-                <div class="subject-cad cad-option">
-                    <a href="../register-subject/list-subject.page.php" class="cad-a">
-                        <p class="nome-cad normal-40-black-display">Matérias</p>
-                        <img src="./img/subject-img.svg" class="img-cad">
                     </a>
                 </div>
 
