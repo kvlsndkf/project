@@ -227,7 +227,10 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-        <h2 style="padding-top: 10px;"> Fale Conosco</h2>
+        <div class="form-header">
+            
+            <h2 style="padding-top: 10px;"> Fale Conosco</h2>
+        </div>
 
         <hr>
     <form class="row g-3 needs-validation" action="./form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
@@ -245,7 +248,7 @@
       <hr>
     </div>
     <div class="col-12">
-    <input class="btn btn-primary" type="submit" value="Cadastrar"  name="register" onclick = "GFG_Fun()"></input>
+    <input class="btn btn-primary" type="submit" value="Enviar"  name="register" onclick = "GFG_Fun()"></input>
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
     
   </div>
