@@ -781,6 +781,7 @@ class School extends Social
 
     //----------------------------
     /** 
+    * @method listSchoolsOfSelectResgisterCourse() list the schools within the select of the course registration 
      * 
     */
     public function listSchoolsOfSelectResgisterCourse()
@@ -916,7 +917,8 @@ class School extends Social
     }
 
     /**
-     * @method buildSchoolList() organize the list of schools by 
+     * @method buildSchoolListSelect() organize the list of schools by 
+
      * @param array $result 
      */
     private function buildSchoolListSelect(array | false $result)
@@ -933,5 +935,46 @@ class School extends Social
 
         $this->setResultBuildList($schools);
         return $schools;
+    }
+
+    //----------------------------
+    /**
+     * @method schoolsHasCourses() filter the schools that have courses
+     */
+    public function schoolsHasCourses()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT DISTINCT s.id, s.name FROM schools s
+                                                INNER JOIN schoolsHasCourses sc
+                                                ON s.id = sc.school_id
+                                        ");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildSchoolListSelect($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    //----------------------------
+    /**
+     * @method getIdSchoolByName() find the school by name
+     * @param string $name 
+     */
+    public function getIdSchoolByName($name)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT id FROM schools
+                                         WHERE name = '$name'
+                                     ");
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return $result[0]['id'];
     }
 }

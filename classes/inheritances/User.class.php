@@ -1,21 +1,22 @@
 <?php
-include_once ('/xampp/htdocs' . '/project/database/connection.php');
+include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/inheritances/Social.class.php');
 
-class User
+class User extends Social
 {
     //attributes
-    protected string $email;
-    protected string $password;
-    protected string $photo;
-    protected string $typeUser;
-    protected bool $isConfirmed;
-    protected bool $isBlocked;
-    protected string $profileLink;
-    protected string $blockingReason;
-    protected string $blockedAt;
-    protected string $createdAt;
-    protected string $updatedAt;
+    public string $email;
+    public string $password;
+    public string $photo;
+    public string $typeUser;
+    public bool $isConfirmed;
+    public bool $isBlocked;
+    public string $profileLink;
+    public string $blockingReason;
+    public string $blockedAt;
+    public string $createdAt;
+    public string $updatedAt;
+    public array $preferences;
 
     //getters and setters
     public function getEmail()
@@ -115,6 +116,15 @@ class User
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+    //----------------------------
+    public function getPreferences()
+    {
+        return $this->preferences;
+    }
+    public function setPreferences($preferences)
+    {
+        $this->preferences = $preferences;
     }
     //----------------------------
 }
