@@ -227,32 +227,33 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-        <div class="form-header">
+        <div class="modal-header">
             
-            <h2 style="padding-top: 10px;"> Fale Conosco</h2>
+            <h2 class="modal-title" id="exampleModalLabel"> Fale Conosco</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
+    <div class="modal-body">
+        <form class="row g-3 needs-validation" action="./form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Deixe um email para entrarmos em contato</label>
+          <input name="contact" type="email" class="form-control" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+        </div>
+        <div  class="mb-3">
+        
         <hr>
-    <form class="row g-3 needs-validation" action="./form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Deixe um email para entrarmos em contato</label>
-      <input name="contact" type="email" class="form-control" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+        <label for="exampleFormControlTextarea1" class="form-label">Deixe sua crítica/avaliação</label>
+          <div id="contentTextArea"><textarea name="message" id="about" class="form-control" cols="30" rows="10"  placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required  maxlength="240" ></textarea></div>
+          <div><span id="counterTextArea">240</span></div>
+          <hr>
+        </div>
+        <div class="col-12">
+        <input class="btn btn-primary" type="submit" value="Enviar"  name="register" onclick = "GFG_Fun()"></input>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        
+          </div>
+        </form>
     </div>
-    <div  class="mb-3">
-    
-    <hr>
-    <label for="exampleFormControlTextarea1" class="form-label">Deixe sua crítica/avaliação</label>
-
-      <div id="contentTextArea"><textarea name="message" id="about" class="form-control" cols="30" rows="10"  placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required  maxlength="240" ></textarea></div>
-      <div><span id="counterTextArea">240</span></div>
-      <hr>
-    </div>
-    <div class="col-12">
-    <input class="btn btn-primary" type="submit" value="Enviar"  name="register" onclick = "GFG_Fun()"></input>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-    
-  </div>
-</form>
     </div>
   </div>
 </div>
