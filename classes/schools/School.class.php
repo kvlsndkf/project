@@ -622,10 +622,21 @@ class School extends Social
     {
         $connection = Connection::connection();
 
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+
+        //Setar a quantidade de registros por página
+        $limit_result = 8;
+
+        //Calcular o inicio da vizualização
+        $start = ($limit_result * $page) - $limit_result;
+
         $stmt = $connection->prepare("SELECT t.id, t.name, t.photo FROM schoolshasteachers st
                                          INNER JOIN teachers t
                                          ON t.id = st.teacher_id
                                          WHERE st.school_id = $id
+                                         LIMIT $start, $limit_result
                                      ");
 
         $stmt->execute();
