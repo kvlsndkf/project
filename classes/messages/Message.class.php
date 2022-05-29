@@ -34,10 +34,16 @@ class Message
     {
         return $this->status;
     }
-    public function setStatus($status)
+    public function setStatus(string $status): void
     {
+        if ($status == true) {
+            $status = "Nova";
+        } 
+
         $this->status = $status;
     }
+    
+    
     //----------------------------
     public function getMessage()
     {
@@ -84,12 +90,13 @@ class Message
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("INSERT INTO messages(message, contact, created_at)
-                                         VALUES (?,?, NOW())");
+            $stmt = $connection->prepare("INSERT INTO messages(contact, message, status, created_at)
+                                         VALUES (?,?,?, NOW())");
                                          
-            $stmt->bindValue(1, $mensagem->getMessage());
-            $stmt->bindValue(2, $mensagem->getContact());
-
+            $stmt->bindValue(1, $mensagem->getContact());
+            $stmt->bindValue(2, $mensagem->getMessage());
+            $stmt->bindValue(3, $mensagem->getStatus());
+            
             $stmt->execute();
 
             $_SESSION['statusPositive'] = "Mensagem Cadastrada com Sucesso.";
@@ -99,6 +106,7 @@ class Message
             
         }
     }
+    
     
     
 }
