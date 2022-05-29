@@ -200,7 +200,7 @@ CREATE TABLE messages(
     id INT NOT NULL AUTO_INCREMENT
     , PRIMARY KEY (id)
     , contact VARCHAR(100) NOT NULL
-    , message VARCHAR(192) NOT NULL
+    , message TEXT NOT NULL
     , status VARCHAR(30) NOT NULL
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
