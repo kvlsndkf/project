@@ -109,7 +109,7 @@ CREATE TABLE `denunciations` (
 CREATE TABLE `messages` (
   `id` int(11) NOT NULL,
   `contact` varchar(100) NOT NULL,
-  `message` varchar(192) NOT NULL,
+  `message` text(192) NOT NULL,
   `status` varchar(30) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
