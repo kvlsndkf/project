@@ -107,6 +107,13 @@
 }
 
 /* Card Cadastro Unitário */
+.register-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .unit-card-a{
     text-decoration: none;
 }
@@ -122,7 +129,29 @@
     justify-content: space-between;
 }
 
-.unit-card:hover{
+.unit-card-1{
+    width: 35vw;
+    background-color: var(--primary);
+    height: 102px;
+    border-radius: 10px;
+    display: flex;  
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.unit-card-2{
+    width: 35vw;
+    background-color: var(--little-blue);
+    height: 102px;
+    border-radius: 10px;
+    display: flex;  
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.unit-card:hover, .unit-card-1:hover, .unit-card-2:hover{
     transform: scale(1.05);
     transition: 1s;
 }
@@ -555,6 +584,13 @@
 }
 
 @media (max-width: 740px){
+    .register-cards{
+        flex-direction: column; 
+    }
+    .unit-card-1, .unit-card-2{
+        margin-bottom: 10px;
+        width: 100%;
+    }
     .list-prof{
         justify-content: center;
     }
