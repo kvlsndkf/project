@@ -89,9 +89,6 @@ class Message
                                          
             $stmt->bindValue(1, $mensagem->getMessage());
             $stmt->bindValue(2, $mensagem->getContact());
-            
-            
-            
 
             $stmt->execute();
 
