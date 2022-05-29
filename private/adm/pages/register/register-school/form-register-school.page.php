@@ -180,7 +180,7 @@ try {
                                             </p>
 
                                             <div id="contentTextArea">
-                                                <textarea name="about" id="about" cols="30" rows="7" placeholder="Faça um breve texto contando sobre a Etec, ele aparecerá na página de perfil da mesma" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()" minlength="100"></textarea>
+                                                <textarea name="about" id="about" cols="30" rows="7" placeholder="Faça um breve texto contando sobre a Etec, ele aparecerá na página de perfil da mesma" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()" minlength="100" maxlength="250"></textarea>
                                                 <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
                                             </div>
 
@@ -298,6 +298,9 @@ try {
             if (textArea.value.length < 100) {
                 minLength.style.color = "#ED4245";
                 minLength.innerText = "Mínimo de caracteres: 100";
+            } if (textArea.value.length > 250) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Máximo de caracteres: 250";
             }
         }
     </script>
