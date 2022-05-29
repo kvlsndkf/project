@@ -254,26 +254,28 @@
   </div>
 </div>
 
+<a href="#" class="a-class white footer-options normal-14-bold-p white">Sobre a Empresa</a>
 
+</div>
+    <div class="div-da-seta">
+        <a href="#tela1" class="seta-anchor">
+            <img src="./img/botão âncora.svg" class="seta-img">
+        </a>
+    </div>
+
+    <hr class="footer-linha">
+
+    <a href="#" class="a-copyright">
+        <p class="copyright-text whitney-16-medium-text">Copyright © Cold Wolf - 2022. Todos os direitos reservados.</p>
+    </a>
+
+</div>
 </div>
            
 
-                        <a href="#" class="a-class white footer-options normal-14-bold-p white">Sobre a Empresa</a>
+                        
   
-                    </div>
-                    <div class="div-da-seta">
-                        <a href="#tela1" class="seta-anchor">
-                            <img src="./img/botão âncora.svg" class="seta-img">
-                        </a>
-                    </div>
-
-                    <hr class="footer-linha">
-            
-                    <a href="#" class="a-copyright">
-                        <p class="copyright-text whitney-16-medium-text">Copyright © Cold Wolf - 2022. Todos os direitos reservados.</p>
-                    </a>
-
-                </div>
+                    
 
             
 
