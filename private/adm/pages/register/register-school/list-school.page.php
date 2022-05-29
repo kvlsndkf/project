@@ -419,17 +419,17 @@ if (!empty($search) && $filter == null){
     $paginationSchoolfilter = $school ->paginationSchool($search);
 } else {
     
-}    
+}       
+        
+        if($filter == 'Semconta' && $search == null){
+            $paginationSchoolfilter = $school ->paginationSchoolfilterNoHaveAccount($filter);
+        } else if ($filter == 'Comconta' && $search == null) {
+            $paginationSchoolfilter = $school ->paginationSchoolfilterHaveAccount($filter);
+        } else {
 
-if($filter == 'Semconta' && $search == null){
-    $paginationSchoolfilter = $school ->paginationSchoolFilter1($filter);
-} else if ($filter == 'Comconta' && $search == null) {
-    $paginationSchoolfilter = $school ->paginationSchoolFilter2($filter);
-} else {
-    
-}    
-?>
-        </div>
+        }    
+    ?>
+
 
     </div>
 
