@@ -114,7 +114,7 @@ try {
                         </p>
 
                         <p>
-                            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" required onclick="visibilityDistrict()"> <span class="normal-14-medium-p nome-professor">Sim</span>
+                            <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" required onclick="visibilityDistrict()"> <span class="normal-14-medium-p nome-professor checkbox-label">Sim</span>
 
                             <input type="checkbox" name="citySchool" id="checkCity" value="Outside city" required onclick="visibilityCity()"> <span class="normal-14-medium-p nome-professor">Não</span>
                         </p>
@@ -159,10 +159,10 @@ try {
                                     <div class="accordion-body" style="background-color: var(--bg-modal);">
 
                                         <p>
-                                            <label class="normal-14-medium-p">Selecione os professores a que ela pertence</label>
+                                            <label class="normal-14-medium-p ">Selecione os professores a que ela pertence</label>
                                         </p>
                                         <p>
-                                            <select name="idTeachers[]" id="idTeachers" class="multiple-select select-input bg-modal" style="width: 100%;" multiple="multiple" disabled required>
+                                            <select name="idTeachers[]" id="idTeachers" class="multiple-select bg-modal disabled-area" style="width: 100%;" multiple="multiple" disabled required>
                                                 <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
                                                     $row = $listTeachersOfSelect[$i] ?>
                                                     <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
@@ -192,22 +192,22 @@ try {
                                         <label class="normal-18-bold-title-2">Links</label>
                                         <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">Linkedin</p>
-                                        <input type="text" name="linkedin" class="normal-12-regular-tinyinput input-text input-social" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <input type="text" name="linkedin" class="normal-12-regular-tinyinput input-text input-social disabled-area" id="linkedin" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                         </p>
 
                                         <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">GitHub</p>
-                                        <input type="text" name="github" class="normal-12-regular-tinyinput input-text input-social" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <input type="text" name="github" class="normal-12-regular-tinyinput input-text input-social disabled-area" id="github" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                         </p>
 
                                         <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">Facebook</p>
-                                        <input type="text" name="facebook" class="normal-12-regular-tinyinput input-text input-social" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <input type="text" name="facebook" class="normal-12-regular-tinyinput input-text input-social disabled-area" id="facebook" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                         </p>
 
                                         <p class="normal-14-medium-p">
                                         <p class="normal-14-medium-p label-social">Instagram</p>
-                                        <input type="url" name="instagram" class="normal-12-regular-tinyinput input-text input-social" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
+                                        <input type="url" name="instagram" class="normal-12-regular-tinyinput input-text input-social disabled-area" id="instagram" placeholder="Copie e cole a URL" disabled autocomplete="off">
                                         </p>
                                         <hr class="dropdown-divider">
                                         <p class="normal-14-medium-p">

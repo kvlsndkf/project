@@ -1,3 +1,5 @@
+/* BACKGROUND */
+
 body, html {
     width: 100%;
     height: 100%;
@@ -25,6 +27,8 @@ body, html {
     justify-content: center;
     align-items: center;
 }
+
+/* FORMS */
 
 .form-base {
     width: 500px;
@@ -191,88 +195,7 @@ body, html {
     box-shadow: inherit;
 }
 
-/* CSS CHECKBOX */
-
-   /* The container */
-   .container-ckb {
-    position: relative;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  /* Hide the browser's default checkbox */
-  .container-ckb .ckb {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    align-self: center;
-    justify-self: center;
-    height: 18px;
-    width: 18px;
-    background-color: #303339;
-    border: solid #202225 3px;
-    border-radius: 1px;
-    outline: 3px solid #303339;
-  }
-
-  /* On mouse-over, add a grey background color */
-  .container-ckb:hover .ckb~.checkmark {
-    background-color: #40444B;
-  }
-
-  /* When the checkbox is checked, add a blue background */
-  .container-ckb .ckb:checked~.checkmark {
-    background-color: #00AFF4;
-
-  }
-
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  /* Show the checkmark when checked */
-  .container-ckb .ckb:checked~.checkmark:after {
-    display: block;
-  }
-
-  /* Style the checkmark/indicator */
-  .container-ckb .checkmark:after {
-    left: 3px;
-    top: 0.3px;
-    width: 5px;
-    height: 10px;
-    border: solid #303339;
-    border-radius: 1px;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-
-.select-input {
-    background-color: rebeccapurple;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.border-div {
-    border: solid 1px var(--blue-sky);
-}
+/* CONTADOR DE 250 CARACTERES */
 
 .counterTextArea {
     margin-right: 8px;
@@ -321,11 +244,9 @@ body, html {
 .label-social {
     margin-top: 8px;
 }
-
-.select2-selection--multiple {
-    background-color: red;
-}
   
+/* ESTILIZAÇÃO DOS SELECT2 */
+
 .select2-container .select2-selection--single .select2-selection__rendered {
     font-family: var(--gintoNormal-medium);
     font-style: normal;
@@ -337,6 +258,12 @@ body, html {
 
 .select2-container--default .select2-selection--single .select2-selection__arrow  {
     background-color: var(--gray2);
+    border: none;
+}
+
+.select2-container--default .select2-selection--single {
+    border: solid 1px var(--gray1);
+    border-radius: 0;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
@@ -377,7 +304,11 @@ body, html {
 
 .select2-container--default .select2-search--inline .select2-search__field {
 background-color: var(--gray2);
-color: #8080FF;
+color: white;
+font-family: var(--gintoNormal-medium);
+font-style: normal;
+font-weight: var(--regular);
+font-size: var(--tiny);
 }
 
 .select2-container--default .select2-selection--multiple {
@@ -393,4 +324,45 @@ color: #8080FF;
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     border: solid 1px var(--blue-sky);
     outline: none;
+}
+
+.checkbox-label {
+    margin-right: 25px;
+}
+
+.select2-dropdown {
+    background-color: #202225;
+    color: white;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #303339;
+    color: white;
+    border: none;
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--small);
+}
+
+.select2-results__option--selectable {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--small);
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background-color: var(--gray6);
+    border: none;
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--small);
+}
+
+/* INPUT TEXT DESATIVADOS */
+
+.disabled-area:disabled {
+    background-color: var(--gray4);
 }
