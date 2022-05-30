@@ -240,7 +240,7 @@ class Student extends User
                 <p/>
 
                 <p style='font-size:12px; color:#DCDDDE;'>
-                    O Heelp é uma plataforma institucional, com intuito de ajudar os alunos das Etecs com as dúvidas das duas atividades. É pedindo e dando Heelp que você se destaca!
+                    O Heelp é uma plataforma institucional, com intuito de ajudar os alunos das Etecs com as dúvidas das suas atividades. É pedindo e dando Heelp que você se destaca!
                 </p>
 
                 <div style='height:0.75px; background-color:#DCDDDE;'></div>
