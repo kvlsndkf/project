@@ -1,0 +1,78 @@
+/* FORMATTING */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 0;
+  
+}
+
+html,
+body {
+  font-size: 100%;
+  height: 100%;
+  
+  
+}
+
+/* VARIABLES */
+
+:root {
+  /* FONT VARIABLES */
+  --font-medium:"Barlow Condensed", sans-serif;
+  --thin: "Barlow Condensed Thin", sans-serif;
+  --bold-font: "Barlow Condensed Bold" , sans-serif;
+  --regular-font: "Barlow Condensed Regular" , sans-serif;
+  
+  /* SIZE */
+  --display: 64px;
+  --h1: 16px;
+  --h2: 48px;
+  --h3: 40px;
+  --h4: 32px;
+  --h5: 24px;
+  --h6: 20px;
+  --p: 16px;
+  --label: 14px;
+  --tiny: 12px;
+  --here: 35px;
+  --card-text: 18px;
+
+  --extra-light: 300;
+  --regular: 400;
+  --medium: 500;
+  --semi-bold: 600;
+  --bold: 700;
+  --extra-bold: 800;
+
+ 
+ 
+  --white:#FFFFFF;
+  --light-purple:#B376D4;
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url(../fonts/BarlowCondensed-Medium.ttf)
+}
+
+@font-face {
+  font-family: "Barlow Condensed Thin";
+  src: url(../fonts/BarlowCondensed-Thin.ttf)
+}
+@font-face {
+  font-family: "Barlow Condensed Bold";
+  src: url(../fonts/BarlowCondensed-Bold.ttf)
+}
+
+@font-face {
+  font-family: "Barlow Condensed Regular";
+  src: url(../fonts/BarlowCondensed-Regular.ttf)
+}
+
+
+
+
+
