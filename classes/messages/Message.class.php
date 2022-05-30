@@ -4,12 +4,12 @@ include_once ('/xampp/htdocs' . '/project/database/connection.php');
 class Message
 {
     //attributes
-    private int $id;
-    private string $contact;
-    private string $status;
-    private string $message;
-    private string $createdAt;
-    private string $updatedAt;
+    public int $id;
+    public string $contact;
+    public string $status;
+    public string $message;
+    public string $createdAt;
+    public string $updatedAt;
 
     //getters and setters
     public function getId()
@@ -34,10 +34,16 @@ class Message
     {
         return $this->status;
     }
-    public function setStatus($status)
+    public function setStatus(string $status): void
     {
+        if ($status == true) {
+            $status = "Nova";
+        } 
+
         $this->status = $status;
     }
+    
+    
     //----------------------------
     public function getMessage()
     {
@@ -65,5 +71,42 @@ class Message
     {
         $this->updatedAt = $updatedAt;
     }
-    //----------------------------
+    public function getResultBuildList(): array
+    {
+        return $this->resultBuildList;
+    }
+    public function setResultBuildList(array $resultBuildList): void
+    {
+        $this->resultBuildList = $resultBuildList;
+    }
+
+    //methods
+    /**
+     * @method registerMessage() registers the messages by 
+     * @param Message $message
+     */
+    public function registerMessage(Message $mensagem): void
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("INSERT INTO messages(contact, message, status, created_at)
+                                         VALUES (?,?,?, NOW())");
+                                         
+            $stmt->bindValue(1, $mensagem->getContact());
+            $stmt->bindValue(2, $mensagem->getMessage());
+            $stmt->bindValue(3, $mensagem->getStatus());
+            
+            $stmt->execute();
+
+            $_SESSION['statusPositive'] = "Mensagem Cadastrada com Sucesso.";
+            header('Location: /project/views/landing-page/landing-page.php');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            
+        }
+    }
+    
+    
+    
 }
