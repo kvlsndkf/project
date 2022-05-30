@@ -175,30 +175,31 @@ class Student extends User
         try {
             $email = $this->getEmail();
             $name = $this->getFirstName();
+            $surname = $this->getSurname();
 
-            return $this->sendEmail($email, $name, $key);
+            return $this->sendEmail($email, $name, $surname, $key);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
 
-    private function sendEmail($email, $name, $key)
+    private function sendEmail($email, $name, $surname, $key)
     {
         $mail = new PHPMailer(true);
 
         try {
             //Server settings
             $mail->isSMTP();
-            $mail->Host       = 'smtp.mailtrap.io';
+            $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = '46fe9560aa2d7e';
-            $mail->Password   = 'c8608b5506d4c5';
+            $mail->Username   = 'heelp.suporte@gmail.com';
+            $mail->Password   = 'help.sUporte@2022';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 2525;
+            $mail->Port       = 587;
             $mail->CharSet    = 'UTF-8';
 
             //Recipients
-            $mail->setFrom('cold.wolf.cw@gmail.com', 'Cold Wolf');
+            $mail->setFrom('heelp.suporte@gmail.com', 'Heelp!');
             $mail->addAddress($email, $name);
 
             //Content
@@ -212,7 +213,7 @@ class Student extends User
                 </div>
 
                 <p style='font-weight: bold; font-size:20px; color:#303030;'>
-                    Olá $name!
+                    Olá $name $surname!
                 </p> 
 
                 <p style='color:#4F5660;'>
