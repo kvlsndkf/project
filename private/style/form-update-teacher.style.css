@@ -108,7 +108,20 @@ body, html {
     cursor: pointer;
 }
 
-.clean:hover {
+.download-model{
+    margin-top: 10px;
+    width: 100%;
+    color: var(--purple-light);
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--white);
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.clean:hover, .download-model:hover {
     filter: brightness(1.2);
 }
 

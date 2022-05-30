@@ -1,27 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro em lote matérias | Heelp!</title>
-</head>
+    <head>
+        
+        <!-- Base -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro em lote matérias | Heelp!</title>
+        <link rel="shortcut icon" href="../../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 
-<body>
-    <label>Cadastro em lote</label>
-    <br>
-    <a href="../download/materias.xml" download="../download/materias.xml">
-        <button>Baixar modelo de planilha</button>
-    </a>
-    <form action="./controller/subject-batch-resgistration.controller.php" name="subject-batch-registration" method="post" enctype="multipart/form-data">
-        <br />
-        <br />
-        <input type="file" name="subject-table-file" required>
-        <br />
-        <br />
-        <input type="submit" value="Salvar">
-    </form>
-</body>
+        <!-- Estilos -->
+        <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+        <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
+        <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+
+        <link rel="stylesheet" href="../../../../style/form-register-teacher.page.css">
+        <link rel="stylesheet" href="../../../../style/form-update-teacher.style.css">
+        <link rel="stylesheet" href="../../../../../views/styles/button.style.css">
+
+    </head>
+
+    <body>
+
+        <div class="my-container">
+            <div class="page-container">
+                <div class="form-base bg-modal-gray">
+                    
+                    <div class="form-header">
+                        <a onclick="window.history.go(-1);">
+                            <img src="../../../images/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                        </a>
+                        <label class="normal-20-bold-modaltitle title-header">Cadastro em lote matéria</label>
+                    </div>
+
+                        <p class="normal-14-medium-p name">Para efetuar o cadastro em lote baixe aqui o modelo da planilha</p>
+                        <button class="download-model normal-14-bold-p">Baixar modelo de planilha</button>
+
+                        <!-- <hr> -->
+
+                        <form action="./controller/subject-batch-resgistration.controller.php" name="subject-batch-registration" method="post" enctype="multipart/form-data">
+                        <br />
+                        <br />
+                        <p class="normal-14-medium-p name">Envie o modelo da planilha preenchido</p>
+                        <input type="file" class="" name="subject-table-file" required>
+                        <br />
+                        <br />
+                        <input type="submit" class="register normal-14-bold-p" value="Cadastrar em lote">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- JS Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
 
 </html>
