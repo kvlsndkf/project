@@ -225,7 +225,7 @@ class Student extends User
                 </div>
 
                 <a href='http://localhost/project/views/pages/account-confirm/confirm-account.controller.php?key=$key'>
-                    <button style='padding: 12px 30px; margin-top: 20px; background-color:#8080FF; color:#ffffff; font-weight: bold; border-radius:4px; border:none; margin-bottom: 20px;'>Ativar conta</button>
+                    <button style='padding: 12px 30px; margin-top: 20px; background-color:#8080FF; color:#ffffff; font-weight: bold; border-radius:4px; border:none; margin-bottom: 20px; cursor:pointer;'>Ativar conta</button>
                 </a>
 
             </div>
