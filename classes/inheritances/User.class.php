@@ -129,7 +129,8 @@ class User extends Social
     //----------------------------
     //methods
 
-    public function login($email, $password){
+    public function login($email, $password)
+    {
         $connection = Connection::connection();
 
         $stmt = $connection->prepare("SELECT id, email, password, type_user, is_confirmed, is_blocked FROM users WHERE email LIKE'%$email%'");
@@ -137,19 +138,19 @@ class User extends Social
         $listUser = $stmt->fetch(PDO::FETCH_BOTH);
 
         if ($stmt->rowCount() > 0) {
-            if(password_verify($password, $listUser['password'])){
+            if (password_verify($password, $listUser['password'])) {
 
-                if($listUser['is_confirmed'] == false){
+                if ($listUser['is_confirmed'] == false) {
                     $_SESSION['statusNegative'] = "Conta não confirmada.";
                     return header('Location: /project/views/pages/login/login-page.php');
-                } 
+                }
 
-                if($listUser['is_blocked'] == true){
+                if ($listUser['is_blocked'] == true) {
                     $_SESSION['statusNegative'] = "Conta bloqueada.";
                     return header('Location: /project/views/pages/login/login-page.php');
                 }
 
-                if($listUser['type_user'] === 'student'){
+                if ($listUser['type_user'] === 'student') {
                     session_start();
                     $idStudent = $listUser['id'];
                     $typeUser = $listUser['type_user'];
@@ -160,7 +161,7 @@ class User extends Social
                     return header('Location: /project/private/student/pages/home/home.page.php');
                 }
 
-                if($listUser['type_user'] === 'administrator'){
+                if ($listUser['type_user'] === 'administrator') {
                     session_start();
                     $idAdministrator = $listUser['id'];
                     $typeUser = $listUser['type_user'];
@@ -172,14 +173,40 @@ class User extends Social
                 }
 
                 //se não for nenhum dos dois será a empresa parceira.
-                echo json_encode($listUser);
-            } else{
+            } else {
                 $_SESSION['statusNegative'] = "Senha incorreta.";
                 header('Location: /project/views/pages/login/login-page.php');
             }
         } else {
             $_SESSION['statusNegative'] = "Usuário não existe, faça o cadastro.";
             header('Location: /project/views/pages/login/login-page.php');
+        }
+    }
+
+    public function validateEmailUser($key)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT id, type_user FROM users WHERE key_confirm LIKE'%$key%'");
+        $stmt->execute();
+        $listUser = $stmt->fetch(PDO::FETCH_BOTH);
+
+
+        if ($stmt->rowCount() > 0) {
+            $id = $listUser['id'];
+
+            $update = $connection->prepare("UPDATE users SET is_confirmed = ?, key_confirm = ?, updated_at = NOW()
+                                            WHERE id = $id");
+            $update->bindValue(1, true);
+            $update->bindValue(2, null);
+
+            $update->execute();
+
+            $_SESSION['statusPositive'] = "Conta verificada com sucesso!";
+            return header('Location: /project/views/pages/login/login-page.php');
+        } else {
+            $_SESSION['statusNegative'] = "Essa chave de confirmação já foi usada.";
+            return header('Location: /project/views/pages/login/login-page.php');
         }
     }
 }
