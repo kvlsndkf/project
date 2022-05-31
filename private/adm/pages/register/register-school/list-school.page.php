@@ -53,9 +53,10 @@ try {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
         <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+        <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+        <link rel="stylesheet" href="../../../../style/modal-about.style.css">
         <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
         <link rel="stylesheet" href="../register.styles.css">
-        <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
 
     </head>
 
@@ -358,44 +359,72 @@ try {
         <!-- The Modal -->
         <div class="modal fade" id="myModal">
             <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
+                <div class="modal-content bg-modal-gray">
 
                     <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Detalhes da Etec</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <div class="modal-header cabecalho-modal">
+                        <h4 class="modal-title titulo-modal normal-20-bold-modaltitle">Detalhes da Etec</h4>
+                        <button type="button" class="btn-close botao-x" data-bs-dismiss="modal"></button>
                     </div>
 
                     <!-- Modal body -->
-                    <div class="modal-body">
-                        <p>
-                            <a href="" id="school-edit">Editar</a>
-                            <a href="" id="school-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
-                        </p>
-                        <img src="" alt="" id="photo-school">
-                        <div id="name-school"></div>
-                        <div id="address-school">, São Paulo</div>
+                    <div class="modal-body corpo-modal">
+                        <div class="perfil-escola">
 
 
-                        <div id="body-modal-have-account">
-                            <a id="linkedin-school" target="_blank" href="">
-                                <img src="../../../images/icons/linkedin.svg" alt="Logo linkedin">
-                            </a>
+                        <!-- Mais Opções
+                        <div class="drop-edit-exclud">
+                            <img src="../../../../../views/images/components/three-dots.svg">
 
-                            <a id="github-school" target="_blank" href="">
-                                <img src="../../../images/icons/github.svg" alt="Logo github">
-                            </a>
+                            Parte do Update e Delete
+                            <div class="drop-edit-exclud-content">
+                                <a href="" id="school-edit" class="drop-edit-exclud-a">
+                                    <div class="drop-edit-exclud-option">
+                                        <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
+                                    </div>
+                                </a>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                    <div class="drop-edit-exclud-option">
+                                        <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text normal-14-bold-p">Excluir</p>
+                                    </div>
+                                </a>
+                            </div>
 
-                            <a id="facebook-school" target="_blank" href="">
-                                <img src="../../../images/icons/facebook.svg" alt="Logo facebook">
-                            </a>
+                        </div> -->
 
-                            <a id="instagram-school" target="_blank" href="">
-                                <img src="../../../images/icons/instagram.svg" alt="Logo instagram">
-                            </a>
-                            <br>
-                            <label>Sobre</label>
-                            <div id="about-school"></div>
+
+                            <p>
+                                <a href="" id="school-edit">Editar</a>
+                                <a href="" id="school-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
+                            </p>
+                            <img src="" alt="" id="photo-school">
+                            <div id="name-school"></div>
+                            <div id="address-school">, São Paulo</div>
+    
+    
+                            <div id="body-modal-have-account">
+                                <a id="linkedin-school" target="_blank" href="">
+                                    <img src="../../../images/icons/linkedin.svg" alt="Logo linkedin">
+                                </a>
+    
+                                <a id="github-school" target="_blank" href="">
+                                    <img src="../../../images/icons/github.svg" alt="Logo github">
+                                </a>
+    
+                                <a id="facebook-school" target="_blank" href="">
+                                    <img src="../../../images/icons/facebook.svg" alt="Logo facebook">
+                                </a>
+    
+                                <a id="instagram-school" target="_blank" href="">
+                                    <img src="../../../images/icons/instagram.svg" alt="Logo instagram">
+                                </a>
+                                <br>
+                                <label>Sobre</label>
+                                <div id="about-school" class="text-truncate"></div>
+
+                        </div>
 
                             <br>
                             <br>

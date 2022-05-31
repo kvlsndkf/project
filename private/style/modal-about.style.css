@@ -1,0 +1,30 @@
+.cabecalho-modal, .corpo-modal{
+    padding: 40px;
+    padding-bottom: 35px;
+    border: none;
+}
+
+.titulo-modal{
+    color: var(--white);
+    font-weight: 400;
+}
+
+.botao-x{
+    color: var(--gray5);
+}
+
+.perfil-escola{
+    /* display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; */
+}
+
+.dark-dropdown{
+    
+}
+
+.dark-dropdown-content{
+    background-color: var(--gray3);
+    color: var(--white);
+}
