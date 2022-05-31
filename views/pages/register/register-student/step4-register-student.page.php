@@ -30,7 +30,7 @@ try {
     <a href="./step3-register-student.page.php">Voltar</a>
     <br>
     <br>
-    <label for="">Etapa 4/4</label>
+    <label>Etapa 4/4</label>
     <br>
     <br>
     <form action="./controller/step4-cookie.controller.php" method="post">
@@ -46,7 +46,7 @@ try {
                 <?php } ?>
             </select>
         </p>
-        <input type="submit" value="Solicitar acesso" name="step4">
+        <input type="submit" value="Solicitar acesso" name="step4" id="step4" onclick="loading()">
     </form>
 </body>
 
@@ -66,6 +66,12 @@ try {
         allowClear: true,
         maximumSelectionLength: 2
     });
+</script>
+
+<script>
+    function loading(){
+        document.getElementById("step4").value = "Solicitando...";
+    }
 </script>
 
 </html>
