@@ -147,7 +147,7 @@ try {
                             </p>
                         </span>
                         <p class="span-warning-school normal-12-bold-tiny gray-text-6 mb-3">
-                            Os campos abaixo só ficarão habilitados se escolher criar uma conta para a Etec.
+                            Os campos abaixo só ficarão habilitados se escolher criar um perfil para a Etec.
                         </p>
 
                         <div class="accordion" id="accordionExample">
