@@ -40,6 +40,8 @@ try {
         <title>Etec's | Heelp!</title>
         <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
 
+        <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
+
         <!-- CSS Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
