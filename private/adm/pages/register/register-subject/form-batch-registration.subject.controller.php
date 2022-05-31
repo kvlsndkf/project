@@ -35,7 +35,9 @@
                     </div>
 
                     <p class="normal-14-medium-p name">Para efetuar o cadastro em lote baixe aqui o modelo da planilha</p>
-                    <button class="download-model normal-14-bold-p">Baixar modelo de planilha</button>
+                    <a href="../download/materias.xml" download="../download/materias.xml">
+                        <button class="download-model normal-14-bold-p">Baixar modelo de planilha</button>
+                    </a>
 
                     <hr class="hr-batch-modal">
 
