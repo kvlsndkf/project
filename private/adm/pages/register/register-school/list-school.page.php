@@ -112,7 +112,7 @@ try {
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a-items">
+                    <a href="../../dashboard/dashboard.page.php" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                     </a>
