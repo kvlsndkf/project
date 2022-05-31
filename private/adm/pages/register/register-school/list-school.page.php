@@ -4,6 +4,10 @@ include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
 
 try {
+
+    $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+    $page = (!empty($current_page)) ? $current_page : 1;
+
     $search = $_GET['searchSchool'] ?? '';
     $filter = $_GET['filterSchool'] ?? '';
 
@@ -342,7 +346,7 @@ try {
                 <form action="./list-school.page.php?id=<?php echo $row->id; ?>" method="get">
                 </form>
 
-                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">
+                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this, <?php echo $page?>)">
                     <p class="more-details-button-text normal-14-bold-p">Ver mais detalhes</p> 
                 </button>
             </div>
@@ -401,6 +405,13 @@ try {
                             <div id="teachers-list">
 
                             </div>
+
+                            <br>
+                            <br>
+
+                            <div id="pagination">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -454,6 +465,9 @@ if (!empty($search) && $filter == null){
         <!-- JS Button Filter -->
         <script src="../../js/button-filter.js"></script>
 
+        <!-- JS Pagination Modal Teacher -->
+        <script src="../../js/pagination-teacher-modal.js"></script>
+
         <script>
             function assingValueInElementById(name, atr, value) {
                 document.getElementById(name)[atr] = value;
@@ -471,74 +485,11 @@ if (!empty($search) && $filter == null){
 
             }
 
-            async function schoolModal(self) {
+            async function schoolModal(self,page) {
                 const id = self.getAttribute("data-id");
-                const dados = await fetch('./controller/json-school.controller.php?idSchool=' + id);
+                console.log(id);
 
-                const json_school = await dados.json();
-                const convert_into_string = JSON.stringify(json_school);
-                const object_school = JSON.parse(convert_into_string);
-                const school = object_school['school'][0];
-
-                const haveAccount = school['haveAccount'];
-
-                var photo = document.getElementById('photo-school');
-                var bodyModal = document.getElementById('body-modal-have-account');
-
-                document.getElementById('school-edit').href = "./form-update-school.page.php?updateSchool=" + school['id'];
-                document.getElementById('school-delete').href = "./controller/delete-school.controller.php?id=" + school['id'];
-
-                if (haveAccount == "Sem conta") {
-                    document.getElementById('name-school').innerHTML = school['name'];
-                    document.getElementById('address-school').innerHTML = school['address'] + ", São Paulo";
-
-                    photo.style.display = "none";
-                    bodyModal.style.display = "none";
-
-                } else {
-                    photo.style.display = "";
-                    bodyModal.style.display = "";
-
-                    const linkedin = school['linkedin'];
-
-                    const github = school['github'];
-                    const facebook = school['facebook'];
-                    const instagram = school['instagram'];
-
-                    assingOptionalValueInElementById('linkedin-school', 'href', linkedin);
-                    assingOptionalValueInElementById('github-school', 'href', github);
-                    assingOptionalValueInElementById('facebook-school', 'href', facebook);
-                    assingOptionalValueInElementById('instagram-school', 'href', instagram);
-
-                    assingValueInElementById('photo-school', "src", school['photo']);
-                    assingValueInElementById('name-school', 'innerHTML', school['name']);
-                    assingValueInElementById('address-school', 'innerHTML', school['address'] + ", São Paulo");
-                    assingValueInElementById('about-school', 'innerHTML', school['about']);
-                }
-
-                const teachersList = document.getElementById("teachers-list");
-                teachersList.innerHTML = "";
-
-                array_teachers = object_school['teachers'];
-
-
-                for (i = 0; i < array_teachers.length; i++) {
-                    const divElement = document.createElement("div");
-                    divElement.className = "";
-                    const tElement = document.createElement("p");
-                    tElement.className = "";
-                    const photoElement = document.createElement("img");
-                    photoElement.className = "";
-
-                    tElement.innerHTML = array_teachers[i]['name'];
-                    photoElement.src = array_teachers[i]['photo'];
-
-                    divElement.id = i;
-                    divElement.appendChild(tElement);
-                    divElement.appendChild(photoElement);
-
-                    document.getElementById("teachers-list").appendChild(divElement);
-                }
+                enterData(id,page);
             }
         </script>
     </body>
