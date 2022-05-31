@@ -36,7 +36,7 @@
                     <form action="./controller/subject-unit-registration.controller.php" method="post">
                         <p class="normal-14-medium-p name">
                             Nome matéria
-                            <input type="text" class="input-text normal-12-regular-tinyinput" placeholder="Digite o nome da matéria" name="name" id="name" required autofocus autocomplete="off">
+                            <input type="text" class="input-text normal-12-regular-tinyinput input-name-module" placeholder="Digite o nome da matéria" name="name" id="name" required autofocus autocomplete="off">
                         </p>
 
                         <p>
