@@ -403,7 +403,15 @@ try {
         </div>
     </div>
 
-
+    <!-- Paginação ⬇️ -->
+            <?php 
+                if(empty($search)) {
+                    $paginationCourse = $course->paginationCourse();
+                }else{
+                    $paginationCourseOfSearch = $course->paginationCourseOfSearch($search);
+                }
+            
+            ?>
     
     </div>
         </div>
