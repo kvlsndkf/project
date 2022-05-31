@@ -152,3 +152,11 @@ body, html {
   ::-webkit-scrollbar-thumb:hover {
     background: #8080FF;
 }
+
+/* Lote de Matérias */
+.hr-batch-modal{
+    margin-top: 28px;
+    height: 1px;
+    border: none;
+    background-color: #40444B;
+}

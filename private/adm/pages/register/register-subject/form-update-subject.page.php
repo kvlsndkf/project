@@ -45,7 +45,7 @@ try {
 
                     <div class="form-header">
                         <a onclick="window.history.go(-1);">
-                            <img src="../../../images/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                            <img src="../../../images/components/arrow.svg" class="module-arrow" alt="Botão de voltar">
                         </a>
                         <label class="normal-20-bold-modaltitle title-header">Editar matéria</label>
                     </div>
@@ -53,7 +53,7 @@ try {
                     <form action="./controller/update-subject.controller.php?updateSubject=<?php echo $updateSubject['id'] ?>" method="post">
                         <p class="normal-14-medium-p name">
                             Nome matéria
-                            <input type="text" name="updateName" class="input-text normal-12-regular-tinyinput" id="updateName" required autofocus autocomplete="off" value="<?php echo $updateSubject['name'] ?>">
+                            <input type="text" name="updateName" class="input-text normal-12-regular-tinyinput input-name-module" id="updateName" required autofocus autocomplete="off" value="<?php echo $updateSubject['name'] ?>">
                         </p>
 
                         <p>
