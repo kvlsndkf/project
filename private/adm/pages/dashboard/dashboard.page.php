@@ -1,3 +1,6 @@
+<?php
+include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -111,7 +114,7 @@
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="../../../logout/logout.controller.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>

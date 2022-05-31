@@ -1,4 +1,5 @@
 <?php
+include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 $connection = Connection::connection();
 
