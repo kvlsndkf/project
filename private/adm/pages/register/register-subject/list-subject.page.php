@@ -277,7 +277,13 @@ try {
                         <?php } ?>
 
                     </div>
-
+                        
+                        <?php 
+                        if(empty($search)){
+                            $listSubjects = $subject->paginationSubjects();
+                         }else{
+                            $listSubjectsOfSearch = $subject->paginationSubjectsOfSearch($search);
+                         } ?>
                 </div>
             </div>
 
