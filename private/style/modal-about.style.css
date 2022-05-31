@@ -2,6 +2,7 @@
     padding: 40px;
     padding-bottom: 35px;
     border: none;
+    /* overflow-x: hidden; */
 }
 
 .titulo-modal{
@@ -14,17 +15,104 @@
 }
 
 .perfil-escola{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--red);
+}
+
+.school-info{
     /* display: flex;
+    flex-direction: row; */
+    padding: 20px;
+    background-color: var(--gray3);
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.school-info-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.school-info-header-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.drop-edit-exclud-about{
+    height: 25px;
+    position: relative;
+    display: inline-block;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.drop-edit-exclud-content-about{
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    background-color: var(--gray3);
+}
+
+.drop-edit-exclud-about:hover .drop-edit-exclud-content-about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    right: 5px;
+}
+
+.drop-edit-exclud-option-about{
+    display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
 }
 
-.dark-dropdown{
-    
+.drop-edit-exclud-option-about:hover{
+    background-color: var(--gray4);
+    transition: .5s;
+    border-radius: 5px;
 }
 
-.dark-dropdown-content{
-    background-color: var(--gray3);
+.drop-edit-exclud-text-about{
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
     color: var(--white);
+}
+
+.img-school-profile{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border-width: 6px;
+    border-color: var(--gray3);
+    margin: 20px;
+    margin-left: 0;
+    margin-top: -40px;
+}
+
+.about-school-name{
+    font-weight: 400;
+    color: var(--white);
+}
+
+.about-school-location{
+    font-weight: 400;
+    color: var(--gray7);
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    margin-left: 0;
+}
+
+.school-links{
+    text-decoration: none;
 }

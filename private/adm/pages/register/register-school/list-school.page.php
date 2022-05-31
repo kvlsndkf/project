@@ -371,77 +371,85 @@ try {
                     <div class="modal-body corpo-modal">
                         <div class="perfil-escola">
 
+                            <div class="school-info">
 
-                        <!-- Mais Opções
-                        <div class="drop-edit-exclud">
-                            <img src="../../../../../views/images/components/three-dots.svg">
+                                <div class="school-info-header">
 
-                            Parte do Update e Delete
-                            <div class="drop-edit-exclud-content">
-                                <a href="" id="school-edit" class="drop-edit-exclud-a">
-                                    <div class="drop-edit-exclud-option">
-                                        <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
-                                        <p class="drop-edit-exclud-text normal-14-bold-p">Editar</p>
+                                    <img src="" alt="" id="photo-school" class="img-school-profile">
+                                    <div class="school-info-header-text">
+
+                                        <div id="name-school" class="normal-14-bold-p about-school-name"></div>
+                                        <div class="normal-14-bold-p about-school-location">
+
+                                            <img src="../../../../../views/images/components/location-icon.svg" alt="">
+                                            <div id="address-school">, São Paulo</div>
+
+                                        </div>
+
+                                        <div id="body-modal-have-account">
+                                            <a id="linkedin-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/linkedin.svg" alt="Logo linkedin">
+                                            </a>
+                
+                                            <a id="github-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/github.svg" alt="Logo github">
+                                            </a>
+                
+                                            <a id="facebook-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/facebook.svg" alt="Logo facebook">
+                                            </a>
+                
+                                            <a id="instagram-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/instagram.svg" alt="Logo instagram">
+                                            </a>
+                                        </div>
+                                    
                                     </div>
-                                </a>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
-                                    <div class="drop-edit-exclud-option">
-                                        <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
-                                        <p class="drop-edit-exclud-text normal-14-bold-p">Excluir</p>
-                                    </div>
-                                </a>
-                            </div>
+                                    
 
-                        </div> -->
+                                </div>
 
-
-                            <p>
-                                <a href="" id="school-edit">Editar</a>
-                                <a href="" id="school-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
-                            </p>
-                            <img src="" alt="" id="photo-school">
-                            <div id="name-school"></div>
-                            <div id="address-school">, São Paulo</div>
-    
-    
-                            <div id="body-modal-have-account">
-                                <a id="linkedin-school" target="_blank" href="">
-                                    <img src="../../../images/icons/linkedin.svg" alt="Logo linkedin">
-                                </a>
-    
-                                <a id="github-school" target="_blank" href="">
-                                    <img src="../../../images/icons/github.svg" alt="Logo github">
-                                </a>
-    
-                                <a id="facebook-school" target="_blank" href="">
-                                    <img src="../../../images/icons/facebook.svg" alt="Logo facebook">
-                                </a>
-    
-                                <a id="instagram-school" target="_blank" href="">
-                                    <img src="../../../images/icons/instagram.svg" alt="Logo instagram">
-                                </a>
-                                <br>
-                                <label>Sobre</label>
-                                <div id="about-school" class="text-truncate"></div>
-
-                        </div>
-
-                            <br>
-                            <br>
-                            <hr>
-
-                            <label for="">Professores</label>
-                            <div id="teachers-list">
-
-                            </div>
-
-                            <br>
-                            <br>
-
-                            <div id="pagination">
                                 
+    
+    
+                                <div id="body-modal-have-account">
+                                    <br>
+                                    <label class="normal-14-medium-p about-school-location">Sobre</label>
+                                    <div id="about-school" class="whitney-16-medium-text white-title" style="width: fit-content;"></div>
+
+                                </div>
+
                             </div>
+
+                            
+
+                            <!-- Mais Opções -->
+                            <div class="drop-edit-exclud-about">
+                                <img src="../../../../../views/images/components/three-dots.svg">
+
+                                <!-- Parte do Update e Delete -->
+                                <div class="drop-edit-exclud-content-about">
+                                    <a href="" id="school-edit" class="drop-edit-exclud-a">
+                                        <div class="drop-edit-exclud-option-about">
+                                            <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                            <p class="drop-edit-exclud-text-about normal-14-bold-p">Editar</p>
+                                        </div>
+                                    </a>
+                                    <a href="" id="school-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                        <div class="drop-edit-exclud-option-about">
+                                            <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                            <p class="drop-edit-exclud-text-about normal-14-bold-p">Excluir</p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+
                         </div>
+                        <label for="">Professores</label>
+                        <div id="teachers-list">
+                        </div>
+                        <div id="pagination"></div>
                     </div>
                 </div>
             </div>
