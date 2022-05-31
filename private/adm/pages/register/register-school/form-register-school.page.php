@@ -146,6 +146,9 @@ try {
                                 <span class="label-social">Criar um perfil para a Etec?</span>
                             </p>
                         </span>
+                        <p class="span-warning-school normal-12-bold-tiny gray-text-6 mb-3">
+                            Os campos abaixo só ficarão habilitados se escolher criar uma conta para a Etec.
+                        </p>
 
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item" style="border: none;">
