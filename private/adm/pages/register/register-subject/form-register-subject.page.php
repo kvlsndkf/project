@@ -28,7 +28,7 @@
 
                     <div class="form-header">
                         <a onclick="window.history.go(-1);">
-                            <img src="../../../images/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                            <img src="../../../images/components/arrow.svg" class="module-arrow" alt="Botão de voltar">
                         </a>
                         <label class="normal-20-bold-modaltitle title-header">Cadastro unitário matéria</label>
                     </div>
@@ -36,7 +36,7 @@
                     <form action="./controller/subject-unit-registration.controller.php" method="post">
                         <p class="normal-14-medium-p name">
                             Nome matéria
-                            <input type="text" class="input-text normal-12-regular-tinyinput input-name-module" placeholder="Digite o nome da matéria" name="name" id="name" required autofocus autocomplete="off">
+                            <input type="text" class="input-text normal-12-regular-tinyinput input-name-module" placeholder="Digite o nome da matéria" name="name" id="name" required autofocus autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="6">
                         </p>
 
                         <p>
