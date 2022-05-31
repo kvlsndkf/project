@@ -174,3 +174,8 @@ body, html {
     align-self: center;
     margin-top: 4px;
 }
+
+.classe-p{
+    display: flex;
+    flex-direction: column;
+}

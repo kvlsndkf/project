@@ -45,21 +45,21 @@
 
 
                         <p class="normal-14-medium-p name">Envie o modelo da planilha preenchido</p>
-                        <input type="file" class="" name="subject-table-file" required>
+
+                        <!-- <input type="file" name="subject-table-file" required> -->
+                        <p class="classe-p">
+                            <label for="subject-table-file" style="width: 100%;" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+                            <input type="file" style="display: none;" name="subject-table-file" id="subject-table-file" required>
+                            <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                            <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php echo $rowCat['photo'] ?>">
+                        </p>
 
                         <br>
-                        
-                        <!-- <p>
-                            <label for="updatePhoto" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
-                            <input type="file" class="photo" name="subject-table-file" requied>
-                            <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
-                            <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php //echo $rowCat['photo'] ?>">
-                        </p> -->
-
 
                         <br />
                         <br />
-                        <input type="submit" class="register normal-14-bold-p" value="Cadastrar em lote">
+                        <input type="submit" class="register normal-14-bold-p" value="Cadastrar em lote" onclick = "GFG_Fun()">
+                        <button type="reset" class="clean normal-14-bold-p" id="reset">Limpar</button>
                     </form>
 
                 </div>
@@ -68,12 +68,29 @@
 
         <!-- JS arquvio selecionado -->
         <script>
-            let inputFile = document.getElementById('updatePhoto');
+            let inputFile = document.getElementById('subject-table-file');
             let fileNameField = document.getElementById('file-name');
             inputFile.addEventListener('change', function(event) {
                 let uploadedFileName = event.target.files[0].name;
                 fileNameField.textContent = uploadedFileName;
             })
+
+            document.getElementById("reset").addEventListener("click", function(){
+            document.getElementById("file-name").innerText = "Nenhum arquivo selecionado";});
+
+            var down = document.getElementById('file-name');
+            var file = document.getElementById("subject-table-file");
+            var uploadedFileName = event.target.files[0].name;
+            
+            
+            function GFG_Fun() {
+                if(file.files.length == 0 ){
+                    down.style.color = "#ED4245";
+                    down.innerText = "SELECIONE UM ARQUIVO!";
+                } else {
+                    true
+                }
+            }
         </script>
 
         <!-- JS Bootstrap -->
