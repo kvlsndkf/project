@@ -4,7 +4,7 @@ const modalTemplate = `
     <div class="modal-content teste">
       <div class="modal-body body-modal">
         <div class="start">
-          <span class="modal-title normal-20-bold-modaltitle white-title" id="exampleModalLabel">Excluir professor</span>
+          <span class="modal-title normal-20-bold-modaltitle white-title" id="exampleModalLabel">Excluir ETEC</span>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div>
@@ -13,7 +13,7 @@ const modalTemplate = `
             </p>
         </div>
         <div class="warning-container">
-          <span class="warning-text normal-12-bold-tiny red-title">Atenção: </span><span class="normal-12-bold-tiny white-title">A Etec também será removido dos cursos vinclulados.</span>
+          <span class="warning-text normal-12-bold-tiny red-title">Atenção: </span><span class="normal-12-bold-tiny white-title">A Etec também será removida dos cursos vinclulados.</span>
         </div>
         <div class="modal-buttons">
           <a class="btn btn-danger button normal-14-bold-p" id="delete-button">Excluir</a>
