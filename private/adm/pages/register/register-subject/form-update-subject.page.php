@@ -44,7 +44,7 @@ try {
 
                     <div class="form-header">
                         <a onclick="window.history.go(-1);">
-                            <img src="../../../images/components/arrow.svg" class="module-arrow" alt="Botão de voltar">
+                            <img src="../../../images/components/arrow.svg" class="arrow" alt="Botão de voltar">
                         </a>
                         <label class="normal-20-bold-modaltitle title-header">Editar matéria</label>
                     </div>
