@@ -456,10 +456,13 @@ try {
 
                         <!-- <label for="">Professores</label> -->
                         <div id="teachers-list">
-                        </div>
-
-                        <div id="pagination"></div>
-
+                            </div>
+                            
+                            <div class="div-pagination">
+                                <div id="pagination"></div>
+    
+                            </div>
+                            
                     </div>
                 </div>
             </div>

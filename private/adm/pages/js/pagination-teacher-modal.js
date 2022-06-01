@@ -59,19 +59,51 @@ async function enterData(id,page) {
                 array_teachers = object_school['teachers'];
 
                 for (i = 0; i < array_teachers.length; i++) {
-                    const divElement = document.createElement("div");
-                    divElement.className = "";
-                    const tElement = document.createElement("p");
-                    tElement.className = "";
-                    const photoElement = document.createElement("img");
-                    photoElement.className = "";
 
+                    const divElement = document.createElement("div");
+                    divElement.className = "div-teachers-list";
+
+                    const photoElement = document.createElement("img");
+                    photoElement.className = "img-teachers-list";
+                    
+                    // const labelElement = document.createElement("label");
+                    // labelElement.className = "label-teachers-list normal-14-medium-p";
+                    
+                    const tElement = document.createElement("p");
+                    tElement.className = "p-teachers-list normal-14-bold-p";
+
+                    // const divTextElement = document.createElement("div");
+                    // divElement.className = "div-text-teachers-list";
+                    
+                    
+                    // labelElement.textContent = "Professor(a)";
                     tElement.innerHTML = array_teachers[i]['name'];
                     photoElement.src = array_teachers[i]['photo'];
 
+
                     divElement.id = i;
-                    divElement.appendChild(tElement);
                     divElement.appendChild(photoElement);
+
+                    // divElement.appendChild(divTextElement);
+                    
+                    // divElement.appendChild(labelElement);
+                    divElement.appendChild(tElement);
+
+
+                    // <div class="teachers-list">
+
+                    //     <div class="div-teachers-list">
+
+                    //         <img class="img-teachers-list"/>
+                            
+                    //         <div class="div-text-teachers-list">
+                    //             <label class="label-teachers-list">Professor(a)</label>
+                    //             <p class="p-teachers-list">Nome Professor(a)</p>
+                    //         </div>
+
+                    //     </div>
+
+                    // </div>
 
                     document.getElementById("teachers-list").appendChild(divElement);
                 }

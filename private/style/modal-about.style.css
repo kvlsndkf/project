@@ -9,6 +9,25 @@
     padding-top: 0;
 }
 
+/* Scroll Bar */
+.corpo-modal::-webkit-scrollbar {
+    width: 10px;
+}
+
+.corpo-modal::-webkit-scrollbar-track {
+    background: var(--bg-modal);
+}
+
+.corpo-modal::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+
+}
+
+.corpo-modal::-webkit-scrollbar-thumb:hover {
+    background: #8080FF;
+} 
+
 .titulo-modal{
     color: var(--white);
     font-weight: 400;
@@ -165,6 +184,36 @@
 
 .nav-tabs .nav-link.active:hover{
     background-color: var(--primary);
+}
+
+.div-teachers-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.img-teachers-list{
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+}
+
+.div-text-teachers-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.label-teachers-list{
+    color: var(--gray7);
+    font-weight: 400;
+}
+
+.p-teachers-list{
+    color: var(--white);
+    font-weight: 400;
 }
 
 #teachers-list{
