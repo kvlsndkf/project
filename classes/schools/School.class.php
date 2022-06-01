@@ -526,13 +526,9 @@ class School extends Social
                 $queryValues = [];
                 $idTeacherToInsert = [];
 
-                for ($i = 0; $i < count($arrayToInsert); $i++) {
-                    $item = $arrayToInsert[$i];
-
-                    if ($item) {
-                        array_push($queryValues, '(NOW(), ?, ?)');
-                        array_push($idTeacherToInsert, $item);
-                    }
+                foreach ($arrayToInsert as $row => $value) {
+                    array_push($queryValues, '(NOW(), ?, ?)');
+                    array_push($idTeacherToInsert, $value);
                 }
 
                 $insertTeacher = $connection->prepare(
