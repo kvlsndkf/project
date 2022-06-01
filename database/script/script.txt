@@ -6,6 +6,7 @@ CREATE TABLE users(
     , photo TEXT NOT NULL
     , type_user VARCHAR(40) NOT NULL
     , is_confirmed BOOLEAN NOT NULL
+    , key_confirm TEXT 
     , is_blocked BOOLEAN NOT NULL
     , github TEXT
     , linkedin TEXT
@@ -200,7 +201,7 @@ CREATE TABLE messages(
     id INT NOT NULL AUTO_INCREMENT
     , PRIMARY KEY (id)
     , contact VARCHAR(100) NOT NULL
-    , message VARCHAR(192) NOT NULL
+    , message TEXT NOT NULL
     , status VARCHAR(30) NOT NULL
     , created_at DATETIME NOT NULL
     , updated_at DATETIME

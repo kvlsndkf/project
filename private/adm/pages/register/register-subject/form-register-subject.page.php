@@ -1,3 +1,6 @@
+<?php
+include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
