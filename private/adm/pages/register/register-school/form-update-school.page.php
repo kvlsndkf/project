@@ -110,14 +110,14 @@ try {
                         <label class="normal-14-medium-p nome-professor">
                             Nome Etec
                         </label>
-                        <input type="text" name="updateName" class="normal-12-regular-tinyinput input-text" id="updateName" autocomplete="off" required value="<?php echo $updateSchool['name'] ?>">
+                        <input type="text" style="margin-bottom: 28px;" name="updateName" class="normal-12-regular-tinyinput input-text" id="updateName" autocomplete="off" required value="<?php echo $updateSchool['name'] ?>" minlength="10" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$">
                     </p>
 
-
+<div class="etec-location-label">
                     <p class="normal-14-medium-p etec-location-label">
-                        A Etec fica localizada dentro da cidade de São Paulo?
-                    </p>
-
+                            A Etec fica localizada dentro da cidade de São Paulo?
+                        </p>
+                        </div>
                     <p>
                         <?php $checkedDistrict = !empty($updateSchool['in_sp_city']) ? 'checked' : 'disabled'; ?>
                         <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" <?php echo $checkedDistrict ?> onclick="visibilityDistrict()"><span class="normal-14-medium-p nome-professor checkbox-label"> Sim</span>
@@ -168,6 +168,9 @@ try {
                                 <span class="label-social">Criar um perfil para a Etec?</span>
                                 </span>
                     </p>
+                    <p class="span-warning-school normal-12-bold-tiny gray-text-6 mb-3">
+                            Os campos abaixo só ficarão habilitados se escolher criar um perfil para a Etec.
+                        </p>
 
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item" style="border: none;">
@@ -231,7 +234,7 @@ try {
                                         <p class="normal-14-medium-p label-social">
                                         Linkedin
                                         </p>
-                                        <input type="text" name="linkedin" id="linkedin" class="normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?> autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
+                                        <input type="text" name="linkedin" id="linkedin" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?> autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
                                         
                                     </p>
 
@@ -240,7 +243,7 @@ try {
                                         <p class="normal-14-medium-p label-social">
                                         GitHub
                                         </p>
-                                        <input type="text" name="github" id="github" class="normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableGithub ?> autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
+                                        <input type="text" name="github" id="github" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableGithub ?> autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
                                         
                                     </p>
 
@@ -249,7 +252,7 @@ try {
                                         <p class="normal-14-medium-p label-social">
                                         Facebook
                                         </p>
-                                        <input type="text" name="facebook" id="facebook" class="normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?> autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
+                                        <input type="text" name="facebook" id="facebook" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?> autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
                                         
                                     </p>
 
@@ -258,7 +261,7 @@ try {
                                         <p class="normal-14-medium-p label-social">
                                         Instagram
                                         </p>
-                                        <input type="url" name="instagram" id="instagram" class="normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableInstagram ?> autocomplete="off" value="<?php echo $updateSchool['instagram'] ?>">
+                                        <input type="url" name="instagram" id="instagram" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableInstagram ?> autocomplete="off" value="<?php echo $updateSchool['instagram'] ?>">
                                         
                                     </p>
 
@@ -274,9 +277,12 @@ try {
                                     </p>
 
                                     <p>
+                                        
                                         <?php $disablePhoto = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                                         <?php $requiredPhoto = empty($updateSchool['photo']) ? 'required' : '' ?>
-                                        <input type="file" name="updatePhoto" id="photo" <?php echo $disablePhoto; ?> <?php echo $requiredPhoto; ?>>
+                                        <input type="file" class="photo" name="updatePhoto" id="photo" <?php echo $disablePhoto; ?> <?php echo $requiredPhoto; ?>>
+                                        <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+                                        <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
                                         <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php echo $updateSchool['photo'] ?>">
                                     </p>
 
@@ -290,9 +296,8 @@ try {
                     </div>
 
 
-                    <input type="submit" class="button-wide button-white-white-text register normal-14-bold-p" value="Editar" name="update">
+                    <input type="submit" class="button-wide button-white-white-text normal-14-bold-p register" style="margin-top: 60px;" value="Editar" name="update">
                     <a href="./list-school.page.php"><button class="button-wide button-white-primary-text clean normal-14-bold-p" type="button">Cancelar</button></a>
-
                 </form>
             </div>
         </div>
@@ -332,6 +337,16 @@ try {
 
     <!-- JS Count Characters TextArea -->
     <script type="text/javascript" src="../../js/textarea.js"></script>
+
+    <!-- JS arquvio selecionado -->
+    <script>
+            let inputFile = document.getElementById('photo');
+            let fileNameField = document.getElementById('file-name');
+            inputFile.addEventListener('change', function(event) {
+                let uploadedFileName = event.target.files[0].name;
+                fileNameField.textContent = uploadedFileName;
+            })
+        </script>
 </body>
 
 </html>
