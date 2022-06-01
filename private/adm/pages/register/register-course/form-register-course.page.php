@@ -119,13 +119,12 @@ try {
                 <label class="normal-14-medium-p nome-professor">
                     Nome
                     </label>
-                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="5">
-                
+                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px;" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="5">
                 
 
-                <p>
-                    <label>Selecione as Etec's a que ele pertence</label>
-                </p>
+                
+                    <label class="normal-14-medium-p nome-professor">Selecione as Etec's a que ele pertence</label>
+                
 
                 <p>
                     <select name="idSchools[]" id="idSchools" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
@@ -136,9 +135,9 @@ try {
                     </select>
                 </p>
 
-                <p>
-                    <label>Selecione os professores a que lecionam este curso</label>
-                </p>
+                
+                    <label class="normal-14-medium-p nome-professor">Selecione os professores que lecionam este curso</label>
+                
 
                 <p>
                     <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select w-100" style="width: 100%" multiple="multiple" required>
@@ -149,9 +148,9 @@ try {
                     </select>
                 </p>
 
-                <p>
-                    <label>Selecione as matérias deste curso</label>
-                </p>
+                
+                    <label class="normal-14-medium-p nome-professor">Selecione as matérias deste curso</label>
+                
 
                 <p>
                     <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select w-100" style="width: 100%" multiple="multiple" required>
@@ -162,23 +161,7 @@ try {
                     </select>
                 </p>
 
-                <div>
-                    <p>
-                        Sobre
-                    </p>
-
-                    <div id="contentTextArea">
-                        <textarea name="about" id="about" cols="30" rows="10" placeholder="Digite sobre o curso" required onclick="colorDiv()"></textarea>
-                        <div><span id="counterTextArea">250</span></div>
-                    </div>
-                </div>
-
-                <hr>
-
-                <p>
-                    <label>Foto</label>
-                    <input type="file" name="photo" id="photo" required>
-                </p>
+                
 
                 <hr>
 
