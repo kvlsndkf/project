@@ -35,7 +35,14 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-    <!-- CSS MdBootstrap -->
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="../../../../style/form-register-teacher.page.css">
+    <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../../../../views/styles/font-format.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
+    <link rel="stylesheet" href="../../../../../views/styles/button.style.css">
+    <link rel="shortcut icon" href="../../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -44,125 +51,144 @@ try {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
 </head>
 
+<style>
+    body {
+        overflow-x: hidden;
+    }
+</style>
+
 <body>
-    <!-- 
+    <div class="my-container-er">
+        <!-- 
                     Mensagem de erro ⬇️
                 -->
-    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+        <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
 
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-        </svg>
-
-        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                <use xlink:href="#exclamation-triangle-fill" />
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </symbol>
             </svg>
-            <div>
-                <strong>Ops...</strong>
-                <?php echo $_SESSION['statusNegative']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <strong>Ops...</strong>
+                    <?php echo $_SESSION['statusNegative']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
-        </div>
-    <?php unset($_SESSION['statusNegative']);
-    } ?>
+        <?php unset($_SESSION['statusNegative']);
+        } ?>
 
-    <!-- 
-Mensagem de alerta ⬇️
--->
-    <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
+                    <!-- 
+            Mensagem de alerta ⬇️
+            -->
+        <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
 
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-        </svg>
-
-        <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                <use xlink:href="#exclamation-triangle-fill" />
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </symbol>
             </svg>
-            <div>
-                <strong>Ops...</strong>
-                <?php echo $_SESSION['statusAlert']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <strong>Ops...</strong>
+                    <?php echo $_SESSION['statusAlert']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
+        <?php unset($_SESSION['statusAlert']);
+        } ?>
+        <div class="page-container d-flex align-items-center justify-content-center">
+        <div class="form-base bg-modal-gray align-self-center my-auto">
+
+            <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">
+                <div class="form-header">
+                <a href="./list-course.page.php">
+                        <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                    </a>
+                <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
+                </div>
+                <label class="normal-14-medium-p nome-professor">
+                    Nome
+                    </label>
+                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="5">
+                
+                
+
+                <p>
+                    <label>Selecione as Etec's a que ele pertence</label>
+                </p>
+
+                <p>
+                    <select name="idSchools[]" id="idSchools" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
+                        <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
+                            $row = $listSchoolsOfSelect[$i] ?>
+                            <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                        <?php } ?>
+                    </select>
+                </p>
+
+                <p>
+                    <label>Selecione os professores a que lecionam este curso</label>
+                </p>
+
+                <p>
+                    <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select w-100" style="width: 100%" multiple="multiple" required>
+                        <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
+                            $row = $listTeachersOfSelect[$i] ?>
+                            <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                        <?php } ?>
+                    </select>
+                </p>
+
+                <p>
+                    <label>Selecione as matérias deste curso</label>
+                </p>
+
+                <p>
+                    <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select w-100" style="width: 100%" multiple="multiple" required>
+                        <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
+                            $row = $listSubjectsOfSelect[$i] ?>
+                            <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                        <?php } ?>
+                    </select>
+                </p>
+
+                <div>
+                    <p>
+                        Sobre
+                    </p>
+
+                    <div id="contentTextArea">
+                        <textarea name="about" id="about" cols="30" rows="10" placeholder="Digite sobre o curso" required onclick="colorDiv()"></textarea>
+                        <div><span id="counterTextArea">250</span></div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>
+                    <label>Foto</label>
+                    <input type="file" name="photo" id="photo" required>
+                </p>
+
+                <hr>
+
+                <button type="submit" name="register">Cadastrar</button>
+                <button type="reset">Limpar</button>
+
+            </form>
         </div>
-    <?php unset($_SESSION['statusAlert']);
-    } ?>
-
-    <label>Cadastro curso</label>
-    <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">
-        <p>
-            Nome
-            <input type="text" name="name" id="name" placeholder="Digite o nome do curso" required autocomplete="off" autofocus>
-        </p>
-
-        <p>
-            <label>Selecione as Etec's a que ele pertence</label>
-        </p>
-
-        <p>
-            <select name="idSchools[]" id="idSchools" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
-                <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
-                    $row = $listSchoolsOfSelect[$i] ?>
-                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
-            </select>
-        </p>
-
-        <p>
-            <label>Selecione os professores a que lecionam este curso</label>
-        </p>
-
-        <p>
-            <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select w-100" style="width: 100%" multiple="multiple" required>
-                <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
-                    $row = $listTeachersOfSelect[$i] ?>
-                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
-            </select>
-        </p>
-
-        <p>
-            <label>Selecione as matérias deste curso</label>
-        </p>
-
-        <p>
-            <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select w-100" style="width: 100%" multiple="multiple" required>
-                <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
-                    $row = $listSubjectsOfSelect[$i] ?>
-                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
-            </select>
-        </p>
-
-        <div>
-            <p>
-                Sobre
-            </p>
-
-            <div id="contentTextArea">
-                <textarea name="about" id="about" cols="30" rows="10" placeholder="Digite sobre o curso" required onclick="colorDiv()"></textarea>
-                <div><span id="counterTextArea">250</span></div>
-            </div>
         </div>
-
-        <hr>
-
-        <p>
-            <label>Foto</label>
-            <input type="file" name="photo" id="photo" required>
-        </p>
-
-        <hr>
-
-        <button type="submit" name="register">Cadastrar</button>
-        <button type="reset">Limpar</button>
-
-    </form>
+    </div>
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

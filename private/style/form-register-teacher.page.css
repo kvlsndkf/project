@@ -366,3 +366,4 @@ font-size: var(--tiny);
 .disabled-area:disabled {
     background-color: var(--gray4);
 }
+
