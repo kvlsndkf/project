@@ -62,6 +62,7 @@ try {
     <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../register.styles.css">
     <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
+    <link rel="stylesheet" href="../../../../style/button-delete-course.style.css">
 
 </head>
 

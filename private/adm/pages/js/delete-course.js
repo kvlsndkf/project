@@ -9,11 +9,11 @@ const modalTemplate = `
         </div>
         <div>
             <p class="normal-14-bold-p white-title">
-              Tem certeza de que deseja excluir esse Curso permanentemente?
+              Tem certeza de que deseja excluir esse curso permanentemente?
             </p>
         </div>
         <div class="warning-container">
-          <span class="warning-text normal-12-bold-tiny red-title">Atenção: </span><span class="normal-12-bold-tiny white-title">O curso também será removido das Etecs vincluladas.</span>
+          <span class="warning-text normal-12-bold-tiny red-title">Atenção: </span><span class="normal-12-bold-tiny white-title">O curso também será removido das Etec's vincluladas.</span>
         </div>
         <div class="modal-buttons">
           <a class="btn btn-danger button normal-14-bold-p" id="delete-button">Excluir</a>
