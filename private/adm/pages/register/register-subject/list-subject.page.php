@@ -1,8 +1,7 @@
 <?php
+include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Subject.class.php');
-
-session_start();
 
 $connection = Connection::connection();
 
@@ -159,7 +158,11 @@ try {
                     </li>
 
                     <li class="sidebar-li">
+feat/linkagem-pages3
                         <a href="../../../../../views/landing-page/landing-page.php" class="sidebar-a">
+
+                        <a href="../../../../logout/logout.controller.php" class="sidebar-a">
+ qa
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
@@ -282,7 +285,13 @@ try {
                         <?php } ?>
 
                     </div>
-
+                        
+                        <?php 
+                        if(empty($search)){
+                            $listSubjects = $subject->paginationSubjects();
+                         }else{
+                            $listSubjectsOfSearch = $subject->paginationSubjectsOfSearch($search);
+                         } ?>
                 </div>
             </div>
 

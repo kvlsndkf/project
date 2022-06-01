@@ -1,8 +1,7 @@
 <?php
+include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
-
-session_start();
 
 try {
     $search = $_GET['searchCourse'] ?? '';
@@ -160,7 +159,11 @@ try {
                 </li>
 
                 <li class="sidebar-li">
+ feat/linkagem-pages3
                     <a href="../../../../../views/landing-page/landing-page.php" class="sidebar-a">
+
+                    <a href="../../../../logout/logout.controller.php" class="sidebar-a">
+ qa
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
@@ -408,7 +411,15 @@ try {
         </div>
     </div>
 
-
+    <!-- Paginação ⬇️ -->
+            <?php 
+                if(empty($search)) {
+                    $paginationCourse = $course->paginationCourse();
+                }else{
+                    $paginationCourseOfSearch = $course->paginationCourseOfSearch($search);
+                }
+            
+            ?>
     
     </div>
         </div>

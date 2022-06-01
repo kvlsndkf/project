@@ -1,10 +1,9 @@
 <?php
+include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Teacher.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
-
-session_start();
 
 try {
     $course = new Course();

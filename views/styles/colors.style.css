@@ -27,6 +27,10 @@
     background-color: var(--bg-modal);
 }
 
+.bg-input-gray {
+    background-color: #303339;
+}
+
 .bg-white {
     background-color: var(--white);
 }
