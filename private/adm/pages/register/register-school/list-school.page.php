@@ -364,7 +364,9 @@ try {
                     <!-- Modal Header -->
                     <div class="modal-header cabecalho-modal">
                         <h4 class="modal-title titulo-modal normal-20-bold-modaltitle">Detalhes da Etec</h4>
-                        <button type="button" class="btn-close botao-x" data-bs-dismiss="modal"></button>
+                        <button type="button" class="x-button" data-bs-dismiss="modal">
+                            <img src="../../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                        </button>
                     </div>
 
                     <!-- Modal body -->
@@ -405,12 +407,8 @@ try {
                                         </div>
                                     
                                     </div>
-                                    
 
                                 </div>
-
-                                
-    
     
                                 <div id="body-modal-have-account">
                                     <br>
@@ -420,8 +418,6 @@ try {
                                 </div>
 
                             </div>
-
-                            
 
                             <!-- Mais Opções -->
                             <div class="drop-edit-exclud-about">
@@ -446,10 +442,24 @@ try {
                             </div>
 
                         </div>
-                        <label for="">Professores</label>
+
+                        <!-- Tabs navs -->
+                        <ul class="nav nav-tabs mb-3 nav-teacher" id="ex1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active tab-item" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                                    <p class="tab-item-text whitney-12-regular-tiny">
+                                        Professores
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- <label for="">Professores</label> -->
                         <div id="teachers-list">
                         </div>
+
                         <div id="pagination"></div>
+
                     </div>
                 </div>
             </div>
