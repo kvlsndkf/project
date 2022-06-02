@@ -177,6 +177,10 @@ body, html {
     background-color: #303339;
 }
 
+.my-acc-body {
+    background-color: var(--bg-modal);
+}
+
 .etec-location-label {
     margin-top: 28px;
 }
