@@ -412,8 +412,8 @@ try {
     
                                 <div id="body-modal-have-account">
                                     <br>
-                                    <label class="normal-14-medium-p about-school-location">Sobre</label>
-                                    <div id="about-school" class="whitney-16-medium-text white-title" style="width: fit-content;"></div>
+                                    <label class="normal-14-medium-p about-school-label">Sobre</label>
+                                    <div id="about-school" class="whitney-16-medium-text white-title about-school-text" style="width: fit-content;"></div>
 
                                 </div>
 

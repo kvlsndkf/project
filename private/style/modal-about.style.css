@@ -11,7 +11,7 @@
 
 /* Scroll Bar */
 .corpo-modal::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 .corpo-modal::-webkit-scrollbar-track {
@@ -126,12 +126,11 @@
 .img-school-profile{
     width: 100px;
     height: 100px;
-    border-radius: 100px;
-    border-width: 6px;
-    border-color: var(--gray3);
     margin: 20px;
     margin-left: 0;
     margin-top: -40px;
+    border-radius: 100px;
+    border: 8px solid var(--gray3);
 }
 
 .about-school-name{
@@ -139,13 +138,18 @@
     color: var(--white);
 }
 
-.about-school-location{
+.about-school-location, .about-school-label{
     font-weight: 400;
     color: var(--gray7);
     display: flex;
     flex-direction: row;
     margin: 5px;
     margin-left: 0;
+}
+
+.about-school-text{
+    word-wrap: break-word;
+    word-break: break-all
 }
 
 .school-links{
@@ -186,6 +190,11 @@
     background-color: var(--primary);
 }
 
+#teachers-list{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .div-teachers-list{
     display: flex;
     flex-direction: row;
@@ -204,6 +213,8 @@
 .div-text-teachers-list{
     display: flex;
     flex-direction: column;
+    padding-top: 15px;
+    padding-left: 15px;
 }
 
 .label-teachers-list{
@@ -216,10 +227,7 @@
     font-weight: 400;
 }
 
-#teachers-list{
-    background-color: red;
-}
-
-#pagination{
-    background-color: blueviolet;
+.hr-teachers-list{
+    color: var(--gray3);
+    border: 1px solid var(--gray3);
 }

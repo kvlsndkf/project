@@ -29,6 +29,8 @@ async function enterData(id,page) {
                     document.getElementById('name-school').innerHTML = school['name'];
                     document.getElementById('address-school').innerHTML = school['address'] + ", São Paulo";
 
+                    document.getElementById('about-school-label').display = "none";
+
                     photo.style.display = "none";
                     bodyModal.style.display = "none";
 
@@ -62,50 +64,31 @@ async function enterData(id,page) {
 
                     const divElement = document.createElement("div");
                     divElement.className = "div-teachers-list";
-
                     const photoElement = document.createElement("img");
                     photoElement.className = "img-teachers-list";
-                    
-                    // const labelElement = document.createElement("label");
-                    // labelElement.className = "label-teachers-list normal-14-medium-p";
-                    
                     const tElement = document.createElement("p");
                     tElement.className = "p-teachers-list normal-14-bold-p";
-
-                    // const divTextElement = document.createElement("div");
-                    // divElement.className = "div-text-teachers-list";
+                    const divText = document.createElement("div");
+                    divText.className = "div-text-teachers-list";
+                    const labelElement = document.createElement("label");
+                    labelElement.className = "label-teachers-list";
+                    const hrElement = document.createElement("hr");
+                    hrElement.className = "hr-teachers-list";
                     
-                    
-                    // labelElement.textContent = "Professor(a)";
                     tElement.innerHTML = array_teachers[i]['name'];
                     photoElement.src = array_teachers[i]['photo'];
-
-
-                    divElement.id = i;
-                    divElement.appendChild(photoElement);
-
-                    // divElement.appendChild(divTextElement);
+                    labelElement.innerHTML = "Professor(a)";
                     
-                    // divElement.appendChild(labelElement);
-                    divElement.appendChild(tElement);
-
-
-                    // <div class="teachers-list">
-
-                    //     <div class="div-teachers-list">
-
-                    //         <img class="img-teachers-list"/>
-                            
-                    //         <div class="div-text-teachers-list">
-                    //             <label class="label-teachers-list">Professor(a)</label>
-                    //             <p class="p-teachers-list">Nome Professor(a)</p>
-                    //         </div>
-
-                    //     </div>
-
-                    // </div>
+                    divElement.id = i;
+                    divText.appendChild(labelElement);
+                    divText.appendChild(tElement);
+                    divElement.appendChild(photoElement);
+                    divElement.appendChild(divText);
+                    teachersList.appendChild(hrElement);
 
                     document.getElementById("teachers-list").appendChild(divElement);
                 }
+
+
             })
 };
