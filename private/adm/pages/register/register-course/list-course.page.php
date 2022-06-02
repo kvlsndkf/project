@@ -410,7 +410,9 @@ try {
                 if(empty($search)) {
                     $paginationCourse = $course->paginationCourse();
                 }else{
+                    echo ("<div class='div-pagination'>");
                     $paginationCourseOfSearch = $course->paginationCourseOfSearch($search);
+                    echo ("</div>");
                 }
             
             ?>
