@@ -408,7 +408,9 @@ try {
     <!-- Paginação ⬇️ -->
             <?php 
                 if(empty($search)) {
+                    echo ("<div class='div-pagination'>");
                     $paginationCourse = $course->paginationCourse();
+                    echo ("</div>");
                 }else{
                     echo ("<div class='div-pagination'>");
                     $paginationCourseOfSearch = $course->paginationCourseOfSearch($search);

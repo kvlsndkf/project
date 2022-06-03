@@ -281,9 +281,13 @@ try {
                         
                         <?php 
                         if(empty($search)){
+                            echo ("<div class='div-pagination'>");
                             $listSubjects = $subject->paginationSubjects();
+                            echo ("</div>");
                          }else{
+                            echo ("<div class='div-pagination'>");
                             $listSubjectsOfSearch = $subject->paginationSubjectsOfSearch($search);
+                            echo ("</div>");
                          } ?>
                 </div>
             </div>
