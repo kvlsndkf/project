@@ -4,6 +4,10 @@ include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
 
 try {
+
+    $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+    $page = (!empty($current_page)) ? $current_page : 1;
+    
     $search = $_GET['searchCourse'] ?? '';
 
     $course = new Course();
@@ -323,7 +327,7 @@ try {
                 <span class="<?php echo $style; ?>"> Matérias: <?php echo $countSubjectsInCourse ?></span>
 
                 <br><br>
-                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">
+                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this,<?php echo $page?>)">
                     <p class="more-details-button-text normal-14-bold-p">Ver mais detalhes</p> 
                 </button>
 
@@ -386,15 +390,24 @@ try {
                                 <div id="schools-list">
 
                                 </div>
+                                <div id="pagination-schools">
+                                
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
                                 <div id="teachers-list">
 
                                 </div>
+                                <div id="pagination-teachers">
+                                
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
                                 <div id="subjects-list">
 
+                                </div>
+                                <div id="pagination-subjects">
+                                
                                 </div>
                             </div>
                         </div>
@@ -442,97 +455,28 @@ try {
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
+    <!-- JS pagination Modal -->
+    <script src="../../js/pagination-modal-course-schools.js"></script>
+
+    <script src="../../js/pagination-modal-course-teachers.js"></script>
+
+    <script src="../../js/pagination-modal-course-subjects.js"></script>
+
+
     <script>
         function assingValueInElementById(name, atr, value) {
             document.getElementById(name)[atr] = value;
         }
 
-        async function schoolModal(self) {
+        async function schoolModal(self,page) {
             const id = self.getAttribute("data-id");
-            const dados = await fetch('./controller/json-course.controller.php?idCourse=' + id);
+            console.log(id);
+            
+            enterDataSchools(id,page);
 
-            const json_course = await dados.json();
-            const convert_into_string = JSON.stringify(json_course);
-            const object_course = JSON.parse(convert_into_string);
-            const course = object_course['course'][0];
+            enterDataTeachers(id,page);
 
-            console.log(object_course);
-
-            document.getElementById('course-edit').href = "./form-update-course.page.php?updateCourse=" + course['id'];
-            document.getElementById('course-delete').href = "./controller/delete-course.controller.php?id=" + course['id'];
-
-            assingValueInElementById('photo-course', 'src', course['photo']);
-            assingValueInElementById('name-course', 'innerHTML', course['name']);
-            assingValueInElementById('about-course', 'innerHTML', course['about']);
-
-            //lista de etec's
-            const schoolsList = document.getElementById("schools-list");
-            schoolsList.innerHTML = "";
-
-            array_schools = object_course['schools'];
-
-            for (i = 0; i < array_schools.length; i++) {
-                const divElementSchool = document.createElement("div");
-                divElementSchool.className = "divSchools";
-                const tElementSchool = document.createElement("p");
-                tElementSchool.className = "schools";
-                const photoElementSchool = document.createElement("img");
-                photoElementSchool.className = "photoSchools";
-
-                tElementSchool.innerHTML = array_schools[i]['name'];
-                photoElementSchool.src = array_schools[i]['photo'];
-
-                divElementSchool.id = i;
-                divElementSchool.appendChild(tElementSchool);
-                divElementSchool.appendChild(photoElementSchool);
-
-                document.getElementById("schools-list").appendChild(divElementSchool);
-            }
-
-            //lista de professores
-            const teachersList = document.getElementById("teachers-list");
-            teachersList.innerHTML = "";
-
-            array_teachers = object_course['teachers'];
-
-            for (i = 0; i < array_teachers.length; i++) {
-                const divElement = document.createElement("div");
-                divElement.className = "divTeachers";
-                const tElement = document.createElement("p");
-                tElement.className = "teachers";
-                const photoElement = document.createElement("img");
-                photoElement.className = "photoTeachers";
-
-                tElement.innerHTML = array_teachers[i]['name'];
-                photoElement.src = array_teachers[i]['photo'];
-
-                divElement.id = i;
-                divElement.appendChild(tElement);
-                divElement.appendChild(photoElement);
-
-                document.getElementById("teachers-list").appendChild(divElement);
-            }
-
-            //lista de matérias
-            const subjectsList = document.getElementById("subjects-list");
-            subjectsList.innerHTML = "";
-
-            array_subjects = object_course['subjects'];
-
-            for (i = 0; i < array_subjects.length; i++) {
-                const divElementSubject = document.createElement("div");
-                divElementSubject.className = "div";
-                const tElementSubject = document.createElement("p");
-                tElementSubject.className = "subs";
-               
-
-                tElementSubject.innerHTML = array_subjects[i]['name'];
-
-                divElementSubject.id = i;
-                divElementSubject.appendChild(tElementSubject);
-
-                document.getElementById("subjects-list").appendChild(divElementSubject);
-            }
+            enterDataSubjects(id,page);
         }
     </script>
 </body>
