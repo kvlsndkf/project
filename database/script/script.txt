@@ -6,6 +6,7 @@ CREATE TABLE users(
     , photo TEXT NOT NULL
     , type_user VARCHAR(40) NOT NULL
     , is_confirmed BOOLEAN NOT NULL
+    , key_confirm TEXT 
     , is_blocked BOOLEAN NOT NULL
     , github TEXT
     , linkedin TEXT

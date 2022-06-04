@@ -200,7 +200,7 @@ try {
                     </a>
 
                     <!-- Barra de pesquisa ⬇️ -->
-                    <form action="./search-module.page.php" method="GET">
+                    <form action="./list-module.page.php" method="GET">
                         <input type="text" name="searchModule" id="searchModule" placeholder="Pesquise por módulos" autocomplete="off" class="search-bar">
                         <input type="submit" value="🔎" class="search-button">
                     </form>
@@ -277,65 +277,14 @@ try {
                     </div>
 
                     <!-- Paginação ⬇️ -->
-                    <?php
-                    //Receber o numero de página
-                    $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
-                    $page = (!empty($current_page)) ? $current_page : 1;
-                    
-                    //Setar a quantidade de registros por página
-                    $limit_result = 12;
-
-                    //Calcular o inicio da vizualização
-                    $start = ($limit_result * $page) - $limit_result;
-
-                    //Contar a quantidade de registros no bd 
-                    $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules";
-                    $result_qnt_register = $connection->prepare($query_qnt_register);
-                    $result_qnt_register->execute();
-                    $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
-
-                    //Quantidade de páginas
-                    $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
-
-                    $prev_page = $page - 1;
-
-                    $next_page = $page + 1;
-
-                    ?>
-
                     <div class="div-pagination">
-                        <ul class="pagination">
-                            <?php
-                            //botão para voltar
-                            if ($prev_page != 0) { ?>
-                                <li class="page-item">
-                                    <a class="page-link pagination-last normal-14-medium-p" href="./list-module.page.php?page=<?php echo $prev_page; ?>" tabindex="-1" aria-disabled="true">Anterior</a>
-                                </li>
-                            <?php    } else { ?>
-                                <li class="page-item disabled">
-                                    <a class="page-link disable pagination-last normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-                                </li>
-                            <?php }  ?>
-
-                            <?php
-                            //Apresentar a paginação
-                            for ($i = 1; $i < $page_qnt + 1; $i++) { ?>
-                                <li class="page-item"><a class="page-link pagination-page normal-14-medium-p" href="./list-module.page.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-                            <?php }
-                            ?>
-
-                            <?php
-                            //botão para avançar
-                            if ($next_page <= $page_qnt) { ?>
-                                <li class="page-item">
-                                    <a class="page-link pagination-next normal-14-medium-p" href="./list-module.page.php?page=<?php echo $next_page; ?>" tabindex="-1" aria-disabled="true">Próximo</a>
-                                </li>
-                            <?php    } else { ?>
-                                <li class="page-item disabled">
-                                    <a class="page-link disable pagination-next normal-14-medium-p" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
-                                </li>
-                            <?php }  ?>
-                        </ul>
+                        <?php
+                            if(empty($search)){
+                                $paginationModule = $module->paginationModule();
+                            }else{
+                                $paginationModuleOfSearch = $module->paginationModuleOfSearch($search); 
+                            }
+                        ?>
                     </div>
 
 

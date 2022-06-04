@@ -45,7 +45,7 @@ try {
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" /> -->
 
     <!-- CSS Search Bar -->
     <link rel="stylesheet" href="../../../../style/search-bar.style.css">
@@ -60,6 +60,8 @@ try {
     <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
     <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../register.styles.css">
+
+    <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
 
 </head>
 
@@ -276,7 +278,13 @@ try {
                         <?php } ?>
 
                     </div>
-
+                        
+                        <?php 
+                        if(empty($search)){
+                            $listSubjects = $subject->paginationSubjects();
+                         }else{
+                            $listSubjectsOfSearch = $subject->paginationSubjectsOfSearch($search);
+                         } ?>
                 </div>
             </div>
 
