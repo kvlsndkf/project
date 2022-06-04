@@ -83,7 +83,7 @@ try {
         <?php unset($_SESSION['statusNegative']);
         } ?>
 
-                    <!-- 
+        <!-- 
             Mensagem de alerta ⬇️
             -->
         <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
@@ -107,69 +107,90 @@ try {
         <?php unset($_SESSION['statusAlert']);
         } ?>
         <div class="page-container d-flex align-items-center justify-content-center">
-        <div class="form-base bg-modal-gray align-self-center my-auto">
+            <div class="form-base bg-modal-gray align-self-center my-auto">
 
-            <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">
-                <div class="form-header">
-                <a href="./list-course.page.php">
-                        <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
-                    </a>
-                <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
-                </div>
-                <label class="normal-14-medium-p nome-professor">
-                    Nome
+                <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">
+                    <div class="form-header">
+                        <a href="./list-course.page.php">
+                            <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                        </a>
+                        <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
+                    </div>
+                    <label class="normal-14-medium-p nome-professor">
+                        Nome
                     </label>
-                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px;" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="5">
-                
+                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px;" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ[-]]+$" minlength="5">
 
-                
+
+
                     <label class="normal-14-medium-p nome-professor">Selecione as Etec's a que ele pertence</label>
-                
 
-                <p>
-                    <select name="idSchools[]" id="idSchools" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
-                        <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
-                            $row = $listSchoolsOfSelect[$i] ?>
-                            <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                        <?php } ?>
-                    </select>
-                </p>
 
-                
+                    <p>
+                        <select name="idSchools[]" id="idSchools" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
+                            <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
+                                $row = $listSchoolsOfSelect[$i] ?>
+                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </select>
+                    </p>
+
+
                     <label class="normal-14-medium-p nome-professor">Selecione os professores que lecionam este curso</label>
-                
 
-                <p>
-                    <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select w-100" style="width: 100%" multiple="multiple" required>
-                        <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
-                            $row = $listTeachersOfSelect[$i] ?>
-                            <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                        <?php } ?>
-                    </select>
-                </p>
 
-                
+                    <p>
+                        <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select w-100" style="width: 100%" multiple="multiple" required>
+                            <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
+                                $row = $listTeachersOfSelect[$i] ?>
+                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </select>
+                    </p>
+
+
                     <label class="normal-14-medium-p nome-professor">Selecione as matérias deste curso</label>
-                
 
-                <p>
-                    <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select w-100" style="width: 100%" multiple="multiple" required>
-                        <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
-                            $row = $listSubjectsOfSelect[$i] ?>
-                            <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                        <?php } ?>
-                    </select>
-                </p>
 
-                
+                    <p>
+                        <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select w-100" style="width: 100%" multiple="multiple" required>
+                            <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
+                                $row = $listSubjectsOfSelect[$i] ?>
+                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </select>
+                    </p>
 
-                <hr>
+                    <div>
+                        <p class="normal-14-medium-p nome-professor">
+                            Sobre
+                        </p>
 
-                <button type="submit" name="register">Cadastrar</button>
-                <button type="reset">Limpar</button>
+                        <div id="contentTextArea">
+                            <textarea name="about" id="about" cols="30" rows="7" placeholder="Digite sobre o curso" class="text-area normal-14-medium-p" required onclick="colorDiv()" minlength="100" maxlength="250"></textarea>
+                            <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
+                        </div>
+                    </div>
+                    <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
+                        <span></span>
+                    </div>
+                    <hr>
 
-            </form>
-        </div>
+                    <p>
+                        <label class="normal-14-medium-p nome-professor">Foto</label>
+                        <input type="file" name="photo" class="photo" id="photo" required>
+                        <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+
+                        <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                    </p>
+
+                    <hr>
+
+                    <button type="submit" name="register" class="button-wide button-white-white-text register normal-14-bold-p" onclick="GFG_Fun(); checkLength()">Cadastrar</button>
+                    <button type="reset" id="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
+
+                </form>
+            </div>
         </div>
     </div>
 
@@ -202,6 +223,51 @@ try {
 
     <!-- JS Count Characters TextArea -->
     <script type="text/javascript" src="../../js/textarea.js"></script>
+
+    <!-- JS arquvio selecionado -->
+    <script type="text/javascript">
+        let inputFile = document.getElementById('photo');
+        let fileNameField = document.getElementById('file-name');
+        inputFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            fileNameField.textContent = uploadedFileName;
+        });
+
+        document.getElementById("reset").addEventListener("click", function() {
+            document.getElementById("file-name").innerText = "Nenhum arquivo selecionado";
+        });
+
+        var down = document.getElementById('file-name');
+        var file = document.getElementById("photo");
+        var uploadedFileName = event.target.files[0].name;
+
+
+        function GFG_Fun() {
+            if (file.files.length == 0) {
+                down.style.color = "#ED4245";
+                down.innerText = "SELECIONE UM ARQUIVO!";
+            } else {
+                true
+            }
+        }
+    </script>
+
+    <!-- JS tamanho minimo text area -->
+    <script>
+        var textArea = document.getElementById('about');
+        var minLength = document.getElementById('min-length');
+
+        function checkLength() {
+            if (textArea.value.length < 100) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Mínimo de caracteres: 100";
+            }
+            if (textArea.value.length > 250) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Máximo de caracteres: 250";
+            }
+        }
+    </script>
 
 </body>
 
