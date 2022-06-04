@@ -92,7 +92,7 @@ class Message
     //----------------------------
     //methods
     /**
-     * @method registerMessage() registers the messages by 
+     * @method registerMessage() register the messages by 
      * @param Message $message
      */
     public function registerMessage(Message $mensagem): void
@@ -116,7 +116,7 @@ class Message
     }
 
     /**
-     * @method listMessage() lists the messages by 
+     * @method listNewMessage() list the new messages by 
      * @param string $search 
      */
     public function listNewMessage(string $search = ''): array | false
@@ -142,8 +142,7 @@ class Message
     }
 
     /**
-     * @method listMessage() lists the messages by 
-     * @param string $search 
+     * @method listReadMessage() list the read messages
      */
     public function listReadMessage(): array | false
     {
@@ -164,7 +163,7 @@ class Message
 
     //----------------------------
     /**
-     * @method buildMessageList() organize the list of teachers by 
+     * @method buildNewMessageList() organize the list of new messages by 
      * @param array $result 
      */
     private function buildNewMessageList(array | false $result)
@@ -187,7 +186,7 @@ class Message
 
     //----------------------------
     /**
-     * @method countCourses() count the teachers by 
+     * @method countNewMessages() count the new messages by 
      * @param string $search 
      */
     public function countNewMessages($search)
@@ -208,8 +207,7 @@ class Message
 
     //----------------------------
     /**
-     * @method countCourses() count the teachers by 
-     * @param string $search 
+     * @method countReadMessages() count the read messages 
      */
     public function countReadMessages()
     {
@@ -221,10 +219,9 @@ class Message
         }
     }
 
-
     //----------------------------
     /**
-     * @method buildMessageList() organize the list of teachers by 
+     * @method buildReadMessageList() organize the list of read messages by 
      * @param array $result 
      */
     private function buildReadMessageList(array | false $result)
@@ -266,7 +263,7 @@ class Message
 
     //----------------------------
     /**
-     * @method buildMessageList() organize the list of teachers by 
+     * @method buildMessageList() organize the list of messages by 
      * @param array $result 
      */
     private function buildMessageList(array | false $result)
@@ -312,6 +309,13 @@ class Message
             echo $e->getMessage();
         }
     }
+
+    //----------------------------
+    /**
+     * @method readingTheMessage() reading the messages by 
+     * @param string $message 
+     * @param int $id
+     */
 
     public function readingTheMessage($message, $id)
     {
