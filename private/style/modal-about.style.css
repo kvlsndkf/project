@@ -2,7 +2,7 @@
     padding: 40px;
     padding-bottom: 35px;
     border: none;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 
 .corpo-modal{
@@ -68,6 +68,7 @@
 .school-info-header{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .school-info-header-text{
@@ -230,4 +231,10 @@
 .hr-teachers-list{
     color: var(--gray3);
     border: 1px solid var(--gray3);
+}
+
+@media (max-width: 280px){
+    .drop-edit-exclud-about{
+        right: 35px;
+    }
 }
