@@ -21,6 +21,8 @@ async function enterData(id,page) {
 
                 var photo = document.getElementById('photo-school');
                 var bodyModal = document.getElementById('body-modal-have-account');
+                var bodyModal2 = document.getElementById('body-modal-have-account-2');
+                var bodyModal3 = document.getElementById('body-modal-have-account-3');
 
                 document.getElementById('school-edit').href = "./form-update-school.page.php?updateSchool=" + school['id'];
                 document.getElementById('school-delete').href = "./controller/delete-school.controller.php?id=" + school['id'];
@@ -29,14 +31,18 @@ async function enterData(id,page) {
                     document.getElementById('name-school').innerHTML = school['name'];
                     document.getElementById('address-school').innerHTML = school['address'] + ", São Paulo";
 
-                    document.getElementById('about-school-label').display = "none";
+                    // document.getElementById('about-school-label').display = "none";
 
                     photo.style.display = "none";
                     bodyModal.style.display = "none";
+                    bodyModal2.style.display = "none";
+                    bodyModal3.style.display = "none";
 
                 } else {
                     photo.style.display = "";
                     bodyModal.style.display = "";
+                    bodyModal2.style.display = "";
+                    bodyModal3.style.display = "";
 
                     const linkedin = school['linkedin'];
 

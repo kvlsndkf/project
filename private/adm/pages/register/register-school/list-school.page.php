@@ -410,7 +410,7 @@ try {
 
                                 </div>
     
-                                <div id="body-modal-have-account">
+                                <div id="body-modal-have-account-2">
                                     <br>
                                     <label class="normal-14-medium-p about-school-label">Sobre</label>
                                     <div id="about-school" class="whitney-16-medium-text white-title about-school-text" style="width: fit-content;"></div>
@@ -443,25 +443,29 @@ try {
 
                         </div>
 
-                        <!-- Tabs navs -->
-                        <ul class="nav nav-tabs mb-3 nav-teacher" id="ex1" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active tab-item" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
-                                    <p class="tab-item-text whitney-12-regular-tiny">
-                                        Professores
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
+                        <div id="body-modal-have-account-3">
 
-                        <!-- <label for="">Professores</label> -->
-                        <div id="teachers-list">
+                            <!-- Tabs navs -->
+                            <ul class="nav nav-tabs mb-3 nav-teacher" id="ex1" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active tab-item" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                                        <p class="tab-item-text whitney-12-regular-tiny">
+                                            Professores
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                            <!-- <label for="">Professores</label> -->
+                            <div id="teachers-list">
                             </div>
                             
                             <div class="div-pagination">
                                 <div id="pagination"></div>
     
                             </div>
+
+                        </div>
                             
                     </div>
                 </div>
