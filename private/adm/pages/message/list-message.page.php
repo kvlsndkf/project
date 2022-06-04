@@ -143,7 +143,8 @@ try {
             <?php echo $row->message; ?>
           </p>
 
-          <form action="./controller/read-message.controller.php?messageID=<?php echo $row->id; ?>" method="POST">
+          <?php $styleButton = $row->status == "Nova" ? '' : 'd-none'; ?>
+          <form action="./controller/read-message.controller.php?messageID=<?php echo $row->id; ?>" class="<?php echo $styleButton; ?>" method="POST">
             <button type="submit" name="readMessage">Marcar como lida</button>
           </form>
 
