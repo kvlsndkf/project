@@ -15,3 +15,14 @@
 .btn{
     text-transform: none;
 }
+
+
+
+.page-link{
+    border: 1px solid #dee2e6;
+}
+.page-item:not(:first-child) .page-link {
+    margin-left: -1px;
+}
+
+
