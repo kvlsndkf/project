@@ -1,3 +1,7 @@
+<?php
+include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -44,8 +48,6 @@
                 <label for="check" class="checkbtn">
                     <i class="fas fa-bars"></i>
                 </label>
-                
-                
                 
                 <!-- Conteúdo Navbar -->
                 <ul class="sidebar-ul">
@@ -107,7 +109,7 @@
                     </li>
 
                     <li class="sidebar-li">
-                        <a href="#" class="sidebar-a">
+                        <a href="../../../../logout/logout.controller.php" class="sidebar-a">
 
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>

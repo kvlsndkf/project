@@ -109,8 +109,17 @@ class Subject
                 $result = $this->searchSubject($search);
                 return $this->buildSubjectList($result);
             }
+            //Receber o numero de página
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
 
-            $stmt = $connection->prepare("SELECT * FROM subjects ORDER BY name");
+            //Setar a quantidade de registros por página
+            $limit_result = 9;
+
+            //Calcular o inicio da vizualização
+            $start = ($limit_result * $page) - $limit_result;
+
+            $stmt = $connection->prepare("SELECT * FROM subjects ORDER BY name LIMIT $start, $limit_result");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -197,7 +206,17 @@ class Subject
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT * FROM subjects WHERE name LIKE '%$search%' ORDER BY name");
+            //Receber o numero de página
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
+
+            //Setar a quantidade de registros por página
+            $limit_result = 9;
+
+            //Calcular o inicio da vizualização
+            $start = ($limit_result * $page) - $limit_result;
+
+            $stmt = $connection->prepare("SELECT * FROM subjects WHERE name LIKE '%$search%' ORDER BY name LIMIT $start, $limit_result");
 
             $stmt->execute();
 
@@ -219,16 +238,21 @@ class Subject
      * @param string $search 
      */
     public function countSubjects(string $search = ''): string
-    {
+    {   
+        $connection = Connection::connection();
+
         $searching = (!is_null($search) && !empty($search));
 
         if ($searching) {
-            $resultBuildList = $this->getResultBuildList();
-            $totalSearch = count($resultBuildList);
-            return "Resultado da pesquisa " . $totalSearch;
+            $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM subjects WHERE name LIKE '%$search%'");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return "Resultado da Pesquisa " . $result[0]['total'];
         }
 
-        $connection = Connection::connection();
+        
         try {
             $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM subjects");
             $stmt->execute();
@@ -250,7 +274,7 @@ class Subject
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT * FROM subjects ORDER BY name");
+            $stmt = $connection->prepare("SELECT * FROM subjects ORDER BY name ");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -331,4 +355,125 @@ class Subject
 
         return $subjects;
     }
-}
+
+    //----------------------------
+    /**
+     * @method paginationSubjects() paginate list of subjects
+     */
+    public function paginationSubjects()
+    {
+        $connection = Connection::connection();
+
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+        
+        //Setar a quantidade de registros por página
+        $limit_result = 9;
+
+        
+        //Contar a quantidade de registros no bd 
+        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM subjects";
+        $result_qnt_register = $connection->prepare($query_qnt_register);
+        $result_qnt_register->execute();
+        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+
+        //Quantidade de páginas
+        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+        $prev_page = $page - 1;
+
+        $next_page = $page + 1;
+
+        echo "<ul class='pagination'>";
+        
+            //botão para voltar
+            if ($prev_page != 0) { 
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-subject.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+            }
+
+            //Apresentar a paginação
+            for ($i = 1; $i < $page_qnt + 1; $i++) { 
+                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-subject.page.php?page=$i'> $i </a></li>";
+            }
+                
+            //botão para avançar
+            if ($next_page <= $page_qnt) {
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-subject.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+            }
+        echo "</ul>";
+    }
+
+    //----------------------------
+    /**
+     * @method paginationSubjects() paginate list of subjects
+     * @param string $search
+     */
+    public function paginationSubjectsOfSearch(string $search)
+    {
+        $connection = Connection::connection();
+
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+        
+        //Setar a quantidade de registros por página
+        $limit_result = 9;
+
+        
+        //Contar a quantidade de registros no bd 
+        $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM subjects WHERE name LIKE '%$search%'";
+        $result_qnt_register = $connection->prepare($query_qnt_register);
+        $result_qnt_register->execute();
+        $row_qnt_register = $result_qnt_register->fetch(PDO::FETCH_ASSOC);
+
+        //Quantidade de páginas
+        $page_qnt = ceil($row_qnt_register['id'] / $limit_result);
+
+        $prev_page = $page - 1;
+
+        $next_page = $page + 1;
+
+        echo "<ul class='pagination'>";
+        
+            //botão para voltar
+            if ($prev_page != 0) { 
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-subject.page.php?page=$prev_page &searchSubject=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+                echo "</li>";
+            }
+
+            //Apresentar a paginação
+            for ($i = 1; $i < $page_qnt + 1; $i++) { 
+                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-subject.page.php?page=$i &searchSubject=$search'> $i </a></li>";
+            }
+                
+            //botão para avançar
+            if ($next_page <= $page_qnt) {
+                echo "<li class='page-item'>";
+                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-subject.page.php?page= $next_page &searchSubject=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+                } else { 
+                echo "<li class='page-item disabled'>";
+                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+                echo "</li>";
+            }
+        echo "</ul>";
+    }
+}   
