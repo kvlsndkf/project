@@ -1,5 +1,5 @@
 <?php
-include_once ('/xampp/htdocs' . '/project/database/connection.php');
+include_once('/xampp/htdocs' . '/project/database/connection.php');
 
 class Message
 {
@@ -38,12 +38,12 @@ class Message
     {
         if ($status == true) {
             $status = "Nova";
-        } 
+        } else {
+            $status = "Lida";
+        }
 
         $this->status = $status;
     }
-    
-    
     //----------------------------
     public function getMessage()
     {
@@ -71,15 +71,25 @@ class Message
     {
         $this->updatedAt = $updatedAt;
     }
-    public function getResultBuildList(): array
+    //----------------------------
+    public function getResultBuildListNew(): array
     {
-        return $this->resultBuildList;
+        return $this->resultBuildListNew;
     }
-    public function setResultBuildList(array $resultBuildList): void
+    public function setResultBuildListNew(array $resultBuildListNew): void
     {
-        $this->resultBuildList = $resultBuildList;
+        $this->resultBuildListNew = $resultBuildListNew;
     }
-
+    //----------------------------
+    public function getResultReadBuildList(): array
+    {
+        return $this->resultReadBuildList;
+    }
+    public function setResultReadBuildList(array $resultReadBuildList): void
+    {
+        $this->resultReadBuildList = $resultReadBuildList;
+    }
+    //----------------------------
     //methods
     /**
      * @method registerMessage() registers the messages by 
@@ -92,60 +102,72 @@ class Message
         try {
             $stmt = $connection->prepare("INSERT INTO messages(contact, message, status, created_at)
                                          VALUES (?,?,?, NOW())");
-                                         
+
             $stmt->bindValue(1, $mensagem->getContact());
             $stmt->bindValue(2, $mensagem->getMessage());
             $stmt->bindValue(3, $mensagem->getStatus());
-            
+
             $stmt->execute();
 
-            $_SESSION['statusPositive'] = "Mensagem Cadastrada com Sucesso.";
             header('Location: /project/views/landing-page/landing-page.php');
         } catch (Exception $e) {
             echo $e->getMessage();
-            
         }
     }
 
-     /**
+    /**
      * @method listMessage() lists the messages by 
      * @param string $search 
      */
-
-    public function listMessage(string $search = '', string $filter = ''): array | false
+    public function listNewMessage(string $search = ''): array | false
     {
         $connection = Connection::connection();
 
         try {
             if (!is_null($search) && !empty($search)) {
                 $result = $this->searchMessage($search);
-                return $this->buildMessageList($result);
+                return $this->buildNewMessageList($result);
             }
 
-            if (!empty($filter)) {
-                $result = $this->filterMessage($filter);
-                return $this->buildMessageList($result);
-            }
-
-
-            $stmt = $connection->prepare("SELECT * FROM messages");
+            $stmt = $connection->prepare("SELECT id, contact, status, message FROM messages 
+                                            WHERE status = 'Nova'    
+                                            ORDER BY created_at DESC");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $this->buildMessageList($result);
-    }
-    
-     catch (Exception $e) {
-        echo $e->getMessage();
+
+            return $this->buildNewMessageList($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
-  }
+    /**
+     * @method listMessage() lists the messages by 
+     * @param string $search 
+     */
+    public function listReadMessage(): array | false
+    {
+        $connection = Connection::connection();
 
-   //----------------------------
+        try {
+            $stmt = $connection->prepare("SELECT id, contact, status, message FROM messages 
+                                            WHERE status = 'Lida'    
+                                            ORDER BY updated_at DESC");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $this->buildReadMessageList($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    //----------------------------
     /**
      * @method buildMessageList() organize the list of teachers by 
      * @param array $result 
      */
-    private function buildMessageList(array | false $result)
+    private function buildNewMessageList(array | false $result)
     {
         $messages = [];
 
@@ -159,38 +181,70 @@ class Message
             array_push($messages, $message);
         }
 
-        $this->setResultBuildList($messages);
+        $this->setResultBuildListNew($messages);
         return $messages;
     }
 
-    
-       //----------------------------
+    //----------------------------
     /**
      * @method countCourses() count the teachers by 
      * @param string $search 
      */
-    public function countMessages(string $search = '')
+    public function countNewMessages($search)
     {
+        $resultBuildListNew = $this->getResultBuildListNew();
+
         $searching = (!is_null($search) && !empty($search));
 
         if ($searching) {
-            $resultBuildList = $this->getResultBuildList();
+            $resultBuildList = $this->getResultBuildListNew();
             $totalSearch = count($resultBuildList);
             return "Resultado da pesquisa " . $totalSearch;
         }
 
-        $connection = Connection::connection();
-        try {
-            $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM messages");
-            $stmt->execute();
+        $totalNewMessage = count($resultBuildListNew);
+        return "Total (" . $totalNewMessage . ")";
+    }
 
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //----------------------------
+    /**
+     * @method countCourses() count the teachers by 
+     * @param string $search 
+     */
+    public function countReadMessages()
+    {
+        $resultBuildListRead = $this->getResultReadBuildList();
 
-            return "Total (" . $result[0]['total']. ")";
-        } catch (Exception $e) {
-            echo $e->getMessage();
+        if ($resultBuildListRead) {
+            $totalReadMessage = count($resultBuildListRead);
+            return "Total (" . $totalReadMessage . ")";
         }
     }
+
+
+    //----------------------------
+    /**
+     * @method buildMessageList() organize the list of teachers by 
+     * @param array $result 
+     */
+    private function buildReadMessageList(array | false $result)
+    {
+        $messages = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $message = new Message();
+            $message->id = $row['id'];
+            $message->contact = $row['contact'];
+            $message->status = $row['status'];
+            $message->message = $row['message'];
+            array_push($messages, $message);
+        }
+
+        $this->setResultReadBuildList($messages);
+        return $messages;
+    }
+    
     //----------------------------
     /**
      * @method listMessageOfSearchBar() list messages for search bar  
@@ -209,6 +263,30 @@ class Message
             echo $e->getMessage();
         }
     }
+
+    //----------------------------
+    /**
+     * @method buildMessageList() organize the list of teachers by 
+     * @param array $result 
+     */
+    private function buildMessageList(array | false $result)
+    {
+        $messages = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $message = new Message();
+            $message->id = $row['id'];
+            $message->contact = $row['contact'];
+            $message->status = $row['status'];
+            $message->message = $row['message'];
+            array_push($messages, $message);
+        }
+
+        $this->setResultReadBuildList($messages);
+        return $messages;
+    }
+
     //----------------------------
     /**
      * @method searchMessage() search messages by 
@@ -235,4 +313,22 @@ class Message
         }
     }
 
+    public function readingTheMessage($message, $id)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("UPDATE messages SET status = ?, updated_at = NOW()
+                                         WHERE id = $id");
+
+            $stmt->bindValue(1, $message->getStatus());
+
+            $stmt->execute();
+
+            $_SESSION['statusPositive'] = "Mensagem movida para <strong>Lidas<strong>.";
+            header('Location: /project/private/adm/pages/message/list-message.page.php');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }
