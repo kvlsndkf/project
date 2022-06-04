@@ -206,3 +206,20 @@ CREATE TABLE messages(
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
 )
+
+CREATE TABLE questions(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , xp INT NOT NULL
+    , question TEXT NOT NULL
+    , course_id INT NOT NULL
+    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+    , subject_id INT NOT NULL
+    , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+    , category_id INT NOT NULL
+    , FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+    , student_id INT NOT NULL
+    , FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
