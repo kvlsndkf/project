@@ -213,10 +213,8 @@ class Message
     {
         $resultBuildListRead = $this->getResultReadBuildList();
 
-        if ($resultBuildListRead) {
-            $totalReadMessage = count($resultBuildListRead);
-            return "Total (" . $totalReadMessage . ")";
-        }
+        $totalReadMessage = count($resultBuildListRead);
+        return "Total (" . $totalReadMessage . ")";
     }
 
     //----------------------------
@@ -241,7 +239,7 @@ class Message
         $this->setResultReadBuildList($messages);
         return $messages;
     }
-    
+
     //----------------------------
     /**
      * @method listMessageOfSearchBar() list messages for search bar  
@@ -280,7 +278,6 @@ class Message
             array_push($messages, $message);
         }
 
-        $this->setResultReadBuildList($messages);
         return $messages;
     }
 
@@ -317,7 +314,7 @@ class Message
      * @param int $id
      */
 
-    public function readingTheMessage($message, $id)
+    public function readingTheMessage(Message $message, int $id)
     {
         $connection = Connection::connection();
 
