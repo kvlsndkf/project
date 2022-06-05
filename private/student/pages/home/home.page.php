@@ -161,6 +161,7 @@ try {
 
     <!-- Magnific Popup core JS file -->
     <script src="../../../../libs/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="../../../../libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -169,20 +170,6 @@ try {
             });
         });
     </script>
-
-    <!-- Include the Quill library
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-    Initialize Quill editor
-    <script>
-        var quill = new Quill('.editor', {
-            theme: 'snow',
-            readOnly: true,
-            modules: {
-                toolbar: [],
-            }
-        });
-    </script> -->
 
     <script>
         function copyLink() {
