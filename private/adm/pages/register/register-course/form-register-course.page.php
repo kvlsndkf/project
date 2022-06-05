@@ -119,7 +119,7 @@ try {
                     <label class="normal-14-medium-p nome-professor">
                         Nome
                     </label>
-                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px;" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ[-]]+$" minlength="5">
+                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px;" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ-]+$" minlength="5">
 
 
 
@@ -267,6 +267,17 @@ try {
                 minLength.innerText = "Máximo de caracteres: 250";
             }
         }
+    </script>
+
+    <script>
+        const noNumbersInput = document.querySelector("#name");
+            noNumbersInput.addEventListener("keypress", function(numberEvent) {
+                const keyCode = (numberEvent.keyCode ? numberEvent.keyCode : numberEvent.wich);
+
+                if(keyCode > 47 && keyCode < 58) {
+                    numberEvent.preventDefault();
+                }
+            })
     </script>
 
 </body>
