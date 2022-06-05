@@ -20,7 +20,7 @@ try {
     <title>Feed | Heelp!</title>
 
     <!-- Include stylesheet -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -114,9 +114,15 @@ try {
             <?php echo $row->school; ?>
         </p>
 
-        <div class="ql-snow">
-            <?php echo $row->question; ?>
+        <!-- Create the editor container -->
+        <div class="ql-snow ql-editor">
+            <div class="ql-editor">
+                <?php echo $row->question; ?>
+            </div>
         </div>
+
+        <br>
+        <br>
 
         <?php $styleImageQuestion = !empty($row->image) ? '' : 'd-none'; ?>
         <p class="<?php echo $styleImageQuestion; ?>">
@@ -164,15 +170,29 @@ try {
         });
     </script>
 
+    <!-- Include the Quill library
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    Initialize Quill editor
     <script>
-        function copyLink(){
+        var quill = new Quill('.editor', {
+            theme: 'snow',
+            readOnly: true,
+            modules: {
+                toolbar: [],
+            }
+        });
+    </script> -->
+
+    <script>
+        function copyLink() {
             const link = document.getElementById("linkQuestion");
             const span = document.getElementById("spanLink");
 
             navigator.clipboard.writeText(link.href);
 
             span.innerText = "Copiado!";
-            setTimeout(()=> {
+            setTimeout(() => {
                 span.innerText = "Copiar link";
             }, 1150);
         }
