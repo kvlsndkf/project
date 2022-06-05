@@ -18,7 +18,10 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dar um Heelp! <?php echo $listDetailsQuestions->subject; ?> | Heelp!</title>
+    <title>Pergunta sobre <?php echo $listDetailsQuestions->subject; ?> | Heelp!</title>
+
+    <!-- Include stylesheet -->
+    <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -78,8 +81,11 @@ try {
         <?php echo $listDetailsQuestions->school; ?>
     </p>
 
-    <div id="question">
-        <textarea name="" id="questionValue" class="d-none"><?php echo $listDetailsQuestions->question; ?></textarea>
+    <!-- Create the editor container -->
+    <div class="ql-snow ql-editor">
+        <div class="ql-editor">
+            <?php echo $listDetailsQuestions->question; ?>
+        </div>
     </div>
 
     <?php $styleImageQuestion = !empty($listDetailsQuestions->image) ? '' : 'd-none'; ?>
