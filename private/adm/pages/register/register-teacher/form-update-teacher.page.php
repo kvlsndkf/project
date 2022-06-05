@@ -46,7 +46,7 @@ if (isset($_GET['updateTeacher'])) {
 
                         <div class="form-header">
                             <a href="./list-teacher.page.php">
-                                <img src="../../../images/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                                <img src="../../../images/components/arrow.svg" class="module-arrow" alt="Botão de voltar">
                             </a>
                             <label class="normal-20-bold-modaltitle title-header">Editar professor</label>
                         </div>

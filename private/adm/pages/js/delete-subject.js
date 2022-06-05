@@ -1,17 +1,24 @@
 const modalTemplate = `
 <div class="modal fade" id="confirm-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Excluir matéria</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Tem certeza de que deseja excluir essa matéria permanentemente?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <a class="btn btn-danger" id="delete-button">Excluir</a>
+    <div class="modal-content teste">
+      <div class="modal-body body-modal">
+        <div class="start">
+          <span class="modal-title normal-20-bold-modaltitle white-title" id="exampleModalLabel">Excluir matéria</span>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div>
+            <p class="normal-14-bold-p white-title">
+              Tem certeza de que deseja excluir essa matéria permanentemente?
+            </p>
+        </div>
+        <div class="warning-container">
+          <span class="warning-text normal-12-bold-tiny red-title">Atenção: </span><span class="normal-12-bold-tiny white-title">A matéria também será excluída de seus cursos vinculados.</span>
+        </div>
+        <div class="modal-buttons">
+          <a class="btn btn-danger button normal-14-bold-p" id="delete-button">Excluir</a>
+          <button type="button" class="btn btn-secondary button cancelar normal-14-bold-p" data-bs-dismiss="modal">Cancelar</button>
+        </div>
       </div>
     </div>
   </div>
