@@ -1,7 +1,4 @@
 <?php
-
-use Question as GlobalQuestion;
-
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 
 class Question
@@ -16,6 +13,9 @@ class Question
     public $course;
     public $subject;
     public int $student;
+    public string $photo = "";
+    public string $document = "";
+    public string $nameDocument = "";
 
     //getters and setters
     public function getId()
@@ -99,6 +99,33 @@ class Question
         $this->student = $student;
     }
     //----------------------------
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
+    //----------------------------
+    public function getDocument()
+    {
+        return $this->document;
+    }
+    public function setDocument($document)
+    {
+        $this->document = $document;
+    }
+    //----------------------------
+    public function getNameDocument()
+    {
+        return $this->nameDocument;
+    }
+    public function setNameDocument($nameDocument)
+    {
+        $this->nameDocument = $nameDocument;
+    }
+    //----------------------------
     //methods
     /**
      * @method registerModule() registers the modules by 
@@ -109,17 +136,40 @@ class Question
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("INSERT INTO questions(xp, question, course_id, subject_id, category_id, student_id, created_at)
-                                         VALUES (?, ?, ?, ?, ?, ?, NOW())");
+            $connection->beginTransaction();
+            $stmt = $connection->prepare("INSERT INTO questions(xp, question, photo, document, document_name, course_id, subject_id, category_id, student_id)
+                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             $stmt->bindValue(1, $question->getXp());
             $stmt->bindValue(2, $question->getQuestion());
-            $stmt->bindValue(3, $question->getCourse());
-            $stmt->bindValue(4, $question->getSubject());
-            $stmt->bindValue(5, $question->getCategory());
-            $stmt->bindValue(6, $question->getStudent());
+            $stmt->bindValue(3, $question->getPhoto());
+            $stmt->bindValue(4, $question->getDocument());
+            $stmt->bindValue(5, $question->getNameDocument());
+            $stmt->bindValue(6, $question->getCourse());
+            $stmt->bindValue(7, $question->getSubject());
+            $stmt->bindValue(8, $question->getCategory());
+            $stmt->bindValue(9, $question->getStudent());
 
             $stmt->execute();
+
+            $idQuestion = $connection->lastInsertId();
+            $this->setId($idQuestion);
+            $connection->commit();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
+            $connection = Connection::connection();
+
+            $id = $this->getId();
+            $linkQuestion = "/project/private/student/pages/detail-question/detail-question.page.php?idQuestion=" . $id;
+
+            $insetLink = $connection->prepare("UPDATE questions SET link_question = ?, created_at = NOW()
+                                                WHERE id = '$id'");
+                                                    
+            $insetLink->bindValue(1, $linkQuestion);
+            $insetLink->execute();
 
             $_SESSION['statusPositive'] = "Pergunta feita.";
             header('Location: /project/private/student/pages/home/home.page.php');
@@ -137,7 +187,11 @@ class Question
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT usr.photo, stu.first_name, stu.surname, module.name AS 'module', school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, category.name AS 'category', course.name AS 'course', quest.created_at FROM students stu
+            $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
+                                        school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
+                                        category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
+                                        quest.document, quest.document_name, quest.created_at FROM students stu
+                                            
                                             INNER JOIN schoolshasstudents ss
                                             ON stu.id = ss.student_id
                                             INNER JOIN schools school
@@ -171,18 +225,7 @@ class Question
 
         for ($i = 0; $i < count($result); $i++) {
             $row = $result[$i];
-            $question = new Question();
-            $question->photo = $row['photo'];
-            $question->firstName = $row['first_name'];
-            $question->surname = $row['surname'];
-            $question->module = $row['module'];
-            $question->school = $row['school'];
-            $question->subject = $row['subject'];
-            $question->question = $row['question'];
-            $question->xp = $row['xp'];
-            $question->category = $row['category'];
-            $question->course = $row['course'];
-            $question->created = $this->countCreatedQuestion($row['created_at']);
+            $question = $this->buildQuestion($row);
 
             array_push($questions, $question);
         }
@@ -200,7 +243,7 @@ class Question
         $result = $QuestionDate->diff($CurrentDate);
 
         if ($result->s < 60 && $result->i == 0) {
-            return "< 1 minuto. Há poucos segundos";
+            return "Há poucos segundos";
         }
 
         if ($result->i > 0 && $result->h == 0) {
@@ -222,5 +265,65 @@ class Question
         if ($result->y > 0) {
             return $result->y . " anos";
         }
+    }
+
+    public function listDetailsQuestion(int $id)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
+                                        school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
+                                        category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
+                                        quest.document, quest.document_name, quest.created_at FROM students stu
+                                            
+                                            INNER JOIN schoolshasstudents ss
+                                            ON stu.id = ss.student_id
+                                            INNER JOIN schools school
+                                            ON ss.school_id = school.id
+                                            INNER JOIN modules module
+                                            ON module.id = stu.module_id
+                                            INNER JOIN questions quest
+                                            ON stu.id = quest.student_id
+                                            INNER JOIN subjects subj
+                                            ON subj.id = quest.subject_id
+                                            INNER JOIN courses course
+                                            ON course.id = quest.course_id
+                                            INNER JOIN categories category
+                                            ON category.id = quest.category_id
+                                            INNER JOIN users usr
+                                            ON stu.user_id = usr.id
+                                            WHERE quest.id = '$id'
+                                        ");
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $this->buildQuestion($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function buildQuestion($row)
+    {
+        $question = new Question();
+        $question->id = $row['id'];
+        $question->linkQuestion = $row['link_question'];
+        $question->photo = $row['photo'];
+        $question->firstName = $row['first_name'];
+        $question->surname = $row['surname'];
+        $question->module = $row['module'];
+        $question->school = $row['school'];
+        $question->subject = $row['subject'];
+        $question->question = $row['question'];
+        $question->xp = $row['xp'];
+        $question->category = $row['category'];
+        $question->course = $row['course'];
+        $question->image = $row['imageQuestion'];
+        $question->document = $row['document'];
+        $question->documentName = $row['document_name'];
+        $question->created = $this->countCreatedQuestion($row['created_at']);
+
+        return $question;
     }
 }
