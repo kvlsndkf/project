@@ -109,19 +109,21 @@ try {
         <?php unset($_SESSION['statusAlert']);
         } ?>
         <div class="page-container d-flex align-items-center justify-content-center">
+
             <div class="form-base bg-modal-gray align-self-center my-auto">
 
-                <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">
+                <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">  <div class="container">
                     <div class="form-header">
                         <a href="./list-course.page.php">
                             <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
                         </a>
                         <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
                     </div>
+
                     <label class="normal-14-medium-p nome-professor">
                         Nome
                     </label>
-                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px;" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ-]+$" minlength="5">
+                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px; max-width: 100%" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ-]+$" minlength="5">
 
 
 
@@ -129,7 +131,7 @@ try {
 
 
                     <p>
-                        <select name="idSchools[]" id="idSchools" class="multiple-select w-100" style="width: 100%" multiple="multiple" required>
+                        <select name="idSchools[]" id="idSchools" class="multiple-select" style="max-width: 100%" multiple="multiple" required>
                             <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
                                 $row = $listSchoolsOfSelect[$i] ?>
                                 <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
@@ -142,7 +144,7 @@ try {
 
 
                     <p>
-                        <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select w-100" style="width: 100%" multiple="multiple" required>
+                        <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select" style="max-width: 100%" multiple="multiple" required>
                             <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
                                 $row = $listTeachersOfSelect[$i] ?>
                                 <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
@@ -155,13 +157,14 @@ try {
 
 
                     <p>
-                        <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select w-100" style="width: 100%" multiple="multiple" required>
+                        <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select" style="max-width: 100%" multiple="multiple" required>
                             <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
                                 $row = $listSubjectsOfSelect[$i] ?>
                                 <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
                             <?php } ?>
                         </select>
                     </p>
+
 
                     <div>
                         <p class="normal-14-medium-p nome-professor">
@@ -190,9 +193,11 @@ try {
 
                     <button type="submit" name="register" class="button-wide button-white-white-text register normal-14-bold-p" onclick="GFG_Fun(); checkLength()">Cadastrar</button>
                     <button type="reset" id="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
-
+                    </div>
                 </form>
+                
             </div>
+            
         </div>
     </div>
 
@@ -273,29 +278,29 @@ try {
 
     <script>
         const noNumbersInput = document.querySelector("#name");
-            noNumbersInput.addEventListener("keypress", function(numberEvent) {
-                const keyCode = (numberEvent.keyCode ? numberEvent.keyCode : numberEvent.wich);
+        noNumbersInput.addEventListener("keypress", function(numberEvent) {
+            const keyCode = (numberEvent.keyCode ? numberEvent.keyCode : numberEvent.wich);
 
-                if(keyCode > 47 && keyCode < 58) {
-                    numberEvent.preventDefault();
-                }
-            })
+            if (keyCode > 47 && keyCode < 58) {
+                numberEvent.preventDefault();
+            }
+        })
     </script>
 
-<script>
-    $(document).ready(function() {
-        $('#about').on('input propertychange', function() {
-            charLimit(this, 240);
+    <script>
+        $(document).ready(function() {
+            $('#about').on('input propertychange', function() {
+                charLimit(this, 240);
+            });
         });
-    });
 
-    function charLimit(input, maxChar) {
-        var len = $(input).val().length;
-        if (len > maxChar) {
-            $(input).val($(input).val().substring(0, maxChar));
+        function charLimit(input, maxChar) {
+            var len = $(input).val().length;
+            if (len > maxChar) {
+                $(input).val($(input).val().substring(0, maxChar));
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 

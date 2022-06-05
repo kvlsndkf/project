@@ -17,7 +17,6 @@ body, html {
 .my-container-er {
     width: 100%;
     height: 100%;
-
 }
 
 .page-container {
@@ -26,6 +25,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 /* FORMS */
@@ -367,3 +367,6 @@ font-size: var(--tiny);
     background-color: var(--gray4);
 }
 
+.select2 {
+    width:100%!important;
+    }
