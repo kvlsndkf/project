@@ -108,10 +108,10 @@ try {
             </div>
         <?php unset($_SESSION['statusAlert']);
         } ?>
-        <div class="page-container d-flex align-items-center justify-content-center">
-
-            <div class="form-base bg-modal-gray align-self-center my-auto">
-
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="form-base bg-modal-gray align-self-center my-auto mb-3 mt-3">
+                
+                
                 <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">  <div class="container">
                     <div class="form-header">
                         <a href="./list-course.page.php">
@@ -195,6 +195,7 @@ try {
                     <button type="reset" id="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
                     </div>
                 </form>
+
                 
             </div>
             
