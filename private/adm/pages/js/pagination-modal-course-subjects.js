@@ -34,15 +34,22 @@ async function enterDataSubjects(id,page) {
 
                 for (i = 0; i < array_subjects.length; i++) {
                     const divElementSubject = document.createElement("div");
-                    divElementSubject.className = "div";
+                    divElementSubject.className = "div-list-subjects-course";
+                    const labelElement = document.createElement("label");
+                    labelElement.className = "normal-14-medium-p about-school-label";
                     const tElementSubject = document.createElement("p");
-                    tElementSubject.className = "subs";
+                    tElementSubject.className = "subs p-teachers-list normal-14-bold-p";
+                    const hrElement = document.createElement("hr");
+                    hrElement.className = "hr-teachers-list";
                 
 
+                    labelElement.innerHTML = "Matéria";
                     tElementSubject.innerHTML = array_subjects[i]['name'];
 
                     divElementSubject.id = i;
+                    divElementSubject.appendChild(labelElement);
                     divElementSubject.appendChild(tElementSubject);
+                    divElementSubject.appendChild(hrElement);
 
                     document.getElementById("subjects-list").appendChild(divElementSubject);
                 }

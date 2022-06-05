@@ -150,7 +150,7 @@
 
 .about-school-text{
     word-wrap: break-word;
-    word-break: break-all
+    /* word-break: break-all; */
 }
 
 .school-links{
@@ -231,6 +231,104 @@
 .hr-teachers-list{
     color: var(--gray3);
     border: 1px solid var(--gray3);
+}
+
+.about-course-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-course-header-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.about-course-name{
+    font-weight: 400;
+    color: var(--white);
+    margin-left: 5px;
+}
+
+.div-school-list{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.div-list-subjects-course{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.photoSchools{
+    margin-right: 15px;
+}
+
+.nav-link{
+    height: 32px;
+    border-radius: 5px 5px 0 0;
+    /* padding-top: 10px; */
+}
+
+.nav-link.active{
+    height: 32px;
+    border-radius: 5px 5px 0 0;
+    /* padding-top: 5px; */
+}
+
+.tab-item-text{
+    margin-top: -13px;
+}
+
+.pagination-last-modal{
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.pagination-page-modal{
+    height: 58px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.pagination-page-modal:hover, .pagination-last-modal:hover, .pagination-next-modal:hover{
+    color: var(--bg-modal);
+    background-color: var(--primary);
+    border: none;
+    outline: none;
+}
+
+.pagination-page-modal, .pagination-last-modal, .pagination-next-modal{
+    outline: 1px solid #2F3136;
+    border: none;
+    background-color: var(--bg-modal);
+    color: var(--gray7);
+    margin: 1px;
+}
+
+.pagination-next-modal{
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.page-item-modal{
+    background-color: var(--bg-modal);
 }
 
 @media (max-width: 280px){

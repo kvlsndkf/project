@@ -34,11 +34,12 @@ async function enterDataSchools(id,page) {
 
                 for (i = 0; i < array_schools.length; i++) {
                     const divElementSchool = document.createElement("div");
-                    divElementSchool.className = "divSchools";
+                    divElementSchool.className = "div-school-list";
                     const tElementSchool = document.createElement("p");
-                    tElementSchool.className = "schools";
+                    tElementSchool.className = "schools p-teachers-list normal-14-bold-p";
                     const photoElementSchool = document.createElement("img");
-                    photoElementSchool.className = "photoSchools";
+                    photoElementSchool.className = "photoSchools img-curso";
+                    
 
                     tElementSchool.innerHTML = array_schools[i]['name'];
                     photoElementSchool.src = array_schools[i]['photo'];

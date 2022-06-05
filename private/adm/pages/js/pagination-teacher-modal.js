@@ -77,7 +77,7 @@ async function enterData(id,page) {
                     const divText = document.createElement("div");
                     divText.className = "div-text-teachers-list";
                     const labelElement = document.createElement("label");
-                    labelElement.className = "label-teachers-list";
+                    labelElement.className = "label-teachers-list normal-14-medium-p";
                     const hrElement = document.createElement("hr");
                     hrElement.className = "hr-teachers-list";
                     

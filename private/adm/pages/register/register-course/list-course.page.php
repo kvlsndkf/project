@@ -63,6 +63,7 @@ try {
     <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../../style/modal-about.style.css">
     <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../register.styles.css">
     <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
@@ -342,77 +343,113 @@ try {
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content bg-modal-gray">
 
                 <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Detalhes do curso</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <div class="modal-header cabecalho-modal">
+                    <h4 class="modal-title titulo-modal normal-20-bold-modaltitle">Detalhes do curso</h4>
+                    <button type="button" class="x-button" data-bs-dismiss="modal">
+                        <img src="../../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                    </button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body corpo-modal">
+                    <div class="about-course-header">
 
-                    <!-- Modal body -->
-                    <p>
-                        <a href="" id="course-edit">Editar</a>
-                        <a href="" id="course-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
-                    </p>
+                        <div class="about-course-header-info">
 
-                    <div class="modal-body">
-                        <img src="" alt="" id="photo-course">
-                        <div id="name-course"></div>
+                            <img src="" alt="" id="photo-course" class="img-curso">
+                            <div id="name-course" class="normal-16-bold-title-3 about-course-name"></div>
 
-                        <br>
+                        </div>
 
-                        <label>Sobre</label>
-                        <div id="about-course"></div>
+                        <!-- Mais Opções -->
+                        <div class="drop-edit-exclud-about">
+                            <img src="../../../../../views/images/components/three-dots.svg">
 
-                        <hr>
-
-                        <!-- Tabs navs -->
-                        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Etec's</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Professores</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">Matérias</a>
-                            </li>
-                        </ul>
-                        <!-- Tabs navs -->
-
-                        <!-- Tabs content -->
-                        <div class="tab-content" id="ex1-content">
-                            <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-                                <div id="schools-list">
-
-                                </div>
-                                <div id="pagination-schools">
-                                
-                                </div>
+                            <!-- Parte do Update e Delete -->
+                            <div class="drop-edit-exclud-content-about">
+                                <a href="" id="course-edit" class="drop-edit-exclud-a">
+                                    <div class="drop-edit-exclud-option-about">
+                                        <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Editar</p>
+                                    </div>
+                                </a>
+                                <a href="" id="course-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                    <div class="drop-edit-exclud-option-about">
+                                        <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Excluir</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                                <div id="teachers-list">
 
-                                </div>
-                                <div id="pagination-teachers">
-                                
-                                </div>
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <label class="normal-14-medium-p about-school-label">Sobre</label>
+                    <div id="about-course" class="whitney-16-medium-text white-title about-school-text"></div>
+
+                    <hr>
+
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                                <p class="tab-item-text whitney-12-regular-tiny">
+                                    Etec's
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link link-nav" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
+                                <p class="tab-item-text whitney-12-regular-tiny">
+                                    Professores
+                                </p> 
+                            </a>
+                        </li>
+                        <li class="nav-item link-nav" role="presentation">
+                            <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">
+                                <p class="tab-item-text whitney-12-regular-tiny">
+                                    Matérias
+                                </p> 
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="ex1-content">
+                        <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                            <div id="schools-list">
+
                             </div>
-                            <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                                <div id="subjects-list">
-
-                                </div>
-                                <div id="pagination-subjects">
-                                
-                                </div>
+                            <div id="pagination-schools">
+                            
                             </div>
                         </div>
-                        <!-- Tabs content -->
+                        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                            <div id="teachers-list">
+
+                            </div>
+                            <div id="pagination-teachers">
+                            
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                            <div id="subjects-list">
+
+                            </div>
+                            <div id="pagination-subjects">
+                            
+                            </div>
+                        </div>
                     </div>
+                        <!-- Tabs content -->
+                    <!-- </div> -->
                 </div>
             </div>
         </div>

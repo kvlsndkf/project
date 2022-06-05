@@ -34,19 +34,43 @@ async function enterDataTeachers(id,page) {
                 array_teachers = object_course['teachers'];
 
                 for (i = 0; i < array_teachers.length; i++) {
-                    const divElement = document.createElement("div");
-                    divElement.className = "divTeachers";
-                    const tElement = document.createElement("p");
-                    tElement.className = "teachers";
-                    const photoElement = document.createElement("img");
-                    photoElement.className = "photoTeachers";
+                    // const divElement = document.createElement("div");
+                    // divElement.className = "divTeachers";
+                    // const tElement = document.createElement("p");
+                    // tElement.className = "teachers";
+                    // const photoElement = document.createElement("img");
+                    // photoElement.className = "photoTeachers";
 
+                    // tElement.innerHTML = array_teachers[i]['name'];
+                    // photoElement.src = array_teachers[i]['photo'];
+
+                    // divElement.id = i;
+                    // divElement.appendChild(tElement);
+                    // divElement.appendChild(photoElement);
+
+                    const divElement = document.createElement("div");
+                    divElement.className = "div-teachers-list";
+                    const photoElement = document.createElement("img");
+                    photoElement.className = "img-teachers-list";
+                    const tElement = document.createElement("p");
+                    tElement.className = "p-teachers-list normal-14-bold-p";
+                    const divText = document.createElement("div");
+                    divText.className = "div-text-teachers-list";
+                    const labelElement = document.createElement("label");
+                    labelElement.className = "label-teachers-list normal-14-medium-p";
+                    const hrElement = document.createElement("hr");
+                    hrElement.className = "hr-teachers-list";
+                    
                     tElement.innerHTML = array_teachers[i]['name'];
                     photoElement.src = array_teachers[i]['photo'];
-
+                    labelElement.innerHTML = "Professor(a)";
+                    
                     divElement.id = i;
-                    divElement.appendChild(tElement);
+                    divText.appendChild(labelElement);
+                    divText.appendChild(tElement);
                     divElement.appendChild(photoElement);
+                    divElement.appendChild(divText);
+                    teachersList.appendChild(hrElement);
 
                     document.getElementById("teachers-list").appendChild(divElement);
                 }

@@ -33,7 +33,7 @@ if(isset($_GET['idCourse'])){
 
         $dados = "<input type='hidden' id='data-id' value='$id'>";
 
-            $dados .= "<ul class='pagination'>";
+            $dados .= "<div class='div-pagination'> <ul class='pagination'>";
   
             //botão para voltar
             if ($prev_page != 0) { 
@@ -54,7 +54,7 @@ if(isset($_GET['idCourse'])){
                 } else { 
                 $dados .= "<li class='page-item disabled'><a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a></li>";
             }
-        $dados .= "</ul>";
+        $dados .= "</ul> </div>";
 
     echo json_encode($dados);
 }
