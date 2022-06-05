@@ -49,6 +49,8 @@ try {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>
 
 <style>
@@ -262,9 +264,9 @@ try {
                 minLength.style.color = "#ED4245";
                 minLength.innerText = "Mínimo de caracteres: 100";
             }
-            if (textArea.value.length > 250) {
+            if (textArea.value.length > 240) {
                 minLength.style.color = "#ED4245";
-                minLength.innerText = "Máximo de caracteres: 250";
+                minLength.innerText = "Máximo de caracteres: 240";
             }
         }
     </script>
@@ -279,6 +281,21 @@ try {
                 }
             })
     </script>
+
+<script>
+    $(document).ready(function() {
+        $('#about').on('input propertychange', function() {
+            charLimit(this, 240);
+        });
+    });
+
+    function charLimit(input, maxChar) {
+        var len = $(input).val().length;
+        if (len > maxChar) {
+            $(input).val($(input).val().substring(0, maxChar));
+        }
+    }
+</script>
 
 </body>
 
