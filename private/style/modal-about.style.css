@@ -295,11 +295,17 @@
     border: 1px solid #2F3136;
     background-color: #40444B;
     color: white;
+    text-decoration: none;
 }
 
 .page-link-modal:hover{
     border: 1px solid #40444B;
     background-color: var(--primary);
+    transition: .5s;
+}
+
+.page-link-disabled{
+    color: #2F3136;
 }
 
 .nav-tabs .nav-link{
@@ -310,15 +316,20 @@
 
 .nav-tabs .nav-link:hover{
     background-color: var(--primary);
+    transition: .5s;
 }
 
-/* .pagination-last-modal{
-    height: 58px;
-    display: flex;
-    align-items: center;
-    padding: 20px;
+
+.pagination-last{
+    border-radius: 8px 0 0 8px;
 }
 
+.pagination-next{
+    border-radius:  0 8px 8px 0;
+}
+
+
+/*
 .pagination-page-modal{
     height: 58px;
     width: 50px;
