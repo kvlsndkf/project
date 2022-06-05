@@ -28,7 +28,7 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="../../../../libs/magnific-popup/dist/magnific-popup.css">
+    <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
 </head>
 
 <body>
@@ -112,6 +112,12 @@ try {
 
     <hr>
 
+    <p>
+        Respostas
+    </p>
+
+    <hr>
+
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -123,7 +129,7 @@ try {
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- Magnific Popup core JS file -->
-    <script src="../../../../libs/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="../../../../libs/dist/jquery.magnific-popup.js"></script>
 
     <script>
         $(document).ready(function() {
