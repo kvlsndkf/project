@@ -37,22 +37,22 @@ if(isset($_GET['idSchool'])){
   
             //botão para voltar
             if ($prev_page != 0) { 
-                $dados .= "<li class='page-item'><a class='page-link pagination-last normal-14-medium-p' href='#' onclick='enterData($id,$prev_page)' tabindex='-1' aria-disabled='true'>Anterior</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link-modal pagination-last normal-14-medium-p' href='#' onclick='enterData($id,$prev_page)' tabindex='-1' aria-disabled='true'>Anterior</a></li>";
                 } else { 
-                $dados .= "<li class='page-item disabled'><a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a></li>";
+                $dados .= "<li class='page-item disabled'><a class='page-link-modal disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a></li>";
             }
 
             //Apresentar a paginação
             for ($i = 0; $i < $page_qnt ; $i++) { 
                 $j = $i + 1;
-                $dados .= "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='#' onclick='enterData($id,$j)'> $j </a></li>";
+                $dados .= "<li class='page-item'><a class='page-link-modal pagination-page normal-14-medium-p' href='#' onclick='enterData($id,$j)'> $j </a></li>";
             }
                 
             //botão para avançar
             if ($next_page <= $page_qnt) {
-                $dados .= "<li class='page-item'><a class='page-link pagination-next normal-14-medium-p' href='#' onclick='enterData($id,$next_page)' tabindex='-1' aria-disabled='true'>Próximo</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link-modal pagination-next normal-14-medium-p' href='#' onclick='enterData($id,$next_page)' tabindex='-1' aria-disabled='true'>Próximo</a></li>";
                 } else { 
-                $dados .= "<li class='page-item disabled'><a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a></li>";
+                $dados .= "<li class='page-item disabled'><a class='page-link-modal disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a></li>";
             }
         $dados .= "</ul>";
 

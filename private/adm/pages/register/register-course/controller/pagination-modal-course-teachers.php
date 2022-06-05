@@ -33,7 +33,7 @@ if(isset($_GET['idCourse'])){
 
         $dados = "<input type='hidden' id='data-id' value='$id'>";
 
-            $dados .= "<div class='div-pagination'> <ul class='pagination'>";
+            $dados .= "<div class='div-pagination'> <ul class='pagination pagonation-modal'>";
   
             //botão para voltar
             if ($prev_page != 0) { 
