@@ -17,7 +17,7 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feed | Heelp!</title>
 
     <!-- Include stylesheet -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -25,6 +25,9 @@ try {
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="../../../../libs/magnific-popup/dist/magnific-popup.css">
 </head>
 
 <body>
@@ -58,7 +61,7 @@ try {
     <br>
     <br>
 
-    <!-- Lista de módulos ⬇️ -->
+    <!-- Lista de perguntas ⬇️ -->
     <?php for ($i = 0; $i < count($listQuestions); $i++) {
         $row = $listQuestions[$i] ?>
 
@@ -91,6 +94,11 @@ try {
         </p>
 
         <p>
+            <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion">Link</a>
+            <span onclick="copyLink()" id="spanLink">Copiar link</span>
+        </p>
+
+        <p>
             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
         </p>
 
@@ -106,12 +114,29 @@ try {
             <?php echo $row->school; ?>
         </p>
 
-        <p>
+        <div class="ql-snow">
             <?php echo $row->question; ?>
+        </div>
+
+        <?php $styleImageQuestion = !empty($row->image) ? '' : 'd-none'; ?>
+        <p class="<?php echo $styleImageQuestion; ?>">
+            <a href="<?php echo $row->image; ?>" class="image-link">
+                <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
+            </a>
+        </p>
+
+        <?php $styleDocumentQuestion = !empty($row->document) ? '' : 'd-none'; ?>
+        <p class="<?php echo $styleDocumentQuestion; ?>">
+            <?php echo $row->documentName; ?>
+            <a href="<?php echo $row->document; ?>" download="<?php echo $row->documentName; ?>">
+                <button>download</button>
+            </a>
         </p>
 
         <p>
-            <button>Dar um help</button>
+            <a href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                <button>Dar um help</button>
+            </a>
             <?php echo $row->xp; ?> xp
         </p>
 
@@ -124,6 +149,34 @@ try {
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- Magnific Popup core JS file -->
+    <script src="../../../../libs/magnific-popup/dist/jquery.magnific-popup.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.image-link').magnificPopup({
+                type: 'image'
+            });
+        });
+    </script>
+
+    <script>
+        function copyLink(){
+            const link = document.getElementById("linkQuestion");
+            const span = document.getElementById("spanLink");
+
+            navigator.clipboard.writeText(link.href);
+
+            span.innerText = "Copiado!";
+            setTimeout(()=> {
+                span.innerText = "Copiar link";
+            }, 1150);
+        }
+    </script>
 </body>
 
 </html>
