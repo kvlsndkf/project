@@ -49,6 +49,8 @@ try {
     <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/button.style.css">
     <link rel="shortcut icon" href="../../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
 </head>
 
@@ -104,15 +106,15 @@ Mensagem de alerta ⬇️
         <div class="d-flex align-items-center justify-content-center">
             <div class="form-base bg-modal-gray align-self-center my-auto mt-3 mb-3">
                 <form action="./controller/update-course.controller.php?updateCourse=<?php echo $updateCourse['id'] ?>" method="post" enctype="multipart/form-data">
-                <div class="form-header">
-                    <a href="./list-course.page.php">
-                    <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
-                    </a>
-                    <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
-                </div>
+                    <div class="form-header">
+                        <a href="./list-course.page.php">
+                            <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                        </a>
+                        <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
+                    </div>
                     <p>
                         <label class="normal-14-medium-p nome-professor">Nome</label>
-                        <input type="text" name="updateName" style="margin-bottom: 28px;" class="normal-12-regular-tinyinput input-text" id="updateName" required autocomplete="off" value="<?php echo $updateCourse['name'] ?>">
+                        <input type="text" name="updateName" id="name" style="margin-bottom: 28px;" class="normal-12-regular-tinyinput input-text" id="updateName" required autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ-]+$" minlength="5" value="<?php echo $updateCourse['name'] ?>">
                     </p>
 
                     <p class="normal-14-medium-p etec-location-label">
@@ -191,14 +193,14 @@ Mensagem de alerta ⬇️
                     <p>
                         <label class="normal-14-medium-p etec-location-label">Foto</label>
                         <br>
-                        <div class="img-container">
+                    <div class="img-container">
                         <img width="50" class="current-photo" src="<?php echo $updateCourse['photo'] ?>" alt="Foto <?php echo $updateCourse['name'] ?>">
-                        </div>
-                        <br>
-                        <label for="updatePhoto" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
-                        <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
-                        <input type="file" class="photo" name="updatePhoto" id="updatePhoto">
-                        <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php echo $updateCourse['photo'] ?>">
+                    </div>
+                    <br>
+                    <label for="updatePhoto" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+                    <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                    <input type="file" class="photo" name="updatePhoto" id="updatePhoto">
+                    <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php echo $updateCourse['photo'] ?>">
                     </p>
 
                     <hr>
@@ -240,16 +242,54 @@ Mensagem de alerta ⬇️
     <!-- JS Count Characters TextArea -->
     <script type="text/javascript" src="../../js/textarea.js"></script>
 
-            <!-- JS arquvio selecionado -->
-            <script>
-            let inputFile = document.getElementById('updatePhoto');
-            let fileNameField = document.getElementById('file-name');
-            inputFile.addEventListener('change', function(event) {
-                let uploadedFileName = event.target.files[0].name;
-                fileNameField.textContent = uploadedFileName;
-            })
-        </script>
+    <!-- JS arquvio selecionado -->
+    <script>
+        let inputFile = document.getElementById('updatePhoto');
+        let fileNameField = document.getElementById('file-name');
+        inputFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            fileNameField.textContent = uploadedFileName;
+        })
+    </script>
+    <script>
+        function checkLength() {
+            if (textArea.value.length < 100) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Mínimo de caracteres: 100";
+            }
+            if (textArea.value.length > 240) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Máximo de caracteres: 240";
+            }
+        }
+    </script>
 
+    <script>
+        const noNumbersInput = document.querySelector("#name");
+        noNumbersInput.addEventListener("keypress", function(numberEvent) {
+            const keyCode = (numberEvent.keyCode ? numberEvent.keyCode : numberEvent.wich);
+
+            if (keyCode > 47 && keyCode < 58) {
+                numberEvent.preventDefault();
+            }
+        })
+    </script>
+
+    <!-- JQuery char limit textarea -->
+    <script>
+        $(document).ready(function() {
+            $('#about').on('input propertychange', function() {
+                charLimit(this, 240);
+            });
+        });
+
+        function charLimit(input, maxChar) {
+            var len = $(input).val().length;
+            if (len > maxChar) {
+                $(input).val($(input).val().substring(0, maxChar));
+            }
+        }
+    </script>
 </body>
 
 </html>
