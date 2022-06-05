@@ -49,7 +49,7 @@ try {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
-
+    <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>
 
@@ -169,7 +169,7 @@ try {
                         </p>
 
                         <div id="contentTextArea">
-                            <textarea name="about" id="about" cols="30" rows="7" placeholder="Digite sobre o curso" class="text-area normal-14-medium-p" required onclick="colorDiv()" minlength="100" maxlength="250"></textarea>
+                            <textarea name="about" id="about" cols="30" rows="7" placeholder="Digite sobre o curso" class="text-area normal-14-medium-p" required onclick="colorDiv()" minlength="100" maxlength="240"></textarea>
                             <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
                         </div>
                     </div>
