@@ -308,6 +308,11 @@
     color: #2F3136;
 }
 
+.page-link-disabled:hover{
+    background-color: #40444B;
+    color: #2F3136;
+}
+
 .nav-tabs .nav-link{
     text-transform: none;
     height: 32px;
@@ -363,6 +368,18 @@
 .page-item-modal{
     background-color: var(--bg-modal);
 } */
+
+@media (max-width: 410px){
+    .nav-tabs{
+        justify-content: center;
+    }
+    .item-tab{
+        /* width: 75px; */
+    }
+    .tab-item-text{
+        /* margin-left: -10px; */
+    }
+}
 
 @media (max-width: 280px){
     .drop-edit-exclud-about{

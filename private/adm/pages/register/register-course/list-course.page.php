@@ -396,22 +396,22 @@ try {
                     <hr>
 
                     <!-- Tabs navs -->
-                    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-                        <li class="nav-item" role="presentation">
+                    <ul class="nav nav-tabs mb-3 tabs-modal" id="ex1" role="tablist">
+                        <li class="nav-item item-tab" role="presentation">
                             <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
                                 <p class="tab-item-text whitney-12-regular-tiny">
                                     Etec's
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <li class="nav-item item-tab" role="presentation">
                             <a class="nav-link link-nav" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
                                 <p class="tab-item-text whitney-12-regular-tiny">
                                     Professores
                                 </p> 
                             </a>
                         </li>
-                        <li class="nav-item link-nav" role="presentation">
+                        <li class="nav-item item-tab link-nav" role="presentation">
                             <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">
                                 <p class="tab-item-text whitney-12-regular-tiny">
                                     Matérias
