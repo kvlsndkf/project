@@ -110,95 +110,95 @@ try {
         } ?>
         <div class="d-flex align-items-center justify-content-center">
             <div class="form-base bg-modal-gray align-self-center my-auto mb-3 mt-3">
-                
-                
-                <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">  <div class="container">
-                    <div class="form-header">
-                        <a href="./list-course.page.php">
-                            <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
-                        </a>
-                        <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
-                    </div>
-
-                    <label class="normal-14-medium-p nome-professor">
-                        Nome
-                    </label>
-                    <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px; max-width: 100%" placeholder="Digite o nome do curso" required autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ-]+$" minlength="5">
 
 
+                <form action="./controller/course-unit-registration.controller.php" method="post" enctype="multipart/form-data">
+                    <div class="container">
+                        <div class="form-header">
+                            <a href="./list-course.page.php">
+                                <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
+                            </a>
+                            <label class="normal-20-bold-modaltitle title-header">Cadastro curso</label>
+                        </div>
 
-                    <label class="normal-14-medium-p nome-professor">Selecione as Etec's a que ele pertence</label>
-
-
-                    <p>
-                        <select name="idSchools[]" id="idSchools" class="multiple-select" style="max-width: 100%" multiple="multiple" required>
-                            <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
-                                $row = $listSchoolsOfSelect[$i] ?>
-                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                            <?php } ?>
-                        </select>
-                    </p>
-
-
-                    <label class="normal-14-medium-p nome-professor">Selecione os professores que lecionam este curso</label>
+                        <label class="normal-14-medium-p nome-professor">
+                            Nome
+                        </label>
+                        <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px; max-width: 100%" placeholder="Digite o nome do curso" required autocomplete="off" autofocus minlength="5" pattern="\s*\S+.*">
 
 
-                    <p>
-                        <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select" style="max-width: 100%" multiple="multiple" required>
-                            <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
-                                $row = $listTeachersOfSelect[$i] ?>
-                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                            <?php } ?>
-                        </select>
-                    </p>
+                        <label class="normal-14-medium-p nome-professor">Selecione as Etec's a que ele pertence</label>
 
 
-                    <label class="normal-14-medium-p nome-professor">Selecione as matérias deste curso</label>
-
-
-                    <p>
-                        <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select" style="max-width: 100%" multiple="multiple" required>
-                            <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
-                                $row = $listSubjectsOfSelect[$i] ?>
-                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                            <?php } ?>
-                        </select>
-                    </p>
-
-
-                    <div>
-                        <p class="normal-14-medium-p nome-professor">
-                            Sobre
+                        <p>
+                            <select name="idSchools[]" id="idSchools" class="multiple-select" style="max-width: 100%" multiple="multiple" required>
+                                <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
+                                    $row = $listSchoolsOfSelect[$i] ?>
+                                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                                <?php } ?>
+                            </select>
                         </p>
 
-                        <div id="contentTextArea">
-                            <textarea name="about" id="about" cols="30" rows="7" placeholder="Digite sobre o curso" class="text-area normal-14-medium-p" required onclick="colorDiv()" minlength="100" maxlength="240"></textarea>
-                            <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
+
+                        <label class="normal-14-medium-p nome-professor">Selecione os professores que lecionam este curso</label>
+
+
+                        <p>
+                            <select name="idTeachers[]" id="idTeachers" class="multiple-select school-select" style="max-width: 100%" multiple="multiple" required>
+                                <?php for ($i = 0; $i < count($listTeachersOfSelect); $i++) {
+                                    $row = $listTeachersOfSelect[$i] ?>
+                                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                                <?php } ?>
+                            </select>
+                        </p>
+
+
+                        <label class="normal-14-medium-p nome-professor">Selecione as matérias deste curso</label>
+
+
+                        <p>
+                            <select name="idSubjects[]" id="idSubjects" class="multiple-select subject-select" style="max-width: 100%" multiple="multiple" required>
+                                <?php for ($i = 0; $i < count($listSubjectsOfSelect); $i++) {
+                                    $row = $listSubjectsOfSelect[$i] ?>
+                                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                                <?php } ?>
+                            </select>
+                        </p>
+
+
+                        <div>
+                            <p class="normal-14-medium-p nome-professor">
+                                Sobre
+                            </p>
+
+                            <div id="contentTextArea">
+                                <textarea name="about" id="about" cols="30" rows="7" placeholder="Digite sobre o curso" class="text-area normal-14-medium-p" required onclick="colorDiv()" minlength="100" maxlength="240"></textarea>
+                                <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
-                        <span></span>
-                    </div>
-                    <hr>
+                        <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
+                            <span></span>
+                        </div>
+                        <hr>
 
-                    <p>
-                        <label class="normal-14-medium-p nome-professor">Foto</label>
-                        <input type="file" name="photo" class="photo" id="photo" required>
-                        <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+                        <p>
+                            <label class="normal-14-medium-p nome-professor">Foto</label>
+                            <input type="file" name="photo" class="photo" id="photo" required>
+                            <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
 
-                        <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
-                    </p>
+                            <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                        </p>
 
-                    <hr>
+                        <hr>
 
-                    <button type="submit" name="register" class="button-wide button-white-white-text register normal-14-bold-p" onclick="GFG_Fun(); checkLength()">Cadastrar</button>
-                    <button type="reset" id="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
+                        <button type="submit" name="register" class="button-wide button-white-white-text register normal-14-bold-p" onclick="GFG_Fun(); checkLength(); noSpace();">Cadastrar</button>
+                        <button type="reset" id="reset" class="button-wide button-white-primary-text clean normal-14-bold-p">Limpar</button>
                     </div>
                 </form>
 
-                
+
             </div>
-            
+
         </div>
     </div>
 
@@ -232,7 +232,7 @@ try {
     <!-- JS Count Characters TextArea -->
     <script type="text/javascript" src="../../js/textarea.js"></script>
 
-    <!-- JS arquvio selecionado -->
+    <!-- JS arquivo selecionado -->
     <script type="text/javascript">
         let inputFile = document.getElementById('photo');
         let fileNameField = document.getElementById('file-name');
@@ -277,18 +277,9 @@ try {
         }
     </script>
 
-    <script>
-        const noNumbersInput = document.querySelector("#name");
-        noNumbersInput.addEventListener("keypress", function(numberEvent) {
-            const keyCode = (numberEvent.keyCode ? numberEvent.keyCode : numberEvent.wich);
+        <!-- JS tamanho máximo textarea  -->
 
-            if (keyCode > 47 && keyCode < 58) {
-                numberEvent.preventDefault();
-            }
-        })
-    </script>
-
-    <script>
+        <script>
         $(document).ready(function() {
             $('#about').on('input propertychange', function() {
                 charLimit(this, 240);
@@ -302,6 +293,20 @@ try {
             }
         }
     </script>
+
+        <!-- JS APENAS permitir: letras, acentuação, espaço e hífen  -->
+
+    <script>
+        $('#name').on('keypress', function(event) {
+            var regex = new RegExp("^[-A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+    
 
 </body>
 
