@@ -306,6 +306,13 @@ try {
             }
         });
     </script>
+
+        <!-- JS bloquear colagem (paste) -->
+
+    <script>
+        var myElement = document.getElementById('name');
+        myElement.addEventListener('paste', e => e.preventDefault());
+    </script>
     
 
 </body>
