@@ -35,7 +35,15 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores | Heelp!</title>
     <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
-
+      <!-- MDB -->
+      <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css"
+  rel="stylesheet"
+/>
+        <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -107,7 +115,7 @@ try {
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a-items">
+                    <a href="../../dashboard/dashboard.page.php" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                     </a>
@@ -476,6 +484,11 @@ try {
             treshold: 1,
         });
     </script>
+    <!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"
+></script>
 </body>
 
 </html>
