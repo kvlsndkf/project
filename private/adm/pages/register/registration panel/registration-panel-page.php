@@ -69,6 +69,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                         </a>
                     </li>
 
+                    <!-- O sidebar-a-items é o houver bonitinho -->
                     <li class="sidebar-li">
                         <a href="../../dashboard/dashboard.page.php" class="sidebar-a-items">
                             <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
@@ -93,7 +94,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                     </li>
 
                     <li class="sidebar-li">
-                        <a href="#" class="sidebar-a">
+                        <a href="../../message/list-message.page.php" class="sidebar-a">
                             <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
                             <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
                         </a>
@@ -109,7 +110,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                     </li>
 
                     <li class="sidebar-li">
-                        <a href="../../../../logout/logout.controller.php" class="sidebar-a">
+                        <a href="../../../../logout/logout.controller.php" class="sidebar-a-items2">
 
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
