@@ -114,7 +114,7 @@ Mensagem de alerta ⬇️
                     </div>
                     <p>
                         <label class="normal-14-medium-p nome-professor">Nome</label>
-                        <input type="text" name="updateName" id="name" style="margin-bottom: 28px;" class="normal-12-regular-tinyinput input-text" id="updateName" required autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ-]+$" minlength="5" value="<?php echo $updateCourse['name'] ?>">
+                        <input type="text" name="updateName" id="name" style="margin-bottom: 28px;" class="normal-12-regular-tinyinput input-text" id="updateName" required autocomplete="off" minlength="5" pattern="\s*\S+.*" value="<?php echo $updateCourse['name'] ?>">
                     </p>
 
                     <p class="normal-14-medium-p etec-location-label">
@@ -122,7 +122,7 @@ Mensagem de alerta ⬇️
                     </p>
 
                     <p>
-                        <select name="idSchools[]" id="idSchools" class="multiple-select w-100" required style="width: 100%" multiple="multiple" required>
+                        <select name="idSchools[]" id="idSchools" class="multiple-select" required style="width: 100%" multiple="multiple" required>
                             <optgroup label="Etec's selecionadas">
                                 <?php foreach ($schoolsUsedByCourse as $row) { ?>
                                     <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
@@ -142,7 +142,7 @@ Mensagem de alerta ⬇️
                     </p>
 
                     <p>
-                        <select name="idTeachers[]" id="idTeachers" class="multiple-select w-100" required style="width: 100%" multiple="multiple" required>
+                        <select name="idTeachers[]" id="idTeachers" class="multiple-select" required style="width: 100%" multiple="multiple" required>
                             <optgroup label="Professores selecionados">
                                 <?php foreach ($teachersUsedByCourse as $row) { ?>
                                     <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
@@ -162,7 +162,7 @@ Mensagem de alerta ⬇️
                     </p>
 
                     <p>
-                        <select name="idSubjects[]" id="idSubjects" class="multiple-select w-100" required style="width: 100%" multiple="multiple" required>
+                        <select name="idSubjects[]" id="idSubjects" class="multiple-select" required style="width: 100%" multiple="multiple" required>
                             <optgroup label="Matérias selecionadas">
                                 <?php foreach ($subjectsUsedByCourse as $row) { ?>
                                     <option selected="selected" value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
@@ -183,18 +183,20 @@ Mensagem de alerta ⬇️
                         </p>
 
                         <div id="contentTextArea">
-                            <textarea name="about" id="about" cols="30" rows="10" class="text-area normal-14-medium-p" required onclick="colorDiv()"><?php echo $updateCourse['about'] ?></textarea>
+                            <textarea name="about" id="about" cols="30" rows="10" class="text-area normal-14-medium-p" minlength="100" required onclick="colorDiv(); checkLength()"><?php echo $updateCourse['about'] ?></textarea>
                             <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
                         </div>
                     </div>
-
+                    <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
+                            <span></span>
+                        </div>
                     <hr>
 
                     <p>
                         <label class="normal-14-medium-p etec-location-label">Foto</label>
                         <br>
                     <div class="img-container">
-                        <img width="50" class="current-photo" src="<?php echo $updateCourse['photo'] ?>" alt="Foto <?php echo $updateCourse['name'] ?>">
+                        <img width="50" class="current-photo img-fluid" src="<?php echo $updateCourse['photo'] ?>" alt="Foto <?php echo $updateCourse['name'] ?>">
                     </div>
                     <br>
                     <label for="updatePhoto" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
@@ -251,18 +253,6 @@ Mensagem de alerta ⬇️
             fileNameField.textContent = uploadedFileName;
         })
     </script>
-    <script>
-        function checkLength() {
-            if (textArea.value.length < 100) {
-                minLength.style.color = "#ED4245";
-                minLength.innerText = "Mínimo de caracteres: 100";
-            }
-            if (textArea.value.length > 240) {
-                minLength.style.color = "#ED4245";
-                minLength.innerText = "Máximo de caracteres: 240";
-            }
-        }
-    </script>
 
     <script>
         const noNumbersInput = document.querySelector("#name");
@@ -290,6 +280,45 @@ Mensagem de alerta ⬇️
             }
         }
     </script>
+
+        <!-- JS tamanho minimo text area -->
+        <script>
+        var textArea = document.getElementById('about');
+        var minLength = document.getElementById('min-length');
+
+        function checkLength() {
+            if (textArea.value.length < 100) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Mínimo de caracteres: 100";
+            }
+            if (textArea.value.length > 240) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Máximo de caracteres: 240";
+            }
+        }
+    </script>
+
+            <!-- JS APENAS permitir: letras, acentuação, espaço e hífen  -->
+
+            <script>
+        $('#name').on('keypress', function(event) {
+            var regex = new RegExp("^[-A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+
+        <!-- JS bloquear colagem (paste) -->
+
+    <script>
+        var myElement = document.getElementById('name');
+        myElement.addEventListener('paste', e => e.preventDefault());
+    </script>
+
+
 </body>
 
 </html>
