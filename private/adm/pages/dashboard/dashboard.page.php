@@ -114,7 +114,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="../../../logout/logout.controller.php" class="sidebar-a">
+                    <a href="../../../logout/logout.controller.php" class="sidebar-a-items2">
                         <img class="sidebar-img" src="../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
