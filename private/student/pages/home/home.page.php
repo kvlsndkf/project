@@ -115,8 +115,8 @@ try {
         </p>
 
         <!-- Create the editor container -->
-        <div class="ql-snow ql-editor">
-            <div class="ql-editor">
+        <div class="ql-snow ql-editor2">
+            <div class="ql-editor2">
                 <?php echo $row->question; ?>
             </div>
         </div>
