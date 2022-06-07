@@ -70,6 +70,8 @@ async function enterData(id,page) {
 
                     const divElement = document.createElement("div");
                     divElement.className = "div-teachers-list";
+                    const divPhoto = document.createElement("div");
+                    divPhoto.className = "div-teachers-photo";
                     const photoElement = document.createElement("img");
                     photoElement.className = "img-teachers-list";
                     const tElement = document.createElement("p");
@@ -88,7 +90,8 @@ async function enterData(id,page) {
                     divElement.id = i;
                     divText.appendChild(labelElement);
                     divText.appendChild(tElement);
-                    divElement.appendChild(photoElement);
+                    divPhoto.appendChild(photoElement);
+                    divElement.appendChild(divPhoto);
                     divElement.appendChild(divText);
                     teachersList.appendChild(hrElement);
 
