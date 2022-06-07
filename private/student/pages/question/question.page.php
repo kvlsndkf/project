@@ -170,9 +170,6 @@ try {
     <!-- Include the Quill library -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-    <!-- JS Preview Image ⬇️ -->
-    <script src="../../js/preview-image.js"></script>
-
     <script>
         $(".selectCourse").select2({
             allowClear: true
