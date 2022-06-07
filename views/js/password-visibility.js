@@ -17,11 +17,11 @@ function openEye() {
 function showPassword() {
     password.setAttribute("type", "text");
     confirmPassword.setAttribute("type", "text");
-    eye.setAttribute("src", "/project/views/images/components/closed-eye-password.svg");
+    eye.setAttribute("src", "/project/views/pages/register/image/components/hide-pass.svg");
 }
 
 function hidePassword() {
     password.setAttribute("type", "password");
     confirmPassword.setAttribute("type", "password");
-    eye.setAttribute("src", "/project/views/images/components/opened-eye-password.svg");
+    eye.setAttribute("src", "/project/views/pages/register/image/components/show-pass.svg");
 }
