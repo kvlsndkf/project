@@ -132,6 +132,7 @@ try {
         </div>
         <br>
 
+        <a href="" data-bs-toggle="modal" data-bs-target="#Modal">Não encontrou seu dado? Clique Aqui! </a>
 
         <hr>
         <label>Links</label>
@@ -160,6 +161,47 @@ try {
         </p>
         <input type="submit" value="Continuar" name="step2">
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel"> Solicitação de informações</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form class="row g-3 needs-validation" action="./controller/register-solicitation-category.controller.php" method="POST" enctype="multipart/form-data" novalidate>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email para contato</label>
+                            <input name="contact" type="email" class="form-control" id="contact" required placeholder="contato@email.com" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <select name="selectCategory_id" id="selectCategory_id">
+                                <option value="">Selecione a Categoria</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1">Titulo</label>
+                            <input name="title" type="text" class="form-control" id="title" required placeholder="Digite o título da informação" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <hr>
+                            <label for="exampleFormControlTextarea1" class="form-label"> </label>
+                            <div id="contentTextArea"><textarea name="message" id="about" class="form-control" cols="30" rows="10" placeholder="Em que podemos te ajudar" onclick="colorDiv();" required maxlength="240"></textarea></div>
+                            <div><span id="counterTextArea">240</span></div>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <input class="btn btn-primary" type="submit" value="Enviar" name="register" onclick="GFG_Fun()"></input>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -234,6 +276,45 @@ try {
         (async function() {
             await schoolValue();
         }());
+    </script>
+
+    <script>
+        const category = document.getElementById("category_id");
+        if (category) {
+            listCategory();
+        }
+
+        async function listCategory() {
+            await fetch('listCategory');
+        }
+    </script>
+
+    <!-- JS Select da Categoria ⬇️ -->
+    <script>
+        const selectCategory = document.getElementById("selectCategory_id");
+
+        if (selectCategory) {
+            selectCategorySolicitation();
+        }
+
+        async function selectCategorySolicitation() {
+            const dados = await fetch('./controller/list-category.controller.php');
+            const json_category = await dados.json();
+            console.log(json_category)
+
+            var option = '<option value="">Selecione a Categoria</option>';
+            if (json_category['status']) {
+
+                for (var i = 0; i < json_category.dados.length; i++) {
+                    console.log(json_category.dados[i]['id']);
+                    console.log(json_category.dados[i]['name']);
+                    selectCategory.innerHTML = selectCategory.innerHTML + '<option value="' + json_category.dados[i]['id'] + '">' + json_category.dados[i]['name'] + '</option>';
+                }
+
+            }else {
+               
+            }
+        }
     </script>
 </body>
 

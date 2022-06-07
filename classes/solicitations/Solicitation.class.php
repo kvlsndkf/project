@@ -116,4 +116,18 @@ class Solicitation
         $this->updatedAt = $updatedAt;
     }
     //----------------------------
+    public function getResultBuildList(): array
+    {
+        return $this->resultBuildList;
+    }
+    public function setResultBuildList(array $resultBuildList): void
+    {
+        $this->resultBuildList = $resultBuildList;
+    }
+    //----------------------------
+    public function registerSolicitationCategory()
+    {
+
+    }
+    //----------------------------
 }
