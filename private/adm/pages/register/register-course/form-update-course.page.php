@@ -43,6 +43,7 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../../../style/form-register-teacher.page.css">
     <link rel="stylesheet" href="../../../../style/form-update-teacher.style.css">
+    <link rel="stylesheet" href="../../register/register.styles.css">
     <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../../views/styles/font-format.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
@@ -188,15 +189,19 @@ Mensagem de alerta ⬇️
                         </div>
                     </div>
                     <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
-                            <span></span>
-                        </div>
+                        <span></span>
+                    </div>
                     <hr>
 
                     <p>
                         <label class="normal-14-medium-p etec-location-label">Foto</label>
                         <br>
-                    <div class="img-container">
-                        <img width="50" class="current-photo img-fluid" src="<?php echo $updateCourse['photo'] ?>" alt="Foto <?php echo $updateCourse['name'] ?>">
+                    <div style="  width: 100%;
+                                    height: 80px;
+                                    display: flex;
+                                    justify-content: center;
+                                    margin-bottom: 0px">
+                        <img class="img-curso" src="<?php echo $updateCourse['photo'] ?>" alt="Foto <?php echo $updateCourse['name'] ?>">
                     </div>
                     <br>
                     <label for="updatePhoto" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
@@ -281,8 +286,8 @@ Mensagem de alerta ⬇️
         }
     </script>
 
-        <!-- JS tamanho minimo text area -->
-        <script>
+    <!-- JS tamanho minimo text area -->
+    <script>
         var textArea = document.getElementById('about');
         var minLength = document.getElementById('min-length');
 
@@ -298,9 +303,9 @@ Mensagem de alerta ⬇️
         }
     </script>
 
-            <!-- JS APENAS permitir: letras, acentuação, espaço e hífen  -->
+    <!-- JS APENAS permitir: letras, acentuação, espaço e hífen  -->
 
-            <script>
+    <script>
         $('#name').on('keypress', function(event) {
             var regex = new RegExp("^[-A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$");
             var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -311,7 +316,7 @@ Mensagem de alerta ⬇️
         });
     </script>
 
-        <!-- JS bloquear colagem (paste) -->
+    <!-- JS bloquear colagem (paste) -->
 
     <script>
         var myElement = document.getElementById('name');
