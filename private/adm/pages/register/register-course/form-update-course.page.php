@@ -197,10 +197,10 @@ Mensagem de alerta ⬇️
                         <label class="normal-14-medium-p etec-location-label">Foto</label>
                         <br>
                     <div style="  width: 100%;
-                                    height: 80px;
+                                    height: fit-content;
                                     display: flex;
                                     justify-content: center;
-                                    margin-bottom: 0px">
+                                    ">
                         <img class="img-curso" src="<?php echo $updateCourse['photo'] ?>" alt="Foto <?php echo $updateCourse['name'] ?>">
                     </div>
                     <br>
