@@ -34,22 +34,11 @@ async function enterDataTeachers(id,page) {
                 array_teachers = object_course['teachers'];
 
                 for (i = 0; i < array_teachers.length; i++) {
-                    // const divElement = document.createElement("div");
-                    // divElement.className = "divTeachers";
-                    // const tElement = document.createElement("p");
-                    // tElement.className = "teachers";
-                    // const photoElement = document.createElement("img");
-                    // photoElement.className = "photoTeachers";
-
-                    // tElement.innerHTML = array_teachers[i]['name'];
-                    // photoElement.src = array_teachers[i]['photo'];
-
-                    // divElement.id = i;
-                    // divElement.appendChild(tElement);
-                    // divElement.appendChild(photoElement);
 
                     const divElement = document.createElement("div");
                     divElement.className = "div-teachers-list";
+                    const divPhoto = document.createElement("div");
+                    divPhoto.className = "div-teachers-photo";
                     const photoElement = document.createElement("img");
                     photoElement.className = "img-teachers-list";
                     const tElement = document.createElement("p");
@@ -65,10 +54,30 @@ async function enterDataTeachers(id,page) {
                     photoElement.src = array_teachers[i]['photo'];
                     labelElement.innerHTML = "Professor(a)";
                     
+                    // <div class=pai">
+                    //     <div class="div-photo">
+                    //         <img></img>
+                    //     </div>
+                    //     <div-textteacher>
+                    //         <p>
+
+                    //         </p>
+                    //         <labelElement
+                    //     </div-textteacher>
+                    // </div>
+
+                    // divElement.id = i;
+                    // divText.appendChild(labelElement);
+                    // divText.appendChild(tElement);
+                    // divElement.appendChild(photoElement);
+                    // divElement.appendChild(divText);
+                    // teachersList.appendChild(hrElement);
+
                     divElement.id = i;
                     divText.appendChild(labelElement);
                     divText.appendChild(tElement);
-                    divElement.appendChild(photoElement);
+                    divPhoto.appendChild(photoElement);
+                    divElement.appendChild(divPhoto);
                     divElement.appendChild(divText);
                     teachersList.appendChild(hrElement);
 
