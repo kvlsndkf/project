@@ -135,11 +135,15 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                     <div class="main-help-adm align-self-center ms-4 ms-sm-4 ms-md-4 ms-lg-4 ms-xl-4 me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
                         <span class="span-help-adm normal-22-black-title-1 white-title">Olá adminisitrador, precisando de ajuda? Entre em contato com a gente!</span>
                         <br />
+                       
                         <div class="button-container">
+                        <a href="../message/list-message.page.php">
                             <div class="adm-email-button white-title normal-14-bold-p">
                                 <span>Enviar e-mail</span>
                             </div>
+                            </a>
                         </div>
+                        
                     </div>
                     <div class="avatar-help-adm d-none d-sm-none d-md-flex d-lg-flex align-self-center me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
                         <img src="../../../../views/images/avatars/avatar-scotty.svg" alt="">
