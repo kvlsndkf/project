@@ -125,9 +125,27 @@ class Solicitation
         $this->resultBuildList = $resultBuildList;
     }
     //----------------------------
-    public function registerSolicitationCategory()
+    public function registerSolicitation(Solicitation $solicitation)
     {
+        $connection = Connection::connection();
 
+        try {
+            $stmt = $connection->prepare("INSERT INTO solicitations(contact,category_id,title,description ,status,created_at)
+                                         VALUES (?,?,?,?,?, NOW())");
+            $stmt->bindValue(1, $solicitation->getContact());
+            $stmt->bindValue(2, $solicitation->getCategory());
+            $stmt->bindValue(3, $solicitation->getTitle());
+            $stmt->bindValue(4, $solicitation->getDescription());
+            $stmt->bindValue(5, $solicitation->getStatus());
+            
+
+            $stmt->execute();
+
+            $_SESSION['statuPositive'] = "Obrigado! Seu comentário ajuda a deixar o help melhor para todos. Vamos ajustar e logo você poderá adicionar essa informação na sua conta!";
+            return header('Location: /project/views/pages/login/login-page.php');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
     //----------------------------
 }

@@ -179,7 +179,7 @@ try {
                         </div>
                         <div class="mb-3">
                             <select name="selectCategory_id" id="selectCategory_id">
-                                <option value="">Selecione a Categoria</option>
+                                <option id="selectOption" value="">Selecione a Categoria</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -187,10 +187,9 @@ try {
                             <input name="title" type="text" class="form-control" id="title" required placeholder="Digite o título da informação" autocomplete="off">
                         </div>
                         <div class="mb-3">
-                            <hr>
                             <label for="exampleFormControlTextarea1" class="form-label"> </label>
-                            <div id="contentTextArea"><textarea name="message" id="about" class="form-control" cols="30" rows="10" placeholder="Em que podemos te ajudar" onclick="colorDiv();" required maxlength="240"></textarea></div>
-                            <div><span id="counterTextArea">240</span></div>
+                            <div id="contentTextArea"><textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="Em que podemos te ajudar?" onclick="colorDiv();" required maxlength="200"></textarea></div>
+                            <div><span id="counterTextArea">200</span></div>
                             <hr>
                         </div>
                         <div class="col-12">
@@ -304,7 +303,7 @@ try {
 
             var option = '<option value="">Selecione a Categoria</option>';
             if (json_category['status']) {
-
+''
                 for (var i = 0; i < json_category.dados.length; i++) {
                     console.log(json_category.dados[i]['id']);
                     console.log(json_category.dados[i]['name']);
