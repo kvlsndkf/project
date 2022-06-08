@@ -425,7 +425,7 @@ class Course
         $start = ($limit_result * $page) - $limit_result;
 
 
-        $stmt = $connection->prepare("SELECT s.id, s.name, s.photo FROM schoolsHasCourses sc
+        $stmt = $connection->prepare("SELECT s.id, s.name, s.address FROM schoolsHasCourses sc
                                          INNER JOIN schools s
                                          ON s.id = sc.school_id
                                          WHERE sc.course_id = $id
@@ -454,6 +454,7 @@ class Course
                                         INNER JOIN schools s
                                         ON s.id = sc.school_id
                                         WHERE sc.course_id = $idCourse)
+                                        AND s.have_account = 'Com conta'
                                         ");
 
         $stmt->execute();
