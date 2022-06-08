@@ -237,7 +237,7 @@
 .hr-teachers-list{
     color: var(--gray3);
     border: 1px solid var(--gray3);
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 }
 
 .about-course-header{

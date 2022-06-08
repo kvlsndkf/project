@@ -41,6 +41,8 @@ async function enterDataSchools(id,page) {
                     localSchool.className = "schools p-teachers-list normal-14-bold-p";
                     const iconLocal = document.createElement("img");
                     iconLocal.className = "";
+                    const hrElement = document.createElement("hr");
+                    hrElement.className = "hr-teachers-list";
                     
 
                     tElementSchool.innerHTML = array_schools[i]['name'];
@@ -52,6 +54,7 @@ async function enterDataSchools(id,page) {
                     divLocal.appendChild(iconLocal);
                     divLocal.appendChild(localSchool);
                     divElementSchool.appendChild(divLocal);
+                    divElementSchool.appendChild(hrElement);
 
                     document.getElementById("schools-list").appendChild(divElementSchool);
                 }
