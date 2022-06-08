@@ -37,7 +37,7 @@ require_once('/xampp/htdocs' . '/project/classes/cookies/Cookie.class.php');
             <div class="text-center form-student-titles">
             <span class="normal-22-black-title-1 gray-title">Bora lá...</span>
             <br/>
-            <span class="normal32-black-landingpagetitle-2">Criar uma conta</span>
+            <span class="nord-32-black-display">Criar uma conta</span>
             </div>
             <form action="./controller/step1-cookie.controller.php" method="post">
                 <p class="normal-18-bold-title-2 subtitle-data">Dados de acesso</p>
