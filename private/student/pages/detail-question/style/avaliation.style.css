@@ -1,0 +1,32 @@
+.avaliacao{
+    display: flex;
+    width: 0%;
+}
+
+.star-icon{
+    list-style-type:none;
+    border: 1px solid #fff;
+    cursor: pointer;
+    color: #ffe500;
+}
+
+.star-icon::before{
+     content: "\2605";
+     font-size: 50px;
+}
+
+.star-icon.ativo ~ .star-icon::before{
+    content: "\2606";
+    font-size: 50px;
+}
+
+.avaliacao:hover .star-icon::before{
+    content: "\2605";
+    font-size: 50px;
+}
+
+.star-icon:hover ~ .star-icon::before{
+    content: "\2606";
+    font-size: 50px;
+}
+

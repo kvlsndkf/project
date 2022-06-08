@@ -33,6 +33,9 @@ try {
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
+
+    <!-- CSS Avaliation -->
+    <link rel="stylesheet" href="./style/avaliation.style.css">
 </head>
 
 <body>
@@ -199,6 +202,16 @@ try {
                 <?php echo $row->avaliation; ?>
             </p>
 
+            <p>
+                <div class="avaliacao">
+                    <div class="star-icon ativo" data-icon="1"></div>
+                    <div class="star-icon" data-icon="2"></div>
+                    <div class="star-icon" data-icon="3"></div>
+                    <div class="star-icon" data-icon="4"></div>
+                    <div class="star-icon" data-icon="5"></div>
+                </div>
+            </p>
+
             <br>
             <br>
 
@@ -239,6 +252,23 @@ try {
                 span.innerText = "Copiar link";
             }, 1150);
         }
+    </script>
+
+<script>
+        const stars = document.querySelectorAll('.star-icon');
+
+        document.addEventListener('click', function(e) {
+            var classStar = e.target.classList;
+
+            if(!classStar.contains('ativo')){
+                stars.forEach(function(star){
+                    star.classList.remove('ativo');
+                });
+
+                classStar.add('ativo');
+                console.log(e.target.getAttribute('data-icon'));
+            }
+        });
     </script>
 </body>
 
