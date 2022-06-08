@@ -86,7 +86,7 @@ session_start();
             <span class="nord-32-black-display">Criar uma conta</span>
             </div>
                 <form action="./controller/step3-cookie.controller.php" method="post" enctype="multipart/form-data">
-                    <label class="normal-18-bold-title-2">Foto</label>
+                    <label class="normal-18-bold-title-2">Foto<span style="color: var(--red);">*</span></label>
                     <br>
                     <?php
                     $photoCookie =  !is_null(Cookie::reader('photoUser')) ? Cookie::reader('photoUser') : '';

@@ -56,7 +56,7 @@ require_once('/xampp/htdocs' . '/project/classes/cookies/Cookie.class.php');
 
                     <?php $passwordCookie =  !is_null(Cookie::reader('password')) ? Cookie::reader('password') : ''; ?>
                     <div class="container-input-and-icon">
-                    <input type="password" name="password" id="password" class="normal-12-regular-tinyinput input-text pass-input" placeholder="Digite sua senha" required value="<?php echo $passwordCookie; ?>">
+                    <input type="password" name="password" id="password" class="normal-12-regular-tinyinput input-text pass-input" placeholder="Digite sua senha" minlength="6" required value="<?php echo $passwordCookie; ?>">
                     <img src="../image/components/show-pass.svg" class="eye-icon" alt="Visualizar senha" id="eyeOpened" onclick="openEye()">
                     </div>
                 </div>
@@ -66,7 +66,7 @@ require_once('/xampp/htdocs' . '/project/classes/cookies/Cookie.class.php');
                     <label class="normal-14-bold-p gray-title forms-label-student">Confirme a senha<span style="color: var(--red);">*</span></label>
                     <br>
                     <?php $confirmPasswordCookie =  !is_null(Cookie::reader('confirm-password')) ? Cookie::reader('confirm-password') : ''; ?>
-                    <input type="password" name="confirm-password" class="normal-12-regular-tinyinput input-text" id="confirm-password" placeholder="Confirme a senha" required value="<?php echo $confirmPasswordCookie; ?>">
+                    <input type="password" name="confirm-password" class="normal-12-regular-tinyinput input-text" id="confirm-password" placeholder="Confirme a senha" minlength="6" required value="<?php echo $confirmPasswordCookie; ?>">
                 </div>
                 <br>
                 <br>
