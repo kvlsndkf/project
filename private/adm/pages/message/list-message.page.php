@@ -81,7 +81,7 @@ try {
 
     <!-- Texto nº2 para Responsividade -->
     <div class="respo-cabe">
-        <a href="..register/registration panel/registration-panel-page.php" class="seta-voltar-a seta-voltar-a-responsividade">
+        <a onclick="window.history.go(-1)" class="seta-voltar-a seta-voltar-a-responsividade">
             <img src="../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
         </a>
         <p class="add-info-text add-info-text-responsividade normal-22-black-title-1">Fale Conosco </p>
@@ -108,7 +108,7 @@ try {
 
         <!-- Opções da NavBar -->
         <li class="sidebar-li">
-            <a href="../register/registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+            <a onclick="window.history.go(-1)" class="sidebar-button-a normal-14-bold-p">
                 <div class="sidebar-button">
                     <p class="sidebar-button-text">Adicionar Informações +</p>
                 </div>
