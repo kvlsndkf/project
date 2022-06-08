@@ -240,6 +240,14 @@
     margin: 5px;
 }
 
+.card-contact{
+    width: 485px;
+    border-radius: 10px;
+    border: 1px solid var(--gray7);
+    margin: 5px;
+    padding: 20px;
+}
+
 .school-name{
     margin-bottom: 4px;
 }
@@ -281,6 +289,18 @@
 .prof-text, .prof-name{
     padding: 0;
     margin: 0;
+}
+
+.contato-message{
+    margin: 0;
+    margin-top: 20px;
+}
+
+.read-button{
+    border: none;
+    outline: none;
+    height: auto;
+    background-color: none;
 }
 
 .prof-text{

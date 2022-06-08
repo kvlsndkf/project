@@ -254,29 +254,51 @@ try {
           <br>
 
           <!-- Lista de mensagens novas -->
-          <?php for ($i = 0; $i < count($listNewMessages); $i++) {
-            $row = $listNewMessages[$i] ?>
+          <div class="list-prof">
 
-            <?php $style = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'badge rounded-pill bg-info'; ?>
-            <span class="<?php echo $style; ?>"><?php echo $row->status; ?></span>
+            <?php for ($i = 0; $i < count($listNewMessages); $i++) {
+              $row = $listNewMessages[$i] ?>
 
-            <p>
-              Contato
-              <?php echo $row->contact; ?>
-            </p>
+              <div class="card-contact">
+  
+                <?php $style = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'badge rounded-pill bg-info'; ?>
+                <span class="<?php echo $style; ?>"><?php echo $row->status; ?></span>
+    
+                <p class="contato-message normal-14-medium-p">
+                  Contato
+                </p>
+                <p class="prof-text school-name normal-14-bold-p">
+                  <?php echo $row->contact; ?>
+                </p>
+    
+                <p class="contato-message normal-14-medium-p">
+                  Mensagem
+                </p>
+                <p class="prof-text school-name normal-14-bold-p">
+                  <?php echo $row->message; ?>
+                </p>
 
-            <p>
-              Mensagem
-              <?php echo $row->message; ?>
-            </p>
+                <!-- <a href="../register/registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
+                  <div class="sidebar-button">
+                      <p class="sidebar-button-text">Marcar como lida</p>
+                  </div>
+                </a> -->
+    
+                <?php $styleButton = $row->status == "Nova" ? '' : 'd-none'; ?>
+                <form action="./controller/read-message.controller.php?messageID=<?php echo $row->id; ?>" class="<?php echo $styleButton; ?>" method="POST">
+                  <button type="submit" name="readMessage" class="read-button sidebar-button-a normal-14-bold-p">
+                    <div class="sidebar-button">
+                        <p class="sidebar-button-text">Marcar como lida</p>
+                    </div>
+                  </button>
 
-            <?php $styleButton = $row->status == "Nova" ? '' : 'd-none'; ?>
-            <form action="./controller/read-message.controller.php?messageID=<?php echo $row->id; ?>" class="<?php echo $styleButton; ?>" method="POST">
-              <button type="submit" name="readMessage">Marcar como lida</button>
-            </form>
+                </form>
+    
+              </div>
 
-            <hr>
-          <?php } ?>
+            <?php } ?>
+
+          </div>
         </div>
       </div>
 
