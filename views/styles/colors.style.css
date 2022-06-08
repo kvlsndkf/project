@@ -42,3 +42,7 @@
 .red-title {
     color: var(--red);
 }
+
+.blue-title {
+    color: var(--blue-sky);
+}

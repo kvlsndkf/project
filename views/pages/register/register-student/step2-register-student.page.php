@@ -68,25 +68,25 @@ try {
     <div class="h-100 w-100 d-flex align-items-center justify-content-center">
         <div class="bg-modal-gray align-self-center my-auto form-base-plump">
             <div class="d-flex justify-content-between">
-            <a href="./step1-register-student.page.php"><img src="../../../../private/adm/images/components/arrow.svg" alt="Seta para voltar" class="mb-2"></a>
+                <a href="./step1-register-student.page.php"><img src="../../../../private/adm/images/components/arrow.svg" alt="Seta para voltar" class="mb-2"></a>
                 <label class="normal-14-bold-p">Etapa 2/4</label>
             </div>
             <div class="text-center form-student-titles">
                 <span class="normal-22-black-title-1 gray-title">Falta pouco...</span>
-                <br/>
+                <br />
                 <span class="nord-32-black-display">Nos conte um pouco sobre você!</span>
             </div>
             <label class="normal-18-bold-title-2 subtitle-data">Dados pessoais</label>
-            
+
             <br>
             <br>
 
             <form action="./controller/step2-cookie.controller.php" method="post">
-                
-                    
-                    <p class="normal-14-bold-p gray-title forms-label-student">Primeiro nome</p>
-                    <div>
-                    
+
+
+                <p class="normal-14-bold-p gray-title forms-label-student">Primeiro nome<span style="color: var(--red);">*</span></p>
+                <div>
+
                     <?php $firstName =  !is_null(Cookie::reader('firstName')) ? Cookie::reader('firstName') : ''; ?>
                     <input class="normal-12-regular-tinyinput input-text" placeholder="Digite seu primeiro nome" type="text" name="firstName" id="firstName" required autocomplete="off" autofocus value="<?php echo $firstName; ?>">
                 </div>
@@ -94,9 +94,9 @@ try {
 
 
                 <div>
-                <p class="normal-14-bold-p gray-title forms-label-student">Sobrenome</p>
-                    
-                    
+                    <p class="normal-14-bold-p gray-title forms-label-student">Sobrenome<span style="color: var(--red);">*</span></p>
+
+
                     <?php $surname =  !is_null(Cookie::reader('surname')) ? Cookie::reader('surname') : ''; ?>
                     <input class="normal-12-regular-tinyinput input-text" placeholder="Digite seu sobrenome" type="text" name="surname" id="surname" required autocomplete="off" value="<?php echo $surname; ?>">
                 </div>
@@ -104,8 +104,8 @@ try {
 
 
                 <div>
-                <p class="normal-14-bold-p gray-title forms-label-student">Etec</p>
-                    
+                    <p class="normal-14-bold-p gray-title forms-label-student">Etec<span style="color: var(--red);">*</span></p>
+
                     <p>
                         <?php
                         $nameSchool =  !is_null(Cookie::reader('nameSchool')) ? Cookie::reader('nameSchool') : "Selecione a escola";
@@ -123,7 +123,7 @@ try {
                 <br>
 
                 <div>
-                <p class="normal-14-bold-p gray-title forms-label-student">Curso</p>
+                    <p class="normal-14-bold-p gray-title forms-label-student">Curso<span style="color: var(--red);">*</span></p>
                     <p>
                         <select name="nameCourse" id="nameCourse" class="select-course" style="width: 100%" disabled required>
                             <option value="" disabled selected>Selecione o curso</option>
@@ -134,7 +134,7 @@ try {
 
 
                 <div>
-                <p class="normal-14-bold-p gray-title forms-label-student">Módulo</p>
+                    <p class="normal-14-bold-p gray-title forms-label-student">Módulo<span style="color: var(--red);">*</span></p>
                     <p>
                         <?php
                         $nameModule =  !is_null(Cookie::reader('nameModule')) ? Cookie::reader('nameModule') : "Selecione o módulo";
@@ -148,6 +148,7 @@ try {
                             <?php } ?>
                         </select>
                     </p>
+                    <a href="#" style=" color: inherit; text-decoration: inherit; text-decoration:none;"><span class="normal-12-bold-tiny blue-title">Não encontrou o seu dado? Clique aqui.</span></a>
                 </div>
                 <br>
 
@@ -155,27 +156,27 @@ try {
                 <hr>
                 <label class="normal-18-bold-title-2">Links</label>
                 <p>
-                    <p class="normal-14-medium-p">Linkedin</p> 
-                    <?php $linkedin =  !is_null(Cookie::reader('linkedin')) ? Cookie::reader('linkedin') : ''; ?>
-                    <input class="normal-12-regular-tinyinput input-text" type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $linkedin; ?>">
+                <p class="normal-14-medium-p">Linkedin</p>
+                <?php $linkedin =  !is_null(Cookie::reader('linkedin')) ? Cookie::reader('linkedin') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $linkedin; ?>">
                 </p>
 
                 <p>
-                <p class="normal-14-medium-p">GitHub</p> 
-                    <?php $github =  !is_null(Cookie::reader('github')) ? Cookie::reader('github') : ''; ?>
-                    <input class="normal-12-regular-tinyinput input-text" type="text" name="github" id="github" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $github; ?>">
+                <p class="normal-14-medium-p">GitHub</p>
+                <?php $github =  !is_null(Cookie::reader('github')) ? Cookie::reader('github') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="text" name="github" id="github" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $github; ?>">
                 </p>
 
                 <p>
-                <p class="normal-14-medium-p">Facebook</p> 
-                    <?php $facebook =  !is_null(Cookie::reader('facebook')) ? Cookie::reader('facebook') : ''; ?>
-                    <input class="normal-12-regular-tinyinput input-text" type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $facebook; ?>">
+                <p class="normal-14-medium-p">Facebook</p>
+                <?php $facebook =  !is_null(Cookie::reader('facebook')) ? Cookie::reader('facebook') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $facebook; ?>">
                 </p>
 
                 <p>
-                <p class="normal-14-medium-p">Instagram</p> 
-                    <?php $instagram =  !is_null(Cookie::reader('instagram')) ? Cookie::reader('instagram') : ''; ?>
-                    <input class="normal-12-regular-tinyinput input-text" type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $instagram; ?>">
+                <p class="normal-14-medium-p">Instagram</p>
+                <?php $instagram =  !is_null(Cookie::reader('instagram')) ? Cookie::reader('instagram') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $instagram; ?>">
                 </p>
                 <input type="submit" class="register button-wide submit-button-primary normal-14-bold-p" value="Continuar" name="step2">
             </form>
