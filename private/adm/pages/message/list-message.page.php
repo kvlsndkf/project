@@ -139,9 +139,9 @@ try {
         </li>
 
         <li class="sidebar-li">
-            <a href="../message/list-message.page.php" class="sidebar-a">
-                <img class="sidebar-img" src="../../../../views/images/components/fale-conosco-img.svg" alt="">
-                <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
+            <a href="../message/list-message.page.php" class="sidebar-a-items">
+                <img class="sidebar-img" src="../../../../views/images/components/fale-conosco-current.svg" alt="">
+                <p class="sidebar-option sidebar-current-option normal-18-bold-title-2">Fale Conosco</p>
             </a>
         </li>
 
@@ -230,12 +230,20 @@ try {
     </form>
 
     <!-- Tabs navs -->
-    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+    <ul class="nav nav-tabs mb-3 tab-ul" id="ex1" role="tablist">
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Novas</a>
+        <a class="nav-link active tab-a" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+          <p class="normal-14-bold-p tab-p">
+            Novas
+          </p> 
+        </a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link " id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Lidas</a>
+        <a class="nav-link tab-a" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
+          <p class="normal-14-bold-p tab-p">
+            Lidas
+          </p> 
+        </a>
       </li>
     </ul>
 
@@ -277,17 +285,11 @@ try {
                 <p class="prof-text school-name normal-14-bold-p">
                   <?php echo $row->message; ?>
                 </p>
-
-                <!-- <a href="../register/registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
-                  <div class="sidebar-button">
-                      <p class="sidebar-button-text">Marcar como lida</p>
-                  </div>
-                </a> -->
     
                 <?php $styleButton = $row->status == "Nova" ? '' : 'd-none'; ?>
                 <form action="./controller/read-message.controller.php?messageID=<?php echo $row->id; ?>" class="<?php echo $styleButton; ?>" method="POST">
                   <button type="submit" name="readMessage" class="read-button sidebar-button-a normal-14-bold-p">
-                    <div class="sidebar-button">
+                    <div class="sidebar-button margin-0">
                         <p class="sidebar-button-text">Marcar como lida</p>
                     </div>
                   </button>
@@ -309,29 +311,38 @@ try {
           <p class="contador-prof normal-18-black-title-2">
             <?php echo  $countReadMessages ?>
           </p>
-
+          
           <br>
 
-          <!-- Lista de mensagens lidas ⬇️ -->
-          <?php for ($i = 0; $i < count($listReadMessages); $i++) {
-            $row = $listReadMessages[$i] ?>
+          <div class="list-prof">
 
-            <?php $style = $row->status == "Lida" ? 'badge rounded-pill bg-info' : 'd-none'; ?>
-            <span class="<?php echo $style; ?>"><?php echo $row->status; ?></span>
+            <!-- Lista de mensagens lidas ⬇️ -->
+            <?php for ($i = 0; $i < count($listReadMessages); $i++) {
+              $row = $listReadMessages[$i] ?>
 
-            <p>
-              Contato
-              <?php echo $row->contact; ?>
-            </p>
+              <div class="card-contact">
 
-            <p>
-              Mensagem
-              <?php echo $row->message; ?>
-            </p>
+                <?php $style = $row->status == "Lida" ? 'badge rounded-pill bg-info' : 'd-none'; ?>
+                <span class="<?php echo $style; ?>"><?php echo $row->status; ?></span>
 
-            <hr>
+                <p class="contato-message normal-14-medium-p">
+                  Contato
+                </p>
+                <p class="prof-text school-name normal-14-bold-p">
+                  <?php echo $row->contact; ?>
+                </p>
 
-          <?php } ?>
+                <p class="contato-message normal-14-medium-p">
+                  Mensagem
+                </p>
+                <p class="prof-text school-name normal-14-bold-p">
+                  <?php echo $row->message; ?>
+                </p>
+
+              </div>
+
+            <?php } ?>
+          </div>
         </div>
       </div>
     </div>
