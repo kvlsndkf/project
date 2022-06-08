@@ -94,8 +94,8 @@ try {
         </p>
 
         <p>
-            <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion">Link</a>
-            <span onclick="copyLink()" id="spanLink">Copiar link</span>
+            <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion-<?php echo $row->id; ?>">Link</a>
+            <span onclick="copyLink(<?php echo $row->id; ?>)" id="spanLink-<?php echo $row->id; ?>">Copiar link</span>
         </p>
 
         <p>
@@ -172,9 +172,9 @@ try {
     </script>
 
     <script>
-        function copyLink() {
-            const link = document.getElementById("linkQuestion");
-            const span = document.getElementById("spanLink");
+        function copyLink(id) {
+            const link = document.getElementById(`linkQuestion-${id}`);
+            const span = document.getElementById(`spanLink-${id}`);
 
             navigator.clipboard.writeText(link.href);
 
