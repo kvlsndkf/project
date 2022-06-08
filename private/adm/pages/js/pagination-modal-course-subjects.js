@@ -5,7 +5,6 @@ async function enterDataSubjects(id,page) {
     await fetch('./controller/pagination-modal-course-subjects.php?idCourse=' + id + '&page=' + page)
                 .then((resp) => resp.json())
                 .then(function(data){
-                    console.log(data);
                     paginationSubjects.innerHTML= data;
                 });
 
@@ -16,8 +15,6 @@ async function enterDataSubjects(id,page) {
                 const convert_into_string = JSON.stringify(json_course);
                 const object_course = JSON.parse(convert_into_string);
                 const course = object_course['course'][0];
-
-                console.log(object_course);
 
                 document.getElementById('course-edit').href = "./form-update-course.page.php?updateCourse=" + course['id'];
                 document.getElementById('course-delete').href = "./controller/delete-course.controller.php?id=" + course['id'];

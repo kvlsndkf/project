@@ -511,7 +511,6 @@ try {
 
         async function schoolModal(self,page) {
             const id = self.getAttribute("data-id");
-            console.log(id);
             
             enterDataSchools(id,page);
 
