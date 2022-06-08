@@ -153,11 +153,18 @@ class Answer
         //creator answer
         $creatorAnswerID = $this->getCreatorAnswer();
 
+        //checking if the person has already replied
+        $checkPerson = $this->checkAnswerCreator($creatorAnswerID, $questionID);
+
         //xp latest question
         $xpQuestion = $question->getLatestXpQuestion($questionID);
 
         //xp for creator answer
-        $xpAnswer = $creatorAnswerID == $creatorQuestion[0]['student_id'] ? 0 : $xpQuestion[0]['xp'];
+        $xpAnswer = $creatorAnswerID == $creatorQuestion[0]['student_id'] || !$checkPerson == false ? 0 : $xpQuestion[0]['xp'];
+
+        // if($creatorAnswerID == $creatorQuestion[0]['student_id'] || !$checkPerson == false){
+            
+        // }
 
         try {
             $stmt = $connection->prepare("INSERT INTO answers(answer, photo, document, document_name, avaliation, like_answer, question_id, answer_creator_id, created_at)
@@ -315,6 +322,23 @@ class Answer
 
         if ($result->y > 0) {
             return $result->y . " anos";
+        }
+    }
+
+    private function checkAnswerCreator(int $creatorAnswerID, int $questionID)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT answer_creator_id, question_id FROM answers 
+                                        WHERE answer_creator_id = '$creatorAnswerID' 
+                                        AND question_id = '$questionID'
+                                    ");
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
