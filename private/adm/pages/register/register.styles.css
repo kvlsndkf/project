@@ -241,7 +241,7 @@
 }
 
 .card-contact{
-    width: 485px;
+    width: 500px;
     border-radius: 10px;
     border: 1px solid var(--gray7);
     margin: 5px;
@@ -309,12 +309,20 @@
     margin: 0;
 }
 
+.margin-top-0{
+    margin-top: 0;
+}
+
 .prof-text{
     margin-bottom: 2px;
     color: var(--bg-modal);
     max-width: 240px;
     word-wrap: break-word;
     word-break: break-all;
+}
+
+.message-text{
+    max-width: 460px;
 }
 
 .sidebar-current-option{

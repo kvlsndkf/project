@@ -81,7 +81,7 @@ try {
 
     <!-- Texto nº2 para Responsividade -->
     <div class="respo-cabe">
-        <a onclick="window.history.go(-1)" class="seta-voltar-a seta-voltar-a-responsividade">
+        <a href="../register/registration panel/registration-panel-page.php" class="seta-voltar-a seta-voltar-a-responsividade">
             <img src="../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
         </a>
         <p class="add-info-text add-info-text-responsividade normal-22-black-title-1">Fale Conosco </p>
@@ -169,7 +169,7 @@ try {
 <div class="corpo">
 
     <div class="cabecalho">
-        <a href="../registerregistration panel/registration-panel-page.php" class="seta-voltar-a">
+        <a href="../register/registration panel/registration-panel-page.php" class="seta-voltar-a">
             <img src="../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
         </a>
         <p class="add-info-text normal-22-black-title-1">Fale Conosco</p>
@@ -224,9 +224,9 @@ try {
     } ?>
 
     <!-- Barra de pesquisa ⬇️ -->
-    <form action="./list-message.page.php" method="GET">
-      <input type="text" name="searchMessage" id="searchMessage" placeholder="Pesquise por mensagens" autocomplete="off" class="search-bar">
-      <input type="submit" value="🔎" class="search-button">
+    <form action="./list-message.page.php" method="GET" class="">
+      <input type="text" name="searchMessage" id="searchMessage" placeholder="Pesquise por mensagens" autocomplete="off" class="search-bar margin-top-0">
+      <input type="submit" value="🔎" class="search-button margin-top-0">
     </form>
 
     <!-- Tabs navs -->
@@ -282,7 +282,7 @@ try {
                 <p class="contato-message normal-14-medium-p">
                   Mensagem
                 </p>
-                <p class="prof-text school-name normal-14-bold-p">
+                <p class="prof-text message-text school-name normal-14-bold-p">
                   <?php echo $row->message; ?>
                 </p>
     
@@ -335,7 +335,7 @@ try {
                 <p class="contato-message normal-14-medium-p">
                   Mensagem
                 </p>
-                <p class="prof-text school-name normal-14-bold-p">
+                <p class="prof-text message-text school-name normal-14-bold-p">
                   <?php echo $row->message; ?>
                 </p>
 
