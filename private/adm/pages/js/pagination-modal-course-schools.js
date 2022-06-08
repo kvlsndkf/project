@@ -31,16 +31,16 @@ async function enterDataSchools(id,page) {
 
                 for (i = 0; i < array_schools.length; i++) {
                     const divElementSchool = document.createElement("div");
-                    divElementSchool.className = "div-school-list";
+                    divElementSchool.className = "div-list-school";
                     const tElementSchool = document.createElement("p");
-                    tElementSchool.className = "schools p-teachers-list normal-14-bold-p";
+                    tElementSchool.className = "p-teachers-list schools normal-14-bold-p";
 
                     const divLocal = document.createElement("div");
                     divLocal.className = "";
-                    const iconLocal = document.createElement("img");
-                    iconLocal.className = "";
                     const localSchool = document.createElement("label");
                     localSchool.className = "schools p-teachers-list normal-14-bold-p";
+                    const iconLocal = document.createElement("img");
+                    iconLocal.className = "";
                     
 
                     tElementSchool.innerHTML = array_schools[i]['name'];

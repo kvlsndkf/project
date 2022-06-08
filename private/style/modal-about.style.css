@@ -198,7 +198,7 @@
 
 .div-teacher-photo{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .div-teachers-list{
@@ -263,6 +263,21 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    justify-content: flex-end;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.schools{
+    margin: 0;
+}
+
+.div-list-school{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
     justify-content: flex-end;
     padding-left: 20px;
     padding-right: 20px;
