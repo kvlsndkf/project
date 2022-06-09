@@ -325,6 +325,10 @@
     max-width: 460px;
 }
 
+.sidebar-button-a{
+    cursor: pointer;
+}
+
 .sidebar-current-option{
     color: var(--primary);
 }
