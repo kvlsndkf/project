@@ -88,7 +88,7 @@ try {
                 <div>
 
                     <?php $firstName =  !is_null(Cookie::reader('firstName')) ? Cookie::reader('firstName') : ''; ?>
-                    <input class="normal-12-regular-tinyinput input-text" placeholder="Digite seu primeiro nome" type="text" name="firstName" id="firstName" required autocomplete="off" autofocus value="<?php echo $firstName; ?>">
+                    <input class="normal-12-regular-tinyinput input-text" placeholder="Digite seu primeiro nome" type="text" name="firstName" id="firstName" required minlength="2" autocomplete="off" autofocus value="<?php echo $firstName; ?>">
                 </div>
                 <br>
 
@@ -256,6 +256,32 @@ try {
         (async function() {
             await schoolValue();
         }());
+    </script>
+
+    <!-- JS APENAS permitir: letras, acentuação, espaço e hífen  -->
+
+    <script>
+        $('#firstName, #surname').on('keypress', function(event) {
+            var regex = new RegExp("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+
+    <!-- JS bloquear colagem (paste) -->
+
+    <script>
+        var myElement = document.getElementById('firstName');
+
+        myElement.addEventListener('paste', e => e.preventDefault());
+    </script>
+
+    <script>
+        var myElementSurname = document.getElementById('surname');
+        myElementSurname.addEventListener('paste', e => e.preventDefault());
     </script>
 </body>
 
