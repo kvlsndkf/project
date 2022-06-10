@@ -1,11 +1,11 @@
-.cor{
+.corM{
     background-color: var(--bg-modal);
 }
 
-.modal-title{
+.modal-titleM{
     color: var(--white);
 }
-.inputtext{
+.inputtextM{
     color: var(--white);
     background-color: var(--gray2);
     outline: unset;
@@ -15,36 +15,37 @@
     border: 1.5px solid var(--gray1);
     border-radius: 2px;
 }
-.inputtext:focus{
+.inputtextM:focus{
     border: solid 1px var(--blue-sky);
     outline: none;
 }
 
-.buttonCadastrar{
+.buttonCadastrarM{
     margin-top: 50px;
     background-color: #8080FF;
     color: var(--white);
 }
 
-.subtitulo{
+.subtituloM{
+    margin-bottom: 10px;
     color: var(--white);
 }
-.container{
+.containerM{
     padding: 20px;
 }
 
-.sub-titulo-plus2{
+.sub-titulo-plus2M{
     margin-top: 20px;
 }
 
-.seta{
+.setaM{
     margin-right: 10px;
     background-color: var(--bg-modal);
     border: 0;
     padding-left: -100px;
 }
 
-.fechar{
+.fecharM{
     width: 15px;
     left: 300px;
 }
@@ -60,28 +61,28 @@
 
 @media screen and (max-width: 540px ){
 
-    .inputtext{
+    .inputtextM{
     width: 445px;
 }
 
 .input{
     width: 445px;
 }
-.botao-g{
+.botao-gM{
     width: 447px;
     }
 }
 
 @media screen and (max-width: 414px ){
 
-    .inputtext{
+    .inputtextM{
     width: 323px;
 }
 
-.input{
+.inputM{
     width: 323px;
 }
-.botao-g{
+.botao-gM{
     width: 325px;
     }
 }
@@ -90,14 +91,14 @@
 
 @media screen and (max-width: 393px ){
 
-    .inputtext{
+    .inputtextM{
     width: 300px;
 }
 
-.input{
+.inputM{
     width: 300px;
 }
-.botao-g{
+.botao-gM{
     width: 302px;
     }
 }
@@ -105,46 +106,46 @@
 
 @media screen and (max-width: 375px ){
 
-    .inputtext{
-    width: 280px;
+    .inputtextM{
+    width: 285px;
 }
 
-.input{
-    width: 280px;
+.inputM{
+    width: 285px;
 }
-.botao-g{
-    width: 282px;
+.botao-gM{
+    width: 287px;
     }
 }
 
 @media screen and (max-width: 360px ){
 
-    .inputtext{
-    width: 270px;
+    .inputtextM{
+    width: 273px;
 }
 
-.input{
-    width: 270px;
+.inputM{
+    width: 273px;
 }
-.botao-g{
-    width: 272px;
+.botao-gM{
+    width: 275px;
     }
 }
 
 @media screen and (max-width: 280px ){
 
-    .inputtext{
+    .inputtextM{
     width: 190px;
 }
 
-.input{
+.inputM{
     width: 190px;
 }
-.botao-g{
+.botao-gM{
     width: 192px;
     }
 }
 
-.numero{
+.numeroM{
     color: var(--red);
 }

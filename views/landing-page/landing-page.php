@@ -232,27 +232,27 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content cor">
-        <div class="container">
+    <div class="modal-content corM">
+        <div class="container containerM">
         <div class="modal-header border-bottom-0">
             
-            <h2 class="modal-title normal-20-bold-modaltitle" id="exampleModalLabel"> Fale Conosco</h2>
-            <button id="botao" class="seta"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../images/components/x-button.svg" class="close fechar"></button>
+            <h2 class="modal-titleM normal-20-bold-modaltitle" id="exampleModalLabel"> Fale Conosco</h2>
+            <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../images/components/x-button.svg" class="close fechar"></button>
         </div>
 
     <div class="modal-body">
         <form class="row g-3 needs-validation" action="./form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="subtitulo normal-14-bold-p sub-titulo-plus">Deixe um email para entrarmos em contato</label>
-          <input name="contact" type="email" class="input" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+          <label for="exampleFormControlInput1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe um email para entrarmos em contato</label>
+          <input name="contact" type="email" class="inputM input" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
         </div>
         <div  class="mb-3">
         
 
-        <label for="exampleFormControlTextarea1" class="subtitulo normal-14-bold-p sub-titulo-plus">Deixe sua crítica/avaliação</label>
-          <textarea required name="message" id="about" class="inputtext"  placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required  maxlength="240" ></textarea>
-          <div><span id="counterTextArea" class="numero normal-14-medium-p">240</span></div>
-          <button type="submit" class="botao-g button-wide buttonCadastrar" value="Enviar"  name="register" onclick = "GFG_Fun()">Enviar</button>
+        <label for="exampleFormControlTextarea1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe sua crítica/avaliação</label>
+          <textarea required name="message" id="about" class="inputtextM"  placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required  maxlength="240" ></textarea>
+          <div><span id="counterTextArea" class="numeroM normal-14-medium-p">240</span></div>
+          <button type="submit" class="botao-gM button-wide buttonCadastrarM" value="Enviar"  name="register" onclick = "GFG_Fun()">Enviar</button>
                             
         </div>
         </form>
