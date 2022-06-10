@@ -244,15 +244,19 @@
         <form class="row g-3 needs-validation" action="./form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe um email para entrarmos em contato</label>
-          <input name="contact" type="email" class="inputM input" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+          <input name="contact" type="email" class=" input normal-12-regular-tinyinput input-text" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
         </div>
         <div  class="mb-3">
         
 
         <label for="exampleFormControlTextarea1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe sua crítica/avaliação</label>
-          <textarea required name="message" id="about" class="inputtextM"  placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required  maxlength="240" ></textarea>
-          <div><span id="counterTextArea" class="numeroM normal-14-medium-p">240</span></div>
-          <button type="submit" class="botao-gM button-wide buttonCadastrarM" value="Enviar"  name="register" onclick = "GFG_Fun()">Enviar</button>
+        <div id="contentTextArea">
+          <textarea  name="message" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" required  onclick="colorDiv()"  maxlength="240" ></textarea>
+          <div id="counter-container" class="counter-container">
+            <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">240</span>
+            </div>
+          </div>
+          <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar"  name="register" onclick = "GFG_Fun()">Enviar</button>
                             
         </div>
         </form>
@@ -330,6 +334,7 @@
 })()
     </script> 
 
+<script type="text/javascript" src="../../private/adm/pages/js/textarea.js"></script>
     <!-- JS Visibility Inputs -->
 <script type="text/javascript" src="../../private/adm/pages/js/visibility-inputs.js"></script>
 <!-- JS Count Characters TextArea -->

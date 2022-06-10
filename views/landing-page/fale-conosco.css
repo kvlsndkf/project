@@ -11,7 +11,7 @@
     outline: unset;
     padding: 10px;
     width: 420px;
-    height: 115px;
+    /* height: 115px; */
     border: 1.5px solid var(--gray1);
     border-radius: 2px;
 }
@@ -136,16 +136,73 @@
 
     .inputtextM{
     width: 190px;
+    
 }
 
-.inputM{
-    width: 190px;
-}
-.botao-gM{
+.botaoM{
     width: 192px;
     }
 }
 
-.numeroM{
-    color: var(--red);
+/* CONTADOR DE 250 CARACTERES */
+
+.counterTextArea {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    color: var(--white);
 }
+
+.counter-container {
+    display: flex;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    border-top: none;
+}
+
+.text-area {
+    background-color: #303339;
+    color: white;
+    width: 100%;
+    border: solid 1px var(--gray1);
+    resize: none;
+    outline: none;
+    padding: 10px;
+}
+
+.text-area:focus {
+    border: none;
+}
+
+.min-length {
+    margin-top: 10px;
+}
+
+.text-area::placeholder {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+    color: var(--gray6);
+}
+
+
+.input-text {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    background-color: #303339;
+    border: solid 1px #202225;
+    border-radius: 2px;
+    color: var(--white);
+  }
+
+  ::placeholder {
+    color: #adb0b3;
+  }
+  
+  .input-text:focus {
+    border: solid 1px var(--blue-sky);
+    outline: none;
+  }
