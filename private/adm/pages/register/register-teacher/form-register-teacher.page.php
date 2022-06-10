@@ -83,12 +83,12 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                                 <label class="normal-20-bold-modaltitle title-header" id="teste">Cadastro unitário professor</label>
                             </div>
                             <p>
-                                <label class="normal-14-medium-p nome-professor">Nome professor</label>
+                                <label class="normal-14-medium-p nome-professor">Nome professor<span style="color: var(--red);">*</span></label>
                                 <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome completo do professor" autocomplete="off" required autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="6">
                             </p>
                                 <hr class="hr"/>
                             <p>
-                                <label class="normal-14-medium-p foto-text">Foto</label><br/>
+                                <label class="normal-14-medium-p foto-text">Foto<span style="color: var(--red);">*</span></label><br/>
                                 <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
                                 <input type="file" class="photo" name="photo" id="photo" required>
                                 <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>

@@ -38,7 +38,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
 
                     <form action="./controller/subject-unit-registration.controller.php" method="post">
                         <p class="normal-14-medium-p name">
-                            Nome matéria
+                            Nome matéria<span style="color: var(--red);">*</span>
                             <input type="text" class="input-text normal-12-regular-tinyinput input-name-module" placeholder="Digite o nome da matéria" name="name" id="name" required autofocus autocomplete="off" autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="6">
                         </p>
 
