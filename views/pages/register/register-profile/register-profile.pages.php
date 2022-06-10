@@ -44,7 +44,7 @@ session_start();
                 </div>
             <?php unset($_SESSION['statusNegative']);
             } ?>
-            <a onclick="history.back();"><img src="../../../images/components/arrow-back.svg" alt="Botão de voltar" class="back-button"></a>
+            <a onclick="history.back();" style="cursor:pointer;"><img src="../../../images/components/arrow-back.svg" alt="Botão de voltar" class="back-button"></a>
             <div class="page-content">
                 <img src="../../../images/logo/logo-and-name.svg" alt="Logo do Help" class="logo-help">
                 <p class="gray-title display text-center title-o-que">O que você é?</p>

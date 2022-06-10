@@ -137,7 +137,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                         <br />
                        
                         <div class="button-container">
-                        <a href="../message/list-message.page.php">
+                        <a href="../message/list-message.page.php" style="text-decoration: none; color: inherit;">
                             <div class="adm-email-button white-title normal-14-bold-p">
                                 <span>Enviar e-mail</span>
                             </div>
