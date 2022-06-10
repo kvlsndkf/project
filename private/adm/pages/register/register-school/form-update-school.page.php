@@ -110,14 +110,14 @@ try {
                         <label class="normal-14-medium-p nome-professor">
                             Nome Etec<span style="color: var(--red);">*</span>
                         </label>
-                        <input type="text" style="margin-bottom: 28px;" name="updateName" class="normal-12-regular-tinyinput input-text" id="updateName" autocomplete="off" required value="<?php echo $updateSchool['name'] ?>" minlength="10" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$">
+                        <input type="text" name="updateName" class="normal-12-regular-tinyinput input-text" id="updateName" autocomplete="off" required value="<?php echo $updateSchool['name'] ?>" minlength="10" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$">
                     </p>
 
 <div class="etec-location-label">
                     <p class="normal-14-medium-p etec-location-label">
                             A Etec fica localizada dentro da cidade de São Paulo?<span style="color: var(--red);">*</span>
                         </p>
-                        </div>
+                    </div>
                     <p>
                         <?php $checkedDistrict = !empty($updateSchool['in_sp_city']) ? 'checked' : 'disabled'; ?>
                         <input type="checkbox" name="districtSchool" id="checkDistrict" value="Inside city" <?php echo $checkedDistrict ?> onclick="visibilityDistrict()"><span class="normal-14-medium-p nome-professor checkbox-label"> Sim</span>
@@ -160,17 +160,17 @@ try {
                         </select>
                     </p>
 
-                    <p class="label-social normal-14-medium-p nome-professor" >
+                    <p class="label-social normal-14-medium-p nome-professor">
                         <?php $checkedAccount = $updateSchool['have_account'] === "Com conta" ? 'checked' : ''; ?>
                         <input type="checkbox" name="createAccount" id="createAccount" <?php echo $checkedAccount ?> onclick="createdAccount()" value="createdAccount">
                         <input type="hidden" name="haveAccount" value="<?php echo $updateSchool['have_account'] ?>">
                         <span style="display: inline-block;">
-                                <span class="label-social">Criar um perfil para a Etec?</span>
-                                </span>
+                            <span class="label-social">Criar um perfil para a Etec?</span>
+                        </span>
                     </p>
                     <p class="span-warning-school normal-12-bold-tiny gray-text-6 mb-3">
-                            Os campos abaixo só ficarão habilitados se escolher criar um perfil para a Etec.
-                        </p>
+                        Os campos abaixo só ficarão habilitados se escolher criar um perfil para a Etec.
+                    </p>
 
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item" style="border: none;">
@@ -204,9 +204,9 @@ try {
                                     </p>
 
 
-                                    
-                                        <hr class="dropdown-divider">
-                                    
+
+                                    <hr class="dropdown-divider">
+
 
                                     <div>
                                         <p class="normal-14-medium-p">
@@ -224,60 +224,60 @@ try {
                                         </p>
                                     </div>
 
-                                    
-                                        <hr class="dropdown-divider">
-                                    
+
+                                    <hr class="dropdown-divider">
+
 
                                     <label class="normal-18-bold-title-2">Links</label>
                                     <p>
                                         <?php $disableLinkedin = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                                        <p class="normal-14-medium-p label-social">
+                                    <p class="normal-14-medium-p label-social">
                                         Linkedin
-                                        </p>
-                                        <input type="text" name="linkedin" id="linkedin" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?> autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
-                                        
+                                    </p>
+                                    <input type="text" name="linkedin" id="linkedin" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableLinkedin ?> autocomplete="off" value="<?php echo $updateSchool['linkedin'] ?>">
+
                                     </p>
 
                                     <p>
                                         <?php $disableGithub = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                                        <p class="normal-14-medium-p label-social">
+                                    <p class="normal-14-medium-p label-social">
                                         GitHub
-                                        </p>
-                                        <input type="text" name="github" id="github" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableGithub ?> autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
-                                        
+                                    </p>
+                                    <input type="text" name="github" id="github" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableGithub ?> autocomplete="off" value="<?php echo $updateSchool['github'] ?>">
+
                                     </p>
 
                                     <p>
                                         <?php $disableFacebook = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                                        <p class="normal-14-medium-p label-social">
+                                    <p class="normal-14-medium-p label-social">
                                         Facebook
-                                        </p>
-                                        <input type="text" name="facebook" id="facebook" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?> autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
-                                        
+                                    </p>
+                                    <input type="text" name="facebook" id="facebook" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableFacebook ?> autocomplete="off" value="<?php echo $updateSchool['facebook'] ?>">
+
                                     </p>
 
                                     <p>
                                         <?php $disableInstagram = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                                        <p class="normal-14-medium-p label-social">
+                                    <p class="normal-14-medium-p label-social">
                                         Instagram
-                                        </p>
-                                        <input type="url" name="instagram" id="instagram" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableInstagram ?> autocomplete="off" value="<?php echo $updateSchool['instagram'] ?>">
-                                        
+                                    </p>
+                                    <input type="url" name="instagram" id="instagram" class="disabled-area normal-12-regular-tinyinput input-text input-social" placeholder="Copie e cole a URL" <?php echo $disableInstagram ?> autocomplete="off" value="<?php echo $updateSchool['instagram'] ?>">
+
                                     </p>
 
-                                        <hr class="dropdown-divider">
+                                    <hr class="dropdown-divider">
 
                                     <p>
                                         <?php $imageSelected = $updateSchool['photo'];
                                         $imageDefault = !empty($updateSchool['photo']) ? $imageSelected : '../../../images/ilustrations/no-image.svg'; ?>
                                         <label class="normal-14-medium-p label-social">Foto atual</label><br>
-                                        <div class="img-container">
+                                    <div class="img-container">
                                         <img width="100" class="current-photo" src="<?php echo $imageDefault ?>" alt="Foto <?php echo $updateSchool['name'] ?>">
-                                        </div>
+                                    </div>
                                     </p>
 
                                     <p>
-                                        
+
                                         <?php $disablePhoto = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
                                         <?php $requiredPhoto = empty($updateSchool['photo']) ? 'required' : '' ?>
                                         <input type="file" class="photo" name="updatePhoto" id="photo" <?php echo $disablePhoto; ?> <?php echo $requiredPhoto; ?>>
@@ -286,9 +286,9 @@ try {
                                         <input type="hidden" name="oldPhoto" id="oldPhoto" value="<?php echo $updateSchool['photo'] ?>">
                                     </p>
 
-                                    
-                                        <hr class="dropdown-divider">
-                                    
+
+                                    <hr class="dropdown-divider">
+
 
                                 </div>
                             </div>
@@ -340,13 +340,13 @@ try {
 
     <!-- JS arquvio selecionado -->
     <script>
-            let inputFile = document.getElementById('photo');
-            let fileNameField = document.getElementById('file-name');
-            inputFile.addEventListener('change', function(event) {
-                let uploadedFileName = event.target.files[0].name;
-                fileNameField.textContent = uploadedFileName;
-            })
-        </script>
+        let inputFile = document.getElementById('photo');
+        let fileNameField = document.getElementById('file-name');
+        inputFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            fileNameField.textContent = uploadedFileName;
+        })
+    </script>
 </body>
 
 </html>
