@@ -3,7 +3,7 @@ include_once('/xampp/htdocs' . '/project/database/connection.php');
 
 $connection = Connection::connection();
             
-$query_sits = "SELECT id, name FROM solicitationCategory ORDER BY id";
+$query_sits = "SELECT id, name FROM solicitationSituations ORDER BY id";
 $result_sits = $connection->prepare($query_sits);
 $result_sits->execute();
 
