@@ -281,15 +281,13 @@
     justify-content: flex-end;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 20px;
 }
 
 .div-list-subjects-course{
     padding-left: 20px;
     padding-right: 20px;
     /* padding-top: 10px; */
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 
 .photoSchools{
