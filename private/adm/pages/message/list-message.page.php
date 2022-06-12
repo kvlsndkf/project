@@ -282,9 +282,16 @@ try {
                 <p class="contato-message normal-14-medium-p">
                   Mensagem
                 </p>
-                <p class="prof-text message-text school-name normal-14-bold-p">
+                <p class="prof-text line-clamp-4 message-text school-name normal-14-bold-p" id="messageText">
                   <?php echo $row->message; ?>
                 </p>
+                
+                <br>
+
+                <button class="read-btn normal-14-bold-p" onclick="document.querySelector('#messageText').classList.remove('line-clamp-4')">Ler mais...</button>
+
+                <button class="read-btn normal-14-bold-p" onclick="document.querySelector('#messageText').classList.add('line-clamp-4')">Ler menos...</button>
+
     
                 <?php $styleButton = $row->status == "Nova" ? '' : 'd-none'; ?>
                 <form action="./controller/read-message.controller.php?messageID=<?php echo $row->id; ?>" class="<?php echo $styleButton; ?>" method="POST">
@@ -335,7 +342,7 @@ try {
                 <p class="contato-message normal-14-medium-p">
                   Mensagem
                 </p>
-                <p class="prof-text message-text school-name normal-14-bold-p">
+                <p class="prof-text message-text line-clamp-4 school-name normal-14-bold-p" id="messageText2">
                   <?php echo $row->message; ?>
                 </p>
 
@@ -367,6 +374,21 @@ try {
         maximumItems: 8,
         treshold: 1,
       });
+    </script>
+
+    <!-- JS Read More Text -->
+    <script>
+
+      var message = document.querySelectorAll('#messageText, #messageText2');
+
+      if (message.offsetHeight < message.scrollHeight ||
+          message.offsetWidth < message.scrollWidth) {
+          // your element has overflow and truncated
+          // show read more / read less button
+      } else {
+          // your element doesn't overflow (not truncated)
+      }
+
     </script>
 
     <!-- MDB -->

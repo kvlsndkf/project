@@ -325,6 +325,22 @@
     max-width: 460px;
 }
 
+.line-clamp-4{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* truncate to 4 lines */
+    -webkit-line-clamp: 2;
+  }
+
+  .read-btn{
+    border: none;
+    background-color: var(--white);
+    color: var(--primary);
+    text-decoration: underline;
+    font-weight: 400;
+  }
+
 .sidebar-button-a{
     cursor: pointer;
 }
