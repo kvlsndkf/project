@@ -56,11 +56,11 @@ try {
         <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
         <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
         <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
-        <link rel="stylesheet" href="../../../../style/modal-about.style.css">
         <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
         <link rel="stylesheet" href="../register.styles.css">
         <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
         <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
+        <link rel="stylesheet" href="../../../../style/modal-about.style.css">
 
 
     </head>

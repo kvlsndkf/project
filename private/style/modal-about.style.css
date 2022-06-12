@@ -150,7 +150,7 @@
 
 .about-school-text{
     word-wrap: break-word;
-    word-break: break-all
+    /* word-break: break-all; */
 }
 
 .school-links{
@@ -196,6 +196,11 @@
     flex-direction: column-reverse;
 }
 
+.div-teacher-photo{
+    display: flex;
+    flex-direction: column;
+}
+
 .div-teachers-list{
     display: flex;
     flex-direction: row;
@@ -206,9 +211,10 @@
 
 }
 .img-teachers-list{
-    height: 32px;
-    width: 32px;
-    border-radius: 32px;
+    max-width: 100%;
+    max-height: 100%;
+    /* border-radius: 5px; */
+    /* background-color: var(--gray4); */
 }
 
 .div-text-teachers-list{
@@ -231,6 +237,180 @@
 .hr-teachers-list{
     color: var(--gray3);
     border: 1px solid var(--gray3);
+    /* margin-bottom: 0; */
+}
+
+.about-course-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-course-header-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.about-course-name{
+    font-weight: 400;
+    color: var(--white);
+    margin-left: 5px;
+}
+
+.div-school-list{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.schools{
+    margin: 0;
+}
+
+.div-list-school{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: flex-end;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.div-list-subjects-course{
+    padding-left: 20px;
+    padding-right: 20px;
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px; */
+}
+
+.photoSchools{
+    margin-right: 15px;
+}
+
+.div-teachers-photo{
+    height: 64px;
+    width: 128px;
+    border-radius: 5px;
+    background-color: var(--gray3);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .nav-link{
+    height: 32px;
+    border-radius: 5px 5px 0 0;
+    padding-top: 10px;
+} */
+
+/* .nav-link.active{
+    height: 32px;
+    border-radius: 5px 5px 0 0;
+    padding-top: 5px;
+} */
+
+.tab-item-text{
+    margin-top: -13px;
+    box-shadow: none;
+}
+
+.page-link-modal{
+    border: 1px solid #2F3136;
+    background-color: #40444B;
+    color: white;
+    text-decoration: none;
+}
+
+.page-link-modal:hover{
+    border: 1px solid #40444B;
+    background-color: var(--primary);
+    transition: .5s;
+}
+
+.page-link-disabled{
+    color: var(--gray1);
+    background-color: var(--gray2);
+}
+
+.page-link-disabled:hover{
+    background-color: #40444B;
+    color: #2F3136;
+}
+
+.nav-tabs .nav-link{
+    text-transform: none;
+    height: 32px;
+    border-radius: 5px 5px 0 0;
+}
+
+.nav-tabs .nav-link:hover{
+    background-color: var(--primary);
+    transition: .5s;
+}
+
+
+.pagination-last{
+    border-radius: 8px 0 0 8px;
+}
+
+.pagination-next{
+    border-radius:  0 8px 8px 0;
+}
+
+
+/*
+.pagination-page-modal{
+    height: 58px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.pagination-page-modal:hover, .pagination-last-modal:hover, .pagination-next-modal:hover{
+    color: var(--bg-modal);
+    background-color: var(--primary);
+    border: none;
+    outline: none;
+}
+
+.pagination-page-modal, .pagination-last-modal, .pagination-next-modal{
+    outline: 1px solid #2F3136;
+    border: none;
+    background-color: var(--bg-modal);
+    color: var(--gray7);
+    margin: 1px;
+}
+
+.pagination-next-modal{
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.page-item-modal{
+    background-color: var(--bg-modal);
+} */
+
+@media (max-width: 410px){
+    .nav-tabs{
+        justify-content: center;
+    }
+    .item-tab{
+        /* width: 75px; */
+    }
+    .tab-item-text{
+        /* margin-left: -10px; */
+    }
 }
 
 @media (max-width: 280px){
