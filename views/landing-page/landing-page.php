@@ -251,7 +251,7 @@
 
         <label for="exampleFormControlTextarea1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe sua crítica/avaliação</label>
         <div id="contentTextArea">
-          <textarea  name="message" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" required  onclick="colorDiv()"  maxlength="240" ></textarea>
+          <textarea  name="message" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" required  onclick="colorDiv()" minlength="15"  maxlength="240" ></textarea>
           <div id="counter-container" class="counter-container">
             <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">240</span>
             </div>
