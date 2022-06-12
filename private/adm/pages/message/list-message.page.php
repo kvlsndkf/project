@@ -401,9 +401,16 @@ try {
                       var readMoreRead = document.getElementById('readMore-readMessages-<?php echo $row->id; ?>');
                       var readLessRead = document.getElementById('readLess-readMessages-<?php echo $row->id; ?>');
 
-                      // Se ele estiver com o ..., precisa ter o "ler mais"
-                      if (messageRead.classList.contains("line-clamp-2")) {
-                        readMoreRead.style.display = "inline";
+                      if(messageRead.scrollHeight > messageRead.offsetHeight){
+
+                        // Se ele estiver com o ..., precisa ter o "ler mais"
+                        if (messageRead.classList.contains("line-clamp-2")) {
+                          readMoreRead.style.display = "inline";
+                          readLessRead.style.display = "none";
+                        }
+
+                      }
+                      else{
                         readLessRead.style.display = "none";
                       }
 
