@@ -108,14 +108,14 @@ try {
                     </div>
                     <p>
                         <label class="normal-14-medium-p nome-professor">
-                            Nome Etec
+                            Nome Etec<span style="color: var(--red);">*</span>
                         </label>
                         <input type="text" name="updateName" class="normal-12-regular-tinyinput input-text" id="updateName" autocomplete="off" required value="<?php echo $updateSchool['name'] ?>" minlength="10" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$">
                     </p>
 
-                    <div class="etec-location-label">
-                        <p class="normal-14-medium-p etec-location-label">
-                            A Etec fica localizada dentro da cidade de São Paulo?
+<div class="etec-location-label">
+                    <p class="normal-14-medium-p etec-location-label">
+                            A Etec fica localizada dentro da cidade de São Paulo?<span style="color: var(--red);">*</span>
                         </p>
                     </div>
                     <p>
@@ -184,7 +184,7 @@ try {
                                 <div class="accordion-body" style="background-color: var(--bg-modal);">
 
                                     <p>
-                                        <label class="normal-14-medium-p">Selecione os professores a que ela pertence</label>
+                                        <label class="normal-14-medium-p">Selecione os professores a que ela pertence<span style="color: var(--red);">*</span></label>
                                     </p>
                                     <p>
                                         <?php $disableSelectTeachers = $updateSchool['have_account'] === "Com conta" ? '' : 'disabled'; ?>

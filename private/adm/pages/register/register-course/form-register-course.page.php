@@ -122,12 +122,12 @@ try {
                         </div>
 
                         <label class="normal-14-medium-p nome-professor">
-                            Nome
+                            Nome<span style="color: var(--red);">*</span>
                         </label>
                         <input type="text" name="name" class="normal-12-regular-tinyinput input-text" id="name" style="margin-bottom: 15px; max-width: 100%" placeholder="Digite o nome do curso" required autocomplete="off" autofocus minlength="5" pattern="\s*\S+.*">
 
 
-                        <label class="normal-14-medium-p nome-professor">Selecione as Etec's a que ele pertence</label>
+                        <label class="normal-14-medium-p nome-professor">Selecione as Etec's a que ele pertence<span style="color: var(--red);">*</span></label>
 
 
                         <p>
@@ -140,7 +140,7 @@ try {
                         </p>
 
 
-                        <label class="normal-14-medium-p nome-professor">Selecione os professores que lecionam este curso</label>
+                        <label class="normal-14-medium-p nome-professor">Selecione os professores que lecionam este curso<span style="color: var(--red);">*</span></label>
 
 
                         <p>
@@ -153,7 +153,7 @@ try {
                         </p>
 
 
-                        <label class="normal-14-medium-p nome-professor">Selecione as matérias deste curso</label>
+                        <label class="normal-14-medium-p nome-professor">Selecione as matérias deste curso<span style="color: var(--red);">*</span></label>
 
 
                         <p>
@@ -168,7 +168,7 @@ try {
 
                         <div>
                             <p class="normal-14-medium-p nome-professor">
-                                Sobre
+                                Sobre<span style="color: var(--red);">*</span>
                             </p>
 
                             <div id="contentTextArea">
@@ -182,7 +182,7 @@ try {
                         <hr>
 
                         <p>
-                            <label class="normal-14-medium-p nome-professor">Foto</label>
+                            <label class="normal-14-medium-p nome-professor">Foto<span style="color: var(--red);">*</span></label>
                             <input type="file" name="photo" class="photo" id="photo" required>
                             <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
 

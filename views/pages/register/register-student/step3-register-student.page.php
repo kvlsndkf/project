@@ -11,13 +11,23 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Identificação | Heelp!</title>
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="../../../styles/style.global.css">
+    <link rel="stylesheet" href="../../../styles/colors.style.css">
+    <link rel="stylesheet" href="../../../styles/font-format.style.css">
+    <link rel="stylesheet" href="../../../styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../styles/input.style.css">
+    <link rel="stylesheet" href="../../../styles/button.style.css">
+    <link rel="stylesheet" href="./register-student.style.css">
+    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 </head>
 
 <body>
+
     <!-- Mensagem de erro ⬇️ -->
     <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
 
@@ -62,29 +72,46 @@ session_start();
     <?php unset($_SESSION['statusAlert']);
     } ?>
 
-    <a href="./step2-register-student.page.php">Voltar</a>
-    <br>
-    <br>
-    <label for="">Etapa 3/4</label>
-    <br>
-    <br>
-    <form action="./controller/step3-cookie.controller.php" method="post" enctype="multipart/form-data">
-        <label>Foto</label>
-        <br>
-        <?php
-            $photoCookie =  !is_null(Cookie::reader('photoUser')) ? Cookie::reader('photoUser') : '';
-            $photoRequired = !empty($photoCookie) ? "" : 'required';
-        ?>
+    <div class="h-100 w-100 d-flex align-items-center justify-content-center">
+        <div class="bg-modal-gray align-self-center my-auto form-base-plump">
+            <div class="d-flex justify-content-between">
+                <a href="./step2-register-student.page.php"><img src="../../../../private/adm/images/components/arrow.svg" alt="Seta para voltar" class="mb-2"></a>
 
-        <div id="pathCookie"></div>
-        <img src="#" alt="" id="imageFile">
 
-        <input type="hidden" name="oldPhoto" class="w-100" value="<?php echo $photoCookie; ?>">
-        <input type="file" name="photo" id="photo" <?php echo $photoRequired; ?> onchange="cookiePhoto(this)">
-        <br>
-        <br>
-        <input type="submit" value="Continuar" name="step3">
-    </form>
+                <label class="normal-14-bold-p">Etapa 3/4</label>
+            </div>
+            <div class="text-center form-student-titles">
+                <span class="normal-22-black-title-1 gray-title">Bora lá...</span>
+                <br />
+                <span class="nord-32-black-display">Criar uma conta</span>
+            </div>
+            <form action="./controller/step3-cookie.controller.php" method="post" enctype="multipart/form-data">
+                <label class="normal-18-bold-title-2">Foto<span style="color: var(--red);">*</span></label>
+                <br>
+                <?php
+                $photoCookie =  !is_null(Cookie::reader('photoUser')) ? Cookie::reader('photoUser') : '';
+                $photoRequired = !empty($photoCookie) ? "" : 'required';
+                ?>
+                <div id="img-container">
+                    <div id="pathCookie" class="current-photo"></div>
+                </div>
+                <div id="another-img-container">
+                    <img src="#" alt="" id="imageFile">
+                </div>
+
+
+                <input type="hidden" name="oldPhoto" value="<?php echo $photoCookie; ?>">
+                <input type="file" class="photo" name="photo" id="photo" <?php echo $photoRequired; ?> onchange="cookiePhoto(this)">
+
+                <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
+
+                <span id="step3" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                <br>
+                <input type="submit" class="register normal-14-bold-p" value="Continuar" name="step3" onclick="GFG_Fun()">
+            </form>
+        </div>
+    </div>
+
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -122,6 +149,14 @@ session_start();
                 divPhoto.style.display = "none";
                 imageFile.style.display = "block";
 
+                const imgContainer = document.getElementById("img-container");
+                imgContainer.className = "img-container";
+
+                const anotherImgContainer = document.getElementById("another-img-container");
+                imgContainer.classList = "d-none";
+
+                anotherImgContainer.className = "img-container";
+
                 imageFile.src = URL.createObjectURL(file);
                 return;
             }
@@ -129,10 +164,13 @@ session_start();
             console.log("com cookie", file, pathCookie);
 
             divPhoto.style.display = "block";
+
             imageFile.style.display = "none";
             const image = document.createElement("img");
-            image.className = "";
-
+            
+            imageFile.className = "current-photo";
+            image.className = "current-photo";
+            divPhoto.className = "img-container";
             image.src = path;
 
             divPhoto.appendChild(image);
@@ -140,8 +178,32 @@ session_start();
 
 
         (function() {
-           cookiePhoto();
+            cookiePhoto();
         }());
+    </script>
+
+    <!-- JS arquvio selecionado -->
+    <script type="text/javascript">
+        let inputFile = document.getElementById('photo');
+        let fileNameField = document.getElementById('step3');
+        inputFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            fileNameField.textContent = uploadedFileName;
+        });
+
+        var down = document.getElementById('step3');
+        var file = document.getElementById("photo");
+        var uploadedFileName = event.target.files[0].name;
+
+
+        function GFG_Fun() {
+            if (file.files.length == 0) {
+                down.style.color = "#ED4245";
+                down.innerText = "SELECIONE UM ARQUIVO!";
+            } else {
+                true
+            }
+        }
     </script>
 </body>
 
