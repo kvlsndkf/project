@@ -1,7 +1,7 @@
 <?php
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
-
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 class Answer
 {
     //attributes
@@ -9,6 +9,7 @@ class Answer
     public int $xp;
     public int $idQuestion;
     public int $creatorAnswer;
+    public int $creatorAvaliation;
     public float $avaliation;
     public int $likeAnswer;
     public string $answer;
@@ -18,6 +19,7 @@ class Answer
     public string $photo = "";
     public string $document = "";
     public string $nameDocument = "";
+    public int $stars = 0;
 
     //getters and setters
     public function getId()
@@ -162,12 +164,10 @@ class Answer
         //xp for creator answer
         $xpAnswer = $creatorAnswerID == $creatorQuestion[0]['student_id'] || !$checkPerson == false ? 0 : $xpQuestion[0]['xp'];
 
-        // if($creatorAnswerID == $creatorQuestion[0]['student_id'] || !$checkPerson == false){
-            
         // }
 
         try {
-            $stmt = $connection->prepare("INSERT INTO answers(answer, photo, document, document_name, avaliation, like_answer, question_id, answer_creator_id, created_at)
+            $stmt = $connection->prepare("INSERT INTO answers(answer, photo, document, document_name, avg_avaliation, like_answer, question_id, answer_creator_id, created_at)
                                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
 
             $stmt->bindValue(1, $answer->getAnswer());
@@ -185,7 +185,7 @@ class Answer
 
         try {
             //adding the xp
-            $student = new Student();
+            $student = new StudentMethods();
             $latestXpStudent = $student->getLatestXpStudent($creatorAnswerID);
             $totalXp = $xpAnswer + $latestXpStudent[0]['xp'];
 
@@ -224,13 +224,13 @@ class Answer
      * @method listSchool() lists the schools by 
      * @param string $search 
      */
-    public function listAnswer(int $idQuestion)
+    public function listAnswer(int $idQuestion, $studentId)
     {
         $connection = Connection::connection();
 
         try {
             $stmt = $connection->prepare("SELECT answ.id, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
-                                        school.name AS 'school', answ.answer, answ.photo AS 'imageAnswer', answ.avaliation,
+                                        school.name AS 'school', answ.answer, answ.photo AS 'imageAnswer', answ.avg_avaliation,
                                         answ.like_answer, answ.document, answ.document_name, answ.created_at FROM students stu
                                             
                                         INNER JOIN schoolshasstudents ss
@@ -251,13 +251,13 @@ class Answer
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $this->buildAnswerList($result);
+            return $this->buildAnswerList($result, $idQuestion, $studentId);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
 
-    private function buildAnswerList($result)
+    private function buildAnswerList($result, $questionID, $studentId)
     {
         $answers = [];
 
@@ -267,6 +267,47 @@ class Answer
 
             array_push($answers, $answer);
         }
+
+        $listAnswerAvaliation = $this->listAnswerAvaliation($questionID, $studentId[0]['id']);
+        $countAnswerAvaliation = $this->countAnswerAvaliation();
+        $countAnswerLike = $this->countAnswerLike();
+
+        for ($i = 0; $i < count($answers); $i++) {
+            $answer = $answers[$i];
+
+            for ($j = 0; $j < count($listAnswerAvaliation); $j++) {
+                $avaliation = $listAnswerAvaliation[$j];
+
+                if ($answer->id == $avaliation['answer_id']) {
+                    $answer->stars = $avaliation['avaliation'];
+                }
+            }
+        }
+
+        for ($i = 0; $i < count($answers); $i++) {
+            $answer = $answers[$i];
+
+            for ($j = 0; $j < count($countAnswerAvaliation); $j++) {
+                $avaliationTotal = $countAnswerAvaliation[$j];
+
+                if ($answer->id == $avaliationTotal['answer_id']) {
+                    $answer->totalAvaliation = $avaliationTotal['total'];
+                }
+            }
+        }
+
+        for ($i = 0; $i < count($answers); $i++) {
+            $answer = $answers[$i];
+
+            for ($j = 0; $j < count($countAnswerLike); $j++) {
+                $likeTotal = $countAnswerLike[$j];
+
+                if ($answer->id == $likeTotal['answer_id']) {
+                    $answer->totalLike = $likeTotal['totalLike'];
+                }
+            }
+        }
+
         return $answers;
     }
 
@@ -280,8 +321,7 @@ class Answer
         $answer->module = $row['module'];
         $answer->school = $row['school'];
         $answer->answer = $row['answer'];
-        $answer->avaliation = $row['avaliation'];
-        $answer->like = $row['like_answer'];
+        $answer->avaliation = $row['avg_avaliation'];
         $answer->image = $row['imageAnswer'];
         $answer->document = $row['document'];
         $answer->documentName = $row['document_name'];
@@ -339,6 +379,257 @@ class Answer
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getAnswerCreatorById(int $answerID, int $questionID)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT answer_creator_id FROM answers 
+                                        WHERE id = '$answerID' 
+                                        AND question_id = '$questionID'
+                                    ");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+
+    private function checkAvaliationCreator(int $creatorAvaliationID, int $answerID, int $questionId)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT person_avaliation_id, question_id, answer_id FROM answershasavaliations 
+                                        WHERE person_avaliation_id = $creatorAvaliationID
+                                        AND question_id = $questionId
+                                        AND answer_id = $answerID
+                                    ");
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function registerAvaliation(Answer $avaliation, $questionID, $answerID, $personAvaliationID)
+    {
+        $connection = Connection::connection();
+
+        $checkAvaliator = $this->checkAvaliationCreator($personAvaliationID, $answerID, $questionID);
+
+        if ($checkAvaliator == false) {
+            try {
+                $stmt = $connection->prepare("INSERT INTO answershasavaliations(avaliation, answer_id, question_id, person_avaliation_id, created_at)
+                                                VALUES (?, ?, ?, ?, NOW())");
+
+                $stmt->bindValue(1, $avaliation->getAvaliation());
+                $stmt->bindValue(2, $answerID);
+                $stmt->bindValue(3, $questionID);
+                $stmt->bindValue(4, $personAvaliationID);
+                $stmt->execute();
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        } else {
+            try {
+                $stmt = $connection->prepare("UPDATE answershasavaliations SET avaliation = ?, updated_at = NOW()
+                                                WHERE $answerID");
+
+                $stmt->bindValue(1, $avaliation->getAvaliation());
+
+                $stmt->execute();
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        try {
+            $getAvaliations = $connection->prepare("SELECT TRUNCATE(AVG(avaliation), 2) AS 'avaliation' FROM answershasavaliations 
+                                                    WHERE answer_id = '$answerID' 
+                                                    AND question_id = '$questionID'
+                                                    ");
+
+            $getAvaliations->execute();
+            $result = $getAvaliations->fetchAll();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
+            $avaliationInsert = $connection->prepare("UPDATE answers SET avg_avaliation = ?
+                                            WHERE id = $answerID
+                                            AND
+                                            question_id = $questionID 
+                                        ");
+
+            $avaliationInsert->bindValue(1, $result[0]['avaliation']);
+            $avaliationInsert->execute();
+
+            // header('Location: /project/private/student/pages/detail-question/detail-question.page.php?idQuestion=' . $questionID);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function listAnswerAvaliation($questionID, $personAvaliationID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT avaliation, answer_id FROM answershasavaliations
+                                            WHERE question_id = $questionID
+                                            AND person_avaliation_id = $personAvaliationID
+                                            ");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function countAnswerAvaliation()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT COUNT(avaliation) AS total, answer_id FROM answershasavaliations
+                                            GROUP BY answer_id
+                                            ");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function countAnswers(int $idQuestion)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM answers
+                                            WHERE question_id = $idQuestion
+                                        ");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return "Respondida " . $result[0]['total'];
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function deleteAnswer(int $answerID, string $pathPhoto = "", string $pathDocument = "", int $questionID, int $studentID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $student = new StudentMethods();
+            $checkXP = $student->getLatestXpStudent($studentID);
+
+            $currentXp = $checkXP[0]['xp'] - 50;
+
+            $avaliationDelete = $connection->prepare("UPDATE students SET xp = ?
+                                            WHERE id = $studentID
+                                        ");
+
+            $avaliationDelete->bindValue(1, $currentXp);
+            $avaliationDelete->execute();
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
+            unlink("/xampp/htdocs" . $pathPhoto);
+            unlink("/xampp/htdocs" . $pathDocument);
+
+            $stmt = $connection->prepare("DELETE FROM answers WHERE id= '$answerID'");
+
+            $stmt->execute();
+
+            $_SESSION['statusPositive'] = "Resposta apagada com sucesso.";
+            header('Location: /project/private/student/pages/detail-question/detail-question.page.php?idQuestion=' . $questionID);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        
+    }
+
+    public function checkLikeCreator(int $questionID, int $answerID, int $personLikeID)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT person_liked_id, question_id, answer_id FROM answershaslikes 
+                                        WHERE person_liked_id = $personLikeID
+                                        AND question_id = $questionID
+                                        AND answer_id = $answerID
+                                    ");
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function registerLike(int $questionID, int $answerID, int $personLikeID)
+    {
+        $connection = Connection::connection();
+
+        $checkLiked = $this->checkLikeCreator($questionID, $answerID, $personLikeID);
+
+        try {
+
+            if ($checkLiked == false) {
+                try {
+                    $stmt = $connection->prepare("INSERT INTO answershaslikes(answer_id, question_id, person_liked_id, created_at)
+                                                VALUES (?, ?, ?, NOW())");
+
+                    $stmt->bindValue(1, $answerID);
+                    $stmt->bindValue(2, $questionID);
+                    $stmt->bindValue(3, $personLikeID);
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+            } else {
+                try {
+                    $stmt = $connection->prepare("DELETE FROM answershaslikes
+                                                    WHERE $personLikeID");
+
+                    $stmt->execute();
+
+                    return header('Location: /project/private/student/pages/detail-question/detail-question.page.php?idQuestion=' . $questionID);
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function countAnswerLike()
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT COUNT(id) AS totalLike, answer_id FROM answershaslikes
+                                            GROUP BY answer_id
+                                            ");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
 }

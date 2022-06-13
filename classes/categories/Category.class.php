@@ -67,4 +67,38 @@ class Category
 
         return $categories;
     }
+
+    public function getNameCategoryByID(int $id)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT name FROM categories 
+                                            WHERE id = $id
+                                        ");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getListCategoryWithWhere(int $id)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name FROM categories 
+                                            WHERE NOT id = $id
+                                        ");
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }

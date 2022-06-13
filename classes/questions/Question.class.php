@@ -358,4 +358,52 @@ class Question
             echo $e->getMessage();
         }
     }
+
+    public function hasAnswers(int $questionID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id FROM answers
+                                            WHERE question_id = $questionID
+                                        ");
+
+            $stmt->execute();
+
+            return $stmt->rowCount() > 0;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function deleteQuestion(int $questionID, string $pathPhoto, string $pathDocument)
+    {
+        $connection = Connection::connection();
+
+        try {
+            unlink("/xampp/htdocs" . $pathPhoto);
+            unlink("/xampp/htdocs" . $pathDocument);
+
+            $stmt = $connection->prepare("DELETE FROM questions WHERE id= '$questionID'");
+
+            $stmt->execute();
+
+            $_SESSION['statusPositive'] = "Questão apagada com sucesso.";
+            header('Location: /project/private/student/pages/home/home.page.php');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function searchQuestionForUpdate(int $id): array
+    {
+
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT * FROM questions WHERE id = $id");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
 }
