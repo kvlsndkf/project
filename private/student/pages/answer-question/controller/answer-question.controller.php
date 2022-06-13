@@ -1,9 +1,9 @@
 <?php
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
 require_once('/xampp/htdocs' . '/project/classes/answers/Answer.class.php');
-require_once('/xampp/htdocs' . '/project/classes/users/Student.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
-
+session_start();
 
 if (isset($_POST['answer'])) {
     $answer = new Answer();
@@ -13,7 +13,10 @@ if (isset($_POST['answer'])) {
 
     //id creator answer
     $userID = $_SESSION['idUser'];
-    $student = new Student();
+
+    echo "oi";
+
+    $student = new StudentMethods();
     $creatorAnswerID = $student->getStudentByUserID($userID);
 
     $textAnswer = $_POST['textAnswer'];
