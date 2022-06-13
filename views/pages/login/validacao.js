@@ -88,14 +88,15 @@ function openEyeL() {
 
 function showPassword() {
     password.setAttribute("type", "text");
-    inputTypePassword.setAttribute("type", "text");
-    eye.setAttribute("src", "project/views/pages/register/image/componentes/hide-pass.svg");
+
+    eye.setAttribute("src", "/project/views/pages/register/image/components/hide-pass.svg");
+    console.log(eye)
   }
 
 
 function hidePassword() {
     password.setAttribute("type", "password");
-    inputTypePassword.setAttribute("type", "password");
+
     eye.setAttribute("src", "/project/views/pages/register/image/components/show-pass.svg");
 }
 
