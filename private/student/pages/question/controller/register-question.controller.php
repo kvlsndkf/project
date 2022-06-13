@@ -3,7 +3,9 @@ require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Subject.class.php');
 require_once('/xampp/htdocs' . '/project/classes/categories/Category.class.php');
-require_once('/xampp/htdocs' . '/project/classes/users/Student.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+
+session_start();
 
 if (isset($_POST['question'])) {
     $course = new Course();
@@ -23,7 +25,7 @@ if (isset($_POST['question'])) {
 
     $userID = $_SESSION['idUser'];
 
-    $student = new Student();
+    $student = new StudentMethods();
     $studentID = $student->getStudentByUserID($userID);
 
     if (!isset($course)) {
