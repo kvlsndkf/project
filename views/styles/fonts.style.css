@@ -154,3 +154,10 @@
     line-height: var(--lh-bigger);
 }
 
+.nord-32-black-display{
+    font-style: normal;
+    font-weight: var(--black);
+    line-height: var(--lh-bigger);
+    font-family: var(--gintoNord-bold);
+    font-size: 32px;
+}

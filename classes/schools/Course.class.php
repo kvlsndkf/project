@@ -414,10 +414,22 @@ class Course
     {
         $connection = Connection::connection();
 
-        $stmt = $connection->prepare("SELECT s.id, s.name, s.photo FROM schoolsHasCourses sc
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+
+        //Setar a quantidade de registros por página
+        $limit_result = 8;
+
+        //Calcular o inicio da vizualização
+        $start = ($limit_result * $page) - $limit_result;
+
+
+        $stmt = $connection->prepare("SELECT s.id, s.name, s.address FROM schoolsHasCourses sc
                                          INNER JOIN schools s
                                          ON s.id = sc.school_id
                                          WHERE sc.course_id = $id
+                                         LIMIT $start, $limit_result
                                      ");
 
         $stmt->execute();
@@ -442,6 +454,7 @@ class Course
                                         INNER JOIN schools s
                                         ON s.id = sc.school_id
                                         WHERE sc.course_id = $idCourse)
+                                        AND s.have_account = 'Com conta'
                                         ");
 
         $stmt->execute();
@@ -459,10 +472,21 @@ class Course
     {
         $connection = Connection::connection();
 
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+
+        //Setar a quantidade de registros por página
+        $limit_result = 8;
+
+        //Calcular o inicio da vizualização
+        $start = ($limit_result * $page) - $limit_result;
+
         $stmt = $connection->prepare("SELECT t.id, t.name, t.photo FROM courseshasteachers st
                                          INNER JOIN teachers t
                                          ON t.id = st.teacher_id
                                          WHERE st.course_id = $id
+                                         LIMIT $start, $limit_result
                                      ");
 
         $stmt->execute();
@@ -504,10 +528,21 @@ class Course
     {
         $connection = Connection::connection();
 
+        //Receber o numero de página
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
+
+        //Setar a quantidade de registros por página
+        $limit_result = 8;
+
+        //Calcular o inicio da vizualização
+        $start = ($limit_result * $page) - $limit_result;
+
         $stmt = $connection->prepare("SELECT s.id, s.name FROM courseshassubjects cs
                                          INNER JOIN subjects s
                                          ON s.id = cs.subject_id
                                          WHERE cs.course_id = $id
+                                         LIMIT $start, $limit_result
                                      ");
 
         $stmt->execute();

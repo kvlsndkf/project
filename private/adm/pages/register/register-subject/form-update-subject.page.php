@@ -51,8 +51,8 @@ try {
 
                     <form action="./controller/update-subject.controller.php?updateSubject=<?php echo $updateSubject['id'] ?>" method="post">
                         <p class="normal-14-medium-p name">
-                            Nome matéria
-                            <input type="text" name="updateName" class="input-text normal-12-regular-tinyinput input-name-module" id="updateName" required autofocus autocomplete="off" value="<?php echo $updateSubject['name'] ?>">
+                            Nome matéria<span style="color: var(--red);">*</span>
+                            <input type="text" name="updateName" class="input-text normal-12-regular-tinyinput input-name-module" id="updateName" minlength="5" required autofocus autocomplete="off" value="<?php echo $updateSubject['name'] ?>">
                         </p>
 
                         <p>
