@@ -257,3 +257,30 @@ CREATE TABLE answers(
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
 )
+
+CREATE TABLE answersHasAvaliations(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , avaliation INT NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , answer_id INT NOT NULL
+    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
+    , question_id INT NOT NULL
+    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    , person_avaliation_id INT NOT NULL
+    , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
+)
+
+CREATE TABLE answersHasLikes(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , answer_id INT NOT NULL
+    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
+    , question_id INT NOT NULL
+    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    , person_liked_id INT NOT NULL
+    , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
+)
