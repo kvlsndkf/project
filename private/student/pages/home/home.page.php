@@ -1,10 +1,17 @@
 <?php
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
+require_once('/xampp/htdocs' . '/project/classes/answers/Answer.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
 try {
     $question = new Question();
     $listQuestions = $question->listQuestion();
+
+    $idUser = $_SESSION['idUser'];
+
+    $student = new StudentMethods();
+    $studentId = $student->getStudentByUserID($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -98,6 +105,21 @@ try {
             <span onclick="copyLink(<?php echo $row->id; ?>)" id="spanLink-<?php echo $row->id; ?>">Copiar link</span>
         </p>
 
+        <?php
+        $creatorQuestion = $question->getCreatorQuestionById($row->id);
+        $creatorQuestionID = $creatorQuestion[0]['student_id'];
+        $studentID = $studentId[0]['id'];
+        $hasAnswers = $question->hasAnswers($row->id);
+
+        $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
+        $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
+        ?>
+        <p class="<?php echo $styleDeleteQuestion; ?> <?php echo $styleDeleteDisplay;?>">
+            <a href="../question/controller/delete-question.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
+                Excluir
+            </a>
+        </p>
+
         <p>
             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
         </p>
@@ -140,6 +162,15 @@ try {
         </p>
 
         <p>
+            <?php
+            $answer = new Answer();
+            $totalAnswersOfQuestion = $answer->countAnswers($row->id);
+
+            echo $totalAnswersOfQuestion;
+            ?>
+        </p>
+
+        <p>
             <a href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
                 <button>Dar um help</button>
             </a>
@@ -155,6 +186,9 @@ try {
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- JS Modal Excluir ⬇️ -->
+    <script src="../../js/delete-question.js"></script>
 
     <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

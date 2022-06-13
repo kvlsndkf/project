@@ -2,14 +2,22 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
 require_once('/xampp/htdocs' . '/project/classes/answers/Answer.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
 try {
     $id = $_GET['idQuestion'];
     $question = new Question();
     $listDetailsQuestions = $question->listDetailsQuestion($id);
+    $creatorQuestion = $question->getCreatorQuestionById($id);
+    $QuestionHasAnswers = $question->hasAnswers($id);
+
+    $idUser = $_SESSION['idUser'];
+
+    $student = new StudentMethods();
+    $studentId = $student->getStudentByUserID($idUser);
 
     $answer = new Answer();
-    $listAnswers = $answer->listAnswer($id);
+    $listAnswers = $answer->listAnswer($id, $studentId);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -36,6 +44,9 @@ try {
 
     <!-- CSS Avaliation -->
     <link rel="stylesheet" href="./style/avaliation.style.css">
+
+    <!-- CSS Like -->
+    <link rel="stylesheet" href="./style/like.style.css">
 </head>
 
 <body>
@@ -59,6 +70,28 @@ try {
             </div>
         </div>
     <?php unset($_SESSION['statusPositive']);
+    } ?>
+
+    <!-- Mensagem de erro ⬇️ -->
+    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+        </svg>
+
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <strong>Ops...</strong>
+                <?php echo $_SESSION['statusNegative']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php unset($_SESSION['statusNegative']);
     } ?>
 
     <p>
@@ -92,6 +125,19 @@ try {
     <p>
         <a href="<?php echo $listDetailsQuestions->linkQuestion; ?>" class="d-none" id="linkQuestion">Link</a>
         <span onclick="copyLink()" id="spanLink">Copiar link</span>
+    </p>
+
+    <?php
+    $creatorQuestionID = $creatorQuestion[0]['student_id'];
+    $studentID = $studentId[0]['id'];
+
+    $styleDelete = $creatorQuestionID == $studentID ? '' : 'd-none';
+    $styleDeleteDisplay = $QuestionHasAnswers ? 'd-none' : '';
+    ?>
+    <p class="<?php echo $styleDelete; ?> <?php echo $styleDeleteDisplay; ?>">
+        <a href="../question/controller/delete-question.controller.php?id=<?php echo $listDetailsQuestions->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
+            Excluir
+        </a>
     </p>
 
     <p>
@@ -133,6 +179,14 @@ try {
     </p>
 
     <p>
+        <?php
+        $totalAnswersOfQuestion = $answer->countAnswers($listDetailsQuestions->id);
+
+        echo $totalAnswersOfQuestion;
+        ?>
+    </p>
+
+    <p>
         <a href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
             <button>Dar um help</button>
         </a>
@@ -147,12 +201,28 @@ try {
 
     <hr>
 
-    <?php $styleListAnswers = !empty($listAnswers) ? '' : 'd-none'; ?>
+    <?php $styleListAnswers = !empty($listAnswers) ? '' : 'd-none';
+
+    // echo json_encode($listAnswers);
+    ?>
     <div class="<?php echo $styleListAnswers; ?>">
 
         <!-- Lista de respostas ⬇️ -->
         <?php for ($i = 0; $i < count($listAnswers); $i++) {
             $row = $listAnswers[$i] ?>
+
+            <?php
+            $creatorAnswer = $answer->getAnswerCreatorById($row->id, $id);
+            $creatorAnswerID = $creatorAnswer[0]['answer_creator_id'];
+            $studentID = $studentId[0]['id'];
+
+            $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
+            ?>
+            <p class="<?php echo $styleDeleteAnswer; ?>">
+                <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID;?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
+                    Excluir
+                </a>
+            </p>
 
             <p>
                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
@@ -193,31 +263,80 @@ try {
             </p>
 
             <p>
-                like
-                <?php echo $row->like; ?>
+                total de likes
+
+                <?php
+                $totalLike = !empty($row->totalLike) ? $row->totalLike : 0;
+                echo $totalLike;
+                ?>
             </p>
 
+            <?php
+            $checkLiked = $answer->checkLikeCreator($listDetailsQuestions->id, $row->id, $studentId[0]['id']);
+            $styleLike = $checkLiked == false ? '' : 'heart';
+            ?>
+            <div class="<?php echo $styleLike; ?>" id="like-<?php echo $row->id; ?>" data-like-student="<?php echo $studentId[0]['id']; ?>" data-like-question="<?php echo $listDetailsQuestions->id; ?>" data-like-answer="<?php echo $row->id; ?>" onclick="like(<?php echo $row->id; ?>)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                    <path d="M21.95 40.2 19.3 37.75Q13.1 32 8.55 26.775Q4 21.55 4 15.85Q4 11.35 7.025 8.325Q10.05 5.3 14.5 5.3Q17.05 5.3 19.55 6.525Q22.05 7.75 24 10.55Q26.2 7.75 28.55 6.525Q30.9 5.3 33.5 5.3Q37.95 5.3 40.975 8.325Q44 11.35 44 15.85Q44 21.55 39.45 26.775Q34.9 32 28.7 37.75L26.05 40.2Q25.2 41 24 41Q22.8 41 21.95 40.2Z" />
+                </svg>
+            </div>
+
             <p>
-                avaliações
+                média de avaliações
                 <?php echo $row->avaliation; ?>
             </p>
 
             <p>
-                <div class="avaliacao">
-                    <div class="star-icon ativo" data-icon="1"></div>
-                    <div class="star-icon" data-icon="2"></div>
-                    <div class="star-icon" data-icon="3"></div>
-                    <div class="star-icon" data-icon="4"></div>
-                    <div class="star-icon" data-icon="5"></div>
-                </div>
+                total de avaliações
+
+                <?php
+                $totalAvaliation = !empty($row->totalAvaliation) ? $row->totalAvaliation : 0;
+                echo $totalAvaliation;
+                ?>
             </p>
 
-            <br>
-            <br>
+            <?php $styleEmptyAvaliation = $row->stars === 0 ? '' : 'd-none' ?>
+            <p>
+            <div class="avaliacao <?php echo $styleEmptyAvaliation; ?>">
+                <div class="star-icon ativo" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+            </div>
+            </p>
+
+
+            <?php
+            $styleAvaliation = $row->stars != 0 ? '' : 'd-none';
+
+            $abc = (object) array(
+                $row->stars => 'ativo'
+            );
+
+            $styleStar1 = $row->stars === 1 ? 'ativo' : '';
+            $styleStar2 = $row->stars === 2 ? 'ativo' : '';
+            $styleStar3 = $row->stars === 3 ? 'ativo' : '';
+            $styleStar4 = $row->stars === 4 ? 'ativo' : '';
+            $styleStar5 = $row->stars === 5 ? 'ativo' : '';
+            ?>
+            <p>
+            <div class="avaliacao <?php echo $styleAvaliation; ?>">
+                <div class="star-icon <?php echo $styleStar1; ?>" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon <?php echo $styleStar2; ?>" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon <?php echo $styleStar3; ?>" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon <?php echo $styleStar4; ?>" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+            </div>
+            </p>
+
+
 
             <hr>
         <?php } ?>
     </div>
+
+
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -225,6 +344,9 @@ try {
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- JS Modal Excluir ⬇️ -->
+    <script src="../../js/delete-answer-question.js"></script>
 
     <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -254,21 +376,91 @@ try {
         }
     </script>
 
-<script>
+    <script>
         const stars = document.querySelectorAll('.star-icon');
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', async function(e) {
             var classStar = e.target.classList;
 
-            if(!classStar.contains('ativo')){
-                stars.forEach(function(star){
-                    star.classList.remove('ativo');
+            const answer = e.target.getAttribute('data-answer');
+
+            if (!classStar.contains('ativo')) {
+                stars.forEach(function(star) {
+                    if (star.getAttribute('data-answer') === answer) {
+                        star.classList.remove('ativo');
+                    }
+                });
+                classStar.add('ativo');
+
+                const avaliationStars = e.target.getAttribute('data-icon');
+                const student = e.target.getAttribute('data-student');
+                const question = e.target.getAttribute('data-question');
+
+                const avaliation = {
+                    stars: avaliationStars,
+                    studentId: student,
+                    questionId: question,
+                    answerId: answer
+                }
+
+                const headers = new Headers();
+
+                const formData = new FormData();
+                Object.keys(avaliation).forEach((key) => {
+                    formData.append(key, avaliation[key]);
                 });
 
-                classStar.add('ativo');
-                console.log(e.target.getAttribute('data-icon'));
+                const option = {
+                    method: 'POST',
+                    body: formData
+                }
+
+                const request = new Request('./controller/register-avaliation.controller.php', option);
+
+                await fetch(request);
             }
         });
+    </script>
+
+    <script>
+        async function like(id) {
+            const like = document.getElementById(`like-${id}`);
+
+            var classLike = like.classList;
+
+            if (!classLike.contains('heart')) {
+                like.classList.add('heart');
+            } else {
+                like.classList.remove('heart');
+            }
+
+            const answer = like.getAttribute('data-like-answer');
+            const student = like.getAttribute('data-like-student');
+            const question = like.getAttribute('data-like-question');
+
+            const likeRequest = {
+                studentId: student,
+                questionId: question,
+                answerId: answer
+            }
+
+            const headersLike = new Headers();
+
+            const formDataLike = new FormData();
+            Object.keys(likeRequest).forEach((key) => {
+                formDataLike.append(key, likeRequest[key]);
+            });
+
+            const optionLike = {
+                method: 'POST',
+                body: formDataLike
+            }
+
+            const requestLike = new Request('./controller/register-like.controller.php', optionLike);
+
+            await fetch(requestLike);
+
+        }
     </script>
 </body>
 
