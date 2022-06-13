@@ -23,14 +23,16 @@
   background-color: #050607;
 }
 
+body {
+  height: 200vh;
+}
+
 body nav.sticky {
-  position: fixed;
-  width: 100%;
-  background-color: #1C1125;
-  box-shadow: 0 8px 32px 0 black;
-  z-index: 10000;
-  transition: 0.10s;
-  /* border-radius:  0 0  45px 45px; */
+    position: fixed;
+    width: 100%;
+    background-color: red;
+    box-shadow: 0 8px 32px 0 var(--magenta-light);
+    z-index: 2;
 }
 
 ::-webkit-scrollbar {
@@ -66,16 +68,6 @@ a:hover{
   align-items: center;
 }
 
-/* .menu-left {
-  margin-left: 200px;
-
-}
-
-.menu-right {
-  margin-right: 200px;
-
-} */
-
 .link {
   padding: 8px 16px;
   display: inline-block;
@@ -83,34 +75,6 @@ a:hover{
   transition: .5s ease;
   position: relative;
 }
-
-/* 
-.link::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  -webkit-transform: translate(20%, -50%);
-  transform: translate(20%, -50%);
-  -webkit-transition: .5s ease;
-  transition: .5s ease;
-  background-color: #F5F7F7;
-}
-
-.link:hover {
-  opacity: .8;
-}
-
-.link:hover::after {
-  width:76%;
- 
-}
- */
-
-
 
 .square {
   display: inline-block;
@@ -659,3 +623,60 @@ z-index: auto;
     .ball{display: none;}
     #hud{display: block;}
   }
+
+  /* NAVBAR */
+#background-hero{
+  background-image:url(../../images/backgound-image-hero.svg);
+  background-size: cover; 
+  background-position: center;
+  position: relative;
+}
+
+body nav{
+  transition: 0.6s;
+  position: fixed;
+  z-index: 2;
+}
+
+#header{
+  padding: 30px 0;
+}
+
+a.font-header-hero{
+  color: var(--medium-violet);
+  font-family: var(--font);
+  font-weight: var(--extra-bold);
+  font-size: var(--h6);
+  margin-left: 80px;
+}
+
+
+.logo {
+  height: 40px;
+}
+
+.logo-name {
+  font-family: var(--font);
+  position: relative;
+  font-size: var(--here);
+  font-weight: var(--extra-bold);
+  color: var(--purple);
+  left: 8px;
+}
+
+.logo-box {
+  width: 180px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* CSS EMILLIE */
+
+.logo-cw-navbar {
+  width: 45px;
+}
+
+.nav-item {
+  color: white;
+}
