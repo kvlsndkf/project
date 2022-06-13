@@ -100,8 +100,8 @@ if (isset($_POST['question'])) {
             return header('Location: /project/private/student/pages/question/question.page.php');
         }
 
-        if ($extensionDocument != "pdf" && $extensionDocument != "txt" && $extensionDocument != "doc" && $extensionDocument != "ppt" && $extensionDocument != "xml" && $extensionDocument != "xlsx") {
-            $_SESSION['statusAlert'] = "Tipo de arquivo incorreto. Permitidos: pdf, txt, doc, xml, xlsx e ppt.";
+        if ($extensionDocument != "pdf" && $extensionDocument != "txt" && $extensionDocument != "doc" && $extensionDocument != "ppt" && $extensionDocument != "xml" && $extensionDocument != "xlsx" && $extensionDocument != "pttx" && $extensionDocument != "docx") {
+            $_SESSION['statusAlert'] = "Tipo de arquivo incorreto. Permitidos: pdf, txt, doc, docx, xml, xlsx, ppt e pttx.";
             return header('Location: /project/private/student/pages/question/question.page.php');
         }
         if (is_null($_SESSION['statusAlert']) && is_null($_SESSION['statusNegative'])) {
