@@ -225,7 +225,6 @@ try {
             const course = decodeURI(courseCookie);
 
             if (select.value != "Selecione a escola") {
-                console.log("value", select.value);
                 courseList.disabled = false;
                 const dados = await fetch('./controller/json-step2.controller.php?nameSchool=' + select.value);
 

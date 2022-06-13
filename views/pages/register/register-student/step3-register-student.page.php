@@ -137,15 +137,12 @@ session_start();
             const file = self && self.files[0];
 
             if (!file && !pathCookie) {
-                console.log("sem nada", file, pathCookie);
                 divPhoto.style.display = "none";
                 imageFile.style.display = "none";
                 return;
             }
 
             if (file) {
-                console.log("com file", file, pathCookie);
-
                 divPhoto.style.display = "none";
                 imageFile.style.display = "block";
 
@@ -160,8 +157,6 @@ session_start();
                 imageFile.src = URL.createObjectURL(file);
                 return;
             }
-
-            console.log("com cookie", file, pathCookie);
 
             divPhoto.style.display = "block";
 

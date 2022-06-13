@@ -272,7 +272,7 @@ class Course
      * @param string $search 
      */
     public function countCourses(string $search = '')
-    {   
+    {
         $connection = Connection::connection();
         $searching = (!is_null($search) && !empty($search));
 
@@ -915,10 +915,10 @@ class Course
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 6;
- 
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM Courses";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -933,36 +933,36 @@ class Course
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-        
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-course.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-course.page.php?page=$i'> $i </a></li>";
-            }
-                
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-course.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-course.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
+
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-course.page.php?page=$i'> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-course.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
     }
-    
+
 
     //----------------------------
     /**
@@ -976,10 +976,10 @@ class Course
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 6;
-        
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM Courses WHERE name LIKE '%$search%' ORDER BY name";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -993,33 +993,47 @@ class Course
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-course.page.php?page=$prev_page &searchCourse=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-course.page.php?page=$prev_page &searchCourse=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-course.page.php?page=$i &searchCourse=$search'> $i </a></li>";
-            }
-            
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-course.page.php?page= $next_page &searchCourse=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-course.page.php?page=$i &searchCourse=$search'> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-course.page.php?page= $next_page &searchCourse=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
+    }
 
+    public function courseOfStudent()
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT c.id, c.name FROM courses c
+                                        INNER JOIN students s
+                                        ON c.id = s.course_id
+                                        WHERE s.user_id = '" . $_SESSION['idUser'] . "'
+                                    ");
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
     }
 }

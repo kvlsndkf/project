@@ -67,6 +67,7 @@ if(isset($_POST['step4'])){
     $student->setSurname($surname);
     $student->setCourseId($idCourse);
     $student->setModuleId($idModule);
+    $student->setXp(0);
 
     //---------------------------------------
     //set school

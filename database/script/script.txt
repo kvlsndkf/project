@@ -90,6 +90,7 @@ CREATE TABLE students(
     , PRIMARY KEY (id)
     , first_name VARCHAR(100) NOT NULL
     , surname VARCHAR(100) NOT NULL
+    , xp INT NOT NULL
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
     , user_id INT NOT NULL
@@ -205,4 +206,81 @@ CREATE TABLE messages(
     , status VARCHAR(30) NOT NULL
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
+)
+
+CREATE TABLE questions(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , xp INT NOT NULL
+    , link_question TEXT
+    , question TEXT NOT NULL
+    , photo TEXT 
+    , document TEXT
+    , document_name VARCHAR(255)
+    , is_blocked BOOLEAN NOT NULL
+    , blocking_reason VARCHAR(100)
+    , course_id INT NOT NULL
+    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+    , subject_id INT NOT NULL
+    , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+    , category_id INT NOT NULL
+    , FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+    , student_id INT NOT NULL
+    , FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE categories(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , name VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE answers(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , answer TEXT NOT NULL
+    , photo TEXT 
+    , document TEXT
+    , document_name VARCHAR(255)
+    , is_blocked BOOLEAN NOT NULL
+    , blocking_reason VARCHAR(100)
+    , evaluation INT NOT NULL
+    , like_answer INT NOT NULL
+    , question_id INT NOT NULL
+    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    , answer_creator_id INT NOT NULL
+    , FOREIGN KEY (answer_creator_id) REFERENCES students(id) ON DELETE CASCADE
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
+
+CREATE TABLE answersHasAvaliations(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , avaliation INT NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , answer_id INT NOT NULL
+    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
+    , question_id INT NOT NULL
+    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    , person_avaliation_id INT NOT NULL
+    , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
+)
+
+CREATE TABLE answersHasLikes(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+    , answer_id INT NOT NULL
+    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
+    , question_id INT NOT NULL
+    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    , person_liked_id INT NOT NULL
+    , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
 )

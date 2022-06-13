@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Maio-2022 às 15:57
+-- Tempo de geração: 13-Jun-2022 às 02:44
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -20,6 +20,81 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `help`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `answers`
+--
+
+CREATE TABLE `answers` (
+  `id` int(11) NOT NULL,
+  `answer` text NOT NULL,
+  `photo` text DEFAULT NULL,
+  `document` text DEFAULT NULL,
+  `document_name` varchar(255) DEFAULT NULL,
+  `is_blocked` tinyint(1) NOT NULL,
+  `blocking_reason` varchar(100) DEFAULT NULL,
+  `avg_avaliation` float NOT NULL,
+  `like_answer` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `answer_creator_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `answershasavaliations`
+--
+
+CREATE TABLE `answershasavaliations` (
+  `id` int(11) NOT NULL,
+  `avaliation` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `answer_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `person_avaliation_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `answershaslikes`
+--
+
+CREATE TABLE `answershaslikes` (
+  `id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `answer_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `person_liked_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Erro', '2022-05-31 14:45:20', NULL),
+(2, 'Dúvida', '2022-05-31 14:45:20', NULL),
+(3, 'Apoio', '2022-05-31 14:45:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -128,6 +203,37 @@ CREATE TABLE `modules` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `modules`
+--
+
+INSERT INTO `modules` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(32, '1º Módulo', '2022-05-31 13:42:22', NULL),
+(33, '2º Módulo', '2022-05-31 13:42:29', NULL),
+(34, '3º Módulo', '2022-06-05 00:03:19', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `xp` int(11) NOT NULL,
+  `link_question` text DEFAULT NULL,
+  `question` text NOT NULL,
+  `photo` text DEFAULT NULL,
+  `document` text DEFAULT NULL,
+  `document_name` varchar(255) DEFAULT NULL,
+  `course_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -223,6 +329,7 @@ CREATE TABLE `students` (
   `id` int(11) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `surname` varchar(100) NOT NULL,
+  `xp` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `user_id` int(11) NOT NULL,
@@ -242,6 +349,16 @@ CREATE TABLE `subjects` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(61, 'Programação WEB I', '0000-00-00 00:00:00', NULL),
+(62, 'Banco de Dados I', '0000-00-00 00:00:00', NULL),
+(63, 'Design Digital', '0000-00-00 00:00:00', NULL),
+(64, 'Ética', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -302,6 +419,38 @@ CREATE TABLE `usershaspreferences` (
 --
 
 --
+-- Índices para tabela `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `answer_creator_id` (`answer_creator_id`);
+
+--
+-- Índices para tabela `answershasavaliations`
+--
+ALTER TABLE `answershasavaliations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `answer_id` (`answer_id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `person_avaliation_id` (`person_avaliation_id`);
+
+--
+-- Índices para tabela `answershaslikes`
+--
+ALTER TABLE `answershaslikes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `answer_id` (`answer_id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `person_avaliation_id` (`person_liked_id`);
+
+--
+-- Índices para tabela `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `companies`
 --
 ALTER TABLE `companies`
@@ -349,6 +498,16 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `modules`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `subject_id` (`subject_id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `student_id` (`student_id`);
 
 --
 -- Índices para tabela `schools`
@@ -426,6 +585,30 @@ ALTER TABLE `usershaspreferences`
 --
 
 --
+-- AUTO_INCREMENT de tabela `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT de tabela `answershasavaliations`
+--
+ALTER TABLE `answershasavaliations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT de tabela `answershaslikes`
+--
+ALTER TABLE `answershaslikes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de tabela `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de tabela `companies`
 --
 ALTER TABLE `companies`
@@ -435,19 +618,19 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT de tabela `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de tabela `courseshassubjects`
 --
 ALTER TABLE `courseshassubjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de tabela `courseshasteachers`
 --
 ALTER TABLE `courseshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT de tabela `denunciations`
@@ -459,37 +642,43 @@ ALTER TABLE `denunciations`
 -- AUTO_INCREMENT de tabela `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT de tabela `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT de tabela `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshascourses`
 --
 ALTER TABLE `schoolshascourses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshasstudents`
 --
 ALTER TABLE `schoolshasstudents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshasteachers`
 --
 ALTER TABLE `schoolshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 
 --
 -- AUTO_INCREMENT de tabela `solicitations`
@@ -501,35 +690,58 @@ ALTER TABLE `solicitations`
 -- AUTO_INCREMENT de tabela `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT de tabela `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de tabela `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT de tabela `usershaspreferences`
 --
 ALTER TABLE `usershaspreferences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `answers_ibfk_2` FOREIGN KEY (`answer_creator_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `answershasavaliations`
+--
+ALTER TABLE `answershasavaliations`
+  ADD CONSTRAINT `answershasavaliations_ibfk_1` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `answershasavaliations_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `answershasavaliations_ibfk_3` FOREIGN KEY (`person_avaliation_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `answershaslikes`
+--
+ALTER TABLE `answershaslikes`
+  ADD CONSTRAINT `answershaslikes_ibfk_1` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `answershaslikes_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `answershaslikes_ibfk_3` FOREIGN KEY (`person_liked_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `companies`
@@ -557,6 +769,15 @@ ALTER TABLE `courseshasteachers`
 ALTER TABLE `denunciations`
   ADD CONSTRAINT `denunciations_ibfk_1` FOREIGN KEY (`created_by_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `denunciations_ibfk_2` FOREIGN KEY (`denounced_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `questions_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `questions_ibfk_4` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `schoolshascourses`
