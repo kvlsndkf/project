@@ -433,7 +433,7 @@ class Answer
         } else {
             try {
                 $stmt = $connection->prepare("UPDATE answershasavaliations SET avaliation = ?, updated_at = NOW()
-                                                WHERE $answerID");
+                                                WHERE answer_id = $answerID");
 
                 $stmt->bindValue(1, $avaliation->getAvaliation());
 
@@ -464,8 +464,6 @@ class Answer
 
             $avaliationInsert->bindValue(1, $result[0]['avaliation']);
             $avaliationInsert->execute();
-
-            // header('Location: /project/private/student/pages/detail-question/detail-question.page.php?idQuestion=' . $questionID);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
