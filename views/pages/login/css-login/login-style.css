@@ -71,6 +71,7 @@
 
 .input-box {
   justify-content: center;
+  position: relative;
 }
 
 .bt {
