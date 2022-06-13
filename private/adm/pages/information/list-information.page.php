@@ -130,51 +130,7 @@ try {
         <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
             <div id="solicitation-new-list">
 
-                <!-- Contador  de mensagens novas -->
-                <?php echo  $countNewSolicitation ?>
-
-                <br>
-
-                <!-- Lista de mensagens novas -->
-                <?php for ($i = 0; $i < count($listNewSolicitation); $i++) {
-                    $row = $listNewSolicitation[$i] ?>
-
-                    <?php $style = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'badge rounded-pill bg-info'; ?>
-                    <span class="<?php echo $style; ?>"><?php echo $row->status; ?></span>
-
-                    <p>
-                        Contato
-                        <br>
-                        <?php echo $row->contact; ?>
-                    </p>
-
-                    <p>
-                        Categoria
-                        <br>
-                        <?php echo $row->category; ?>
-                    </p>
-
-                    <p>
-                        Titulo
-                        <br>
-                        <?php echo $row->title; ?>
-                    </p>
-
-                    <p>
-                        <!-- Descrição -->
-                        <?php echo $row->description; ?>
-                    </p>
-
-                    <?php $styleButton = $row->status == "Nova" ? '' : 'd-none'; ?>
-                    <form id="register" action="./controller/analyzing-solicitation.controller.php?solicitationNewID=<?php echo $row->id; ?>" class="<?php echo $styleButton; ?>" method="POST">
-                        <button type="submit" name="analyzeRequest">Mover para análise e adicionar informação</button>
-                    </form>
-
-                    <hr>
-                <?php } ?>
-
-                <span id="pagination-new-solicitation">
-                </span>    
+            <div id="pagination-new-solicitation"></div> 
             </div>
         </div>
 
@@ -351,6 +307,9 @@ try {
                 }
             }
         </script>
+
+         <!-- Paginação das solicitações novas -->
+        <script src="../js/pagination-solicitation-new.js"></script>
 
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>

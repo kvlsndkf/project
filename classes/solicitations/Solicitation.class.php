@@ -204,8 +204,17 @@ class Solicitation
                 $result = $this->searchSolicitation($search);
                 return $this->buildNewSolicitationList($result);
             }
+            //Receber o numero de página
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
 
-            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description FROM solicitations WHERE status = 'Nova' ORDER BY created_at DESC");
+            //Setar a quantidade de registros por página
+            $limit_result = 6;
+
+            //Calcular o inicio da vizualização
+            $start = ($limit_result * $page) - $limit_result;
+
+            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description FROM solicitations WHERE status = 'Nova' ORDER BY created_at DESC LIMIT $start,$limit_result");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -223,8 +232,17 @@ class Solicitation
         $connection = Connection::connection();
 
         try {
+            //Receber o numero de página
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
 
-            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description FROM solicitations WHERE status = 'Análise' ORDER BY created_at DESC");
+            //Setar a quantidade de registros por página
+            $limit_result = 6;
+
+            //Calcular o inicio da vizualização
+            $start = ($limit_result * $page) - $limit_result;
+
+            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description FROM solicitations WHERE status = 'Análise' ORDER BY created_at DESC LIMIT $start,$limit_result");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -242,8 +260,17 @@ class Solicitation
         $connection = Connection::connection();
 
         try {
+            //Receber o numero de página
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
 
-            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description,conclusion,situation_id FROM solicitations WHERE status = 'Resolvida' ORDER BY created_at DESC");
+            //Setar a quantidade de registros por página
+            $limit_result = 6;
+
+            //Calcular o inicio da vizualização
+            $start = ($limit_result * $page) - $limit_result;
+
+            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description,conclusion,situation_id FROM solicitations WHERE status = 'Resolvida' ORDER BY created_at DESC LIMIT $start,$limit_result");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -280,8 +307,17 @@ class Solicitation
         $connection = Connection::connection();
 
         try {
+            //Receber o numero de página
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
 
-            $stmt = $connection->prepare("SELECT * FROM solicitations WHERE description LIKE '%$search%' ORDER BY description");
+            //Setar a quantidade de registros por página
+            $limit_result = 6;
+
+            //Calcular o inicio da vizualização
+            $start = ($limit_result * $page) - $limit_result;
+
+            $stmt = $connection->prepare("SELECT * FROM solicitations WHERE description LIKE '%$search%' ORDER BY description LIMIT $start,$limit_result");
 
             $stmt->execute();
 
@@ -464,6 +500,7 @@ class Solicitation
             echo $e->getMessage();
         }
     }
+
     //----------------------------
     /**
      * @method resolvedSolicitation() resolved the solicitation by 
