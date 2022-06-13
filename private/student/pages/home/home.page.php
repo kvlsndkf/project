@@ -1,10 +1,17 @@
 <?php
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
+require_once('/xampp/htdocs' . '/project/classes/answers/Answer.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
 try {
     $question = new Question();
     $listQuestions = $question->listQuestion();
+
+    $idUser = $_SESSION['idUser'];
+
+    $student = new StudentMethods();
+    $studentId = $student->getStudentByUserID($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -27,7 +34,7 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="../../../../libs/magnific-popup/dist/magnific-popup.css">
+    <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
 </head>
 
 <body>
@@ -94,8 +101,23 @@ try {
         </p>
 
         <p>
-            <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion">Link</a>
-            <span onclick="copyLink()" id="spanLink">Copiar link</span>
+            <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion-<?php echo $row->id; ?>">Link</a>
+            <span onclick="copyLink(<?php echo $row->id; ?>)" id="spanLink-<?php echo $row->id; ?>">Copiar link</span>
+        </p>
+
+        <?php
+        $creatorQuestion = $question->getCreatorQuestionById($row->id);
+        $creatorQuestionID = $creatorQuestion[0]['student_id'];
+        $studentID = $studentId[0]['id'];
+        $hasAnswers = $question->hasAnswers($row->id);
+
+        $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
+        $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
+        ?>
+        <p class="<?php echo $styleDeleteQuestion; ?> <?php echo $styleDeleteDisplay;?>">
+            <a href="../question/controller/delete-question.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
+                Excluir
+            </a>
         </p>
 
         <p>
@@ -115,8 +137,8 @@ try {
         </p>
 
         <!-- Create the editor container -->
-        <div class="ql-snow ql-editor">
-            <div class="ql-editor">
+        <div class="ql-snow ql-editor2">
+            <div class="ql-editor2">
                 <?php echo $row->question; ?>
             </div>
         </div>
@@ -140,6 +162,15 @@ try {
         </p>
 
         <p>
+            <?php
+            $answer = new Answer();
+            $totalAnswersOfQuestion = $answer->countAnswers($row->id);
+
+            echo $totalAnswersOfQuestion;
+            ?>
+        </p>
+
+        <p>
             <a href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
                 <button>Dar um help</button>
             </a>
@@ -156,12 +187,15 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
+    <!-- JS Modal Excluir ⬇️ -->
+    <script src="../../js/delete-question.js"></script>
+
     <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- Magnific Popup core JS file -->
-    <script src="../../../../libs/magnific-popup/dist/jquery.magnific-popup.js"></script>
-    <script src="../../../../libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="../../../../libs/dist/jquery.magnific-popup.js"></script>
+    <script src="../../../../libs/dist/jquery.magnific-popup.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -172,9 +206,9 @@ try {
     </script>
 
     <script>
-        function copyLink() {
-            const link = document.getElementById("linkQuestion");
-            const span = document.getElementById("spanLink");
+        function copyLink(id) {
+            const link = document.getElementById(`linkQuestion-${id}`);
+            const span = document.getElementById(`spanLink-${id}`);
 
             navigator.clipboard.writeText(link.href);
 

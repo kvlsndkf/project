@@ -250,6 +250,7 @@
     margin-top: 5px;
     margin-left: 0;
     margin-bottom: 10px;
+    border-radius: 32px;
 }
 
 .div-prof-img{
@@ -495,6 +496,31 @@
     padding-top: 13px;
     padding-bottom: 13px;
 }
+
+/* Botão de sair  */
+
+.sidebar-a-items2{
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    transition: 0.2s; /* Animação */
+    width: 100%;
+    height: auto; 
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+.sidebar-a-items2:hover{
+    background-color: var(--red);
+    border-radius: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+/* Fim do Botão de sair  */
 
 
 /* Responsividade com o Media */

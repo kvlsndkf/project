@@ -93,7 +93,7 @@ try {
                 <?php } ?>
             </optgroup>
 
-            <optgroup label="Todos dos cursos">
+            <optgroup label="Todos os outros cursos">
                 <?php for ($i = 0; $i < count($listAllCourses); $i++) {
                     $row = $listAllCourses[$i] ?>
                     <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
@@ -170,9 +170,6 @@ try {
     <!-- Include the Quill library -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-    <!-- JS Preview Image ⬇️ -->
-    <script src="../../js/preview-image.js"></script>
-
     <script>
         $(".selectCourse").select2({
             allowClear: true
@@ -234,6 +231,8 @@ try {
         async function courseValue() {
             const selectCourse = document.getElementById("selectCourse");
             const selectSubject = document.getElementById("selectSubject");
+
+            selectSubject.innerHTML = "";
 
             const dados = await fetch('./controller/json-register-subject.controller.php?course=' + selectCourse.value);
 

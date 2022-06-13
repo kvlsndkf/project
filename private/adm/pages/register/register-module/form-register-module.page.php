@@ -34,7 +34,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                 </div>
                 <form action="./controller/module-unit-registration.controller.php" method="post">
                     <p class="normal-14-medium-p name">
-                        Nome
+                        Nome<span style="color: var(--red);">*</span>
                         <input class="input-text normal-12-regular-tinyinput input-name-module" type="text" name="name" id="name" placeholder="Digite o nome do módulo" required autocomplete="off" autofocus minlength="5">
                     </p>
                     <p>

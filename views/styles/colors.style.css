@@ -6,6 +6,10 @@
     color: var(--gray7);
 }
 
+.gray6-title {
+    color: var(--gray6);
+}
+
 .white-title {
     color: var(--white);
 }
@@ -35,10 +39,14 @@
     background-color: var(--white);
 }
 
-.bg-primary {
+.bg-primary-button {
     background-color: var(--primary);
 }
 
 .red-title {
     color: var(--red);
+}
+
+.blue-title {
+    color: var(--blue-sky);
 }

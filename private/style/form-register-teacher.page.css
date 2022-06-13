@@ -17,7 +17,6 @@ body, html {
 .my-container-er {
     width: 100%;
     height: 100%;
-
 }
 
 .page-container {
@@ -26,6 +25,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 /* FORMS */
@@ -163,22 +163,10 @@ body, html {
     background: #8080FF;
 }
 
-/* Lote de Matérias */
-.hr-batch-modal{
-    margin-top: 28px;
-    height: 1px;
-    border: none;
-    background-color: #40444B;
-}
-
 /* CSS REGISTER ETEC */
 
 .accordion-body {
     background-color: #303339;
-}
-
-.my-acc-body {
-    background-color: var(--bg-modal);
 }
 
 .etec-location-label {
@@ -379,3 +367,6 @@ font-size: var(--tiny);
     background-color: var(--gray4);
 }
 
+.select2 {
+width:100%!important;
+}

@@ -4,6 +4,10 @@ include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
 
 try {
+
+    $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+    $page = (!empty($current_page)) ? $current_page : 1;
+    
     $search = $_GET['searchCourse'] ?? '';
 
     $course = new Course();
@@ -63,6 +67,7 @@ try {
     <link rel="stylesheet" href="../register.styles.css">
     <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
     <link rel="stylesheet" href="../../../../style/button-delete-course.style.css">
+    <link rel="stylesheet" href="../../../../style/modal-about.style.css">
 
 </head>
 
@@ -141,7 +146,7 @@ try {
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="../../message/list-message.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
                     </a>
@@ -157,7 +162,7 @@ try {
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="../../../../logout/logout.controller.php" class="sidebar-a">
+                    <a href="../../../../logout/logout.controller.php" class="sidebar-a-items2">
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
@@ -323,7 +328,7 @@ try {
                 <span class="<?php echo $style; ?>"> Matérias: <?php echo $countSubjectsInCourse ?></span>
 
                 <br><br>
-                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this)">
+                <button type="submit" class="more-details-button" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?php echo $row->id; ?>" onclick="schoolModal(this,<?php echo $page?>)">
                     <p class="more-details-button-text normal-14-bold-p">Ver mais detalhes</p> 
                 </button>
 
@@ -338,68 +343,113 @@ try {
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content bg-modal-gray">
 
                 <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Detalhes do curso</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <div class="modal-header cabecalho-modal">
+                    <h4 class="modal-title titulo-modal normal-20-bold-modaltitle">Detalhes do curso</h4>
+                    <button type="button" class="x-button" data-bs-dismiss="modal">
+                        <img src="../../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                    </button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body corpo-modal">
+                    <div class="about-course-header">
 
-                    <!-- Modal body -->
-                    <p>
-                        <a href="" id="course-edit">Editar</a>
-                        <a href="" id="course-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
-                    </p>
+                        <div class="about-course-header-info">
 
-                    <div class="modal-body">
-                        <img src="" alt="" id="photo-course">
-                        <div id="name-course"></div>
+                            <img src="" alt="" id="photo-course" class="img-curso">
+                            <div id="name-course" class="normal-16-bold-title-3 about-course-name"></div>
 
-                        <br>
+                        </div>
 
-                        <label>Sobre</label>
-                        <div id="about-course"></div>
+                        <!-- Mais Opções -->
+                        <div class="drop-edit-exclud-about">
+                            <img src="../../../../../views/images/components/three-dots.svg">
 
-                        <hr>
-
-                        <!-- Tabs navs -->
-                        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Etec's</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Professores</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">Matérias</a>
-                            </li>
-                        </ul>
-                        <!-- Tabs navs -->
-
-                        <!-- Tabs content -->
-                        <div class="tab-content" id="ex1-content">
-                            <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-                                <div id="schools-list">
-
-                                </div>
+                            <!-- Parte do Update e Delete -->
+                            <div class="drop-edit-exclud-content-about">
+                                <a href="" id="course-edit" class="drop-edit-exclud-a">
+                                    <div class="drop-edit-exclud-option-about">
+                                        <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Editar</p>
+                                    </div>
+                                </a>
+                                <a href="" id="course-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                    <div class="drop-edit-exclud-option-about">
+                                        <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Excluir</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                                <div id="teachers-list">
 
-                                </div>
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <label class="normal-14-medium-p about-school-label">Sobre</label>
+                    <div id="about-course" class="whitney-16-medium-text white-title about-school-text"></div>
+
+                    <hr>
+
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs mb-3 tabs-modal" id="ex1" role="tablist">
+                        <li class="nav-item item-tab" role="presentation">
+                            <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                                <p class="tab-item-text whitney-12-regular-tiny">
+                                    Etec's
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item item-tab" role="presentation">
+                            <a class="nav-link link-nav" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
+                                <p class="tab-item-text whitney-12-regular-tiny">
+                                    Professores
+                                </p> 
+                            </a>
+                        </li>
+                        <li class="nav-item item-tab link-nav" role="presentation">
+                            <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">
+                                <p class="tab-item-text whitney-12-regular-tiny">
+                                    Matérias
+                                </p> 
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="ex1-content">
+                        <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                            <div id="schools-list">
+
                             </div>
-                            <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                                <div id="subjects-list">
-
-                                </div>
+                            <div id="pagination-schools">
+                            
                             </div>
                         </div>
-                        <!-- Tabs content -->
+                        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                            <div id="teachers-list">
+
+                            </div>
+                            <div id="pagination-teachers">
+                            
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                            <div id="subjects-list">
+
+                            </div>
+                            <div id="pagination-subjects">
+                            
+                            </div>
+                        </div>
                     </div>
+                        <!-- Tabs content -->
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -408,9 +458,13 @@ try {
     <!-- Paginação ⬇️ -->
             <?php 
                 if(empty($search)) {
+                    echo ("<div class='div-pagination'>");
                     $paginationCourse = $course->paginationCourse();
+                    echo ("</div>");
                 }else{
+                    echo ("<div class='div-pagination'>");
                     $paginationCourseOfSearch = $course->paginationCourseOfSearch($search);
+                    echo ("</div>");
                 }
             
             ?>
@@ -442,97 +496,27 @@ try {
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
+    <!-- JS pagination Modal -->
+    <script src="../../js/pagination-modal-course-schools.js"></script>
+
+    <script src="../../js/pagination-modal-course-teachers.js"></script>
+
+    <script src="../../js/pagination-modal-course-subjects.js"></script>
+
+
     <script>
         function assingValueInElementById(name, atr, value) {
             document.getElementById(name)[atr] = value;
         }
 
-        async function schoolModal(self) {
+        async function schoolModal(self,page) {
             const id = self.getAttribute("data-id");
-            const dados = await fetch('./controller/json-course.controller.php?idCourse=' + id);
+            
+            enterDataSchools(id,page);
 
-            const json_course = await dados.json();
-            const convert_into_string = JSON.stringify(json_course);
-            const object_course = JSON.parse(convert_into_string);
-            const course = object_course['course'][0];
+            enterDataTeachers(id,page);
 
-            console.log(object_course);
-
-            document.getElementById('course-edit').href = "./form-update-course.page.php?updateCourse=" + course['id'];
-            document.getElementById('course-delete').href = "./controller/delete-course.controller.php?id=" + course['id'];
-
-            assingValueInElementById('photo-course', 'src', course['photo']);
-            assingValueInElementById('name-course', 'innerHTML', course['name']);
-            assingValueInElementById('about-course', 'innerHTML', course['about']);
-
-            //lista de etec's
-            const schoolsList = document.getElementById("schools-list");
-            schoolsList.innerHTML = "";
-
-            array_schools = object_course['schools'];
-
-            for (i = 0; i < array_schools.length; i++) {
-                const divElementSchool = document.createElement("div");
-                divElementSchool.className = "divSchools";
-                const tElementSchool = document.createElement("p");
-                tElementSchool.className = "schools";
-                const photoElementSchool = document.createElement("img");
-                photoElementSchool.className = "photoSchools";
-
-                tElementSchool.innerHTML = array_schools[i]['name'];
-                photoElementSchool.src = array_schools[i]['photo'];
-
-                divElementSchool.id = i;
-                divElementSchool.appendChild(tElementSchool);
-                divElementSchool.appendChild(photoElementSchool);
-
-                document.getElementById("schools-list").appendChild(divElementSchool);
-            }
-
-            //lista de professores
-            const teachersList = document.getElementById("teachers-list");
-            teachersList.innerHTML = "";
-
-            array_teachers = object_course['teachers'];
-
-            for (i = 0; i < array_teachers.length; i++) {
-                const divElement = document.createElement("div");
-                divElement.className = "divTeachers";
-                const tElement = document.createElement("p");
-                tElement.className = "teachers";
-                const photoElement = document.createElement("img");
-                photoElement.className = "photoTeachers";
-
-                tElement.innerHTML = array_teachers[i]['name'];
-                photoElement.src = array_teachers[i]['photo'];
-
-                divElement.id = i;
-                divElement.appendChild(tElement);
-                divElement.appendChild(photoElement);
-
-                document.getElementById("teachers-list").appendChild(divElement);
-            }
-
-            //lista de matérias
-            const subjectsList = document.getElementById("subjects-list");
-            subjectsList.innerHTML = "";
-
-            array_subjects = object_course['subjects'];
-
-            for (i = 0; i < array_subjects.length; i++) {
-                const divElementSubject = document.createElement("div");
-                divElementSubject.className = "div";
-                const tElementSubject = document.createElement("p");
-                tElementSubject.className = "subs";
-               
-
-                tElementSubject.innerHTML = array_subjects[i]['name'];
-
-                divElementSubject.id = i;
-                divElementSubject.appendChild(tElementSubject);
-
-                document.getElementById("subjects-list").appendChild(divElementSubject);
-            }
+            enterDataSubjects(id,page);
         }
     </script>
 </body>

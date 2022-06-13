@@ -10,7 +10,7 @@ function validarEmail(e){
     if((email.includes('@e')) || (email.includes('@et')) || (email.includes('@ete')) || (email.includes('@etec')) === true){
     etec(e);
 
-  } else if((email.includes('@h')) || (email.includes('@he')) || (email.includes('@hel')) || (email.includes('@help')) === true){
+  } else if((email.includes('@he')) || (email.includes('@hel')) || (email.includes('@help')) === true){
     help(e);
   }else if ((email.startsWith('etec@')) || email.startsWith('help@') === true){
     arroba(e);

@@ -29,7 +29,7 @@
   margin: 0;
   padding: 0;
 }
-.ql-editor {
+.ql-editor2 {
   box-sizing: border-box;
   line-height: 1.42;
   height: 100%;
@@ -591,54 +591,54 @@
 .ql-snow .ql-direction.ql-active svg:first-child {
   display: none;
 }
-.ql-snow .ql-editor h1 {
+.ql-snow .ql-editor2 h1 {
   font-size: 2em;
 }
-.ql-snow .ql-editor h2 {
+.ql-snow .ql-editor2 h2 {
   font-size: 1.5em;
 }
-.ql-snow .ql-editor h3 {
+.ql-snow .ql-editor2 h3 {
   font-size: 1.17em;
 }
-.ql-snow .ql-editor h4 {
+.ql-snow .ql-editor2 h4 {
   font-size: 1em;
 }
-.ql-snow .ql-editor h5 {
+.ql-snow .ql-editor2 h5 {
   font-size: 0.83em;
 }
-.ql-snow .ql-editor h6 {
+.ql-snow .ql-editor2 h6 {
   font-size: 0.67em;
 }
-.ql-snow .ql-editor a {
+.ql-snow .ql-editor2 a {
   text-decoration: underline;
 }
-.ql-snow .ql-editor blockquote {
+.ql-snow .ql-editor2 blockquote {
   border-left: 4px solid #ccc;
   margin-bottom: 5px;
   margin-top: 5px;
   padding-left: 16px;
 }
-.ql-snow .ql-editor code,
-.ql-snow .ql-editor pre {
+.ql-snow .ql-editor2 code,
+.ql-snow .ql-editor2 pre {
   background-color: #f0f0f0;
   border-radius: 3px;
 }
-.ql-snow .ql-editor pre {
+.ql-snow .ql-editor2 pre {
   white-space: pre-wrap;
   margin-bottom: 5px;
   margin-top: 5px;
   padding: 5px 10px;
 }
-.ql-snow .ql-editor code {
+.ql-snow .ql-editor2 code {
   font-size: 85%;
   padding: 2px 4px;
 }
-.ql-snow .ql-editor pre.ql-syntax {
+.ql-snow .ql-editor2 pre.ql-syntax {
   background-color: #23241f;
   color: #f8f8f2;
   overflow: visible;
 }
-.ql-snow .ql-editor img {
+.ql-snow .ql-editor2 img {
   max-width: 100%;
 }
 .ql-snow .ql-picker {

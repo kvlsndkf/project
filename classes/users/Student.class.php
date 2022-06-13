@@ -16,6 +16,7 @@ class Student extends User
     public int $id;
     public string $firstName;
     public string $surname;
+    public int $xp;
     public int $userId;
     public int $courseId;
     public int $moduleId;
@@ -85,6 +86,15 @@ class Student extends User
         $this->schoolId = $schoolId;
     }
     //----------------------------
+    public function getXp()
+    {
+        return $this->xp;
+    }
+    public function setXp($xp)
+    {
+        $this->xp = $xp;
+    }
+    //----------------------------
 
     public function registerStudent(Student $student)
     {
@@ -137,14 +147,15 @@ class Student extends User
         try {
             if (!empty($idUser)) {
                 $connection->beginTransaction();
-                $stmt = $connection->prepare("INSERT INTO students(first_name, surname, created_at, user_id, course_id, module_id)
-                                                VALUES (?, ?, NOW(), ?, ?, ?)");
+                $stmt = $connection->prepare("INSERT INTO students(first_name, surname, xp, created_at, user_id, course_id, module_id)
+                                                VALUES (?, ?, ?, NOW(), ?, ?, ?)");
 
                 $stmt->bindValue(1, $student->getFirstName());
                 $stmt->bindValue(2, $student->getSurname());
-                $stmt->bindValue(3, $idUser);
-                $stmt->bindValue(4, $student->getCourseId());
-                $stmt->bindValue(5, $student->getModuleId());
+                $stmt->bindValue(3, $student->getXp());
+                $stmt->bindValue(4, $idUser);
+                $stmt->bindValue(5, $student->getCourseId());
+                $stmt->bindValue(6, $student->getModuleId());
 
                 $stmt->execute();
 
@@ -258,20 +269,5 @@ class Student extends User
             $_SESSION['statusNegative'] = "Falha ao enviar o email.";
             return header('Location: /project/views/pages/login/login-page.php');
         }
-    }
-
-    public function getStudentByUserID(int $id)
-    {
-        $connection = Connection::connection();
-
-        $stmt = $connection->prepare("SELECT s.id FROM students s
-                                        INNER JOIN users u
-                                        ON s.user_id = u.id
-                                        WHERE u.id = '$id'
-                                    ");
-
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
     }
 }

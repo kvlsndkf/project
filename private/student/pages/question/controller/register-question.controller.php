@@ -3,7 +3,9 @@ require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Subject.class.php');
 require_once('/xampp/htdocs' . '/project/classes/categories/Category.class.php');
-require_once('/xampp/htdocs' . '/project/classes/users/Student.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+
+session_start();
 
 if (isset($_POST['question'])) {
     $course = new Course();
@@ -23,7 +25,7 @@ if (isset($_POST['question'])) {
 
     $userID = $_SESSION['idUser'];
 
-    $student = new Student();
+    $student = new StudentMethods();
     $studentID = $student->getStudentByUserID($userID);
 
     if (!isset($course)) {
@@ -47,7 +49,6 @@ if (isset($_POST['question'])) {
     }
 
     if (!empty($_FILES['photo']['name'])) {
-        echo "oi p";
         $questionPhoto = $_FILES['photo'];
         $namePhoto = $questionPhoto['name'];
         $nameId = uniqid();
@@ -99,8 +100,8 @@ if (isset($_POST['question'])) {
             return header('Location: /project/private/student/pages/question/question.page.php');
         }
 
-        if ($extensionDocument != "pdf" && $extensionDocument != "txt" && $extensionDocument != "doc" && $extensionDocument != "ppt" && $extensionDocument != "xml") {
-            $_SESSION['statusAlert'] = "Tipo de arquivo incorreto. Permitidos: pdf, txt, doc, xml, e ppt.";
+        if ($extensionDocument != "pdf" && $extensionDocument != "txt" && $extensionDocument != "doc" && $extensionDocument != "ppt" && $extensionDocument != "xml" && $extensionDocument != "xlsx" && $extensionDocument != "pptx" && $extensionDocument != "docx") {
+            $_SESSION['statusAlert'] = "Tipo de arquivo incorreto. Permitidos: pdf, txt, doc, docx, xml, xlsx, ppt e pptx.";
             return header('Location: /project/private/student/pages/question/question.page.php');
         }
         if (is_null($_SESSION['statusAlert']) && is_null($_SESSION['statusNegative'])) {

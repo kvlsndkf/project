@@ -45,7 +45,7 @@ if (isset($_GET['updateModule'])) {
                         <label class="normal-20-bold-modaltitle title-header">Editar módulo</label>
                     </div>
                     <p>
-                        <label class="normal-14-medium-p name">Nome módulo</label><br/>
+                        <label class="normal-14-medium-p name">Nome módulo<span style="color: var(--red);">*</span></label><br/>
                         <input type="text" name="updateName" id="updateName" class="input-name-module normal-12-regular-tinyinput input-text" value="<?php echo $rowCat['name'] ?>"required autocomplete="off" autofocus minlength="4">
                     </p>
 

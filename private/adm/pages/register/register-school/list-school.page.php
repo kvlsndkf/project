@@ -55,10 +55,13 @@ try {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
         <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
+        <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
         <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
         <link rel="stylesheet" href="../register.styles.css">
         <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
         <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
+        <link rel="stylesheet" href="../../../../style/modal-about.style.css">
+
 
     </head>
 
@@ -113,7 +116,7 @@ try {
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a-items">
+                    <a href="../../dashboard/dashboard.page.php" class="sidebar-a-items">
                         <img class="sidebar-img" src="../../../../../views/images/components/dashboard-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Dashboard</p>
                     </a>
@@ -136,7 +139,7 @@ try {
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
+                    <a href="../../message/list-message.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
                     </a>
@@ -152,7 +155,7 @@ try {
                 </li>
 
                 <li class="sidebar-li">
-                    <a href="../../../../logout/logout.controller.php" class="sidebar-a">
+                    <a href="../../../../logout/logout.controller.php" class="sidebar-a-items2">
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>
@@ -361,61 +364,114 @@ try {
         <!-- The Modal -->
         <div class="modal fade" id="myModal">
             <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
+                <div class="modal-content bg-modal-gray">
 
                     <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Detalhes da Etec</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <div class="modal-header cabecalho-modal">
+                        <h4 class="modal-title titulo-modal normal-20-bold-modaltitle">Detalhes da Etec</h4>
+                        <button type="button" class="x-button" data-bs-dismiss="modal">
+                            <img src="../../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                        </button>
                     </div>
 
                     <!-- Modal body -->
-                    <div class="modal-body">
-                        <p>
-                            <a href="" id="school-edit">Editar</a>
-                            <a href="" id="school-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">Excluir</a>
-                        </p>
-                        <img src="" alt="" id="photo-school">
-                        <div id="name-school"></div>
-                        <div id="address-school">, São Paulo</div>
+                    <div class="modal-body corpo-modal">
+                        <div class="perfil-escola">
 
+                            <div class="school-info">
 
-                        <div id="body-modal-have-account">
-                            <a id="linkedin-school" target="_blank" href="">
-                                <img src="../../../images/icons/linkedin.svg" alt="Logo linkedin">
-                            </a>
+                                <div class="school-info-header">
 
-                            <a id="github-school" target="_blank" href="">
-                                <img src="../../../images/icons/github.svg" alt="Logo github">
-                            </a>
+                                    <img src="" alt="" id="photo-school" class="img-school-profile">
+                                    <div class="school-info-header-text">
 
-                            <a id="facebook-school" target="_blank" href="">
-                                <img src="../../../images/icons/facebook.svg" alt="Logo facebook">
-                            </a>
+                                        <div id="name-school" class="normal-14-bold-p about-school-name"></div>
+                                        <div class="normal-14-bold-p about-school-location">
 
-                            <a id="instagram-school" target="_blank" href="">
-                                <img src="../../../images/icons/instagram.svg" alt="Logo instagram">
-                            </a>
-                            <br>
-                            <label>Sobre</label>
-                            <div id="about-school"></div>
+                                            <img src="../../../../../views/images/components/location-icon.svg" alt="">
+                                            <div id="address-school">, São Paulo</div>
 
-                            <br>
-                            <br>
-                            <hr>
+                                        </div>
 
-                            <label for="">Professores</label>
-                            <div id="teachers-list">
+                                        <div id="body-modal-have-account">
+                                            <a id="linkedin-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/linkedin.svg" alt="Logo linkedin">
+                                            </a>
+                
+                                            <a id="github-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/github.svg" alt="Logo github">
+                                            </a>
+                
+                                            <a id="facebook-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/facebook.svg" alt="Logo facebook">
+                                            </a>
+                
+                                            <a id="instagram-school" target="_blank" href="" class="school-links">
+                                                <img src="../../../images/icons/instagram.svg" alt="Logo instagram">
+                                            </a>
+                                        </div>
+                                    
+                                    </div>
+
+                                </div>
+    
+                                <div id="body-modal-have-account-2">
+                                    <br>
+                                    <label class="normal-14-medium-p about-school-label">Sobre</label>
+                                    <div id="about-school" class="whitney-16-medium-text white-title about-school-text" style="width: fit-content;"></div>
+
+                                </div>
 
                             </div>
 
-                            <br>
-                            <br>
+                            <!-- Mais Opções -->
+                            <div class="drop-edit-exclud-about">
+                                <img src="../../../../../views/images/components/three-dots.svg">
 
-                            <div id="pagination">
-                                
+                                <!-- Parte do Update e Delete -->
+                                <div class="drop-edit-exclud-content-about">
+                                    <a href="" id="school-edit" class="drop-edit-exclud-a">
+                                        <div class="drop-edit-exclud-option-about">
+                                            <img src="../../../../../views/images/components/edit-pen.svg" class="drop-edit-exclud-img">
+                                            <p class="drop-edit-exclud-text-about normal-14-bold-p">Editar</p>
+                                        </div>
+                                    </a>
+                                    <a href="" id="school-delete" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="drop-edit-exclud-a delete">
+                                        <div class="drop-edit-exclud-option-about">
+                                            <img src="../../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                            <p class="drop-edit-exclud-text-about normal-14-bold-p">Excluir</p>
+                                        </div>
+                                    </a>
+                                </div>
+
                             </div>
+
                         </div>
+
+                        <div id="body-modal-have-account-3">
+
+                            <!-- Tabs navs -->
+                            <ul class="nav nav-tabs mb-3 nav-teacher" id="ex1" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active tab-item" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                                        <p class="tab-item-text whitney-12-regular-tiny">
+                                            Professores
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                            <!-- <label for="">Professores</label> -->
+                            <div id="teachers-list">
+                            </div>
+                            
+                            <div class="div-pagination">
+                                <div id="pagination"></div>
+    
+                            </div>
+
+                        </div>
+                            
                     </div>
                 </div>
             </div>
