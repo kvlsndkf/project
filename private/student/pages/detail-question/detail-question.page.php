@@ -219,7 +219,7 @@ try {
             $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
             ?>
             <p class="<?php echo $styleDeleteAnswer; ?>">
-                <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID;?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
+                <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
                     Excluir
                 </a>
             </p>
@@ -298,21 +298,17 @@ try {
             <?php $styleEmptyAvaliation = $row->stars === 0 ? '' : 'd-none' ?>
             <p>
             <div class="avaliacao <?php echo $styleEmptyAvaliation; ?>">
-                <div class="star-icon ativo" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon ativo" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
             </div>
             </p>
 
 
             <?php
             $styleAvaliation = $row->stars != 0 ? '' : 'd-none';
-
-            $abc = (object) array(
-                $row->stars => 'ativo'
-            );
 
             $styleStar1 = $row->stars === 1 ? 'ativo' : '';
             $styleStar2 = $row->stars === 2 ? 'ativo' : '';
@@ -322,15 +318,13 @@ try {
             ?>
             <p>
             <div class="avaliacao <?php echo $styleAvaliation; ?>">
-                <div class="star-icon <?php echo $styleStar1; ?>" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon <?php echo $styleStar2; ?>" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon <?php echo $styleStar3; ?>" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon <?php echo $styleStar4; ?>" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
-                <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>"></div>
+                <div class="star-icon <?php echo $styleStar1; ?>" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon <?php echo $styleStar2; ?>" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon <?php echo $styleStar3; ?>" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon <?php echo $styleStar4; ?>" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
             </div>
             </p>
-
-
 
             <hr>
         <?php } ?>
@@ -377,49 +371,49 @@ try {
     </script>
 
     <script>
-        const stars = document.querySelectorAll('.star-icon');
+        async function avaliation(e) {
+            const stars = document.querySelectorAll('.star-icon');
 
-        document.addEventListener('click', async function(e) {
-            var classStar = e.target.classList;
+            var classStar = e.classList;
 
-            const answer = e.target.getAttribute('data-answer');
+            const answer = e.getAttribute('data-answer');
 
-            if (!classStar.contains('ativo')) {
-                stars.forEach(function(star) {
-                    if (star.getAttribute('data-answer') === answer) {
-                        star.classList.remove('ativo');
-                    }
-                });
-                classStar.add('ativo');
-
-                const avaliationStars = e.target.getAttribute('data-icon');
-                const student = e.target.getAttribute('data-student');
-                const question = e.target.getAttribute('data-question');
-
-                const avaliation = {
-                    stars: avaliationStars,
-                    studentId: student,
-                    questionId: question,
-                    answerId: answer
+            stars.forEach(function(star) {
+                if (star.getAttribute('data-answer') === answer) {
+                    star.classList.remove('ativo');
                 }
+            });
+            classStar.add('ativo');
 
-                const headers = new Headers();
 
-                const formData = new FormData();
-                Object.keys(avaliation).forEach((key) => {
-                    formData.append(key, avaliation[key]);
-                });
+            const avaliationStars = e.getAttribute('data-icon');
+            const student = e.getAttribute('data-student');
+            const question = e.getAttribute('data-question');
 
-                const option = {
-                    method: 'POST',
-                    body: formData
-                }
-
-                const request = new Request('./controller/register-avaliation.controller.php', option);
-
-                await fetch(request);
+            const avaliation = {
+                stars: avaliationStars,
+                studentId: student,
+                questionId: question,
+                answerId: answer
             }
-        });
+
+            const headers = new Headers();
+
+            const formData = new FormData();
+            Object.keys(avaliation).forEach((key) => {
+                formData.append(key, avaliation[key]);
+            });
+
+            const option = {
+                method: 'POST',
+                body: formData
+            }
+
+            const request = new Request('./controller/register-avaliation.controller.php', option);
+
+            await fetch(request);
+
+        }
     </script>
 
     <script>
