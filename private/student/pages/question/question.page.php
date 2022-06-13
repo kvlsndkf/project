@@ -93,7 +93,7 @@ try {
                 <?php } ?>
             </optgroup>
 
-            <optgroup label="Todos dos cursos">
+            <optgroup label="Todos os outros cursos">
                 <?php for ($i = 0; $i < count($listAllCourses); $i++) {
                     $row = $listAllCourses[$i] ?>
                     <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
