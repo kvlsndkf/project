@@ -21,10 +21,16 @@ try {
 <html lang="pt-br">
 
 <head>
+    <!-- Base -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed | Heelp!</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../../../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../style/feed.style.css">
 
     <!-- Include stylesheet -->
     <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
@@ -60,125 +66,151 @@ try {
     <?php unset($_SESSION['statusPositive']);
     } ?>
 
-    <a href="../question/question.page.php">
-        <button>Fazer pergunta</button>
-    </a>
+    <div class="feed-div">
 
-    <br>
-    <br>
-    <br>
-
-    <!-- Lista de perguntas ⬇️ -->
-    <?php for ($i = 0; $i < count($listQuestions); $i++) {
-        $row = $listQuestions[$i] ?>
-
-        <p>
-            <span class="badge rounded-pill bg-primary"> <?php echo $row->course; ?></span>
-
-            <?php
-            if ($row->category === "Erro") {
-                $styleError = 'badge rounded-pill bg-danger';
-                $styleQuestion = 'd-none';
-                $styleHelp = 'd-none';
-            }
-
-            if ($row->category === "Dúvida") {
-                $styleError = 'd-none';
-                $styleQuestion = 'badge rounded-pill bg-info';
-                $styleHelp = 'd-none';
-            }
-
-            if ($row->category === "Apoio") {
-                $styleError = 'd-none';
-                $styleQuestion = 'd-none';
-                $styleHelp = 'badge rounded-pill bg-success';
-            }
-            ?>
-            <span class="<?php echo $styleError; ?>"> <?php echo $row->category; ?></span>
-            <span class="<?php echo $styleQuestion; ?>"> <?php echo $row->category; ?></span>
-            <span class="<?php echo $styleHelp; ?>"> <?php echo $row->category; ?></span>
-            <span class="badge rounded-pill bg-primary"> <?php echo $row->subject; ?></span>
-        </p>
-
-        <p>
-            <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion-<?php echo $row->id; ?>">Link</a>
-            <span onclick="copyLink(<?php echo $row->id; ?>)" id="spanLink-<?php echo $row->id; ?>">Copiar link</span>
-        </p>
-
-        <?php
-        $creatorQuestion = $question->getCreatorQuestionById($row->id);
-        $creatorQuestionID = $creatorQuestion[0]['student_id'];
-        $studentID = $studentId[0]['id'];
-        $hasAnswers = $question->hasAnswers($row->id);
-
-        $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
-        $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
-        ?>
-        <p class="<?php echo $styleDeleteQuestion; ?> <?php echo $styleDeleteDisplay;?>">
-            <a href="../question/controller/delete-question.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
-                Excluir
-            </a>
-        </p>
-
-        <p>
-            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
-        </p>
-
-        <p>
-            <?php echo $row->firstName; ?>
-            <?php echo $row->surname; ?>
-        </p>
-
-
-        <p>
-            <?php echo $row->created; ?> •
-            <?php echo $row->module; ?> •
-            <?php echo $row->school; ?>
-        </p>
-
-        <!-- Create the editor container -->
-        <div class="ql-snow ql-editor2">
-            <div class="ql-editor2">
-                <?php echo $row->question; ?>
+        <div class="pedir-heelp-div">
+            <img src="../../../../views/images/components/pedir-heelp-flipper.svg" class="pedir-heelp-img">
+            <div class="content-pedir-heelp">
+                <p class="pedir-heelp-text normal-22-black-title-1">
+                    Precisando de ajuda?
+                </p>
+                <a href="../question/question.page.php" class="pedir-heelp-button-a">
+                    <div class="pedir-heelp-button-div">
+                        <p class="pedir-heelp-button-p normal-14-bold-p">
+                            Pedir um heelp!
+                        </p> 
+                    </div>
+                </a>
             </div>
         </div>
-
+    
         <br>
         <br>
-
-        <?php $styleImageQuestion = !empty($row->image) ? '' : 'd-none'; ?>
-        <p class="<?php echo $styleImageQuestion; ?>">
-            <a href="<?php echo $row->image; ?>" class="image-link">
-                <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
-            </a>
-        </p>
-
-        <?php $styleDocumentQuestion = !empty($row->document) ? '' : 'd-none'; ?>
-        <p class="<?php echo $styleDocumentQuestion; ?>">
-            <?php echo $row->documentName; ?>
-            <a href="<?php echo $row->document; ?>" download="<?php echo $row->documentName; ?>">
-                <button>download</button>
-            </a>
-        </p>
-
-        <p>
+        <br>
+    
+        <!-- Lista de perguntas ⬇️ -->
+        <?php for ($i = 0; $i < count($listQuestions); $i++) {
+            $row = $listQuestions[$i] ?>
+    
+            <p>
+                <span class="badge rounded-pill bg-primary"> <?php echo $row->course; ?></span>
+    
+                <?php
+                if ($row->category === "Erro") {
+                    $styleError = 'badge rounded-pill bg-danger';
+                    $styleQuestion = 'd-none';
+                    $styleHelp = 'd-none';
+                }
+    
+                if ($row->category === "Dúvida") {
+                    $styleError = 'd-none';
+                    $styleQuestion = 'badge rounded-pill bg-info';
+                    $styleHelp = 'd-none';
+                }
+    
+                if ($row->category === "Apoio") {
+                    $styleError = 'd-none';
+                    $styleQuestion = 'd-none';
+                    $styleHelp = 'badge rounded-pill bg-success';
+                }
+                ?>
+                <span class="<?php echo $styleError; ?>"> <?php echo $row->category; ?></span>
+                <span class="<?php echo $styleQuestion; ?>"> <?php echo $row->category; ?></span>
+                <span class="<?php echo $styleHelp; ?>"> <?php echo $row->category; ?></span>
+                <span class="badge rounded-pill bg-primary"> <?php echo $row->subject; ?></span>
+            </p>
+    
+            <p>
+                <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion-<?php echo $row->id; ?>">Link</a>
+                <span onclick="copyLink(<?php echo $row->id; ?>)" id="spanLink-<?php echo $row->id; ?>">Copiar link</span>
+            </p>
+    
             <?php
-            $answer = new Answer();
-            $totalAnswersOfQuestion = $answer->countAnswers($row->id);
-
-            echo $totalAnswersOfQuestion;
+            $creatorQuestion = $question->getCreatorQuestionById($row->id);
+            $creatorQuestionID = $creatorQuestion[0]['student_id'];
+            $studentID = $studentId[0]['id'];
+            $hasAnswers = $question->hasAnswers($row->id);
+    
+            $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
+            $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
             ?>
-        </p>
+            <p class="<?php echo $styleDeleteQuestion; ?> <?php echo $styleDeleteDisplay;?>">
+                <a href="../question/controller/delete-question.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
+                    Excluir
+                </a>
+            </p>
+    
+            <div class="question-info">
+                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; border-radius: 50px; margin-right: 8px;">
+                <div class="question-info-text">
+                    <p class="question-name normal-14-medium-p">
+                        <?php echo $row->firstName; ?>
+                        <?php echo $row->surname; ?>
+                    </p>
+                    <p class="question-about normal-12-medium-tiny">
+                        <?php echo $row->created; ?> •
+                        <?php echo $row->module; ?> •
+                        <?php echo $row->school; ?>
+                    </p>
+                </div>
+            </div>
 
-        <p>
-            <a href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
-                <button>Dar um help</button>
-            </a>
-            <?php echo $row->xp; ?> xp
-        </p>
+            <!-- Create the editor container -->
+            <div class="ql-snow ql-editor2">
+                <div class="ql-editor2 question-text-div">
+                    <p class="question-text-p whitney-16-medium-text">
+                        <?php echo $row->question; ?>
+                    </p> 
+                </div>
+            </div>
+    
+            <?php $styleImageQuestion = !empty($row->image) ? '' : 'd-none'; ?>
+            <p class="<?php echo $styleImageQuestion; ?>">
+                <a href="<?php echo $row->image; ?>" class="image-link question-img">
+                    <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
+                </a>
+            </p>
+    
+            <?php $styleDocumentQuestion = !empty($row->document) ? '' : 'd-none'; ?>
+            <p class="<?php echo $styleDocumentQuestion; ?>">
+                <?php echo $row->documentName; ?>
+                <a href="<?php echo $row->document; ?>" download="<?php echo $row->documentName; ?>">
+                    <button>download</button>
+                </a>
+            </p>
+    
+            <div class="question-footer">
 
-        <hr>
-    <?php } ?>
+                <div class="question-answers question-footer-div">
+
+                    <p class="question-p normal-14-bold-p">
+                        <?php
+                        $answer = new Answer();
+                        $totalAnswersOfQuestion = $answer->countAnswers($row->id);
+            
+                        echo $totalAnswersOfQuestion;
+                        ?>
+                    </p>
+
+                </div>
+        
+                <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                    <div class="question-toAnswer question-footer-div">
+
+                            <p class="question-p normal-14-bold-p">Dar um help</p>
+                            <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
+                            <p class="question-p normal-14-bold-p"> <?php echo $row->xp; ?> xp </p>
+                            
+                            
+                        </div>
+                    </a>
+
+            </div>
+    
+            <hr>
+        <?php } ?>
+
+    </div>
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
