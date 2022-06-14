@@ -492,7 +492,7 @@
     .videoP{
        padding: 1.5em;
        position: relative;
-       padding-bottom: 30%;
+       padding-bottom: 24%;
        margin-bottom: 4.5em;
     }
     .videoP > iframe{
