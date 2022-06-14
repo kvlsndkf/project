@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jun-2022 às 02:44
+-- Tempo de geração: 14-Jun-2022 às 03:59
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -33,6 +33,7 @@ CREATE TABLE `answers` (
   `photo` text DEFAULT NULL,
   `document` text DEFAULT NULL,
   `document_name` varchar(255) DEFAULT NULL,
+  `is_denounced` tinyint(1) NOT NULL,
   `is_blocked` tinyint(1) NOT NULL,
   `blocking_reason` varchar(100) DEFAULT NULL,
   `avg_avaliation` float NOT NULL,
@@ -167,12 +168,14 @@ CREATE TABLE `denunciations` (
   `reason` varchar(30) NOT NULL,
   `post_link` varchar(100) NOT NULL,
   `status` varchar(30) NOT NULL,
-  `created_at` datetime NOT NULL,
   `conclusion` varchar(192) DEFAULT NULL,
   `context` varchar(30) DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
   `created_by_id` int(11) NOT NULL,
-  `denounced_id` int(11) NOT NULL
+  `denounced_id` int(11) NOT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `answer_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -226,6 +229,9 @@ CREATE TABLE `questions` (
   `photo` text DEFAULT NULL,
   `document` text DEFAULT NULL,
   `document_name` varchar(255) DEFAULT NULL,
+  `is_denounced` tinyint(1) NOT NULL,
+  `is_blocked` tinyint(1) NOT NULL,
+  `blocking_reason` varchar(100) DEFAULT NULL,
   `course_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -358,7 +364,9 @@ INSERT INTO `subjects` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (61, 'Programação WEB I', '0000-00-00 00:00:00', NULL),
 (62, 'Banco de Dados I', '0000-00-00 00:00:00', NULL),
 (63, 'Design Digital', '0000-00-00 00:00:00', NULL),
-(64, 'Ética', '0000-00-00 00:00:00', NULL);
+(64, 'Ética', '0000-00-00 00:00:00', NULL),
+(65, 'Física', '2022-06-13 19:39:15', NULL),
+(66, 'Artes', '2022-06-13 19:39:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -485,7 +493,9 @@ ALTER TABLE `courseshasteachers`
 ALTER TABLE `denunciations`
   ADD PRIMARY KEY (`id`),
   ADD KEY `created_by_id` (`created_by_id`),
-  ADD KEY `denounced_id` (`denounced_id`);
+  ADD KEY `denounced_id` (`denounced_id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `answer_id` (`answer_id`);
 
 --
 -- Índices para tabela `messages`
@@ -588,13 +598,13 @@ ALTER TABLE `usershaspreferences`
 -- AUTO_INCREMENT de tabela `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de tabela `answershasavaliations`
 --
 ALTER TABLE `answershasavaliations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de tabela `answershaslikes`
@@ -618,31 +628,31 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT de tabela `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de tabela `courseshassubjects`
 --
 ALTER TABLE `courseshassubjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de tabela `courseshasteachers`
 --
 ALTER TABLE `courseshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT de tabela `denunciations`
 --
 ALTER TABLE `denunciations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `modules`
@@ -654,31 +664,31 @@ ALTER TABLE `modules`
 -- AUTO_INCREMENT de tabela `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT de tabela `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshascourses`
 --
 ALTER TABLE `schoolshascourses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshasstudents`
 --
 ALTER TABLE `schoolshasstudents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshasteachers`
 --
 ALTER TABLE `schoolshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- AUTO_INCREMENT de tabela `solicitations`
@@ -690,31 +700,31 @@ ALTER TABLE `solicitations`
 -- AUTO_INCREMENT de tabela `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT de tabela `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT de tabela `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT de tabela `usershaspreferences`
 --
 ALTER TABLE `usershaspreferences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- Restrições para despejos de tabelas
@@ -768,7 +778,9 @@ ALTER TABLE `courseshasteachers`
 --
 ALTER TABLE `denunciations`
   ADD CONSTRAINT `denunciations_ibfk_1` FOREIGN KEY (`created_by_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `denunciations_ibfk_2` FOREIGN KEY (`denounced_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `denunciations_ibfk_2` FOREIGN KEY (`denounced_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `denunciations_ibfk_3` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `denunciations_ibfk_4` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `questions`

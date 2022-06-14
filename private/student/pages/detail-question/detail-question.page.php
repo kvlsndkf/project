@@ -9,12 +9,17 @@ try {
     $question = new Question();
     $listDetailsQuestions = $question->listDetailsQuestion($id);
     $creatorQuestion = $question->getCreatorQuestionById($id);
-    $QuestionHasAnswers = $question->hasAnswers($id);
+    $questionHasAnswers = $question->hasAnswers($id);
 
     $idUser = $_SESSION['idUser'];
 
+
     $student = new StudentMethods();
     $studentId = $student->getStudentByUserID($idUser);
+    $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
+
+    $userCreatorAnswer = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
+
 
     $answer = new Answer();
     $listAnswers = $answer->listAnswer($id, $studentId);
@@ -132,12 +137,20 @@ try {
     $studentID = $studentId[0]['id'];
 
     $styleDelete = $creatorQuestionID == $studentID ? '' : 'd-none';
-    $styleDeleteDisplay = $QuestionHasAnswers ? 'd-none' : '';
+    $styleDeleteDisplay = $questionHasAnswers || $listDetailsQuestions->isDenounced != false ? 'd-none' : '';
+
+    $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
     ?>
     <p class="<?php echo $styleDelete; ?> <?php echo $styleDeleteDisplay; ?>">
         <a href="../question/controller/delete-question.controller.php?id=<?php echo $listDetailsQuestions->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
             Excluir
         </a>
+    </p>
+
+    <p class="<?php echo $styleDenunciationQuestion; ?>">
+        <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $listDetailsQuestions->id; ?>">
+            denunciar
+        </label>
     </p>
 
     <p>
@@ -193,6 +206,66 @@ try {
         <?php echo $listDetailsQuestions->xp; ?> xp
     </p>
 
+    <!-- Modal Question -->
+    <div class="modal fade" id="modal-<?php echo $listDetailsQuestions->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $listDetailsQuestions->id; ?>" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel-<?php echo $listDetailsQuestions->id; ?>">Relatar um problema</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Nos ajude a entender o problema, o que está acontecendo com esse post?
+
+                    <form action="../question/controller/denunciation-question.controller.php" method="post">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $listDetailsQuestions->id; ?>" value="Não tenho interesse nesse post" required>
+                            <label class="form-check-label" for="radio1-<?php echo $listDetailsQuestions->id; ?>">
+                                Não tenho interesse nesse post
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $listDetailsQuestions->id; ?>" value="É suspeito ou está enviando span">
+                            <label class="form-check-label" for="radio2-<?php echo $listDetailsQuestions->id; ?>">
+                                É suspeito ou está enviando span
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $listDetailsQuestions->id; ?>" value="É abusivo ou nocivo">
+                            <label class="form-check-label" for="radio3-<?php echo $listDetailsQuestions->id; ?>">
+                                É abusivo ou nocivo
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $listDetailsQuestions->id; ?>" value="As informações são enganosas">
+                            <label class="form-check-label" for="radio4-<?php echo $listDetailsQuestions->id; ?>">
+                                As informações são enganosas
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $listDetailsQuestions->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                            <label class="form-check-label" for="radio5-<?php echo $listDetailsQuestions->id; ?>">
+                                Manifesta intenções de automutilação ou suicídio
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
+                            <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                            <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
+                            <input type="hidden" name="questionId" id="" value="<?php echo $listDetailsQuestions->id; ?>">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="register" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <hr>
 
     <p>
@@ -217,11 +290,21 @@ try {
             $studentID = $studentId[0]['id'];
 
             $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
+
+            $styleAnswerDisplay = $row->isDenounced != false ? 'd-none' : '';
+
+            $styleDenunciationAnswer = $creatorAnswerID == $studentID ? 'd-none' : '';
             ?>
-            <p class="<?php echo $styleDeleteAnswer; ?>">
+            <p class="<?php echo $styleDeleteAnswer; ?> <?php echo $styleAnswerDisplay; ?>">
                 <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
                     Excluir
                 </a>
+            </p>
+
+            <p class="<?php echo $styleDenunciationAnswer; ?>">
+                <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
+                    denunciar
+                </label>
             </p>
 
             <p>
@@ -325,6 +408,66 @@ try {
                 <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
             </div>
             </p>
+
+            <!-- Modal Answer-->
+            <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel-<?php echo $row->id; ?>">Relatar um problema</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Nos ajude a entender o problema, o que está acontecendo com esse post?
+
+                            <form action="../answer-question/controller/denunciation-answer.controller.php" method="post">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
+                                    <label class="form-check-label" for="radio1-<?php echo $row->id; ?>">
+                                        Não tenho interesse nesse post
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $row->id; ?>" value="É suspeito ou está enviando span">
+                                    <label class="form-check-label" for="radio2-<?php echo $row->id; ?>">
+                                        É suspeito ou está enviando span
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $row->id; ?>" value="É abusivo ou nocivo">
+                                    <label class="form-check-label" for="radio3-<?php echo $row->id; ?>">
+                                        É abusivo ou nocivo
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $row->id; ?>" value="As informações são enganosas">
+                                    <label class="form-check-label" for="radio4-<?php echo $row->id; ?>">
+                                        As informações são enganosas
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $row->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                    <label class="form-check-label" for="radio5-<?php echo $row->id; ?>">
+                                        Manifesta intenções de automutilação ou suicídio
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
+                                    <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $creatorAnswerID; ?>">
+                                    <input type="hidden" name="answerId" id="" value="<?php echo $row->id; ?>">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="register" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <hr>
         <?php } ?>
