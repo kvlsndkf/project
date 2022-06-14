@@ -518,7 +518,9 @@ class Answer
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return "Respondida " . $result[0]['total'];
+            $return = $result[0]['total'] != 0 ? "Respondida " . $result[0]['total'] : '';
+
+            return $return;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
