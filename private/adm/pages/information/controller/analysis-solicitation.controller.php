@@ -10,5 +10,5 @@ if (isset($_POST['analyzeRequest'])) {
     $id = $_GET['solicitationNewID'];
 
     $solicitation->setStatus("Análise");
-    $solicitation->analyzingSolicitation($solicitation, $id);
+    $solicitation->analysisSolicitation($solicitation, $id);
 }

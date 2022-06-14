@@ -16,11 +16,11 @@ try {
     $solicitation = new Solicitation();
 
     $listNewSolicitation = $solicitation->listNewSolicitation($search);
-    $listSolicitation = $solicitation->listSolicitation();
+    $listAnalysisSolicitation = $solicitation->listAnalysisSolicitation();
     $listResolvedSolicitation = $solicitation->listResolvedSolicitation();
 
     $countNewSolicitation = $solicitation->countNewSolicitation($search);
-    $countSolicitation = $solicitation->countSolicitation();
+    $countAnalysisSolicitation = $solicitation->countAnalysisSolicitation();
     $countResolvedSolicitation = $solicitation->countResolvedSolicitation();
 
     $listSolicitationOfSearch = $solicitation->listSolicitationOfSearchBar();
@@ -126,112 +126,31 @@ try {
     </form>
 
     <!-- Tabs content -->
+    <!-- Novas solicitações -->
     <div class="tab-content" id="ex1-content">
         <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-            <div id="solicitation-new-list">
+            <div id="solicitation-new-list"></div>
 
-            <div id="pagination-new-solicitation"></div> 
-            </div>
+            <div id="pagination-new-solicitation"></div>
         </div>
 
+    <!-- Solicitações em análise -->
         <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-            <div id="solicitation-analitic-list">
+            <div id="solicitation-analysis-list">
 
-                <!-- Contador  de mensagens lidas -->
-                <?php echo  $countSolicitation ?>
+            </div>
+            <div id="pagination-Analysis-solicitation">
 
-                <br>
-
-                <!-- Lista de mensagens lidas ⬇️ -->
-                <?php for ($i = 0; $i < count($listSolicitation); $i++) {
-                    $row = $listSolicitation[$i] ?>
-
-                    <?php $style = $row->status == "Análise" ? 'badge rounded-pill bg-info' : 'd-none'; ?>
-                    <span class="<?php echo $style; ?>"><?php echo $row->status; ?></span>
-
-                    <p>
-                        Contato
-                        <br>
-                        <?php echo $row->contact; ?>
-                    </p>
-
-                    <p>
-                        Categoria
-                        <br>
-                        <?php echo $row->category; ?>
-                    </p>
-
-                    <p>
-                        Titulo
-                        <br>
-                        <?php echo $row->title; ?>
-                    </p>
-
-                    <p>
-                        <!-- Descrição -->
-                        <?php echo $row->description; ?>
-                    </p>
-
-                    <?php $styleButton = $row->status == "Análise" ? '' : 'd-none'; ?>
-
-                    <button type="submit" name="concluidSolicitation" data-bs-toggle="modal" data-bs-target="#exampleModal">Marcar como concluida e enviar email de aviso</button>
-                    <hr>
-                <?php } ?>
             </div>
         </div>
 
+        <!-- Solicitações Resolvidas -->
         <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
             <div id="solicitation-resolved-list">
 
-                <!-- Contador  de mensagens lidas -->
-                <?php echo  $countResolvedSolicitation ?>
+            </div>
+            <div id = "pagination-resolved-solicitation">
 
-                <br>
-
-                <!-- Lista de mensagens lidas ⬇️ -->
-                <?php for ($i = 0; $i < count($listResolvedSolicitation); $i++) {
-                    $row = $listResolvedSolicitation[$i] ?>
-
-                    <?php $style = $row->status == "Resolvida" ? 'badge rounded-pill bg-info' : 'd-none'; ?>
-                    <span class="<?php echo $style; ?>"><?php echo $row->status; ?></span>
-
-                    <?php $style = $row->statusSituation == "Solicitação acatada" ? 'badge rounded-pill bg-info' : 'd-none'; ?>
-                    <span class="<?php echo $style; ?>"><?php echo $row->statusSituation; ?></span>
-
-                    <?php $style = $row->statusSituation == "Solicitação acatada" ? 'badge rounded-pill bg-info' : 'd-none'; ?>
-                    <span class="<?php echo $style; ?>"><?php echo $row->statusSituation; ?></span>
-
-                    <p>
-                        Contato
-                        <br>
-                        <?php echo $row->contact; ?>
-                    </p>
-
-                    <p>
-                        Categoria
-                        <br>
-                        <?php echo $row->category; ?>
-                    </p>
-
-                    <p>
-                        Titulo
-                        <br>
-                        <?php echo $row->title; ?>
-                    </p>
-
-                    <p>
-                        <!-- Descrição -->
-                        <?php echo $row->description; ?>
-                    </p>
-
-                    <hr>
-                    <p>
-                        Conclusão
-                        <br>
-                        <?php echo $row->conclusion; ?>
-                    </p>
-                    <hr>
-                <?php } ?>
             </div>
         </div>
         <!-- Tabs content -->
@@ -245,9 +164,9 @@ try {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="row g-3 needs-validation" action="./controller/resolved-solicitation.controller.php?idSolicitation=<?php echo $row->id; ?>" method="POST" enctype="multipart/form-data"  class="<?php echo $styleButton; ?>">
+                        <form class="row g-3 needs-validation" action="./controller/resolved-solicitation.controller.php?idSolicitation=<?php echo $row->id; ?>" method="POST" enctype="multipart/form-data" class="<?php echo $styleButton; ?>">
                             <div class="mb-3">
-                                <select  name="selectSituation_id" id="selectSituation_id" required>
+                                <select name="selectSituation_id" id="selectSituation_id" required>
                                     <option value="">Selecione a Situação</option>
                                 </select>
                             </div>
@@ -308,8 +227,68 @@ try {
             }
         </script>
 
-         <!-- Paginação das solicitações novas -->
-        <script src="../js/pagination-solicitation-new.js"></script>
+        <!-- Paginação das solicitações novas -->
+        <script>
+            const listNewSolicitation = document.getElementById('solicitation-new-list');
+
+            const paginationSolicitatonNew = document.getElementById('pagination-new-solicitation');
+
+            const listSolicitationNew = async (page) => {
+                const dados = await fetch('./controller/list-solicitation-new.controller.php?page=' + page);
+                // console.log("to funfando");
+                const asweres = await dados.text();
+                listNewSolicitation.innerHTML = asweres;
+
+                const dados2 = await fetch('./controller/pagination-solicitation-new.controller.php?page=' + page);
+                // console.log("to funconando")
+                const asweres2 = await dados2.text();
+                paginationSolicitatonNew.innerHTML = asweres2;
+            }
+
+            listSolicitationNew(1);
+        </script>
+
+        <!-- Paginação das solicitações em análise -->
+        <script>
+            const listSolicitation = document.getElementById('solicitation-analysis-list');
+
+            const paginationSolicitaton = document.getElementById('pagination-Analysis-solicitation');
+
+            const listSolicitationAnalysis = async (page) => {
+                const dados = await fetch('./controller/list-solicitation-analysis.controller.php?page=' + page);
+                // console.log("to funfando");
+                const asweres = await dados.text();
+                listSolicitation.innerHTML = asweres;
+
+                const dados2 = await fetch('./controller/pagination-solicitation-analysis.controller.php?page=' + page);
+                // console.log("to funconando")
+                const asweres2 = await dados2.text();
+                paginationSolicitaton.innerHTML = asweres2;
+            }
+
+            listSolicitationAnalysis(1);
+        </script>
+
+        <!-- Paginação das solicitações novas -->
+        <script>
+            const listResolvedSolicitation = document.getElementById('solicitation-resolved-list');
+
+            const paginationSolicitatonResolved = document.getElementById('pagination-resolved-solicitation');
+
+            const listSolicitationResolved = async (page) => {
+                const dados = await fetch('./controller/list-solicitation-resolved.controller.php?page=' + page);
+                // console.log("to funfando");
+                const asweres = await dados.text();
+                listResolvedSolicitation.innerHTML = asweres;
+
+                const dados2 = await fetch('./controller/pagination-solicitation-resolved.controller.php?page=' + page);
+                // console.log("to funconando")
+                const asweres2 = await dados2.text();
+                paginationSolicitatonResolved.innerHTML = asweres2;
+            }
+
+            listSolicitationResolved(1);
+        </script>
 
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>

@@ -146,13 +146,13 @@ class Solicitation
         $this->resultBuildListNew = $resultBuildListNew;
     }
     //----------------------------
-    public function getResultBuildList(): array
+    public function getResultBuildListAnalysis(): array
     {
-        return $this->resultBuildList;
+        return $this->resultBuildListAnalysis;
     }
-    public function setResultBuildList(array $resultBuildList): void
+    public function setResultBuildListAnalysis(array $resultBuildListAnalysis): void
     {
-        $this->resultBuildList = $resultBuildList;
+        $this->resultBuildListAnalysis = $resultBuildListAnalysis;
     }
     //----------------------------
     public function getResultBuildListResolved(): array
@@ -227,7 +227,7 @@ class Solicitation
     /**
      * @method listSolicitation() lists the solicitation by 
      */
-    public function listSolicitation(): array | false
+    public function listAnalysisSolicitation(): array | false
     {
         $connection = Connection::connection();
 
@@ -246,7 +246,7 @@ class Solicitation
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $this->buildSolicitationList($result);
+            return $this->buildAnalysisSolicitationList($result);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -292,7 +292,7 @@ class Solicitation
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $this->buildSolicitationList($result);
+            return $this->buildNewSolicitationList($result);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -362,7 +362,7 @@ class Solicitation
      * @method buildSolicitationList() organize the list of solicitation analitc by 
      * @param array $result 
      */
-    private function buildSolicitationList(array | false $result)
+    private function buildAnalysisSolicitationList(array | false $result)
     {
         $solicitations = [];
 
@@ -378,7 +378,7 @@ class Solicitation
             array_push($solicitations, $solicitation);
         }
 
-        $this->setResultBuildList($solicitations);
+        $this->setResultBuildListAnalysis($solicitations);
         return $solicitations;
     }
 
@@ -405,7 +405,7 @@ class Solicitation
             array_push($solicitations, $solicitation);
         }
 
-        $this->setResultBuildList($solicitations);
+        $this->setResultBuildListResolved($solicitations);
         return $solicitations;
     }
 
@@ -445,7 +445,7 @@ class Solicitation
     /**
      * @method countSolicitation() count the solicitation by 
      */
-    public function countSolicitation()
+    public function countAnalysisSolicitation()
     {   
         $connection = Connection::connection();
 
@@ -477,12 +477,12 @@ class Solicitation
     }
     //----------------------------
     /**
-     * @method analyzingSolicitation() analyzing the solicitations by 
+     * @method AnalysisSolicitation() Analysis the solicitations by 
      * @var $solicitation 
      * @param int $id
      */
 
-    public function analyzingSolicitation(Solicitation $solicitation, int $id)
+    public function analysisSolicitation(Solicitation $solicitation, int $id)
     {
         $connection = Connection::connection();
 
