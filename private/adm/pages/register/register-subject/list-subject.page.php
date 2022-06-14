@@ -139,7 +139,7 @@ try {
                     </li>
 
                     <li class="sidebar-li">
-                        <a href="#" class="sidebar-a">
+                        <a href="../../message/list-message.page.php" class="sidebar-a-items">
                             <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
                             <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
                         </a>
@@ -155,7 +155,7 @@ try {
                     </li>
 
                     <li class="sidebar-li">
-                        <a href="../../../../logout/logout.controller.php" class="sidebar-a">
+                        <a href="../../../../logout/logout.controller.php" class="sidebar-a-items2">
                         <img class="sidebar-img" src="../../../../../views/images/components/sair-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Sair</p>
                     </a>

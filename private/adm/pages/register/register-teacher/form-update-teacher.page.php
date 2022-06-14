@@ -51,7 +51,7 @@ if (isset($_GET['updateTeacher'])) {
                             <label class="normal-20-bold-modaltitle title-header">Editar professor</label>
                         </div>
                         <p>
-                            <label class="normal-14-medium-p nome-professor">Nome professor</label><br />
+                            <label class="normal-14-medium-p nome-professor">Nome professor<span style="color: var(--red);">*</span></label><br />
                             <input type="text" class="normal-12-regular-tinyinput input-text" name="updateName" id="updateName" value="<?php echo $rowCat['name'] ?>" autocomplete="off" required autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="6">
                         </p>
                         <p>

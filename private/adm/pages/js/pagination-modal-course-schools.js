@@ -5,7 +5,6 @@ async function enterDataSchools(id,page) {
     await fetch('./controller/pagination-modal-course-schools.php?idCourse=' + id + '&page=' + page)
                 .then((resp) => resp.json())
                 .then(function(data){
-                    console.log(data);
                     paginationSchools.innerHTML= data;
                 });
 
@@ -16,8 +15,6 @@ async function enterDataSchools(id,page) {
                 const convert_into_string = JSON.stringify(json_course);
                 const object_course = JSON.parse(convert_into_string);
                 const course = object_course['course'][0];
-
-                console.log(object_course);
 
                 document.getElementById('course-edit').href = "./form-update-course.page.php?updateCourse=" + course['id'];
                 document.getElementById('course-delete').href = "./controller/delete-course.controller.php?id=" + course['id'];
@@ -34,18 +31,30 @@ async function enterDataSchools(id,page) {
 
                 for (i = 0; i < array_schools.length; i++) {
                     const divElementSchool = document.createElement("div");
-                    divElementSchool.className = "divSchools";
+                    divElementSchool.className = "div-list-school";
                     const tElementSchool = document.createElement("p");
-                    tElementSchool.className = "schools";
-                    const photoElementSchool = document.createElement("img");
-                    photoElementSchool.className = "photoSchools";
+                    tElementSchool.className = "p-teachers-list schools normal-14-bold-p";
+
+                    const divLocal = document.createElement("div");
+                    divLocal.className = "";
+                    const localSchool = document.createElement("label");
+                    localSchool.className = "schools p-teachers-list normal-14-bold-p";
+                    const iconLocal = document.createElement("img");
+                    iconLocal.className = "";
+                    const hrElement = document.createElement("hr");
+                    hrElement.className = "hr-teachers-list";
+                    
 
                     tElementSchool.innerHTML = array_schools[i]['name'];
-                    photoElementSchool.src = array_schools[i]['photo'];
+                    iconLocal.src = "/project/private/adm/images/icons/icon-local.svg";
+                    localSchool.innerHTML = array_schools[i]['address'] + ", São Paulo";
 
                     divElementSchool.id = i;
                     divElementSchool.appendChild(tElementSchool);
-                    divElementSchool.appendChild(photoElementSchool);
+                    divLocal.appendChild(iconLocal);
+                    divLocal.appendChild(localSchool);
+                    divElementSchool.appendChild(divLocal);
+                    divElementSchool.appendChild(hrElement);
 
                     document.getElementById("schools-list").appendChild(divElementSchool);
                 }

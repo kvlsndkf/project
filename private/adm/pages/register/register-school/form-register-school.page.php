@@ -101,7 +101,7 @@ try {
                 <div class="container">
                     <form action="./controller/school-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
                         <label class="normal-14-medium-p nome-professor">
-                            Nome Etec
+                            Nome Etec<span style="color: var(--red);">*</span>
                         </label>
                         <input type="text" name="name" id="name" class="normal-12-regular-tinyinput input-text" placeholder="Digite o nome da ETEC" autocomplete="off" required autofocus pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="10">
                         <div>
@@ -109,7 +109,7 @@ try {
                         </div>
                         <br />
                         <p class="normal-14-medium-p etec-location-label">
-                            A Etec fica localizada dentro da cidade de São Paulo?
+                            A Etec fica localizada dentro da cidade de São Paulo?<span style="color: var(--red);">*</span>
                         </p>
 
                         <p>
@@ -119,7 +119,7 @@ try {
                         </p>
 
                         <p id="textDistrict" style="display:none">
-                            Distrito
+                            Distrito<span style="color: var(--red);">*</span>
                             <select name="address" id="district" class="select-district" style="width: 100%" disabled required>
                                 <option value="" selected disabled>Selecione o respectivo distrito</option>
                                 <?php foreach ($places->districts as $row) { ?>
@@ -130,7 +130,7 @@ try {
 
 
                         <p id="textCity" style="display:none">
-                            Município
+                            Município<span style="color: var(--red);">*</span>
                             <select name="address" id="city" class="select-city" style="width: 100%" disabled required>
                                 <option value="" selected disabled>Selecione o respectivo município</option>
                                 <?php foreach ($places->cities as $row) { ?>
@@ -161,7 +161,7 @@ try {
                                     <div class="accordion-body" style="background-color: var(--bg-modal);">
 
                                         <p>
-                                            <label class="normal-14-medium-p ">Selecione os professores a que ela pertence</label>
+                                            <label class="normal-14-medium-p ">Selecione os professores a que ela pertence<span style="color: var(--red);">*</span></label>
                                         </p>
                                         <p>
                                             <select name="idTeachers[]" id="idTeachers" class="multiple-select bg-modal disabled-area" style="width: 100%;" multiple="multiple" disabled required>
@@ -182,7 +182,7 @@ try {
                                             </p>
 
                                             <div id="contentTextArea">
-                                                <textarea name="about" id="about" cols="30" rows="7" placeholder="Faça um breve texto contando sobre a Etec, ele aparecerá na página de perfil da mesma" class="text-area normal-14-medium-p" placeholder="Digite sobre a etec" disabled onclick="colorDiv()" minlength="100" maxlength="250"></textarea>
+                                                <textarea name="about" id="about" cols="30" rows="7" placeholder="Faça um breve texto contando sobre a Etec, ele aparecerá na página de perfil da mesma" class="text-area normal-14-medium-p" divlaceholder="Digite sobre a etec" disabled onclick="colorDiv()" minlength="100" maxlength="250"></textarea>
                                                 <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
                                             </div>
 
@@ -213,7 +213,7 @@ try {
                                         </p>
                                         <hr class="dropdown-divider">
                                         <p class="normal-14-medium-p">
-                                            <label class="normal-14-medium-p foto-text">Foto</label><br />
+                                            <label class="normal-14-medium-p foto-text">Foto<span style="color: var(--red);">*</span></label><br />
                                             <label for="photo" class="add-arch normal-14-bold-p">Adicionar arquivos</label>
                                             <input type="file" class="photo" name="photo" id="photo" disabled required>
                                             <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>

@@ -240,6 +240,14 @@
     margin: 5px;
 }
 
+.card-contact{
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid var(--gray7);
+    margin: 5px;
+    padding: 20px;
+}
+
 .school-name{
     margin-bottom: 4px;
 }
@@ -250,6 +258,7 @@
     margin-top: 5px;
     margin-left: 0;
     margin-bottom: 10px;
+    border-radius: 32px;
 }
 
 .div-prof-img{
@@ -283,10 +292,91 @@
     margin: 0;
 }
 
+.contato-message{
+    margin: 0;
+    margin-top: 20px;
+}
+
+.read-button{
+    border: none;
+    outline: none;
+    height: auto;
+    width: 100%;
+    background-color: none;
+    margin-top: 20px;
+}
+
+.margin-0{
+    margin: 0;
+}
+
+.margin-top-0{
+    margin-top: 0;
+}
+
 .prof-text{
     margin-bottom: 2px;
     color: var(--bg-modal);
     max-width: 240px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.message-text{
+    max-width: 460px;
+}
+
+.line-clamp-2{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* truncate to 4 lines */
+    -webkit-line-clamp: 2;
+  }
+
+  .read-btn{
+    border: none;
+    background-color: var(--white);
+    color: var(--primary);
+    text-decoration: underline;
+    font-weight: 400;
+  }
+
+.sidebar-button-a{
+    cursor: pointer;
+}
+
+.sidebar-current-option{
+    color: var(--primary);
+}
+
+.tab-ul{
+    height: 32px;
+    border-bottom: 1px solid var(--gray6);
+}
+
+.tab-a{
+    height: 32px;
+    margin-top: -3px;
+}
+
+.tab-p{
+    margin-top: -10px;
+    text-transform: none;
+}
+.nav-tabs .nav-link{
+    color: var(--gray6);
+    border-radius: 8px 8px 0 0;
+}
+
+.nav-tabs .nav-link:hover{
+    background-color: var(--primary);
+    transition: .5s;
+}
+
+.nav-tabs .nav-link.active{
+    color: var(--gray1);
+    border-color: var(--primary);
 }
 
 .drop-edit-exclud{
@@ -495,6 +585,31 @@
     padding-top: 13px;
     padding-bottom: 13px;
 }
+
+/* Botão de sair  */
+
+.sidebar-a-items2{
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    transition: 0.2s; /* Animação */
+    width: 100%;
+    height: auto; 
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+.sidebar-a-items2:hover{
+    background-color: var(--red);
+    border-radius: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+/* Fim do Botão de sair  */
 
 
 /* Responsividade com o Media */

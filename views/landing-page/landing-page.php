@@ -15,6 +15,12 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="../../private/style/style.css">
 
+        <link rel="stylesheet" href="../styles/button.style.css">
+        <link rel="stylesheet" href="../styles/input.style.css">
+
+        <!-- Link do css do Fale Conosco -->
+        <link rel="stylesheet" href="./fale-conosco.css">
+
         <!-- Títilo e Ícone -->
         <title>Heelp!</title>
         <link rel="icon" href="./img/Logo-Blue.svg" type="image/icon type">
@@ -226,33 +232,35 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
+    <div class="modal-content corM">
+        <div class="container containerM">
+        <div class="modal-header border-bottom-0">
             
-            <h2 class="modal-title" id="exampleModalLabel"> Fale Conosco</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h2 class="modal-titleM normal-20-bold-modaltitle" id="exampleModalLabel"> Fale Conosco</h2>
+            <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../images/components/x-button.svg" class="close fechar"></button>
         </div>
 
     <div class="modal-body">
         <form class="row g-3 needs-validation" action="./form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Deixe um email para entrarmos em contato</label>
-          <input name="contact" type="email" class="form-control" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+          <label for="exampleFormControlInput1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe um email para entrarmos em contato</label>
+          <input name="contact" type="email" class=" input normal-12-regular-tinyinput input-text" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
         </div>
         <div  class="mb-3">
         
-        <hr>
-        <label for="exampleFormControlTextarea1" class="form-label">Deixe sua crítica/avaliação</label>
-          <div id="contentTextArea"><textarea name="message" id="about" class="form-control" cols="30" rows="10"  placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required  maxlength="240" ></textarea></div>
-          <div><span id="counterTextArea">240</span></div>
-          <hr>
-        </div>
-        <div class="col-12">
-        <input class="btn btn-primary" type="submit" value="Enviar"  name="register" onclick = "GFG_Fun()"></input>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        
+
+        <label for="exampleFormControlTextarea1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe sua crítica/avaliação</label>
+        <div id="contentTextArea">
+          <textarea  name="message" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" required  onclick="colorDiv()" minlength="15"  maxlength="240" ></textarea>
+          <div id="counter-container" class="counter-container">
+            <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">240</span>
+            </div>
           </div>
+          <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar"  name="register" onclick = "GFG_Fun()">Enviar</button>
+                            
+        </div>
         </form>
+    </div>
     </div>
     </div>
   </div>
@@ -326,6 +334,7 @@
 })()
     </script> 
 
+<script type="text/javascript" src="../../private/adm/pages/js/textarea.js"></script>
     <!-- JS Visibility Inputs -->
 <script type="text/javascript" src="../../private/adm/pages/js/visibility-inputs.js"></script>
 <!-- JS Count Characters TextArea -->

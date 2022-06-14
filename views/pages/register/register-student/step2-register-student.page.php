@@ -18,7 +18,7 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -29,6 +29,17 @@ try {
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- STYLES -->
+    <!-- STYLES -->
+    <link rel="stylesheet" href="../../../styles/style.global.css">
+    <link rel="stylesheet" href="../../../styles/colors.style.css">
+    <link rel="stylesheet" href="../../../styles/font-format.style.css">
+    <link rel="stylesheet" href="../../../styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../styles/input.style.css">
+    <link rel="stylesheet" href="../../../styles/button.style.css">
+    <link rel="stylesheet" href="./register-student.style.css">
+    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 </head>
 
 <body>
@@ -54,113 +65,123 @@ try {
     <?php unset($_SESSION['statusNegative']);
     } ?>
 
-    <a href="./step1-register-student.page.php">Voltar</a>
-    <br>
-    <br>
+    <div class="h-100 w-100 d-flex align-items-center justify-content-center">
+        <div class="bg-modal-gray align-self-center my-auto form-base-plump">
+            <div class="d-flex justify-content-between">
+                <a href="./step1-register-student.page.php"><img src="../../../../private/adm/images/components/arrow.svg" alt="Seta para voltar" class="mb-2"></a>
+                <label class="normal-14-bold-p">Etapa 2/4</label>
+            </div>
+            <div class="text-center form-student-titles">
+                <span class="normal-22-black-title-1 gray-title">Falta pouco...</span>
+                <br />
+                <span class="nord-32-black-display">Nos conte um pouco sobre você!</span>
+            </div>
+            <label class="normal-18-bold-title-2 subtitle-data">Dados pessoais</label>
 
-    <label for="">Etapa 2/4</label>
-    <br>
-    <br>
-
-    <label for="">Dados pessoais</label>
-    <br>
-    <br>
-
-    <form action="./controller/step2-cookie.controller.php" method="post">
-        <div>
-            Primeiro nome
             <br>
-            <?php $firstName =  !is_null(Cookie::reader('firstName')) ? Cookie::reader('firstName') : ''; ?>
-            <input type="text" name="firstName" id="firstName" required autocomplete="off" autofocus value="<?php echo $firstName; ?>">
-        </div>
-        <br>
-
-
-        <div>
-            Sobrenome
             <br>
-            <?php $surname =  !is_null(Cookie::reader('surname')) ? Cookie::reader('surname') : ''; ?>
-            <input type="text" name="surname" id="surname" required autocomplete="off" value="<?php echo $surname; ?>">
+
+            <form action="./controller/step2-cookie.controller.php" method="post">
+
+
+                <p class="normal-14-bold-p gray-title forms-label-student">Primeiro nome<span style="color: var(--red);">*</span></p>
+                <div>
+
+                    <?php $firstName =  !is_null(Cookie::reader('firstName')) ? Cookie::reader('firstName') : ''; ?>
+                    <input class="normal-12-regular-tinyinput input-text" placeholder="Digite seu primeiro nome" type="text" name="firstName" id="firstName" required minlength="2" autocomplete="off" autofocus value="<?php echo $firstName; ?>">
+                </div>
+                <br>
+
+
+                <div>
+                    <p class="normal-14-bold-p gray-title forms-label-student">Sobrenome<span style="color: var(--red);">*</span></p>
+
+
+                    <?php $surname =  !is_null(Cookie::reader('surname')) ? Cookie::reader('surname') : ''; ?>
+                    <input class="normal-12-regular-tinyinput input-text" placeholder="Digite seu sobrenome" type="text" name="surname" id="surname" required autocomplete="off" value="<?php echo $surname; ?>">
+                </div>
+                <br>
+
+
+                <div>
+                    <p class="normal-14-bold-p gray-title forms-label-student">Etec<span style="color: var(--red);">*</span></p>
+
+                    <p>
+                        <?php
+                        $nameSchool =  !is_null(Cookie::reader('nameSchool')) ? Cookie::reader('nameSchool') : "Selecione a escola";
+                        $schoolDisabled = $nameSchool === "Selecione a escola" ? 'disabled' : "";
+                        ?>
+                        <select name="nameSchool" id="nameSchool" class="select-school" style="width: 100%" onchange="schoolValue()" required>
+                            <option value="<?php echo $nameSchool; ?>" <?php echo $schoolDisabled; ?> selected><?php echo $nameSchool ?></option>
+                            <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
+                                $row = $listSchoolsOfSelect[$i] ?>
+                                <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </select>
+                    </p>
+                </div>
+                <br>
+
+                <div>
+                    <p class="normal-14-bold-p gray-title forms-label-student">Curso<span style="color: var(--red);">*</span></p>
+                    <p>
+                        <select name="nameCourse" id="nameCourse" class="select-course" style="width: 100%" disabled required>
+                            <option value="" disabled selected>Selecione o curso</option>
+                        </select>
+                    </p>
+                </div>
+                <br>
+
+
+                <div>
+                    <p class="normal-14-bold-p gray-title forms-label-student">Módulo<span style="color: var(--red);">*</span></p>
+                    <p>
+                        <?php
+                        $nameModule =  !is_null(Cookie::reader('nameModule')) ? Cookie::reader('nameModule') : "Selecione o módulo";
+                        $moduleDisabled = $nameModule === "Selecione o módulo" ? 'disabled' : "";
+                        ?>
+                        <select name="nameModule" id="nameModule" class="select-module" style="width: 100%" required>
+                            <option value="<?php echo $nameModule; ?>" <?php echo $moduleDisabled ?> selected><?php echo $nameModule; ?></option>
+                            <?php for ($i = 0; $i < count($listModulesOfSelect); $i++) {
+                                $row = $listModulesOfSelect[$i] ?>
+                                <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </select>
+                    </p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" style=" color: inherit; text-decoration: inherit; text-decoration:none;"><span class="normal-12-bold-tiny blue-title">Não encontrou o seu dado? Clique aqui.</span></a>
+                </div>
+                <br>
+
+
+                <hr>
+                <label class="normal-18-bold-title-2">Links</label>
+                <p>
+                <p class="normal-14-medium-p">Linkedin</p>
+                <?php $linkedin =  !is_null(Cookie::reader('linkedin')) ? Cookie::reader('linkedin') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $linkedin; ?>">
+                </p>
+
+                <p>
+                <p class="normal-14-medium-p">GitHub</p>
+                <?php $github =  !is_null(Cookie::reader('github')) ? Cookie::reader('github') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="text" name="github" id="github" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $github; ?>">
+                </p>
+
+                <p>
+                <p class="normal-14-medium-p">Facebook</p>
+                <?php $facebook =  !is_null(Cookie::reader('facebook')) ? Cookie::reader('facebook') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $facebook; ?>">
+                </p>
+
+                <p>
+                <p class="normal-14-medium-p">Instagram</p>
+                <?php $instagram =  !is_null(Cookie::reader('instagram')) ? Cookie::reader('instagram') : ''; ?>
+                <input class="normal-12-regular-tinyinput input-text" type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $instagram; ?>">
+                </p>
+                <input type="submit" class="register button-wide submit-button-primary normal-14-bold-p" value="Continuar" name="step2">
+            </form>
         </div>
-        <br>
-
-
-        <div>
-            Etec
-            <p>
-                <?php
-                $nameSchool =  !is_null(Cookie::reader('nameSchool')) ? Cookie::reader('nameSchool') : "Selecione a escola";
-                $schoolDisabled = $nameSchool === "Selecione a escola" ? 'disabled' : "";
-                ?>
-                <select name="nameSchool" id="nameSchool" class="select-school" style="width: 100%" onchange="schoolValue()" required>
-                    <option value="<?php echo $nameSchool; ?>" <?php echo $schoolDisabled; ?> selected><?php echo $nameSchool ?></option>
-                    <?php for ($i = 0; $i < count($listSchoolsOfSelect); $i++) {
-                        $row = $listSchoolsOfSelect[$i] ?>
-                        <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                    <?php } ?>
-                </select>
-            </p>
-        </div>
-        <br>
-
-        <div>
-            Curso
-            <p>
-                <select name="nameCourse" id="nameCourse" class="select-course" style="width: 100%" disabled required>
-                    <option value="" disabled selected>Selecione o curso</option>
-                </select>
-            </p>
-        </div>
-        <br>
-
-
-        <div>
-            Módulo
-            <p>
-                <?php
-                $nameModule =  !is_null(Cookie::reader('nameModule')) ? Cookie::reader('nameModule') : "Selecione o módulo";
-                $moduleDisabled = $nameModule === "Selecione o módulo" ? 'disabled' : "";
-                ?>
-                <select name="nameModule" id="nameModule" class="select-module" style="width: 100%" required>
-                    <option value="<?php echo $nameModule; ?>" <?php echo $moduleDisabled ?> selected><?php echo $nameModule; ?></option>
-                    <?php for ($i = 0; $i < count($listModulesOfSelect); $i++) {
-                        $row = $listModulesOfSelect[$i] ?>
-                        <option value="<?php echo $row->name ?>"> <?php echo $row->name ?> </option>
-                    <?php } ?>
-                </select>
-            </p>
-        </div>
-        <br>
-
-        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Não encontrou seu dado? Clique Aqui! </a>
-
-        <hr>
-        <label>Links</label>
-        <p>
-            Linkedin
-            <?php $linkedin =  !is_null(Cookie::reader('linkedin')) ? Cookie::reader('linkedin') : ''; ?>
-            <input type="text" name="linkedin" id="linkedin" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $linkedin; ?>">
-        </p>
-
-        <p>
-            GitHub
-            <?php $github =  !is_null(Cookie::reader('github')) ? Cookie::reader('github') : ''; ?>
-            <input type="text" name="github" id="github" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $github; ?>">
-        </p>
-
-        <p>
-            Facebook
-            <?php $facebook =  !is_null(Cookie::reader('facebook')) ? Cookie::reader('facebook') : ''; ?>
-            <input type="text" name="facebook" id="facebook" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $facebook; ?>">
-        </p>
-
-        <p>
-            Instagram
-            <?php $instagram =  !is_null(Cookie::reader('instagram')) ? Cookie::reader('instagram') : ''; ?>
-            <input type="url" name="instagram" id="instagram" placeholder="Copie e cole a URL" autocomplete="off" value="<?php echo $instagram; ?>">
-        </p>
-        <input type="submit" value="Continuar" name="step2">
-    </form>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -182,9 +203,9 @@ try {
                             </select>
                         </div>
                         <div class="mb-3">
-                                <label for="exampleFormControlInput1">Titulo</label>
-                                <input name="title" type="text" class="form-control" id="title" placeholder="Digite o título da informação" required autocomplete="off">
-                            </div>
+                            <label for="exampleFormControlInput1">Titulo</label>
+                            <input name="title" type="text" class="form-control" id="title" placeholder="Digite o título da informação" required autocomplete="off">
+                        </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Em que podemos ajudar</label>
                             <div id="contentTextArea"><textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required maxlength="200"></textarea></div>
@@ -244,7 +265,6 @@ try {
             const course = decodeURI(courseCookie);
 
             if (select.value != "Selecione a escola") {
-                console.log("value", select.value);
                 courseList.disabled = false;
                 const dados = await fetch('./controller/json-step2.controller.php?nameSchool=' + select.value);
 
@@ -311,6 +331,31 @@ try {
                 selectCategory.innerHTML = option;
             }
         }
+    </script>
+
+    <script>
+        //  JS APENAS permitir: letras, acentuação, espaço e hífen 
+        $('#firstName, #surname').on('keypress', function(event) {
+            var regex = new RegExp("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+
+    <!-- JS bloquear colagem (paste) -->
+
+    <script>
+        var myElement = document.getElementById('firstName');
+
+        myElement.addEventListener('paste', e => e.preventDefault());
+    </script>
+
+    <script>
+        var myElementSurname = document.getElementById('surname');
+        myElementSurname.addEventListener('paste', e => e.preventDefault());
     </script>
 </body>
 
