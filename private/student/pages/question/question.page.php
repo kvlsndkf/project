@@ -232,6 +232,8 @@ try {
             const selectCourse = document.getElementById("selectCourse");
             const selectSubject = document.getElementById("selectSubject");
 
+            selectSubject.innerHTML = "";
+
             const dados = await fetch('./controller/json-register-subject.controller.php?course=' + selectCourse.value);
 
             const json_subject = await dados.json();
