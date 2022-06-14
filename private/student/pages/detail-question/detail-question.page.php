@@ -137,7 +137,7 @@ try {
     $studentID = $studentId[0]['id'];
 
     $styleDelete = $creatorQuestionID == $studentID ? '' : 'd-none';
-    $styleDeleteDisplay = $questionHasAnswers ? 'd-none' : '';
+    $styleDeleteDisplay = $questionHasAnswers || $listDetailsQuestions->isDenounced != false ? 'd-none' : '';
 
     $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
     ?>
@@ -291,10 +291,11 @@ try {
 
             $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
 
-            $styleDenunciationAnswer = $creatorAnswerID == $studentID ? 'd-none' : '';
+            $styleAnswerDisplay = $row->isDenounced != false ? 'd-none' : '';
 
+            $styleDenunciationAnswer = $creatorAnswerID == $studentID ? 'd-none' : '';
             ?>
-            <p class="<?php echo $styleDeleteAnswer; ?>">
+            <p class="<?php echo $styleDeleteAnswer; ?> <?php echo $styleAnswerDisplay; ?>">
                 <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
                     Excluir
                 </a>
