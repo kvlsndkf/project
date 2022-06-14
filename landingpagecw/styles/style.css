@@ -27,13 +27,6 @@ body {
   height: 200vh;
 }
 
-body nav.sticky {
-    position: fixed;
-    width: 100%;
-    background-color: red;
-    box-shadow: 0 8px 32px 0 var(--magenta-light);
-    z-index: 2;
-}
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -673,10 +666,68 @@ a.font-header-hero{
 
 /* CSS EMILLIE */
 
+/* ícone cold wolf */
 .logo-cw-navbar {
   width: 45px;
 }
 
-.nav-item {
+/* navbar no scroll */
+body nav.sticky {
+  position: fixed;
+  width: 100%;
+  background-color: #280242;
+  box-shadow: 0 8px 32px 0 black;
+  z-index: 2;
+}
+
+
+/* PARTE 1 */
+
+.p1 {
+  padding-top: 150px;
+}
+
+/* PARTE 1 ESQUERDA */
+
+.left-part {
+  max-width: 500px;
+}
+
+.title-barlow-purple {
+  color: #B376D4;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.super-title-cw {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: bold;
   color: white;
+  font-size: 112px;
+  margin-left: 10px;
+}
+
+.subtitle-purple {
+  color: #B376D4;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px;
+}
+
+.margin {
+  margin-left: 25px;
+}
+
+.barlow-title-purple-normal {
+  color: #B376D4;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+}
+
+.title-barlow-white {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 24px;
+  margin-left: 10px;
 }
