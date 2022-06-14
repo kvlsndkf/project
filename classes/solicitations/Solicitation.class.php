@@ -214,7 +214,11 @@ class Solicitation
             //Calcular o inicio da vizualização
             $start = ($limit_result * $page) - $limit_result;
 
-            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description FROM solicitations WHERE status = 'Nova' ORDER BY created_at DESC LIMIT $start,$limit_result");
+            $stmt = $connection->prepare("SELECT id, contact, title, category_id, status, description FROM solicitations 
+                                            WHERE status = 'Nova' 
+                                            ORDER BY created_at DESC 
+                                            LIMIT $start,$limit_result"
+                                        );
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -270,7 +274,7 @@ class Solicitation
             //Calcular o inicio da vizualização
             $start = ($limit_result * $page) - $limit_result;
 
-            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description,conclusion,situation_id FROM solicitations WHERE status = 'Resolvida' ORDER BY created_at DESC LIMIT $start,$limit_result");
+            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description,conclusion FROM solicitations WHERE status = 'Resolvida' ORDER BY created_at DESC LIMIT $start,$limit_result");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -399,7 +403,6 @@ class Solicitation
             $solicitation->category = $row['category_id'];
             $solicitation->title = $row['title'];
             $solicitation->status = $row['status'];
-            $solicitation->statusSituation = $row['situation_id'];
             $solicitation->description = $row['description'];
             $solicitation->conclusion = $row['conclusion'];
             array_push($solicitations, $solicitation);
@@ -487,7 +490,7 @@ class Solicitation
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("UPDATE solicitations SET status = ?, created_at = NOW()
+            $stmt = $connection->prepare("UPDATE solicitations SET status = ?, updated_at = NOW()
                                          WHERE id = $id");
 
             $stmt->bindValue(1, $solicitation->getStatus());
@@ -512,7 +515,7 @@ class Solicitation
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("UPDATE solicitations SET status = ?, conclusion = ?,situation_id = ?, updated_at = NOW()
+            $stmt = $connection->prepare("UPDATE solicitations SET status = ?, conclusion = ?, updated_at = NOW()
                                          WHERE id = $id");
 
             $stmt->bindValue(1, $solicitation->getStatus());

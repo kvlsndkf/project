@@ -3,8 +3,6 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/solicitations/Solicitation.class.php');
 
-// session_start();
-
 $connection = Connection::connection();
 
 try {

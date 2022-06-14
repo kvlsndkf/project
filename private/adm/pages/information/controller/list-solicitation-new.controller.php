@@ -49,7 +49,7 @@ if(empty($search)){
         $dados .="</p>";
 
         $dados .= $styleButton = $row->status == "Nova" ? '' : 'd-none'; 
-        $dados .= "<form id='register' action='./analysis-solicitation.controller.php?solicitationNewID= $row->id ' class=' $styleButton' method='POST'>";
+        $dados .= "<form id='register' action='./controller/analysis-solicitation.controller.php?solicitationNewID= $row->id ' class=' $styleButton' method='POST'>";
             $dados .= "<button type='submit' name='analysisRequest'>Mover para análise e adicionar informação</button>";
         $dados .="</form>";
 

@@ -191,13 +191,14 @@ CREATE TABLE solicitations(
     id INT NOT NULL AUTO_INCREMENT
     , PRIMARY KEY (id)
     , contact VARCHAR(100) NOT NULL
-    , category VARCHAR(30) NOT NULL
     , register_link VARCHAR(100) NOT NULL
     , title VARCHAR(50) NOT NULL
     , description VARCHAR(192) NOT NULL
     , status VARCHAR(30) NOT NULL
     , conclusion VARCHAR(192) 
     , context VARCHAR(30)
+    , category_id INT NOT NULL
+    , FOREIGN KEY (category_id) REFERENCES solicitationsCategories(id) ON DELETE CASCADE
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
 )
@@ -291,4 +292,12 @@ CREATE TABLE answersHasLikes(
     , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
     , person_liked_id INT NOT NULL
     , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
+)
+
+CREATE TABLE solicitationsCategories(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , name VARCHAR(100) NOT NULL
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
 )
