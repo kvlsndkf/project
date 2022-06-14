@@ -44,9 +44,8 @@ a {
   font-weight: var(--medium);
   color: #F5F7F7;
   font-size: 18px;
-
-
 }
+
 a:hover{
   color:var(--light-purple);
 }
@@ -175,19 +174,14 @@ LOCALIMG {
 .wolf-card {
   text-align: center;
   max-width: 404px;
-  max-height: 388px;
-  width: 404px;
   height: 388px;
   border-style: solid;
   border-width: 2px 2px 2px 2px;
   border-color: #e2e2e2;
   border-radius: 30px;
   box-shadow: 0 0 22px #646464;
-  margin-top: 20px;
-  margin-bottom: 90px;
-   margin-left: 20px;/*18px */
-  /* padding-top: 5px; */
-  
+  transition: 0.5s;
+  margin-bottom: 40px;
 }
 .container-card{
   position: relative;
@@ -275,6 +269,8 @@ LOCALIMG {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
 
 }
 
@@ -685,6 +681,7 @@ body nav.sticky {
 
 .p1 {
   padding-top: 150px;
+  padding-bottom: 250px;
 }
 
 /* PARTE 1 ESQUERDA */
@@ -724,10 +721,32 @@ body nav.sticky {
   font-size: 18px;
 }
 
+/* P1 DIREITA */
+
 .title-barlow-white {
   font-family: 'Barlow Condensed', sans-serif;
-  font-weight: bold;
   color: white;
   font-size: 24px;
-  margin-left: 10px;
+  margin-left: 24px;
+}
+
+.margin-40px {
+  margin-left: 40px;
+}
+
+.right-part {
+  height: fit-content;
+  margin-top: 100px;
+}
+
+/* P2 */
+
+.p2-title-container {
+
+}
+
+.main-title-white {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: white;
+  font-size: 52px;
 }
