@@ -107,7 +107,8 @@ session_start();
 
                         <h6 class="normal-14-medium-p inputPass">Senha</h6>
                         <div class="input-box">
-                            <input required type="password" id="senha" class="input senha" placeholder="********" minlength="6" name="password" autocomplete="off">
+                            <input required type="password" id="password" id="password" class="input senha" placeholder="********" minlength="6" name="password" autocomplete="off">
+                            <img src="../register/image/components/show-pass.svg" class="eye-icon" alt="Visualizar senha" id="eyeOpened" onclick="openEyeL()">
                         </div>
 
                         <div class="button-enter">
