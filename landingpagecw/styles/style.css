@@ -23,11 +23,6 @@
   background-color: #050607;
 }
 
-body {
-  height: 200vh;
-}
-
-
 ::-webkit-scrollbar {
   width: 12px;
   background-color:black;
@@ -172,7 +167,6 @@ LOCALIMG {
 
 
 .wolf-card {
-  text-align: center;
   max-width: 404px;
   height: 388px;
   border-style: solid;
@@ -182,6 +176,7 @@ LOCALIMG {
   box-shadow: 0 0 22px #646464;
   transition: 0.5s;
   margin-bottom: 40px;
+  text-align: center;
 }
 .container-card{
   position: relative;
@@ -210,17 +205,21 @@ LOCALIMG {
 }
 
 .wolf-text {
-  margin-left: 20px;
   color: var(--white);
   max-width: 350px;
   font-weight: var(--medium);
   font-size: var(--h6);
-  margin-top: 10px;
   font-family: var(--thin);
 }
 
 .wolf-body {
   max-width: 404px;
+  margin-top: 30px;
+}
+
+.wolf-body-atitude {
+  max-width: 404px;
+  margin-top: 10px;
 }
 
 #bode {
@@ -265,7 +264,7 @@ LOCALIMG {
   color: #F5F7F7;
   animation: scroll 27s linear infinite;
   justify-content: space-between;
-  padding-left: 30px;
+  /* padding-left: 30px; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -385,7 +384,7 @@ body {
 .list-item {
   max-width: 1200px;
   margin: auto;
-  z-index: 999;
+  z-index: 1;
 position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -466,24 +465,18 @@ padding-bottom: 56px;
 /* card integrantes */
 .integrantes-card {
   margin: auto;
-  z-index: 999;
+  z-index: 1;
 position: relative;
   text-align: center;
   max-width: 409px;
   max-height: 388px;
-  width: 410px;
   height: 390px;
-  /* border-color: #706c6c; */
   border-radius: 13px;
   /* margin-top: 20px; */
   margin: 20px 0 20px 18px;
-  /* margin-bottom: 20px;
-   margin-left: 18px; */
-  /* background-color: #696969; */
   padding-top: 45px;
     /* GlassMorphism */
     background: rgba(255, 255, 255, 0.25);
-    /* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 5px );
 }
@@ -514,13 +507,9 @@ position: relative;
 
 
 .int-img {
-  display: block;
-  /* margin-top: 41px; */
   width: 145px;
   height: 149px;
   border-radius: 50%;
-  margin-left: 130px;
-
 }
 
 /* .wolf-img-2{
@@ -537,21 +526,11 @@ position: relative;
   padding-right: 10px;
 }
 
-.redes {
-  display: block;
-  position: relative;
-  width: 100%;
-  justify-content: space-between;
-  padding-top: 4px;
-  margin-top: 20px;
-  margin-left: 105px;
-}
-
-.imgrede {
+/* .imgrede {
   margin: 3px;
   float: left;
   margin-left: 20px;
-}
+} */
 
 /* fim do card integrantes */
 hr {
@@ -741,12 +720,14 @@ body nav.sticky {
 
 /* P2 */
 
-.p2-title-container {
-
-}
-
 .main-title-white {
   font-family: 'Barlow Condensed', sans-serif;
   color: white;
   font-size: 52px;
+}
+
+.title-barlow-white-card {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: white;
+  font-size: 24px;
 }
