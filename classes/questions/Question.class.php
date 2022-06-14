@@ -190,7 +190,7 @@ class Question
             $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
                                         school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
                                         category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
-                                        quest.document, quest.document_name, quest.created_at FROM students stu
+                                        quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
                                             
                                             INNER JOIN schoolshasstudents ss
                                             ON stu.id = ss.student_id
@@ -246,19 +246,19 @@ class Question
             return "Há poucos segundos";
         }
 
-        if ($result->i > 0 && $result->h == 0) {
+        if ($result->i >= 0 && $result->h == 0) {
             return $result->i . " minutos";
         }
 
-        if ($result->h > 0 && $result->d == 0) {
+        if ($result->h >= 0 && $result->d == 0) {
             return $result->h . " horas";
         }
 
-        if ($result->d < 30 && $result->m == 0) {
+        if ($result->d <= 30 && $result->m == 0) {
             return $result->d . " dias";
         }
 
-        if ($result->m < 12 && $result->y == 0) {
+        if ($result->m <= 12 && $result->y == 0) {
             return $result->m . " meses";
         }
 
@@ -275,7 +275,7 @@ class Question
             $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
                                         school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
                                         category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
-                                        quest.document, quest.document_name, quest.created_at FROM students stu
+                                        quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
                                             
                                             INNER JOIN schoolshasstudents ss
                                             ON stu.id = ss.student_id
@@ -322,6 +322,7 @@ class Question
         $question->image = $row['imageQuestion'];
         $question->document = $row['document'];
         $question->documentName = $row['document_name'];
+        $question->isDenounced = $row['is_denounced'];
         $question->created = $this->countCreatedQuestion($row['created_at']);
 
         return $question;
