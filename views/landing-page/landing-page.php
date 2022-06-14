@@ -67,6 +67,12 @@
                         <li>
                             <a href="#xp" class="a-class nav-options normal-14-bold-p white">Desafios</a>
                         </li>
+                        <li>
+                            <a href="#diversas" class="a-class nav-options normal-14-bold-p white">Parceria</a>
+                        </li>
+                        <li>
+                            <a href="#amigo" class="a-class nav-options normal-14-bold-p white">Video</a>
+                        </li>
                     </ul>
                     <ul class="nav-list2">
                         <li>
@@ -202,6 +208,26 @@
 
                 </div>
 
+                <!-- Parte que irá conter o video Pitch -->
+
+                <div class="container">
+                    <div class="tela8">
+                        <div class="row-0">
+                            <h6 class="title1 nord-40-black-display">Imagine um lugar... </h6>
+                            <h6 class="subtitle2 nord-40-black-display">Onde você pode tirar suas dúvidas ao mesmo tempo 
+                                que faz uma rede de amigos.</h6>
+                                <h6 class="Nhelp subtitlePnord-40-black-display ">Esse lugar existe. Seu nome? Heelp!</h6>
+
+                                <div class="videoP">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/pLp3B8M251s" 
+                                    title="YouTube video player" frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                        </div>
+            
+                    </div>
+                </div>
+
                 <!-- Parte 6 -->
                 <div id="tela6">
 
@@ -224,6 +250,8 @@
                         <a href="#com" class="a-class white footer-options normal-14-bold-p white">Comunidade</a>
                         <a href="#net" class="a-class white footer-options normal-14-bold-p white">Networking</a>
                         <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Desafios</a>
+                        <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Parcerias</a>
+                        <a href="#tela8" class="a-class white footer-options normal-14-bold-p white">Video</a>
                         
                         
                         <a href="./form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal" >Fale Conosco</a>
