@@ -219,7 +219,7 @@ try {
 
                     <form action="../question/controller/denunciation-question.controller.php" method="post">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $listDetailsQuestions->id; ?>" value="Não tenho interesse nesse post">
+                            <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $listDetailsQuestions->id; ?>" value="Não tenho interesse nesse post" required>
                             <label class="form-check-label" for="radio1-<?php echo $listDetailsQuestions->id; ?>">
                                 Não tenho interesse nesse post
                             </label>
@@ -422,7 +422,7 @@ try {
 
                             <form action="../answer-question/controller/denunciation-answer.controller.php" method="post">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post">
+                                    <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
                                     <label class="form-check-label" for="radio1-<?php echo $row->id; ?>">
                                         Não tenho interesse nesse post
                                     </label>

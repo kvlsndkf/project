@@ -200,7 +200,7 @@ try {
 
                         <form action="../question/controller/denunciation-question.controller.php" method="post">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post">
+                                <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
                                 <label class="form-check-label" for="radio1-<?php echo $row->id; ?>">
                                     Não tenho interesse nesse post
                                 </label>
@@ -231,10 +231,10 @@ try {
                             </div>
 
                             <div>
-                                <input type="text" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
-                                <input type="text" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                <input type="text" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
-                                <input type="text" name="questionId" id="" value="<?php echo $row->id; ?>">
+                                <input type="hidden" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
+                                <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
+                                <input type="hidden" name="questionId" id="" value="<?php echo $row->id; ?>">
                             </div>
 
                             <div class="modal-footer">
