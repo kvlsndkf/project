@@ -2,6 +2,42 @@
     color: var(--white);
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-list);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8080FF;
+} 
+
+.feed-leftbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.feed-leftbar::-webkit-scrollbar-track {
+    background: var(--gray1);
+}
+
+.feed-leftbar::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+
+}
+
+.feed-leftbar::-webkit-scrollbar-thumb:hover {
+    background: #8080FF;
+} 
+
 .feed-div{
     width: 100%;
     height: 100%;
@@ -9,9 +45,14 @@
     padding: 20px;
 }
 
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .pedir-heelp-div{
-    width: 45%;
+    width: 55%;
     height: 118px;
     border-radius: 8px;
     background-image: url(../../../views/images/background/feed/pedir-heelp-background.svg);
@@ -122,4 +163,92 @@
 .upper-line{
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.wrapper-feed{
+    display: flex;
+    position: relative;
+}
+
+.feed-leftbar{
+    position: fixed;
+    width: 20vw;
+    height: 100%;
+    background-color: var(--gray1);
+    padding: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.leftbar-top{
+    margin-bottom: 20%;
+}
+
+.feed-ul{
+    list-style: none;
+    padding: 1vw 0;
+}
+
+.leftbar-icon{
+    margin-right: 10px;
+}
+
+.leftbar-text{
+    font-weight: 400;
+    margin: 0;
+}
+
+.leftbar-text-current{
+    font-weight: 400;
+    color: var(--primary);
+    margin: 0;
+}
+
+.leftbar-categoria{
+    color: var(--gray6);
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.leftbar-button-div{
+    background-color: var(--fuchsia);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 35px;
+    margin-top: 35px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftbar-button-div:hover{
+    transform: scale(1.05);
+    transition: .5s;
+}
+
+.leftbar-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.corpo-feed{
+    background-color: var(--bg-list);
+    height: 100%;
+    width: 100%;
+    padding-left: 20vw;
+    box-sizing: border-box;
+}
+
+.yellow-text{
+    color: var(--yellow);
 }
