@@ -68,10 +68,10 @@
                             <a href="#xp" class="a-class nav-options normal-14-bold-p white">Desafios</a>
                         </li>
                         <li>
-                            <a href="#diversas" class="a-class nav-options normal-14-bold-p white">Parceria</a>
+                            <a href="#emp" class="a-class nav-options normal-14-bold-p white">Parceria</a>
                         </li>
                         <li>
-                            <a href="#amigo" class="a-class nav-options normal-14-bold-p white">Video</a>
+                            <a href="#vid" class="a-class nav-options normal-14-bold-p white">Video</a>
                         </li>
                     </ul>
                     <ul class="nav-list2">
@@ -184,13 +184,13 @@
 
                             <div class="col">
 
-                                <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2">Empresas Parceiras</h4>
+                                <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2" id="emp">Empresas Parceiras</h4>
         
                                 <h5 class="heelp-emp-title gray1 normal-22-black-title-1">E além de tudo temos um bônus!</h5>
                                 <p class="heelp-emp-text gray1">O Heelp! tem parcerias com empresas diversas, que estão a procura de jovens talentos! Você pode se destacar através do ranking, com a pontuação adquirida.</p>
                             
                             
-                                <h3 class="heelp-emp-destaque gray1">É pedindo e dando Heelp! que você se destaca!</h3>
+                                <h3 class="heelp-emp-destaque gray1" >É pedindo e dando Heelp! que você se destaca!</h3>
 
                             </div>
 
@@ -210,11 +210,11 @@
 
                 <!-- Parte que irá conter o video Pitch -->
 
-                <div class="container">
-                    <div class="tela8">
-                        <div class="row-0">
-                            <h6 class="title1 nord-40-black-display">Imagine um lugar... </h6>
-                            <h6 class="subtitle2 nord-40-black-display">Onde você pode tirar suas dúvidas ao mesmo tempo 
+                <div class="container" id="vid">
+                    <div class="tela8" >
+                        <div class="row-0" >
+                            <h6 class="title1 nord-40-black-display" >Imagine um lugar... </h6>
+                            <h6 class="subtitle2 normal32-black-landingpagetitle-2">Onde você pode tirar suas dúvidas ao mesmo tempo 
                                 que faz uma rede de amigos.</h6>
                                 <h6 class="Nhelp subtitlePnord-40-black-display ">Esse lugar existe. Seu nome? Heelp!</h6>
 

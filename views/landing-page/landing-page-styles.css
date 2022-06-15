@@ -487,7 +487,23 @@
     
     .title1{
         margin-top: 1em;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: changeColor 5s infinite; /* propriedade de animação */
+
     }
+
+    @keyframes changeColor {
+        25% {
+          background-color: #B377F3,;
+        }
+        50% {
+          background-color: #8080FF;
+        }
+        25% {
+          background-color: #404EED;
+        }
+      }
 
     .videoP{
        padding: 1.5em;
