@@ -250,8 +250,8 @@
                         <a href="#com" class="a-class white footer-options normal-14-bold-p white">Comunidade</a>
                         <a href="#net" class="a-class white footer-options normal-14-bold-p white">Networking</a>
                         <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Desafios</a>
-                        <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Parcerias</a>
-                        <a href="#tela8" class="a-class white footer-options normal-14-bold-p white">Video</a>
+                        <a href="#emp" class="a-class white footer-options normal-14-bold-p white">Parcerias</a>
+                        <a href="#vid" class="a-class white footer-options normal-14-bold-p white">Video</a>
                         
                         
                         <a href="./form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal" >Fale Conosco</a>
