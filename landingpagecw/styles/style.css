@@ -236,6 +236,7 @@ LOCALIMG {
   border-bottom: 1px solid #674e82;
   width: 100%;
   overflow: hidden;
+
 }
 
 .marquee {
@@ -243,10 +244,9 @@ LOCALIMG {
   width: 100%;
   color: #f5f7f7;
   animation: scroll 27s linear infinite;
-  justify-content: space-between;
-  /* padding-left: 30px; */
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
   align-items: center;
   padding-top: 12px;
   padding-bottom: 12px;
