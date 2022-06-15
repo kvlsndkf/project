@@ -368,11 +368,13 @@ a{
 .document-name{
     width: 100%;
     height: 60px;
-    display: flex;
     align-items: center;
     justify-content: flex-start;
     padding-left: 18px;
     border: 1px solid var(--gray5);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .leftbar-li{
@@ -398,6 +400,12 @@ a{
 .profile-name{
     font-weight: 400;
     margin: 15px;
+}
+
+.copyright-text{
+    color: var(--gray6);
+    font-weight: 400;
+    text-align: left;
 }
 
 .bg-little-blue{
@@ -527,6 +535,10 @@ p{
     .pedir-heelp-responsive{
         left: 84%;
     }
+    .document-name{
+        font-size: 9px;
+        padding: 2px;
+    }
 }
 
 @media (max-width: 340px){
@@ -536,9 +548,6 @@ p{
     }
     .question-footer-div{
         margin: 8px;
-    }
-    .document-name{
-        font-size: 9px;
     }
 }
 

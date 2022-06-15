@@ -401,7 +401,11 @@ try {
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li> 
             </ul>
+            <p class="whitney-12-regular-tiny copyright-text">
+                Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a> 
+            </p>
         </nav>
+
         <nav class="feed-bottombar">
             <a href="./home.page.php">
                 <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
