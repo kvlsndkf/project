@@ -577,10 +577,9 @@ a.font-header-hero {
 /* navbar no scroll */
 body nav.sticky {
   position: fixed;
-  width: 100%;
   background-color: #280242;
   box-shadow: 0 8px 32px 0 black;
-  z-index: 2;
+  z-index: 6;
 }
 
 /* PARTE 1 */
