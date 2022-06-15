@@ -231,6 +231,13 @@ LOCALIMG {
   overflow: hidden;
 }
 
+.marquee-container {
+  border-top: 1px solid #674e82;
+  border-bottom: 1px solid #674e82;
+  width: 100%;
+  overflow: hidden;
+}
+
 .marquee {
   position: relative;
   width: 100%;
@@ -640,6 +647,12 @@ body nav.sticky {
 
 /* P2 */
 
+.cards-p2-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .main-title-white {
   font-family: "Barlow Condensed", sans-serif;
   color: white;
@@ -660,3 +673,41 @@ body nav.sticky {
   max-width: 300px;
 
 }
+
+/* BOUNCING TEXT */
+
+.marquee {
+  position: relative;
+  width: 100%;
+
+  text-align: center;
+  /* Starting position */
+  -moz-transform:translateX(50%);
+  -webkit-transform:translateX(50%);	
+  transform:translateX(50%);
+  /* Apply animation to this element */	
+  -moz-animation: bouncing-text 5s linear infinite alternate;
+  -webkit-animation: bouncing-text 5s linear infinite alternate;
+  animation: bouncing-text 5s linear infinite alternate;
+ }
+ /* Move it (define the animation) */
+ @-moz-keyframes bouncing-text {
+  0%   { -moz-transform: translateX(30%); }
+  100% { -moz-transform: translateX(-30%); }
+ }
+ @-webkit-keyframes bouncing-text {
+  0%   { -webkit-transform: translateX(30%); }
+  100% { -webkit-transform: translateX(-30%); }
+ }
+ @keyframes bouncing-text {
+  0%   { 
+  -moz-transform: translateX(30%); /* Browser bug fix */
+  -webkit-transform: translateX(30%); /* Browser bug fix */
+  transform: translateX(2%); 		
+  }
+  100% { 
+  -moz-transform: translateX(-30%); /* Browser bug fix */
+  -webkit-transform: translateX(-30%); /* Browser bug fix */
+  transform: translateX(-30%); 
+  }
+ }
