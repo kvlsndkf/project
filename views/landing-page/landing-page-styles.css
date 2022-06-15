@@ -88,6 +88,7 @@
         transition: 0.3s ease-in-out;
         animation: fadeInDown;
         animation-duration: 1s;
+        z-index: 5;
     }
 /* 
     .nav-active {
@@ -463,6 +464,62 @@
         transform: scale(1.05);
         transition: 1s;
     }
+
+    /* Parte do video pitch */
+
+    .tela6{
+        height: 100vh;
+    }
+
+    .title1
+    , .subtitle2
+    , .Nhelp{
+        text-align: center;
+        animation: fadeInDown;
+        animation-duration: 1s;
+    }
+    .Nhelp{
+        
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-size: 20px;
+    }
+    
+    .title1{
+        margin-top: 1em;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: changeColor 5s infinite; /* propriedade de animação */
+
+    }
+
+    @keyframes changeColor {
+        25% {
+          background-color: #B377F3,;
+        }
+        50% {
+          background-color: #8080FF;
+        }
+        25% {
+          background-color: #404EED;
+        }
+      }
+
+    .videoP{
+       padding: 1.5em;
+       position: relative;
+       padding-bottom: 24%;
+       margin-bottom: 4.5em;
+    }
+    .videoP > iframe{
+        position: absolute;
+        top: 10%;
+        left: 25%;
+        width: 50%;
+        height: 100%;
+    }
+
+    /* Final da parte do video pitch */
     
     /* Config Toggle */
     @media (max-width: 858px){
@@ -608,6 +665,13 @@
             margin-top: 20px;
             margin-left: 40vw;
         }
+
+        .title1, .subtitle2{
+            font-size: 30px;
+        }
+        .Nhelp{
+            font-size: 20px;
+        }
     }
 
     @media  (max-width: 500px) {
@@ -630,6 +694,12 @@
         .copyright-text{
             text-align: center;
             margin-top: -15px;
+        }
+        .title1, .subtitle2{
+            font-size: 30px;
+        }
+        .Nhelp{
+            font-size: 20px;
         }
     }
 
