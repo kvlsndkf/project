@@ -55,65 +55,47 @@ try {
 </head>
 
 <body>
-<!--     
+    
     <div class="wrapper">
 
         <nav class="feed-leftbar">
 
             <div class="leftbar-top">
 
-                <a href="#" class="logo-heelp">
+                <a href="#" class="feed-logo">
                     <img src="../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
                     <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
                 </a>
     
                 <ul class="feed-ul">
     
-                    <li class="sidebar-li">
-                        <a href="dashboard.page.php" class="sidebar-a-items">
+                    <li class="sidebar-li leftbar-li">
+                        <a href="dashboard.page.php" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
                             <p class="normal-18-bold-title-2 leftbar-text-current">Feed</p>
                         </a>
                     </li>
                     
-                    <li class="sidebar-li">
-                        <a href="#" class="sidebar-a">
+                    <li class="sidebar-li leftbar-li">
+                        <a href="#" class="sidebar-a leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
                     </li>
                     
-                    <li class="sidebar-li">
-                        <a href="#" class="sidebar-a">
+                    <li class="sidebar-li leftbar-li">
+                        <a href="#" class="sidebar-a leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/notifications-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Notificações</p>
                         </a>
-                        <hr class="sidebar-linha">
+                        <hr class="sidebar-linha leftbar-linha">
                     </li>
                     
-                    <li class="sidebar-li">
+                    <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
-                        <a href="../message/list-message.page.php" class="sidebar-a-items">
-                            <img class="leftbar-icon" src="../../../../views/images/components/fale-conosco-img.svg" alt="">
-                            <p class="leftbar-text normal-18-bold-title-2">Fale Conosco</p>
-                        </a>
-                    </li>
-    
-                    <li class="sidebar-li">
-                        <a href="../message/list-message.page.php" class="sidebar-a-items">
-                            <img class="leftbar-icon" src="../../../../views/images/components/fale-conosco-img.svg" alt="">
-                            <p class="leftbar-text normal-18-bold-title-2">Fale Conosco</p>
-                        </a>
-                    </li>
-    
-                    <li class="sidebar-li">
-                        <a href="../message/list-message.page.php" class="sidebar-a-items">
-                            <img class="leftbar-icon" src="../../../../views/images/components/fale-conosco-img.svg" alt="">
-                            <p class="leftbar-text normal-18-bold-title-2">Fale Conosco</p>
-                        </a>
                     </li>
                     
-                    <li class="sidebar-li">
+                    <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
                             <div class="leftbar-button-div">
                                 <p class="sidebar-button-text">Pedir um heelp!</p>
@@ -125,13 +107,16 @@ try {
 
             </div>
 
-            <div class="leftbar-bottom">
-                <img src="../../../../views/images/components/profile-icon.svg" alt="">
-                <p>Cameron Murphy</p>
+            <div class="">
+                <a href="" class="leftbar-bottom">
+                    <img src="../../../../views/images/components/profile-icon.svg" alt="">
+                    <p class="profile-name normal-16-bold-title-3">Cameron Murphy</p>
+                </a>
+                
             </div>
 
         </nav>
-        <div class="corpo-feed"> -->
+        <div class="corpo-feed">
 
             
             <!-- Mensagem de sucesso ⬇️ -->
@@ -166,7 +151,7 @@ try {
                         <p class="pedir-heelp-text normal-22-black-title-1">
                             Precisando de ajuda?
                         </p>
-                        <a href="../question/question.page.php" class="pedir-heelp-button-a">
+                        <a href="../question/question.page.php" class="pedir-heelp-button-a hover-button">
                             <div class="pedir-heelp-button-div">
                                 <p class="pedir-heelp-button-p normal-14-bold-p">
                                     Pedir um heelp!
@@ -220,7 +205,7 @@ try {
                             <span class="<?php echo $styleError; ?>"> <?php echo $row->category; ?></span>
                             <span class="<?php echo $styleQuestion; ?>"> <?php echo $row->category; ?></span>
                             <span class="<?php echo $styleHelp; ?>"> <?php echo $row->category; ?></span>
-                            <span class="badge rounded-pill bg-primary"> <?php echo $row->subject; ?></span>
+                            <span class="badge rounded-pill bg-little-blue"> <?php echo $row->subject; ?></span>
                         </p>
 
                         <?php
@@ -275,17 +260,25 @@ try {
                     </div>
     
                     <div class="question-info">
-                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; border-radius: 50px; margin-right: 8px;">
+                        <a href="">
+                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; border-radius: 50px; margin-right: 8px;">
+                        </a>
                         <div class="question-info-text">
-                            <p class="question-name normal-14-medium-p">
+                            <a class="question-name question-about-a normal-14-medium-p">
                                 <?php echo $row->firstName; ?>
                                 <?php echo $row->surname; ?>
-                            </p>
-                            <p class="question-about normal-12-medium-tiny">
-                                <?php echo $row->created; ?> •
-                                <?php echo $row->module; ?> •
-                                <?php echo $row->school; ?>
-                            </p>
+                            </a>
+                            <div class="question-about normal-12-medium-tiny">
+                                <?php echo $row->created; ?>
+                                 •
+                                 <a class="question-about question-about-a" href="">
+                                    <?php echo $row->module; ?>
+                                 </a>
+                                 •
+                                 <a class="question-about question-about-a" href="">
+                                    <?php echo $row->school; ?>
+                                 </a>
+                            </div>
                         </div>
                     </div>
     
@@ -349,9 +342,12 @@ try {
     
                     <?php $styleDocumentQuestion = !empty($row->document) ? '' : 'd-none'; ?>
                     <p class="<?php echo $styleDocumentQuestion; ?> document-question">
+                        <span class="document-icon">
+                            <img src="../../../../views/images/components/file-icon.svg">
+                        </span>
                         <span class="normal-14-medium-p document-name">
                             <?php echo $row->documentName; ?>
-                            </span>
+                        </span>
                         <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
                             <img src="../../../../views/images/components/download-icon.svg" alt="">
                         </a>
@@ -386,15 +382,39 @@ try {
     
                     </div>
 
-            </div>
+                </div>
 
 
                 <hr>
-            <?php } ?>
+                <?php } ?>
 
             </div>
 
-        <!-- </div> -->
+        </div>
+        <nav class="feed-leftbar feed-rightbar">
+            <ul class="rightbar-ul">
+               <li class="rightbar-li">
+                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+                </li> 
+                <hr class="sidebar-linha leftbar-linha">
+                <li class="rightbar-li">
+                    <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
+                </li> 
+            </ul>
+        </nav>
+        <nav class="feed-bottombar">
+            <a href="./home.page.php">
+                <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
+            </a>
+            <a href="#">
+                <img src="../../../../views/images/components/following-icon.svg" alt="">
+            </a>
+            <a href="#">
+                <img src="../../../../views/images/components/notifications-icon.svg" alt="">
+            </a>
+        </nav>
+    </div>
+
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
