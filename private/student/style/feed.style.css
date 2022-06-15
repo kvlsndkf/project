@@ -377,6 +377,10 @@ a{
     -webkit-line-clamp: 2; */
 }
 
+.d-0{
+    display: none;
+}
+
 .leftbar-li{
     height: 44px;
     align-items: center;

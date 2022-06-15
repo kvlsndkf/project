@@ -107,7 +107,7 @@ try {
 
             </div>
 
-            <div class="">
+            <div class="d-0">
                 <a href="" class="leftbar-bottom">
                     <img src="../../../../views/images/components/profile-icon.svg" alt="">
                     <p class="profile-name normal-16-bold-title-3">Cameron Murphy</p>
