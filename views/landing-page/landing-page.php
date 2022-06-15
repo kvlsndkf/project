@@ -164,7 +164,7 @@
                         </div>
 
                         <div class="col coln3">
-                            <img src="./img/foto4-xp.svg" class="img4">
+                            <img src="./img/perfil.svg" class="img4">
                         </div>
 
                     </div>
