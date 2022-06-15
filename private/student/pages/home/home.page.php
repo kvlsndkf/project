@@ -31,16 +31,13 @@ try {
     <!-- Include stylesheet -->
     <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
     
+    <!-- Animation Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     
-    <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
-
-    <!-- Animation Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
     <!-- Estilos -->
     <link rel="stylesheet" href="../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
@@ -48,7 +45,10 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/register.styles.css">
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../style/feed.style.css">
-
+    
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
+    
     <!-- JavaScript -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
@@ -132,7 +132,7 @@ try {
                 <svg class="bi flex-shrink-0 me-2 div-alert" width="24" height="24" role="img" aria-label="Success:">
                     <use xlink:href="#check-circle-fill" />
                 </svg>
-                <div class="div-alert">
+                <div>
                     <strong>Tudo certo!</strong>
                     <?php echo $_SESSION['statusPositive']; ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -287,7 +287,7 @@ try {
                     <div class="ql-snow ql-editor2">
                         <div class="ql-editor2 question-text-div">
     
-                            <span class="question-text-p line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $row->id; ?>">
+                            <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $row->id; ?>">
                                 <?php echo $row->question; ?>
                             </span>
     
@@ -345,7 +345,7 @@ try {
                         <span class="document-icon">
                             <img src="../../../../views/images/components/file-icon.svg">
                         </span>
-                        <span class="normal-14-medium-p document-name">
+                        <span class="normal-14-medium-p white-text document-name">
                             <?php echo $row->documentName; ?>
                         </span>
                         <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
@@ -357,7 +357,7 @@ try {
     
                         <div class="question-answers question-footer-div">
     
-                            <p class="normal-14-bold-p question-p">
+                            <p class="normal-14-bold-p white-text question-p">
                                 <?php
                                 $answer = new Answer();
                                 $totalAnswersOfQuestion = $answer->countAnswers($row->id);
@@ -371,7 +371,7 @@ try {
                         <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
                             <div class="question-toAnswer question-footer-div">
     
-                                <p class="normal-14-bold-p question-p">Dar um help</p>
+                                <p class="normal-14-bold-p question-p white-text">Dar um help</p>
                                 <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
                                 <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
                                 <p class="normal-14-bold-p question-p yellow-text"> <?php echo $row->xp; ?> xp </p>
