@@ -365,6 +365,10 @@ a{
     transition: .5s;
 }
 
+.div-alert{
+    color: #0f5132;
+}
+
 .document-name{
     width: 100%;
     height: 60px;
