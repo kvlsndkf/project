@@ -139,8 +139,8 @@ class Module
                 return $this->buildModuleList($result);
             }
             //Receber o numero de página
-            $current_page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
-            $page = (!empty($current_page)) ? $current_page :1;
+            $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+            $page = (!empty($current_page)) ? $current_page : 1;
 
             //Setar a quantidade de registros por página
             $limit_result = 12;
@@ -168,8 +168,8 @@ class Module
         $connection = Connection::connection();
 
         //Receber o numero de página
-        $current_page = filter_input(INPUT_GET,"page",FILTER_SANITIZE_NUMBER_INT);
-        $page = (!empty($current_page)) ? $current_page :1;
+        $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
+        $page = (!empty($current_page)) ? $current_page : 1;
 
         //Setar a quantidade de registros por página
         $limit_result = 12;
@@ -221,9 +221,9 @@ class Module
      * @param string $search 
      */
     public function countModules(string $search = ''): string
-    {   
+    {
         $connection = Connection::connection();
-        
+
         $searching = (!is_null($search) && !empty($search));
 
         if ($searching) {
@@ -235,7 +235,7 @@ class Module
             return "Resultado da pesquisa " . $result[0]['resultado'];
         }
 
-        
+
         try {
             $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM modules");
             $stmt->execute();
@@ -318,11 +318,11 @@ class Module
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 12;
 
-        
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules ";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -337,33 +337,33 @@ class Module
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-        
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-module.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-module.page.php?page=$i '> $i </a></li>";
-            }
-                
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-module.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-module.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
+
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-module.page.php?page=$i '> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-module.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
     }
 
@@ -379,11 +379,11 @@ class Module
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 12;
 
-        
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM modules WHERE name LIKE '%$search%'";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -398,33 +398,50 @@ class Module
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-        
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-module.page.php?page=$prev_page &searchModule=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-module.page.php?page=$i &searchModule=$search'> $i </a></li>";
-            }
-                
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-module.page.php?page= $next_page &searchModule=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-module.page.php?page=$prev_page &searchModule=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
+
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-module.page.php?page=$i &searchModule=$search'> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-module.page.php?page= $next_page &searchModule=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
+    }
+
+    public function getModuleForStudentUpdate($id)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name FROM modules
+                                            WHERE NOT id = $id
+                                        ");
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $this->buildModuleListSelect($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }

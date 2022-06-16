@@ -123,7 +123,7 @@ class StudentMethods
         }
     }
 
-    public function getUserByStudentID(int $id)
+    public static function getUserByStudentID(int $id)
     {
         $connection = Connection::connection();
 
@@ -143,7 +143,7 @@ class StudentMethods
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT stu.id, stu.first_name, stu.surname, stu.xp, usr.photo, stu.created_at, module.id AS 'moduleId',
+            $stmt = $connection->prepare("SELECT stu.id, stu.first_name, stu.surname, stu.user_id, stu.xp, usr.photo, stu.created_at, module.id AS 'moduleId',
                                             module.name AS 'module', course.name AS 'course', school.name AS 'school', usr.linkedin, usr.github, 
                                             usr.facebook, usr.instagram, usr.profile_link FROM students stu
 
@@ -173,6 +173,7 @@ class StudentMethods
     {
         $student = new StudentMethods();
         $student->id = $row['id'];
+        $student->userId = $row['user_id'];
         $student->firstName = $row['first_name'];
         $student->surname = $row['surname'];
         $student->xp = $row['xp'];
@@ -216,6 +217,7 @@ class StudentMethods
                                             INNER JOIN subjects subj
                                             ON quest.subject_id = subj.id
                                             WHERE stu.id = $idStudent
+                                            AND answ.is_blocked NOT IN(1)
                                             ORDER BY answ.created_at DESC
                                         ");
 
@@ -310,6 +312,7 @@ class StudentMethods
                                             ON stu.id = quest.student_id
                                             WHERE stu.id = $idStudent
                                             AND quest.category_id NOT IN(3)
+                                            AND quest.is_blocked NOT IN(1)
                                             ORDER BY quest.created_at DESC
                                         ");
 
@@ -371,6 +374,7 @@ class StudentMethods
                                             ON stu.id = quest.student_id
                                             WHERE stu.id = $idStudent
                                             AND quest.category_id = 3
+                                            AND quest.is_blocked NOT IN(1)
                                             ORDER BY quest.created_at DESC
                                         ");
 
