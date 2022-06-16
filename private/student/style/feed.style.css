@@ -400,6 +400,10 @@ a{
     height: 100%;
 }
 
+.leftbar-a:hover{
+    color: var(--primary);
+}
+
 .leftbar-linha{
     margin: 0
 }
@@ -596,7 +600,7 @@ p{
         font-size: 9px;
         padding: 2px;
     }
-    
+
 }
 
 @media (max-width: 340px){
