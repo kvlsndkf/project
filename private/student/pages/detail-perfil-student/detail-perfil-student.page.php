@@ -3,9 +3,13 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-student.c
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
 try {
+    $idUser = $_SESSION['idUser'];
     $idStudent = $_GET['idStudent'];
 
     $student = new StudentMethods();
+
+    $studentLogged = $student->getStudentByUserID($idUser);
+    $studentProfile = $student->getDataStudentByID($studentLogged[0]['id']);
 
     $studentPerfil = $student->getDataStudentByID($idStudent);
     $studentAnswer = $student->listAnswersByStudent($idStudent);
@@ -58,17 +62,17 @@ try {
         </p>
 
         <p>
-            <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="100">
+            <img src="<?php echo $studentProfile->photo; ?>" alt="<?php echo $studentProfile->firstName; ?>" width="100">
         </p>
 
         <p>
-            <?php echo $studentPerfil->xp; ?>
+            <?php echo $studentProfile->xp; ?>
             xp
         </p>
 
         <p>
-            <?php echo $studentPerfil->firstName;
-            echo " " . $studentPerfil->surname; ?>
+            <?php echo $studentProfile->firstName;
+            echo " " . $studentProfile->surname; ?>
         </p>
     </div>
 
@@ -121,8 +125,18 @@ try {
             </a>
         </p>
 
-        <p>
-            <button>Editar perfil</button>
+        <?php
+        $buttonEdit = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none';
+        $buttonFollow = $studentLogged[0]['id'] != $studentPerfil->id ? '' : 'd-none';
+        ?>
+        <p class="<?php echo $buttonEdit; ?>">
+            <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id'] ;?>">
+                <button>Editar perfil</button>
+            </a>
+        </p>
+
+        <p class="<?php echo $buttonFollow; ?>">
+            <button>Seguir</button>
         </p>
     </div>
 
@@ -316,8 +330,8 @@ try {
                 $row = $studentPreference[$i] ?>
 
                 <p>
-                    <img src="<?php echo $row->photo;?>" alt="<?php echo $row->name;?>">
-                    <?php echo $row->name;?>
+                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                    <?php echo $row->name; ?>
                 </p>
 
                 <hr>

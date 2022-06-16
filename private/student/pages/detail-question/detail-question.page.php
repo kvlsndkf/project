@@ -106,11 +106,18 @@ try {
             <a href="../../../logout/logout.controller.php">
                 sair
             </a>
+
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                perfil
+            </a>
         </p>
 
+
         <p>
-            <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName;
-                                                                    echo $studentPerfil->surname; ?>" width="100">
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName;
+                                                                        echo $studentPerfil->surname; ?>" width="100">
+            </a>
         </p>
 
         <p>
@@ -119,8 +126,10 @@ try {
         </p>
 
         <p>
-            <?php echo $studentPerfil->firstName;
-            echo " " . $studentPerfil->surname; ?>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <?php echo $studentPerfil->firstName;
+                echo " " . $studentPerfil->surname; ?>
+            </a>
         </p>
     </div>
     <br>
