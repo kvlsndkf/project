@@ -261,10 +261,10 @@ try {
     
                     <div class="question-info">
                         <a href="">
-                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; border-radius: 50px; margin-right: 8px;">
+                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                         </a>
                         <div class="question-info-text">
-                            <a class="question-name question-about-a normal-14-medium-p">
+                            <a href="#" class="question-name question-about-a normal-14-medium-p">
                                 <?php echo $row->firstName; ?>
                                 <?php echo $row->surname; ?>
                             </a>
@@ -332,7 +332,7 @@ try {
                     <?php $styleImageQuestion = !empty($row->image) ? '' : 'd-none'; ?>
                     <p class="<?php echo $styleImageQuestion; ?> image-question">
                         <a href="<?php echo $row->image; ?>" class="image-link question-img">
-                            <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 300px;">
+                            <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 100px;">
                         </a>
                     </p>
     

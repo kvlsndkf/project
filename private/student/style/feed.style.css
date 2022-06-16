@@ -532,6 +532,9 @@ p{
     .pedir-heelp-responsive{
         left: 87vw;
     }
+    .drop-edit-exclud-about2{
+        left: 14%;
+    }
 }
 
 @media (max-width: 550px){
@@ -542,11 +545,17 @@ p{
         margin: 0;
         margin-bottom: 15px;
     }
+    .drop-edit-exclud-about2{
+        left: 14%;
+    }
 }
 
 @media (max-width: 480px){
     .pedir-heelp-responsive{
         left: 84vw;
+    }
+    .drop-edit-exclud-about2{
+        left: 13%;
     }
 }
 
@@ -574,6 +583,9 @@ p{
     .document-name{
         font-size: 12px;
     }
+    .drop-edit-exclud-about2{
+        left: 11%;
+    }
 }
 
 @media (max-width: 365px){
@@ -584,6 +596,7 @@ p{
         font-size: 9px;
         padding: 2px;
     }
+    
 }
 
 @media (max-width: 340px){
