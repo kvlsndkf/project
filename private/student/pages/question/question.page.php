@@ -34,7 +34,6 @@ try {
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- CSS Styles globais -->
-    <link rel="stylesheet" href="../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../views/styles/button.style.css">
     <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
     <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
