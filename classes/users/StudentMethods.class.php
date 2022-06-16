@@ -143,7 +143,7 @@ class StudentMethods
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT stu.id, stu.first_name, stu.surname, stu.xp, usr.photo, stu.created_at,
+            $stmt = $connection->prepare("SELECT stu.id, stu.first_name, stu.surname, stu.xp, usr.photo, stu.created_at, module.id AS 'moduleId',
                                             module.name AS 'module', course.name AS 'course', school.name AS 'school', usr.linkedin, usr.github, 
                                             usr.facebook, usr.instagram, usr.profile_link FROM students stu
 
@@ -178,6 +178,7 @@ class StudentMethods
         $student->xp = $row['xp'];
         $student->photo = $row['photo'];
         $student->module = $row['module'];
+        $student->moduleId = $row['moduleId'];
         $student->course = $row['course'];
         $student->school = $row['school'];
         $student->linkedin = $row['linkedin'];
