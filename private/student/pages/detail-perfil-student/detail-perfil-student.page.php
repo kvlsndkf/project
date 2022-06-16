@@ -49,6 +49,9 @@ try {
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
+
+    <!-- Include stylesheet -->
+    <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -130,7 +133,7 @@ try {
         $buttonFollow = $studentLogged[0]['id'] != $studentPerfil->id ? '' : 'd-none';
         ?>
         <p class="<?php echo $buttonEdit; ?>">
-            <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id'] ;?>">
+            <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>">
                 <button>Editar perfil</button>
             </a>
         </p>
@@ -182,9 +185,12 @@ try {
                     <?php echo $row->subject; ?>
                 </p>
 
-                <p>
-                    <?php echo $row->answer; ?>
-                </p>
+                <!-- Create the editor container -->
+                <div class="ql-snow ql-editor2">
+                    <div class="ql-editor2">
+                        <?php echo $row->answer; ?>
+                    </div>
+                </div>
 
                 <?php $styleImageAnswer = !empty($row->photo) ? '' : 'd-none'; ?>
                 <p class="<?php echo $styleImageAnswer; ?>">
@@ -233,9 +239,12 @@ try {
                     <?php echo $row->subject; ?>
                 </p>
 
-                <p>
-                    <?php echo $row->question; ?>
-                </p>
+                <!-- Create the editor container -->
+                <div class="ql-snow ql-editor2">
+                    <div class="ql-editor2">
+                        <?php echo $row->question; ?>
+                    </div>
+                </div>
 
                 <?php $styleImageQuestions = !empty($row->photo) ? '' : 'd-none'; ?>
                 <p class="<?php echo $styleImageQuestions; ?>">
@@ -280,9 +289,12 @@ try {
                     <?php echo $row->subject; ?>
                 </p>
 
-                <p>
-                    <?php echo $row->question; ?>
-                </p>
+                <!-- Create the editor container -->
+                <div class="ql-snow ql-editor2">
+                    <div class="ql-editor2">
+                        <?php echo $row->question; ?>
+                    </div>
+                </div>
 
                 <?php $styleImageMaterials = !empty($row->photo) ? '' : 'd-none'; ?>
                 <p class="<?php echo $styleImageMaterials; ?>">
