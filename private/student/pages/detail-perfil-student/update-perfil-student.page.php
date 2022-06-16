@@ -99,7 +99,20 @@ try {
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
 
+                        <p>
+                            <label for="">Senha antiga</label>
+                            <input type="text" name="" id="" placeholder="Digite a sua senha antiga">
+                        </p>
 
+                        <p>
+                            <label for="">Senha atual</label>
+                            <input type="text" name="" id="" placeholder="Digite a sua nova senha">
+                        </p>
+
+                        <p>
+                            <label for="">Senha atual</label>
+                            <input type="text" name="" id="" placeholder="Digite a sua nova senha">
+                        </p>
                     </div>
                 </div>
             </div>
