@@ -341,7 +341,7 @@ try {
                         <span class="document-icon">
                             <img src="../../../../views/images/components/file-icon.svg">
                         </span>
-                        <span class="normal-14-medium-p white-text document-name">
+                        <span class="normal-14-medium-p white-text text-truncate document-name">
                             <?php echo $row->documentName; ?>
                         </span>
                         <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
