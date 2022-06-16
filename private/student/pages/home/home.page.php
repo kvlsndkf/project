@@ -73,6 +73,10 @@ try {
             <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
                 perfil
             </a>
+
+            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank">
+                configurações
+            </a>
         </p>
 
         <p>
