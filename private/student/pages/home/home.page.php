@@ -357,9 +357,9 @@ try {
     
                     <div class="question-footer">
     
-                        <div class="question-answers question-footer-div">
+                        <div class="question-answers question-footer-div" id="respostaQuant">
     
-                            <p class="normal-14-bold-p white-text question-p">
+                            <p class="normal-14-bold-p white-text question-p" >
                                 <?php
                                 $answer = new Answer();
                                 $totalAnswersOfQuestion = $answer->countAnswers($row->id);
