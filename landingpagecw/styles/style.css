@@ -300,7 +300,7 @@ LOCALIMG {
   font-weight: var(--medium);
   color: #f5f7f7;
   font-size: 52px;
-  margin-left: 16px;
+
 }
 .texto5 {
   font-family: var(--regular-font);
@@ -308,7 +308,7 @@ LOCALIMG {
   color: var(--light-purple);
   font-size: 18px;
   padding-top: 100px;
-  margin-left: 14px;
+
 }
 /*# sourceMappingURL=style.css.map */
 h3 {
@@ -435,14 +435,6 @@ body {
   height: 149px;
   border-radius: 50%;
 }
-
-/* .wolf-img-2{
-  padding-right: 110px;
-  margin-top: 65px;
-  max-width: 404px;
-  max-height: 200px;
-  height: 150px;
-} */
 
 .pd {
   padding-left: 10px;
