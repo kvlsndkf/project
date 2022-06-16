@@ -12,6 +12,8 @@ try {
 
     $student = new StudentMethods();
     $studentId = $student->getStudentByUserID($idUser);
+
+    $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -60,6 +62,41 @@ try {
     <?php unset($_SESSION['statusPositive']);
     } ?>
 
+    <br>
+
+    <div>
+        <p>
+            <a href="../../../logout/logout.controller.php">
+                sair
+            </a>
+
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                perfil
+            </a>
+        </p>
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="100">
+            </a>
+        </p>
+
+        <p>
+            <?php echo $studentPerfil->xp; ?>
+            xp
+        </p>
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <?php echo $studentPerfil->firstName;
+                echo " " . $studentPerfil->surname; ?>
+            </a>
+        </p>
+    </div>
+
+    <br>
+    <br>
+
     <a href="../question/question.page.php">
         <button>Fazer pergunta</button>
     </a>
@@ -67,6 +104,7 @@ try {
     <br>
     <br>
     <br>
+
 
     <!-- Lista de perguntas ⬇️ -->
     <?php for ($i = 0; $i < count($listQuestions); $i++) {
