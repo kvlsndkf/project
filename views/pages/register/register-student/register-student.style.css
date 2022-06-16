@@ -553,6 +553,10 @@ width:100%!important;
     background-color: var(--gray-background);
 }
 
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+    background-color: var(--gray1);
+}
+
 /* CSS Global */
 
 /* Início */
