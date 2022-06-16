@@ -544,6 +544,15 @@ width:100%!important;
     margin-bottom: 28px;
 }
 
+.ql-snow .ql-tooltip {
+    background-color: var(--gray1);
+    color: white;
+}
+
+.ql-snow .ql-tooltip.ql-editing input[type=text] {
+    background-color: var(--gray-background);
+}
+
 /* CSS Global */
 
 /* Início */
