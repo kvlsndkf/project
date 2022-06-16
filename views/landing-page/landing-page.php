@@ -76,10 +76,10 @@
                     </ul>
                     <ul class="nav-list2">
                         <li>
-                            <a href="#" class="a-class nav-options normal-14-bold-p white">Entrar</a>
+                            <a href="../pages/login/login-page.php" class="a-class nav-options normal-14-bold-p white">Entrar</a>
                         </li>
                         <li>
-                            <a href="#" class="a-class nav-options normal-14-bold-p gray1">
+                            <a href="../pages/register/register-profile/register-profile.pages.php" class="a-class nav-options normal-14-bold-p gray1">
                                 <div class="cadastrar-btn">
                                     Cadastre-se
                                 </div>
@@ -234,7 +234,7 @@
                     <h5 class="heelp-peca-title white normal32-black-landingpagetitle-2">Ei! Não perca tempo...</h5>
                     <h6 class="heelp-peca-text white nord-40-black-display">Peça um heelp!</h6>
 
-                    <a href="#" class="heelp-peca-btn normal-14-bold-p gray1">
+                    <a href="../pages/register/register-profile/register-profile.pages.php" class="heelp-peca-btn normal-14-bold-p gray1">
                         <div class="cadastrar-btn">
                             Cadastre-se
                         </div>
