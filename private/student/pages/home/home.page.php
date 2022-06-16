@@ -21,37 +21,20 @@ try {
 <html lang="pt-br">
 
 <head>
-    <!-- Base -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
     <title>Feed | Heelp!</title>
 
     <!-- Include stylesheet -->
     <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
-    
-    <!-- Animation Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
+
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    
-    <!-- Estilos -->
-    <link rel="stylesheet" href="../../../../views/styles/style.global.css">
-    <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
-    <link rel="stylesheet" href="../../../style/modal-about.style.css">
-    <link rel="stylesheet" href="../../../adm/pages/register/register.styles.css">
-    <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
-    <link rel="stylesheet" href="../../style/feed.style.css">
-    
+
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
-    
-    <!-- JavaScript -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -126,53 +109,114 @@ try {
                 <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                 </symbol>
+
+
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                <use xlink:href="#check-circle-fill" />
+
             </svg>
-
-            <div class="alert alert-success d-flex align-items-center alert-dismissible div-alert fade show" role="alert">
-                <svg class="bi flex-shrink-0 me-2 div-alert" width="24" height="24" role="img" aria-label="Success:">
-                    <use xlink:href="#check-circle-fill" />
-                </svg>
-                <div>
-                    <strong>Tudo certo!</strong>
-                    <?php echo $_SESSION['statusPositive']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div>
+                <strong>Tudo certo!</strong>
+                <?php echo $_SESSION['statusPositive']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <?php unset($_SESSION['statusPositive']);
-            } ?>
+        </div>
+    <?php unset($_SESSION['statusPositive']);
+    } ?>
 
-            <div class="feed-div">
+    <a href="../question/question.page.php">
+        <button>Fazer pergunta</button>
+    </a>
 
-            <div class="center">
+    <br>
+    <br>
+    <br>
 
-                <div class="pedir-heelp-div">
-                    <img src="../../../../views/images/components/pedir-heelp-flipper.svg" class="pedir-heelp-img">
-                    <div class="content-pedir-heelp">
-                        <p class="pedir-heelp-text normal-22-black-title-1">
-                            Precisando de ajuda?
-                        </p>
-                        <a href="../question/question.page.php" class="pedir-heelp-button-a hover-button">
-                            <div class="pedir-heelp-button-div">
-                                <p class="pedir-heelp-button-p normal-14-bold-p">
-                                    Pedir um heelp!
-                                </p> 
-                            </div>
-                        </a>
-                    </div>
-                </div>
+    <!-- Lista de perguntas ⬇️ -->
+    <?php for ($i = 0; $i < count($listQuestions); $i++) {
+        $row = $listQuestions[$i] ?>
 
-            </div>
+        <p>
+            <span class="badge rounded-pill bg-primary"> <?php echo $row->course; ?></span>
 
-            <a href="../question/question.page.php" class="pedir-heelp-responsive">
-                <div class="pedir-heelp-responsive">
-                    <svg class="pedir-heelp-respo-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="398px" height="397px">
-                        <image class="pedir-heelp-respo-img" x="0px" y="0px"  xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY4AAAGNCAMAAAAxTmbgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA7VBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////+wm/fd1Pvo4/3Sxvr////////Sxvr08f7////o4/3////////////o4/3///////+7qfiwm/bd1Pzo4/3o4v3////////d1Pz////o4v3o4/3o4v3o4/3////o4v3////////////////////o4/3////////////////////////////o4v3o4/3SxvrSxvrSxvr08f7////////o4/3///////8sZ6vxAAAATnRSTlMAACAwQGCAn6+/z99QEG+Q739fcI+gT7AUCwsjlIICHpcErs5ZBdHGAwMZIhGYniOcBDINIYgZq7FniqIb3It5bnWZg0ECOTQdZnGsTH03kZewAAAAAWJLR0QB/wIt3gAAAAd0SU1FB+YEGQ4hNQTqECAAAAsJSURBVHja7Z2HgurIEUVBEUkIxPDe4LS21znnsI7rsM42//85FgzMA0ZZ1V23pXt+gFs6093VrWZYLDTxPM8PgiA8EZ2JL6ySO9JsFMkD1095+czTp6/LGEEZR/VxWCUvH30YbqJtHCdJ+YyOoGRZmiSreFt6KiV5ufZzk3WwDjfbuPzz1n7KI/ykSSknDHx3zXh+GMWrrNB+lMKUYqJ14JCW/OQhnZqGB4p0Fa197UfdZmK9iR2ek/pTSsEcKXkwMxMfyFabQPvx36vYJROfnFpJIgwl3mb2Kq4kG+VdS7Cd6QRVR7ZVGyTBlsOigixW6LjyXapdNy7Zk91ZK0i0K0YntjZp5RsOjA5kT1Zk7LhidCTbmZ6zKKMXhoVQRl8MTlkBNxkDMCTEYzc1kNjAjLXhPDWcHYcGFJnoAOHQGM1eTEYea9cyBaRWEI8NlQgyE9YTJyohCoGWd6ddxJQY3WG9065gWrwbZ4OLuDDxCBk5dxvipIMvAuV8r2GAwT5owwgDfXDdMMSg9YM9lTEG9Ffcbxik9/5jo5142vTcn3s8GTFK0etqHE8NTZP1aa/e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" />
-                    </svg>
-                    <p class="pedir-heelp-respo-p">+</p>
-                </div>
+            <?php
+            if ($row->category === "Erro") {
+                $styleError = 'badge rounded-pill bg-danger';
+                $styleQuestion = 'd-none';
+                $styleHelp = 'd-none';
+            }
+
+            if ($row->category === "Dúvida") {
+                $styleError = 'd-none';
+                $styleQuestion = 'badge rounded-pill bg-info';
+                $styleHelp = 'd-none';
+            }
+
+            if ($row->category === "Apoio") {
+                $styleError = 'd-none';
+                $styleQuestion = 'd-none';
+                $styleHelp = 'badge rounded-pill bg-success';
+            }
+            ?>
+            <span class="<?php echo $styleError; ?>"> <?php echo $row->category; ?></span>
+            <span class="<?php echo $styleQuestion; ?>"> <?php echo $row->category; ?></span>
+            <span class="<?php echo $styleHelp; ?>"> <?php echo $row->category; ?></span>
+            <span class="badge rounded-pill bg-primary"> <?php echo $row->subject; ?></span>
+        </p>
+
+        <p>
+            <a href="<?php echo $row->linkQuestion; ?>" class="d-none" id="linkQuestion-<?php echo $row->id; ?>">Link</a>
+            <span onclick="copyLink(<?php echo $row->id; ?>)" id="spanLink-<?php echo $row->id; ?>">Copiar link</span>
+        </p>
+
+        <?php
+        $creatorQuestion = $question->getCreatorQuestionById($row->id);
+        $creatorQuestionID = $creatorQuestion[0]['student_id'];
+        $studentID = $studentId[0]['id'];
+        $questionHasAnswers = $question->hasAnswers($row->id);
+
+        $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
+
+        $styleDeleteDisplay = $questionHasAnswers || $row->isDenounced != false ? 'd-none' : '';
+        $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
+        $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
+
+        ?>
+        <p class="<?php echo $styleDeleteQuestion; ?> <?php echo $styleDeleteDisplay; ?>">
+            <a href="../question/controller/delete-question.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
+                Excluir
             </a>
+        </p>
 
-            
+        <p class="<?php echo $styleDenunciationQuestion; ?>">
+            <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
+                denunciar
+            </label>
+        </p>
+
+        <p>
+            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
+        </p>
+
+        <p>
+            <?php echo $row->firstName; ?>
+            <?php echo $row->surname; ?>
+        </p>
+
+
+        <p>
+            <?php echo $row->created; ?> •
+            <?php echo $row->module; ?> •
+            <?php echo $row->school; ?>
+        </p>
+
+        <!-- Create the editor container -->
+        <div class="ql-snow ql-editor2">
+            <div class="ql-editor2">
+                <?php echo $row->question; ?>
+            </div>
+        </div>
 
                 <!-- Lista de perguntas ⬇️ -->
                 <?php for ($i = 0; $i < count($listQuestions); $i++) {
@@ -384,9 +428,15 @@ try {
     
                     </div>
 
-                </div>
+        <?php $styleImageQuestion = !empty($row->image) ? '' : 'd-none'; ?>
+        <p class="<?php echo $styleImageQuestion; ?>">
+            <a href="<?php echo $row->image; ?>" class="image-link">
+                <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
+            </a>
+        </p>
 
-                <!-- Modal -->
+        <!-- Modal -->
+
         <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
