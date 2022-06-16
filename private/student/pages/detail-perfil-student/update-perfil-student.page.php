@@ -1,12 +1,16 @@
 <?php
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/schools/Module.class.php');
 
 try {
     $idStudent = $_GET['idStudentLogged'];
 
     $student = new StudentMethods();
     $studentPerfil = $student->getDataStudentByID($idStudent);
+
+    $module = new Module();
+    $listModules = $module->getModuleForStudentUpdate($studentPerfil->moduleId);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -27,12 +31,56 @@ try {
 </head>
 
 <body>
-    <form action="" method="post" enctype="">
+    <!-- Mensagem de erro ⬇️ -->
+    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
 
-        <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="150">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+        </svg>
+
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <strong>Ops...</strong>
+                <?php echo $_SESSION['statusNegative']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php unset($_SESSION['statusNegative']);
+    } ?>
+
+    <!-- Mensagem de alerta ⬇️ -->
+    <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+        </svg>
+
+        <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <strong>Ops...</strong>
+                <?php echo $_SESSION['statusAlert']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php unset($_SESSION['statusAlert']);
+    } ?>
+
+    <form action="./controller/update-perfil-student.controller.php?idStudentLogged=<?php echo $studentPerfil->id; ?>&idUser=<?php echo $studentPerfil->userId; ?>" method="post" enctype="multipart/form-data">
+
+        <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="150" id="imageFile">
         <p>
             <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
-            <input type="file" name="" id="">
+            <input type="file" name="updatePhoto" id="" onchange="previewImage(this)">
         </p>
 
         Dados principais
@@ -48,13 +96,16 @@ try {
 
         <p>
             <label for="">Módulo</label>
-            <select name="module">
+            <select name="module" class="selectModule w-100">
                 <optgroup label="Módulo atual">
                     <option value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
                 </optgroup>
 
                 <optgroup label="Lista de módulos">
-
+                    <?php for ($i = 0; $i < count($listModules); $i++) {
+                        $row = $listModules[$i] ?>
+                        <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                    <?php } ?>
                 </optgroup>
             </select>
         </p>
@@ -75,17 +126,17 @@ try {
 
                         <p>
                             <label for="">GitHub</label>
-                            <input type="text" name="" id="" value="<?php echo $studentPerfil->github; ?>">
+                            <input type="text" name="github" id="" value="<?php echo $studentPerfil->github; ?>">
                         </p>
 
                         <p>
                             <label for="">Facebook</label>
-                            <input type="text" name="" id="" value="<?php echo $studentPerfil->facebook; ?>">
+                            <input type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
                         </p>
 
                         <p>
                             <label for="">Instagram</label>
-                            <input type="text" name="" id="" value="<?php echo $studentPerfil->instagram; ?>">
+                            <input type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
                         </p>
                     </div>
                 </div>
@@ -101,17 +152,17 @@ try {
 
                         <p>
                             <label for="">Senha antiga</label>
-                            <input type="text" name="" id="" placeholder="Digite a sua senha antiga">
+                            <input type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
                         </p>
 
                         <p>
                             <label for="">Senha atual</label>
-                            <input type="text" name="" id="" placeholder="Digite a sua nova senha">
+                            <input type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
                         </p>
 
                         <p>
-                            <label for="">Senha atual</label>
-                            <input type="text" name="" id="" placeholder="Digite a sua nova senha">
+                            <label for="">Confirme a sua senha atual</label>
+                            <input type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
                         </p>
                     </div>
                 </div>
@@ -119,8 +170,8 @@ try {
         </div>
 
         <p>
-            <input type="button" value="Cancelar">
-            <input type="submit" value="Atualizar perfil">
+            <input type="button" value="Cancelar"  onclick="history.go(-1)">
+            <input type="submit" name="update" value="Atualizar perfil">
         </p>
     </form>
 
@@ -130,6 +181,33 @@ try {
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- JS Select Multiple ⬇️ -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(".selectModule").select2({
+            allowClear: true
+        });
+    </script>
+
+    <script>
+        function previewImage(self) {
+            const imageFile = document.getElementById("imageFile");
+            const file = self && self.files[0];
+
+            if (!file) {
+                imageFile.style.display = "none";
+                return;
+            }
+
+            if (file) {
+                imageFile.style.display = "block";
+                imageFile.src = URL.createObjectURL(file);
+                return;
+            }
+        }
+    </script>
 </body>
 
 </html>
