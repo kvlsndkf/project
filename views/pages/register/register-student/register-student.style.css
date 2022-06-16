@@ -481,3 +481,64 @@ width:100%!important;
 
     }
 }
+
+/* CSS question page */
+
+/* --------------- QUILL EDITOR --------------- */
+
+/* SVG ICONS COLOR */
+
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: var(--gray7) !important;
+}
+
+.ql-snow .ql-stroke {
+    stroke: var(--gray7) !important;
+}
+
+/* PLACEHOLDER INPUT COLOR AND FONT */
+
+.ql-editor.ql-blank::before {
+    color: var(--gray7);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+/* TOOLBAR  */
+.ql-toolbar.ql-snow {
+    border-color: var(--gray1);
+    border-radius: 2px 2px 0 0;
+    background-color: var(--gray2);
+}
+
+/* TEXT AREA */
+
+.ql-container.ql-snow {
+    border-color: var(--gray1);
+    border-radius: 0 0 2px 2px;
+    background-color: var(--gray2);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+/* FORM STYLE */
+
+.form-base-question {
+    margin-bottom: 20px;
+    max-width: 500px;
+    height: fit-content;
+    padding: 40px;
+    color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.title-question {
+    margin-bottom: 28px;
+}

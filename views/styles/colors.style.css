@@ -50,3 +50,7 @@
 .blue-title {
     color: var(--blue-sky);
 }
+
+.bg-pink {
+    background-color: var(--fuchsia);
+}
