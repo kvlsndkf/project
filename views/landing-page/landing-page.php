@@ -67,13 +67,19 @@
                         <li>
                             <a href="#xp" class="a-class nav-options normal-14-bold-p white">Desafios</a>
                         </li>
+                        <li>
+                            <a href="#emp" class="a-class nav-options normal-14-bold-p white">Parceria</a>
+                        </li>
+                        <li>
+                            <a href="#vid" class="a-class nav-options normal-14-bold-p white">Video</a>
+                        </li>
                     </ul>
                     <ul class="nav-list2">
                         <li>
-                            <a href="#" class="a-class nav-options normal-14-bold-p white">Entrar</a>
+                            <a href="../pages/login/login-page.php" class="a-class nav-options normal-14-bold-p white">Entrar</a>
                         </li>
                         <li>
-                            <a href="#" class="a-class nav-options normal-14-bold-p gray1">
+                            <a href="../pages/register/register-profile/register-profile.pages.php" class="a-class nav-options normal-14-bold-p gray1">
                                 <div class="cadastrar-btn">
                                     Cadastre-se
                                 </div>
@@ -158,7 +164,7 @@
                         </div>
 
                         <div class="col coln3">
-                            <img src="./img/foto4-xp.svg" class="img4">
+                            <img src="./img/perfil.svg" class="img4">
                         </div>
 
                     </div>
@@ -178,13 +184,13 @@
 
                             <div class="col">
 
-                                <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2">Empresas Parceiras</h4>
+                                <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2" id="emp">Empresas Parceiras</h4>
         
                                 <h5 class="heelp-emp-title gray1 normal-22-black-title-1">E além de tudo temos um bônus!</h5>
                                 <p class="heelp-emp-text gray1">O Heelp! tem parcerias com empresas diversas, que estão a procura de jovens talentos! Você pode se destacar através do ranking, com a pontuação adquirida.</p>
                             
                             
-                                <h3 class="heelp-emp-destaque gray1">É pedindo e dando Heelp! que você se destaca!</h3>
+                                <h3 class="heelp-emp-destaque gray1" >É pedindo e dando Heelp! que você se destaca!</h3>
 
                             </div>
 
@@ -202,13 +208,33 @@
 
                 </div>
 
+                <!-- Parte que irá conter o video Pitch -->
+
+                <div class="container" id="vid">
+                    <div class="tela8" >
+                        <div class="row-0" >
+                            <h6 class="title1 nord-40-black-display" >Imagine um lugar... </h6>
+                            <h6 class="subtitle2 normal32-black-landingpagetitle-2">Onde você pode tirar suas dúvidas ao mesmo tempo 
+                                que faz uma rede de amigos.</h6>
+                                <h6 class="Nhelp subtitlePnord-40-black-display ">Esse lugar existe. Seu nome? Heelp!</h6>
+
+                                <div class="videoP">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/pLp3B8M251s" 
+                                    title="YouTube video player" frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                        </div>
+            
+                    </div>
+                </div>
+
                 <!-- Parte 6 -->
                 <div id="tela6">
 
                     <h5 class="heelp-peca-title white normal32-black-landingpagetitle-2">Ei! Não perca tempo...</h5>
                     <h6 class="heelp-peca-text white nord-40-black-display">Peça um heelp!</h6>
 
-                    <a href="#" class="heelp-peca-btn normal-14-bold-p gray1">
+                    <a href="../pages/register/register-profile/register-profile.pages.php" class="heelp-peca-btn normal-14-bold-p gray1">
                         <div class="cadastrar-btn">
                             Cadastre-se
                         </div>
@@ -224,6 +250,8 @@
                         <a href="#com" class="a-class white footer-options normal-14-bold-p white">Comunidade</a>
                         <a href="#net" class="a-class white footer-options normal-14-bold-p white">Networking</a>
                         <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Desafios</a>
+                        <a href="#emp" class="a-class white footer-options normal-14-bold-p white">Parcerias</a>
+                        <a href="#vid" class="a-class white footer-options normal-14-bold-p white">Video</a>
                         
                         
                         <a href="./form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal" >Fale Conosco</a>

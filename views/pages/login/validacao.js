@@ -69,6 +69,38 @@ function arroba(e){
 }
 
 
+// Parte do olho da parte de login
+
+const password = document.getElementById("password");
+const eye = document.getElementById("eyeOpened");
+// const confirmPassword = document.getElementById("confirm-password");
+// const eyeConfirm = document.getElementById("eyeOpenedConfirm");
+
+function openEyeL() {
+    let inputTypePassword = password.type == "password";
+
+    if (inputTypePassword){
+        showPassword();
+    } else {
+        hidePassword();
+    }
+}
+
+function showPassword() {
+    password.setAttribute("type", "text");
+
+    eye.setAttribute("src", "/project/views/pages/register/image/components/hide-pass.svg");
+    console.log(eye)
+  }
+
+
+function hidePassword() {
+    password.setAttribute("type", "password");
+
+    eye.setAttribute("src", "/project/views/pages/register/image/components/show-pass.svg");
+}
+
+
   
 
 

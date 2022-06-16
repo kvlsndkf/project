@@ -150,6 +150,7 @@
 
 .about-school-text{
     word-wrap: break-word;
+    width: 100%;
     /* word-break: break-all; */
 }
 

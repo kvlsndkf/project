@@ -77,7 +77,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                     <div class="form-base bg-modal-gray align-self-center my-auto">
                         <form action="./controller/teacher-unit-registration.controller.php" method="POST" enctype="multipart/form-data">
                             <div class="form-header">
-                                <a href="./search-teacher.page.php">
+                                <a href="./list-teacher.page.php">
                                     <img src="../image/form-teacher/components/arrow.svg" class="arrow" alt="Botão de voltar">
                                 </a>
                                 <label class="normal-20-bold-modaltitle title-header" id="teste">Cadastro unitário professor</label>

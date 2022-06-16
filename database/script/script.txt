@@ -173,14 +173,18 @@ CREATE TABLE denunciations(
     , reason VARCHAR(30) NOT NULL
     , post_link VARCHAR(100) NOT NULL 
     , status VARCHAR(30) NOT NULL
-    , created_at DATETIME NOT NULL
     , conclusion VARCHAR(192) 
     , context VARCHAR(30)
-    , updated_at DATETIME
     , created_by_id INT NOT NULL
     , FOREIGN KEY (created_by_id) REFERENCES users(id) ON DELETE CASCADE
     , denounced_id INT NOT NULL
     , FOREIGN KEY (denounced_id) REFERENCES users(id) ON DELETE CASCADE
+    , question_id INT
+    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    , answer_id INT 
+    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
 )
 
 CREATE TABLE solicitations(
@@ -217,6 +221,7 @@ CREATE TABLE questions(
     , photo TEXT 
     , document TEXT
     , document_name VARCHAR(255)
+    , is_denounced BOOLEAN NOT NULL
     , is_blocked BOOLEAN NOT NULL
     , blocking_reason VARCHAR(100)
     , course_id INT NOT NULL
@@ -246,6 +251,9 @@ CREATE TABLE answers(
     , photo TEXT 
     , document TEXT
     , document_name VARCHAR(255)
+    , is_denounced BOOLEAN NOT NULL
+    , is_blocked BOOLEAN NOT NULL
+    , blocking_reason VARCHAR(100)
     , is_blocked BOOLEAN NOT NULL
     , blocking_reason VARCHAR(100)
     , evaluation INT NOT NULL

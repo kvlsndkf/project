@@ -39,7 +39,7 @@ try {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Etec's | Heelp!</title>
         <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
-
+ 
         <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
 
         <!-- CSS Bootstrap -->
@@ -418,7 +418,7 @@ try {
                                 <div id="body-modal-have-account-2">
                                     <br>
                                     <label class="normal-14-medium-p about-school-label">Sobre</label>
-                                    <div id="about-school" class="whitney-16-medium-text white-title about-school-text" style="width: fit-content;"></div>
+                                    <div id="about-school" class="whitney-16-medium-text white-title about-school-text"></div>
 
                                 </div>
 
@@ -551,6 +551,7 @@ if (!empty($search) && $filter == null){
                 enterData(id,page);
             }
         </script>
+ 
     </body>
 
 </html>
