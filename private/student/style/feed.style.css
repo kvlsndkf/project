@@ -56,17 +56,18 @@ body{
 }
 
 .pedir-heelp-div{
-    width: 560px;
+    width: 100%;
     height: 118px;
     border-radius: 8px;
     background-image: url(../../../views/images/background/feed/pedir-heelp-background.svg);
     background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding-left: 40px;
-    padding-right: 40px;
+    justify-content: space-around;
+    /* padding-left: 40px;
+    padding-right: 40px; */
 }
 
 .content-pedir-heelp{
@@ -200,7 +201,7 @@ a{
 
 .feed-leftbar{
     position: fixed;
-    width: 20vw;
+    width: 25vw;
     height: 100%;
     background-color: var(--gray1);
     padding: 20px;
@@ -209,12 +210,14 @@ a{
     z-index: 1;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     justify-content: space-between;
 }
 
 .feed-rightbar{
-    left: 80vw;
+    left: 75vw;
     padding-top: 0;
+    align-items: flex-start;
 }
 
 
@@ -298,8 +301,8 @@ a{
     background-color: var(--bg-list);
     height: 100%;
     width: 100%;
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 25vw;
+    padding-right: 25vw;
     box-sizing: border-box;
 }
 
@@ -317,7 +320,7 @@ a{
 }
 
 .drop-edit-exclud-about2{
-    right: 21%
+    right: 26%
 }
 
 .read-btn-question{
@@ -414,6 +417,7 @@ a{
     color: var(--gray6);
     font-weight: 400;
     text-align: left;
+    max-width: 200px;
 }
 
 .bg-little-blue{
@@ -435,6 +439,11 @@ p{
     transition: 1s;
 }
 
+.feed-hr{
+    background-color: var(--gray7);
+    height: 2px;
+}
+
 @media (max-width: 1040px){
     .profile-name{
         font-size: 14px;
@@ -452,10 +461,18 @@ p{
         justify-content: space-around;
         position: fixed;
         width: 100%;
-        height: 8vh;
+        height: 10vh;
         top: 93vh;
         background-color: var(--gray1);
         z-index: 10;
+    }
+    .bottombar-a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 50px;
+        padding-bottom: 20px;
     }
     .corpo-feed{
         padding: 0;
@@ -468,12 +485,12 @@ p{
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 60px;
         border-radius: 100%;
-        background-color: var(--little-blue);
-        top: 84%;
-        left: 92%;
+        background-color: var(--fuchsia);
+        top: 82vh;
+        left: 91vw;
         position: fixed;
         z-index: 11;
     }
@@ -485,6 +502,8 @@ p{
         text-align: center;
         margin-top: -10px;
         margin-left: 2px;
+        color: var(--white);
+        font-weight: 800;
     }
     .center{
         display: none;
@@ -494,22 +513,40 @@ p{
     }
 }
 
+@media (max-width: 750px){
+    .pedir-heelp-responsive{
+        left: 89vw;
+    }
+}
+
 @media (max-width: 700px){
     .pedir-heelp-responsive{
-        left: 90%;
+        left: 88vw;
     }
     .drop-edit-exclud-about2{
         left: 15%
     }
 }
 
+@media (max-width: 606px){
+    .pedir-heelp-responsive{
+        left: 87vw;
+    }
+}
+
 @media (max-width: 550px){
     .pedir-heelp-responsive{
-        left: 88%;
+        left: 85vw;
     }
     .margin-60{
         margin: 0;
         margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px){
+    .pedir-heelp-responsive{
+        left: 84vw;
     }
 }
 
@@ -529,7 +566,7 @@ p{
 
 @media (max-width: 430px){
     .pedir-heelp-responsive{
-        left: 86%;
+        left: 81vw;
     }
     .drop-edit-exclud-about2{
         left: 14%
@@ -541,7 +578,7 @@ p{
 
 @media (max-width: 365px){
     .pedir-heelp-responsive{
-        left: 84%;
+        left: 80vw;
     }
     .document-name{
         font-size: 9px;
@@ -557,11 +594,14 @@ p{
     .question-footer-div{
         margin: 8px;
     }
+    .pedir-heelp-responsive{
+        left: 78vw;
+    }
 }
 
 @media (max-width: 280px){
     .pedir-heelp-responsive{
-        left: 80%;
+        left: 75vw;
     }
     .feed-bottombar{
         top: 93%;

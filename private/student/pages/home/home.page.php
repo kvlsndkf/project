@@ -271,13 +271,9 @@ try {
                             <div class="question-about normal-12-medium-tiny">
                                 <?php echo $row->created; ?>
                                  •
-                                 <a class="question-about question-about-a" href="">
-                                    <?php echo $row->module; ?>
-                                 </a>
+                                <?php echo $row->module; ?>
                                  •
-                                 <a class="question-about question-about-a" href="">
-                                    <?php echo $row->school; ?>
-                                 </a>
+                                <?php echo $row->school; ?>
                             </div>
                         </div>
                     </div>
@@ -336,7 +332,7 @@ try {
                     <?php $styleImageQuestion = !empty($row->image) ? '' : 'd-none'; ?>
                     <p class="<?php echo $styleImageQuestion; ?> image-question">
                         <a href="<?php echo $row->image; ?>" class="image-link question-img">
-                            <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
+                            <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 300px;">
                         </a>
                     </p>
     
@@ -385,7 +381,7 @@ try {
                 </div>
 
 
-                <hr>
+                <hr class="feed-hr">
                 <?php } ?>
 
             </div>
@@ -407,13 +403,13 @@ try {
         </nav>
 
         <nav class="feed-bottombar">
-            <a href="./home.page.php">
+            <a href="./home.page.php" class="bottombar-a">
                 <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
             </a>
-            <a href="#">
+            <a href="#" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
-            <a href="#">
+            <a href="#" class="bottombar-a">
                 <img src="../../../../views/images/components/notifications-icon.svg" alt="">
             </a>
         </nav>
