@@ -184,6 +184,21 @@ class Student extends User
         }
 
         try {
+            $connection = Connection::connection();
+
+           
+            $linkProfile = "/project/private/student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=" . $idStudent;
+
+            $insetLink = $connection->prepare("UPDATE users SET profile_link = ?
+                                                WHERE id = $idUser");
+
+            $insetLink->bindValue(1, $linkProfile);
+            $insetLink->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
             $email = $this->getEmail();
             $name = $this->getFirstName();
             $surname = $this->getSurname();
