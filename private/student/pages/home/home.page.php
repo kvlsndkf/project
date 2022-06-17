@@ -107,49 +107,60 @@ try {
 
                 </ul>
 
-                <div>
-                    <p>
-                        <a href="../../../logout/logout.controller.php">
-                            sair
-                        </a>
-
-                        <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
-                            perfil
-                        </a>
-
-                        <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank">
-                            configurações
-                        </a>
-                    </p>
-
-                    <p>
-                        <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
-                            <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="100">
-                        </a>
-                    </p>
-
-                    <p>
-                        <?php echo $studentPerfil->xp; ?>
-                        xp
-                    </p>
-
-                    <p>
-                        <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
-                            <?php echo $studentPerfil->firstName;
-                            echo " " . $studentPerfil->surname; ?>
-                        </a>
-                    </p>
-                </div>
 
             </div>
 
-            <!-- <div class="d-0">
-                <a href="" class="leftbar-bottom">
-                    <img src="../../../../views/images/components/profile-icon.svg" alt="">
-                    <p class="profile-name normal-16-bold-title-3">Cameron Murphy</p>
+            <div class="leftbar-bottom">
+
+                <div class="bottom-header">
+
+                    <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                        <div class="bottom-photo-div">
+                            <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" class="bottom-photo-img">
+                        </div>
+                    </a>
+
+                    <!-- Mais Opções -->
+                    <div class="drop-edit-exclud-about drop-leftbar">
+                        <img src="../../../../views/images/components/three-dots.svg">
+
+                        <!-- Parte do Update e Delete -->
+                        <div class="drop-edit-exclud-content-about drop-leftbar-content">
+                            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank" class="drop-edit-exclud-a">
+                                <div class="drop-edit-exclud-option-about">
+                                    <img src="../../../../views/images/components/settings-icon.svg" class="drop-edit-exclud-img">
+                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Configurações</p>
+                                </div>
+                            </a>
+                            <div class=" pedir-heelp-button-a">
+                                <a href="../../../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
+                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a">
+                                        <img src="../../../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bottom-xp-div">
+                    <p class="normal-12-medium-tiny white-text bottom-xp-text">
+                        <?php echo $studentPerfil->xp; ?>
+                        xp
+                    </p>
+                </div>
+
+
+                <a class="normal-16-bold-title-3 white-text bottom-name" href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                    <?php echo $studentPerfil->firstName;
+                    echo " " . $studentPerfil->surname; ?>
                 </a>
-                
-            </div> -->
+
+            </div>
 
         </nav>
         <div class="corpo-feed">
@@ -257,13 +268,6 @@ try {
                         <!-- Mais Opções -->
                         <div class="drop-edit-exclud-about drop-edit-exclud-about2">
                             <img src="../../../../views/images/components/three-dots.svg">
-
-                            <!-- <p class="<?php //echo $styleDenunciationQuestion; 
-                                            ?>">
-                                <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
-                                    denunciar
-                                </label>
-                            </p> -->
 
                             <!-- Parte do Update e Delete -->
                             <div class="drop-edit-exclud-content-about">
@@ -395,7 +399,7 @@ try {
 
                             $styleCounter = empty($totalAnswersOfQuestion) ? 'question-footer-div' : 'question-answers question-footer-div';
                             ?>
-                            <div class="<?php echo $styleCounter;?>" id="respostaQuant">
+                            <div class="<?php echo $styleCounter; ?>" id="respostaQuant">
                                 <p class="normal-14-bold-p white-text question-p">
                                     <?php echo $totalAnswersOfQuestion; ?>
                                 </p>
