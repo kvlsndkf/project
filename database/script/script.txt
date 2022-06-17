@@ -292,3 +292,14 @@ CREATE TABLE answersHasLikes(
     , person_liked_id INT NOT NULL
     , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
 )
+
+CREATE TABLE usersHasFollowers(
+    id INT NOT NULL AUTO_INCREMENT
+    , PRIMARY KEY(id)
+    , follower_id INT NOT NULL
+    , FOREIGN KEY (follower_id) REFERENCES users(id) ON DELETE CASCADE
+    , following_id INT NOT NULL
+    , FOREIGN KEY (following_id) REFERENCES users(id) ON DELETE CASCADE
+    , created_at DATETIME NOT NULL
+    , updated_at DATETIME
+)
