@@ -9,6 +9,7 @@ try {
 
     $student = new StudentMethods();
     $studentSession = $student->getStudentByUserID($idUser);
+    $studentPerfil = $student->getDataStudentByID($studentSession[0]['id']);
 
     $follower = new Follow();
     $listFollowers = $follower->listFollowers($idFollower);
@@ -32,6 +33,44 @@ try {
 </head>
 
 <body>
+
+    <div>
+        <p>
+            <a href="../../../logout/logout.controller.php">
+                sair
+            </a>
+
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                perfil
+            </a>
+
+            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank">
+                configurações
+            </a>
+        </p>
+
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName;
+                                                                        echo $studentPerfil->surname; ?>" width="100">
+            </a>
+        </p>
+
+        <p>
+            <?php echo $studentPerfil->xp; ?>
+            xp
+        </p>
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <?php echo $studentPerfil->firstName;
+                echo " " . $studentPerfil->surname; ?>
+            </a>
+        </p>
+    </div>
+    <br>
+    <br>
 
     <label for="">Seguidores</label>
     <!-- Lista de seguidores ⬇️ -->
