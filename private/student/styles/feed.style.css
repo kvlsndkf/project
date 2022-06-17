@@ -148,12 +148,26 @@ body{
     font-weight: 400;
 }
 
+.functions-answer{
+    margin-top: 20px;
+}
+
+.functions-answer, .like-answer, .avaliation-answer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 20px;
+}
+
+.avaliation-answer{
+    width: 100%;
+}
+
 a{
     text-decoration: none;
 }
 
-.question-img{
-}
 
 .question-footer{
     display: flex;
@@ -282,15 +296,68 @@ a{
 }
 
 .leftbar-bottom{
+    width: 100%;
+    padding-left: 4vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.leftbar-bottom:hover{
+.bottom-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.drop-leftbar{
+    margin: 0;
+    margin-left: 60%;
+    transform: rotate(90deg);
+    margin-top: -10px;
+}
+
+.drop-leftbar-content{
+    transform: rotate(270deg) translateY(110px) translateX(-35px);
+}
+
+.bottom-photo-div{
+    height: 75px;
+    width: 75px;
+    border-radius: 75px;
+    border-radius: 75px;
+    outline: 5px solid var(--purple-light);
+}
+
+.bottom-photo-div:hover{
     transform: translateY(-15px);
-    transition: .75s;
+    transition: .5s;
+}
+
+.bottom-photo-img{
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.bottom-xp-div{
+    height: 24px;
+    padding: 4px 6px 4px 6px;
+    border-radius: 30px;
+    background-color: var(--purple-light);
+    margin-top: -5px;
+}
+
+.bottom-name{
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+.bottom-name:hover{
+    color: var(--primary);
 }
 
 .feed-bottombar{
@@ -334,6 +401,20 @@ a{
 
 .question-core{
     padding-left: 60px;
+}
+
+.delete-answer-div{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-answer-a:hover{
+    transition: .5s;
+    background-color: var(--gray3);
+    border-radius: 8px;
 }
 
 .image-question{
@@ -622,5 +703,8 @@ p{
     }
     .feed-bottombar{
         top: 93%;
+    }
+    .avaliation-answer{
+        margin-left: 30px;
     }
 }
