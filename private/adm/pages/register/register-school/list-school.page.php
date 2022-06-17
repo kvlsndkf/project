@@ -39,7 +39,7 @@ try {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Etec's | Heelp!</title>
         <link rel="icon" href="../../../../../views/images/favicon/favicon-32x32.png" type="image/icon type">
-
+ 
         <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
 
         <!-- CSS Bootstrap -->
@@ -551,6 +551,7 @@ if (!empty($search) && $filter == null){
                 enterData(id,page);
             }
         </script>
+ 
     </body>
 
 </html>

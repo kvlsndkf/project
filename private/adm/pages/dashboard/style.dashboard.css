@@ -34,6 +34,7 @@
     height: 150px;
 }
 
+
 .adm-email-button {
     background-color: var(--fuchsia);
     border: none;
@@ -44,6 +45,8 @@
     width: 100%;
     text-align: center;
     cursor: pointer;
+    text-decoration:none; 
+  
 }
 
 .adm-email-button:hover {
