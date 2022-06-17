@@ -1,6 +1,7 @@
 <?php
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/followers/Follow.class.php');
 
 try {
     $idUser = $_SESSION['idUser'];
@@ -12,10 +13,14 @@ try {
     $studentProfile = $student->getDataStudentByID($studentLogged[0]['id']);
 
     $studentPerfil = $student->getDataStudentByID($idStudent);
+    $idUserPerfil = $student->getUserByStudentID($studentPerfil->id);
     $studentAnswer = $student->listAnswersByStudent($idStudent);
     $studentQuestion = $student->listQuestionsByStudent($idStudent);
     $studentMaterial = $student->listMaterialsByStudent($idStudent);
     $studentPreference = $student->listPreferencesStudent($idStudent);
+
+    $follow = new Follow();
+    $checkFollow = $follow->checkFollower($idUser, $idUserPerfil[0]['user_id']);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -107,6 +112,22 @@ try {
         </p>
 
         <p>
+            <?php $following = $follow->getFollowing($idUserPerfil[0]['user_id']); ?>
+            <a href="./list-following-student.page.php?idFollowers=<?php echo $idUserPerfil[0]['user_id']; ?>">
+                Seguindo
+                <?php echo $following[0]['total'] ?>
+            </a>
+        </p>
+
+        <p>
+            <?php $followers = $follow->getFollowers($idUserPerfil[0]['user_id']); ?>
+            <a href="./list-followers-student.page.php?idFollowers=<?php echo $idUserPerfil[0]['user_id']; ?>">
+                Seguidores
+                <?php echo $followers[0]['total'] ?>
+            </a>
+        </p>
+
+        <p>
             <?php $styleLinkedin = empty($studentPerfil->linkedin) ? 'd-none' : ''; ?>
             <a href="<?php echo $studentPerfil->linkedin; ?>" class="<?php echo $styleLinkedin; ?>" target="_blank">
                 <img src="../../../adm/images/icons/linkedin.svg" alt="linkedin">
@@ -131,6 +152,8 @@ try {
         <?php
         $buttonEdit = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none';
         $buttonFollow = $studentLogged[0]['id'] != $studentPerfil->id ? '' : 'd-none';
+
+        $textButton = $checkFollow == false ? 'Seguir' : 'Deixar de seguir';
         ?>
         <p class="<?php echo $buttonEdit; ?>">
             <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>">
@@ -139,7 +162,9 @@ try {
         </p>
 
         <p class="<?php echo $buttonFollow; ?>">
-            <button>Seguir</button>
+        <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
+            <input type="submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
+        </form>
         </p>
     </div>
 
