@@ -218,388 +218,435 @@ try {
             <?php unset($_SESSION['statusNegative']);
             } ?>
 
-            <p>
-                <span class="badge rounded-pill bg-primary"> <?php echo $listDetailsQuestions->course; ?></span>
+            <div class="feed-div">
 
-                <?php
-                if ($listDetailsQuestions->category === "Erro") {
-                    $styleError = 'badge rounded-pill bg-danger';
-                    $styleQuestion = 'd-none';
-                    $styleHelp = 'd-none';
-                }
+                <div class="space-between-header">
 
-                if ($listDetailsQuestions->category === "Dúvida") {
-                    $styleError = 'd-none';
-                    $styleQuestion = 'badge rounded-pill bg-info';
-                    $styleHelp = 'd-none';
-                }
+                    <p class="margin-60">
+                        <span class="badge rounded-pill bg-primary"> <?php echo $listDetailsQuestions->course; ?></span>
 
-                if ($listDetailsQuestions->category === "Apoio") {
-                    $styleError = 'd-none';
-                    $styleQuestion = 'd-none';
-                    $styleHelp = 'badge rounded-pill bg-success';
-                }
-                ?>
-                <span class="<?php echo $styleError; ?>"> <?php echo $listDetailsQuestions->category; ?></span>
-                <span class="<?php echo $styleQuestion; ?>"> <?php echo $listDetailsQuestions->category; ?></span>
-                <span class="<?php echo $styleHelp; ?>"> <?php echo $listDetailsQuestions->category; ?></span>
-                <span class="badge rounded-pill bg-primary"> <?php echo $listDetailsQuestions->subject; ?></span>
-            </p>
+                        <?php
+                        if ($listDetailsQuestions->category === "Erro") {
+                            $styleError = 'badge rounded-pill bg-danger';
+                            $styleQuestion = 'd-none';
+                            $styleHelp = 'd-none';
+                        }
 
-            <p>
-                <a href="<?php echo $listDetailsQuestions->linkQuestion; ?>" class="d-none" id="linkQuestion">Link</a>
-                <span onclick="copyLink()" id="spanLink">Copiar link</span>
-            </p>
+                        if ($listDetailsQuestions->category === "Dúvida") {
+                            $styleError = 'd-none';
+                            $styleQuestion = 'badge rounded-pill bg-info';
+                            $styleHelp = 'd-none';
+                        }
 
-            <?php
-            $creatorQuestionID = $creatorQuestion[0]['student_id'];
-            $studentID = $studentId[0]['id'];
+                        if ($listDetailsQuestions->category === "Apoio") {
+                            $styleError = 'd-none';
+                            $styleQuestion = 'd-none';
+                            $styleHelp = 'badge rounded-pill bg-success';
+                        }
+                        ?>
+                        <span class="<?php echo $styleError; ?>"> <?php echo $listDetailsQuestions->category; ?></span>
+                        <span class="<?php echo $styleQuestion; ?>"> <?php echo $listDetailsQuestions->category; ?></span>
+                        <span class="<?php echo $styleHelp; ?>"> <?php echo $listDetailsQuestions->category; ?></span>
+                        <span class="badge rounded-pill bg-little-blue"> <?php echo $listDetailsQuestions->subject; ?></span>
+                    </p>
 
-            $styleDelete = $creatorQuestionID == $studentID ? '' : 'd-none';
-            $styleDeleteDisplay = $questionHasAnswers || $listDetailsQuestions->isDenounced != false ? 'd-none' : '';
-
-            $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
-            ?>
-            <p class="<?php echo $styleDelete; ?> <?php echo $styleDeleteDisplay; ?>">
-                <a href="../question/controller/delete-question.controller.php?id=<?php echo $listDetailsQuestions->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
-                    Excluir
-                </a>
-            </p>
-
-            <p class="<?php echo $styleDenunciationQuestion; ?>">
-                <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $listDetailsQuestions->id; ?>">
-                    denunciar
-                </label>
-            </p>
-
-            <p>
-                <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
-                    <img src="<?php echo $listDetailsQuestions->photo; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 50px;">
-                </a>
-            </p>
-
-            <p>
-                <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
-                    <?php echo $listDetailsQuestions->firstName; ?>
-                    <?php echo $listDetailsQuestions->surname; ?>
-                </a>
-            </p>
-
-
-            <p>
-                <?php echo $listDetailsQuestions->created; ?> •
-                <?php echo $listDetailsQuestions->module; ?> •
-                <?php echo $listDetailsQuestions->school; ?>
-            </p>
-
-            <!-- Create the editor container -->
-            <div class="ql-snow ql-editor2">
-                <div class="ql-editor2">
-                    <?php echo $listDetailsQuestions->question; ?>
-                </div>
-            </div>
-
-            <?php $styleImageQuestion = !empty($listDetailsQuestions->image) ? '' : 'd-none'; ?>
-            <p class="<?php echo $styleImageQuestion; ?>">
-                <a href="<?php echo $listDetailsQuestions->image; ?>" class="image-link">
-                    <img src="<?php echo $listDetailsQuestions->image; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 150px;">
-                </a>
-            </p>
-
-            <?php $styleDocumentQuestion = !empty($listDetailsQuestions->document) ? '' : 'd-none'; ?>
-            <p class="<?php echo $styleDocumentQuestion; ?>">
-                <?php echo $listDetailsQuestions->documentName; ?>
-                <a href="<?php echo $listDetailsQuestions->document; ?>" download="<?php echo $listDetailsQuestions->documentName; ?>">
-                    <button>download</button>
-                </a>
-            </p>
-
-            <p>
-                <?php
-                $totalAnswersOfQuestion = $answer->countAnswers($listDetailsQuestions->id);
-
-                echo $totalAnswersOfQuestion;
-                ?>
-            </p>
-
-            <p>
-                <a href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
-                    <button>Dar um help</button>
-                </a>
-                <?php echo $listDetailsQuestions->xp; ?> xp
-            </p>
-
-            <!-- Modal Question -->
-            <div class="modal fade" id="modal-<?php echo $listDetailsQuestions->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $listDetailsQuestions->id; ?>" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalLabel-<?php echo $listDetailsQuestions->id; ?>">Relatar um problema</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Nos ajude a entender o problema, o que está acontecendo com esse post?
-
-                            <form action="../question/controller/denunciation-question.controller.php" method="post">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $listDetailsQuestions->id; ?>" value="Não tenho interesse nesse post" required>
-                                    <label class="form-check-label" for="radio1-<?php echo $listDetailsQuestions->id; ?>">
-                                        Não tenho interesse nesse post
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $listDetailsQuestions->id; ?>" value="É suspeito ou está enviando span">
-                                    <label class="form-check-label" for="radio2-<?php echo $listDetailsQuestions->id; ?>">
-                                        É suspeito ou está enviando span
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $listDetailsQuestions->id; ?>" value="É abusivo ou nocivo">
-                                    <label class="form-check-label" for="radio3-<?php echo $listDetailsQuestions->id; ?>">
-                                        É abusivo ou nocivo
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $listDetailsQuestions->id; ?>" value="As informações são enganosas">
-                                    <label class="form-check-label" for="radio4-<?php echo $listDetailsQuestions->id; ?>">
-                                        As informações são enganosas
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $listDetailsQuestions->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
-                                    <label class="form-check-label" for="radio5-<?php echo $listDetailsQuestions->id; ?>">
-                                        Manifesta intenções de automutilação ou suicídio
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
-                                    <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
-                                    <input type="hidden" name="questionId" id="" value="<?php echo $listDetailsQuestions->id; ?>">
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="register" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <p>
-                Respostas
-            </p>
-
-            <hr>
-
-            <?php $styleListAnswers = !empty($listAnswers) ? '' : 'd-none';
-
-            ?>
-            <div class="<?php echo $styleListAnswers; ?>">
-
-                <!-- Lista de respostas ⬇️ -->
-                <?php for ($i = 0; $i < count($listAnswers); $i++) {
-                    $row = $listAnswers[$i] ?>
 
                     <?php
-                    $creatorAnswer = $answer->getAnswerCreatorById($row->id, $id);
-                    $creatorAnswerID = $creatorAnswer[0]['answer_creator_id'];
+                    $creatorQuestionID = $creatorQuestion[0]['student_id'];
                     $studentID = $studentId[0]['id'];
 
-                    $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
+                    $styleDelete = $creatorQuestionID == $studentID ? '' : 'd-none';
+                    $styleDeleteDisplay = $questionHasAnswers || $listDetailsQuestions->isDenounced != false ? 'd-none' : '';
 
-                    $styleAnswerDisplay = $row->isDenounced != false ? 'd-none' : '';
-
-                    $styleDenunciationAnswer = $creatorAnswerID == $studentID ? 'd-none' : '';
+                    $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
                     ?>
-                    <p class="<?php echo $styleDeleteAnswer; ?> <?php echo $styleAnswerDisplay; ?>">
-                        <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
+
+                    <!-- <p>
+                        <a href="<?php echo $listDetailsQuestions->linkQuestion; ?>" class="d-none" id="linkQuestion">Link</a>
+                        <span onclick="copyLink()" id="spanLink">Copiar link</span>
+                    </p>
+                    <p class="<?php echo $styleDelete; ?> <?php echo $styleDeleteDisplay; ?>">
+                        <a href="../question/controller/delete-question.controller.php?id=<?php echo $listDetailsQuestions->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
                             Excluir
                         </a>
                     </p>
-
-                    <p class="<?php echo $styleDenunciationAnswer; ?>">
-                        <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
+                    
+                    <p class="<?php echo $styleDenunciationQuestion; ?>">
+                        <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $listDetailsQuestions->id; ?>">
                             denunciar
                         </label>
-                    </p>
+                    </p> -->
 
-                    <p>
-                        <a href="<?php echo $row->linkProfile; ?>" target="_blank">
-                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
-                        </a>
-                    </p>
+                    <!-- Mais Opções -->
+                    <div class="drop-edit-exclud-about drop-edit-exclud-about2">
+                        <img src="../../../../views/images/components/three-dots.svg">
 
-                    <p>
-                        <a href="<?php echo $row->linkProfile; ?>" target="_blank">
-                            <?php echo $row->firstName; ?>
-                            <?php echo $row->surname; ?>
-                        </a>
-                    </p>
-
-
-                    <p>
-                        <?php echo $row->created; ?> •
-                        <?php echo $row->module; ?> •
-                        <?php echo $row->school; ?>
-                    </p>
-
-                    <!-- Create the editor container -->
-                    <div class="ql-snow ql-editor2">
-                        <div class="ql-editor2">
-                            <?php echo $row->answer; ?>
+                        <!-- Parte do Update e Delete -->
+                        <div class="drop-edit-exclud-content-about">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $listDetailsQuestions->id; ?>" class="drop-edit-exclud-a <?php echo $styleDenunciationQuestion; ?>">
+                                <div class="drop-edit-exclud-option-about">
+                                    <img src="../../../../views/images/components/denunciar-icon.svg" class="drop-edit-exclud-img">
+                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Denunciar</p>
+                                </div>
+                            </a>
+                            <a href="<?php echo $listDetailsQuestions->linkQuestion; ?>" class="d-none drop-edit-exclud-a" id="linkQuestion">Link
+                                <div class="drop-edit-exclud-option-about">
+                                    <img src="../../../../views/images/components/link-icon.svg" class="drop-edit-exclud-img">
+                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Copiar Link</p>
+                                </div>
+                            </a>
+                            <a class="drop-edit-exclud-a">
+                                <div class="drop-edit-exclud-option-about">
+                                    <img src="../../../../views/images/components/link-icon.svg" class="drop-edit-exclud-img">
+                                    <span onclick="copyLink()" id="spanLink" class="drop-edit-exclud-text-about normal-14-bold-p">
+                                        Copiar link
+                                    </span>
+                                </div>
+                            </a>
+                            <div class="<?php echo $styleDelete; ?> <?php echo $styleDeleteDisplay; ?> pedir-heelp-button-a">
+                                <a href="../question/controller/delete-question.controller.php?id=<?php echo $listDetailsQuestions->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete" class="drop-edit-exclud-a pedir-heelp-button-a">
+                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a">
+                                        <img src="../../../../views/images/components/delete-bin.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Excluir</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
+
                     </div>
 
-                    <?php $styleImageAnswer = !empty($row->image) ? '' : 'd-none'; ?>
-                    <p class="<?php echo $styleImageAnswer; ?>">
-                        <a href="<?php echo $row->image; ?>" class="image-link">
-                            <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
-                        </a>
-                    </p>
+                </div>
 
-                    <?php $styleDocumentAnswer = !empty($row->document) ? '' : 'd-none'; ?>
-                    <p class="<?php echo $styleDocumentAnswer; ?>">
-                        <?php echo $row->documentName; ?>
-                        <a href="<?php echo $row->document; ?>" download="<?php echo $row->documentName; ?>">
-                            <button>download</button>
-                        </a>
-                    </p>
+                <p>
+                    <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
+                        <img src="<?php echo $listDetailsQuestions->photo; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 50px;">
+                    </a>
+                </p>
 
-                    <p>
-                        total de likes
+                <p>
+                    <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
+                        <?php echo $listDetailsQuestions->firstName; ?>
+                        <?php echo $listDetailsQuestions->surname; ?>
+                    </a>
+                </p>
 
-                        <?php
-                        $totalLike = !empty($row->totalLike) ? $row->totalLike : 0;
-                        echo $totalLike;
-                        ?>
-                    </p>
 
+                <p>
+                    <?php echo $listDetailsQuestions->created; ?> •
+                    <?php echo $listDetailsQuestions->module; ?> •
+                    <?php echo $listDetailsQuestions->school; ?>
+                </p>
+
+                <!-- Create the editor container -->
+                <div class="ql-snow ql-editor2">
+                    <div class="ql-editor2">
+                        <?php echo $listDetailsQuestions->question; ?>
+                    </div>
+                </div>
+
+                <?php $styleImageQuestion = !empty($listDetailsQuestions->image) ? '' : 'd-none'; ?>
+                <p class="<?php echo $styleImageQuestion; ?>">
+                    <a href="<?php echo $listDetailsQuestions->image; ?>" class="image-link">
+                        <img src="<?php echo $listDetailsQuestions->image; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 150px;">
+                    </a>
+                </p>
+
+                <?php $styleDocumentQuestion = !empty($listDetailsQuestions->document) ? '' : 'd-none'; ?>
+                <p class="<?php echo $styleDocumentQuestion; ?>">
+                    <?php echo $listDetailsQuestions->documentName; ?>
+                    <a href="<?php echo $listDetailsQuestions->document; ?>" download="<?php echo $listDetailsQuestions->documentName; ?>">
+                        <button>download</button>
+                    </a>
+                </p>
+
+                <p>
                     <?php
-                    $checkLiked = $answer->checkLikeCreator($listDetailsQuestions->id, $row->id, $studentId[0]['id']);
-                    $styleLike = $checkLiked == false ? '' : 'heart';
+                    $totalAnswersOfQuestion = $answer->countAnswers($listDetailsQuestions->id);
+
+                    echo $totalAnswersOfQuestion;
                     ?>
-                    <div class="<?php echo $styleLike; ?>" id="like-<?php echo $row->id; ?>" data-like-student="<?php echo $studentId[0]['id']; ?>" data-like-question="<?php echo $listDetailsQuestions->id; ?>" data-like-answer="<?php echo $row->id; ?>" onclick="like(<?php echo $row->id; ?>)">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                            <path d="M21.95 40.2 19.3 37.75Q13.1 32 8.55 26.775Q4 21.55 4 15.85Q4 11.35 7.025 8.325Q10.05 5.3 14.5 5.3Q17.05 5.3 19.55 6.525Q22.05 7.75 24 10.55Q26.2 7.75 28.55 6.525Q30.9 5.3 33.5 5.3Q37.95 5.3 40.975 8.325Q44 11.35 44 15.85Q44 21.55 39.45 26.775Q34.9 32 28.7 37.75L26.05 40.2Q25.2 41 24 41Q22.8 41 21.95 40.2Z" />
-                        </svg>
-                    </div>
+                </p>
 
-                    <p>
-                        média de avaliações
-                        <?php echo $row->avaliation; ?>
-                    </p>
+                <p>
+                    <a href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
+                        <button>Dar um help</button>
+                    </a>
+                    <?php echo $listDetailsQuestions->xp; ?> xp
+                </p>
 
-                    <p>
-                        total de avaliações
+                <!-- Modal Question -->
+                <div class="modal fade" id="modal-<?php echo $listDetailsQuestions->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $listDetailsQuestions->id; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel-<?php echo $listDetailsQuestions->id; ?>">Relatar um problema</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Nos ajude a entender o problema, o que está acontecendo com esse post?
 
-                        <?php
-                        $totalAvaliation = !empty($row->totalAvaliation) ? $row->totalAvaliation : 0;
-                        echo $totalAvaliation;
-                        ?>
-                    </p>
+                                <form action="../question/controller/denunciation-question.controller.php" method="post">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $listDetailsQuestions->id; ?>" value="Não tenho interesse nesse post" required>
+                                        <label class="form-check-label" for="radio1-<?php echo $listDetailsQuestions->id; ?>">
+                                            Não tenho interesse nesse post
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $listDetailsQuestions->id; ?>" value="É suspeito ou está enviando span">
+                                        <label class="form-check-label" for="radio2-<?php echo $listDetailsQuestions->id; ?>">
+                                            É suspeito ou está enviando span
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $listDetailsQuestions->id; ?>" value="É abusivo ou nocivo">
+                                        <label class="form-check-label" for="radio3-<?php echo $listDetailsQuestions->id; ?>">
+                                            É abusivo ou nocivo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $listDetailsQuestions->id; ?>" value="As informações são enganosas">
+                                        <label class="form-check-label" for="radio4-<?php echo $listDetailsQuestions->id; ?>">
+                                            As informações são enganosas
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $listDetailsQuestions->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                        <label class="form-check-label" for="radio5-<?php echo $listDetailsQuestions->id; ?>">
+                                            Manifesta intenções de automutilação ou suicídio
+                                        </label>
+                                    </div>
 
-                    <?php $styleEmptyAvaliation = $row->stars === 0 ? '' : 'd-none' ?>
-                    <p>
-                    <div class="avaliacao <?php echo $styleEmptyAvaliation; ?>">
-                        <div class="star-icon ativo" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                    </div>
-                    </p>
+                                    <div>
+                                        <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
+                                        <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                        <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
+                                        <input type="hidden" name="questionId" id="" value="<?php echo $listDetailsQuestions->id; ?>">
+                                    </div>
 
-
-                    <?php
-                    $styleAvaliation = $row->stars != 0 ? '' : 'd-none';
-
-                    $styleStar1 = $row->stars === 1 ? 'ativo' : '';
-                    $styleStar2 = $row->stars === 2 ? 'ativo' : '';
-                    $styleStar3 = $row->stars === 3 ? 'ativo' : '';
-                    $styleStar4 = $row->stars === 4 ? 'ativo' : '';
-                    $styleStar5 = $row->stars === 5 ? 'ativo' : '';
-                    ?>
-                    <p>
-                    <div class="avaliacao <?php echo $styleAvaliation; ?>">
-                        <div class="star-icon <?php echo $styleStar1; ?>" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon <?php echo $styleStar2; ?>" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon <?php echo $styleStar3; ?>" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon <?php echo $styleStar4; ?>" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                    </div>
-                    </p>
-
-                    <!-- Modal Answer-->
-                    <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel-<?php echo $row->id; ?>">Relatar um problema</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Nos ajude a entender o problema, o que está acontecendo com esse post?
-
-                                    <form action="../answer-question/controller/denunciation-answer.controller.php" method="post">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
-                                            <label class="form-check-label" for="radio1-<?php echo $row->id; ?>">
-                                                Não tenho interesse nesse post
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $row->id; ?>" value="É suspeito ou está enviando span">
-                                            <label class="form-check-label" for="radio2-<?php echo $row->id; ?>">
-                                                É suspeito ou está enviando span
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $row->id; ?>" value="É abusivo ou nocivo">
-                                            <label class="form-check-label" for="radio3-<?php echo $row->id; ?>">
-                                                É abusivo ou nocivo
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $row->id; ?>" value="As informações são enganosas">
-                                            <label class="form-check-label" for="radio4-<?php echo $row->id; ?>">
-                                                As informações são enganosas
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $row->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
-                                            <label class="form-check-label" for="radio5-<?php echo $row->id; ?>">
-                                                Manifesta intenções de automutilação ou suicídio
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
-                                            <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                            <input type="hidden" name="denounciedId" id="" value="<?php echo $creatorAnswerID; ?>">
-                                            <input type="hidden" name="answerId" id="" value="<?php echo $row->id; ?>">
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" name="register" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="register" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <hr>
-                <?php } ?>
+                <hr>
+
+                <p>
+                    Respostas
+                </p>
+
+                <hr>
+
+                <?php $styleListAnswers = !empty($listAnswers) ? '' : 'd-none';
+
+                ?>
+                <div class="<?php echo $styleListAnswers; ?>">
+
+                    <!-- Lista de respostas ⬇️ -->
+                    <?php for ($i = 0; $i < count($listAnswers); $i++) {
+                        $row = $listAnswers[$i] ?>
+
+                        <?php
+                        $creatorAnswer = $answer->getAnswerCreatorById($row->id, $id);
+                        $creatorAnswerID = $creatorAnswer[0]['answer_creator_id'];
+                        $studentID = $studentId[0]['id'];
+
+                        $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
+
+                        $styleAnswerDisplay = $row->isDenounced != false ? 'd-none' : '';
+
+                        $styleDenunciationAnswer = $creatorAnswerID == $studentID ? 'd-none' : '';
+                        ?>
+                        <p class="<?php echo $styleDeleteAnswer; ?> <?php echo $styleAnswerDisplay; ?>">
+                            <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
+                                Excluir
+                            </a>
+                        </p>
+
+                        <p class="<?php echo $styleDenunciationAnswer; ?>">
+                            <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
+                                denunciar
+                            </label>
+                        </p>
+
+                        <p>
+                            <a href="<?php echo $row->linkProfile; ?>" target="_blank">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
+                            </a>
+                        </p>
+
+                        <p>
+                            <a href="<?php echo $row->linkProfile; ?>" target="_blank">
+                                <?php echo $row->firstName; ?>
+                                <?php echo $row->surname; ?>
+                            </a>
+                        </p>
+
+
+                        <p>
+                            <?php echo $row->created; ?> •
+                            <?php echo $row->module; ?> •
+                            <?php echo $row->school; ?>
+                        </p>
+
+                        <!-- Create the editor container -->
+                        <div class="ql-snow ql-editor2">
+                            <div class="ql-editor2">
+                                <?php echo $row->answer; ?>
+                            </div>
+                        </div>
+
+                        <?php $styleImageAnswer = !empty($row->image) ? '' : 'd-none'; ?>
+                        <p class="<?php echo $styleImageAnswer; ?>">
+                            <a href="<?php echo $row->image; ?>" class="image-link">
+                                <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
+                            </a>
+                        </p>
+
+                        <?php $styleDocumentAnswer = !empty($row->document) ? '' : 'd-none'; ?>
+                        <p class="<?php echo $styleDocumentAnswer; ?>">
+                            <?php echo $row->documentName; ?>
+                            <a href="<?php echo $row->document; ?>" download="<?php echo $row->documentName; ?>">
+                                <button>download</button>
+                            </a>
+                        </p>
+
+                        <p>
+                            total de likes
+
+                            <?php
+                            $totalLike = !empty($row->totalLike) ? $row->totalLike : 0;
+                            echo $totalLike;
+                            ?>
+                        </p>
+
+                        <?php
+                        $checkLiked = $answer->checkLikeCreator($listDetailsQuestions->id, $row->id, $studentId[0]['id']);
+                        $styleLike = $checkLiked == false ? '' : 'heart';
+                        ?>
+                        <div class="<?php echo $styleLike; ?>" id="like-<?php echo $row->id; ?>" data-like-student="<?php echo $studentId[0]['id']; ?>" data-like-question="<?php echo $listDetailsQuestions->id; ?>" data-like-answer="<?php echo $row->id; ?>" onclick="like(<?php echo $row->id; ?>)">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                                <path d="M21.95 40.2 19.3 37.75Q13.1 32 8.55 26.775Q4 21.55 4 15.85Q4 11.35 7.025 8.325Q10.05 5.3 14.5 5.3Q17.05 5.3 19.55 6.525Q22.05 7.75 24 10.55Q26.2 7.75 28.55 6.525Q30.9 5.3 33.5 5.3Q37.95 5.3 40.975 8.325Q44 11.35 44 15.85Q44 21.55 39.45 26.775Q34.9 32 28.7 37.75L26.05 40.2Q25.2 41 24 41Q22.8 41 21.95 40.2Z" />
+                            </svg>
+                        </div>
+
+                        <p>
+                            média de avaliações
+                            <?php echo $row->avaliation; ?>
+                        </p>
+
+                        <p>
+                            total de avaliações
+
+                            <?php
+                            $totalAvaliation = !empty($row->totalAvaliation) ? $row->totalAvaliation : 0;
+                            echo $totalAvaliation;
+                            ?>
+                        </p>
+
+                        <?php $styleEmptyAvaliation = $row->stars === 0 ? '' : 'd-none' ?>
+                        <p>
+                        <div class="avaliacao <?php echo $styleEmptyAvaliation; ?>">
+                            <div class="star-icon ativo" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                        </div>
+                        </p>
+
+
+                        <?php
+                        $styleAvaliation = $row->stars != 0 ? '' : 'd-none';
+
+                        $styleStar1 = $row->stars === 1 ? 'ativo' : '';
+                        $styleStar2 = $row->stars === 2 ? 'ativo' : '';
+                        $styleStar3 = $row->stars === 3 ? 'ativo' : '';
+                        $styleStar4 = $row->stars === 4 ? 'ativo' : '';
+                        $styleStar5 = $row->stars === 5 ? 'ativo' : '';
+                        ?>
+                        <p>
+                        <div class="avaliacao <?php echo $styleAvaliation; ?>">
+                            <div class="star-icon <?php echo $styleStar1; ?>" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon <?php echo $styleStar2; ?>" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon <?php echo $styleStar3; ?>" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon <?php echo $styleStar4; ?>" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                            <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                        </div>
+                        </p>
+
+                        <!-- Modal Answer-->
+                        <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalLabel-<?php echo $row->id; ?>">Relatar um problema</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Nos ajude a entender o problema, o que está acontecendo com esse post?
+
+                                        <form action="../answer-question/controller/denunciation-answer.controller.php" method="post">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
+                                                <label class="form-check-label" for="radio1-<?php echo $row->id; ?>">
+                                                    Não tenho interesse nesse post
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $row->id; ?>" value="É suspeito ou está enviando span">
+                                                <label class="form-check-label" for="radio2-<?php echo $row->id; ?>">
+                                                    É suspeito ou está enviando span
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $row->id; ?>" value="É abusivo ou nocivo">
+                                                <label class="form-check-label" for="radio3-<?php echo $row->id; ?>">
+                                                    É abusivo ou nocivo
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $row->id; ?>" value="As informações são enganosas">
+                                                <label class="form-check-label" for="radio4-<?php echo $row->id; ?>">
+                                                    As informações são enganosas
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $row->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                                <label class="form-check-label" for="radio5-<?php echo $row->id; ?>">
+                                                    Manifesta intenções de automutilação ou suicídio
+                                                </label>
+                                            </div>
+
+                                            <div>
+                                                <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
+                                                <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                                <input type="hidden" name="denounciedId" id="" value="<?php echo $creatorAnswerID; ?>">
+                                                <input type="hidden" name="answerId" id="" value="<?php echo $row->id; ?>">
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" name="register" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                    <?php } ?>
+                </div>
+
             </div>
-
         </div>
+
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
