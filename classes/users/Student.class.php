@@ -1,6 +1,7 @@
 <?php
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/inheritances/User.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
 session_start();
 
@@ -184,6 +185,21 @@ class Student extends User
         }
 
         try {
+            $connection = Connection::connection();
+
+
+            $linkProfile = "/project/private/student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=" . $idStudent;
+
+            $insetLink = $connection->prepare("UPDATE users SET profile_link = ?
+                                                WHERE id = $idUser");
+
+            $insetLink->bindValue(1, $linkProfile);
+            $insetLink->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
             $email = $this->getEmail();
             $name = $this->getFirstName();
             $surname = $this->getSurname();
@@ -268,6 +284,76 @@ class Student extends User
             // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             $_SESSION['statusNegative'] = "Falha ao enviar o email.";
             return header('Location: /project/views/pages/login/login-page.php');
+        }
+    }
+
+    public function updateStudent(Student $student, int $id)
+    {
+        $connection = Connection::connection();
+
+        $idUser = StudentMethods::getUserByStudentID($id);
+
+        $userid = $idUser[0]['user_id'];
+
+        try {
+            $stmt = $connection->prepare("UPDATE users SET photo = ?, password = ?, github = ?, linkedin = ?, facebook = ?, instagram = ?, updated_at = NOW()
+                                         WHERE id = $userid");
+
+            $stmt->bindValue(1, $student->getPhoto());
+            $stmt->bindValue(2, $student->getPassword());
+            $stmt->bindValue(3, $student->getGithub());
+            $stmt->bindValue(4, $student->getLinkedin());
+            $stmt->bindValue(5, $student->getFacebook());
+            $stmt->bindValue(6, $student->getInstagram());
+
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
+            $stmt = $connection->prepare("UPDATE students SET first_name = ?, surname = ?, module_id = ?, updated_at = NOW()
+                                         WHERE id = $id");
+
+            $stmt->bindValue(1, $student->getFirstName());
+            $stmt->bindValue(2, $student->getSurname());
+            $stmt->bindValue(3, $student->getModuleId());
+
+            $stmt->execute();
+
+            $_SESSION['statusPositive'] = "Módulo atualizado com sucesso.";
+            header('Location: /project/private/student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=' . $id);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function checkPassword($oldPassword, $newPassword, $confirmPassword, $idUser)
+    {
+        $connection = Connection::connection();
+
+        $stmt = $connection->prepare("SELECT password FROM users WHERE id = $idUser");
+        $stmt->execute();
+        $listUser = $stmt->fetch(PDO::FETCH_BOTH);
+
+        try {
+            if (password_verify($oldPassword, $listUser['password'])) {
+
+                if ($oldPassword != $newPassword) {
+
+                    if ($newPassword === $confirmPassword) {
+                        return null;
+                    }
+
+                    return "Senhas não coincidem";
+                } else {
+                    return "Escolha uma nova senha diferente da antiga.";
+                }
+            } else {
+                return "Senha antiga incorreta";
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
 }

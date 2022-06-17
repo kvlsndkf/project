@@ -187,7 +187,7 @@ class Question
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
+            $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
                                         school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
                                         category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
                                         quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
@@ -272,7 +272,7 @@ class Question
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
+            $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
                                         school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
                                         category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
                                         quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
@@ -323,6 +323,7 @@ class Question
         $question->document = $row['document'];
         $question->documentName = $row['document_name'];
         $question->isDenounced = $row['is_denounced'];
+        $question->linkProfile = $row['profile_link'];
         $question->created = $this->countCreatedQuestion($row['created_at']);
 
         return $question;

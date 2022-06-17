@@ -229,7 +229,7 @@ class Answer
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT answ.id, usr.photo, stu.first_name, stu.surname, module.name AS 'module', 
+            $stmt = $connection->prepare("SELECT answ.id, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
                                         school.name AS 'school', answ.answer, answ.photo AS 'imageAnswer', answ.avg_avaliation,
                                         answ.like_answer, answ.document, answ.document_name, answ.is_denounced, answ.created_at FROM students stu
                                             
@@ -326,12 +326,13 @@ class Answer
         $answer->document = $row['document'];
         $answer->documentName = $row['document_name'];
         $answer->isDenounced = $row['is_denounced'];
+        $answer->linkProfile = $row['profile_link'];
         $answer->created = $this->countCreatedAnswer($row['created_at']);
 
         return $answer;
     }
 
-    private function countCreatedAnswer($dateAnswer)
+    public static function countCreatedAnswer($dateAnswer)
     {
         date_default_timezone_set('America/Sao_Paulo');
         $CurrentDateAndTime = date('y-m-d H:i:s', time());
@@ -489,7 +490,7 @@ class Answer
         }
     }
 
-    private function countAnswerAvaliation()
+    public static function countAnswerAvaliation()
     {
         $connection = Connection::connection();
 
@@ -507,7 +508,7 @@ class Answer
         }
     }
 
-    public function countAnswers(int $idQuestion)
+    public static function countAnswers(int $idQuestion)
     {
         $connection = Connection::connection();
 
@@ -616,7 +617,7 @@ class Answer
         }
     }
 
-    private function countAnswerLike()
+    public static function countAnswerLike()
     {
         $connection = Connection::connection();
 

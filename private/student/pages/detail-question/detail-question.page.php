@@ -20,6 +20,7 @@ try {
 
     $userCreatorAnswer = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
 
+    $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
 
     $answer = new Answer();
     $listAnswers = $answer->listAnswer($id, $studentId);
@@ -99,6 +100,45 @@ try {
     <?php unset($_SESSION['statusNegative']);
     } ?>
 
+
+    <div>
+        <p>
+            <a href="../../../logout/logout.controller.php">
+                sair
+            </a>
+
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                perfil
+            </a>
+
+            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank">
+                configurações
+            </a>
+        </p>
+
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName;
+                                                                        echo $studentPerfil->surname; ?>" width="100">
+            </a>
+        </p>
+
+        <p>
+            <?php echo $studentPerfil->xp; ?>
+            xp
+        </p>
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <?php echo $studentPerfil->firstName;
+                echo " " . $studentPerfil->surname; ?>
+            </a>
+        </p>
+    </div>
+    <br>
+    <br>
+
     <p>
         <span class="badge rounded-pill bg-primary"> <?php echo $listDetailsQuestions->course; ?></span>
 
@@ -154,12 +194,16 @@ try {
     </p>
 
     <p>
-        <img src="<?php echo $listDetailsQuestions->photo; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 50px;">
+        <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
+            <img src="<?php echo $listDetailsQuestions->photo; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 50px;">
+        </a>
     </p>
 
     <p>
-        <?php echo $listDetailsQuestions->firstName; ?>
-        <?php echo $listDetailsQuestions->surname; ?>
+        <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
+            <?php echo $listDetailsQuestions->firstName; ?>
+            <?php echo $listDetailsQuestions->surname; ?>
+        </a>
     </p>
 
 
@@ -276,7 +320,6 @@ try {
 
     <?php $styleListAnswers = !empty($listAnswers) ? '' : 'd-none';
 
-    // echo json_encode($listAnswers);
     ?>
     <div class="<?php echo $styleListAnswers; ?>">
 
@@ -308,12 +351,16 @@ try {
             </p>
 
             <p>
-                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
+                <a href="<?php echo $row->linkProfile; ?>" target="_blank">
+                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
+                </a>
             </p>
 
             <p>
-                <?php echo $row->firstName; ?>
-                <?php echo $row->surname; ?>
+                <a href="<?php echo $row->linkProfile; ?>" target="_blank">
+                    <?php echo $row->firstName; ?>
+                    <?php echo $row->surname; ?>
+                </a>
             </p>
 
 
