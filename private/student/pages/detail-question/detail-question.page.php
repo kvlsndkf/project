@@ -82,8 +82,8 @@ try {
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../home/home.page.php" class="sidebar-a-items leftbar-a">
-                            <img class="leftbar-icon" src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
-                            <p class="normal-18-bold-title-2 leftbar-text-current">Feed</p>
+                            <img class="leftbar-icon" src="../../../../views/images/components/dashboard-img.svg" alt="">
+                            <p class="normal-18-bold-title-2 leftbar-text">Feed</p>
                         </a>
                     </li>
 
@@ -631,19 +631,6 @@ try {
 
                                 <div class="avaliation-answer">
 
-                                    <p class="normal-14-bold-p question-p" style="color: var(--yellow);" style="top: 5px;">
-                                        <span class="functions-answer-text avaliation-text">
-                                            7<?php //echo $row->avaliation; ?>
-
-                                            (
-                                            <?php
-                                            $totalAvaliation = !empty($row->totalAvaliation) ? $row->totalAvaliation : 0;
-                                            echo $totalAvaliation;
-                                            ?>
-                                            )
-                                        </span>
-                                    </p>
-
                                     <?php $styleEmptyAvaliation = $row->stars === 0 ? '' : 'd-none' ?>
                                     <p>
                                     <div class="avaliacao <?php echo $styleEmptyAvaliation; ?>">
@@ -674,6 +661,18 @@ try {
                                         <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
                                     </div>
 
+                                    <p class="normal-14-bold-p question-p avaliation-text" style="color: var(--yellow);" style="top: 5px;">
+                                        <span class="functions-answer-text avaliation-text">
+                                            <?php echo $row->avaliation; ?>
+
+                                            (
+                                            <?php
+                                            $totalAvaliation = !empty($row->totalAvaliation) ? $row->totalAvaliation : 0;
+                                            echo $totalAvaliation;
+                                            ?>
+                                            )
+                                        </span>
+                                    </p>
 
                                 </div>
 
@@ -765,13 +764,16 @@ try {
 
         <nav class="feed-bottombar">
             <a href="../home/home.page.php" class="bottombar-a">
-                <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
+                <img src="../../../../views/images/components/dashboard-img.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">
                 <img src="../../../../views/images/components/notifications-icon.svg" alt="">
+            </a>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
             </a>
         </nav>
     </div>

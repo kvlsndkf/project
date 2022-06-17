@@ -148,6 +148,10 @@ body{
     font-weight: 400;
 }
 
+.functions-answer{
+    margin-top: 20px;
+}
+
 .functions-answer, .like-answer, .avaliation-answer{
     display: flex;
     flex-direction: row;
@@ -157,17 +161,13 @@ body{
 }
 
 .avaliation-answer{
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    margin-left: 50px;
+    width: 100%;
 }
 
 a{
     text-decoration: none;
 }
 
-.question-img{
-}
 
 .question-footer{
     display: flex;
@@ -297,7 +297,7 @@ a{
 
 .leftbar-bottom{
     width: 100%;
-    padding-left: 5vw;
+    padding-left: 4vw;
     display: flex;
     flex-direction: column;
     align-items: center;
