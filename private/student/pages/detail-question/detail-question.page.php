@@ -764,7 +764,7 @@ try {
         </nav>
 
         <nav class="feed-bottombar">
-            <a href="./home.page.php" class="bottombar-a">
+            <a href="../home/home.page.php" class="bottombar-a">
                 <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">
