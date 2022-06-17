@@ -151,21 +151,21 @@ try {
 
         <?php
         $buttonEdit = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none';
-        $buttonFollow = $studentLogged[0]['id'] != $studentPerfil->id ? '' : 'd-none';
+        $buttonFollow = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : '';
 
         $textButton = $checkFollow == false ? 'Seguir' : 'Deixar de seguir';
         ?>
-        <p class="<?php echo $buttonEdit; ?>">
+        <div class="<?php echo $buttonEdit; ?>">
             <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>">
                 <button>Editar perfil</button>
             </a>
-        </p>
+        </div>
 
-        <p class="<?php echo $buttonFollow; ?>">
-        <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
-            <input type="submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
-        </form>
-        </p>
+        <div class="<?php echo $buttonFollow; ?>">
+            <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
+                <input type="submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
+            </form>
+        </div>
     </div>
 
     <!-- Tabs navs -->
