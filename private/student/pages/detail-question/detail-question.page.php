@@ -81,7 +81,7 @@ try {
                 <ul class="feed-ul">
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="dashboard.page.php" class="sidebar-a-items leftbar-a">
+                        <a href="../home/home.page.php" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
                             <p class="normal-18-bold-title-2 leftbar-text-current">Feed</p>
                         </a>
@@ -261,22 +261,6 @@ try {
                     $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
                     ?>
 
-                    <!-- <p>
-                        <a href="<?php echo $listDetailsQuestions->linkQuestion; ?>" class="d-none" id="linkQuestion">Link</a>
-                        <span onclick="copyLink()" id="spanLink">Copiar link</span>
-                    </p>
-                    <p class="<?php echo $styleDelete; ?> <?php echo $styleDeleteDisplay; ?>">
-                        <a href="../question/controller/delete-question.controller.php?id=<?php echo $listDetailsQuestions->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete">
-                            Excluir
-                        </a>
-                    </p>
-                    
-                    <p class="<?php echo $styleDenunciationQuestion; ?>">
-                        <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $listDetailsQuestions->id; ?>">
-                            denunciar
-                        </label>
-                    </p> -->
-
                     <!-- Mais Opções -->
                     <div class="drop-edit-exclud-about drop-edit-exclud-about2">
                         <img src="../../../../views/images/components/three-dots.svg">
@@ -317,62 +301,121 @@ try {
 
                 </div>
 
-                <p>
+                <div class="question-info">
+
                     <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
-                        <img src="<?php echo $listDetailsQuestions->photo; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 50px;">
+                        <img src="<?php echo $listDetailsQuestions->photo; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                     </a>
-                </p>
-
-                <p>
-                    <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank">
-                        <?php echo $listDetailsQuestions->firstName; ?>
-                        <?php echo $listDetailsQuestions->surname; ?>
-                    </a>
-                </p>
+                    <div class="question-info-text">
+                        <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p">
+                            <?php echo $listDetailsQuestions->firstName; ?>
+                            <?php echo $listDetailsQuestions->surname; ?>
+                        </a>
 
 
-                <p>
-                    <?php echo $listDetailsQuestions->created; ?> •
-                    <?php echo $listDetailsQuestions->module; ?> •
-                    <?php echo $listDetailsQuestions->school; ?>
-                </p>
-
-                <!-- Create the editor container -->
-                <div class="ql-snow ql-editor2">
-                    <div class="ql-editor2">
-                        <?php echo $listDetailsQuestions->question; ?>
+                        <div class="question-about normal-12-medium-tiny">
+                            <?php echo $listDetailsQuestions->created; ?>
+                            •
+                            <?php echo $listDetailsQuestions->module; ?>
+                            •
+                            <?php echo $listDetailsQuestions->school; ?>
+                        </div>
                     </div>
+
                 </div>
 
-                <?php $styleImageQuestion = !empty($listDetailsQuestions->image) ? '' : 'd-none'; ?>
-                <p class="<?php echo $styleImageQuestion; ?>">
-                    <a href="<?php echo $listDetailsQuestions->image; ?>" class="image-link">
-                        <img src="<?php echo $listDetailsQuestions->image; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 150px;">
-                    </a>
-                </p>
+                <div class="question-core">
+                    <!-- Create the editor container -->
+                    <div class="ql-snow ql-editor2">
+                        <div class="ql-editor2 question-text-div">
+                            <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $listDetailsQuestions->id; ?>">
+                                <?php echo $listDetailsQuestions->question; ?>
+                            </span>
+                            <button class="read-btn-question normal-14-bold-p" id="readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>" onclick="document.querySelector('#questionText-<?php echo $listDetailsQuestions->id; ?>').classList.remove('line-clamp-2');
+                            document.querySelector('#readLess-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'inline';
+                            document.querySelector('#readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'none';">
+                                Ler mais...
+                            </button>
 
-                <?php $styleDocumentQuestion = !empty($listDetailsQuestions->document) ? '' : 'd-none'; ?>
-                <p class="<?php echo $styleDocumentQuestion; ?>">
-                    <?php echo $listDetailsQuestions->documentName; ?>
-                    <a href="<?php echo $listDetailsQuestions->document; ?>" download="<?php echo $listDetailsQuestions->documentName; ?>">
-                        <button>download</button>
-                    </a>
-                </p>
+                            <button class="read-btn-question normal-14-bold-p" id="readLess-newMessages-<?php echo $listDetailsQuestions->id; ?>" onclick="document.querySelector('#questionText-<?php echo $listDetailsQuestions->id; ?>').classList.add('line-clamp-2');
+                            document.querySelector('#readLess-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'none';
+                            document.querySelector('#readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'inline';">
+                                Ler menos...
+                            </button>
 
-                <p>
-                    <?php
-                    $totalAnswersOfQuestion = $answer->countAnswers($listDetailsQuestions->id);
+                            <!-- JS Read More Text -->
+                            <script>
+                                var questionText = document.getElementById('questionText-<?php echo $listDetailsQuestions->id; ?>');
 
-                    echo $totalAnswersOfQuestion;
-                    ?>
-                </p>
+                                var readMoreNew = document.getElementById('readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>');
+                                var readLessNew = document.getElementById('readLess-newMessages-<?php echo $listDetailsQuestions->id; ?>');
 
-                <p>
-                    <a href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
-                        <button>Dar um help</button>
-                    </a>
-                    <?php echo $listDetailsQuestions->xp; ?> xp
-                </p>
+                                //se o tamanho da mensagem passar o tamanho da caixa de texto, ou seja, com mais de 2 linhas
+                                if (questionText.scrollHeight > questionText.offsetHeight) {
+
+                                    // Se ele estiver com o ..., precisa ter o "ler mais"
+                                    if (questionText.classList.contains("line-clamp-2")) {
+                                        readMoreNew.style.display = "inline";
+                                        readLessNew.style.display = "none";
+                                    }
+
+                                    //se o texto nao tem mais de 2 linhas, nao precisa ter botão
+                                } else {
+                                    readLessNew.style.display = "none";
+                                    readMoreNew.style.display = "none";
+                                }
+                            </script>
+                        </div>
+                    </div>
+
+                    <?php $styleImageQuestion = !empty($listDetailsQuestions->image) ? '' : 'd-none'; ?>
+                    <p class="<?php echo $styleImageQuestion; ?>  image-question">
+                        <a href="<?php echo $listDetailsQuestions->image; ?>" class="image-link question-img">
+                            <img src="<?php echo $listDetailsQuestions->image; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 150px;">
+                        </a>
+                    </p>
+
+                    <?php $styleDocumentQuestion = !empty($listDetailsQuestions->document) ? '' : 'd-none'; ?>
+                    <p class="<?php echo $styleDocumentQuestion; ?> document-question">
+                        <span class="document-icon">
+                            <img src="../../../../views/images/components/file-icon.svg">
+                        </span>
+                        <span class="normal-14-medium-p white-text text-truncate document-name">
+                            <?php echo $listDetailsQuestions->documentName; ?>
+                        </span>
+                        <a href="<?php echo $listDetailsQuestions->document; ?>" class="download-file-button" download="<?php echo $listDetailsQuestions->documentName; ?>">
+                            <img src="../../../../views/images/components/download-icon.svg" alt="">
+                        </a>
+                    </p>
+
+                    <div class="question-footer">
+
+                        <?php
+                        $answer = new Answer();
+                        $totalAnswersOfQuestion = $answer->countAnswers($listDetailsQuestions->id);
+
+                        $styleCounter = empty($totalAnswersOfQuestion) ? 'question-footer-div' : 'question-answers question-footer-div';
+                        ?>
+                        <div class="<?php echo $styleCounter; ?>" id="respostaQuant">
+                            <p class="normal-14-bold-p white-text question-p">
+                                <?php echo $totalAnswersOfQuestion; ?>
+                            </p>
+
+                        </div>
+
+                        <a class="question-give-heelp-a pedir-heelp-button-a" href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
+                            <div class="question-toAnswer question-footer-div">
+
+                                <p class="normal-14-bold-p question-p white-text">Dar um help</p>
+                                <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
+                                <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
+                                <p class="normal-14-bold-p question-p yellow-text"> <?php echo $listDetailsQuestions->xp; ?> xp </p>
+
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
 
                 <!-- Modal Question -->
                 <div class="modal fade" id="modal-<?php echo $listDetailsQuestions->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $listDetailsQuestions->id; ?>" aria-hidden="true">
@@ -436,7 +479,7 @@ try {
 
                 <hr>
 
-                <p>
+                <p class="normal-18-bold-title-2 white-text question-p">
                     Respostas
                 </p>
 
@@ -462,123 +505,181 @@ try {
 
                         $styleDenunciationAnswer = $creatorAnswerID == $studentID ? 'd-none' : '';
                         ?>
-                        <p class="<?php echo $styleDeleteAnswer; ?> <?php echo $styleAnswerDisplay; ?>">
-                            <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer">
-                                Excluir
-                            </a>
-                        </p>
 
-                        <p class="<?php echo $styleDenunciationAnswer; ?>">
-                            <label data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
-                                denunciar
-                            </label>
-                        </p>
+                        <div class="space-between-header">
 
-                        <p>
-                            <a href="<?php echo $row->linkProfile; ?>" target="_blank">
-                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px;">
-                            </a>
-                        </p>
-
-                        <p>
-                            <a href="<?php echo $row->linkProfile; ?>" target="_blank">
-                                <?php echo $row->firstName; ?>
-                                <?php echo $row->surname; ?>
-                            </a>
-                        </p>
-
-
-                        <p>
-                            <?php echo $row->created; ?> •
-                            <?php echo $row->module; ?> •
-                            <?php echo $row->school; ?>
-                        </p>
-
-                        <!-- Create the editor container -->
-                        <div class="ql-snow ql-editor2">
-                            <div class="ql-editor2">
-                                <?php echo $row->answer; ?>
+                            <div class="question-info">
+                                <a href="<?php echo $row->linkProfile; ?>" target="_blank">
+                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
+                                </a>
+                                <div class="question-info-text">
+                                    <a href="<?php echo $row->linkProfile; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p">
+                                        <?php echo $row->firstName; ?>
+                                        <?php echo $row->surname; ?>
+                                    </a>
+                                    <div class="question-about normal-12-medium-tiny">
+                                        <?php echo $row->created; ?>
+                                        •
+                                        <?php echo $row->module; ?>
+                                        •
+                                        <?php echo $row->school; ?>
+                                    </div>
+                                </div>
                             </div>
+
+                            <a href="../answer-question/controller/delete-answer.controller.php?idAnswer=<?php echo $row->id; ?>&idQuestion=<?php echo $listDetailsQuestions->id; ?>&idStudent=<?php echo $studentID; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete-answer" class="delete-answer delete-answer-a">
+                                <div class="<?php echo $styleDeleteAnswer; ?> <?php echo $styleAnswerDisplay; ?> delete-answer-div">
+                                    <img src="../../../../views/images/components/delete-bin.svg" alt="">
+                                </div>
+                            </a>
+
+                            <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="<?php echo $styleDenunciationAnswer; ?> delete-answer delete-answer-a">
+                                <div class="delete-answer-div">
+                                    <img src="../../../../views/images/components/denunciar-icon.svg" alt="">
+                                </div>
+                            </a>
+
                         </div>
 
-                        <?php $styleImageAnswer = !empty($row->image) ? '' : 'd-none'; ?>
-                        <p class="<?php echo $styleImageAnswer; ?>">
-                            <a href="<?php echo $row->image; ?>" class="image-link">
-                                <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
-                            </a>
-                        </p>
+                        <div class="question-core">
+                            <!-- Create the editor container -->
+                            <div class="ql-snow ql-editor2">
+                                <div class="ql-editor2">
+                                    <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $row->id; ?>">
+                                        <?php echo $row->answer; ?>
+                                    </span>
 
-                        <?php $styleDocumentAnswer = !empty($row->document) ? '' : 'd-none'; ?>
-                        <p class="<?php echo $styleDocumentAnswer; ?>">
-                            <?php echo $row->documentName; ?>
-                            <a href="<?php echo $row->document; ?>" download="<?php echo $row->documentName; ?>">
-                                <button>download</button>
-                            </a>
-                        </p>
+                                    <button class="read-btn-question normal-14-bold-p" id="readMore-newMessages-<?php echo $row->id; ?>" onclick="document.querySelector('#questionText-<?php echo $row->id; ?>').classList.remove('line-clamp-2');
+                            document.querySelector('#readLess-newMessages-<?php echo $row->id; ?>').style.display = 'inline';
+                            document.querySelector('#readMore-newMessages-<?php echo $row->id; ?>').style.display = 'none';">
+                                        Ler mais...
+                                    </button>
 
-                        <p>
-                            total de likes
+                                    <button class="read-btn-question normal-14-bold-p" id="readLess-newMessages-<?php echo $row->id; ?>" onclick="document.querySelector('#questionText-<?php echo $row->id; ?>').classList.add('line-clamp-2');
+                            document.querySelector('#readLess-newMessages-<?php echo $row->id; ?>').style.display = 'none';
+                            document.querySelector('#readMore-newMessages-<?php echo $row->id; ?>').style.display = 'inline';">
+                                        Ler menos...
+                                    </button>
+
+                                    <!-- JS Read More Text -->
+                                    <script>
+                                        var questionText = document.getElementById('questionText-<?php echo $row->id; ?>');
+
+                                        var readMoreNew = document.getElementById('readMore-newMessages-<?php echo $row->id; ?>');
+                                        var readLessNew = document.getElementById('readLess-newMessages-<?php echo $row->id; ?>');
+
+                                        //se o tamanho da mensagem passar o tamanho da caixa de texto, ou seja, com mais de 2 linhas
+                                        if (questionText.scrollHeight > questionText.offsetHeight) {
+
+                                            // Se ele estiver com o ..., precisa ter o "ler mais"
+                                            if (questionText.classList.contains("line-clamp-2")) {
+                                                readMoreNew.style.display = "inline";
+                                                readLessNew.style.display = "none";
+                                            }
+
+                                            //se o texto nao tem mais de 2 linhas, nao precisa ter botão
+                                        } else {
+                                            readLessNew.style.display = "none";
+                                            readMoreNew.style.display = "none";
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+
+                            <?php $styleImageAnswer = !empty($row->image) ? '' : 'd-none'; ?>
+                            <p class="<?php echo $styleImageAnswer; ?> image-question">
+                                <a href="<?php echo $row->image; ?>" class="image-link question-img">
+                                    <img src="<?php echo $row->image; ?>" alt="<?php echo $row->firstName; ?>" style="width: 150px;">
+                                </a>
+                            </p>
+
+                            <?php $styleDocumentAnswer = !empty($row->document) ? '' : 'd-none'; ?>
+                            <p class="<?php echo $styleDocumentAnswer; ?> document-question">
+                                <span class="document-icon">
+                                    <img src="../../../../views/images/components/file-icon.svg">
+                                </span>
+                                <span class="normal-14-medium-p white-text text-truncate document-name">
+                                    <?php echo $row->documentName; ?>
+                                </span>
+                                <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
+                                    <img src="../../../../views/images/components/download-icon.svg" alt="">
+                                </a>
+                            </p>
+
+
 
                             <?php
-                            $totalLike = !empty($row->totalLike) ? $row->totalLike : 0;
-                            echo $totalLike;
+                            $checkLiked = $answer->checkLikeCreator($listDetailsQuestions->id, $row->id, $studentId[0]['id']);
+                            $styleLike = $checkLiked == false ? '' : 'heart';
                             ?>
-                        </p>
+                            <div class="functions-answer">
+                                <div class="like-answer">
 
-                        <?php
-                        $checkLiked = $answer->checkLikeCreator($listDetailsQuestions->id, $row->id, $studentId[0]['id']);
-                        $styleLike = $checkLiked == false ? '' : 'heart';
-                        ?>
-                        <div class="<?php echo $styleLike; ?>" id="like-<?php echo $row->id; ?>" data-like-student="<?php echo $studentId[0]['id']; ?>" data-like-question="<?php echo $listDetailsQuestions->id; ?>" data-like-answer="<?php echo $row->id; ?>" onclick="like(<?php echo $row->id; ?>)">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                                <path d="M21.95 40.2 19.3 37.75Q13.1 32 8.55 26.775Q4 21.55 4 15.85Q4 11.35 7.025 8.325Q10.05 5.3 14.5 5.3Q17.05 5.3 19.55 6.525Q22.05 7.75 24 10.55Q26.2 7.75 28.55 6.525Q30.9 5.3 33.5 5.3Q37.95 5.3 40.975 8.325Q44 11.35 44 15.85Q44 21.55 39.45 26.775Q34.9 32 28.7 37.75L26.05 40.2Q25.2 41 24 41Q22.8 41 21.95 40.2Z" />
-                            </svg>
+                                    <div class="<?php echo $styleLike; ?>" id="like-<?php echo $row->id; ?>" data-like-student="<?php echo $studentId[0]['id']; ?>" data-like-question="<?php echo $listDetailsQuestions->id; ?>" data-like-answer="<?php echo $row->id; ?>" onclick="like(<?php echo $row->id; ?>)" style="width: 20px; margin-right: 3px; padding: 0;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewbox="0 0 50 50">
+                                            <path d="M21.95 40.2 19.3 37.75Q13.1 32 8.55 26.775Q4 21.55 4 15.85Q4 11.35 7.025 8.325Q10.05 5.3 14.5 5.3Q17.05 5.3 19.55 6.525Q22.05 7.75 24 10.55Q26.2 7.75 28.55 6.525Q30.9 5.3 33.5 5.3Q37.95 5.3 40.975 8.325Q44 11.35 44 15.85Q44 21.55 39.45 26.775Q34.9 32 28.7 37.75L26.05 40.2Q25.2 41 24 41Q22.8 41 21.95 40.2Z" />
+                                        </svg>
+                                    </div>
+
+                                    <p class="normal-14-bold-p question-p" style="color: var(--fuchsia); margin-top: 2px;">
+                                        <?php $totalLike = !empty($row->totalLike) ? $row->totalLike : 0;
+                                        echo $totalLike; ?>
+                                    </p>
+
+                                </div>
+
+                                <div class="avaliation-answer">
+
+                                    <p class="normal-14-bold-p question-p" style="color: var(--yellow);" style="top: 5px;">
+                                        <span class="functions-answer-text avaliation-text">
+                                            <?php echo $row->avaliation; ?>
+
+                                            (
+                                            <?php
+                                            $totalAvaliation = !empty($row->totalAvaliation) ? $row->totalAvaliation : 0;
+                                            echo $totalAvaliation;
+                                            ?>
+                                            )
+                                        </span>
+                                    </p>
+
+                                    <?php $styleEmptyAvaliation = $row->stars === 0 ? '' : 'd-none' ?>
+                                    <p>
+                                    <div class="avaliacao <?php echo $styleEmptyAvaliation; ?>">
+                                        <div class="star-icon ativo" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                    </div>
+                                    </p>
+
+
+                                    <?php
+                                    $styleAvaliation = $row->stars != 0 ? '' : 'd-none';
+
+                                    $styleStar1 = $row->stars === 1 ? 'ativo' : '';
+                                    $styleStar2 = $row->stars === 2 ? 'ativo' : '';
+                                    $styleStar3 = $row->stars === 3 ? 'ativo' : '';
+                                    $styleStar4 = $row->stars === 4 ? 'ativo' : '';
+                                    $styleStar5 = $row->stars === 5 ? 'ativo' : '';
+                                    ?>
+
+                                    <div class="avaliacao <?php echo $styleAvaliation; ?>">
+                                        <div class="star-icon <?php echo $styleStar1; ?>" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon <?php echo $styleStar2; ?>" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon <?php echo $styleStar3; ?>" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon <?php echo $styleStar4; ?>" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                        <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
                         </div>
-
-                        <p>
-                            média de avaliações
-                            <?php echo $row->avaliation; ?>
-                        </p>
-
-                        <p>
-                            total de avaliações
-
-                            <?php
-                            $totalAvaliation = !empty($row->totalAvaliation) ? $row->totalAvaliation : 0;
-                            echo $totalAvaliation;
-                            ?>
-                        </p>
-
-                        <?php $styleEmptyAvaliation = $row->stars === 0 ? '' : 'd-none' ?>
-                        <p>
-                        <div class="avaliacao <?php echo $styleEmptyAvaliation; ?>">
-                            <div class="star-icon ativo" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        </div>
-                        </p>
-
-
-                        <?php
-                        $styleAvaliation = $row->stars != 0 ? '' : 'd-none';
-
-                        $styleStar1 = $row->stars === 1 ? 'ativo' : '';
-                        $styleStar2 = $row->stars === 2 ? 'ativo' : '';
-                        $styleStar3 = $row->stars === 3 ? 'ativo' : '';
-                        $styleStar4 = $row->stars === 4 ? 'ativo' : '';
-                        $styleStar5 = $row->stars === 5 ? 'ativo' : '';
-                        ?>
-                        <p>
-                        <div class="avaliacao <?php echo $styleAvaliation; ?>">
-                            <div class="star-icon <?php echo $styleStar1; ?>" data-icon="1" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon <?php echo $styleStar2; ?>" data-icon="2" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon <?php echo $styleStar3; ?>" data-icon="3" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon <?php echo $styleStar4; ?>" data-icon="4" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                            <div class="star-icon <?php echo $styleStar5; ?>" data-icon="5" data-student="<?php echo $studentId[0]['id']; ?>" data-question="<?php echo $listDetailsQuestions->id; ?>" data-answer="<?php echo $row->id; ?>" onclick="avaliation(this)"></div>
-                        </div>
-                        </p>
 
                         <!-- Modal Answer-->
                         <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">

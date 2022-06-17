@@ -72,7 +72,7 @@ try {
                 <ul class="feed-ul">
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="dashboard.page.php" class="sidebar-a-items leftbar-a">
+                        <a href="./home.page.php" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
                             <p class="normal-18-bold-title-2 leftbar-text-current">Feed</p>
                         </a>
