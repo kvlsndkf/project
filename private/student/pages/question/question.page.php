@@ -18,7 +18,7 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -32,6 +32,18 @@ try {
 
     <!-- Include stylesheet -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <!-- CSS Styles globais -->
+    <link rel="stylesheet" href="../../../../views/styles/button.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/font-format.style.css">
+
+    <!-- CSS Style página -->
+    <link rel="stylesheet" href="../../../../views/pages/register/register-student/register-student.style.css">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 </head>
 
 <body>
@@ -78,84 +90,91 @@ try {
         </div>
     <?php unset($_SESSION['statusAlert']);
     } ?>
+    <div class="h-100 w-100 d-flex align-items-center justify-content-center">
+        <div class="bg-modal-gray align-self-center my-auto form-base-question">
+            <div class="container">
+                <div class="d-flex justify-content-between">
+                    <label class="normal-20-bold-modaltitle title-question">Pedir um heelp!</label>
+                </div>
+                <form action="./controller/register-question.controller.php" method="post" enctype="multipart/form-data">
+                    <label class="normal-14-medium-p">Curso</label>
+                    <select name="course" id="selectCourse" class="selectCourse w-100" onchange="courseValue()">
+                        <optgroup label="Seu curso">
+                            <?php for ($i = 0; $i < count($listCourseOfStudent); $i++) {
+                                $row = $listCourseOfStudent[$i] ?>
+                                <option value="<?php echo $row['id'] ?>" selected> <?php echo $row['name'] ?> </option>
+                            <?php } ?>
+                        </optgroup>
 
-    <label for="">Fazer pegunta</label>
+                        <optgroup label="Todos os outros cursos">
+                            <?php for ($i = 0; $i < count($listAllCourses); $i++) {
+                                $row = $listAllCourses[$i] ?>
+                                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                            <?php } ?>
+                        </optgroup>
+                    </select>
 
-    <br>
-    <br>
-    <form action="./controller/register-question.controller.php" method="post" enctype="multipart/form-data">
-        <label for="">Curso</label>
-        <select name="course" id="selectCourse" class="selectCourse w-100" onchange="courseValue()">
-            <optgroup label="Seu curso">
-                <?php for ($i = 0; $i < count($listCourseOfStudent); $i++) {
-                    $row = $listCourseOfStudent[$i] ?>
-                    <option value="<?php echo $row['id'] ?>" selected> <?php echo $row['name'] ?> </option>
-                <?php } ?>
-            </optgroup>
+                    <br>
+                    <br>
 
-            <optgroup label="Todos os outros cursos">
-                <?php for ($i = 0; $i < count($listAllCourses); $i++) {
-                    $row = $listAllCourses[$i] ?>
-                    <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                <?php } ?>
-            </optgroup>
-        </select>
+                    <label class="normal-14-medium-p">Matéria</label>
+                    <select name="subject" id="selectSubject" class="selectSubject w-100">
 
-        <br>
-        <br>
+                    </select>
 
-        <label for="">Matéria</label>
-        <select name="subject" id="selectSubject" class="selectSubject w-100">
+                    <br>
+                    <br>
 
-        </select>
+                    <label class="normal-14-medium-p">Categoria<span style="color: var(--red);">*</span></label>
+                    <select name="category" id="" class="selectCategory w-100" required>
+                        <option value="" selected disabled>Selecione a categoria</option>
+                        <?php for ($i = 0; $i < count($listCategories); $i++) {
+                            $row = $listCategories[$i] ?>
+                            <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                        <?php } ?>
+                    </select>
 
-        <br>
-        <br>
+                    <br>
+                    <br>
 
-        <label for="">Categoria</label>
-        <select name="category" id="" class="selectCategory w-100" required>
-            <option value="" selected disabled>Selecione a categoria</option>
-            <?php for ($i = 0; $i < count($listCategories); $i++) {
-                $row = $listCategories[$i] ?>
-                <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-            <?php } ?>
-        </select>
+                    <!-- Create the editor container -->
+                    <div id="editor"></div>
+                    <textarea name="textQuestion" id="textArea" class="d-none"></textarea>
+                    <br><br>
 
-        <br>
-        <br>
 
-        <!-- Create the editor container -->
-        <div id="editor"></div>
-        <textarea name="textQuestion" id="textArea" class="d-none"></textarea>
+                    <label class="normal-18-bold-title-2">Foto</label>
+                    <div id="imgContainer" class="">
+                        <img src="" alt="" class="current-img" id="imageFile" style="margin-top: 10px; margin-bottom: 10px;">
+                    </div>
+                    <label for="photo" class="add-arch normal-14-bold-p">Adicionar foto a partir dos meus arquivos</label>
+                    <span id="step3" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                    
+                    <br>
+                    <input type="file" name="photo" id="photo" class="photo" onchange="previewImage(this)">
 
-        <br>
-        <br>
-        <hr>
+                    <br>
+                    <hr/>
+                    
 
-        <label for="">Adicionar fotos do seu computador</label>
-        <img src="" alt="" id="imageFile">
-        <br>
-        <input type="file" name="photo" onchange="previewImage(this)">
+                    <label class="normal-18-bold-title-2">Documento</label>
+                    <br/><br/>
+                    <label for="file" class="add-arch normal-14-bold-p">Adicionar documento a partir dos meus arquivos</label>
+                    <br>
+                    <input type="file" id="file" class="photo" name="document">
+                    <span id="step4" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                    <br>
+                    <br>
+                    <br/>
 
-        <br>
-        <br>
-
-        <label for="">Adicionar documentos do seu computador</label>
-        <br>
-        <input type="file" name="document">
-
-        <br>
-        <br>
-
-        <button type="submit" name="question">Perguntar</button>
-
-        <br>
-        <br>
-    </form>
-    <a href="../home/home.page.php">
-        <button>Cancelar</button>
-    </a>
-
+                    <button type="submit" name="question" class="button-wide bg-pink normal-14-bold-p white-title" style="margin-bottom: 10px;">Pedir um heelp!</button>
+                </form>
+                <a href="../home/home.page.php">
+                    <button class="button-wide normal-14-bold-p primary-title">Cancelar</button>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -212,7 +231,7 @@ try {
 
         var editor = new Quill('#editor', {
             theme: 'snow',
-            placeholder: 'Compose an epic...',
+            placeholder: 'Em que podemos te ajudar?',
             modules: {
                 toolbar: options
             }
@@ -262,22 +281,56 @@ try {
     </script>
 
     <script>
-        function previewImage(self){
+        function previewImage(self) {
+            const imgContainer = document.getElementById("imgContainer");
             const imageFile = document.getElementById("imageFile");
             const file = self && self.files[0];
+            
 
-            if(!file){
+            if (!file) {
                 imageFile.style.display = "none";
+                imgContainer.style.display = "none";
                 return;
             }
 
-            if(file){
+            if (file) {
                 imageFile.style.display = "block";
+                imgContainer.style.display = "block";
+                imageFile.classList.add("current-photo");
                 imageFile.src = URL.createObjectURL(file);
                 return;
             }
         }
     </script>
+
+    <!-- JS arquvio selecionado -->
+    <script type="text/javascript">
+        let inputFile = document.getElementById('photo');
+        let fileNameField = document.getElementById('step3');
+        inputFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            fileNameField.textContent = uploadedFileName;
+            
+        });
+
+        var down = document.getElementById('step3');
+        var file = document.getElementById("photo");
+        var uploadedFileName = event.target.files[0].name;
+
+        
+    </script>
+        <script type="text/javascript">
+        let inputDocFile = document.getElementById('file');
+        let docNameField = document.getElementById('step4');
+        inputDocFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            docNameField.textContent = uploadedFileName;
+            
+        });
+        var uploadedFileName = event.target.files[0].name;
+    </script>
+
+    
 </body>
 
 </html>
