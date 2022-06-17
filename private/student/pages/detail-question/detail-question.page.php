@@ -633,7 +633,7 @@ try {
 
                                     <p class="normal-14-bold-p question-p" style="color: var(--yellow);" style="top: 5px;">
                                         <span class="functions-answer-text avaliation-text">
-                                            <?php echo $row->avaliation; ?>
+                                            7<?php //echo $row->avaliation; ?>
 
                                             (
                                             <?php
