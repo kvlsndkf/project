@@ -9,6 +9,8 @@ class Teacher
     public string $createdAt;
     public string $updatedAt;
     public array $resultBuildList;
+    public array $courses = [];
+    public string $course = "";
 
     //getters and setters
     public function getId(): int

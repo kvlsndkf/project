@@ -1,6 +1,8 @@
 <?php
 include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/inheritances/Social.class.php');
+require_once('/xampp/htdocs' . '/project/classes/schools/Course.class.php');
+require_once('/xampp/htdocs' . '/project/classes/schools/Teacher.class.php');
 
 class School extends Social
 {
@@ -341,21 +343,21 @@ class School extends Social
         }
 
         if ($filtering) {
-            if ($filter == "Comconta"){
-            $stmt = $connection->prepare("SELECT COUNT(id) AS filtrado FROM schools WHERE have_account LIKE '%Com conta%'");
-            $stmt->execute();
+            if ($filter == "Comconta") {
+                $stmt = $connection->prepare("SELECT COUNT(id) AS filtrado FROM schools WHERE have_account LIKE '%Com conta%'");
+                $stmt->execute();
 
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return "Filtrado " . $result[0]['filtrado'];
+                return "Filtrado " . $result[0]['filtrado'];
             }
 
-            if ($filter == "Semconta"){
+            if ($filter == "Semconta") {
                 $stmt = $connection->prepare("SELECT COUNT(id) AS filtrado FROM schools WHERE have_account LIKE '%Sem conta%'");
                 $stmt->execute();
-    
+
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
                 return "Filtrado " . $result[0]['filtrado'];
             }
         }
@@ -677,11 +679,11 @@ class School extends Social
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 9;
 
-        
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -696,36 +698,36 @@ class School extends Social
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-        
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i'> $i </a></li>";
-            }
-                
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page ' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
+
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i'> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page ' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
     }
-    
+
 
     //----------------------------
     /**
@@ -739,10 +741,10 @@ class School extends Social
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 9;
-        
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools WHERE name LIKE '%$search%' ORDER BY name";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -756,41 +758,40 @@ class School extends Social
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &searchSchool=$search'> $i </a></li>";
-            }
-            
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &searchSchool=$search'> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &searchSchool=$search' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
-
     }
 
     //----------------------------
     /** 
-    * @method listSchoolsOfSelectResgisterCourse() list the schools within the select of the course registration 
+     * @method listSchoolsOfSelectResgisterCourse() list the schools within the select of the course registration 
      * 
-    */
+     */
     public function listSchoolsOfSelectResgisterCourse()
     {
         $connection = Connection::connection();
@@ -819,10 +820,10 @@ class School extends Social
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 9;
-        
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools WHERE have_account LIKE '%Sem conta%' ORDER BY name";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -836,32 +837,32 @@ class School extends Social
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &filterSchool=$haveAccount'> $i </a></li>";
-            }
-            
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &filterSchool=$haveAccount'> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
     }
 
@@ -877,10 +878,10 @@ class School extends Social
         //Receber o numero de página
         $current_page = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
         $page = (!empty($current_page)) ? $current_page : 1;
-        
+
         //Setar a quantidade de registros por página
         $limit_result = 9;
-        
+
         //Contar a quantidade de registros no bd 
         $query_qnt_register = "SELECT COUNT(id) AS 'id' FROM schools WHERE have_account LIKE '%Com conta%' ORDER BY name";
         $result_qnt_register = $connection->prepare($query_qnt_register);
@@ -894,32 +895,32 @@ class School extends Social
         $next_page = $page + 1;
 
         echo "<ul class='pagination'>";
-            //botão para voltar
-            if ($prev_page != 0) { 
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
-                echo "</li>";
-            }
+        //botão para voltar
+        if ($prev_page != 0) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-last normal-14-medium-p' href='./list-school.page.php?page=$prev_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-last normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Anterior</a>";
+            echo "</li>";
+        }
 
-            //Apresentar a paginação
-            for ($i = 1; $i < $page_qnt + 1; $i++) { 
-                echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &filterSchool=$haveAccount'> $i </a></li>";
-            }
-            
-            //botão para avançar
-            if ($next_page <= $page_qnt) {
-                echo "<li class='page-item'>";
-                    echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-                } else { 
-                echo "<li class='page-item disabled'>";
-                    echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
-                echo "</li>";
-            }
+        //Apresentar a paginação
+        for ($i = 1; $i < $page_qnt + 1; $i++) {
+            echo "<li class='page-item'><a class='page-link pagination-page normal-14-medium-p' href='./list-school.page.php?page=$i &filterSchool=$haveAccount'> $i </a></li>";
+        }
+
+        //botão para avançar
+        if ($next_page <= $page_qnt) {
+            echo "<li class='page-item'>";
+            echo "<a class='page-link pagination-next normal-14-medium-p' href='./list-school.page.php?page= $next_page &filterSchool=$haveAccount' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        } else {
+            echo "<li class='page-item disabled'>";
+            echo "<a class='page-link disable pagination-next normal-14-medium-p' href='#' tabindex='-1' aria-disabled='true'>Próximo</a>";
+            echo "</li>";
+        }
         echo "</ul>";
     }
 
@@ -983,5 +984,175 @@ class School extends Social
 
         $result = $stmt->fetchAll();
         return $result[0]['id'];
+    }
+
+    public function schoolProfile(int $schoolID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT id, name, address, about, github, linkedin, facebook, instagram, photo
+                                            FROM schools
+                                            WHERE id = $schoolID
+                                        ");
+
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $this->buildSchoolProfile($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function buildSchoolProfile($row)
+    {
+        $school = new School();
+        $school->id = $row['id'];
+        $school->name = $row['name'];
+        $school->address = $row['address'];
+        $school->about = $row['about'];
+        $school->github = $row['github'];
+        $school->linkedin = $row['linkedin'];
+        $school->facebook = $row['facebook'];
+        $school->instagram = $row['instagram'];
+        $school->photo = $row['photo'];
+
+        return $school;
+    }
+
+    public function countStudentsInSchool(int $schoolID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT COUNT(student_id) AS total FROM schoolshasstudents
+                                          WHERE school_id = $schoolID
+                                        ");
+
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getCoursesInSchool(int $schoolID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT c.name, c.about, c.photo FROM courses c
+                                        
+                                            INNER JOIN schoolshascourses sc
+                                            ON sc.course_id = c.id
+                                            INNER JOIN schools s
+                                            ON sc.school_id = s.id
+                                            WHERE sc.school_id = $schoolID
+                                        ");
+
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $this->buildCourseList($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function buildCourseList($result)
+    {
+        $courses = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $course = $this->buildCourse($row);
+
+            array_push($courses, $course);
+        }
+        return $courses;
+    }
+
+    private function buildCourse($row)
+    {
+        $course = new Course();
+        $course->name = $row['name'];
+        $course->about = $row['about'];
+        $course->photo = $row['photo'];
+
+        return $course;
+    }
+
+    public function listTeachersInSchool(int $schoolID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT t.id, t.name AS 'teacherName', t.photo, c.name AS 'course' FROM teachers t
+                                            INNER JOIN schoolshasteachers st
+                                            ON t.id = st.teacher_id
+                                            INNER JOIN schoolshascourses sc
+                                            ON st.school_id = sc.school_id
+                                            INNER JOIN courses c
+                                            ON c.id = sc.course_id
+                                            WHERE st.school_id = $schoolID
+                                        ");
+
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $this->buildTeacherList($result);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    private function buildTeacherList($result)
+    {
+        $teachers = [];
+        $teachers1 = [];
+
+        for ($i = 0; $i < count($result); $i++) {
+            $row = $result[$i];
+            $teacher = $this->buildTeacher($row);
+
+            array_push($teachers, $teacher);
+        }
+
+        array_push($teachers1, $teachers[0]);
+
+        for ($i = 0; $i < count($teachers); $i++) {
+            $t0 = $teachers[$i];
+
+            for ($j = 0; $j < count($teachers1); $j++) {
+                $t = $teachers1[$j];
+                
+                if ($t->id == $t0->id) {
+                    array_push($t->courses, $t0->course);
+                    break;
+                }
+                array_push($teachers1, $t0);
+            }
+        }
+
+
+        return $teachers1;
+    }
+
+    private function buildTeacher($row)
+    {
+        $teacher = new Teacher();
+        $teacher->id = $row['id'];
+        $teacher->name = $row['teacherName'];
+        $teacher->photo = $row['photo'];
+        $teacher->course = $row['course'];
+        $teacher->courses = [];
+
+        return $teacher;
     }
 }
