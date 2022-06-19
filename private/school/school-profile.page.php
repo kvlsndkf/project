@@ -2,6 +2,7 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
 
 try {
     $idUser = $_SESSION['idUser'];
@@ -18,6 +19,8 @@ try {
     $student = new StudentMethods();
     $studentLogged = $student->getStudentByUserID($idUser);
     $studentPerfil = $student->getDataStudentByID($studentLogged[0]['id']);
+
+    $listPreferences = Preference::getPreferencesUser($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -127,7 +130,20 @@ try {
         </a>
     </p>
 
+    <!-- Lista de preferências ⬇️ -->
+    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+        $row = $listPreferences[$i] ?>
 
+        <a href="../student/pages/preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+            <div class="d-flex">
+                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                <p>
+                    <?php echo $row->name; ?>
+                </p>
+            </div>
+        </a>
+
+    <?php } ?>
 
     <!-- Tabs navs -->
     <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
