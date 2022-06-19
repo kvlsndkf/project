@@ -130,7 +130,7 @@ try {
 
                     <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentProfile->id; ?>" target="_blank">
                         <div class="bottom-photo-div">
-                            <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentProfile->firstName; ?>" class="bottom-photo-img">
+                            <img src="<?php echo $studentProfile->photo; ?>" alt="<?php echo $studentProfile->firstName; ?>" class="bottom-photo-img">
                         </div>
                     </a>
 
@@ -328,7 +328,7 @@ try {
                                     <p class="normal-14-medium-p white-text question-p" style="margin-right: 8px;">
                                         respondeu
                                     </p>
-                                    <a href="<?php echo $row->linkQuestion; ?>" class="normal-14-bold-p question-p" style="display: flex; width: 80%; color: var(--blue-sky); white-space: no-wrap; text-overflow: ellipsis; overflow: hidden;" target="_blank">
+                                    <a href="<?php echo $row->linkQuestion; ?>" class="normal-14-bold-p question-p text-truncate" style="display: flex; width: 80%; color: var(--blue-sky);" target="_blank">
                                         <?php echo $row->question; ?>
                                     </a>
                                     <p style="color: var(--blue-sky);">
@@ -347,9 +347,6 @@ try {
 
                                 <div class="ql-snow ql-editor2">
                                     <div class="ql-editor2">
-                                        <p class="white-text question-text-p">
-                                            Resposta:
-                                        </p>
                                         <span class="line-clamp-2 white-text question-text-p">
                                             <?php echo $row->answer; ?>
                                         </span>
@@ -432,9 +429,6 @@ try {
                                 <!-- Create the editor container -->
                                 <div class="ql-snow ql-editor2">
                                     <div class="ql-editor2">
-                                        <p class="white-text question-text-p">
-                                            Pergunta:
-                                        </p>
                                         <span class="white-text line-clamp-2">
                                             <?php echo $row->question; ?>
                                         </span>
@@ -506,9 +500,6 @@ try {
                                 <!-- Create the editor container -->
                                 <div class="ql-snow ql-editor2">
                                     <div class="ql-editor2">
-                                        <p class="white-text question-text-p">
-                                            Material:
-                                        </p>
                                         <span class="line-clamp-2 white-text question-text-p">
                                             <?php echo $row->question; ?>
                                         </span>
@@ -581,12 +572,10 @@ try {
                             <?php for ($i = 0; $i < count($studentPreference); $i++) {
                                 $row = $studentPreference[$i] ?>
 
-                                <p class="normal-16-bold-title-3 white-text question-p">
+                                <p class="normal-16-bold-title-3 white-text question-p margin-bot-15">
                                     <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
                                     <?php echo $row->name; ?>
                                 </p>
-
-                                <hr class="detail-question-hr">
 
                             <?php } ?>
                         </div>
