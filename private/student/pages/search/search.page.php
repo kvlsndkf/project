@@ -42,6 +42,8 @@ try {
 
     <!-- Include stylesheet -->
     <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
+    <!-- STYLE GLOBAL -->
+    <link rel="stylesheet" href="../../styles/feed.style.css">
 </head>
 
 <body>
