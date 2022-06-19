@@ -93,8 +93,9 @@ try {
     <div class="h-100 w-100 d-flex align-items-center justify-content-center">
         <div class="bg-modal-gray align-self-center my-auto form-base-question">
             <div class="container">
-                <div class="d-flex justify-content-between">
-                    <label class="normal-20-bold-modaltitle title-question">Pedir um heelp!</label>
+                <div class="form-header">
+                    <img src="../../../../views/images/components/arrow-back.svg" class="arrow" alt="">
+                    <label class="normal-20-bold-modaltitle title-header">Pedir um heelp!</label>
                 </div>
                 <form action="./controller/register-question.controller.php" method="post" enctype="multipart/form-data">
                     <label class="normal-14-medium-p">Curso</label>
