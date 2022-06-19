@@ -529,6 +529,122 @@ p{
     height: 2px;
 }
 
+.padding-20{
+    padding: 20px;
+}
+
+.detail-question-hr{
+    color: var(--white);
+    height: 2px;
+}
+
+.profile-div{
+    background-color: var(--bg-modal);
+    border-radius: 10px;
+}
+
+.profile-top{
+    background-color: var(--primary);
+    border-radius: 10px 10px 0 0;
+    height: 85px;
+    width: 100%;
+}
+
+.profile-pic{
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+}
+
+.profile-pic-img{
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    object-fit: cover;
+    outline: 5px solid var(--bg-modal);
+    margin-top: -60px;
+}
+
+.bg-bg-modal{
+    background-color: var(--bg-modal);
+}
+
+.margin-left-20{
+    margin-left: 20px;
+}
+
+.margin-right-20{
+    margin-right: 20px;
+}
+
+.margin-bot-15{
+    margin-bottom: 15px;
+}
+
+.bg-purple-light{
+    background-color: var(--purple-light);
+}
+
+.profile-header{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.profile-header-left{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.edit-profile-btn{
+    background-color: var(--white);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 8px;
+    color: var(--bg-modal);
+}
+
+.edit-profile-btn:hover{
+    color: var(--primary);
+    filter: brightness(80%);
+    transition: .5s;
+}
+
+.profile-follows{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: -3px;
+}
+
+.profile-follows-a{
+    padding: 5px;
+}
+
+.profile-follows-a:hover{
+    border-radius: 5px;
+    background-color:var(--gray3);
+    transition: .25s;
+}
+
+.nav-tabs .nav-link.active{
+    color: var(--white);
+}
+
+.drop-sair:hover{
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.responsive-edit-profile{
+    display: none;
+}
+
 @media (max-width: 1040px){
     .profile-name{
         font-size: 14px;
@@ -641,6 +757,24 @@ p{
     }
     .drop-edit-exclud-about2{
         left: 13%;
+    }
+    .responsive-edit-profile{
+        display: flex;
+    }
+    .edit-profile{
+        display: none;
+    }
+    .edit-profile-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        height: 30px;
+        width: 30px;
+        border-radius: 3px;
+    }
+    .xp-profile-pill{
+        margin-left: 7px;
     }
 }
 
