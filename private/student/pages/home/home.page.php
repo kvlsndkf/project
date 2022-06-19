@@ -190,6 +190,12 @@ try {
 
             <div class="feed-div">
 
+                <!-- Barra de pesquisa -->
+                <form action="../search/search.page.php" method="get">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off">
+                    <input type="submit" value="pesquisar">
+                </form>
+
                 <div class="center">
 
                     <div class="pedir-heelp-div">
@@ -243,7 +249,7 @@ try {
                                 $styleHelp = 'd-none';
                             }
 
-                            if ($row->category === "Apoio") {
+                            if ($row->category === "Material de Apoio") {
                                 $styleError = 'd-none';
                                 $styleQuestion = 'd-none';
                                 $styleHelp = 'badge rounded-pill bg-success';
@@ -263,6 +269,7 @@ try {
 
                         $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
                         $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
+                        $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
                         ?>
 
                         <!-- Mais Opções -->
@@ -271,7 +278,7 @@ try {
 
                             <!-- Parte do Update e Delete -->
                             <div class="drop-edit-exclud-content-about">
-                                <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="drop-edit-exclud-a <?php echo $styleDenunciationQuestion; ?>">
                                     <div class="drop-edit-exclud-option-about">
                                         <img src="../../../../views/images/components/denunciar-icon.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text-about normal-14-bold-p">Denunciar</p>
@@ -306,11 +313,11 @@ try {
                     </div>
 
                     <div class="question-info">
-                        <a href="">
+                        <a href="<?php echo $row->linkProfile; ?>" target="_blank">
                             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                         </a>
                         <div class="question-info-text">
-                            <a href="#" class="question-name question-about-a normal-14-medium-p">
+                            <a href="<?php echo $row->linkProfile; ?>" class="question-name question-about-a normal-14-medium-p" target="_blank">
                                 <?php echo $row->firstName; ?>
                                 <?php echo $row->surname; ?>
                             </a>

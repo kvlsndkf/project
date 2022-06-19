@@ -246,7 +246,7 @@ class Answer
                                         INNER JOIN questions quest
                                         ON answ.question_id = quest.id
                                         WHERE quest.id = '$idQuestion'
-                                        ORDER BY answ.created_at DESC
+                                        ORDER BY answ.avg_avaliation DESC
                                         ");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

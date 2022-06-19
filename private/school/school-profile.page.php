@@ -1,8 +1,10 @@
 <?php
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
 try {
+    $idUser = $_SESSION['idUser'];
     $schoolID = $_GET['schoolID'];
 
     $school = new School();
@@ -12,6 +14,10 @@ try {
     $coursesInSchool = $school->getCoursesInSchool($schoolID);
 
     $listTeachersInSchool = $school->listTeachersInSchool($schoolID);
+
+    $student = new StudentMethods();
+    $studentLogged = $student->getStudentByUserID($idUser);
+    $studentPerfil = $student->getDataStudentByID($studentLogged[0]['id']);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -39,13 +45,54 @@ try {
 </head>
 
 <body>
+    <!-- Barra de pesquisa -->
+    <form action="../student/pages/search/search.page.php" method="get">
+        <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off">
+        <input type="submit" value="pesquisar">
+    </form>
+
+    <!-- Perfil do canto -->
+    <div>
+        <p>
+            <a href="../../../logout/logout.controller.php">
+                sair
+            </a>
+
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                perfil
+            </a>
+
+            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank">
+                configurações
+            </a>
+        </p>
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="100">
+            </a>
+        </p>
+
+        <p>
+            <?php echo $studentPerfil->xp; ?>
+            xp
+        </p>
+
+        <p>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <?php echo $studentPerfil->firstName;
+                echo " " . $studentPerfil->surname; ?>
+            </a>
+        </p>
+    </div>
+
     <div>
         <img src="<?php echo $profileSchool->photo; ?>" alt="<?php echo $profileSchool->name; ?>">
     </div>
 
     <div>
         <?php echo $profileSchool->name; ?> <br>
-        <?php echo $profileSchool->address; ?>
+        <?php echo $profileSchool->address; ?>, São Paulo
     </div>
 
     <div>
@@ -138,7 +185,7 @@ try {
 
                     <div>
                         <?php
-                        foreach($row->courses as $value){
+                        foreach ($row->courses as $value) {
                             echo $value . " • ";
                         }
                         ?>
