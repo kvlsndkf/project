@@ -244,7 +244,7 @@ try {
                             $styleHelp = 'd-none';
                         }
 
-                        if ($listDetailsQuestions->category === "Apoio") {
+                        if ($listDetailsQuestions->category === "Material de Apoio") {
                             $styleError = 'd-none';
                             $styleQuestion = 'd-none';
                             $styleHelp = 'badge rounded-pill bg-success';

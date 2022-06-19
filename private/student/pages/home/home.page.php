@@ -189,7 +189,7 @@ try {
             } ?>
 
             <div class="feed-div">
-                
+
                 <!-- Barra de pesquisa -->
                 <form action="../search/search.page.php" method="get">
                     <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off">
@@ -249,7 +249,7 @@ try {
                                 $styleHelp = 'd-none';
                             }
 
-                            if ($row->category === "Apoio") {
+                            if ($row->category === "Material de Apoio") {
                                 $styleError = 'd-none';
                                 $styleQuestion = 'd-none';
                                 $styleHelp = 'badge rounded-pill bg-success';
@@ -269,6 +269,7 @@ try {
 
                         $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
                         $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
+                        $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
                         ?>
 
                         <!-- Mais Opções -->
@@ -277,7 +278,7 @@ try {
 
                             <!-- Parte do Update e Delete -->
                             <div class="drop-edit-exclud-content-about">
-                                <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="drop-edit-exclud-a <?php echo $styleDenunciationQuestion; ?>">
                                     <div class="drop-edit-exclud-option-about">
                                         <img src="../../../../views/images/components/denunciar-icon.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text-about normal-14-bold-p">Denunciar</p>
