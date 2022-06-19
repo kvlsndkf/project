@@ -322,7 +322,6 @@ try {
                     <div class="tab-content padding-20" id="ex2-content">
                         <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
 
-                            <?php $contador = 1; ?>
                             <!-- Lista de respostas ⬇️ -->
                             <?php for ($i = 0; $i < count($studentAnswer); $i++) {
                                 $row = $studentAnswer[$i] ?>
@@ -353,47 +352,10 @@ try {
                                         <p class="white-text question-text-p">
                                             Resposta:
                                         </p>
-                                        <span class="line-clamp-2 white-text question-text-p" id="profileAnswer-<?php echo $contador; ?>">
+                                        <span class="line-clamp-2 white-text question-text-p">
                                             <?php echo $row->answer; ?>
                                         </span>
 
-                                        <button class="read-btn-question normal-14-bold-p bg-bg-modal" id="readMore-newMessages-<?php echo $contador; ?>" onclick="document.querySelector('#profileAnswer-<?php echo $contador; ?>').classList.remove('line-clamp-2');
-                            document.querySelector('#readLess-newMessages-<?php echo $contador; ?>').style.display = 'inline';
-                            document.querySelector('#readMore-newMessages-<?php echo $contador; ?>').style.display = 'none';">
-                                            Ler mais...
-                                        </button>
-
-                                        <button class="read-btn-question normal-14-bold-p bg-bg-modal" id="readLess-newMessages-<?php echo $contador; ?>" onclick="document.querySelector('#profileAnswer-<?php echo $contador; ?>').classList.add('line-clamp-2');
-                            document.querySelector('#readLess-newMessages-<?php echo $contador; ?>').style.display = 'none';
-                            document.querySelector('#readMore-newMessages-<?php echo $contador; ?>').style.display = 'inline';">
-                                            Ler menos...
-                                        </button>
-
-                                        <!-- JS Read More Text -->
-                                        <script>
-                                            var questionText = document.getElementById('profileAnswer-<?php echo $contador; ?>');
-
-                                            var readMoreNew = document.getElementById('readMore-newMessages-<?php echo $contador; ?>');
-                                            var readLessNew = document.getElementById('readLess-newMessages-<?php echo $contador; ?>');
-
-                                            //se o tamanho da mensagem passar o tamanho da caixa de texto, ou seja, com mais de 2 linhas
-                                            if (questionText.scrollHeight > questionText.offsetHeight) {
-
-                                                // Se ele estiver com o ..., precisa ter o "ler mais"
-                                                if (questionText.classList.contains("line-clamp-2")) {
-                                                    readMoreNew.style.display = "inline";
-                                                    readLessNew.style.display = "none";
-                                                }
-
-                                                //se o texto nao tem mais de 2 linhas, nao precisa ter botão
-                                            } else {
-                                                readLessNew.style.display = "none";
-                                                readMoreNew.style.display = "none";
-                                            }
-                                            console.log(questionText.scrollHeight);
-                                            console.log(questionText.offsetHeight);
-                                        </script>
-                                        <?php $contador = $contador + 1; ?>
                                     </div>
                                 </div>
 
@@ -458,7 +420,6 @@ try {
                         </div>
                         <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
 
-                            <?php $contador2 = 1; ?>
                             <!-- Lista de perguntas ⬇️ -->
                             <?php for ($i = 0; $i < count($studentQuestion); $i++) {
                                 $row = $studentQuestion[$i] ?>
@@ -476,54 +437,10 @@ try {
                                         <p class="white-text question-text-p">
                                             Pergunta:
                                         </p>
-                                        <span class="question-text-p white-text line-clamp-2" id="profileQuestion-<?php echo $contador2; ?>">
+                                        <span class="white-text line-clamp-2">
                                             <?php echo $row->question; ?>
                                         </span>
 
-                                        <button class="read-btn-question normal-14-bold-p bg-bg-modal" id="readMore-question-<?php echo $contador2; ?>" onclick="document.querySelector('#profileQuestion-<?php echo $contador2; ?>').classList.remove('line-clamp-2');
-                            document.querySelector('#readLess-question-<?php echo $contador2; ?>').style.display = 'inline';
-                            document.querySelector('#readMore-question-<?php echo $contador2; ?>').style.display = 'none';">
-                                            Ler mais...
-                                        </button>
-
-                                        <button class="read-btn-question normal-14-bold-p bg-bg-modal" id="readLess-question-<?php echo $contador2; ?>" onclick="document.querySelector('#profileQuestion-<?php echo $contador2; ?>').classList.add('line-clamp-2');
-                            document.querySelector('#readLess-question-<?php echo $contador2; ?>').style.display = 'none';
-                            document.querySelector('#readMore-question-<?php echo $contador2; ?>').style.display = 'inline';">
-                                            Ler menos...
-                                        </button>
-
-                                        <!-- JS Read More Text -->
-                                        <script>
-                                            var textQuestion = document.getElementById('profileQuestion-<?php echo $contador2; ?>');
-                                            // element = element.cloneNode(true);
-
-                                            textQuestion.style.visibility = "hidden";
-                                            document.body.appendChild(textQuestion);
-                                            var offsetheight = textQuestion.offsetHeight + 0;
-                                            document.body.removeChild(textQuestion);
-                                            textQuestion.style.visibility = "visible";
-
-                                            var readMoreQuestion = document.getElementById('readMore-question-<?php echo $contador2; ?>');
-                                            var readLessQuestion = document.getElementById('readLess-question-<?php echo $contador2; ?>');
-
-
-                                            //se o tamanho da mensagem passar o tamanho da caixa de texto, ou seja, com mais de 2 linhas
-                                            if (textQuestion.scrollHeight > offsetheight) {
-
-                                                // Se ele estiver com o ..., precisa ter o "ler mais"
-                                                if (textQuestion.classList.contains("line-clamp-2")) {
-                                                    readMoreQuestion.style.display = "inline";
-                                                    readLessQuestion.style.display = "none";
-                                                }
-
-                                                //se o texto nao tem mais de 2 linhas, nao precisa ter botão
-                                            } else {
-                                                readLessQuestion.style.display = "none";
-                                                readMoreQuestion.style.display = "none";
-                                            }
-                                            console.log(textQuestion.scrollHeight);
-                                            console.log(offsetheight);
-                                        </script>
                                         <?php $contador2 = $contador2 + 1; ?>
 
                                     </div>
@@ -579,7 +496,6 @@ try {
                         </div>
                         <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
 
-                            <?php $contador3 = 1; ?>
                             <!-- Lista de materiais ⬇️ -->
                             <?php for ($i = 0; $i < count($studentMaterial); $i++) {
                                 $row = $studentMaterial[$i] ?>
@@ -597,46 +513,9 @@ try {
                                         <p class="white-text question-text-p">
                                             Material:
                                         </p>
-                                        <span class="line-clamp-2 white-text question-text-p" id="profileMaterial-<?php echo $contador3 ?>">
+                                        <span class="line-clamp-2 white-text question-text-p">
                                             <?php echo $row->question; ?>
                                         </span>
-
-                                        <button class="read-btn-question normal-14-bold-p bg-bg-modal" id="readMore-material-<?php echo $contador3; ?>" onclick="document.querySelector('#profileMaterial-<?php echo $contador3; ?>').classList.remove('line-clamp-2');
-                            document.querySelector('#readLess-material-<?php echo $contador3; ?>').style.display = 'inline';
-                            document.querySelector('#readMore-material-<?php echo $contador3; ?>').style.display = 'none';">
-                                            Ler mais...
-                                        </button>
-
-                                        <button class="read-btn-question normal-14-bold-p bg-bg-modal" id="readLess-material-<?php echo $contador3; ?>" onclick="document.querySelector('#profileMaterial-<?php echo $contador3; ?>').classList.add('line-clamp-2');
-                            document.querySelector('#readLess-material-<?php echo $contador3; ?>').style.display = 'none';
-                            document.querySelector('#readMore-material-<?php echo $contador3; ?>').style.display = 'inline';">
-                                            Ler menos...
-                                        </button>
-
-                                        <!-- JS Read More Text -->
-                                        <script>
-                                            var questionText = document.getElementById('profileMaterial-<?php echo $contador3; ?>');
-
-                                            var readMoreNew = document.getElementById('readMore-material-<?php echo $contador3; ?>');
-                                            var readLessNew = document.getElementById('readLess-material-<?php echo $contador3; ?>');
-
-                                            //se o tamanho da mensagem passar o tamanho da caixa de texto, ou seja, com mais de 2 linhas
-                                            if (questionText.scrollHeight > questionText.offsetHeight) {
-
-                                                // Se ele estiver com o ..., precisa ter o "ler mais"
-                                                if (questionText.classList.contains("line-clamp-2")) {
-                                                    readMoreNew.style.display = "inline";
-                                                    readLessNew.style.display = "none";
-                                                }
-
-                                                //se o texto nao tem mais de 2 linhas, nao precisa ter botão
-                                            } else {
-                                                readLessNew.style.display = "none";
-                                                readMoreNew.style.display = "none";
-                                            }
-                                        </script>
-
-                                        <?php $contador3 = $contador3 + 1; ?>
 
                                     </div>
                                 </div>
