@@ -115,7 +115,7 @@ try {
                         Pergunta
                     </p>
 
-                    <hr>
+                    <hr class="feed-hr">
 
                     <!-- Create the editor container -->
                     <div class="ql-snow ql-editor2" style="height: fit-content;">
@@ -151,7 +151,7 @@ try {
                         Resposta
                     </p>
 
-                    <hr>
+                    <hr class="feed-hr">
 
                     <form action="./controller/answer-question.controller.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>" method="post" enctype="multipart/form-data">
                         <!-- Create the editor container -->
