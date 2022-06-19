@@ -3,6 +3,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-student.c
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
 require_once('/xampp/htdocs' . '/project/classes/answers/Answer.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
 
 try {
     $question = new Question();
@@ -14,6 +15,8 @@ try {
     $studentId = $student->getStudentByUserID($idUser);
 
     $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
+
+    $listPreferences = Preference::getPreferencesUser($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -96,6 +99,21 @@ try {
                     <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
+
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id;?>">
+                            <div class="d-flex">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                                <p class="text-white">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
@@ -190,6 +208,12 @@ try {
 
             <div class="feed-div">
 
+                <!-- Barra de pesquisa -->
+                <form action="../search/search.page.php" method="get">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off">
+                    <input type="submit" value="pesquisar">
+                </form>
+
                 <div class="center">
 
                     <div class="pedir-heelp-div">
@@ -243,7 +267,7 @@ try {
                                 $styleHelp = 'd-none';
                             }
 
-                            if ($row->category === "Apoio") {
+                            if ($row->category === "Material de Apoio") {
                                 $styleError = 'd-none';
                                 $styleQuestion = 'd-none';
                                 $styleHelp = 'badge rounded-pill bg-success';
@@ -263,6 +287,7 @@ try {
 
                         $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
                         $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
+                        $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
                         ?>
 
                         <!-- Mais Opções -->
@@ -271,7 +296,7 @@ try {
 
                             <!-- Parte do Update e Delete -->
                             <div class="drop-edit-exclud-content-about">
-                                <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="drop-edit-exclud-a">
+                                <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="drop-edit-exclud-a <?php echo $styleDenunciationQuestion; ?>">
                                     <div class="drop-edit-exclud-option-about">
                                         <img src="../../../../views/images/components/denunciar-icon.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text-about normal-14-bold-p">Denunciar</p>
@@ -310,7 +335,7 @@ try {
                             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                         </a>
                         <div class="question-info-text">
-                            <a href="<?php echo $row->linkProfile; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p">
+                            <a href="<?php echo $row->linkProfile; ?>" class="question-name question-about-a normal-14-medium-p" target="_blank">
                                 <?php echo $row->firstName; ?>
                                 <?php echo $row->surname; ?>
                             </a>

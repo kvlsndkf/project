@@ -158,6 +158,11 @@ try {
 
                     </div>
 
+
+                <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalAvaliationAnswer; ?>
+                <div class="star-icon">
+                    <?php echo $row->avgAvaliation; ?>
+                    (<?php echo $counterAvaliationAnswer; ?>)
                 </div>
 
 

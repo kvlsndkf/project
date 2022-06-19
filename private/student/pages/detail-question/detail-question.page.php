@@ -220,6 +220,12 @@ try {
 
             <div class="feed-div">
 
+                <!-- Barra de pesquisa -->
+                <form action="../search/search.page.php" method="get">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off">
+                    <input type="submit" value="pesquisar">
+                </form>
+
                 <div class="space-between-header">
 
                     <p class="margin-60">
@@ -238,7 +244,7 @@ try {
                             $styleHelp = 'd-none';
                         }
 
-                        if ($listDetailsQuestions->category === "Apoio") {
+                        if ($listDetailsQuestions->category === "Material de Apoio") {
                             $styleError = 'd-none';
                             $styleQuestion = 'd-none';
                             $styleHelp = 'badge rounded-pill bg-success';
