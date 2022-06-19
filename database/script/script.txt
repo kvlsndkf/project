@@ -81,6 +81,7 @@ CREATE TABLE schools(
     , facebook TEXT
     , instagram TEXT
     , photo TEXT
+    , link_school TEXT NOT NULL
     , created_at DATETIME NOT NULL
     , updated_at DATETIME
 )
