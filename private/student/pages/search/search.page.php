@@ -105,7 +105,7 @@ try {
         <li class="nav-item" role="presentation">
             <?php $styleBadgeMaterials = count($searchMaterials) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
             <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">
-                Materiais
+                Apoio
                 <span class="<?php echo $styleBadgeMaterials; ?>"><?php echo count($searchMaterials); ?>
             </a>
         </li>
