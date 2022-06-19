@@ -157,14 +157,7 @@ try {
                         </div>
 
                     </div>
-
-
-                <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalAvaliationAnswer; ?>
-                <div class="star-icon">
-                    <?php echo $row->avgAvaliation; ?>
-                    (<?php echo $counterAvaliationAnswer; ?>)
                 </div>
-
 
                 <div class="bottom-xp-div">
                     <p class="normal-12-medium-tiny white-text bottom-xp-text">
