@@ -169,6 +169,18 @@ class School extends Social
         }
 
         try {
+            $linkSchool = "/project/private/school/school-profile.page.php?schoolID=" . $idSchool;
+
+            $insetLink = $connection->prepare("UPDATE schools SET link_school = ?, created_at = NOW()
+                                                WHERE id = '$idSchool'");
+
+            $insetLink->bindValue(1, $linkSchool);
+            $insetLink->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
             $teacher = $this->getTeacher();
             $idSchool = $this->getId();
 
@@ -183,19 +195,6 @@ class School extends Social
                     $stmt->execute();
                 }
             }
-
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-
-        try {
-            $linkSchool = "/project/private/school/school-profile.page.php?schoolID=" . $idSchool;
-
-            $insetLink = $connection->prepare("UPDATE schools SET link_school = ?, created_at = NOW()
-                                                WHERE id = '$idSchool'");
-
-            $insetLink->bindValue(1, $linkSchool);
-            $insetLink->execute();
 
             $_SESSION['statusPositive'] = "Etec cadastrada com sucesso.";
             header('Location: /project/private/adm/pages/register/register-school/list-school.page.php');
