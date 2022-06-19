@@ -169,6 +169,18 @@ class School extends Social
         }
 
         try {
+            $linkSchool = "/project/private/school/school-profile.page.php?schoolID=" . $idSchool;
+
+            $insetLink = $connection->prepare("UPDATE schools SET link_school = ?, created_at = NOW()
+                                                WHERE id = '$idSchool'");
+
+            $insetLink->bindValue(1, $linkSchool);
+            $insetLink->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
             $teacher = $this->getTeacher();
             $idSchool = $this->getId();
 
@@ -1131,7 +1143,7 @@ class School extends Social
 
             for ($j = 0; $j < count($teachers1); $j++) {
                 $t = $teachers1[$j];
-                
+
                 if ($t->id == $t0->id) {
                     array_push($t->courses, $t0->course);
                     break;
