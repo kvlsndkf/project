@@ -94,9 +94,12 @@ try {
         <div class="bg-modal-gray align-self-center my-auto form-base-question">
             <div class="container">
                 <div class="form-header">
-                    <img src="../../../../views/images/components/arrow-back.svg" class="arrow" alt="">
+                    <a href="../home/home.page.php">
+                        <img src="../../../../views/images/components/arrow-back.svg" class="arrow" alt="">
+                    </a>
                     <label class="normal-20-bold-modaltitle title-header">Pedir um heelp!</label>
                 </div>
+                <br/> <br/>
                 <form action="./controller/register-question.controller.php" method="post" enctype="multipart/form-data">
                     <label class="normal-14-medium-p">Curso</label>
                     <select name="course" id="selectCourse" class="selectCourse w-100" onchange="courseValue()">
