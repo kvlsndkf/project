@@ -39,6 +39,9 @@ try {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+
+    <!-- Include stylesheet -->
+    <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
 </head>
 
 <body>
