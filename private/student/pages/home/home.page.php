@@ -3,6 +3,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-student.c
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
 require_once('/xampp/htdocs' . '/project/classes/answers/Answer.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
 
 try {
     $question = new Question();
@@ -14,6 +15,8 @@ try {
     $studentId = $student->getStudentByUserID($idUser);
 
     $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
+
+    $listPreferences = Preference::getPreferencesUser($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -96,6 +99,21 @@ try {
                     <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
+
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id;?>">
+                            <div class="d-flex">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                                <p class="text-white">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
