@@ -556,6 +556,7 @@ width:100%!important;
 
 .ql-snow .ql-tooltip.ql-editing input[type=text] {
     background-color: var(--gray-background);
+    color: var(--white);
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
