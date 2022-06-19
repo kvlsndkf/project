@@ -212,16 +212,10 @@ try {
                                 </a>
                             </div>
 
-                            <div class="<?php echo $buttonFollow; ?> edit-profile follow-profile-div">
+                            <div class="<?php echo $buttonFollow; ?> follow-profile-div">
                                 <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
                                     <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
                                 </form>
-                            </div>
-
-                            <div class="<?php echo $buttonEdit; ?> responsive-edit-profile">
-                                <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>" class="normal-14-bold-p edit-profile-btn">
-                                    <img src="../../../../views/images/components/edit-pen.svg" alt="">
-                                </a>
                             </div>
 
                         </div>
@@ -236,6 +230,18 @@ try {
                             <?php echo $studentPerfil->course; ?> •
                             <?php echo $studentPerfil->school; ?>
                         </p>
+
+                        <div class="<?php echo $buttonEdit; ?> responsive-edit-profile margin-bot-15">
+                            <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>" class="normal-14-bold-p edit-profile-btn">
+                                Editar perfil
+                            </a>
+                        </div>
+
+                        <div class="<?php echo $buttonFollow; ?> responsive-follow-profile-div margin-bot-15">
+                            <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
+                                <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
+                            </form>
+                        </div>
 
                         <div class="profile-follows">
 
@@ -470,7 +476,7 @@ try {
                                         <p class="white-text question-text-p">
                                             Pergunta:
                                         </p>
-                                        <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="profileQuestion-<?php echo $contador2; ?>">
+                                        <span class="question-text-p white-text line-clamp-2" id="profileQuestion-<?php echo $contador2; ?>">
                                             <?php echo $row->question; ?>
                                         </span>
 
@@ -489,14 +495,20 @@ try {
                                         <!-- JS Read More Text -->
                                         <script>
                                             var textQuestion = document.getElementById('profileQuestion-<?php echo $contador2; ?>');
-                                            console.log(textQuestion.offsetHeight);
-                                            // console.log(textQuestion.offsetHeight);
+                                            // element = element.cloneNode(true);
+
+                                            textQuestion.style.visibility = "hidden";
+                                            document.body.appendChild(textQuestion);
+                                            var offsetheight = textQuestion.offsetHeight + 0;
+                                            document.body.removeChild(textQuestion);
+                                            textQuestion.style.visibility = "visible";
 
                                             var readMoreQuestion = document.getElementById('readMore-question-<?php echo $contador2; ?>');
                                             var readLessQuestion = document.getElementById('readLess-question-<?php echo $contador2; ?>');
 
+
                                             //se o tamanho da mensagem passar o tamanho da caixa de texto, ou seja, com mais de 2 linhas
-                                            if (textQuestion.scrollHeight > textQuestion.offsetHeight) {
+                                            if (textQuestion.scrollHeight > offsetheight) {
 
                                                 // Se ele estiver com o ..., precisa ter o "ler mais"
                                                 if (textQuestion.classList.contains("line-clamp-2")) {
@@ -509,6 +521,8 @@ try {
                                                 readLessQuestion.style.display = "none";
                                                 readMoreQuestion.style.display = "none";
                                             }
+                                            console.log(textQuestion.scrollHeight);
+                                            console.log(offsetheight);
                                         </script>
                                         <?php $contador2 = $contador2 + 1; ?>
 

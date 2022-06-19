@@ -639,6 +639,10 @@ p{
     transition: .5s;
 }
 
+.responsive-edit-profile{
+    display: none;
+}
+
 .profile-follows{
     display: flex;
     flex-direction: row;
@@ -665,7 +669,7 @@ p{
     color: var(--white);
 }
 
-.responsive-edit-profile{
+.responsive-follow-profile-div{
     display: none;
 }
 
@@ -788,15 +792,6 @@ p{
     .edit-profile{
         display: none;
     }
-    .edit-profile-btn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        height: 30px;
-        width: 30px;
-        border-radius: 3px;
-    }
     .xp-profile-pill{
         margin-left: 7px;
     }
@@ -835,10 +830,12 @@ p{
     .pedir-heelp-responsive{
         left: 80vw;
     }
-    /* .document-name{
-        font-size: 9px;
-        padding: 2px;
-    } */
+    .follow-profile-div{
+        display: none;
+    }
+    .responsive-follow-profile-div{
+        display: flex;
+    }
 
 }
 
