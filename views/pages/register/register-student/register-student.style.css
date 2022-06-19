@@ -146,21 +146,17 @@ body, html {
 /* BARRA DE ROLAGEM */
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 
-  ::-webkit-scrollbar-track {
-    background: #40444B;
+::-webkit-scrollbar-track {
+    background: var(--bg-list);
 }
 
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: #bfbfff;
     border-radius: 5px;
-    
-}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #8080FF;
 }
 
 /* CSS REGISTER ETEC */
@@ -551,6 +547,7 @@ width:100%!important;
 
 .ql-snow .ql-tooltip.ql-editing input[type=text] {
     background-color: var(--gray-background);
+    color: white;
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {

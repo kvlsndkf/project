@@ -250,6 +250,7 @@ body {
 
 .ql-snow .ql-tooltip.ql-editing input[type=text] {
     background-color: var(--gray-background);
+    color: var(--white);
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
@@ -442,4 +443,18 @@ body {
 .feed-hr{
     background-color: var(--gray7);
     height: 2px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-list);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+
 }
