@@ -441,8 +441,6 @@ try {
                                             <?php echo $row->question; ?>
                                         </span>
 
-                                        <?php $contador2 = $contador2 + 1; ?>
-
                                     </div>
                                 </div>
 
