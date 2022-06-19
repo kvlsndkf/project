@@ -465,6 +465,13 @@ a{
     -webkit-line-clamp: 2; */
 }
 
+.line-limit-2{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
 .d-0{
     display: none;
 }
@@ -829,6 +836,12 @@ p{
     .pedir-heelp-responsive{
         left: 78vw;
     }
+    .like-answer{
+        margin-right: 10px;
+    }
+    .functions-answer{
+        margin-right: 0;
+    }
 }
 
 @media (max-width: 280px){
@@ -838,7 +851,8 @@ p{
     .feed-bottombar{
         top: 93%;
     }
-    .avaliation-answer{
-        margin-left: 30px;
+    .like-answer{
+        margin-right: 5px;
+        margin-left: -5px;
     }
 }

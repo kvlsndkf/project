@@ -348,7 +348,7 @@ try {
                                         <p class="white-text question-text-p">
                                             Resposta:
                                         </p>
-                                        <span class="line-clamp-2 white-text question-text-p" id="profileAnswer-<?php echo $contador ?>">
+                                        <span class="line-clamp-2 white-text question-text-p" id="profileAnswer-<?php echo $contador; ?>">
                                             <?php echo $row->answer; ?>
                                         </span>
 
@@ -385,6 +385,8 @@ try {
                                                 readLessNew.style.display = "none";
                                                 readMoreNew.style.display = "none";
                                             }
+                                            console.log(questionText.scrollHeight);
+                                            console.log(questionText.offsetHeight);
                                         </script>
                                         <?php $contador = $contador + 1; ?>
                                     </div>
@@ -469,7 +471,7 @@ try {
                                         <p class="white-text question-text-p">
                                             Pergunta:
                                         </p>
-                                        <span class="line-clamp-2 white-text question-text-p" id="profileQuestion-<?php echo $contador2 ?>">
+                                        <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="profileQuestion-<?php echo $contador2; ?>">
                                             <?php echo $row->question; ?>
                                         </span>
 
@@ -488,6 +490,8 @@ try {
                                         <!-- JS Read More Text -->
                                         <script>
                                             var textQuestion = document.getElementById('profileQuestion-<?php echo $contador2; ?>');
+                                            console.log(textQuestion.offsetHeight);
+                                            // console.log(textQuestion.offsetHeight);
 
                                             var readMoreQuestion = document.getElementById('readMore-question-<?php echo $contador2; ?>');
                                             var readLessQuestion = document.getElementById('readLess-question-<?php echo $contador2; ?>');
@@ -504,8 +508,9 @@ try {
                                                 //se o texto nao tem mais de 2 linhas, nao precisa ter botão
                                             } else {
                                                 readLessQuestion.style.display = "none";
-                                                readMoreQuestion.style.display = "inline";
+                                                readMoreQuestion.style.display = "none";
                                             }
+                                            
                                         </script>
                                         <?php $contador2 = $contador2 + 1; ?>
 
