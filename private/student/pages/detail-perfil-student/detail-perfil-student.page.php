@@ -324,11 +324,11 @@ try {
                             <?php for ($i = 0; $i < count($studentAnswer); $i++) {
                                 $row = $studentAnswer[$i] ?>
 
-                                <div class="question-info">
+                                <div class="question-info-2">
                                     <p class="normal-14-medium-p white-text question-p" style="margin-right: 8px;">
                                         respondeu
                                     </p>
-                                    <a href="<?php echo $row->linkQuestion; ?>" class="normal-14-bold-p question-p text-truncate" style="display: flex; width: 80%; color: var(--blue-sky);" target="_blank">
+                                    <a href="<?php echo $row->linkQuestion; ?>" class="normal-14-bold-p question-p text-truncate" style="max-width: 80%; color: var(--blue-sky);" target="_blank">
                                         <?php echo $row->question; ?>
                                     </a>
                                     <p style="color: var(--blue-sky);">

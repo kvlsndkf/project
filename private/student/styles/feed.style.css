@@ -117,6 +117,13 @@ body{
     align-items: center;
 }
 
+.question-info-2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .question-info-text{
     display: flex;
     flex-direction: column;
@@ -481,6 +488,8 @@ a{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; */
 }
+
+
 
 .line-limit-2{
     overflow: hidden;
