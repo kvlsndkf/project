@@ -199,11 +199,23 @@ try {
                                 </div>
                             </div>
 
+                            <?php
+                            $buttonEdit = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none';
+                            $buttonFollow = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : '';
+
+                            $textButton = $checkFollow == false ? 'Seguir' : 'Deixar de seguir';
+                            ?>
 
                             <div class="<?php echo $buttonEdit; ?> edit-profile">
                                 <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>" class="normal-14-bold-p edit-profile-btn">
                                     Editar perfil
                                 </a>
+                            </div>
+
+                            <div class="<?php echo $buttonFollow; ?> edit-profile follow-profile-div">
+                                <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
+                                    <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
+                                </form>
                             </div>
 
                             <div class="<?php echo $buttonEdit; ?> responsive-edit-profile">
@@ -278,19 +290,6 @@ try {
                             </a>
                         </p>
 
-                        <?php
-                        $buttonEdit = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none';
-                        $buttonFollow = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : '';
-
-                        $textButton = $checkFollow == false ? 'Seguir' : 'Deixar de seguir';
-                        ?>
-
-
-                        <div class="<?php echo $buttonFollow; ?>">
-                            <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
-                                <input type="submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
-                            </form>
-                        </div>
                     </div>
 
                     <!-- Tabs navs -->
@@ -510,7 +509,6 @@ try {
                                                 readLessQuestion.style.display = "none";
                                                 readMoreQuestion.style.display = "none";
                                             }
-                                            
                                         </script>
                                         <?php $contador2 = $contador2 + 1; ?>
 

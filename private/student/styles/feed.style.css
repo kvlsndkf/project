@@ -202,6 +202,23 @@ a{
     background-color: var(--blue);
 }
 
+.follow-profile-submit{
+    background-color: var(--fuchsia);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 8px;
+    color: var(--white);
+    border: none;
+    font-weight: 400;
+}
+
+.follow-profile-submit:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+
 .upper-line{
     margin-left: 10px;
     margin-right: 10px;
