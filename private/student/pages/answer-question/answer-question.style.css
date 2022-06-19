@@ -1,0 +1,434 @@
+body {
+    background-color: var(--bg-list);
+}
+
+.aq-navbar {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.navbar-container {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.btn-heelp {
+    height: 40px;
+    background-color: var(--blue);
+    padding-left: 29px;
+    padding-right: 29px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.content-page-container {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-list);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.question-container {
+    background-color: var(--bg-modal);
+    width: 560px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.answer-container {
+    background-color: var(--bg-modal);
+    width: 560px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.img-container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.current-photo {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.teste-flexionavel {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.divs-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* TOP 10 */
+
+@media screen and (min-width: 280px) {
+    .question-container, .answer-container {
+        width: 100%;
+    }
+    .divs-container {
+        display: block;
+    }
+    .question-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .question-container, .answer-container {
+        width: 100%;
+    }
+    .divs-container {
+        display: block;
+    }
+    .question-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .question-container, .answer-container {
+        width: 100%;
+    }
+    .divs-container {
+        display: block;
+    }
+    .question-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .question-container, .answer-container {
+        width: 100%;
+    }
+    .divs-container {
+        display: block;
+    }
+    .question-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .question-container, .answer-container {
+        width: 530px;
+    }
+    .divs-container {
+        display: flex;
+    }
+    .question-container {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .question-container, .answer-container {
+        width: 630px;
+    }
+    .divs-container {
+        display: flex;
+    }
+    .question-container {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .question-container, .answer-container {
+        width: 640px;
+    }
+    .divs-container {
+        display: flex;
+    }
+    .question-container {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1850px) {
+    .top10 {
+        max-width: 690px;
+        height: fit-content;
+    }
+}
+
+
+/* CSS question page */
+
+/* --------------- QUILL EDITOR --------------- */
+
+/* SVG ICONS COLOR */
+
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: var(--gray7) !important;
+}
+
+.ql-snow .ql-stroke {
+    stroke: var(--gray7) !important;
+}
+
+/* PLACEHOLDER INPUT COLOR AND FONT */
+
+.ql-editor.ql-blank::before {
+    color: var(--gray7);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+/* TOOLBAR  */
+.ql-toolbar.ql-snow {
+    border-color: var(--gray1);
+    border-radius: 2px 2px 0 0;
+    background-color: var(--gray2);
+}
+
+/* TEXT AREA */
+
+.ql-container.ql-snow {
+    border-color: var(--gray1);
+    border-radius: 0 0 2px 2px;
+    background-color: var(--gray2);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+    word-break: break-all;
+}
+
+/* FORM STYLE */
+
+.form-base-question {
+    margin-bottom: 20px;
+    max-width: 500px;
+    height: fit-content;
+    padding: 40px;
+    color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.title-question {
+    margin-bottom: 28px;
+}
+
+.ql-snow .ql-tooltip {
+    background-color: var(--gray1);
+    color: white;
+}
+
+.ql-snow .ql-tooltip.ql-editing input[type=text] {
+    background-color: var(--gray-background);
+}
+
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+    background-color: var(--gray1);
+}
+
+/* CSS Global */
+
+/* Início */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+  
+body {
+     font-size: 100%;
+     height: 100%;
+}
+
+/* Raíz do Arquivo */
+:root{
+
+    /* Cor */
+    --white: #FFFFFF;
+    --gray1: #202225;
+    --gray2: #303339;
+    --gray3: #40444B;
+    --gray4: #4F5660;
+    --gray5: #72767D;
+    --gray6: #ADB0B3;
+    --gray7: #DCDDDE;
+    --gray-background: #050607;
+    --bg-modal: #36393F;
+    --bg-list: #2F3136;
+    --silver: #9B9B9B;
+    --bronze: #A97142;
+    --fuchsia: #EB459F;
+    --red: #ED4245;
+    --red-alert: #6A3233;
+    --yellow: #FFC619;
+    --ocean: #29CC7A;
+    --green: #3BA561;
+    --blue-sky: #00AFF4;
+    --sea-blue: #3F70DD;
+    --deep-blue: #176E90;
+    --little-blue: #5883F2;
+    --primary: #8080FF;
+    --blue: #404EED;
+    --purple-light: #B377F3;
+
+    /* Gradientes */
+    --gradient-purple: linear-gradient(180deg, #CD83CB 0%, #B674F1 100%);
+    --gradient-little-blue: linear-gradient(180deg, #9FA9FF 0%, #DBF3FA 100%);
+    --gradient-blue: linear-gradient(90deg, #3F70DD 0%, #B377F3 100%);
+    
+    /* Tamanho */
+    --h3: 40px;
+    --h4: 32px;
+    --h5: 22px;
+    --h6: 20px;
+    --title: 18px;
+    --p: 16px;
+    --small: 14px;
+    --tiny: 12px;
+    --miniscule: 10px;
+    --little-tiny: 8px;
+
+    /* Line Height(Caixa Alta) */
+    --lh-bigger: 48px;
+    --lh-big: 40px;
+    --lh-medium: 24px;
+    --lh-little: 18px;
+    --lh-tiny: 16px; 
+    --lh-miniscule: 12px;
+    --lh-little-tiny: 9px;
+
+    /* Peso */
+    --regular: 400;
+    --medium: 500;
+    --semi-bold: 600;
+    --bold: 700;
+    --black: 800;
+
+    /* Fontes */
+    --gintoNord-medium: 'GintoNord Medium';
+    --gintoNord-bold: 'GintoNord Bold';
+    --gintoNord-thin: 'GintoNord Thin';
+    --gintoNormal-medium: 'GintoNormal Medium';
+    --gintoNormal-bold: 'GintoNormal Bold';
+    --gintoNormal-thin: 'GintoNormal Thin';
+    --whitney-medium: 'Whitney Medium';
+    --whitney-bold: 'Whitney Bold';
+    --whitney-light: 'Whitney Light';
+    --roboto: 'Roboto';
+}
+
+/* Referenciamentos das Fontes */
+
+/* Fontes GintoNord */
+@font-face {
+    font-family: 'GintoNord Medium';
+    src: url(../../../../views/styles/fonts/ABCGintoNord-Medium-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNord Bold';
+    src: url(../../../../views/styles/fonts/ABCGintoNord-Bold-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNord Thin';
+    src: url(../../../../views/styles/fonts/ABCGintoNord-Thin-Trial.otf);
+}
+
+/* Fontes GintoNormal */
+@font-face {
+    font-family: 'GintoNormal Medium';
+    src: url(../../../../views/styles/fonts/ABCGintoNormal-Medium-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Bold';
+    src: url(../../../../views/styles/fonts/ABCGintoNormal-Bold-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Thin';
+    src: url(../../../../views/styles/fonts/ABCGintoNormal-Thin-Trial.otf);
+}
+
+/* Fontes Whitney */
+@font-face {
+    font-family: 'Whitney Medium';
+    src: url(../../../../views/styles/fonts/whitneymedium.otf);
+}
+@font-face {
+    font-family: 'Whitney Bold';
+    src: url(../../../../views/styles/fonts/whitneybold.otf);
+}
+@font-face {
+    font-family: 'Whitney Light';
+    src: url(../../../../views/styles/fonts/whitneylight.otf);
+}
+
+.photo {
+    display: none;
+}
+
+.document-question{
+    border: 1px solid var(--gray5);
+    background-color: var(--gray3);
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 3px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.margin-60{
+    margin-left: 60px;
+}
+
+.download-file-button{
+    padding: 18px;
+}
+
+.download-file-button:hover{
+    transform: translateY(15px);
+    transition: .5s;
+}
+
+.document-icon{
+    padding: 18px;
+}
+
+.document-name{
+    width: 100%;
+    height: 60px;
+    display: inline-block;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid var(--gray5);
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; */
+}
