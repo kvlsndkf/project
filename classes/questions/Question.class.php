@@ -219,7 +219,7 @@ class Question
         }
     }
 
-    private function buildQuestionList($result)
+    public function buildQuestionList($result)
     {
         $questions = [];
 

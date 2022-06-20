@@ -63,6 +63,9 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../styles/feed.style.css">
 
+    <!-- Estilo do modal de denunciar -->
+    <link rel="stylesheet" href="../home/modal.css">
+
 </head>
 
 <body>
@@ -143,7 +146,7 @@ try {
                             </a>
                             <div class=" pedir-heelp-button-a">
                                 <a href="../../../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a">
+                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
                                         <img src="../../../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
                                     </div>
@@ -337,6 +340,7 @@ try {
                             <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $listDetailsQuestions->id; ?>">
                                 <?php echo $listDetailsQuestions->question; ?>
                             </span>
+                            
                             <button class="read-btn-question normal-14-bold-p" id="readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>" onclick="document.querySelector('#questionText-<?php echo $listDetailsQuestions->id; ?>').classList.remove('line-clamp-2');
                             document.querySelector('#readLess-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'inline';
                             document.querySelector('#readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'none';">
@@ -425,71 +429,76 @@ try {
 
                 <!-- Modal Question -->
                 <div class="modal fade" id="modal-<?php echo $listDetailsQuestions->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $listDetailsQuestions->id; ?>" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel-<?php echo $listDetailsQuestions->id; ?>">Relatar um problema</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Nos ajude a entender o problema, o que está acontecendo com esse post?
+                <div class="modal-dialog">
+                        <div class="modal-content cor">
+                            <div class="container containerMO">
+                                <div class="modal-header border-bottom-0">
+                                    <h5 class="modal-title" id="modalLabel-<?php echo $listDetailsQuestions->id; ?>">Relatar um problema</h5>
+                                    <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="whitney-16-medium-text styleCor"> Nos ajude a entender o problema, o que está acontecendo com esse post? </p>
 
-                                <form action="../question/controller/denunciation-question.controller.php" method="post">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $listDetailsQuestions->id; ?>" value="Não tenho interesse nesse post" required>
-                                        <label class="form-check-label" for="radio1-<?php echo $listDetailsQuestions->id; ?>">
-                                            Não tenho interesse nesse post
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $listDetailsQuestions->id; ?>" value="É suspeito ou está enviando span">
-                                        <label class="form-check-label" for="radio2-<?php echo $listDetailsQuestions->id; ?>">
-                                            É suspeito ou está enviando span
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $listDetailsQuestions->id; ?>" value="É abusivo ou nocivo">
-                                        <label class="form-check-label" for="radio3-<?php echo $listDetailsQuestions->id; ?>">
-                                            É abusivo ou nocivo
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $listDetailsQuestions->id; ?>" value="As informações são enganosas">
-                                        <label class="form-check-label" for="radio4-<?php echo $listDetailsQuestions->id; ?>">
-                                            As informações são enganosas
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $listDetailsQuestions->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
-                                        <label class="form-check-label" for="radio5-<?php echo $listDetailsQuestions->id; ?>">
-                                            Manifesta intenções de automutilação ou suicídio
-                                        </label>
-                                    </div>
+                                    <form action="../question/controller/denunciation-question.controller.php" method="post">
+                                        <div class="form-check questionStyle">
+                                            <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $listDetailsQuestions->id; ?>" value="Não tenho interesse nesse post" required>
+                                            <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $listDetailsQuestions->id; ?>">
+                                                Não tenho interesse nesse post
+                                            </label>
+                                        </div>
+                                        <div class="border-bottom"></div>
+                                        <div class="form-check questionStyle">
+                                            <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $listDetailsQuestions->id; ?>" value="É suspeito ou está enviando span">
+                                            <label class="form-check-label normal-12-medium-tiny styleCor" for="radio2-<?php echo $listDetailsQuestions->id; ?>">
+                                                É suspeito ou está enviando span
+                                            </label>
+                                        </div>
+                                        <div class="border-bottom"></div>
+                                        <div class="form-check questionStyle">
+                                            <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $listDetailsQuestions->id; ?>" value="É abusivo ou nocivo">
+                                            <label class="form-check-label normal-12-medium-tiny styleCor" for="radio3-<?php echo $listDetailsQuestions->id; ?>">
+                                                É abusivo ou nocivo
+                                            </label>
+                                        </div>
+                                        <div class="border-bottom"></div>
+                                        <div class="form-check questionStyle">
+                                            <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $listDetailsQuestions->id; ?>" value="As informações são enganosas">
+                                            <label class="form-check-label normal-12-medium-tiny styleCor" for="radio4-<?php echo $listDetailsQuestions->id; ?>">
+                                                As informações são enganosas
+                                            </label>
+                                        </div>
+                                        <div class="border-bottom"></div>
+                                        <div class="form-check questionStyle">
+                                            <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $listDetailsQuestions->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                            <label class="form-check-label normal-12-medium-tiny styleCor" for="radio5-<?php echo $listDetailsQuestions->id; ?>">
+                                                Manifesta intenções de automutilação ou suicídio
+                                            </label>
+                                        </div>
+                                        <div class="border-bottom"></div>
+                                        <div>
+                                            <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
+                                            <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                            <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
+                                            <input type="hidden" name="questionId" id="" value="<?php echo $listDetailsQuestions->id; ?>">
+                                        </div>
 
-                                    <div>
-                                        <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
-                                        <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                        <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
-                                        <input type="hidden" name="questionId" id="" value="<?php echo $listDetailsQuestions->id; ?>">
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" name="register" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </form>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar" name="register">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <hr>
+                <hr class="detail-question-hr">
 
                 <p class="normal-18-bold-title-2 white-text question-p">
                     Respostas
                 </p>
 
-                <hr>
+                <hr class="detail-question-hr">
 
                 <?php $styleListAnswers = !empty($listAnswers) ? '' : 'd-none';
 
@@ -688,65 +697,70 @@ try {
 
                         <!-- Modal Answer-->
                         <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabel-<?php echo $row->id; ?>">Relatar um problema</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Nos ajude a entender o problema, o que está acontecendo com esse post?
+                        <div class="modal-dialog">
+                                <div class="modal-content cor">
+                                    <div class="container containerMO">
+                                        <div class="modal-header border-bottom-0">
+                                            <h5 class="modal-title" id="modalLabel-<?php echo $row->id; ?>">Relatar um problema</h5>
+                                            <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="whitney-16-medium-text styleCor"> Nos ajude a entender o problema, o que está acontecendo com esse post? </p>
 
-                                        <form action="../answer-question/controller/denunciation-answer.controller.php" method="post">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
-                                                <label class="form-check-label" for="radio1-<?php echo $row->id; ?>">
-                                                    Não tenho interesse nesse post
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $row->id; ?>" value="É suspeito ou está enviando span">
-                                                <label class="form-check-label" for="radio2-<?php echo $row->id; ?>">
-                                                    É suspeito ou está enviando span
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $row->id; ?>" value="É abusivo ou nocivo">
-                                                <label class="form-check-label" for="radio3-<?php echo $row->id; ?>">
-                                                    É abusivo ou nocivo
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $row->id; ?>" value="As informações são enganosas">
-                                                <label class="form-check-label" for="radio4-<?php echo $row->id; ?>">
-                                                    As informações são enganosas
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $row->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
-                                                <label class="form-check-label" for="radio5-<?php echo $row->id; ?>">
-                                                    Manifesta intenções de automutilação ou suicídio
-                                                </label>
-                                            </div>
+                                            <form action="../answer-question/controller/denunciation-answer.controller.php" method="post">
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $row->id; ?>">
+                                                        Não tenho interesse nesse post
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $row->id; ?>" value="É suspeito ou está enviando span">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio2-<?php echo $row->id; ?>">
+                                                        É suspeito ou está enviando span
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $row->id; ?>" value="É abusivo ou nocivo">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio3-<?php echo $row->id; ?>">
+                                                        É abusivo ou nocivo
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $row->id; ?>" value="As informações são enganosas">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio4-<?php echo $row->id; ?>">
+                                                        As informações são enganosas
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $row->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio5-<?php echo $row->id; ?>">
+                                                        Manifesta intenções de automutilação ou suicídio
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div>
+                                                    <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
+                                                    <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $creatorAnswerID; ?>">
+                                                    <input type="hidden" name="answerId" id="" value="<?php echo $row->id; ?>">
+                                                </div>
 
-                                            <div>
-                                                <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
-                                                <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                                <input type="hidden" name="denounciedId" id="" value="<?php echo $creatorAnswerID; ?>">
-                                                <input type="hidden" name="answerId" id="" value="<?php echo $row->id; ?>">
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" name="register" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </form>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar" name="register">Enviar</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <hr>
+                        <hr class="detail-question-hr">
                     <?php } ?>
                 </div>
 

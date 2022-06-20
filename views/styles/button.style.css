@@ -48,6 +48,26 @@ Outras coisas como: cor, e posição, devem ser adicionados a parte. */
     transition-duration: 0.3s;
 }
 
+.photo {
+    display: none;
+}
+
+.add-arch {
+    background-color: var(--purple-light);
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    color: var(--white);
+}
+
+.add-arch:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+}
 
 
 

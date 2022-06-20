@@ -39,6 +39,14 @@
     background-color: var(--bg-modal);
 }
 
+.bg-gray1 {
+    background-color: var(--gray1);
+}
+
+.bg-list {
+    background-color: var(--bg-list);
+}
+
 .bg-input-gray {
     background-color: #303339;
 }
@@ -53,6 +61,10 @@
 
 .red-title {
     color: var(--red);
+}
+
+.gray7-title {
+    color: var(--gray7);
 }
 
 .blue-title {

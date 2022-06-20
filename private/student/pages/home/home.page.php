@@ -3,6 +3,8 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-student.c
 require_once('/xampp/htdocs' . '/project/classes/questions/Question.class.php');
 require_once('/xampp/htdocs' . '/project/classes/answers/Answer.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
     $question = new Question();
@@ -14,6 +16,15 @@ try {
     $studentId = $student->getStudentByUserID($idUser);
 
     $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
+
+    $listPreferences = Preference::getPreferencesUser($idUser);
+
+    $ranking = new Ranking();
+    $colocationTotal = $ranking->colocationTotal();
+    $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+
+    $colocationFollowers = $ranking->colocationFllowers($idUser);
+    $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -48,11 +59,21 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../styles/feed.style.css">
 
+    <!-- Estilo do modal de denunciar -->
+    <link rel="stylesheet" href="./modal.css">
+
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
 
     <!-- JavaScript -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
 
 </head>
 
@@ -97,6 +118,21 @@ try {
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
 
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+                            <div class="d-flex">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                                <p class="text-white">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
+
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
                             <div class="leftbar-button-div">
@@ -134,7 +170,7 @@ try {
                             </a>
                             <div class=" pedir-heelp-button-a">
                                 <a href="../../../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a">
+                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
                                         <img src="../../../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
                                     </div>
@@ -410,7 +446,6 @@ try {
                                 <p class="normal-14-bold-p white-text question-p">
                                     <?php echo $totalAnswersOfQuestion; ?>
                                 </p>
-
                             </div>
 
                             <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
@@ -431,58 +466,67 @@ try {
                     <!-- Modal -->
                     <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel-<?php echo $row->id; ?>">Relatar um problema</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Nos ajude a entender o problema, o que está acontecendo com esse post?
+                            <div class="modal-content cor">
+                                <div class="container containerMO">
+                                    <div class="modal-header border-bottom-0">
+                                        <h5 class="modal-title" id="modalLabel-<?php echo $row->id; ?>">Relatar um problema</h5>
+                                        <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="whitney-16-medium-text styleCor"> Nos ajude a entender o problema, o que está acontecendo com esse post? </p>
 
-                                    <form action="../question/controller/denunciation-question.controller.php" method="post">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
-                                            <label class="form-check-label" for="radio1-<?php echo $row->id; ?>">
-                                                Não tenho interesse nesse post
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $row->id; ?>" value="É suspeito ou está enviando span">
-                                            <label class="form-check-label" for="radio2-<?php echo $row->id; ?>">
-                                                É suspeito ou está enviando span
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $row->id; ?>" value="É abusivo ou nocivo">
-                                            <label class="form-check-label" for="radio3-<?php echo $row->id; ?>">
-                                                É abusivo ou nocivo
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $row->id; ?>" value="As informações são enganosas">
-                                            <label class="form-check-label" for="radio4-<?php echo $row->id; ?>">
-                                                As informações são enganosas
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $row->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
-                                            <label class="form-check-label" for="radio5-<?php echo $row->id; ?>">
-                                                Manifesta intenções de automutilação ou suicídio
-                                            </label>
-                                        </div>
+                                        <form action="../question/controller/denunciation-question.controller.php" method="post">
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $row->id; ?>">
+                                                    Não tenho interesse nesse post
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $row->id; ?>" value="É suspeito ou está enviando span">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio2-<?php echo $row->id; ?>">
+                                                    É suspeito ou está enviando span
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $row->id; ?>" value="É abusivo ou nocivo">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio3-<?php echo $row->id; ?>">
+                                                    É abusivo ou nocivo
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $row->id; ?>" value="As informações são enganosas">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio4-<?php echo $row->id; ?>">
+                                                    As informações são enganosas
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $row->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio5-<?php echo $row->id; ?>">
+                                                    Manifesta intenções de automutilação ou suicídio
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div>
+                                                <?php
+                                                $creatorQuestion = $question->getCreatorQuestionById($row->id);
+                                                $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
+                                                ?>
+                                                <input type="hidden" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
+                                                <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                                <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
+                                                <input type="hidden" name="questionId" id="" value="<?php echo $row->id; ?>">
+                                            </div>
 
-                                        <div>
-                                            <input type="hidden" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
-                                            <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                            <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
-                                            <input type="hidden" name="questionId" id="" value="<?php echo $row->id; ?>">
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" name="register" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </form>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar" name="register">Enviar</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -505,6 +549,127 @@ try {
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
             </ul>
+
+            <div>
+                <!-- Tabs navs -->
+                <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>
+                    </li>
+                </ul>
+                <!-- Tabs navs -->
+
+                <!-- Tabs content -->
+                <div class="tab-content" id="ex2-content">
+                    <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+
+                        <div>
+                            Sua posição é <?php echo $positionRankingAll; ?>º
+                        </div>
+
+                        <!-- Ranking total ⬇️ -->
+                        <?php for ($i = 0; $i < count($colocationTotal); $i++) {
+                            $row = $colocationTotal[$i];
+
+                            if ($i === 0) {
+                                $displayMedal = 'd-block';
+                                $displayNumber = 'd-none';
+                                $iconMedal = '../../images/icons/gold.svg';
+                                $badgeColor = 'badge rounded-pill bg-danger';
+                            } else if ($i === 1) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/silver.svg';
+                                $badgeColor = 'badge rounded-pill bg-info';
+                            } else if ($i === 2) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/bronze.svg';
+                                $badgeColor = 'badge rounded-pill bg-warning';
+                            } else if ($i === 3) {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '4º';
+                            } else {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '5º';
+                            }
+                        ?>
+                            <div class="<?php echo $displayMedal; ?>">
+                                <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row->name; ?>">
+                            </div>
+                            <div class="<?php echo $displayNumber; ?>">
+                                <?php echo $number; ?>
+                            </div>
+                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" width="40">
+                            <?php echo $row->name; ?>
+                            <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
+
+                            <hr>
+                        <?php } ?>
+
+                    </div>
+                    <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+
+                        <div>
+                            Sua posição é <?php echo $positionBetweenFollowers; ?>º
+                        </div>
+
+                        <!-- Ranking seguindo ⬇️ -->
+                        <?php for ($i = 0; $i < count($colocationFollowers); $i++) {
+                            $row = $colocationFollowers[$i];
+
+                            if ($i === 0) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/gold.svg';
+                                $badgeColor = 'badge rounded-pill bg-danger';
+                            } else if ($i === 1) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/silver.svg';
+                                $badgeColor = 'badge rounded-pill bg-info';
+                            } else if ($i === 2) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/bronze.svg';
+                                $badgeColor = 'badge rounded-pill bg-warning';
+                            } else if ($i === 3) {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '4º';
+                            } else {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '5º';
+                            }
+                        ?>
+                            <div class="<?php echo $displayMedal; ?>">
+                                <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row['first_name']; ?>">
+                            </div>
+                            <div class="<?php echo $displayNumber; ?>">
+                                <?php echo $number; ?>
+                            </div>
+                            <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" width="40">
+                            <?php echo $row['first_name']; ?>
+                            <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
+
+                            <hr>
+                        <?php } ?>
+
+                    </div>
+                </div>
+                <!-- Tabs content -->
+            </div>
+
             <p class="whitney-12-regular-tiny copyright-text">
                 Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
             </p>
@@ -533,6 +698,9 @@ try {
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
 
     <!-- JS Modal Excluir ⬇️ -->
     <script src="../../js/delete-question.js"></script>
