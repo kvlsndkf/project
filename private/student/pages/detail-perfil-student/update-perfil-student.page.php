@@ -28,9 +28,87 @@ try {
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Link dos estilos gerais -->
+    <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/font-format.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/style.global.css">
+
+    <!-- Link do estilo de editar -->
+    <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
+    <link rel="stylesheet" href="../../../adm/pages/register/register.styles.css">
+    <link rel="stylesheet" href="../../styles/feed.style.css">
 </head>
 
 <body>
+
+    <div class="wrapper">
+        <nav class="feed-leftbar">
+
+            <div class="leftbar-top">
+
+                <a href="#" class="feed-logo">
+                    <img src="../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
+                    <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
+                </a>
+                <ul class="feed-ul">
+
+                    <li class="sidebar-li leftbar-li">
+                        <a href="../home/home.page.php" class="sidebar-a-items leftbar-a">
+                            <img class="leftbar-icon" src="../../../../views/images/components/dashboard-img.svg" alt="">
+                            <p class="normal-18-bold-title-2 leftbar-text">Feed</p>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-li leftbar-li">
+                        <a href="#" class="sidebar-a leftbar-a">
+                            <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
+                            <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-li leftbar-li">
+                        <a href="#" class="sidebar-a leftbar-a">
+                            <img class="leftbar-icon" src="../../../../views/images/components/notifications-icon.svg" alt="">
+                            <p class="leftbar-text normal-18-bold-title-2">Notificações</p>
+                        </a>
+                        <hr class="sidebar-linha leftbar-linha">
+                    </li>
+
+                    <li class="sidebar-li leftbar-li">
+                        <p class="leftbar-categoria normal-14-bold-p">Para você</p>
+                    </li>
+
+                    <li class="sidebar-li leftbar-li">
+                        <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
+                            <div class="leftbar-button-div">
+                                <p class="sidebar-button-text">Pedir um heelp!</p>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </nav>
+        <nav class="feed-leftbar feed-rightbar">
+            <ul class="rightbar-ul">
+                <li class="rightbar-li">
+                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+                </li>
+                <hr class="sidebar-linha leftbar-linha">
+                <li class="rightbar-li">
+                    <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
+                </li>
+            </ul>
+            <p class="whitney-12-regular-tiny copyright-text">
+                Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
+            </p>
+        </nav>
+    </div>
     <!-- Mensagem de erro ⬇️ -->
     <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
 
@@ -170,7 +248,7 @@ try {
         </div>
 
         <p>
-            <input type="button" value="Cancelar"  onclick="history.go(-1)">
+            <input type="button" value="Cancelar" onclick="history.go(-1)">
             <input type="submit" name="update" value="Atualizar perfil">
         </p>
     </form>
