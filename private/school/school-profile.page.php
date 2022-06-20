@@ -34,6 +34,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $profileSchool->name; ?> | Heelp!</title>
+    <link rel="shortcut icon" href="../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -45,174 +46,319 @@ try {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../style/modal-about.style.css">
+    <link rel="stylesheet" href="../adm/pages/register/register.styles.css">
+    <link rel="stylesheet" href="../adm/pages/register/registration panel/registration-panel-style.css">
+    <link rel="stylesheet" href="../student/styles/feed.style.css">
+
 </head>
 
 <body>
-    <!-- Barra de pesquisa -->
-    <form action="../student/pages/search/search.page.php" method="get">
-        <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off">
-        <input type="submit" value="pesquisar">
-    </form>
 
-    <!-- Perfil do canto -->
-    <div>
-        <p>
-            <a href="../../../logout/logout.controller.php">
-                sair
-            </a>
+    <div class="wrapper">
 
-            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
-                perfil
-            </a>
+        <nav class="feed-leftbar">
 
-            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank">
-                configurações
-            </a>
-        </p>
+            <div class="leftbar-top">
 
-        <p>
-            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
-                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="100">
-            </a>
-        </p>
+                <a href="#" class="feed-logo">
+                    <img src="../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
+                    <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
+                </a>
 
-        <p>
-            <?php echo $studentPerfil->xp; ?>
-            xp
-        </p>
+                <ul class="feed-ul">
 
-        <p>
-            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
-                <?php echo $studentPerfil->firstName;
-                echo " " . $studentPerfil->surname; ?>
-            </a>
-        </p>
-    </div>
+                    <li class="sidebar-li leftbar-li">
+                        <a href="../student/pages/home/home.page.php" class="sidebar-a-items leftbar-a">
+                            <img class="leftbar-icon" src="../../views/images/components/dashboard-img.svg" alt="">
+                            <p class="normal-18-bold-title-2 leftbar-text">Feed</p>
+                        </a>
+                    </li>
 
-    <div>
-        <img src="<?php echo $profileSchool->photo; ?>" alt="<?php echo $profileSchool->name; ?>">
-    </div>
+                    <li class="sidebar-li leftbar-li">
+                        <a href="#" class="sidebar-a leftbar-a">
+                            <img class="leftbar-icon" src="../../views/images/components/following-icon.svg" alt="">
+                            <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
+                        </a>
+                    </li>
 
-    <div>
-        <?php echo $profileSchool->name; ?> <br>
-        <?php echo $profileSchool->address; ?>, São Paulo
-    </div>
+                    <li class="sidebar-li leftbar-li">
+                        <a href="#" class="sidebar-a leftbar-a">
+                            <img class="leftbar-icon" src="../../views/images/components/notifications-icon.svg" alt="">
+                            <p class="leftbar-text normal-18-bold-title-2">Notificações</p>
+                        </a>
+                        <hr class="sidebar-linha leftbar-linha">
+                    </li>
 
-    <div>
-        <?php echo $studentsInSchool[0]['total']; ?>
-        alunos
-    </div>
+                    <li class="sidebar-li leftbar-li">
+                        <p class="leftbar-categoria normal-14-bold-p">Para você</p>
+                    </li>
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
 
-    <div>
-        <?php echo $teachersInSchool; ?>
-        professores
-    </div>
+                        <a href="../student/pages/preferences/preference.page.php?preference=<?php echo $row->id; ?>" class="preferences-a">
+                            <div class="d-flex question-info margin-bot-15">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
 
-    <p>
-        <?php $styleLinkedin = empty($profileSchool->linkedin) ? 'd-none' : ''; ?>
-        <a href="<?php echo $profileSchool->linkedin; ?>" class="<?php echo $styleLinkedin; ?>" target="_blank">
-            <img src="../adm/images/icons/linkedin.svg" alt="linkedin">
-        </a>
+                    <?php } ?>
 
-        <?php $styleGithub = empty($profileSchool->github) ? 'd-none' : ''; ?>
-        <a href="<?php echo $profileSchool->github; ?>" class="<?php echo $styleGithub; ?>" target="_blank">
-            <img src="../adm/images/icons/github.svg" alt="github">
-        </a>
+                    <li class="sidebar-li leftbar-li">
+                        <a href="../student/pages/question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
+                            <div class="leftbar-button-div">
+                                <p class="sidebar-button-text">Pedir um heelp!</p>
+                            </div>
+                        </a>
+                    </li>
 
-        <?php $styleFacebook = empty($profileSchool->facebook) ? 'd-none' : ''; ?>
-        <a href="<?php echo $profileSchool->facebook; ?>" class="<?php echo $styleFacebook; ?>" target="_blank">
-            <img src="../adm/images/icons/facebook.svg" alt="facebook">
-        </a>
+                </ul>
 
-        <?php $styleInstagram = empty($profileSchool->instagram) ? 'd-none' : ''; ?>
-        <a href="<?php echo $profileSchool->instagram; ?>" class="<?php echo $styleInstagram; ?>" target="_blank">
-            <img src="../adm/images/icons/instagram.svg" alt="instagram">
-        </a>
-    </p>
 
-    <!-- Lista de preferências ⬇️ -->
-    <?php for ($i = 0; $i < count($listPreferences); $i++) {
-        $row = $listPreferences[$i] ?>
-
-        <a href="../student/pages/preferences/preference.page.php?preference=<?php echo $row->id; ?>">
-            <div class="d-flex">
-                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
-                <p>
-                    <?php echo $row->name; ?>
-                </p>
             </div>
-        </a>
 
-    <?php } ?>
+            <div class="leftbar-bottom">
 
-    <!-- Tabs navs -->
-    <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Sobre</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Cursos</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Professores</a>
-        </li>
-    </ul>
-    <!-- Tabs navs -->
+                <div class="bottom-header">
 
-    <!-- Tabs content -->
-    <div class="tab-content" id="ex2-content">
-        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
-            <label for="">Sobre a Etec</label>
+                    <a href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                        <div class="bottom-photo-div">
+                            <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" class="bottom-photo-img">
+                        </div>
+                    </a>
 
-            <br>
-            <?php echo $profileSchool->about; ?>
-        </div>
-        <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                    <!-- Mais Opções -->
+                    <div class="drop-edit-exclud-about drop-leftbar">
+                        <img src="../../views/images/components/three-dots.svg">
 
-            <!-- Lista de cursos ⬇️ -->
-            <label for="">Cursos</label>
-            <?php for ($i = 0; $i < count($coursesInSchool); $i++) {
-                $row = $coursesInSchool[$i] ?>
+                        <!-- Parte do Update e Delete -->
+                        <div class="drop-edit-exclud-content-about drop-leftbar-content">
+                            <a href="../student/pages/detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank" class="drop-edit-exclud-a">
+                                <div class="drop-edit-exclud-option-about">
+                                    <img src="../../views/images/components/settings-icon.svg" class="drop-edit-exclud-img">
+                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Configurações</p>
+                                </div>
+                            </a>
+                            <div class=" pedir-heelp-button-a">
+                                <a href="../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
+                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
+                                        <img src="../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
+                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
 
-                <div>
-                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
-                    <?php echo $row->name; ?>
-                </div>
-
-                <div>
-                    <?php echo $row->about; ?>
-                </div>
-
-                <hr>
-            <?php } ?>
-        </div>
-        <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
-
-            <!-- Lista de professores ⬇️ -->
-            <label for="">Professores</label>
-            <?php for ($i = 0; $i < count($listTeachersInSchool); $i++) {
-                $row = $listTeachersInSchool[$i] ?>
-
-                <div>
-                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" width="80">
-                    <div>
-                        <?php echo $row->name; ?>
-                    </div>
-
-                    <div>
-                        <?php
-                        foreach ($row->courses as $value) {
-                            echo $value . " • ";
-                        }
-                        ?>
                     </div>
                 </div>
 
-                <hr>
-            <?php } ?>
+                <div class="bottom-xp-div">
+                    <p class="normal-12-medium-tiny white-text bottom-xp-text">
+                        <?php echo $studentPerfil->xp; ?>
+                        xp
+                    </p>
+                </div>
+
+
+                <a class="normal-16-bold-title-3 white-text bottom-name" href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                    <?php echo $studentPerfil->firstName;
+                    echo " " . $studentPerfil->surname; ?>
+                </a>
+
+            </div>
+
+        </nav>
+
+        <div class="corpo-feed">
+
+            <div class="feed-div">
+
+
+                <!-- Barra de pesquisa -->
+                <form action="../student/pages/search/search.page.php" method="get" class="search-form">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off" class="search-input">
+                    <input type="submit" value="🔍" class="search-submit">
+                </form>
+
+                <div class="profile-div">
+
+                    <div class="profile-top"></div>
+
+                    <div style="padding: 20px;">
+                        <img src="<?php echo $profileSchool->photo; ?>" alt="<?php echo $profileSchool->name; ?>" class="profile-pic-img margin-bot-15">
+
+                        <p class="white-text question-p normal-16-bold-title-3">
+                            <?php echo $profileSchool->name; ?>
+                        </p>
+                        <p class="question-about margin-bot-15 normal-12-medium-tiny">
+                            <?php echo $profileSchool->address; ?>, São Paulo
+                        </p>
+
+                        <div class="question-info margin-bot-15">
+                            <div class="profile-follows profile-follows-a">
+                                <p class="normal-14-bold-p white-text question-p">
+                                    <?php echo $studentsInSchool[0]['total']; ?>&nbsp
+                                </p>
+                                <p class="question-about normal-12-medium-tiny">
+                                    alunos
+                                </p>
+                            </div>
+
+                            <div class="profile-follows profile-follows-a">
+                                <p class="normal-14-bold-p white-text question-p">
+                                    <?php echo $teachersInSchool; ?>&nbsp
+                                </p>
+                                <p class="question-about normal-12-medium-tiny">
+                                    professores
+                                </p>
+                            </div>
+                        </div>
+
+                        <p>
+                            <?php $styleLinkedin = empty($profileSchool->linkedin) ? 'd-none' : ''; ?>
+                            <a href="<?php echo $profileSchool->linkedin; ?>" class="<?php echo $styleLinkedin; ?>" target="_blank">
+                                <img src="../adm/images/icons/linkedin.svg" alt="linkedin">
+                            </a>
+
+                            <?php $styleGithub = empty($profileSchool->github) ? 'd-none' : ''; ?>
+                            <a href="<?php echo $profileSchool->github; ?>" class="<?php echo $styleGithub; ?>" target="_blank">
+                                <img src="../adm/images/icons/github.svg" alt="github">
+                            </a>
+
+                            <?php $styleFacebook = empty($profileSchool->facebook) ? 'd-none' : ''; ?>
+                            <a href="<?php echo $profileSchool->facebook; ?>" class="<?php echo $styleFacebook; ?>" target="_blank">
+                                <img src="../adm/images/icons/facebook.svg" alt="facebook">
+                            </a>
+
+                            <?php $styleInstagram = empty($profileSchool->instagram) ? 'd-none' : ''; ?>
+                            <a href="<?php echo $profileSchool->instagram; ?>" class="<?php echo $styleInstagram; ?>" target="_blank">
+                                <img src="../adm/images/icons/instagram.svg" alt="instagram">
+                            </a>
+                        </p>
+
+                    </div>
+
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="normal-14-bold-p question-p nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Sobre</a>
+                        </li>
+                        <li class="normal-14-bold-p question-p nav-item" role="presentation">
+                            <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Cursos</a>
+                        </li>
+                        <li class="normal-14-bold-p question-p nav-item" role="presentation">
+                            <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Professores</a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content padding-20" id="ex2-content">
+                        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+
+                            <label class="normal-14-bold-p question-p" style="color: var(--gray6);">Sobre a Etec</label>
+
+                            <p class="white-text whitney-16-medium-text about-school">
+                                <?php echo $profileSchool->about; ?>
+                            </p>
+
+                        </div>
+                        <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+
+                            <!-- Lista de cursos ⬇️ -->
+                            <label class="normal-14-bold-p question-p margin-bot-15" style="color: var(--gray6);">Cursos</label>
+                            <?php for ($i = 0; $i < count($coursesInSchool); $i++) {
+                                $row = $coursesInSchool[$i] ?>
+
+                                <div class="question-info margin-bot-15">
+                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                                    <p class="normal-16-bold-title-3 white-text question-p" style="margin-left: 10px;">
+                                        <?php echo $row->name; ?>
+                                    </p>
+
+                                </div>
+
+                                <p class="white-text whitney-16-medium-text about-school">
+                                    <?php echo $row->about; ?>
+                                </p>
+
+                                <hr class="detail-question-hr" style="margin-bottom: 30px; margin-top: 30px;">
+                            <?php } ?>
+                        </div>
+                        <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
+
+                            <!-- Lista de professores ⬇️ -->
+                            <label class="normal-14-bold-p question-p margin-bot-15" style="color: var(--gray6);">Professores</label>
+                            <?php for ($i = 0; $i < count($listTeachersInSchool); $i++) {
+                                $row = $listTeachersInSchool[$i] ?>
+
+                                <div class="question-info">
+                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" width="80" style="margin-right: 8px; border-radius: 3px;">
+                                    <div>
+                                        <p class="normal-16-bold-title-3 white-text question-p">
+                                            <?php echo $row->name; ?>
+                                        </p>
+
+                                        <p class="normal-12-medium-tiny" style="color: var(--gray5);">
+                                            <?php
+                                            foreach ($row->courses as $value) {
+                                                echo $value . " • ";
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <hr class="detail-question-hr" style="margin-bottom: 30px; margin-top: 30px;">
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <!-- Tabs content -->
+
+                </div>
+            </div>
         </div>
+
+        <nav class="feed-leftbar feed-rightbar">
+            <ul class="rightbar-ul">
+                <li class="rightbar-li">
+                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+                </li>
+                <hr class="sidebar-linha leftbar-linha">
+                <li class="rightbar-li">
+                    <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
+                </li>
+            </ul>
+            <p class="whitney-12-regular-tiny copyright-text">
+                Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
+            </p>
+        </nav>
+
+        <nav class="feed-bottombar">
+            <a href="../student/pages/home/home.page.php" class="bottombar-a">
+                <img src="../../views/images/components/dashboard-img.svg" alt="">
+            </a>
+            <a href="#" class="bottombar-a">
+                <img src="../../views/images/components/following-icon.svg" alt="">
+            </a>
+            <a href="#" class="bottombar-a">
+                <img src="../../views/images/components/notifications-icon.svg" alt="">
+            </a>
+            <a href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
+            </a>
+        </nav>
+
     </div>
-    <!-- Tabs content -->
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

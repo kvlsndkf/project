@@ -2,12 +2,16 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 require_once('/xampp/htdocs' . '/project/classes/followers/Follow.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
+    
     $idUser = $_SESSION['idUser'];
     $idStudent = $_GET['idStudent'];
-
+    
     $student = new StudentMethods();
+    $listPreferences = Preference::getPreferencesUser($idUser);
 
     $studentLogged = $student->getStudentByUserID($idUser);
     $studentProfile = $student->getDataStudentByID($studentLogged[0]['id']);
@@ -110,6 +114,21 @@ try {
                     <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
+
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+                            <div class="d-flex question-info margin-bot-15">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>"  style="margin-right: 8px;" width="32px">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
