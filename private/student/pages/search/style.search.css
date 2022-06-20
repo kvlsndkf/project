@@ -70,3 +70,33 @@
     width: 100%;
     background-color: yellow;
 } */
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    border: none;
+    height: 40px;
+    width: 80%;
+    padding: 10px;
+    padding-left: 20px;
+    background-color: var(--gray3);
+    color: var(--gray6);
+    font-weight: 400;
+    border-radius: 20px 0 0 20px;
+    margin-bottom: 20px;
+}
+
+.search-submit {
+    border: none;
+    height: 40px;
+    padding: 10px;
+    padding-right: 20px;
+    background-color: var(--gray3);
+    border-radius: 0 20px 20px 0;
+    margin-bottom: 20px;
+}

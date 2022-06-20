@@ -48,7 +48,6 @@ try {
     <!-- JavaScript -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-
     <!-- Include stylesheet -->
     <link href="../../../style/editor-style/editor.style.css" rel="stylesheet">
 
@@ -69,11 +68,9 @@ try {
     <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
     <link rel="stylesheet" href="./style.search.css">
 
-    <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
+    <!-- FAVICON  -->
+    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 
-    <!-- JavaScript -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <div class="wrapper">
@@ -184,9 +181,9 @@ try {
         <div class="corpo-feed">
             <div class="feed-div">
                 <!-- Barra de pesquisa -->
-                <form action="./search.page.php" method="get">
-                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" value="<?php echo $searchResult; ?>" autocomplete="off">
-                    <input type="submit" id="submit-search" value="pesquisar">
+                <form action="./search.page.php" method="get" class="search-form">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais"  class="search-input" value="<?php echo $searchResult; ?>" autocomplete="off">
+                    <input type="submit" id="submit-search" value="🔍" class="search-submit">
                 </form>
                 <!-- Tabs navs -->
                 <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
