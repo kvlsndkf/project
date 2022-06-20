@@ -683,6 +683,10 @@ p{
 
 .nav-tabs .nav-link.active{
     color: var(--white);
+    background-color: var(--bg-modal);
+}
+
+.ranking-a.active{
     background-color: var(--gray1);
 }
 
