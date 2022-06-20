@@ -79,11 +79,6 @@ try {
 <div class="wrapper">
 
     <body>
-        <!-- Barra de pesquisa -->
-        <!-- <form action="./search.page.php" method="get">
-            <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" value="<?php echo $searchResult; ?>" autocomplete="off">
-            <input type="submit" value="pesquisar">
-        </form> -->
 
         <!-- Perfil do canto -->
         <nav class="feed-leftbar">
@@ -188,6 +183,11 @@ try {
 
         <div class="corpo-feed">
             <div class="feed-div">
+                <!-- Barra de pesquisa -->
+                <form action="./search.page.php" method="get">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" value="<?php echo $searchResult; ?>" autocomplete="off">
+                    <input type="submit" id="submit-search" value="pesquisar">
+                </form>
                 <!-- Tabs navs -->
                 <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -250,27 +250,25 @@ try {
 
                                 <!-- Create the editor container -->
                                 <div class="ql-snow ql-editor2">
-                                    <div class="ql-editor2 gray-text-7 whitney-16-medium-text" style=" max-width: 600px;
-                                                                white-space: nowrap;
-                                                                overflow: hidden;
-                                                                text-overflow: ellipsis;
-                                                                display: block;">
+                                    <div class="ql-editor2 gray-text-7 whitney-16-medium-text line-clamp-2">
 
                                         <?php echo $row->question; ?>
                                     </div>
                                 </div>
 
                                 <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId); ?>
-
-                                <p>
-                                    <?php echo $countAnswersOfQuestion; ?>
-                                </p>
-                                <div class="w-100 d-flex justify-content-end">
-                                    <a style="text-decoration: none; color: inherit;" href="<?php echo $row->linkQuestion; ?>" target="_blank">
-                                        <label class="see-btn pointer white-title normal-14-bold-p">Ver</label>
-                                    </a>
+                                <div class="question-footer">
+                                    <div class="question-answers my-question-footer-div">
+                                        <p class="normal-14-bold-p white-text question-p">
+                                            <?php echo $countAnswersOfQuestion; ?>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <a style="text-decoration: none; color: inherit;" href="<?php echo $row->linkQuestion; ?>" target="_blank">
+                                            <label class="see-btn pointer white-title normal-14-bold-p">Ver</label>
+                                        </a>
+                                    </div>
                                 </div>
-
                                 <hr class="w-100 my-hr">
 
                             <?php } ?>
@@ -341,20 +339,20 @@ try {
 
                                 <!-- Perfil escola ⬇️ -->
                                 <div class="<?php echo $displayProfileSchool; ?>">
-                                
+
                                     <div class="question-info">
-                                    
+
                                         <div>
                                             <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
                                         </div>
                                         <div class="question-info-text">
-                                        <div class="question-name question-about-a normal-14-medium-p">
-                                            <?php echo $row->schoolName; ?>
-                                        </div>
+                                            <div class="question-name question-about-a normal-14-medium-p">
+                                                <?php echo $row->schoolName; ?>
+                                            </div>
 
-                                        <div class="question-about normal-12-medium-tiny">
-                                            <?php echo $row->address; ?>, São Paulo
-                                        </div>
+                                            <div class="question-about normal-12-medium-tiny">
+                                                <?php echo $row->address; ?>, São Paulo
+                                            </div>
                                         </div>
                                         <div class="w-100 d-flex justify-content-end">
                                             <a href="<?php echo $row->schoolLink; ?>" target="_blank">
@@ -362,11 +360,11 @@ try {
                                             </a>
                                         </div>
 
-                                        
+
                                     </div>
                                     <hr class="w-100 my-hr">
                                 </div>
-                                
+
                             <?php } ?>
 
                         </div>
@@ -394,7 +392,7 @@ try {
                             <?php for ($i = 0; $i < count($searchMaterials); $i++) {
                                 $row = $searchMaterials[$i] ?>
 
-                                <div>
+                                <div class="normal-12-medium-tiny gray-text-5">
                                     <?php echo $row->created; ?> •
                                     <?php echo $row->course; ?> •
                                     <?php echo $row->category; ?> •
@@ -403,25 +401,23 @@ try {
 
                                 <!-- Create the editor container -->
                                 <div class="ql-snow ql-editor2">
-                                    <div class="ql-editor2 gray-text-7 whitney-16-medium-text" style=" max-width: 600px;
-                                                                white-space: nowrap;
-                                                                overflow: hidden;
-                                                                text-overflow: ellipsis;
-                                                                display: block;">
+                                    <div class="ql-editor2 gray-text-7 whitney-16-medium-text line-clamp-2">
                                         <?php echo $row->question; ?>
                                     </div>
                                 </div>
 
                                 <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId); ?>
+                                <div class="question-footer">
+                                    <div class="question-answers my-question-footer-div">
+                                        <p class="normal-14-bold-p white-text question-p">
+                                            <?php echo $countAnswersOfQuestion; ?>
+                                        </p>
+                                    </div>
 
-                                <p>
-                                    <?php echo $countAnswersOfQuestion; ?>
-                                </p>
-
-                                <a href="<?php echo $row->linkQuestion; ?>" target="_blank">
-                                    <button>Ver</button>
-                                </a>
-
+                                    <a href="<?php echo $row->linkQuestion; ?>" target="_blank">
+                                        <label class="see-btn white-title pointer normal-14-bold-p">Ver</label>
+                                    </a>
+                                </div>
                                 <hr>
 
                             <?php } ?>

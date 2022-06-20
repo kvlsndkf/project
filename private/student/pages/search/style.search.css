@@ -15,7 +15,6 @@
     background-color: var(--blue);
     padding: 11px 20px 11px 20px;
     border-radius: 3px;
-    margin-top: 28px;
 }
 
 .see-btn:hover {
@@ -41,3 +40,33 @@
     padding-bottom: 2px;
     margin-bottom: 1rem;
 }
+
+.my-question-footer-div {
+    height: 40px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+@media (max-width: 340px) {
+    .my-question-footer-div {
+        margin-bottom: 10px;
+    }
+}
+
+.my-search-bar {
+    width: 80%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: var(--gray3);
+    border: none;
+}
+
+/* .input-search-container {
+    position: relative;
+    width: 100%;
+    background-color: yellow;
+} */
