@@ -182,7 +182,7 @@ try {
             <div class="feed-div">
                 <!-- Barra de pesquisa -->
                 <form action="./search.page.php" method="get" class="search-form">
-                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais"  class="search-input" value="<?php echo $searchResult; ?>" autocomplete="off">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" class="search-input" value="<?php echo $searchResult; ?>" autocomplete="off">
                     <input type="submit" id="submit-search" value="🔍" class="search-submit">
                 </form>
                 <!-- Tabs navs -->
@@ -255,10 +255,17 @@ try {
 
                                 <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId); ?>
                                 <div class="question-footer">
-                                    <div class="question-answers my-question-footer-div">
+                                    <?php
+                                    $answer = new Answer();
+                                    $countAnswersOfQuestion = $answer->countAnswers($row->questionId);
+
+                                    $styleCounter = empty($countAnswersOfQuestion) ? 'question-footer-div' : 'question-answers my-question-footer-div';
+                                    ?>
+                                    <div class="<?php echo $styleCounter; ?>" id="respostaQuant">
                                         <p class="normal-14-bold-p white-text question-p">
                                             <?php echo $countAnswersOfQuestion; ?>
                                         </p>
+
                                     </div>
                                     <div>
                                         <a style="text-decoration: none; color: inherit;" href="<?php echo $row->linkQuestion; ?>" target="_blank">
@@ -266,6 +273,8 @@ try {
                                         </a>
                                     </div>
                                 </div>
+
+
                                 <hr class="w-100 my-hr">
 
                             <?php } ?>
