@@ -1,0 +1,43 @@
+/* CSS EMILLIE SEARCH  */
+.nav-tabs .nav-link.active {
+    background-color: #2F3136;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid var(--gray3);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--white);
+}
+
+.see-btn {
+    background-color: var(--blue);
+    padding: 11px 20px 11px 20px;
+    border-radius: 3px;
+    margin-top: 28px;
+}
+
+.see-btn:hover {
+    filter: brightness(1.2);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.my-hr {
+    color: gray;
+}
+
+.divider-container {
+    width: 100%;
+    background-color: var(--gray1);
+    height: fit-content;
+    border-radius: 20px;
+    color: #969696;
+    padding-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 1rem;
+}

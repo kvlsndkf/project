@@ -27,6 +27,14 @@
     color: var(--gray6);
 }
 
+.gray-text-5 {
+    color: var(--gray5);
+}
+
+.gray-text-7 {
+    color: var(--gray7);
+}
+
 .bg-modal-gray {
     background-color: var(--bg-modal);
 }
