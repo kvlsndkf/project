@@ -143,7 +143,7 @@ try {
                             </a>
                             <div class=" pedir-heelp-button-a">
                                 <a href="../../../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a">
+                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
                                         <img src="../../../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
                                     </div>
@@ -337,6 +337,7 @@ try {
                             <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $listDetailsQuestions->id; ?>">
                                 <?php echo $listDetailsQuestions->question; ?>
                             </span>
+                            
                             <button class="read-btn-question normal-14-bold-p" id="readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>" onclick="document.querySelector('#questionText-<?php echo $listDetailsQuestions->id; ?>').classList.remove('line-clamp-2');
                             document.querySelector('#readLess-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'inline';
                             document.querySelector('#readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'none';">
@@ -483,13 +484,13 @@ try {
                     </div>
                 </div>
 
-                <hr>
+                <hr class="detail-question-hr">
 
                 <p class="normal-18-bold-title-2 white-text question-p">
                     Respostas
                 </p>
 
-                <hr>
+                <hr class="detail-question-hr">
 
                 <?php $styleListAnswers = !empty($listAnswers) ? '' : 'd-none';
 
@@ -746,7 +747,7 @@ try {
                             </div>
                         </div>
 
-                        <hr>
+                        <hr class="detail-question-hr">
                     <?php } ?>
                 </div>
 

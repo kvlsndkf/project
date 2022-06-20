@@ -152,7 +152,7 @@ try {
                             </a>
                             <div class=" pedir-heelp-button-a">
                                 <a href="../../../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a">
+                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
                                         <img src="../../../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
                                         <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
                                     </div>
@@ -428,7 +428,6 @@ try {
                                 <p class="normal-14-bold-p white-text question-p">
                                     <?php echo $totalAnswersOfQuestion; ?>
                                 </p>
-
                             </div>
 
                             <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
