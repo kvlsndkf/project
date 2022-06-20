@@ -5,7 +5,6 @@ require_once('/xampp/htdocs' . '/project/classes/solicitations/Solicitation.clas
 session_start();
 
 if (isset($_POST['analysisRequest'])) {
-    echo "oi";
     $solicitation = new Solicitation();
 
     $id = $_GET['solicitationNewID'];

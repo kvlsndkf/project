@@ -22,11 +22,8 @@ $dados = "";
         $style = $row->status == "Resolvida" ? 'badge rounded-pill bg-info' : 'd-none'; 
         $dados .= "<span class=' $style '>$row->status </span>";
 
-        $style = $row->statusSituation == "Solicitação acatada" ? 'badge rounded-pill bg-info' : 'd-none'; 
-        $dados .= "<span class='$style '>$row->statusSituation </span>";
-
-        $style = $row->statusSituation == "Solicitação acatada" ? 'badge rounded-pill bg-info' : 'd-none'; 
-        $dados .= "<span class='$style'>$row->statusSituation </span>";
+        $style = $row->context == "Solicitação acatada" ? 'badge rounded-pill bg-info' : 'd-none'; 
+        $dados .= "<span class='$style '>$row->context </span>";
 
         $dados .="<p>";
             $dados .="Contato";
@@ -61,3 +58,4 @@ $dados = "";
     }
 
     echo ($dados);
+?>

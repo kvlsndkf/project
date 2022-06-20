@@ -9,8 +9,10 @@ if (isset($_POST['register'])) {
 
     $id = $_GET['idSolicitation'];
 
+    echo json_encode($id);
+
     $solicitation->setStatus("Resolvida");
-    $solicitation->setStatusSituation($_POST['selectSituation_id']);
+    $solicitation->setContext($_POST['context_id']);
     $solicitation->setConclusion($_POST['conclusion']);
     $solicitation->resolvedSolicitation($solicitation, $id);
 }

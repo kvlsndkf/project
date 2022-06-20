@@ -32,6 +32,7 @@ try {
 
     <!-- STYLES -->
     <!-- STYLES -->
+    <link rel="stylesheet" href="../../../../private/style/style.css">
     <link rel="stylesheet" href="../../../styles/style.global.css">
     <link rel="stylesheet" href="../../../styles/colors.style.css">
     <link rel="stylesheet" href="../../../styles/font-format.style.css">
@@ -198,7 +199,7 @@ try {
                             <input name="contact" type="email" class="form-control" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
                         </div>
                         <div class="mb-3">
-                            <select required name="selectCategory_id" id="selectCategory_id">
+                            <select class="form-select" aria-label="Default select example" required name="selectCategory_id" id="selectCategory_id">
                                 <option value="">Selecione a Categoria</option>
                             </select>
                         </div>
@@ -207,15 +208,18 @@ try {
                             <input name="title" type="text" class="form-control" id="title" placeholder="Digite o título da informação" required autocomplete="off">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Em que podemos ajudar</label>
-                            <div id="contentTextArea"><textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv();" required maxlength="200"></textarea></div>
-                            <div><span id="counterTextArea">200</span></div>
+                            <label for="exampleFormControlTextarea1" class="form-label">Em que podemos ajudar?</label>
+                            <div id="contentTextArea">
+                                <textarea name="description" id="description" class="form-control" rows="7" placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv()" required minlength="5"  maxlength="200"></textarea>
+                            </div>
+                            <div>
+                                <span id="counterTextArea">200</span>
+                            </div>
                             <hr>
                         </div>
                         <div class="col-12">
-                            <input class="btn btn-primary" type="submit" value="Enviar" name="register" onclick="GFG_Fun()"></input>
+                            <input class="btn btn-primary" type="submit" value="Enviar" name="register"></input>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-
                         </div>
                     </form>
                 </div>
@@ -357,6 +361,9 @@ try {
         var myElementSurname = document.getElementById('surname');
         myElementSurname.addEventListener('paste', e => e.preventDefault());
     </script>
+
+        <!-- textArea -->
+    <script type="text/javascript" src="../../../js/textareaSolicitation.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Jun-2022 às 03:59
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.2
+-- Tempo de geração: 20-Jun-2022 às 17:20
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -129,6 +129,15 @@ CREATE TABLE `courses` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `courses`
+--
+
+INSERT INTO `courses` (`id`, `name`, `about`, `photo`, `created_at`, `updated_at`) VALUES
+(50, 'Ensino médio', 'Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em ', '/project/private/adm/pages/register/upload/courses/62a8e222205e9.png', '2022-06-14 16:31:46', NULL),
+(51, 'Administração', 'Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em ', '/project/private/adm/pages/register/upload/courses/62a8e237f31aa.png', '2022-06-14 16:32:07', NULL),
+(52, 'Desenvolvimento de Sistemas', 'Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em ', '/project/private/adm/pages/register/upload/courses/62a8e252c41f9.png', '2022-06-14 16:32:34', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -143,6 +152,18 @@ CREATE TABLE `courseshassubjects` (
   `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `courseshassubjects`
+--
+
+INSERT INTO `courseshassubjects` (`id`, `created_at`, `updated_at`, `course_id`, `subject_id`) VALUES
+(80, '2022-06-14 16:31:46', NULL, 50, 65),
+(81, '2022-06-14 16:31:46', NULL, 50, 66),
+(82, '2022-06-14 16:32:08', NULL, 51, 63),
+(83, '2022-06-14 16:32:08', NULL, 51, 64),
+(84, '2022-06-14 16:32:34', NULL, 52, 61),
+(85, '2022-06-14 16:32:34', NULL, 52, 62);
+
 -- --------------------------------------------------------
 
 --
@@ -156,6 +177,15 @@ CREATE TABLE `courseshasteachers` (
   `course_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `courseshasteachers`
+--
+
+INSERT INTO `courseshasteachers` (`id`, `created_at`, `updated_at`, `course_id`, `teacher_id`) VALUES
+(100, '2022-06-14 16:31:46', NULL, 50, 53),
+(101, '2022-06-14 16:32:08', NULL, 51, 54),
+(102, '2022-06-14 16:32:34', NULL, 52, 52);
 
 -- --------------------------------------------------------
 
@@ -263,6 +293,15 @@ CREATE TABLE `schools` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `schools`
+--
+
+INSERT INTO `schools` (`id`, `name`, `address`, `have_account`, `in_sp_city`, `not_in_sp_city`, `about`, `github`, `linkedin`, `facebook`, `instagram`, `photo`, `created_at`, `updated_at`) VALUES
+(167, 'Etec de Guaianases', 'Guaianases', 'Com conta', 'Inside city', '', 'Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em ', '', '', '', '', '/project/private/adm/pages/register/upload/schools/62a8dfa787060.png', '2022-06-14 16:21:11', NULL),
+(168, 'Etec de Itaquera', 'Itaquera', 'Com conta', 'Inside city', '', 'Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em ', '', '', '', '', '/project/private/adm/pages/register/upload/schools/62a8dfc53ec6c.jpg', '2022-06-14 16:21:41', NULL),
+(169, 'Etec de Poá', 'Poá', 'Com conta', '', 'Outside city', 'Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em ', '', '', '', '', '/project/private/adm/pages/register/upload/schools/62a8dfe31019d.jpg', '2022-06-14 16:22:11', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -276,6 +315,15 @@ CREATE TABLE `schoolshascourses` (
   `school_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `schoolshascourses`
+--
+
+INSERT INTO `schoolshascourses` (`id`, `created_at`, `updated_at`, `school_id`, `course_id`) VALUES
+(80, '2022-06-14 16:31:46', NULL, 169, 50),
+(81, '2022-06-14 16:32:08', NULL, 168, 51),
+(82, '2022-06-14 16:32:34', NULL, 167, 52);
 
 -- --------------------------------------------------------
 
@@ -305,6 +353,20 @@ CREATE TABLE `schoolshasteachers` (
   `teacher_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `schoolshasteachers`
+--
+
+INSERT INTO `schoolshasteachers` (`id`, `created_at`, `updated_at`, `school_id`, `teacher_id`) VALUES
+(218, '2022-06-14 16:21:11', NULL, 167, 52),
+(219, '2022-06-14 16:21:11', NULL, 167, 53),
+(220, '2022-06-14 16:21:11', NULL, 167, 54),
+(221, '2022-06-14 16:21:41', NULL, 168, 52),
+(222, '2022-06-14 16:21:41', NULL, 168, 53),
+(223, '2022-06-14 16:21:41', NULL, 168, 54),
+(224, '2022-06-14 16:22:11', NULL, 169, 52),
+(225, '2022-06-14 16:22:11', NULL, 169, 54);
+
 -- --------------------------------------------------------
 
 --
@@ -314,16 +376,68 @@ CREATE TABLE `schoolshasteachers` (
 CREATE TABLE `solicitations` (
   `id` int(11) NOT NULL,
   `contact` varchar(100) NOT NULL,
-  `category` varchar(30) NOT NULL,
   `register_link` varchar(100) NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` varchar(192) NOT NULL,
   `status` varchar(30) NOT NULL,
   `conclusion` varchar(192) DEFAULT NULL,
-  `context` varchar(30) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `context_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `solicitations`
+--
+
+INSERT INTO `solicitations` (`id`, `contact`, `register_link`, `title`, `description`, `status`, `conclusion`, `category_id`, `context_id`, `created_at`, `updated_at`) VALUES
+(1, 'teste1@gmaill.com', '', 'Não tem o nome da etec', 'Não tem o nome da etec que eu estudo no cadastro.', 'Resolvida', 'stjstj', 1, 0, '2022-06-14 16:39:34', '2022-06-14 17:10:30'),
+(2, 'teste2@gmail.com', '', 'Não tem o curso', 'Aqui não tem o curso que eu faço que é o floricultura', 'Análise', NULL, 2, 0, '2022-06-14 16:41:07', '2022-06-14 16:41:28'),
+(3, 'teste3@gmail.com', '', 'módulo', 'não tem o módulo.', 'Análise', NULL, 3, 0, '2022-06-14 17:08:26', '2022-06-14 17:08:31');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `solicitationscategories`
+--
+
+CREATE TABLE `solicitationscategories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `solicitationscategories`
+--
+
+INSERT INTO `solicitationscategories` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Etec', '2022-06-14 16:38:08', NULL),
+(2, 'Curso', '2022-06-14 16:38:17', NULL),
+(3, 'Módulo', '2022-06-14 16:38:26', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `solicitationscontexts`
+--
+
+CREATE TABLE `solicitationscontexts` (
+  `id` int(11) NOT NULL,
+  `context` varchar(100) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `solicitationscontexts`
+--
+
+INSERT INTO `solicitationscontexts` (`id`, `context`, `created_at`, `updated_at`) VALUES
+(1, 'Solicitação acatada', '2022-06-19 13:58:52', '0000-00-00 00:00:00'),
+(2, 'Solicitação negada', '2022-06-19 13:58:58', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -382,6 +496,15 @@ CREATE TABLE `teachers` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `name`, `photo`, `created_at`, `updated_at`) VALUES
+(52, 'Professora Aline', '/project/private/adm/pages/register/upload/teachers/62a8ded228a56.jpg', '2022-06-14 16:17:38', NULL),
+(53, 'Professor Anibal', '/project/private/adm/pages/register/upload/teachers/62a8df0409fdb.jpg', '2022-06-14 16:18:28', NULL),
+(54, 'Professor Roberto', '/project/private/adm/pages/register/upload/teachers/62a8df1286ecb.jpg', '2022-06-14 16:18:42', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -407,6 +530,14 @@ CREATE TABLE `users` (
   `updated_at` datetime DEFAULT NULL,
   `blocked_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `photo`, `type_user`, `is_confirmed`, `key_confirm`, `is_blocked`, `github`, `linkedin`, `facebook`, `instagram`, `profile_link`, `blocking_reason`, `created_at`, `updated_at`, `blocked_at`) VALUES
+(148, 'adm@gmail.com', '$2y$10$AIZ8zFf2W2v2zSO2YX9xP.tEWi7aWgNB7TRkOQGDOwUWnRHyTJjo.', '', 'administrator', 1, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-14 16:15:00', NULL, NULL),
+(149, 'teste@teste', '$2y$10$.dRiV2jCAi/X1SKnvI21muVfIncCRKC311kNkcPrIs4Z/DDc4zAMK', '', 'administrator', 1, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-19 14:01:15', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -553,6 +684,19 @@ ALTER TABLE `schoolshasteachers`
 -- Índices para tabela `solicitations`
 --
 ALTER TABLE `solicitations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
+
+--
+-- Índices para tabela `solicitationscategories`
+--
+ALTER TABLE `solicitationscategories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `solicitationscontexts`
+--
+ALTER TABLE `solicitationscontexts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -628,19 +772,19 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT de tabela `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de tabela `courseshassubjects`
 --
 ALTER TABLE `courseshassubjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT de tabela `courseshasteachers`
 --
 ALTER TABLE `courseshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT de tabela `denunciations`
@@ -670,13 +814,13 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT de tabela `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshascourses`
 --
 ALTER TABLE `schoolshascourses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de tabela `schoolshasstudents`
@@ -688,13 +832,25 @@ ALTER TABLE `schoolshasstudents`
 -- AUTO_INCREMENT de tabela `schoolshasteachers`
 --
 ALTER TABLE `schoolshasteachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
 -- AUTO_INCREMENT de tabela `solicitations`
 --
 ALTER TABLE `solicitations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `solicitationscategories`
+--
+ALTER TABLE `solicitationscategories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `solicitationscontexts`
+--
+ALTER TABLE `solicitationscontexts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `students`
@@ -712,13 +868,13 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT de tabela `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
 -- AUTO_INCREMENT de tabela `usershaspreferences`
@@ -811,6 +967,12 @@ ALTER TABLE `schoolshasstudents`
 ALTER TABLE `schoolshasteachers`
   ADD CONSTRAINT `schoolshasteachers_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `schools` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `schoolshasteachers_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `solicitations`
+--
+ALTER TABLE `solicitations`
+  ADD CONSTRAINT `solicitations_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `solicitationscategories` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `students`

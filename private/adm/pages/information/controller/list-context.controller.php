@@ -3,7 +3,7 @@ include_once('/xampp/htdocs' . '/project/database/connection.php');
 
 $connection = Connection::connection();
             
-$query_sits = "SELECT id, name FROM solicitationsCategories ORDER BY name";
+$query_sits = "SELECT id, context FROM solicitationsContexts ORDER BY context";
 $result_sits = $connection->prepare($query_sits);
 $result_sits->execute();
 
@@ -12,7 +12,7 @@ if(($result_sits) and ($result_sits->rowCount() != 0)){
         extract($row_sits);
         $dados[] = [
             'id' => $id,
-            'name' => $name,
+            'context' => $context,
         ];
     }
     $return = ['status'=> true, 'dados' => $dados];

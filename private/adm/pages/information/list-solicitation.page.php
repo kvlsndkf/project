@@ -47,6 +47,13 @@ try {
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../../../../views/styles/style.global.css">
+    <link rel="stylesheet" href="../../../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../private/style/style.css">
+
     <!-- CSS MdBootstrap -->
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -104,6 +111,12 @@ try {
     <?php unset($_SESSION['statusNegative']);
     } ?>
 
+    <!-- Barra de pesquisa ⬇️ -->
+    <form action="./list-solicitation.page.php" method="GET">
+        <input type="text" name="searchSolicitation" id="searchSolicitation" placeholder="Pesquise por solicitações" autocomplete="off">
+        <input type="submit" value="Pesquisar">
+    </form>
+
     <!-- Tabs navs -->
     <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
         <li class="nav-item" role="presentation">
@@ -117,22 +130,22 @@ try {
         </li>
     </ul>
 
-    <!-- Barra de pesquisa ⬇️ -->
-    <form action="./list-information.page.php" method="GET">
-        <input type="text" name="searchSolicitation" id="searchSolicitation" placeholder="Pesquise por solicitações" autocomplete="off">
-        <input type="submit" value="Pesquisar">
-    </form>
-
     <!-- Tabs content -->
     <!-- Novas solicitações -->
     <div class="tab-content" id="ex1-content">
         <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-            <div id="solicitation-new-list"></div>
+            <?php if ($search == null) { ?>
+                <div id="solicitation-new-list"></div>
 
-            <div id="pagination-new-solicitation"></div>
+                <div id="pagination-new-solicitation"></div>
+            <?php } else {   ?>
+                <div id="solicitation-search-list"></div>
+
+                <div id="pagination-search-solicitation"></div>
+            <?php } ?>
         </div>
 
-    <!-- Solicitações em análise -->
+        <!-- Solicitações em análise -->
         <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
             <div id="solicitation-analysis-list">
 
@@ -147,42 +160,53 @@ try {
             <div id="solicitation-resolved-list">
 
             </div>
-            <div id = "pagination-resolved-solicitation">
+            <div id="pagination-resolved-solicitation">
 
             </div>
         </div>
         <!-- Tabs content -->
-
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLabel"> Conclua a solicitação </h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="row g-3 needs-validation" action="./controller/resolved-solicitation.controller.php?idSolicitation=<?php echo $row->id; ?>" method="POST" enctype="multipart/form-data" class="<?php echo $styleButton; ?>">
-                            <div class="mb-3">
-                                <select name="selectSituation_id" id="selectSituation_id" required>
-                                    <option value="">Selecione a Situação</option>
-                                </select>
+        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel"> Solicitação de informações </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3 needs-validation" action="./controller/register-solicitation-category.controller.php" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email para contato</label>
+                            <input name="contact" type="email" class="form-control" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example" required name="context_id" id="context_id">
+                                <option value="">Selecione a Categoria</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1">Titulo</label>
+                            <input name="title" type="text" class="form-control" id="title" placeholder="Digite o título da informação" required autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Em que podemos ajudar?</label>
+                            <div id="contentTextArea">
+                                <textarea name="conclusion" id="conclusion" class="form-control" rows="7" placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv()" required minlength="5"  maxlength="200"></textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Conclusão</label>
-                                <div id="contentTextArea"><textarea name="conclusion" id="conclusion" class="form-control" cols="30" rows="10" placeholder="Conclusão" onclick="colorDiv()" maxlength="200" required></textarea></div>
-                                <div><span id="counterTextArea">200</span></div>
-                                <hr>
+                            <div>
+                                <span id="counterTextArea">200</span>
                             </div>
-                            <div class="col-12">
-                                <input class="btn btn-primary" type="submit" value="Enviar" name="register" id="register" onclick="GFG_Fun()"></input>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            </div>
-                        </form>
-                    </div>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <input class="btn btn-primary" type="submit" value="Enviar" name="register"></input>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div> -->
 
         <!-- JS Bootstrap ⬇️ -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -202,25 +226,26 @@ try {
 
         <!-- JS Select da situação ⬇️ -->
         <script>
-            const selectSituation = document.getElementById("selectSituation_id");
-
-            if (selectSituation) {
-                selectSituationId();
+            const selectContext = document.getElementById('context_id');
+            console.log(selectContext);
+            if (selectContext) {
+                selectContextId();
             }
 
-            async function selectSituationId() {
-                const dados = await fetch('./controller/list-situation.controller.php');
-                const json_situation = await dados.json();
-                // console.log(json_situation)
+            async function selectContextId() {
+                // const selectContext = document.getElementById("context_id");
+                const dados = await fetch('./controller/list-context.controller.php');
+                const json_Context = await dados.json();
+                // console.log(json_Context)
 
-                if (json_situation['status']) {
-                    var option = "<option value=''>Selecione a Situação</option>'";
-                    for (var i = 0; i < json_situation.dados.length; i++) {
-                        // console.log(json_situation.dados[i]['id']);
-                        // console.log(json_situation.dados[i]['name']);
-                        option += '<option value="' + json_situation.dados[i]['id'] + '">' + json_situation.dados[i]['name'] + '</option>';
+                if (json_Context['status']) {
+                    var option = "<option value=''>Selecione o Contexto</option>'";
+                    for (var i = 0; i < json_Context.dados.length; i++) {
+                        // console.log(json_Context.dados[i]['id']);
+                        // console.log(json_Context.dados[i]['name']);
+                        option += '<option value="' + json_Context.dados[i]['id'] + '">' + json_Context.dados[i]['context'] + '</option>';
                     }
-                    selectSituation.innerHTML = option;
+                    selectContext.innerHTML = option;
                 }
             }
         </script>
@@ -232,12 +257,12 @@ try {
             const paginationSolicitatonNew = document.getElementById('pagination-new-solicitation');
 
             const listSolicitationNew = async (page) => {
-                const dados = await fetch('./controller/list-solicitation-new.controller.php?page=' + page);
+                const dados = await fetch('./controller/list/list-solicitation-new.controller.php?page=' + page);
                 // console.log("to funfando");
                 const asweres = await dados.text();
                 listNewSolicitation.innerHTML = asweres;
 
-                const dados2 = await fetch('./controller/pagination-solicitation-new.controller.php?page=' + page);
+                const dados2 = await fetch('./controller/pagination/pagination-solicitation-new.controller.php?page=' + page);
                 // console.log("to funconando")
                 const asweres2 = await dados2.text();
                 paginationSolicitatonNew.innerHTML = asweres2;
@@ -253,12 +278,12 @@ try {
             const paginationSolicitaton = document.getElementById('pagination-Analysis-solicitation');
 
             const listSolicitationAnalysis = async (page) => {
-                const dados = await fetch('./controller/list-solicitation-analysis.controller.php?page=' + page);
+                const dados = await fetch('./controller/list/list-solicitation-analysis.controller.php?page=' + page);
                 // console.log("to funfando");
                 const asweres = await dados.text();
                 listSolicitation.innerHTML = asweres;
 
-                const dados2 = await fetch('./controller/pagination-solicitation-analysis.controller.php?page=' + page);
+                const dados2 = await fetch('./controller/pagination/pagination-solicitation-analysis.controller.php?page=' + page);
                 // console.log("to funconando")
                 const asweres2 = await dados2.text();
                 paginationSolicitaton.innerHTML = asweres2;
@@ -274,12 +299,12 @@ try {
             const paginationSolicitatonResolved = document.getElementById('pagination-resolved-solicitation');
 
             const listSolicitationResolved = async (page) => {
-                const dados = await fetch('./controller/list-solicitation-resolved.controller.php?page=' + page);
+                const dados = await fetch('./controller/list/list-solicitation-resolved.controller.php?page=' + page);
                 // console.log("to funfando");
                 const asweres = await dados.text();
                 listResolvedSolicitation.innerHTML = asweres;
 
-                const dados2 = await fetch('./controller/pagination-solicitation-resolved.controller.php?page=' + page);
+                const dados2 = await fetch('./controller/pagination/pagination-solicitation-resolved.controller.php?page=' + page);
                 // console.log("to funconando")
                 const asweres2 = await dados2.text();
                 paginationSolicitatonResolved.innerHTML = asweres2;
@@ -288,8 +313,34 @@ try {
             listSolicitationResolved(1);
         </script>
 
+        <!-- Paginação das solicitações novas -->
+        <script>
+            const listSearchSolicitation = document.getElementById('solicitation-resolved-list');
+
+            const paginationSolicitatonSearch = document.getElementById('pagination-resolved-solicitation');
+
+            const listSolicitationSearch = async (page) => {
+                const dados = await fetch('./controller/list/list-solicitation-resolved.controller.php?page=' + page);
+                // console.log("to funfando");
+                const asweres = await dados.text();
+                listSolicitationSearch.innerHTML = asweres;
+
+                const dados2 = await fetch('./controller/pagination/pagination-solicitation-resolved.controller.php?page=' + page);
+                // console.log("to funconando")
+                const asweres2 = await dados2.text();
+                paginationSolicitatonSearch.innerHTML = asweres2;
+            }
+
+            listSolicitationSearch(1);
+        </script>
+
+
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+
+        <!-- Text Area -->
+        <script src="../js/textareaConclusion.js"></script>
+
 </body>
 
 </html>

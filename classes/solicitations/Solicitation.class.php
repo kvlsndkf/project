@@ -87,20 +87,6 @@ class Solicitation
         $this->status = $status;
     }
     //----------------------------
-    public function getStatusSituation()
-    {
-        return $this->status;
-    }
-    public function setStatusSituation($statusSituation)
-    {
-        if($statusSituation == true){
-            $statusSituation = "Solicitação acatada";
-        }else{
-            $statusSituation = "Solicitação recusada";
-        }
-        $this->statusSituation = $statusSituation;
-    }
-    //----------------------------
     public function getContext()
     {
         return $this->context;
@@ -214,11 +200,13 @@ class Solicitation
             //Calcular o inicio da vizualização
             $start = ($limit_result * $page) - $limit_result;
 
-            $stmt = $connection->prepare("SELECT id, contact, title, category_id, status, description FROM solicitations 
-                                            WHERE status = 'Nova' 
-                                            ORDER BY created_at DESC 
-                                            LIMIT $start,$limit_result"
-                                        );
+            $stmt = $connection->prepare("SELECT s.id, s.contact, s.title, s.category_id, s.status, s.description FROM solicitations s
+                                            INNER JOIN solicitationsCategories sc
+                                            ON s.category_id = sc.id
+                                            WHERE s.status = 'Nova' 
+                                            ORDER BY s.created_at DESC 
+                                            LIMIT $start,$limit_result
+                                        ");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -246,7 +234,13 @@ class Solicitation
             //Calcular o inicio da vizualização
             $start = ($limit_result * $page) - $limit_result;
 
-            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description FROM solicitations WHERE status = 'Análise' ORDER BY created_at DESC LIMIT $start,$limit_result");
+            $stmt = $connection->prepare("SELECT s.id, s.contact, s.title, sc.name, s.status, s.description FROM solicitations s
+                                            INNER JOIN solicitationsCategories sc
+                                            ON s.category_id = sc.id
+                                            WHERE s.status = 'Análise' 
+                                            ORDER BY s.created_at DESC 
+                                            LIMIT $start,$limit_result
+                                        ");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -274,7 +268,14 @@ class Solicitation
             //Calcular o inicio da vizualização
             $start = ($limit_result * $page) - $limit_result;
 
-            $stmt = $connection->prepare("SELECT id,contact,title,category_id,status,description,conclusion FROM solicitations WHERE status = 'Resolvida' ORDER BY created_at DESC LIMIT $start,$limit_result");
+            $stmt = $connection->prepare("SELECT s.id, s.contact, s.title, sc.name, s.status, s.description, s.conclusion, sx.context FROM solicitations s
+                                            INNER JOIN solicitationsCategories sc
+                                            ON s.category_id = sc.id
+                                            INNER JOIN solicitationscontexts sx
+                                            ON s.id = sx.id
+                                            WHERE s.status = 'Resolvida' 
+                                            ORDER BY s.created_at DESC
+                                        ");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -375,7 +376,7 @@ class Solicitation
             $solicitation = new Solicitation();
             $solicitation->id = $row['id'];
             $solicitation->contact = $row['contact'];
-            $solicitation->category = $row['category_id'];
+            $solicitation->category = $row['name'];
             $solicitation->title = $row['title'];
             $solicitation->status = $row['status'];
             $solicitation->description = $row['description'];
@@ -400,11 +401,12 @@ class Solicitation
             $solicitation = new Solicitation();
             $solicitation->id = $row['id'];
             $solicitation->contact = $row['contact'];
-            $solicitation->category = $row['category_id'];
+            $solicitation->category = $row['name'];
             $solicitation->title = $row['title'];
             $solicitation->status = $row['status'];
             $solicitation->description = $row['description'];
             $solicitation->conclusion = $row['conclusion'];
+            $solicitation->context = $row['context'];
             array_push($solicitations, $solicitation);
         }
 
@@ -498,7 +500,7 @@ class Solicitation
             $stmt->execute();
 
             $_SESSION['statusPositive'] = "Solicitação movida para <strong>Em análise<strong>.";
-            header('Location: /project/private/adm/pages/information/list-information.page.php');
+            header('Location: /project/private/adm/pages/information/list-solicitation.page.php');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -515,12 +517,12 @@ class Solicitation
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("UPDATE solicitations SET status = ?, conclusion = ?, updated_at = NOW()
+            $stmt = $connection->prepare("UPDATE solicitations SET status = ?, conclusion = ?, context = ?, updated_at = NOW()
                                          WHERE id = $id");
 
             $stmt->bindValue(1, $solicitation->getStatus());
             $stmt->bindValue(2, $solicitation->getConclusion());
-            $stmt->bindValue(3, $solicitation->getStatusSituation());
+            $stmt->bindValue(3, $solicitation->getContext());
 
             $stmt->execute();
 

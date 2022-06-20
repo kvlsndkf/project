@@ -1,303 +1,402 @@
-CREATE TABLE users(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , email VARCHAR(100) NOT NULL
-    , password TEXT NOT NULL
-    , photo TEXT NOT NULL
-    , type_user VARCHAR(40) NOT NULL
-    , is_confirmed BOOLEAN NOT NULL
-    , key_confirm TEXT 
-    , is_blocked BOOLEAN NOT NULL
-    , github TEXT
-    , linkedin TEXT
-    , facebook TEXT
-    , instagram TEXT
-    , profile_link VARCHAR(100)
-    , blocking_reason VARCHAR(100)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , blocked_at DATETIME
-)
+===Base de Dados help
 
-CREATE TABLE companies(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , name VARCHAR(100) NOT NULL
-    , district VARCHAR(100) NOT NULL
-    , city VARCHAR(100) NOT NULL
-    , about VARCHAR(474) NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , user_id INT NOT NULL
-    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-)
+== Estrutura da tabela answers
 
-CREATE TABLE teachers(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , name VARCHAR(255) NOT NULL
-    , photo TEXT NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|answer|text|Não|
+|photo|text|Sim|NULL
+|document|text|Sim|NULL
+|document_name|varchar(255)|Sim|NULL
+|is_denounced|tinyint(1)|Não|
+|is_blocked|tinyint(1)|Não|
+|blocking_reason|varchar(100)|Sim|NULL
+|avg_avaliation|float|Não|
+|like_answer|int(11)|Não|
+|question_id|int(11)|Não|
+|answer_creator_id|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela answers
 
-CREATE TABLE modules(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , name VARCHAR(100) NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+== Estrutura da tabela answershasavaliations
 
-CREATE TABLE courses(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , name VARCHAR(100) NOT NULL
-    , about TEXT NOT NULL
-    , photo TEXT NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|avaliation|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|answer_id|int(11)|Não|
+|question_id|int(11)|Não|
+|person_avaliation_id|int(11)|Não|
+== Extraindo dados da tabela answershasavaliations
 
-CREATE TABLE subjects(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , name VARCHAR(100) NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+== Estrutura da tabela answershaslikes
 
-CREATE TABLE schools(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , name VARCHAR(255) NOT NULL
-    , address VARCHAR(255) NOT NULL
-    , have_account VARCHAR(12) NOT NULL
-    , in_sp_city VARCHAR(14)
-    , not_in_sp_city VARCHAR(14) 
-    , about TEXT
-    , github TEXT
-    , linkedin TEXT
-    , facebook TEXT
-    , instagram TEXT
-    , photo TEXT
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|answer_id|int(11)|Não|
+|question_id|int(11)|Não|
+|person_liked_id|int(11)|Não|
+== Extraindo dados da tabela answershaslikes
 
-CREATE TABLE students(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , first_name VARCHAR(100) NOT NULL
-    , surname VARCHAR(100) NOT NULL
-    , xp INT NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , user_id INT NOT NULL
-    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    , course_id INT NOT NULL
-    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
-    , module_id INT NOT NULL
-    , FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
-)
+== Estrutura da tabela categories
 
-CREATE TABLE schoolsHasStudents(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , student_id INT NOT NULL
-    , FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
-    , school_id INT NOT NULL
-    , FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE CASCADE
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(100)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela categories
 
-CREATE TABLE usersHasPreferences(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , user_id INT NOT NULL
-    , FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    , preference_id INT NOT NULL
-    , FOREIGN KEY (preference_id) REFERENCES courses(id) ON DELETE CASCADE
-)
+|1|Erro|2022-05-31 14:45:20|NULL
+|2|Dúvida|2022-05-31 14:45:20|NULL
+|3|Apoio|2022-05-31 14:45:20|NULL
+== Estrutura da tabela companies
 
-CREATE TABLE schoolsHasTeachers(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , school_id INT NOT NULL
-    , FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE CASCADE
-    , teacher_id INT NOT NULL
-    , FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(100)|Não|
+|district|varchar(100)|Não|
+|city|varchar(100)|Não|
+|about|varchar(474)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|user_id|int(11)|Não|
+== Extraindo dados da tabela companies
 
-CREATE TABLE schoolsHasCourses(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , school_id INT NOT NULL
-    , FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE CASCADE
-    , course_id INT NOT NULL
-    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
-)
+== Estrutura da tabela courses
 
-CREATE TABLE coursesHasTeachers(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , course_id INT NOT NULL
-    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
-    , teacher_id INT NOT NULL
-    , FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(100)|Não|
+|about|text|Não|
+|photo|text|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela courses
 
-CREATE TABLE coursesHasSubjects(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , course_id INT NOT NULL
-    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
-    , subject_id INT NOT NULL
-    , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
-)
+|50|Ensino médio|Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em |/project/private/adm/pages/register/upload/courses/62a8e222205e9.png|2022-06-14 16:31:46|NULL
+|51|Administração|Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em |/project/private/adm/pages/register/upload/courses/62a8e237f31aa.png|2022-06-14 16:32:07|NULL
+|52|Desenvolvimento de Sistemas|Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em |/project/private/adm/pages/register/upload/courses/62a8e252c41f9.png|2022-06-14 16:32:34|NULL
+== Estrutura da tabela courseshassubjects
 
-CREATE TABLE denunciations(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , reason VARCHAR(30) NOT NULL
-    , post_link VARCHAR(100) NOT NULL 
-    , status VARCHAR(30) NOT NULL
-    , conclusion VARCHAR(192) 
-    , context VARCHAR(30)
-    , created_by_id INT NOT NULL
-    , FOREIGN KEY (created_by_id) REFERENCES users(id) ON DELETE CASCADE
-    , denounced_id INT NOT NULL
-    , FOREIGN KEY (denounced_id) REFERENCES users(id) ON DELETE CASCADE
-    , question_id INT
-    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
-    , answer_id INT 
-    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|course_id|int(11)|Não|
+|subject_id|int(11)|Não|
+== Extraindo dados da tabela courseshassubjects
 
-CREATE TABLE solicitations(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , contact VARCHAR(100) NOT NULL
-    , register_link VARCHAR(100) NOT NULL
-    , title VARCHAR(50) NOT NULL
-    , description VARCHAR(192) NOT NULL
-    , status VARCHAR(30) NOT NULL
-    , conclusion VARCHAR(192) 
-    , context VARCHAR(30)
-    , category_id INT NOT NULL
-    , FOREIGN KEY (category_id) REFERENCES solicitationsCategories(id) ON DELETE CASCADE
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|80|2022-06-14 16:31:46|NULL|50|65
+|81|2022-06-14 16:31:46|NULL|50|66
+|82|2022-06-14 16:32:08|NULL|51|63
+|83|2022-06-14 16:32:08|NULL|51|64
+|84|2022-06-14 16:32:34|NULL|52|61
+|85|2022-06-14 16:32:34|NULL|52|62
+== Estrutura da tabela courseshasteachers
 
-CREATE TABLE messages(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY (id)
-    , contact VARCHAR(100) NOT NULL
-    , message TEXT NOT NULL
-    , status VARCHAR(30) NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|course_id|int(11)|Não|
+|teacher_id|int(11)|Não|
+== Extraindo dados da tabela courseshasteachers
 
-CREATE TABLE questions(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY(id)
-    , xp INT NOT NULL
-    , link_question TEXT
-    , question TEXT NOT NULL
-    , photo TEXT 
-    , document TEXT
-    , document_name VARCHAR(255)
-    , is_denounced BOOLEAN NOT NULL
-    , is_blocked BOOLEAN NOT NULL
-    , blocking_reason VARCHAR(100)
-    , course_id INT NOT NULL
-    , FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
-    , subject_id INT NOT NULL
-    , FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
-    , category_id INT NOT NULL
-    , FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
-    , student_id INT NOT NULL
-    , FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|100|2022-06-14 16:31:46|NULL|50|53
+|101|2022-06-14 16:32:08|NULL|51|54
+|102|2022-06-14 16:32:34|NULL|52|52
+== Estrutura da tabela denunciations
 
-CREATE TABLE categories(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY(id)
-    , name VARCHAR(100) NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|reason|varchar(30)|Não|
+|post_link|varchar(100)|Não|
+|status|varchar(30)|Não|
+|conclusion|varchar(192)|Sim|NULL
+|context|varchar(30)|Sim|NULL
+|created_by_id|int(11)|Não|
+|denounced_id|int(11)|Não|
+|question_id|int(11)|Sim|NULL
+|answer_id|int(11)|Sim|NULL
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela denunciations
 
-CREATE TABLE answers(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY(id)
-    , answer TEXT NOT NULL
-    , photo TEXT 
-    , document TEXT
-    , document_name VARCHAR(255)
-    , is_denounced BOOLEAN NOT NULL
-    , is_blocked BOOLEAN NOT NULL
-    , blocking_reason VARCHAR(100)
-    , is_blocked BOOLEAN NOT NULL
-    , blocking_reason VARCHAR(100)
-    , evaluation INT NOT NULL
-    , like_answer INT NOT NULL
-    , question_id INT NOT NULL
-    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
-    , answer_creator_id INT NOT NULL
-    , FOREIGN KEY (answer_creator_id) REFERENCES students(id) ON DELETE CASCADE
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+== Estrutura da tabela messages
 
-CREATE TABLE answersHasAvaliations(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY(id)
-    , avaliation INT NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , answer_id INT NOT NULL
-    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
-    , question_id INT NOT NULL
-    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
-    , person_avaliation_id INT NOT NULL
-    , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|contact|varchar(100)|Não|
+|message|text|Não|
+|status|varchar(30)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela messages
 
-CREATE TABLE answersHasLikes(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY(id)
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-    , answer_id INT NOT NULL
-    , FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
-    , question_id INT NOT NULL
-    , FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
-    , person_liked_id INT NOT NULL
-    , FOREIGN KEY (person_avaliation_id) REFERENCES students(id) ON DELETE CASCADE
-)
+== Estrutura da tabela modules
 
-CREATE TABLE solicitationsCategories(
-    id INT NOT NULL AUTO_INCREMENT
-    , PRIMARY KEY(id)
-    , name VARCHAR(100) NOT NULL
-    , created_at DATETIME NOT NULL
-    , updated_at DATETIME
-)
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(100)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela modules
+
+|32|1º Módulo|2022-05-31 13:42:22|NULL
+|33|2º Módulo|2022-05-31 13:42:29|NULL
+|34|3º Módulo|2022-06-05 00:03:19|NULL
+== Estrutura da tabela questions
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|xp|int(11)|Não|
+|link_question|text|Sim|NULL
+|question|text|Não|
+|photo|text|Sim|NULL
+|document|text|Sim|NULL
+|document_name|varchar(255)|Sim|NULL
+|is_denounced|tinyint(1)|Não|
+|is_blocked|tinyint(1)|Não|
+|blocking_reason|varchar(100)|Sim|NULL
+|course_id|int(11)|Não|
+|subject_id|int(11)|Não|
+|category_id|int(11)|Não|
+|student_id|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela questions
+
+== Estrutura da tabela schools
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(255)|Não|
+|address|varchar(255)|Não|
+|have_account|varchar(12)|Não|
+|in_sp_city|varchar(14)|Sim|NULL
+|not_in_sp_city|varchar(14)|Sim|NULL
+|about|text|Sim|NULL
+|github|text|Sim|NULL
+|linkedin|text|Sim|NULL
+|facebook|text|Sim|NULL
+|instagram|text|Sim|NULL
+|photo|text|Sim|NULL
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela schools
+
+|167|Etec de Guaianases|Guaianases|Com conta|Inside city| |Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em | | | | |/project/private/adm/pages/register/upload/schools/62a8dfa787060.png|2022-06-14 16:21:11|NULL
+|168|Etec de Itaquera|Itaquera|Com conta|Inside city| |Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em | | | | |/project/private/adm/pages/register/upload/schools/62a8dfc53ec6c.jpg|2022-06-14 16:21:41|NULL
+|169|Etec de Poá|Poá|Com conta| |Outside city|Essa etec é muito top em Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em  Essa etec é muito top em | | | | |/project/private/adm/pages/register/upload/schools/62a8dfe31019d.jpg|2022-06-14 16:22:11|NULL
+== Estrutura da tabela schoolshascourses
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|school_id|int(11)|Não|
+|course_id|int(11)|Não|
+== Extraindo dados da tabela schoolshascourses
+
+|80|2022-06-14 16:31:46|NULL|169|50
+|81|2022-06-14 16:32:08|NULL|168|51
+|82|2022-06-14 16:32:34|NULL|167|52
+== Estrutura da tabela schoolshasstudents
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|student_id|int(11)|Não|
+|school_id|int(11)|Não|
+== Extraindo dados da tabela schoolshasstudents
+
+== Estrutura da tabela schoolshasteachers
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|school_id|int(11)|Não|
+|teacher_id|int(11)|Não|
+== Extraindo dados da tabela schoolshasteachers
+
+|218|2022-06-14 16:21:11|NULL|167|52
+|219|2022-06-14 16:21:11|NULL|167|53
+|220|2022-06-14 16:21:11|NULL|167|54
+|221|2022-06-14 16:21:41|NULL|168|52
+|222|2022-06-14 16:21:41|NULL|168|53
+|223|2022-06-14 16:21:41|NULL|168|54
+|224|2022-06-14 16:22:11|NULL|169|52
+|225|2022-06-14 16:22:11|NULL|169|54
+== Estrutura da tabela solicitations
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|contact|varchar(100)|Não|
+|register_link|varchar(100)|Não|
+|title|varchar(50)|Não|
+|description|varchar(192)|Não|
+|status|varchar(30)|Não|
+|conclusion|varchar(192)|Sim|NULL
+|category_id|int(11)|Sim|NULL
+|context_id|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela solicitations
+
+|1|teste1@gmaill.com| |Não tem o nome da etec|Não tem o nome da etec que eu estudo no cadastro.|Resolvida|stjstj|1|0|2022-06-14 16:39:34|2022-06-14 17:10:30
+|2|teste2@gmail.com| |Não tem o curso|Aqui não tem o curso que eu faço que é o floricultura|Análise|NULL|2|0|2022-06-14 16:41:07|2022-06-14 16:41:28
+|3|teste3@gmail.com| |módulo|não tem o módulo.|Análise|NULL|3|0|2022-06-14 17:08:26|2022-06-14 17:08:31
+== Estrutura da tabela solicitationscategories
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(100)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela solicitationscategories
+
+|1|Etec|2022-06-14 16:38:08|NULL
+|2|Curso|2022-06-14 16:38:17|NULL
+|3|Módulo|2022-06-14 16:38:26|NULL
+== Estrutura da tabela solicitationscontexts
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|context|varchar(100)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela solicitationscontexts
+
+|1|Solicitação acatada|2022-06-19 13:58:52|0000-00-00 00:00:00
+|2|Solicitação negada|2022-06-19 13:58:58|0000-00-00 00:00:00
+== Estrutura da tabela students
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|first_name|varchar(100)|Não|
+|surname|varchar(100)|Não|
+|xp|int(11)|Sim|NULL
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|user_id|int(11)|Não|
+|course_id|int(11)|Não|
+|module_id|int(11)|Não|
+== Extraindo dados da tabela students
+
+== Estrutura da tabela subjects
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(100)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela subjects
+
+|61|Programação WEB I|0000-00-00 00:00:00|NULL
+|62|Banco de Dados I|0000-00-00 00:00:00|NULL
+|63|Design Digital|0000-00-00 00:00:00|NULL
+|64|Ética|0000-00-00 00:00:00|NULL
+|65|Física|2022-06-13 19:39:15|NULL
+|66|Artes|2022-06-13 19:39:21|NULL
+== Estrutura da tabela teachers
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|name|varchar(255)|Não|
+|photo|text|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+== Extraindo dados da tabela teachers
+
+|52|Professora Aline|/project/private/adm/pages/register/upload/teachers/62a8ded228a56.jpg|2022-06-14 16:17:38|NULL
+|53|Professor Anibal|/project/private/adm/pages/register/upload/teachers/62a8df0409fdb.jpg|2022-06-14 16:18:28|NULL
+|54|Professor Roberto|/project/private/adm/pages/register/upload/teachers/62a8df1286ecb.jpg|2022-06-14 16:18:42|NULL
+== Estrutura da tabela users
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|email|text|Não|
+|password|text|Não|
+|photo|text|Não|
+|type_user|varchar(40)|Não|
+|is_confirmed|tinyint(1)|Não|
+|key_confirm|text|Sim|NULL
+|is_blocked|tinyint(1)|Não|
+|github|text|Sim|NULL
+|linkedin|text|Sim|NULL
+|facebook|text|Sim|NULL
+|instagram|text|Sim|NULL
+|profile_link|text|Sim|NULL
+|blocking_reason|varchar(100)|Sim|NULL
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|blocked_at|datetime|Sim|NULL
+== Extraindo dados da tabela users
+
+|148|adm@gmail.com|$2y$10$AIZ8zFf2W2v2zSO2YX9xP.tEWi7aWgNB7TRkOQGDOwUWnRHyTJjo.| |administrator|1|NULL|0|NULL|NULL|NULL|NULL|NULL|NULL|2022-06-14 16:15:00|NULL|NULL
+|149|teste@teste|$2y$10$.dRiV2jCAi/X1SKnvI21muVfIncCRKC311kNkcPrIs4Z/DDc4zAMK| |administrator|1|NULL|0|NULL|NULL|NULL|NULL|NULL|NULL|2022-06-19 14:01:15|NULL|NULL
+== Estrutura da tabela usershaspreferences
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|created_at|datetime|Não|
+|updated_at|datetime|Sim|NULL
+|user_id|int(11)|Não|
+|preference_id|int(11)|Não|
+== Extraindo dados da tabela usershaspreferences
+
