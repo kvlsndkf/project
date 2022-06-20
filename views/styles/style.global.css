@@ -43,6 +43,7 @@ body {
     --primary: #8080FF;
     --blue: #404EED;
     --purple-light: #B377F3;
+    --blue-info : #274652;
 
     /* Gradientes */
     --gradient-purple: linear-gradient(180deg, #CD83CB 0%, #B674F1 100%);
