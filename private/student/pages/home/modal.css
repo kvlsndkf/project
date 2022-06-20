@@ -135,3 +135,7 @@
 .corXp{
     color: var(--yellow);
 }
+
+.modal-content{
+    background-color: var(--bg-modal) !important;
+}
