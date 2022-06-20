@@ -51,8 +51,8 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../styles/feed.style.css">
 
-     <!-- Estilo do modal de denunciar -->
-     <link rel="stylesheet" href="./modal.css">
+    <!-- Estilo do modal de denunciar -->
+    <link rel="stylesheet" href="./modal.css">
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
@@ -107,7 +107,7 @@ try {
                     <?php for ($i = 0; $i < count($listPreferences); $i++) {
                         $row = $listPreferences[$i] ?>
 
-                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id;?>">
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
                             <div class="d-flex">
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
                                 <p class="text-white">
@@ -451,7 +451,7 @@ try {
 
                     <!-- Modal -->
                     <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
-                    <div class="modal-dialog">
+                        <div class="modal-dialog">
                             <div class="modal-content cor">
                                 <div class="container containerMO">
                                     <div class="modal-header border-bottom-0">
@@ -498,6 +498,10 @@ try {
                                             </div>
                                             <div class="border-bottom"></div>
                                             <div>
+                                                <?php
+                                                $creatorQuestion = $question->getCreatorQuestionById($row->id);
+                                                $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
+                                                ?>
                                                 <input type="hidden" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
                                                 <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
                                                 <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
@@ -505,7 +509,7 @@ try {
                                             </div>
 
                                             <div class="modal-footer">
-                                            <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar"  name="register">Enviar</button>
+                                                <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar" name="register">Enviar</button>
                                             </div>
                                         </form>
                                     </div>
