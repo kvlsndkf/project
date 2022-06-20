@@ -414,10 +414,17 @@ try {
 
                                 <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId); ?>
                                 <div class="question-footer">
-                                    <div class="question-answers my-question-footer-div">
+                                <?php
+                                    $answer = new Answer();
+                                    $countAnswersOfQuestion = $answer->countAnswers($row->questionId);
+
+                                    $styleCounter = empty($countAnswersOfQuestion) ? 'question-footer-div' : 'question-answers my-question-footer-div';
+                                    ?>
+                                    <div class="<?php echo $styleCounter; ?>" id="respostaQuant">
                                         <p class="normal-14-bold-p white-text question-p">
                                             <?php echo $countAnswersOfQuestion; ?>
                                         </p>
+
                                     </div>
 
                                     <a href="<?php echo $row->linkQuestion; ?>" target="_blank">
