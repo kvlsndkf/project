@@ -301,7 +301,7 @@ try {
                                 $row = $listTeachersInSchool[$i] ?>
 
                                 <div class="question-info">
-                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" width="80" style="margin-right: 8px; border-radius: 3px;">
+                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" width="80" height="80" style="margin-right: 8px; border-radius: 80px; object-fit: cover;">
                                     <div>
                                         <p class="normal-16-bold-title-3 white-text question-p">
                                             <?php echo $row->name; ?>

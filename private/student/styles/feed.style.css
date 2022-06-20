@@ -24,6 +24,18 @@ body{
     background: #8080FF;
 } 
 
+.bg-gold{
+    background-color: var(--yellow);
+}
+
+.bg-silver{
+    background-color: var(--silver);
+}
+
+.bg-copper{
+    background-color: var(--bronze);
+}
+
 .feed-leftbar::-webkit-scrollbar {
     width: 5px;
 }
@@ -671,6 +683,7 @@ p{
 
 .nav-tabs .nav-link.active{
     color: var(--white);
+    background-color: var(--gray1);
 }
 
 .drop-sair:hover{
@@ -702,14 +715,22 @@ p{
     margin-bottom: 20px;
 }
 
+.search-input:focus{
+    outline: none;
+    border: 1px solid var(--blue-sky);;
+}
+
 .search-submit{
     border: none;
     height: 40px;
-    padding: 10px;
-    padding-right: 20px;
+    width: 60px;
     background-color: var(--gray3);
     border-radius: 0 20px 20px 0;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .search-submit:hover{

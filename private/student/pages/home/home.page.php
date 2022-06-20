@@ -582,17 +582,17 @@ try {
                                     $displayMedal = 'd-block';
                                     $displayNumber = 'd-none';
                                     $iconMedal = '../../images/icons/gold.svg';
-                                    $badgeColor = 'badge rounded-pill bg-danger';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
                                 } else if ($i === 1) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
                                     $iconMedal = '../../images/icons/silver.svg';
-                                    $badgeColor = 'badge rounded-pill bg-info';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
                                 } else if ($i === 2) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
                                     $iconMedal = '../../images/icons/bronze.svg';
-                                    $badgeColor = 'badge rounded-pill bg-warning';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
                                 } else if ($i === 3) {
                                     $displayMedal = 'd-none';
                                     $displayNumber = 'd-block';
@@ -605,12 +605,12 @@ try {
                                     $number = '5º';
                                 }
                             ?>
-                                <div class="top-ranking margin-bot-15">
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
                                     <div class="question-info">
                                         <div class="<?php echo $displayMedal; ?>">
                                             <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row->name; ?>">
                                         </div>
-                                        <div class="<?php echo $displayNumber; ?>">
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
@@ -643,17 +643,17 @@ try {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
                                     $iconMedal = '../../images/icons/gold.svg';
-                                    $badgeColor = 'badge rounded-pill bg-danger';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
                                 } else if ($i === 1) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
                                     $iconMedal = '../../images/icons/silver.svg';
-                                    $badgeColor = 'badge rounded-pill bg-info';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
                                 } else if ($i === 2) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
                                     $iconMedal = '../../images/icons/bronze.svg';
-                                    $badgeColor = 'badge rounded-pill bg-warning';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
                                 } else if ($i === 3) {
                                     $displayMedal = 'd-none';
                                     $displayNumber = 'd-block';
@@ -668,12 +668,12 @@ try {
                             ?>
 
 
-                                <div class="top-ranking margin-bot-15">
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
                                     <div class="question-info">
                                         <div class="<?php echo $displayMedal; ?>">
                                             <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row['first_name']; ?>">
                                         </div>
-                                        <div class="<?php echo $displayNumber; ?>">
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
