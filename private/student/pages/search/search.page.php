@@ -193,30 +193,30 @@ try {
                 <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                     <li class="nav-item" role="presentation">
                         <?php $styleBadgeQuestions = count($searchQuestions) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                        <a class="nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">
-                            <p class="normal-14-bold-p tab-p">
+                        <a class="nav-link active normal-14-bold-p question-p" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">
+
                                 Perguntas
                                 <span class="<?php echo $styleBadgeQuestions; ?>"><?php echo count($searchQuestions); ?>
-                            </p>
+
 
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <?php $styleBadgeProfiles = count($searchProfiles) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                        <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">
-                            <p class="normal-14-bold-p tab-p">
+                        <a class="nav-link normal-14-bold-p question-p" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">
+
                                 Perfis
                                 <span class="<?php echo $styleBadgeProfiles; ?>"><?php echo count($searchProfiles); ?>
-                            </p>
+
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <?php $styleBadgeMaterials = count($searchMaterials) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                        <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">
-                            <p class="normal-14-bold-p tab-p">
+                        <a class="nav-link normal-14-bold-p question-p" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">
+
                                 Material de Apoio
                                 <span class="<?php echo $styleBadgeMaterials; ?>"><?php echo count($searchMaterials); ?>
-                            </p>
+
                         </a>
                     </li>
                 </ul>
@@ -237,12 +237,12 @@ try {
                         ?>
 
                         <!-- Lista de questões ⬇️ -->
-                        <div class="<?php echo $listQuestions; ?>">
+                        <div class="cont <?php echo $listQuestions; ?>">
 
                             <?php for ($i = 0; $i < count($searchQuestions); $i++) {
                                 $row = $searchQuestions[$i] ?>
 
-                                <div class="normal-12-medium-tiny gray-text-5">
+                                <div class="normal-12-medium-tiny gray-text-5 margin-bot-15">
                                     <?php echo $row->created; ?> •
                                     <?php echo $row->course; ?> •
                                     <?php echo $row->category; ?> •
@@ -251,9 +251,10 @@ try {
 
                                 <!-- Create the editor container -->
                                 <div class="ql-snow ql-editor2">
-                                    <div class="ql-editor2 gray-text-7 whitney-16-medium-text line-clamp-2">
-
+                                    <div class="ql-editor2 white-text line-clamp-2">
+                                        <p class="white-text line-clamp-2" style="font-weight: bolder;">
                                         <?php echo $row->question; ?>
+                                        </p>
                                     </div>
                                 </div>
 
@@ -273,7 +274,11 @@ try {
                                     </div>
                                     <div>
                                         <a style="text-decoration: none; color: inherit;" href="<?php echo $row->linkQuestion; ?>" target="_blank">
-                                            <label class="see-btn pointer white-title normal-14-bold-p">Ver</label>
+                                            <label class="see-btn pointer white-title normal-14-bold-p">
+                                            <p class="normal-14-bold-p question-p white-text">
+                                                Ver
+                                            </p>
+                                            </label>
                                         </a>
                                     </div>
                                 </div>

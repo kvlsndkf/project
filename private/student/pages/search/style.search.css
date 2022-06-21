@@ -141,3 +141,17 @@
     border-radius: 100%;
     object-fit: cover;
 }
+
+.nav-tabs .nav-link:hover{
+    background-color: var(--primary) !important;
+    transition: .5s;
+    border: none !important;
+}
+
+.infos {
+    margin-top: 25px;
+}
+
+.cont {
+    margin-top: 20px;
+}
