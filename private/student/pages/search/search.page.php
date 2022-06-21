@@ -326,8 +326,9 @@ try {
                                 <div class="<?php echo $displayProfileStudent; ?>">
 
                                     <div class="question-info">
-                                        <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
-
+                                        <div class="img-container">
+                                            <img style="width: 75px; height: 75px; object-fit: cover; border-radius: 50px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
+                                        </div>
                                         <div class="question-info-text">
                                             <div class="question-name question-about-a normal-14-medium-p">
                                                 <?php echo $row->firstName; ?> <?php echo $row->surname; ?>

@@ -134,3 +134,10 @@
 .not-found-text {
     padding-left: 10px;
 }
+
+.img-container {
+    width: fit-content;
+    margin-right: 8px;
+    border-radius: 100%;
+    object-fit: cover;
+}
