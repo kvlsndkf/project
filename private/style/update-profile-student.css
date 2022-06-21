@@ -1,0 +1,14 @@
+.testechato{
+    width: 100%;
+}
+
+.select2-container{
+    width: 100% !important;
+}
+
+
+.profile-header-left-u{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

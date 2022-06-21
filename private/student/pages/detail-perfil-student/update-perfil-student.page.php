@@ -39,6 +39,9 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../../adm/pages/register/register.styles.css">
     <link rel="stylesheet" href="../../styles/feed.style.css">
+
+    <!-- Link da estilização especifica do update -->
+    <link rel="stylesheet" href="../../../style/update-profile-student.css">
 </head>
 
 <body>
@@ -94,6 +97,168 @@ try {
 
 
         </nav>
+
+
+        <!-- Mensagem de erro ⬇️ -->
+        <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </symbol>
+            </svg>
+
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <strong>Ops...</strong>
+                    <?php echo $_SESSION['statusNegative']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php unset($_SESSION['statusNegative']);
+        } ?>
+
+        <!-- Mensagem de alerta ⬇️ -->
+        <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </symbol>
+            </svg>
+
+            <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <strong>Ops...</strong>
+                    <?php echo $_SESSION['statusAlert']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php unset($_SESSION['statusAlert']);
+        } ?>
+
+        <div class="corpo-feed">
+
+            <div class="feed-div">
+
+                <div class="profile-div">
+
+                    <div class="profile-top"></div>
+
+                    <div style="padding: 20px;">
+
+                        <form action="./controller/update-perfil-student.controller.php?idStudentLogged=<?php echo $studentPerfil->id; ?>&idUser=<?php echo $studentPerfil->userId; ?>" method="post" enctype="multipart/form-data">
+
+                            <div class="profile-header-left-u">
+                                <img class="image-link profile-pic profile-pic-img" src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" id="imageFile">
+                                
+                            </div>
+                            <p>
+                                    <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
+                                    <input type="file" name="updatePhoto" id="" onchange="previewImage(this)">
+                                </p>
+
+                            Dados principais
+                            <p>
+                                <label for="">Nome</label>
+                                <input type="text" name="firstName" id="" value="<?php echo $studentPerfil->firstName; ?>">
+                            </p>
+
+                            <p>
+                                <label for="">Sobrenome</label>
+                                <input type="text" name="surname" id="" value="<?php echo $studentPerfil->surname; ?>">
+                            </p>
+
+                        
+                                <label for="">Módulo</label>
+                                <select name="module" class="selectModule w-100 testechato">
+                                    <optgroup label="Módulo atual" class="testechato">
+                                        <option class="testechato" value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
+                                    </optgroup>
+
+                                    <optgroup label="Lista de módulos" class="testechato">
+                                        <?php for ($i = 0; $i < count($listModules); $i++) {
+                                            $row = $listModules[$i] ?>
+                                            <option class="testechato" value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                                        <?php } ?>
+                                    </optgroup>
+                                </select>
+                            
+
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Links
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <p>
+                                                <label for="">Linkedin</label>
+                                                <input type="text" name="linkedin" id="" value="<?php echo $studentPerfil->linkedin; ?>">
+                                            </p>
+
+                                            <p>
+                                                <label for="">GitHub</label>
+                                                <input type="text" name="github" id="" value="<?php echo $studentPerfil->github; ?>">
+                                            </p>
+
+                                            <p>
+                                                <label for="">Facebook</label>
+                                                <input type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
+                                            </p>
+
+                                            <p>
+                                                <label for="">Instagram</label>
+                                                <input type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            Senha
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+
+                                            <p>
+                                                <label for="">Senha antiga</label>
+                                                <input type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
+                                            </p>
+
+                                            <p>
+                                                <label for="">Senha atual</label>
+                                                <input type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
+                                            </p>
+
+                                            <p>
+                                                <label for="">Confirme a sua senha atual</label>
+                                                <input type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>
+                                <input type="button" value="Cancelar" onclick="history.go(-1)">
+                                <input type="submit" name="update" value="Atualizar perfil">
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
@@ -109,149 +274,6 @@ try {
             </p>
         </nav>
     </div>
-    <!-- Mensagem de erro ⬇️ -->
-    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
-
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-        </svg>
-
-        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                <use xlink:href="#exclamation-triangle-fill" />
-            </svg>
-            <div>
-                <strong>Ops...</strong>
-                <?php echo $_SESSION['statusNegative']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    <?php unset($_SESSION['statusNegative']);
-    } ?>
-
-    <!-- Mensagem de alerta ⬇️ -->
-    <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
-
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-            </symbol>
-        </svg>
-
-        <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                <use xlink:href="#exclamation-triangle-fill" />
-            </svg>
-            <div>
-                <strong>Ops...</strong>
-                <?php echo $_SESSION['statusAlert']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    <?php unset($_SESSION['statusAlert']);
-    } ?>
-
-    <form action="./controller/update-perfil-student.controller.php?idStudentLogged=<?php echo $studentPerfil->id; ?>&idUser=<?php echo $studentPerfil->userId; ?>" method="post" enctype="multipart/form-data">
-
-        <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" width="150" id="imageFile">
-        <p>
-            <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
-            <input type="file" name="updatePhoto" id="" onchange="previewImage(this)">
-        </p>
-
-        Dados principais
-        <p>
-            <label for="">Nome</label>
-            <input type="text" name="firstName" id="" value="<?php echo $studentPerfil->firstName; ?>">
-        </p>
-
-        <p>
-            <label for="">Sobrenome</label>
-            <input type="text" name="surname" id="" value="<?php echo $studentPerfil->surname; ?>">
-        </p>
-
-        <p>
-            <label for="">Módulo</label>
-            <select name="module" class="selectModule w-100">
-                <optgroup label="Módulo atual">
-                    <option value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
-                </optgroup>
-
-                <optgroup label="Lista de módulos">
-                    <?php for ($i = 0; $i < count($listModules); $i++) {
-                        $row = $listModules[$i] ?>
-                        <option value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                    <?php } ?>
-                </optgroup>
-            </select>
-        </p>
-
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Links
-                    </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">
-                        <p>
-                            <label for="">Linkedin</label>
-                            <input type="text" name="linkedin" id="" value="<?php echo $studentPerfil->linkedin; ?>">
-                        </p>
-
-                        <p>
-                            <label for="">GitHub</label>
-                            <input type="text" name="github" id="" value="<?php echo $studentPerfil->github; ?>">
-                        </p>
-
-                        <p>
-                            <label for="">Facebook</label>
-                            <input type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
-                        </p>
-
-                        <p>
-                            <label for="">Instagram</label>
-                            <input type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        Senha
-                    </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">
-
-                        <p>
-                            <label for="">Senha antiga</label>
-                            <input type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
-                        </p>
-
-                        <p>
-                            <label for="">Senha atual</label>
-                            <input type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
-                        </p>
-
-                        <p>
-                            <label for="">Confirme a sua senha atual</label>
-                            <input type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <p>
-            <input type="button" value="Cancelar" onclick="history.go(-1)">
-            <input type="submit" name="update" value="Atualizar perfil">
-        </p>
-    </form>
 
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
