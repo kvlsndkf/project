@@ -187,7 +187,7 @@ try {
                 <!-- Barra de pesquisa -->
                 <form action="./search.page.php" method="get" class="search-form">
                     <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" class="search-input" value="<?php echo $searchResult; ?>" autocomplete="off">
-                    <input type="submit" id="submit-search" value="🔍" class="search-submit">
+                    <input type="submit" id="submit-search" value="🔍" class="my-search-submit">
                 </form>
                 <!-- Tabs navs -->
                 <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
@@ -284,10 +284,12 @@ try {
                             <?php } ?>
                         </div>
 
-                        <div class="<?php echo $notFound; ?>">
+                        <div class="not-found-container d-flex <?php echo $notFound; ?>">
                             <img src="../../images/not-found.svg" alt="Nada encontrado">
-                            Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>
-                            Dica: Tente usar palavras chaves diferentes
+                            <p class="not-found-text white-title normal-14-medium-p">
+                                Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
+                                Dica: Tente usar palavras chaves diferentes
+                            </p>
                         </div>
 
                     </div>
@@ -379,9 +381,11 @@ try {
 
                         </div>
 
-                        <div class=" <?php echo $notFound; ?>">
+                        <div class="not-found-container d-flex <?php echo $notFound; ?>">
                             <img src="../../images/not-found.svg" alt="Nada encontrado">
-                            Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
+                            <p class="not-found-text white-title normal-14-medium-p">
+                                Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
+                            </p>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
@@ -418,7 +422,7 @@ try {
 
                                 <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId); ?>
                                 <div class="question-footer">
-                                <?php
+                                    <?php
                                     $answer = new Answer();
                                     $countAnswersOfQuestion = $answer->countAnswers($row->questionId);
 
@@ -440,11 +444,12 @@ try {
                             <?php } ?>
                         </div>
 
-                        <div class="<?php echo $notFound; ?>">
+                        <div class="not-found-container d-flex <?php echo $notFound; ?>">
                             <img src="../../images/not-found.svg" alt="Nada encontrado">
-                            Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
+                            <p class="not-found-text white-title normal-14-medium-p">
+                                Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
+                            </p>
                         </div>
-
                     </div>
                 </div>
             </div>
