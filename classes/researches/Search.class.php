@@ -21,37 +21,6 @@ class Search
     public string $address;
 
     //methods
-    public function searchAll(string $search)
-    {
-        $connection = Connection::connection();
-
-        try {
-            $stmt = $connection->prepare("SELECT stu.first_name, stu.surname, school.name, quest.question, cat.name, answ.answer
-                                            FROM modules, students, questions, answers
-
-                                            INNER JOIN categories cat
-                                            ON cat.id = quest.category_id
-                                            WHERE stu.first_name LIKE '%$search%'
-                                            AND stu.surname LIKE '%$search%'
-                                            AND school.name LIKE '%$search%' 
-                                            AND quest.question LIKE '%$search%' 
-                                            AND answ.answer LIKE '%$search%' 
-                                            ");
-
-            $stmt->execute();
-
-            $lines = $stmt->rowCount();
-
-            if ($lines == 00) {
-                $_SESSION['statusNegative'] = "Não existe registros.";
-            }
-
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
-
     public function searchQuestions(string $search)
     {
         $connection = Connection::connection();

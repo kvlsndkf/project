@@ -59,8 +59,6 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../styles/feed.style.css">
 
-    <!-- Estilo do modal de denunciar -->
-    <link rel="stylesheet" href="./modal.css">
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="../../../../libs/dist/magnific-popup.css">
@@ -74,6 +72,9 @@ try {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+
+    <!-- Estilo do modal de denunciar -->
+    <link rel="stylesheet" href="./modal.css">
 
 </head>
 
@@ -100,7 +101,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser;?>" class="sidebar-a leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
