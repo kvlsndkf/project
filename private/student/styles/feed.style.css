@@ -681,13 +681,14 @@ p{
     transition: .25s;
 }
 
-.nav-tabs .nav-link.active{
+.nav-tabs .nav-link.ranking-a.active{
     color: var(--white);
-    background-color: var(--bg-modal);
+    background-color: var(--gray1);
 }
 
-.ranking-a.active{
-    background-color: var(--gray1);
+.nav-tabs .nav-link.userProfile-a.active{
+    color: var(--white);
+    background-color: var(--bg-modal);
 }
 
 .drop-sair:hover{

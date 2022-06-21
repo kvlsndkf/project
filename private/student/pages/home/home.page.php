@@ -554,7 +554,7 @@ try {
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
                         <li class="nav-item ranking-li" role="presentation">
-                            <a class="nav-link active ranking-a whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
+                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
                         </li>
                         <li class="nav-item ranking-li" role="presentation">
                             <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>

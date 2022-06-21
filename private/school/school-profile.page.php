@@ -203,7 +203,7 @@ try {
                         </p>
 
                         <div class="question-info margin-bot-15">
-                            <div class="profile-follows profile-follows-a">
+                            <div class="profile-follows profile-follows-a" style="margin-right: 10px;">
                                 <p class="normal-14-bold-p white-text question-p">
                                     <?php echo $studentsInSchool[0]['total']; ?>&nbsp
                                 </p>
@@ -249,13 +249,13 @@ try {
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="normal-14-bold-p question-p nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Sobre</a>
+                            <a class="normal-14-bold-p question-p nav-link userProfile-a active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Sobre</a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Cursos</a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Cursos</a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Professores</a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Professores</a>
                         </li>
                     </ul>
                     <!-- Tabs navs -->
