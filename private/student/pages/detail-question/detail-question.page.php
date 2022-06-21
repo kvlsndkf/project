@@ -13,12 +13,9 @@ try {
 
     $idUser = $_SESSION['idUser'];
 
-
     $student = new StudentMethods();
     $studentId = $student->getStudentByUserID($idUser);
     $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
-
-    $userCreatorAnswer = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
 
     $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
 
@@ -340,7 +337,7 @@ try {
                             <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $listDetailsQuestions->id; ?>">
                                 <?php echo $listDetailsQuestions->question; ?>
                             </span>
-                            
+
                             <button class="read-btn-question normal-14-bold-p" id="readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>" onclick="document.querySelector('#questionText-<?php echo $listDetailsQuestions->id; ?>').classList.remove('line-clamp-2');
                             document.querySelector('#readLess-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'inline';
                             document.querySelector('#readMore-newMessages-<?php echo $listDetailsQuestions->id; ?>').style.display = 'none';">
@@ -429,7 +426,7 @@ try {
 
                 <!-- Modal Question -->
                 <div class="modal fade" id="modal-<?php echo $listDetailsQuestions->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $listDetailsQuestions->id; ?>" aria-hidden="true">
-                <div class="modal-dialog">
+                    <div class="modal-dialog">
                         <div class="modal-content cor">
                             <div class="container containerMO">
                                 <div class="modal-header border-bottom-0">
@@ -512,6 +509,8 @@ try {
                         <?php
                         $creatorAnswer = $answer->getAnswerCreatorById($row->id, $id);
                         $creatorAnswerID = $creatorAnswer[0]['answer_creator_id'];
+                        $userCreatorAnswer = $student->getUserByStudentID($creatorAnswer[0]['answer_creator_id']);
+
                         $studentID = $studentId[0]['id'];
 
                         $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
@@ -697,7 +696,7 @@ try {
 
                         <!-- Modal Answer-->
                         <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
-                        <div class="modal-dialog">
+                            <div class="modal-dialog">
                                 <div class="modal-content cor">
                                     <div class="container containerMO">
                                         <div class="modal-header border-bottom-0">
@@ -746,8 +745,9 @@ try {
                                                 <div>
                                                     <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
                                                     <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $creatorAnswerID; ?>">
+                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorAnswer[0]['user_id']; ?>">
                                                     <input type="hidden" name="answerId" id="" value="<?php echo $row->id; ?>">
+                                                    <input type="hidden" name="questionId" id="" value="<?php echo $listDetailsQuestions->id; ?>">
                                                 </div>
 
                                                 <div class="modal-footer">
