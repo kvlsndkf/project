@@ -161,7 +161,7 @@ try {
                         </a>
 
                         Seguindo 
-                    </label>s
+                    </label>
 
                     <hr class="detail-question-hr">
 

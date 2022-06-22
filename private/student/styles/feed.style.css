@@ -709,6 +709,8 @@ p{
         align-items: center;
         justify-content: center;
     }
+}
+
 .search-form{
     display: flex;
     flex-direction: row;
@@ -991,4 +993,3 @@ p{
         margin-left: -5px;
     }
 }
-
