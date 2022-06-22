@@ -253,7 +253,7 @@ try {
                                             <div class="form-check questionStyle">
                                                 <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $studentPerfil->id; ?>" value="Não tenho interesse nesse post" required>
                                                 <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $studentPerfil->id; ?>">
-                                                    Não tenho interesse nesse post
+                                                    Não tenho interesse nesse perfil
                                                 </label>
                                             </div>
                                             <div class="border-bottom"></div>
