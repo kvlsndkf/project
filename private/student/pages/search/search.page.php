@@ -270,10 +270,9 @@ try {
                                         <p class="normal-14-bold-p white-text question-p">
                                             <?php echo $countAnswersOfQuestion; ?>
                                         </p>
-
                                     </div>
                                     <div>
-                                        <a style="text-decoration: none; color: inherit;" href="<?php echo $row->linkQuestion; ?>" target="_blank">
+                                        <a href="<?php echo $row->linkQuestion; ?>" target="_blank">
                                             <label class="see-btn pointer white-title normal-14-bold-p">
                                                 <p class="normal-14-bold-p question-p white-text">
                                                     Ver
@@ -289,11 +288,15 @@ try {
                             <?php } ?>
                         </div>
 
-                        <div class="not-found-container d-flex <?php echo $notFound; ?>">
-                            <img src="../../images/not-found.svg" alt="Nada encontrado">
-                            <p class="not-found-text white-title normal-14-medium-p">
-                                Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
-                                Dica: Tente usar palavras chaves diferentes
+                        <div class="not-found-container <?php echo $notFound; ?>">
+                            <img src="../../images/not-found.svg" class="img-not-found" alt="Nada encontrado">
+                            <p class="not-found-text-cont white-title normal-14-medium-p">
+                                <p class="not-found-text-title white-title normal-14-medium-p">
+                                    Nenhum resultado para <span class="white-title">"<?php echo $searchResult; ?>"</span>.
+                                </p>
+                                <p class="not-found-text gray-text-6 normal-14-medium-p">
+                                    Dica: Tente usar palavras chaves diferentes
+                                </p>
                             </p>
                         </div>
 
@@ -303,8 +306,8 @@ try {
                         <?php
 
                         if (count($searchProfiles) == 0) {
-                            $notFound = 'd-block';
-                            $listProfiles = 'd-none';
+                            $notFound = 'd-flex';
+                            $listProfiles = 'd-block';
                         } else {
                             $notFound = 'd-none';
                             $listProfiles = 'd-block';
@@ -322,7 +325,7 @@ try {
                                     $displayProfileStudent = 'd-none';
                                 } else {
                                     $displayProfileSchool = 'd-none';
-                                    $displayProfileStudent = 'd-bolck';
+                                    $displayProfileStudent = 'd-block';
                                 }
                                 ?>
 
@@ -340,7 +343,7 @@ try {
                                                     <?php echo $row->firstName; ?> <?php echo $row->surname; ?>
                                                 </div>
 
-                                                <div class="question-about normal-12-medium-tiny">
+                                                <div class="question-about normal-12-medium-tiny"  style="margin-top: 4px;">
                                                     <?php echo $row->module; ?> •
                                                     <?php echo $row->course; ?> •
                                                     <?php echo $row->school; ?>
@@ -348,8 +351,13 @@ try {
                                             </div>
                                             <div class="d-flex justify-content-end">
                                                 <a href="<?php echo $row->linkStudent; ?>" target="_blank">
-                                                    <label class="see-btn pointer white-title normal-14-bold-p">Ver</label>
+                                                    <label class="see-btn white-title pointer normal-14-bold-p">
+                                                        <p class="normal-14-bold-p question-p white-text">
+                                                            Ver
+                                                        </p>
+                                                    </label>
                                                 </a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -365,21 +373,26 @@ try {
                                         <div>
                                             <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
                                         </div>
-                                        <div class="question-info-text">
-                                            <div class="question-name question-about-a normal-14-medium-p">
-                                                <?php echo $row->schoolName; ?>
-                                            </div>
+                                        <div class="q-i-t">
+                                            <div class="question-info-text">
+                                                <div class="question-name question-about-a normal-14-medium-p">
+                                                    <?php echo $row->schoolName; ?>
+                                                </div>
 
-                                            <div class="question-about normal-12-medium-tiny">
-                                                <?php echo $row->address; ?>, São Paulo
+                                                <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
+                                                    <?php echo $row->address; ?>, São Paulo
+                                                </div>
+                                            </div>
+                                            <div class=" d-flex justify-content-end">
+                                                <a href="<?php echo $row->schoolLink; ?>" target="_blank">
+                                                    <label class="see-btn white-title pointer normal-14-bold-p">
+                                                        <p class="normal-14-bold-p question-p white-text">
+                                                            Ver
+                                                        </p>
+                                                    </label>
+                                                </a>
                                             </div>
                                         </div>
-                                        <div class=" d-flex justify-content-end">
-                                            <a href="<?php echo $row->schoolLink; ?>" target="_blank">
-                                                <label class="see-btn white-title pointer normal-14-bold-p">Ver</label>
-                                            </a>
-                                        </div>
-
 
                                     </div>
                                     <hr class="w-100 my-hr">
@@ -389,10 +402,15 @@ try {
 
                         </div>
 
-                        <div class="not-found-container d-flex <?php echo $notFound; ?>">
-                            <img src="../../images/not-found.svg" alt="Nada encontrado">
-                            <p class="not-found-text white-title normal-14-medium-p">
-                                Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
+                        <div class="not-found-container <?php echo $notFound; ?>">
+                            <img src="../../images/not-found.svg" class="img-not-found" alt="Nada encontrado">
+                            <p class="not-found-text-cont white-title normal-14-medium-p">
+                                <p class="not-found-text-title white-title normal-14-medium-p">
+                                    Nenhum resultado para <span class="white-title">"<?php echo $searchResult; ?>"</span>.
+                                </p>
+                                <p class="not-found-text gray-text-6 normal-14-medium-p">
+                                    Dica: Tente usar palavras chaves diferentes
+                                </p>
                             </p>
                         </div>
                     </div>
@@ -414,7 +432,7 @@ try {
                             <?php for ($i = 0; $i < count($searchMaterials); $i++) {
                                 $row = $searchMaterials[$i] ?>
 
-                                <div class="normal-12-medium-tiny gray-text-5">
+                                <div class="normal-12-medium-tiny gray-text-5 margin-bot-15">
                                     <?php echo $row->created; ?> •
                                     <?php echo $row->course; ?> •
                                     <?php echo $row->category; ?> •
@@ -453,9 +471,14 @@ try {
                         </div>
 
                         <div class="not-found-container d-flex <?php echo $notFound; ?>">
-                            <img src="../../images/not-found.svg" alt="Nada encontrado">
-                            <p class="not-found-text white-title normal-14-medium-p">
-                                Nenhum resultado para <strong>"<?php echo $searchResult; ?>"</strong>.
+                            <img src="../../images/not-found.svg" class="img-not-found" alt="Nada encontrado">
+                            <p class="not-found-text-cont white-title normal-14-medium-p">
+                                <p class="not-found-text-title white-title normal-14-medium-p">
+                                    Nenhum resultado para <span class="white-title">"<?php echo $searchResult; ?>"</span>.
+                                </p>
+                                <p class="not-found-text gray-text-6 normal-14-medium-p">
+                                    Dica: Tente usar palavras chaves diferentes
+                                </p>
                             </p>
                         </div>
                     </div>
