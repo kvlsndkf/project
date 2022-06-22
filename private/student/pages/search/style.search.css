@@ -161,6 +161,10 @@
     border: none !important;
 }
 
+.nav-tabs {
+    border: none;
+}
+
 .infos {
     margin-top: 25px;
 }
