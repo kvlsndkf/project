@@ -159,31 +159,35 @@ try {
                                 <img class="image-link profile-pic profile-pic-img" src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" id="imageFile">
 
                             </div>
+                            <div class="input2">
                             <p>
                                 <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
                                 <input type="file" name="updatePhoto" id="file" onchange="previewImage(this)">
-                                <label class="input-file" for="file">Atualizar foto</label>
+                                <label class="input-file1  normal-14-bold-p" for="file">Atualizar foto</label>
                             </p>
-
-
-                            Dados principais
+                            
+                            </div>
+                            <div class="border-bottom"></div>
+                            <h6 class="normal-16-bold-title-3 dadosP"> Dados principais</h6>
+                            
                             <p>
-                                <label for="">Nome</label>
-                                <input type="text" name="firstName" id="" value="<?php echo $studentPerfil->firstName; ?>">
+                                <label for="" class="normal-14-medium-p nameA">Nome</label><br>
+                                <input class="normal-12-medium-tiny input-name" type="text" name="firstName" id="" value="<?php echo $studentPerfil->firstName; ?>">
                             </p>
 
                             <p>
-                                <label for="">Sobrenome</label>
-                                <input type="text" name="surname" id="" value="<?php echo $studentPerfil->surname; ?>">
+                                <label for="" class="normal-14-medium-p sobrenomeA">Sobrenome</label><br>
+                                <input class="normal-12-medium-tiny input-sobrenome" type="text" name="surname" id="" value="<?php echo $studentPerfil->surname; ?>">
                             </p>
 
 
-                            <label for="">Módulo</label>
+                            <label for="" class="normal-14-medium-p moduloA">Módulo</label>
                             <select name="module" class="selectModule w-100 testechato">
                                 <optgroup label="Módulo atual" class="testechato">
                                     <option class="testechato" value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
                                 </optgroup>
-
+                                
+                                <div class="border-bottom"></div>
                                 <optgroup label="Lista de módulos" class="testechato">
                                     <?php for ($i = 0; $i < count($listModules); $i++) {
                                         $row = $listModules[$i] ?>
