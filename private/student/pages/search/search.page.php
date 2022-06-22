@@ -314,7 +314,7 @@ try {
                         }
                         ?>
                         <!-- Lista de perfis ⬇️ -->
-                        <div class="cont <?php echo $listProfiles; ?>">
+                        <div class="<?php echo $listProfiles; ?>">
 
                             <?php for ($i = 0; $i < count($searchProfiles); $i++) {
                                 $row = $searchProfiles[$i] ?>
