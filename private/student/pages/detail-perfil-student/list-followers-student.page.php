@@ -201,7 +201,7 @@ try {
                             $displayFollow = $studentSession[0]['id'] == $row->studentId ? 'd-none' : '';
                             ?>
                             <div class="<?php echo $displayFollow; ?> following-profile stop-following" style="margin-top: 15px;">
-                                <form class="stop-following" action="./controller/list-followers.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $row->userId; ?>&idPerfil=<?php echo $idFollower; ?>" method="post">
+                                <form class="stop-following" action="./controller/list-followers-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $row->userId; ?>&idPerfil=<?php echo $idFollower; ?>" method="post">
                                     <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
                                 </form>
                             </div>
