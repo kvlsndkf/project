@@ -12,3 +12,20 @@
     justify-content: center;
     align-items: center;
 }
+
+input[type="file"]{
+    display: none;
+}
+
+.input-file{
+    text-align: center;
+    background-color: #8080FF;
+    padding: 0.5em;
+    outline: none;
+    border-radius: 10px;
+    padding-left: 4em;
+    padding-right: 4em;
+    color: var(--white);
+    width: 50%;
+    justify-content: space-between;
+}

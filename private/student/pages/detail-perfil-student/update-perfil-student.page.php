@@ -157,12 +157,14 @@ try {
 
                             <div class="profile-header-left-u">
                                 <img class="image-link profile-pic profile-pic-img" src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" id="imageFile">
-                                
+
                             </div>
                             <p>
-                                    <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
-                                    <input type="file" name="updatePhoto" id="" onchange="previewImage(this)">
-                                </p>
+                                <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
+                                <input type="file" name="updatePhoto" id="file" onchange="previewImage(this)">
+                                <label class="input-file" for="file">Atualizar foto</label>
+                            </p>
+
 
                             Dados principais
                             <p>
@@ -175,21 +177,21 @@ try {
                                 <input type="text" name="surname" id="" value="<?php echo $studentPerfil->surname; ?>">
                             </p>
 
-                        
-                                <label for="">Módulo</label>
-                                <select name="module" class="selectModule w-100 testechato">
-                                    <optgroup label="Módulo atual" class="testechato">
-                                        <option class="testechato" value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
-                                    </optgroup>
 
-                                    <optgroup label="Lista de módulos" class="testechato">
-                                        <?php for ($i = 0; $i < count($listModules); $i++) {
-                                            $row = $listModules[$i] ?>
-                                            <option class="testechato" value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
-                                        <?php } ?>
-                                    </optgroup>
-                                </select>
-                            
+                            <label for="">Módulo</label>
+                            <select name="module" class="selectModule w-100 testechato">
+                                <optgroup label="Módulo atual" class="testechato">
+                                    <option class="testechato" value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
+                                </optgroup>
+
+                                <optgroup label="Lista de módulos" class="testechato">
+                                    <?php for ($i = 0; $i < count($listModules); $i++) {
+                                        $row = $listModules[$i] ?>
+                                        <option class="testechato" value="<?php echo $row->id ?>"> <?php echo $row->name ?> </option>
+                                    <?php } ?>
+                                </optgroup>
+                            </select>
+
 
                             <div class="accordion accordion-flush" id="accordionFlushExample">
                                 <div class="accordion-item">
