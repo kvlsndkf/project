@@ -15,13 +15,11 @@ try {
 
     $idUser = $_SESSION['idUser'];
 
-
     $listPreferences = Preference::getPreferencesUser($idUser);
+    
     $student = new StudentMethods();
     $studentId = $student->getStudentByUserID($idUser);
     $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
-
-    $userCreatorAnswer = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
 
     $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
 
@@ -541,6 +539,8 @@ try {
                         <?php
                         $creatorAnswer = $answer->getAnswerCreatorById($row->id, $id);
                         $creatorAnswerID = $creatorAnswer[0]['answer_creator_id'];
+                        $userCreatorAnswer = $student->getUserByStudentID($creatorAnswer[0]['answer_creator_id']);
+
                         $studentID = $studentId[0]['id'];
 
                         $styleDeleteAnswer = $creatorAnswerID == $studentID ? '' : 'd-none';
@@ -775,8 +775,9 @@ try {
                                                 <div>
                                                     <input type="hidden" name="post_link" id="" value="<?php echo $listDetailsQuestions->linkQuestion; ?>">
                                                     <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $creatorAnswerID; ?>">
+                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorAnswer[0]['user_id']; ?>">
                                                     <input type="hidden" name="answerId" id="" value="<?php echo $row->id; ?>">
+                                                    <input type="hidden" name="questionId" id="" value="<?php echo $listDetailsQuestions->id; ?>">
                                                 </div>
 
                                                 <div class="modal-footer">
