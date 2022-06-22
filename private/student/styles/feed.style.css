@@ -977,3 +977,23 @@ p{
     width: 100%;
 }
 
+.pref-sidebar-a-items {
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    transition: 0.2s;
+    width: 100%;
+    height: auto;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+.pref-sidebar-a-items:hover {
+    background-color: var(--gray3);
+    border-radius: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
