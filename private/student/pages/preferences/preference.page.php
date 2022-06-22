@@ -172,9 +172,18 @@ try {
                     <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off" class="search-input">
                     <input type="submit" value="🔍" class="search-submit">
                 </form>
+                <?php
+                if (count($listPreference) == 0) {
+
+                    $cardNotFound = 'd-none';
+                } else {
+
+                    $cardNotFound = '';
+                }
+                ?>
                 <div class="center">
 
-                    <div class="pedir-heelp-div">
+                    <div class="<?php echo $cardNotFound; ?> pedir-heelp-div ">
                         <img src="../../../../views/images/components/pedir-heelp-flipper.svg" class="pedir-heelp-img">
                         <div class="content-pedir-heelp">
                             <p class="pedir-heelp-text normal-22-black-title-1">
@@ -202,16 +211,49 @@ try {
                 if (count($listPreference) == 0) {
                     $styleNotFound = 'd-block';
                     $stylePreferences = 'd-none';
+                    $cardNotFound = 'd-none';
                 } else {
                     $styleNotFound = 'd-none';
                     $stylePreferences = 'd-block';
+                    $cardNotFound = 'd-block';
                 }
                 ?>
 
-                <div class="<?php echo $styleNotFound; ?>">
+                <div class="<?php echo $styleNotFound; ?> not-found-container">
                     <img src="../../images/no-preferences.svg" class="img-not-found" alt="">
-                    <p class="">Sem posts relacionados a <strong><?php echo $detailsPreference->name; ?></strong></p>
+                    <p class="not-found-text-cont white-title normal-14-medium-p"
+                    <span class="not-found-text-title normal-14-medium-p" style="color: var(--gray6);">
+                        Sem posts relacionados a <span style="color: white;"><?php echo $detailsPreference->name; ?></span>
+                    </span>
+                    </p>
                 </div>
+
+                <style>
+                    .not-found-container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    height: 200%;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.not-found-text-cont {
+    margin-top: 20px;
+}
+
+.not-found-text-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.img-not-found {
+    width: 200px;
+}
+                </style>
+
 
                 <div class="<?php echo $stylePreferences; ?>">
 

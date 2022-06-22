@@ -122,7 +122,7 @@ try {
                         $row = $listPreferences[$i] ?>
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
-                            <div class="d-flex question-info margin-bot-15">
+                            <div class="d-flex question-info margin-bot-15 sidebar-a-items">
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;" width="32px">
                                 <p class="white-text question-p normal-16-bold-title-3 text-truncate">
                                     <?php echo $row->name; ?>
