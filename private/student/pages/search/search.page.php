@@ -314,7 +314,7 @@ try {
                         }
                         ?>
                         <!-- Lista de perfis ⬇️ -->
-                        <div class="<?php echo $listProfiles; ?>">
+                        <div class="cont <?php echo $listProfiles; ?>">
 
                             <?php for ($i = 0; $i < count($searchProfiles); $i++) {
                                 $row = $searchProfiles[$i] ?>
@@ -427,7 +427,7 @@ try {
                         ?>
 
                         <!-- Lista de materiais ⬇️ -->
-                        <div class="<?php echo $listMaterials; ?>">
+                        <div class="cont <?php echo $listMaterials; ?>">
 
                             <?php for ($i = 0; $i < count($searchMaterials); $i++) {
                                 $row = $searchMaterials[$i] ?>
