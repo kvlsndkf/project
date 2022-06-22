@@ -208,9 +208,14 @@ try {
                     <div class="profile-top">
 
                         <?php $displayDenunciation = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : ''; ?>
+                        <?php $displayLogout = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none'; ?>
 
                         <!-- Denunciar -->
                         <a href="" class="text-white <?php echo $displayDenunciation; ?>" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $studentPerfil->id; ?>">Denunciar</a>
+
+                        <!-- Sair -->
+                        <a href="../../../logout/logout.controller.php" class="text-white <?php echo $displayLogout; ?>">Sair</a>
+
                     </div>
 
                     <!-- Modal Question -->
