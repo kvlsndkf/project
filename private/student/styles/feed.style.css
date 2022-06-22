@@ -754,6 +754,14 @@ p{
     transition: .5s;
 }
 
+.seta-following:hover{
+    cursor: pointer;
+}
+
+.primary-hover:hover{
+    color: var(--primary);
+}
+
 .about-school{
     word-wrap: break-word;
     word-break: break-all;

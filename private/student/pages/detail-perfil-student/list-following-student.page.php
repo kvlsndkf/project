@@ -156,10 +156,9 @@ try {
 
 
                     <label class="normal-16-bold-title-3 white-text question-p question-info">
-                        <a onclick="history.back()" style="margin-right: 25px;">
+                        <a onclick="history.back()" class="seta-following" style="margin-right: 25px;">
                             <img src="../../../../views/images/components/arrow-back.svg" alt="">
                         </a>
-
                         Seguindo 
                     </label>
 
@@ -178,7 +177,7 @@ try {
                                 </a>
 
                                 <div class="following-profile">
-                                    <a href=" <?php echo $row->linkProfile; ?>" class="normal-16-bold-title-3 white-text question-p">
+                                    <a href=" <?php echo $row->linkProfile; ?>" class="normal-16-bold-title-3 white-text question-p primary-hover">
                                         <?php echo $row->firstName;
                                         echo " " . $row->surname; ?>
                                     </a>
