@@ -62,6 +62,9 @@ try {
 
     <!-- JavaScript -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Estilo do modal de denunciar -->
+    <link rel="stylesheet" href="../home/modal.css">
 </head>
 
 <body>
@@ -299,10 +302,17 @@ try {
 
                             $styleDeleteDisplay = $hasAnswers ? 'd-none' : '';
                             $styleDeleteQuestion = $creatorQuestionID == $studentID ? '' : 'd-none';
+                            $styleDenunciationQuestion = $creatorQuestionID == $studentID ? 'd-none' : '';
                             ?>
                             <div class="drop-edit-exclud-about drop-edit-exclud-about2">
                                 <img src="../../../../views/images/components/three-dots.svg">
                                 <div class="drop-edit-exclud-content-about">
+                                    <a href="" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>" class="drop-edit-exclud-a <?php echo $styleDenunciationQuestion; ?>">
+                                        <div class="drop-edit-exclud-option-about">
+                                            <img src="../../../../views/images/components/denunciar-icon.svg" class="drop-edit-exclud-img">
+                                            <p class="drop-edit-exclud-text-about normal-14-bold-p">Denunciar</p>
+                                        </div>
+                                    </a>
                                     <div class="<?php echo $styleDeleteQuestion; ?> <?php echo $styleDeleteDisplay; ?> pedir-heelp-button-a">
                                         <a href="../question/controller/delete-question.controller.php?id=<?php echo $row->id; ?>" data-bs-toggle="modal" data-bs-target="#confirm-delete" class="delete" class="drop-edit-exclud-a pedir-heelp-button-a">
                                             <div class="drop-edit-exclud-option-about pedir-heelp-button-a">
@@ -439,6 +449,7 @@ try {
 
                             </div>
                         </div>
+
                         <!-- Modal -->
                         <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $row->id; ?>" aria-hidden="true">
                             <div class="modal-dialog">
@@ -451,7 +462,7 @@ try {
                                         <div class="modal-body">
                                             <p class="whitney-16-medium-text styleCor"> Nos ajude a entender o problema, o que está acontecendo com esse post? </p>
 
-                                            <form action="../question/controller/denunciation-question.controller.php" method="post">
+                                            <form action="./controller/denunciation-preference.controller.php" method="post">
                                                 <div class="form-check questionStyle">
                                                     <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $row->id; ?>" value="Não tenho interesse nesse post" required>
                                                     <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $row->id; ?>">
@@ -496,6 +507,7 @@ try {
                                                     <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
                                                     <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
                                                     <input type="hidden" name="questionId" id="" value="<?php echo $row->id; ?>">
+                                                    <input type="hidden" name="preference" id="" value="<?php echo $preferenceID; ?>">
                                                 </div>
 
                                                 <div class="modal-footer">
