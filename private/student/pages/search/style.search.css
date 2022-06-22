@@ -1,0 +1,190 @@
+/* CSS EMILLIE SEARCH  */
+.nav-tabs .nav-link.active {
+    background-color: #2F3136;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid var(--gray3);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--white);
+}
+
+.see-btn {
+    background-color: var(--blue);
+    padding: 11px 20px 11px 20px;
+    border-radius: 3px;
+}
+
+.see-btn:hover {
+    filter: brightness(1.2);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.my-hr {
+    color: gray;
+}
+
+.divider-container {
+    width: 100%;
+    background-color: var(--gray1);
+    height: fit-content;
+    border-radius: 20px;
+    color: #969696;
+    padding-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 1rem;
+}
+
+.my-question-footer-div {
+    height: 40px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+@media (max-width: 340px) {
+    .my-question-footer-div {
+        margin-bottom: 10px;
+    }
+}
+
+.my-search-bar {
+    width: 80%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: var(--gray3);
+    border: none;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    border: none;
+    height: 40px;
+    width: 80%;
+    padding: 10px;
+    padding-left: 20px;
+    background-color: var(--gray3);
+    color: var(--gray6);
+    font-weight: 400;
+    border-radius: 20px 0 0 20px;
+    margin-bottom: 1rem;
+    transition: 0.5s;
+    outline: none;
+}
+
+.search-input:focus {
+    border: solid var(--blue-sky) 1px;
+}
+
+.my-search-submit:hover {
+    background-color: var(--gray4);
+    transition: .5s;
+}
+
+.my-search-submit {
+    border: none;
+    height: 40px;
+    width: 60px;
+    background-color: var(--gray3);
+    border-radius: 0 20px 20px 0;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 925px) {
+    .search-form {
+        margin-top: 20px
+    }
+}
+
+.search-submit {
+    border: none;
+    height: 40px;
+    padding: 10px 10px 15px 10px;
+    background-color: var(--gray3);
+    border-radius: 0 20px 20px 0;
+    margin-bottom: 20px;
+}
+
+.not-found-container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    height: 200%;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.not-found-text-cont {
+    margin-top: 20px;
+}
+
+.not-found-text-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.img-not-found {
+    width: 200px;
+}
+
+.img-container {
+    width: fit-content;
+    margin-right: 8px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.nav-tabs .nav-link:hover{
+    background-color: var(--primary) !important;
+    transition: .5s;
+    border: none !important;
+}
+
+.nav-tabs {
+    border: none;
+}
+
+.infos {
+    margin-top: 25px;
+}
+
+.cont {
+    margin-top: 25px;
+}
+
+.my-question-info{
+    display: flex;
+    align-items: center;
+}
+
+.ver-container {
+    display: flex;
+    justify-content: end;
+}
+
+.q-i-t {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

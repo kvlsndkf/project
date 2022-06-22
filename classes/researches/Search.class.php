@@ -38,7 +38,7 @@ class Search
                                                  ON quest.subject_id = subj.id
                                                 
                                                  WHERE quest.question LIKE '%$search%' 
-                                                 AND cate.name NOT IN('Apoio')
+                                                 AND cate.name NOT IN('Material de Apoio')
                                                  AND quest.is_blocked NOT IN(1)
                                                  ORDER BY quest.created_at DESC
                                         ");
@@ -65,7 +65,7 @@ class Search
                                                  ON answ.question_id = quest.id
                                                 
                                                  WHERE answ.answer LIKE '%$search%' 
-                                                 AND cate.name NOT IN('Apoio')
+                                                 AND cate.name NOT IN('Material de Apoio')
                                                  AND quest.is_blocked NOT IN(1)
                                                  ORDER BY quest.created_at DESC
                                         ");
@@ -239,7 +239,7 @@ class Search
                                                  ON quest.subject_id = subj.id
                                                 
                                                  WHERE quest.question LIKE '%$search%' 
-                                                 AND cate.name IN('Apoio')
+                                                 AND cate.name IN('Material de Apoio')
                                                  AND quest.is_blocked NOT IN(1)
                                                  ORDER BY quest.created_at DESC
                                         ");
@@ -266,7 +266,7 @@ class Search
                                                  ON answ.question_id = quest.id
                                                 
                                                  WHERE answ.answer LIKE '%$search%' 
-                                                 AND cate.name IN('Apoio')
+                                                 AND cate.name IN('Material de Apoio')
                                                  AND quest.is_blocked NOT IN(1)
                                                  ORDER BY quest.created_at DESC
                                         ");

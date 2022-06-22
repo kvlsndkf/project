@@ -2,12 +2,16 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 require_once('/xampp/htdocs' . '/project/classes/followers/Follow.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
+    
     $idUser = $_SESSION['idUser'];
     $idStudent = $_GET['idStudent'];
-
+    
     $student = new StudentMethods();
+    $listPreferences = Preference::getPreferencesUser($idUser);
 
     $studentLogged = $student->getStudentByUserID($idUser);
     $studentProfile = $student->getDataStudentByID($studentLogged[0]['id']);
@@ -110,6 +114,21 @@ try {
                     <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
+
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+                            <div class="d-flex question-info margin-bot-15">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>"  style="margin-right: 8px;" width="32px">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
@@ -300,18 +319,18 @@ try {
                     <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                         <li class="nav-item" role="presentation">
                             <?php $styleBadgeAnswers = count($studentAnswer) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="normal-14-bold-p question-p nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
+                            <a class="normal-14-bold-p question-p nav-link userProfile-a active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
                             <?php $styleBadgeQuestions = count($studentQuestion) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
                             <?php $styleBadgeMaterials = count($studentMaterial) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <a class="nav-link" id="ex2-tab-4" data-mdb-toggle="tab" href="#ex2-tabs-4" role="tab" aria-controls="ex2-tabs-4" aria-selected="false">Sobre</a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-4" data-mdb-toggle="tab" href="#ex2-tabs-4" role="tab" aria-controls="ex2-tabs-4" aria-selected="false">Sobre</a>
                         </li>
                     </ul>
                     <!-- Tabs navs -->

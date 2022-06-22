@@ -182,7 +182,7 @@
 }
 
 .nav-tabs .nav-link.active {
-    background-color: var(--bg-modal);
+    /* background-color: var(--bg-modal); */
     color: #fff;
     border: none;
     border-bottom: 3px solid var(--primary);    
