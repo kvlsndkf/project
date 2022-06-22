@@ -465,7 +465,7 @@ try {
                                         <label class="see-btn white-title pointer normal-14-bold-p">Ver</label>
                                     </a>
                                 </div>
-                                <hr>
+                                <hr class="w-100 my-hr">
 
                             <?php } ?>
                         </div>
