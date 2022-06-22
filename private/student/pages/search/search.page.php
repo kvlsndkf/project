@@ -195,8 +195,8 @@ try {
                         <?php $styleBadgeQuestions = count($searchQuestions) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
                         <a class="nav-link active normal-14-bold-p question-p" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">
 
-                                Perguntas
-                                <span class="<?php echo $styleBadgeQuestions; ?>"><?php echo count($searchQuestions); ?>
+                            Perguntas
+                            <span class="<?php echo $styleBadgeQuestions; ?>"><?php echo count($searchQuestions); ?>
 
 
                         </a>
@@ -205,8 +205,8 @@ try {
                         <?php $styleBadgeProfiles = count($searchProfiles) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
                         <a class="nav-link normal-14-bold-p question-p" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">
 
-                                Perfis
-                                <span class="<?php echo $styleBadgeProfiles; ?>"><?php echo count($searchProfiles); ?>
+                            Perfis
+                            <span class="<?php echo $styleBadgeProfiles; ?>"><?php echo count($searchProfiles); ?>
 
                         </a>
                     </li>
@@ -214,8 +214,8 @@ try {
                         <?php $styleBadgeMaterials = count($searchMaterials) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
                         <a class="nav-link normal-14-bold-p question-p" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">
 
-                                Material de Apoio
-                                <span class="<?php echo $styleBadgeMaterials; ?>"><?php echo count($searchMaterials); ?>
+                            Material de Apoio
+                            <span class="<?php echo $styleBadgeMaterials; ?>"><?php echo count($searchMaterials); ?>
 
                         </a>
                     </li>
@@ -253,7 +253,7 @@ try {
                                 <div class="ql-snow ql-editor2">
                                     <div class="ql-editor2 white-text line-clamp-2">
                                         <p class="white-text line-clamp-2" style="font-weight: bolder;">
-                                        <?php echo $row->question; ?>
+                                            <?php echo $row->question; ?>
                                         </p>
                                     </div>
                                 </div>
@@ -275,9 +275,9 @@ try {
                                     <div>
                                         <a style="text-decoration: none; color: inherit;" href="<?php echo $row->linkQuestion; ?>" target="_blank">
                                             <label class="see-btn pointer white-title normal-14-bold-p">
-                                            <p class="normal-14-bold-p question-p white-text">
-                                                Ver
-                                            </p>
+                                                <p class="normal-14-bold-p question-p white-text">
+                                                    Ver
+                                                </p>
                                             </label>
                                         </a>
                                     </div>
@@ -330,25 +330,27 @@ try {
 
                                 <div class="<?php echo $displayProfileStudent; ?>">
 
-                                    <div class="question-info">
+                                    <div class="my-question-info">
                                         <div class="img-container">
-                                            <img style="width: 75px; height: 75px; object-fit: cover; border-radius: 50px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
+                                            <img style="width: 75px; height: 75px; object-fit: cover; border-radius: 50px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
                                         </div>
-                                        <div class="question-info-text">
-                                            <div class="question-name question-about-a normal-14-medium-p">
-                                                <?php echo $row->firstName; ?> <?php echo $row->surname; ?>
-                                            </div>
+                                        <div class="q-i-t">
+                                            <div class="question-info-text">
+                                                <div class="question-name question-about-a normal-14-medium-p">
+                                                    <?php echo $row->firstName; ?> <?php echo $row->surname; ?>
+                                                </div>
 
-                                            <div class="question-about normal-12-medium-tiny">
-                                                <?php echo $row->module; ?> •
-                                                <?php echo $row->course; ?> •
-                                                <?php echo $row->school; ?>
+                                                <div class="question-about normal-12-medium-tiny">
+                                                    <?php echo $row->module; ?> •
+                                                    <?php echo $row->course; ?> •
+                                                    <?php echo $row->school; ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="w-100 d-flex justify-content-end">
-                                            <a href="<?php echo $row->linkStudent; ?>" target="_blank">
-                                                <label class="see-btn pointer white-title normal-14-bold-p">Ver</label>
-                                            </a>
+                                            <div class="d-flex justify-content-end">
+                                                <a href="<?php echo $row->linkStudent; ?>" target="_blank">
+                                                    <label class="see-btn pointer white-title normal-14-bold-p">Ver</label>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -358,10 +360,10 @@ try {
                                 <!-- Perfil escola ⬇️ -->
                                 <div class="<?php echo $displayProfileSchool; ?>">
 
-                                    <div class="question-info">
+                                    <div class="my-question-info">
 
                                         <div>
-                                            <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
+                                            <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
                                         </div>
                                         <div class="question-info-text">
                                             <div class="question-name question-about-a normal-14-medium-p">
@@ -372,7 +374,7 @@ try {
                                                 <?php echo $row->address; ?>, São Paulo
                                             </div>
                                         </div>
-                                        <div class="w-100 d-flex justify-content-end">
+                                        <div class=" d-flex justify-content-end">
                                             <a href="<?php echo $row->schoolLink; ?>" target="_blank">
                                                 <label class="see-btn white-title pointer normal-14-bold-p">Ver</label>
                                             </a>

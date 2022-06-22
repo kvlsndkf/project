@@ -155,3 +155,19 @@
 .cont {
     margin-top: 20px;
 }
+
+.my-question-info{
+    display: flex;
+    align-items: center;
+}
+
+.ver-container {
+    display: flex;
+    justify-content: end;
+}
+
+.q-i-t {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
