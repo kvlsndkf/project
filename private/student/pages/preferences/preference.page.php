@@ -525,11 +525,11 @@ try {
                                                     $creatorQuestion = $question->getCreatorQuestionById($row->id);
                                                     $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
                                                     ?>
-                                                    <input type="text" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
-                                                    <input type="text" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                                    <input type="text" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
-                                                    <input type="text" name="questionId" id="" value="<?php echo $row->id; ?>">
-                                                    <input type="text" name="preference" id="" value="<?php echo $preferenceID; ?>">
+                                                    <input type="hidden" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
+                                                    <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
+                                                    <input type="hidden" name="questionId" id="" value="<?php echo $row->id; ?>">
+                                                    <input type="hidden" name="preference" id="" value="<?php echo $preferenceID; ?>">
                                                 </div>
 
                                                 <div class="modal-footer">
