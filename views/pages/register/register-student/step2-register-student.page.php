@@ -169,7 +169,7 @@ try {
                                 </div>
                                 <div class="modal-footer" style="border: none;">
                                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                                    <a href="../../../landing-page/landing-page.php" style="width: 100%;">
+                                    <a href="../../../../index.php" style="width: 100%;">
                                         <button type="button" class="btn btn-primary button-wide" style="width: 100%; background-color: var(--primary); border: none; border-radius: 8px;">
                                             Ir para o fale conosco
                                         </button>
