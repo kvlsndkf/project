@@ -356,4 +356,20 @@ class Student extends User
             echo $e->getMessage();
         }
     }
+
+    public function getOldPassword($idUser)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT password FROM users WHERE id = $idUser");
+            $stmt->execute();
+            $listUser = $stmt->fetch(PDO::FETCH_BOTH);
+
+
+            return $listUser;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }
