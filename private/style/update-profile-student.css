@@ -86,7 +86,7 @@ input[type="file"]{
 .input-file{
     text-align: center;
     background-color: #B376D4;
-    padding: 0.8em;
+    padding: 0.6em;
     outline: none;
     border-radius: 10px;
     padding-left: 5.5em;
@@ -206,7 +206,7 @@ input:focus{
 }
 
 .accordion-body{
-   
+    background-color: var(--bg-modal) !important;
     color: var(--gray7);
     
 }
@@ -235,11 +235,11 @@ input:focus{
     margin-top: 4em;
     text-align: center;
     border: none;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    
     padding-right:15% ;
     padding-left: 15%;
     width: 45%;
+    height: 35px;
     border-radius: 8px;
    
 }
@@ -271,6 +271,17 @@ input:focus{
     background-color: var(--bg-modal) !important;
     box-shadow:var(--bg-modal) !important ;
 
+}
+
+.accordion-button:not(.collapsed)::after{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+@media(max-width: 925px){
+    .feed-div{
+        padding-top: 20px;
+        padding-bottom: 8vh;
+    }
 }
 
 @media (max-width: 414px){
@@ -317,3 +328,4 @@ input:focus{
         width: 100%;
     }
 }
+

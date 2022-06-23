@@ -75,10 +75,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
-                            <img class="leftbar-icon" src="../../../../views/images/components/notifications-icon.svg" alt="">
-                            <p class="leftbar-text normal-18-bold-title-2">Notificações</p>
-                        </a>
+                        
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
 
@@ -168,6 +165,7 @@ try {
                                     <label class="input-file1  normal-14-bold-p" for="file">Atualizar foto</label>
                                 </p>
                             </div>
+
                             <div class="border-bottom"></div>
 
                             <div class="accordion" id="accordionExample">
@@ -242,7 +240,11 @@ try {
                                                 </p>
 
 
-                                                <div class="accordion-item">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
                                                     <h2 class="accordion-header" id="flush-headingTwo">
                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                                             <h6 class="normal-14-medium-p">Senha</h6>
@@ -268,9 +270,6 @@ try {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="container posicao-Botao">
@@ -286,9 +285,7 @@ try {
 
     <nav class="feed-leftbar feed-rightbar">
         <ul class="rightbar-ul">
-            <li class="rightbar-li">
-                <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
-            </li>
+            
             <hr class="sidebar-linha leftbar-linha">
             <li class="rightbar-li">
                 <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
