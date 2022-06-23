@@ -245,7 +245,7 @@ a{
     padding: 20px;
     overflow-y: scroll;
     overflow-x: hidden;
-    z-index: 1;
+    z-index: 4;
     display: flex;
     flex-direction: column;
     align-items: flex-end;

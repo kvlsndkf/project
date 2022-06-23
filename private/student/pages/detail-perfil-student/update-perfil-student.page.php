@@ -159,13 +159,12 @@ try {
                                 <img class="image-link profile-pic profile-pic-img" src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" id="imageFile">
 
                             </div>
-                            <div class="input2">
+                            <div class="container container-update-foto">
                             <p>
                                 <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
                                 <input type="file" name="updatePhoto" id="file" onchange="previewImage(this)">
                                 <label class="input-file1  normal-14-bold-p" for="file">Atualizar foto</label>
                             </p>
-                            
                             </div>
                             <div class="border-bottom"></div>
                             <h6 class="normal-16-bold-title-3 dadosP"> Dados principais</h6>
@@ -187,7 +186,7 @@ try {
                                     <option class="testechato" value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
                                 </optgroup>
                                 
-                                <div class="border-bottom"></div>
+                                
                                 <optgroup label="Lista de módulos" class="testechato">
                                     <?php for ($i = 0; $i < count($listModules); $i++) {
                                         $row = $listModules[$i] ?>
@@ -195,35 +194,35 @@ try {
                                     <?php } ?>
                                 </optgroup>
                             </select>
+                            <div class="border-bottom"></div>
 
-
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion accordion-flush accordion-Style" id="accordionFlushExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            Links
+                                            <h6 class="normal-14-medium-p">Links</h6> 
                                         </button>
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <p>
-                                                <label for="">Linkedin</label>
-                                                <input type="text" name="linkedin" id="" value="<?php echo $studentPerfil->linkedin; ?>">
+                                                <label class="normal-14-medium-p nameGeral" for="">Linkedin</label><br>
+                                                <input class="input-Geral" type="text" name="linkedin" id="" value="<?php echo $studentPerfil->linkedin; ?>">
                                             </p>
 
                                             <p>
-                                                <label for="">GitHub</label>
-                                                <input type="text" name="github" id="" value="<?php echo $studentPerfil->github; ?>">
+                                                <label class="normal-14-medium-p nameGeral" for="">GitHub</label><br>
+                                                <input class="input-Geral" type="text" name="github" id="" value="<?php echo $studentPerfil->github; ?>">
                                             </p>
 
                                             <p>
-                                                <label for="">Facebook</label>
-                                                <input type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
+                                                <label class="normal-14-medium-p nameGeral" for="">Facebook</label><br>
+                                                <input class="input-Geral" type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
                                             </p>
 
-                                            <p>
-                                                <label for="">Instagram</label>
-                                                <input type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
+                                            <p>  
+                                                <label class="normal-14-medium-p nameGeral" for="">Instagram</label><br>
+                                                <input class="input-Geral" type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
                                             </p>
                                         </div>
                                     </div>
@@ -231,35 +230,35 @@ try {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                            Senha
+                                        <h6 class="normal-14-medium-p">Senha</h6> 
                                         </button>
                                     </h2>
                                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
 
                                             <p>
-                                                <label for="">Senha antiga</label>
-                                                <input type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
+                                                <label class="normal-14-medium-p nameGeral" for="">Senha antiga</label><br>
+                                                <input class="input-Geral" type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
                                             </p>
 
                                             <p>
-                                                <label for="">Senha atual</label>
-                                                <input type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
+                                                <label class="normal-14-medium-p nameGeral" for="">Senha atual</label><br>
+                                                <input class="input-Geral" type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
                                             </p>
 
                                             <p>
-                                                <label for="">Confirme a sua senha atual</label>
-                                                <input type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
+                                                <label class="normal-14-medium-p nameGeral" for="">Confirme a sua senha atual</label><br>
+                                                <input class="input-Geral" type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <p>
-                                <input type="button" value="Cancelar" onclick="history.go(-1)">
-                                <input type="submit" name="update" value="Atualizar perfil">
-                            </p>
+                            <div class="container posicao-Botao">
+                                <input class="botao-cancelar normal-14-medium-p" type="button" value="Cancelar" onclick="history.go(-1)">
+                                <input class="botao-Atualizar normal-14-medium-p" type="submit" name="update" value="Atualizar perfil">
+                                    </div>
                         </form>
                     </div>
                 </div>
@@ -278,6 +277,21 @@ try {
             <p class="whitney-12-regular-tiny copyright-text">
                 Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
             </p>
+        </nav>
+
+        <nav class="feed-bottombar">
+            <a href="../home/home.page.php" class="bottombar-a">
+                <img src="../../../../views/images/components/dashboard-img.svg" alt="">
+            </a>
+            <a href="#" class="bottombar-a">
+                <img src="../../../../views/images/components/following-icon.svg" alt="">
+            </a>
+            <a href="#" class="bottombar-a">
+                <img src="../../../../views/images/components/notifications-icon.svg" alt="">
+            </a>
+            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
+                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
+            </a>
         </nav>
     </div>
 
