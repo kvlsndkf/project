@@ -148,7 +148,32 @@ try {
                             <?php } ?>
                         </select>
                     </p>
-                    <a href="#" style=" color: inherit; text-decoration: inherit; text-decoration:none;"><span class="normal-12-bold-tiny blue-title">Não encontrou o seu dado? Clique aqui.</span></a>
+                    <a href="#" style=" color: inherit; text-decoration: inherit; text-decoration:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span class="normal-12-bold-tiny blue-title">Não encontrou o seu dado? Clique aqui.</span>
+                    </a>
+
+                
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel" style="color:black;">Solicitação de informação</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="color:black;">
+                                    Caso você não encontre os seus dados institucionais, por favor mande mensagem através do fale conosco assim
+                                    vamos ajustar e logo você poderá adicionar essa informação na sua conta!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="../../../landing-page/landing-page.php">
+                                        <button type="button" class="btn btn-primary">Ir para o fale conosco</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <br>
 
