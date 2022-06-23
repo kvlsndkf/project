@@ -126,6 +126,15 @@ class Denunciation
         $this->updatedAt = $updatedAt;
     }
     //----------------------------
+    public function getType()
+    {
+        return $this->type;
+    }
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+    //----------------------------
     //methods
 
     public function registerDenunciation(Denunciation $denunciation)
@@ -133,16 +142,17 @@ class Denunciation
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("INSERT INTO denunciations(reason, post_link, status, created_by_id, denounced_id, question_id, answer_id, created_at)
-                                         VALUES (?, ?, ?, ?, ?, ?, ?, NOW())");
+            $stmt = $connection->prepare("INSERT INTO denunciations(reason, post_link, status, type, created_by_id, denounced_id, question_id, answer_id, created_at)
+                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
 
             $stmt->bindValue(1, $denunciation->getReason());
             $stmt->bindValue(2, $denunciation->getPostLink());
             $stmt->bindValue(3, $denunciation->getStatus());
-            $stmt->bindValue(4, $denunciation->getCreatedById());
-            $stmt->bindValue(5, $denunciation->getDenouncedId());
-            $stmt->bindValue(6, $denunciation->getQuestionId());
-            $stmt->bindValue(7, $denunciation->getAnswerId());
+            $stmt->bindValue(4, $denunciation->getType());
+            $stmt->bindValue(5, $denunciation->getCreatedById());
+            $stmt->bindValue(6, $denunciation->getDenouncedId());
+            $stmt->bindValue(7, $denunciation->getQuestionId());
+            $stmt->bindValue(8, $denunciation->getAnswerId());
 
             $stmt->execute();
         } catch (Exception $e) {
@@ -150,7 +160,6 @@ class Denunciation
         }
 
         $idQuestion = $this->getQuestionId();
-        $idAnswer = $this->getAnswerId();
 
         if (!empty($idQuestion)) {
             try {
@@ -161,11 +170,38 @@ class Denunciation
                 $stmt->bindValue(1, true);
 
                 $stmt->execute();
+                $_SESSION['statusPositive'] = "Questão denunciada, logo ela será avaliada.";
                 header('Location: /project/private/student/pages/home/home.page.php');
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
         }
+    }
+
+    public function registerDenunciationAnswer(Denunciation $denunciation)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("INSERT INTO denunciations(reason, post_link, status, type, created_by_id, denounced_id, question_id, answer_id, created_at)
+                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+
+            $stmt->bindValue(1, $denunciation->getReason());
+            $stmt->bindValue(2, $denunciation->getPostLink());
+            $stmt->bindValue(3, $denunciation->getStatus());
+            $stmt->bindValue(4, $denunciation->getType());
+            $stmt->bindValue(5, $denunciation->getCreatedById());
+            $stmt->bindValue(6, $denunciation->getDenouncedId());
+            $stmt->bindValue(7, $denunciation->getQuestionId());
+            $stmt->bindValue(8, $denunciation->getAnswerId());
+
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        $idQuestion = $this->getQuestionId();
+        $idAnswer = $this->getAnswerId();
 
         if (!empty($idAnswer)) {
             try {
@@ -176,10 +212,36 @@ class Denunciation
                 $stmt->bindValue(1, true);
 
                 $stmt->execute();
-                header('Location: /project/private/student/pages/home/home.page.php');
+                $_SESSION['statusPositive'] = "Resposta denunciada, logo ela será avaliada.";
+                header('Location: /project/private/student/pages/detail-question/detail-question.page.php?idQuestion=' . $idQuestion);
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
+        }
+    }
+
+    public function registerDenunciationProfile(Denunciation $denunciation, $profile)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("INSERT INTO denunciations(reason, post_link, status, type, created_by_id, denounced_id, question_id, answer_id, created_at)
+                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+
+            $stmt->bindValue(1, $denunciation->getReason());
+            $stmt->bindValue(2, $denunciation->getPostLink());
+            $stmt->bindValue(3, $denunciation->getStatus());
+            $stmt->bindValue(4, $denunciation->getType());
+            $stmt->bindValue(5, $denunciation->getCreatedById());
+            $stmt->bindValue(6, $denunciation->getDenouncedId());
+            $stmt->bindValue(7, $denunciation->getQuestionId());
+            $stmt->bindValue(8, $denunciation->getAnswerId());
+
+            $stmt->execute();
+            $_SESSION['statusPositive'] = "Perfil denunciado, logo ele será avaliado.";
+            header('Location: /project/private/student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=' . $profile);
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
 }

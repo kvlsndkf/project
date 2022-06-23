@@ -7,20 +7,17 @@ if(isset($_POST['register'])){
     $denunciation = new Denunciation();
 
     $option = $_POST['denunciation'];
-    $linkQuestion = $_POST['post_link'];
+    $linkProfile = $_POST['post_link'];
     $idCreator = $_POST['createdBy'];
     $idDenouncied = $_POST['denounciedId'];
-    $idAnswer = $_POST['answerId'];
+    $profileID = $_POST['idSudentProfile'];
     $status = "Nova";
-    $idQuestion = $_POST['questionId'];
 
     $denunciation->setReason($option);
-    $denunciation->setPostLink($linkQuestion);
+    $denunciation->setPostLink($linkProfile);
     $denunciation->setCreatedById($idCreator);
     $denunciation->setDenouncedId($idDenouncied);
-    $denunciation->setAnswerId($idAnswer);
     $denunciation->setStatus($status);
-    $denunciation->setType("Resposta");
-    $denunciation->setQuestionId($idQuestion);
-    $denunciation->registerDenunciationAnswer($denunciation);
+    $denunciation->setType("Perfil");
+    $denunciation->registerDenunciationProfile($denunciation, $profileID);
 }

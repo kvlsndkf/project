@@ -2,12 +2,16 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 require_once('/xampp/htdocs' . '/project/classes/followers/Follow.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
+    
     $idUser = $_SESSION['idUser'];
     $idStudent = $_GET['idStudent'];
-
+    
     $student = new StudentMethods();
+    $listPreferences = Preference::getPreferencesUser($idUser);
 
     $studentLogged = $student->getStudentByUserID($idUser);
     $studentProfile = $student->getDataStudentByID($studentLogged[0]['id']);
@@ -68,6 +72,8 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../styles/feed.style.css">
 
+    <!-- Estilo do modal de denunciar -->
+    <link rel="stylesheet" href="../home/modal.css">
 </head>
 
 <body>
@@ -110,6 +116,21 @@ try {
                     <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
+
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+                            <div class="d-flex question-info margin-bot-15">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>"  style="margin-right: 8px;" width="32px">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
@@ -177,11 +198,109 @@ try {
         </nav>
         <div class="corpo-feed">
 
+            <!-- Mensagem de sucesso ⬇️ -->
+            <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
+
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </symbol>
+                </svg>
+
+                <div class="alert alert-success d-flex align-items-center alert-dismissible div-alert fade show" role="alert">
+                    <svg class="bi flex-shrink-0 me-2 div-alert" width="24" height="24" role="img" aria-label="Success:">
+                        <use xlink:href="#check-circle-fill" />
+                    </svg>
+                    <div>
+                        <strong>Tudo certo!</strong>
+                        <?php echo $_SESSION['statusPositive']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            <?php unset($_SESSION['statusPositive']);
+            } ?>
+
             <div class="feed-div">
 
                 <div class="profile-div">
 
-                    <div class="profile-top"></div>
+                    <div class="profile-top">
+
+                        <?php $displayDenunciation = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : ''; ?>
+                        <?php $displayLogout = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none'; ?>
+
+                        <!-- Denunciar -->
+                        <a href="" class="text-white <?php echo $displayDenunciation; ?>" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $studentPerfil->id; ?>">Denunciar</a>
+
+                        <!-- Sair -->
+                        <a href="../../../logout/logout.controller.php" class="text-white <?php echo $displayLogout; ?>">Sair</a>
+
+                    </div>
+
+                    <!-- Modal Question -->
+                    <div class="modal fade" id="modal-<?php echo $studentPerfil->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $studentPerfil->id; ?>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content cor">
+                                <div class="container containerMO">
+                                    <div class="modal-header border-bottom-0">
+                                        <h5 class="modal-title" id="modalLabel-<?php echo $studentPerfil->id; ?>">Relatar um problema</h5>
+                                        <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="whitney-16-medium-text styleCor"> Nos ajude a entender o problema, o que está acontecendo com esse perfil? </p>
+
+                                        <form action="./controller/denunciation-profile.controller.php" method="post">
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $studentPerfil->id; ?>" value="Não tenho interesse nesse post" required>
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $studentPerfil->id; ?>">
+                                                    Não tenho interesse nesse perfil
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $studentPerfil->id; ?>" value="É suspeito ou está enviando span">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio2-<?php echo $studentPerfil->id; ?>">
+                                                    É suspeito ou está enviando span
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $studentPerfil->id; ?>" value="É abusivo ou nocivo">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio3-<?php echo $studentPerfil->id; ?>">
+                                                    É abusivo ou nocivo
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $studentPerfil->id; ?>" value="As informações são enganosas">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio4-<?php echo $studentPerfil->id; ?>">
+                                                    As informações são enganosas
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div class="form-check questionStyle">
+                                                <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $studentPerfil->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio5-<?php echo $studentPerfil->id; ?>">
+                                                    Manifesta intenções de automutilação ou suicídio
+                                                </label>
+                                            </div>
+                                            <div class="border-bottom"></div>
+                                            <div>
+                                                <input type="hidden" name="post_link" id="" value="<?php echo $studentPerfil->linkProfile; ?>">
+                                                <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                                <input type="hidden" name="denounciedId" id="" value="<?php echo $idUserPerfil[0]['user_id']; ?>">
+                                                <input type="hidden" name="idSudentProfile" id="" value="<?php echo $studentPerfil->id; ?>">
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar" name="register">Enviar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div style="padding: 20px;">
 
@@ -300,18 +419,18 @@ try {
                     <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                         <li class="nav-item" role="presentation">
                             <?php $styleBadgeAnswers = count($studentAnswer) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="normal-14-bold-p question-p nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
+                            <a class="normal-14-bold-p question-p nav-link userProfile-a active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
                             <?php $styleBadgeQuestions = count($studentQuestion) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
                             <?php $styleBadgeMaterials = count($studentMaterial) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <a class="nav-link" id="ex2-tab-4" data-mdb-toggle="tab" href="#ex2-tabs-4" role="tab" aria-controls="ex2-tabs-4" aria-selected="false">Sobre</a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-4" data-mdb-toggle="tab" href="#ex2-tabs-4" role="tab" aria-controls="ex2-tabs-4" aria-selected="false">Sobre</a>
                         </li>
                     </ul>
                     <!-- Tabs navs -->

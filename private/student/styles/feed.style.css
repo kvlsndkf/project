@@ -24,6 +24,18 @@ body{
     background: #8080FF;
 } 
 
+.bg-gold{
+    background-color: var(--yellow);
+}
+
+.bg-silver{
+    background-color: var(--silver);
+}
+
+.bg-copper{
+    background-color: var(--bronze);
+}
+
 .feed-leftbar::-webkit-scrollbar {
     width: 5px;
 }
@@ -669,8 +681,14 @@ p{
     transition: .25s;
 }
 
-.nav-tabs .nav-link.active{
+.nav-tabs .nav-link.ranking-a.active{
     color: var(--white);
+    background-color: var(--gray1);
+}
+
+.nav-tabs .nav-link.userProfile-a.active{
+    color: var(--white);
+    background-color: var(--bg-modal);
 }
 
 .drop-sair:hover{
@@ -682,6 +700,94 @@ p{
     display: none;
 }
 
+
+@media (max-width: 1130px){
+    .stop-following{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.search-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input{
+    border: none;
+    height: 40px;
+    width: 80%;
+    padding: 10px;
+    padding-left: 20px;
+    background-color: var(--gray3);
+    color: var(--gray6);
+    font-weight: 400;
+    border-radius: 20px 0 0 20px;
+    margin-bottom: 20px;
+}
+
+.search-input:focus{
+    outline: none;
+    border: 1px solid var(--blue-sky);;
+}
+
+.search-submit{
+    border: none;
+    height: 40px;
+    width: 60px;
+    background-color: var(--gray3);
+    border-radius: 0 20px 20px 0;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-submit:hover{
+    background-color: var(--gray4);
+    transition: .5s;
+}
+
+.seta-following:hover{
+    cursor: pointer;
+}
+
+.primary-hover:hover{
+    color: var(--primary);
+}
+
+.about-school{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.ranking-position{
+    border: 1px solid var(--primary);
+    background-color: var(--bg-list);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 45px;
+    margin-bottom: 15px;
+}
+
+.top-ranking{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 @media (max-width: 1040px){
     .profile-name{
         font-size: 14px;
@@ -689,6 +795,9 @@ p{
 }
 
 @media (max-width: 925px){
+    .stop-following{
+        width: auto;
+    }
     .feed-leftbar, .feed-rightbar{
         display: none;
     }
@@ -749,6 +858,10 @@ p{
     .feed-div{
         padding-top: 0;
     }
+    .profile-div, .search-input, .search-submit{
+
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 750px){
@@ -772,6 +885,16 @@ p{
     }
     .drop-edit-exclud-about2{
         left: 14%;
+    }
+}
+
+@media (max-width: 560px){
+    .following-profile{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 5px;
+        width: 100%;
     }
 }
 
@@ -845,7 +968,6 @@ p{
     .responsive-follow-profile-div{
         display: flex;
     }
-
 }
 
 @media (max-width: 340px){
