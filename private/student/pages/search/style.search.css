@@ -188,3 +188,18 @@
     justify-content: space-between;
     width: 100%;
 }
+
+.my-search-input {
+    border: none;
+    height: 40px;
+    width: 80%;
+    padding: 10px;
+    padding-left: 20px;
+    background-color: var(--gray3);
+    color: var(--gray6);
+    font-weight: 400;
+    border-radius: 20px 0 0 20px;
+    margin-bottom: 1rem;
+    transition: 0.5s;
+    outline: none;
+}
