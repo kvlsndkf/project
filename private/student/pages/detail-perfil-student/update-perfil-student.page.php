@@ -30,7 +30,7 @@ try {
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Icon -->
-    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">[]
+    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 
     <!-- Link dos estilos gerais -->
     <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
@@ -218,8 +218,8 @@ try {
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                                 <h6 class="normal-14-medium-p">Links</h6>
                                             </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        </h2> 
+                                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">Linkedin</label><br>
@@ -281,7 +281,7 @@ try {
                     </div>
                 </div>
             </div>
-        </div>
+        
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
@@ -311,6 +311,7 @@ try {
                 <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
             </a>
         </nav>
+        </div>
     </div>
 
     <!-- JS JQuery ⬇️ -->
