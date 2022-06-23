@@ -132,16 +132,9 @@ try {
 
                 <li class="sidebar-li">
                     <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
-                    <a href="#" class="sidebar-a">
+                    <a href="../../denunciation/list-denunciation.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../../views/images/components/denuncia-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Denuncias</p>
-                    </a>
-                </li>
-
-                <li class="sidebar-li">
-                    <a href="#" class="sidebar-a">
-                        <img class="sidebar-img" src="../../../../../views/images/components/informacoes-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Informações</p>
                     </a>
                 </li>
 
