@@ -323,7 +323,7 @@ class Question
         $question->document = $row['document'];
         $question->documentName = $row['document_name'];
         $question->isDenounced = $row['is_denounced'];
-        $question->creatorId = $row['student_id'];
+        $question->creatorId = $row['student_id'] ?? "";
         $question->linkProfile = $row['profile_link'];
         $question->created = $this->countCreatedQuestion($row['created_at']);
 

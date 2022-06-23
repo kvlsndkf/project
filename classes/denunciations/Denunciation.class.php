@@ -288,7 +288,7 @@ class Denunciation
 
         try {
             $stmt = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
-                                            denounced.first_name AS 'denounced', de.denounced_id FROM denunciations de
+                                            denounced.first_name AS 'denounced', de.denounced_id, de.question_id FROM denunciations de
 
                                             INNER JOIN students criated
                                             ON de.created_by_id = criated.user_id
@@ -320,6 +320,7 @@ class Denunciation
             $denunciation->status = $row['status'];
             $denunciation->type = $row['type'];
             $denunciation->denouncedId = $row['denounced_id'];
+            $denunciation->questionId = $row['question_id'];
             $denunciation->creator = $row['creator'];
             $denunciation->denounced = $row['denounced'];
 
@@ -364,7 +365,7 @@ class Denunciation
 
         try {
             $stmt = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
-                                            denounced.first_name AS 'denounced', de.denounced_id FROM denunciations de
+                                            denounced.first_name AS 'denounced', de.denounced_id, de.question_id FROM denunciations de
 
                                             INNER JOIN students criated
                                             ON de.created_by_id = criated.user_id
@@ -396,6 +397,7 @@ class Denunciation
             $denunciation->status = $row['status'];
             $denunciation->type = $row['type'];
             $denunciation->denouncedId = $row['denounced_id'];
+            $denunciation->questionId = $row['question_id'];
             $denunciation->creator = $row['creator'];
             $denunciation->denounced = $row['denounced'];
 
@@ -460,7 +462,7 @@ class Denunciation
 
         try {
             $stmt = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
-                                            denounced.first_name AS 'denounced', de.conclusion, con.name, de.denounced_id
+                                            denounced.first_name AS 'denounced', de.conclusion, con.name, de.denounced_id, de.question_id
                                             FROM denunciations de
 
                                             INNER JOIN students criated
@@ -495,6 +497,7 @@ class Denunciation
             $denunciation->status = $row['status'];
             $denunciation->type = $row['type'];
             $denunciation->denouncedId = $row['denounced_id'];
+            $denunciation->questionId = $row['question_id'];
             $denunciation->creator = $row['creator'];
             $denunciation->denounced = $row['denounced'];
             $denunciation->conclusion = $row['conclusion'];
