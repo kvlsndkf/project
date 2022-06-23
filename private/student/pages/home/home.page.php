@@ -113,8 +113,8 @@ try {
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
 
-                    <li class="sidebar-li leftbar-li">
-                        <p class="leftbar-categoria normal-14-bold-p">Para você</p>
+                    <li class="sidebar-li my-leftbar-li">
+                        <p class="my-leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
 
                     <!-- Lista de preferências ⬇️ -->
@@ -122,7 +122,7 @@ try {
                         $row = $listPreferences[$i] ?>
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
-                            <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 13px; padding-bottom: 13px;">
+                            <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;" width="32px">
                                 <p class="white-text question-p normal-16-bold-title-3 text-truncate">
                                     <?php echo $row->name; ?>
@@ -134,7 +134,7 @@ try {
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
-                            <div class="leftbar-button-div">
+                            <div class="my-leftbar-button-div">
                                 <p class="sidebar-button-text">Pedir um heelp!</p>
                             </div>
                         </a>
