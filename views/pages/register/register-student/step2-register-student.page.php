@@ -170,7 +170,7 @@ try {
                                 <div class="modal-footer" style="border: none;">
                                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                                     <a href="../../../../index.php" style="width: 100%;">
-                                        <button type="button" class="btn btn-primary button-wide" style="width: 100%; background-color: var(--primary); border: none; border-radius: 8px;">
+                                        <button type="button" class="btn btn-primary button-wide" style="width: 100%; background-color: var(--primary); border: none; border-radius: 8px; font-weight: 600;">
                                             Ir para o fale conosco
                                         </button>
                                     </a>
