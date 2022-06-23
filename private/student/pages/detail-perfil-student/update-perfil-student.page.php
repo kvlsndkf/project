@@ -99,51 +99,50 @@ try {
         </nav>
 
 
-        <!-- Mensagem de erro ⬇️ -->
-        <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
-
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                </symbol>
-            </svg>
-
-            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                    <use xlink:href="#exclamation-triangle-fill" />
-                </svg>
-                <div>
-                    <strong>Ops...</strong>
-                    <?php echo $_SESSION['statusNegative']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-        <?php unset($_SESSION['statusNegative']);
-        } ?>
-
-        <!-- Mensagem de alerta ⬇️ -->
-        <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
-
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                </symbol>
-            </svg>
-
-            <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                    <use xlink:href="#exclamation-triangle-fill" />
-                </svg>
-                <div>
-                    <strong>Ops...</strong>
-                    <?php echo $_SESSION['statusAlert']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-        <?php unset($_SESSION['statusAlert']);
-        } ?>
-
         <div class="corpo-feed">
+            <!-- Mensagem de erro ⬇️ -->
+            <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+
+                <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        <strong>Ops...</strong>
+                        <?php echo $_SESSION['statusNegative']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            <?php unset($_SESSION['statusNegative']);
+            } ?>
+
+            <!-- Mensagem de alerta ⬇️ -->
+            <?php if (isset($_SESSION['statusAlert']) && $_SESSION != '') { ?>
+
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+
+                <div class="alert alert-warning d-flex align-items-center  alert-dismissible fade show" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        <strong>Ops...</strong>
+                        <?php echo $_SESSION['statusAlert']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            <?php unset($_SESSION['statusAlert']);
+            } ?>
 
             <div class="feed-div">
 
@@ -160,15 +159,15 @@ try {
 
                             </div>
                             <div class="container container-update-foto">
-                            <p>
-                                <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
-                                <input type="file" name="updatePhoto" id="file" onchange="previewImage(this)">
-                                <label class="input-file1  normal-14-bold-p" for="file">Atualizar foto</label>
-                            </p>
+                                <p>
+                                    <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
+                                    <input type="file" name="updatePhoto" id="file" onchange="previewImage(this)">
+                                    <label class="input-file1  normal-14-bold-p" for="file">Atualizar foto</label>
+                                </p>
                             </div>
                             <div class="border-bottom"></div>
                             <h6 class="normal-16-bold-title-3 dadosP"> Dados principais</h6>
-                            
+
                             <p>
                                 <label for="" class="normal-14-medium-p nameA">Nome</label><br>
                                 <input class="normal-12-medium-tiny input-name" type="text" name="firstName" id="" value="<?php echo $studentPerfil->firstName; ?>">
@@ -185,8 +184,8 @@ try {
                                 <optgroup label="Módulo atual" class="testechato">
                                     <option class="testechato" value="<?php echo $studentPerfil->moduleId; ?>"><?php echo $studentPerfil->module; ?></option>
                                 </optgroup>
-                                
-                                
+
+
                                 <optgroup label="Lista de módulos" class="testechato">
                                     <?php for ($i = 0; $i < count($listModules); $i++) {
                                         $row = $listModules[$i] ?>
@@ -200,7 +199,7 @@ try {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            <h6 class="normal-14-medium-p">Links</h6> 
+                                            <h6 class="normal-14-medium-p">Links</h6>
                                         </button>
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -220,7 +219,7 @@ try {
                                                 <input class="input-Geral" type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
                                             </p>
 
-                                            <p>  
+                                            <p>
                                                 <label class="normal-14-medium-p nameGeral" for="">Instagram</label><br>
                                                 <input class="input-Geral" type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
                                             </p>
@@ -230,7 +229,7 @@ try {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                        <h6 class="normal-14-medium-p">Senha</h6> 
+                                            <h6 class="normal-14-medium-p">Senha</h6>
                                         </button>
                                     </h2>
                                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -258,7 +257,7 @@ try {
                             <div class="container posicao-Botao">
                                 <input class="botao-cancelar normal-14-medium-p" type="button" value="Cancelar" onclick="history.go(-1)">
                                 <input class="botao-Atualizar normal-14-medium-p" type="submit" name="update" value="Atualizar perfil">
-                                    </div>
+                            </div>
                         </form>
                     </div>
                 </div>
