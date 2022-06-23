@@ -700,6 +700,17 @@ p{
     display: none;
 }
 
+
+@media (max-width: 1130px){
+    .stop-following{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 .search-form{
     display: flex;
     flex-direction: row;
@@ -743,6 +754,14 @@ p{
     transition: .5s;
 }
 
+.seta-following:hover{
+    cursor: pointer;
+}
+
+.primary-hover:hover{
+    color: var(--primary);
+}
+
 .about-school{
     word-wrap: break-word;
     word-break: break-all;
@@ -776,6 +795,9 @@ p{
 }
 
 @media (max-width: 925px){
+    .stop-following{
+        width: auto;
+    }
     .feed-leftbar, .feed-rightbar{
         display: none;
     }
@@ -836,7 +858,8 @@ p{
     .feed-div{
         padding-top: 0;
     }
-    .search-input, .search-submit{
+    .profile-div, .search-input, .search-submit{
+
         margin-top: 20px;
     }
 }
@@ -862,6 +885,16 @@ p{
     }
     .drop-edit-exclud-about2{
         left: 14%;
+    }
+}
+
+@media (max-width: 560px){
+    .following-profile{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 5px;
+        width: 100%;
     }
 }
 
@@ -935,7 +968,6 @@ p{
     .responsive-follow-profile-div{
         display: flex;
     }
-
 }
 
 @media (max-width: 340px){
@@ -969,4 +1001,3 @@ p{
         margin-left: -5px;
     }
 }
-
