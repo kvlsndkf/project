@@ -237,7 +237,7 @@ input:focus{
     background-color: var(--white);
 }
 .botao-Atualizar{
-    background-color: #8080FF;
+    background-color: #B376D4;
     color: var(--white);
     display: flex;
     justify-content: center;
