@@ -178,7 +178,7 @@ try {
 
                                         <div>
                                             <p class="normal-14-medium-p">
-                                                Sobre
+                                                Sobre<span style="color: var(--red);">*</span>
                                             </p>
 
                                             <div id="contentTextArea">
@@ -303,6 +303,23 @@ try {
             } if (textArea.value.length > 250) {
                 minLength.style.color = "#ED4245";
                 minLength.innerText = "Máximo de caracteres: 250";
+            }
+        }
+    </script>
+
+    <!-- JS tamanho máximo textarea  -->
+
+    <script>
+        $(document).ready(function() {
+            $('#about').on('input propertychange', function() {
+                charLimit(this, 240);
+            });
+        });
+
+        function charLimit(input, maxChar) {
+            var len = $(input).val().length;
+            if (len > maxChar) {
+                $(input).val($(input).val().substring(0, maxChar));
             }
         }
     </script>

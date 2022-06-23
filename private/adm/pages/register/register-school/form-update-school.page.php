@@ -210,18 +210,20 @@ try {
 
                                     <div>
                                         <p class="normal-14-medium-p">
-                                            Sobre
+                                            Sobre<span style="color: var(--red);">*</span>
                                         </p>
 
                                         <div id="contentTextArea">
                                             <?php $disableAbout = $updateSchool['have_account'] === "Com conta" ?: 'disabled'; ?>
-                                            <textarea name="about" id="about" cols="30" rows="10" placeholder="Faça um breve texto contando sobre a Etec, ele aparecerá na página de perfil da mesma" class="text-area normal-14-medium-p" <?php echo $disableAbout; ?> onclick="colorDiv()"><?php echo $updateSchool['about'] ?></textarea>
+                                            <textarea name="about" id="about" cols="30" rows="10" placeholder="Faça um breve texto contando sobre a Etec, ele aparecerá na página de perfil da mesma" minlength="100" maxlength="250" class="text-area normal-14-medium-p" <?php echo $disableAbout; ?> onclick="colorDiv()"><?php echo $updateSchool['about'] ?></textarea>
                                             <div class="counter-container"><span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span></div>
                                         </div>
 
-                                        <p>
-
-                                        </p>
+                                        
+                                        <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
+                                            <span></span>
+                                        </div>
+                                        
                                     </div>
 
 
@@ -296,7 +298,7 @@ try {
                     </div>
 
 
-                    <input type="submit" class="button-wide button-white-white-text normal-14-bold-p register" style="margin-top: 60px;" value="Editar" name="update">
+                    <input type="submit" class="button-wide button-white-white-text normal-14-bold-p register" onclick="checkLength()" style="margin-top: 60px;" value="Editar" name="update">
                     <a href="./list-school.page.php"><button class="button-wide button-white-primary-text clean normal-14-bold-p" type="button">Cancelar</button></a>
                 </form>
             </div>
@@ -346,6 +348,39 @@ try {
             let uploadedFileName = event.target.files[0].name;
             fileNameField.textContent = uploadedFileName;
         })
+    </script>
+
+        <!-- JS tamanho minimo text area -->
+        <script>
+        var textArea = document.getElementById('about');
+        var minLength = document.getElementById('min-length');
+
+        function checkLength() {
+            if (textArea.value.length < 100) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Mínimo de caracteres: 100";
+            } if (textArea.value.length > 250) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Máximo de caracteres: 250";
+            }
+        }
+    </script>
+
+    <!-- JS tamanho máximo textarea  -->
+
+    <script>
+        $(document).ready(function() {
+            $('#about').on('input propertychange', function() {
+                charLimit(this, 240);
+            });
+        });
+
+        function charLimit(input, maxChar) {
+            var len = $(input).val().length;
+            if (len > maxChar) {
+                $(input).val($(input).val().substring(0, maxChar));
+            }
+        }
     </script>
 </body>
 

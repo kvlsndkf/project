@@ -269,6 +269,7 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(241, 241, 241);
+    overflow: hidden;
 }
 
 .prof-img{
