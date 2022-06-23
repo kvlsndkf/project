@@ -169,6 +169,29 @@ try {
             </div>
         </nav>
         <div class="corpo-feed">
+            
+            <!-- Mensagem de sucesso ⬇️ -->
+            <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
+
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </symbol>
+                </svg>
+
+                <div class="alert alert-success d-flex align-items-center alert-dismissible div-alert fade show" role="alert">
+                    <svg class="bi flex-shrink-0 me-2 div-alert" width="24" height="24" role="img" aria-label="Success:">
+                        <use xlink:href="#check-circle-fill" />
+                    </svg>
+                    <div>
+                        <strong>Tudo certo!</strong>
+                        <?php echo $_SESSION['statusPositive']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            <?php unset($_SESSION['statusPositive']);
+            } ?>
+
             <div class="feed-div">
                 <!-- Barra de pesquisa -->
                 <form action="../search/search.page.php" method="get" class="search-form">
@@ -224,37 +247,36 @@ try {
 
                 <div class="<?php echo $styleNotFound; ?> not-found-container">
                     <img src="../../images/no-preferences.svg" class="img-not-found" alt="">
-                    <p class="not-found-text-cont white-title normal-14-medium-p"
-                    <span class="not-found-text-title normal-14-medium-p" style="color: var(--gray6);">
+                    <p class="not-found-text-cont white-title normal-14-medium-p" <span class="not-found-text-title normal-14-medium-p" style="color: var(--gray6);">
                         Sem posts relacionados a <span style="color: white;"><?php echo $detailsPreference->name; ?></span>
-                    </span>
+                        </span>
                     </p>
                 </div>
 
                 <style>
                     .not-found-container {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-    height: 200%;
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-}
+                        display: flex;
+                        align-items: center;
+                        align-content: center;
+                        flex-direction: column;
+                        height: 200%;
+                        width: 100%;
+                        justify-content: center;
+                        text-align: center;
+                    }
 
-.not-found-text-cont {
-    margin-top: 20px;
-}
+                    .not-found-text-cont {
+                        margin-top: 20px;
+                    }
 
-.not-found-text-title {
-    font-size: 18px;
-    margin-bottom: 8px;
-}
+                    .not-found-text-title {
+                        font-size: 18px;
+                        margin-bottom: 8px;
+                    }
 
-.img-not-found {
-    width: 200px;
-}
+                    .img-not-found {
+                        width: 200px;
+                    }
                 </style>
 
 
@@ -503,11 +525,11 @@ try {
                                                     $creatorQuestion = $question->getCreatorQuestionById($row->id);
                                                     $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
                                                     ?>
-                                                    <input type="hidden" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
-                                                    <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
-                                                    <input type="hidden" name="questionId" id="" value="<?php echo $row->id; ?>">
-                                                    <input type="hidden" name="preference" id="" value="<?php echo $preferenceID; ?>">
+                                                    <input type="text" name="post_link" id="" value="<?php echo $row->linkQuestion; ?>">
+                                                    <input type="text" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                                    <input type="text" name="denounciedId" id="" value="<?php echo $userCreatorQuestion[0]['user_id']; ?>">
+                                                    <input type="text" name="questionId" id="" value="<?php echo $row->id; ?>">
+                                                    <input type="text" name="preference" id="" value="<?php echo $preferenceID; ?>">
                                                 </div>
 
                                                 <div class="modal-footer">

@@ -1,6 +1,8 @@
 <?php
 require_once('/xampp/htdocs' . '/project/classes/denunciations/Denunciation.class.php');
 
+session_start();
+
 if(isset($_POST['register'])){
     $denunciation = new Denunciation();
 
@@ -11,6 +13,7 @@ if(isset($_POST['register'])){
     $idQuestion = $_POST['questionId'];
     $idPreference = $_POST['preference'];
     $status = "Nova";
+    $type = "Pergunta";
 
     $denunciation->setReason($option);
     $denunciation->setPostLink($linkQuestion);
@@ -18,5 +21,6 @@ if(isset($_POST['register'])){
     $denunciation->setDenouncedId($idDenouncied);
     $denunciation->setQuestionId($idQuestion);
     $denunciation->setStatus($status);
+    $denunciation->setType($type);
     $denunciation->registerDenunciationPreference($denunciation, $idPreference);
 }

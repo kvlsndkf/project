@@ -307,7 +307,6 @@ class Denunciation
 
         if (!empty($idQuestion)) {
             try {
-
                 $stmt = $connection->prepare("UPDATE questions SET is_denounced = ?, updated_at = NOW()
                                              WHERE id = $idQuestion");
 
