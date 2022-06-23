@@ -100,7 +100,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
