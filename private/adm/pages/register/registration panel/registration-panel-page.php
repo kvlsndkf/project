@@ -87,13 +87,6 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                     </li>
 
                     <li class="sidebar-li">
-                        <a href="#" class="sidebar-a">
-                            <img class="sidebar-img" src="../../../../../views/images/components/informacoes-img.svg" alt="">
-                            <p class="sidebar-option normal-18-bold-title-2">Informações</p>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-li">
                         <a href="../../message/list-message.page.php" class="sidebar-a-items">
                             <img class="sidebar-img" src="../../../../../views/images/components/fale-conosco-img.svg" alt="">
                             <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
