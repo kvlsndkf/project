@@ -186,7 +186,7 @@ try {
             <div class="feed-div">
                 <!-- Barra de pesquisa -->
                 <form action="./search.page.php" method="get" class="search-form">
-                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" class="search-input" value="<?php echo $searchResult; ?>" autocomplete="off">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" class="my-search-input" value="<?php echo $searchResult; ?>" autocomplete="off">
                     <input type="submit" id="submit-search" value="🔍" class="my-search-submit">
                 </form>
                 <!-- Tabs navs -->

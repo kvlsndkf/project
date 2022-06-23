@@ -281,6 +281,46 @@ class Denunciation
         }
     }
 
+    public function registerDenunciationPreference(Denunciation $denunciation, $prefenceID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("INSERT INTO denunciations(reason, post_link, status, type, created_by_id, denounced_id, question_id, answer_id, created_at)
+                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+
+            $stmt->bindValue(1, $denunciation->getReason());
+            $stmt->bindValue(2, $denunciation->getPostLink());
+            $stmt->bindValue(3, $denunciation->getStatus());
+            $stmt->bindValue(4, $denunciation->getType());
+            $stmt->bindValue(5, $denunciation->getCreatedById());
+            $stmt->bindValue(6, $denunciation->getDenouncedId());
+            $stmt->bindValue(7, $denunciation->getQuestionId());
+            $stmt->bindValue(8, $denunciation->getAnswerId());
+
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        $idQuestion = $this->getQuestionId();
+
+        if (!empty($idQuestion)) {
+            try {
+                $stmt = $connection->prepare("UPDATE questions SET is_denounced = ?, updated_at = NOW()
+                                             WHERE id = $idQuestion");
+
+                $stmt->bindValue(1, true);
+
+                $stmt->execute();
+                $_SESSION['statusPositive'] = "Questão denunciada, logo ela será avaliada.";
+                header('Location: /project/private/student/pages/preferences/preference.page.php?preference=' . $prefenceID);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        }
+    }
+
     public function listNewDenunciations()
     {
 
