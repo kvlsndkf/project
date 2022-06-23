@@ -255,7 +255,7 @@ try {
                                 $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
                             } else {
                                 $textButton = 'Link do post';
-                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $idStudent;
+                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
                             }
                             ?>
                             <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
@@ -318,7 +318,7 @@ try {
                                 $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
                             } else {
                                 $textButton = 'Link do post';
-                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $idStudent;
+                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
                             }
                             ?>
                             <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
@@ -423,7 +423,7 @@ try {
                                 $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
                             } else {
                                 $textButton = 'Link do post';
-                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $idStudent;
+                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
                             }
                             ?>
                             <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
