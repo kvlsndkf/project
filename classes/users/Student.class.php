@@ -321,7 +321,7 @@ class Student extends User
 
             $stmt->execute();
 
-            $_SESSION['statusPositive'] = "Módulo atualizado com sucesso.";
+            $_SESSION['statusPositive'] = "Perfil atualizado com sucesso.";
             header('Location: /project/private/student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=' . $id);
         } catch (Exception $e) {
             echo $e->getMessage();

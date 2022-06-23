@@ -19,12 +19,15 @@ try {
     $studentPerfil = $student->getDataStudentByID($idStudent);
     $idUserPerfil = $student->getUserByStudentID($studentPerfil->id);
     $studentAnswer = $student->listAnswersByStudent($idStudent);
+    // echo json_encode($studentAnswer);
     $studentQuestion = $student->listQuestionsByStudent($idStudent);
     $studentMaterial = $student->listMaterialsByStudent($idStudent);
     $studentPreference = $student->listPreferencesStudent($idStudent);
 
     $follow = new Follow();
     $checkFollow = $follow->checkFollower($idUser, $idUserPerfil[0]['user_id']);
+
+
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -511,7 +514,7 @@ try {
 
                                     <div class="avaliation-answer">
 
-                                        <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalLikeAnswer; ?>
+                                        <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalAvaliationAnswer; ?>
                                         <div class="star-icon question-info">
                                             <p class="normal-14-bold-p question-p avaliation-text" style="color: var(--yellow);" style="margin-bottom: -10px;">
                                                 <span class="functions-answer-text avaliation-text">
