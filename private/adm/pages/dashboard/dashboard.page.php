@@ -214,7 +214,7 @@ try {
                             <?php for ($i = 0; $i < count($listCoursesByStudent); $i++) {
                                 $row = $listCoursesByStudent[$i];?>
                                 <div class="top-courses">
-                                    <span class="normal-14-bold-p number-rank"><?php echo $i; ?>°</span>
+                                    <span class="normal-14-bold-p number-rank"><?php echo $i+1; ?>°</span>
                                     <img src="<?php echo $row->photo; ?>" class="icon-top">
                                     <span class="normal-16-bold-title-3"><?php echo $row->name;?></span>
                                 </div>
