@@ -50,6 +50,7 @@
 
 .select2-dropdown{
     border: 1px solid var(--gray1) !important;
+    background-color: var(--gray2) !important;
 }
 
 .select2-search--dropdown{
@@ -117,11 +118,11 @@ input[type="file"]{
 .dadosP{
     color: var(--white);
     margin-top: 2em;
-    padding-left: 2.5em;
+    padding-left: 0.5em;
 }
 
 .border-bottom {
-    margin-top: 3em;
+    margin-top: 2em;
     border-bottom: 0.1em solid var(--gray3) !important;
 }
 
@@ -146,7 +147,7 @@ input[type="file"]{
 .input-sobrenome{
     outline: none;
     width: 100%;
-    padding: 1em;
+    height: 32px;
     padding-left: 0.8em;
     background-color: var(--gray2);
     border: 1px solid var(--gray1);
@@ -191,9 +192,12 @@ input:focus{
 
 .accordion-flush .accordion-item .accordion-button{
     margin-top: 2.5em;
-    background-color: var(--gray2) !important;
+    background-color: var(--bg-modal) !important;
     color: var(--white);
-    border: 1px solid var(--gray1);
+    padding:10px;
+    padding-left: 30px;
+    border: transparent;
+    
     /* border-radius: 3px; */
 }
 
@@ -202,9 +206,16 @@ input:focus{
 }
 
 .accordion-body{
-    background-color: var(--gray2);
+   
     color: var(--gray7);
+    
 }
+
+.accordion-button:focus{
+    border-color: unset !important;
+    box-shadow: var(--gray2) !important;
+}
+
 
 
 .accordion-item:last-of-type .accordion-button.collapsed {
@@ -237,7 +248,7 @@ input:focus{
     background-color: var(--white);
 }
 .botao-Atualizar{
-    background-color: #B376D4;
+    background-color: #8080FF;
     color: var(--white);
     display: flex;
     justify-content: center;
@@ -247,6 +258,19 @@ input:focus{
     justify-content: space-between;
     width: 100%;
     display: flex;
+}
+
+
+.accordion-item:first-of-type{
+    background-color: var(--bg-modal) !important;
+    border: 0 !important;
+}
+
+.accordion-button:not(.collapsed),
+.accordion-item:first-of-type .accordion-button{
+    background-color: var(--bg-modal) !important;
+    box-shadow:var(--bg-modal) !important ;
+
 }
 
 @media (max-width: 414px){
@@ -292,6 +316,4 @@ input:focus{
         margin-top: 2em;
         width: 100%;
     }
-
 }
-    
