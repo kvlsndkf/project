@@ -99,7 +99,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser;?>" class="sidebar-a leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser;?>" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
@@ -124,7 +124,7 @@ try {
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
                             <div class="d-flex question-info margin-bot-15">
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;" width="32px">
-                                <p class="white-text question-p normal-16-bold-title-3 text-truncate">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
                                     <?php echo $row->name; ?>
                                 </p>
                             </div>
@@ -701,7 +701,7 @@ try {
             <a href="./home.page.php" class="bottombar-a">
                 <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
             </a>
-            <a href="#" class="bottombar-a">
+            <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser;?>" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">
