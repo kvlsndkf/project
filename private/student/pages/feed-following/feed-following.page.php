@@ -644,7 +644,7 @@ try {
                 <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">
-                <img src="../../../../views/images/components/following-icon.svg" alt="">
+                <img src="../../../../views/images/components/filled-following.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">
                 <img src="../../../../views/images/components/notifications-icon.svg" alt="">
