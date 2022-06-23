@@ -1,6 +1,7 @@
 <?php
 include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/denunciations/Denunciation.class.php');
+require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 
 try {
     $search = $_GET['searchDenunciation'] ?? '';
@@ -16,6 +17,8 @@ try {
 
     $listSearch = $denunciation->listSearchDenunciations($search);
     $countSearchDenunciations = $denunciation->countSearchDenunciations();
+
+    $student = new StudentMethods();
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -165,8 +168,17 @@ try {
             </p>
 
             <p>
-                <?php $textButton = $row->type == "Perfil" ? 'Link do perfil' : 'Link do post'; ?>
-                <a href="<?php echo $row->link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                <?php
+                $idStudent = $student->getStudentByUserID($row->denouncedId);
+                if ($row->type == "Perfil") {
+                    $textButton = 'Link do perfil';
+                    $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                } else {
+                    $textButton = 'Link do post';
+                    $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
+                }
+                ?>
+                <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
             </p>
 
             <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
@@ -236,8 +248,17 @@ try {
                         </p>
 
                         <p>
-                            <?php $textButton = $row->type == "Perfil" ? 'Link do perfil' : 'Link do post'; ?>
-                            <a href="<?php echo $row->link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                            <?php
+                            $idStudent = $student->getStudentByUserID($row->denouncedId);
+                            if ($row->type == "Perfil") {
+                                $textButton = 'Link do perfil';
+                                $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                            } else {
+                                $textButton = 'Link do post';
+                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $idStudent;
+                            }
+                            ?>
+                            <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
                         </p>
 
                         <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
@@ -290,8 +311,17 @@ try {
                         </p>
 
                         <p>
-                            <?php $textButton = $row->type == "Perfil" ? 'Link do perfil' : 'Link do post'; ?>
-                            <a href="<?php echo $row->link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                            <?php
+                            $idStudent = $student->getStudentByUserID($row->denouncedId);
+                            if ($row->type == "Perfil") {
+                                $textButton = 'Link do perfil';
+                                $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                            } else {
+                                $textButton = 'Link do post';
+                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $idStudent;
+                            }
+                            ?>
+                            <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
                         </p>
 
                         <!-- Button trigger modal -->
@@ -386,8 +416,17 @@ try {
                         </p>
 
                         <p>
-                            <?php $textButton = $row->type == "Perfil" ? 'Link do perfil' : 'Link do post'; ?>
-                            <a href="<?php echo $row->link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                            <?php
+                            $idStudent = $student->getStudentByUserID($row->denouncedId);
+                            if ($row->type == "Perfil") {
+                                $textButton = 'Link do perfil';
+                                $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                            } else {
+                                $textButton = 'Link do post';
+                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $idStudent;
+                            }
+                            ?>
+                            <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
                         </p>
 
                         <p>
