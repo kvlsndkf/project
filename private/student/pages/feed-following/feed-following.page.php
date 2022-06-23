@@ -193,13 +193,13 @@ try {
         </nav>
         <div class="corpo-feed">
 
-            <!-- Barra de pesquisa -->
-            <!-- <form action="../search/search.page.php" method="get">
-                <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off">
-                <input type="submit" value="pesquisar">
-            </form> -->
-
             <div class="feed-div">
+
+                <!-- Barra de pesquisa -->
+                <form action="../search/search.page.php" method="get" class="search-form">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off" class="search-input">
+                    <input type="submit" value="🔍" class="search-submit">
+                </form>
 
 
                 <div class="<?php echo $stylePreferences; ?>">
