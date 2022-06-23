@@ -187,9 +187,9 @@ class StudentMethods
         $student->facebook = $row['facebook'];
         $student->instagram = $row['instagram'];
         $student->linkProfile = $row['profile_link'];
-
-        setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-        $student->created =  date('d F Y', strtotime($row['created_at']));
+        $student->created = $row['created_at'];
+        // setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        // $student->created =  date('d F Y', strtotime($row['created_at']));
        
 
         return $student;

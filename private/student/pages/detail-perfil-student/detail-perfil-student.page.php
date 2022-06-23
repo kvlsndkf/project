@@ -18,12 +18,15 @@ try {
     $studentPerfil = $student->getDataStudentByID($idStudent);
     $idUserPerfil = $student->getUserByStudentID($studentPerfil->id);
     $studentAnswer = $student->listAnswersByStudent($idStudent);
+    // echo json_encode($studentAnswer);
     $studentQuestion = $student->listQuestionsByStudent($idStudent);
     $studentMaterial = $student->listMaterialsByStudent($idStudent);
     $studentPreference = $student->listPreferencesStudent($idStudent);
 
     $follow = new Follow();
     $checkFollow = $follow->checkFollower($idUser, $idUserPerfil[0]['user_id']);
+
+
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -510,7 +513,7 @@ try {
 
                                     <div class="avaliation-answer">
 
-                                        <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalLikeAnswer; ?>
+                                        <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalAvaliationAnswer; ?>
                                         <div class="star-icon question-info">
                                             <p class="normal-14-bold-p question-p avaliation-text" style="color: var(--yellow);" style="margin-bottom: -10px;">
                                                 <span class="functions-answer-text avaliation-text">
@@ -677,7 +680,8 @@ try {
                             <p class="normal-14-bold-p question-p" style="color: var(--gray7);">
                                 <img src="../../../../views/images/components/date-range.svg" alt="">
                                 Entrou em:
-                                <?php echo $studentPerfil->created; ?>
+                                <input type="hidden" id="dayValue" value="<?php echo $studentPerfil->created; ?>">
+                                <span id="dayText"></span>
                             </p>
 
                             <br>
@@ -759,6 +763,17 @@ try {
                 type: 'image'
             });
         });
+    </script>
+
+    <script>
+        (function() {
+            const dateElement = document.getElementById('dayText');
+            const dateValue = document.getElementById('dayValue');
+            const date = new Date(dateValue.value);
+            const formated = new Intl.DateTimeFormat('pt-br', {day: 'numeric', month: 'long', year: 'numeric'}).format(date);
+
+            dateElement.innerText = formated;
+        }());
     </script>
 </body>
 

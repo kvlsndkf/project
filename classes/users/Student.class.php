@@ -321,7 +321,7 @@ class Student extends User
 
             $stmt->execute();
 
-            $_SESSION['statusPositive'] = "Módulo atualizado com sucesso.";
+            $_SESSION['statusPositive'] = "Perfil atualizado com sucesso.";
             header('Location: /project/private/student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=' . $id);
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -352,6 +352,22 @@ class Student extends User
             } else {
                 return "Senha antiga incorreta";
             }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getOldPassword($idUser)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT password FROM users WHERE id = $idUser");
+            $stmt->execute();
+            $listUser = $stmt->fetch(PDO::FETCH_BOTH);
+
+
+            return $listUser;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
