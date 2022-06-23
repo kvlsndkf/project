@@ -678,7 +678,8 @@ try {
                             <p class="normal-14-bold-p question-p" style="color: var(--gray7);">
                                 <img src="../../../../views/images/components/date-range.svg" alt="">
                                 Entrou em:
-                                <?php echo $studentPerfil->created; ?>
+                                <input type="hidden" id="dayValue" value="<?php echo $studentPerfil->created; ?>">
+                                <span id="dayText"></span>
                             </p>
 
                             <br>
@@ -760,6 +761,17 @@ try {
                 type: 'image'
             });
         });
+    </script>
+
+    <script>
+        (function() {
+            const dateElement = document.getElementById('dayText');
+            const dateValue = document.getElementById('dayValue');
+            const date = new Date(dateValue.value);
+            const formated = new Intl.DateTimeFormat('pt-br', {day: 'numeric', month: 'long', year: 'numeric'}).format(date);
+
+            dateElement.innerText = formated;
+        }());
     </script>
 </body>
 
