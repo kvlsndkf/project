@@ -1,5 +1,18 @@
 <?php
 include_once('/xampp/htdocs' . '/project/private/validation/validation-administrator.controller.php');
+require_once('/xampp/htdocs' . '/project/classes/dashboard/Dashboard.class.php');
+
+try {
+    $dashboard = new Dashboard();
+    $totalDenunciations = $dashboard->countDenunciations();
+    $totalMessages = $dashboard->countMessages();
+    $totalStudents = $dashboard->countStudents();
+    $countAvaliations = $dashboard->countAvaliations();
+    $listCoursesByStudent = $dashboard->countCoursesByStudents();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -135,15 +148,15 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                     <div class="main-help-adm align-self-center ms-4 ms-sm-4 ms-md-4 ms-lg-4 ms-xl-4 me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
                         <span class="span-help-adm normal-22-black-title-1 white-title">Olá adminisitrador, precisando de ajuda? Entre em contato com a gente!</span>
                         <br />
-                       
+
                         <div class="button-container">
-                        <a href="../message/list-message.page.php" style="text-decoration: none; color: inherit;">
-                            <div class="adm-email-button white-title normal-14-bold-p">
-                                <span>Enviar e-mail</span>
-                            </div>
+                            <a href="mailto:cold.wolf.ck@gmail.com?subject=Administrador%20Heelp" style="text-decoration: none; color: inherit;">
+                                <div class="adm-email-button white-title normal-14-bold-p">
+                                    <span>Enviar e-mail</span>
+                                </div>
                             </a>
                         </div>
-                        
+
                     </div>
                     <div class="avatar-help-adm d-none d-sm-none d-md-flex d-lg-flex align-self-center me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
                         <img src="../../../../views/images/avatars/avatar-scotty.svg" alt="">
@@ -163,8 +176,6 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                                             'Mal avaliadas',
                                         ];
 
-
-
                                         const data = {
                                             labels: labels,
                                             datasets: [{
@@ -174,7 +185,12 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                                                     'rgba(255, 198, 25, 1)',
                                                 ],
 
-                                                data: [24, 8],
+                                                data: [
+                                                    <?php for ($i = 0; $i < count($countAvaliations); $i++) {
+                                                        $row = $countAvaliations[$i]; ?>
+                                                        <?php echo $row[$i] ?>,
+                                                    <?php } ?>
+                                                ],
                                             }]
                                         };
 
@@ -195,11 +211,15 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                             </div>
                             <div class="hrtop"></div>
 
-                            <div class="top-courses">
-                                <span class="normal-14-bold-p number-rank">01°</span>
-                                <img src="../../images/icons/icon-acucar.svg" class="icon-top">
-                                <span class="normal-16-bold-title-3">Açúcar e Álcool</span>
-                            </div>
+                            <?php for ($i = 0; $i < count($listCoursesByStudent); $i++) {
+                                $row = $listCoursesByStudent[$i];?>
+                                <div class="top-courses">
+                                    <span class="normal-14-bold-p number-rank"><?php echo $i; ?>°</span>
+                                    <img src="<?php echo $row->photo; ?>" class="icon-top">
+                                    <span class="normal-16-bold-title-3"><?php echo $row->name;?></span>
+                                </div>
+                            <?php 
+                            } ?>
                         </div>
                     </div>
                 </div>
@@ -208,19 +228,19 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                     <div class="row d-lg-flex justify-content-lg-between">
                         <div class="report dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <section class="section">
-                                <span class="card-num">2</span>
+                                <span class="card-num"><?php echo $totalDenunciations; ?></span>
                                 <span class="card-label">Denúncias</span>
                             </section>
                         </div>
                         <div class="requested-info dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <section class="section">
-                                <span class="card-num">3</span>
-                                <span class="card-label">Informações solicitadas</span>
+                                <span class="card-num"><?php echo $totalMessages; ?></span>
+                                <span class="card-label">Fale conosco</span>
                             </section>
                         </div>
                         <div class="students-total dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <section class="section">
-                                <span class="card-num">10.000</span>
+                                <span class="card-num"><?php echo $totalStudents; ?></span>
                                 <span class="card-label">Total de alunos</span>
                             </section>
                         </div>
