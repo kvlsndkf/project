@@ -6,7 +6,6 @@ require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.ph
 require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
-    
     $idUser = $_SESSION['idUser'];
     $idStudent = $_GET['idStudent'];
     

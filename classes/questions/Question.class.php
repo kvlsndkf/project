@@ -273,7 +273,7 @@ class Question
 
         try {
             $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
-                                        school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
+                                        school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, quest.student_id,
                                         category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
                                         quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
                                             
@@ -323,6 +323,7 @@ class Question
         $question->document = $row['document'];
         $question->documentName = $row['document_name'];
         $question->isDenounced = $row['is_denounced'];
+        $question->creatorId = $row['student_id'] ?? "";
         $question->linkProfile = $row['profile_link'];
         $question->created = $this->countCreatedQuestion($row['created_at']);
 

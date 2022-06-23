@@ -230,7 +230,7 @@ class Answer
 
         try {
             $stmt = $connection->prepare("SELECT answ.id, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
-                                        school.name AS 'school', answ.answer, answ.photo AS 'imageAnswer', answ.avg_avaliation,
+                                        school.name AS 'school', answ.answer, answ.photo AS 'imageAnswer', answ.avg_avaliation, answ.answer_creator_id,
                                         answ.like_answer, answ.document, answ.document_name, answ.is_denounced, answ.created_at FROM students stu
                                             
                                         INNER JOIN schoolshasstudents ss
@@ -326,7 +326,8 @@ class Answer
         $answer->document = $row['document'];
         $answer->documentName = $row['document_name'];
         $answer->isDenounced = $row['is_denounced'];
-        $answer->linkProfile = $row['profile_link'];
+        $answer->creatorID = $row['answer_creator_id'];
+        $answer->creator = $row['profile_link'];
         $answer->created = $this->countCreatedAnswer($row['created_at']);
 
         return $answer;
