@@ -152,23 +152,27 @@ try {
                         <span class="normal-12-bold-tiny blue-title">Não encontrou o seu dado? Clique aqui.</span>
                     </a>
 
-                
+
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel" style="color:black;">Solicitação de informação</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-content" style="background-color: var(--bg-modal); padding: 20px;">
+                                <div class="modal-header" style="border: none;">
+                                    <h5 class="modal-title normal-20-bold-modal-title" id="exampleModalLabel" style="color: white;">Solicitação de informação</h5>
+                                    <button type="button" data-bs-dismiss="modal" style="border: none; background-color: var(--bg-modal)">
+                                        <img src="../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                                    </button>
                                 </div>
-                                <div class="modal-body" style="color:black;">
+                                <div class="modal-body" style="color: white; font-weight: 400;">
                                     Caso você não encontre os seus dados institucionais, por favor mande mensagem através do fale conosco assim
                                     vamos ajustar e logo você poderá adicionar essa informação na sua conta!
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a href="../../../landing-page/landing-page.php">
-                                        <button type="button" class="btn btn-primary">Ir para o fale conosco</button>
+                                <div class="modal-footer" style="border: none;">
+                                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                    <a href="../../../../index.php" style="width: 100%;">
+                                        <button type="button" class="btn btn-primary button-wide" style="width: 100%; background-color: var(--primary); border: none; border-radius: 8px; font-weight: 600;">
+                                            Ir para o fale conosco
+                                        </button>
                                     </a>
                                 </div>
                             </div>

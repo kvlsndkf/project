@@ -82,7 +82,7 @@ session_start();
             <form action="./controller/login.controller.php" class="form" method="POST">
                 <div class="voltar">
                     <div>
-                        <a class="" href="../../../views/landing-page/landing-page.php">
+                        <a class="" href="../../../index.php">
                             <img src="../../images/./components/seta-voltar.svg" alt="">
                         </a>
                     </div>
