@@ -218,8 +218,8 @@ try {
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                                 <h6 class="normal-14-medium-p">Links</h6>
                                             </button>
-                                        </h2> 
-                                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">Linkedin</label><br>
@@ -241,11 +241,11 @@ try {
                                                     <input class="input-Geral" type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
                                                 </p>
 
-                                                
+
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="flush-headingTwo">
                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                                            <h6 class="normal-14-medium-p">Senha</h6> 
+                                                            <h6 class="normal-14-medium-p">Senha</h6>
                                                         </button>
                                                     </h2>
                                                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -281,37 +281,38 @@ try {
                     </div>
                 </div>
             </div>
-        
-        <nav class="feed-leftbar feed-rightbar">
-            <ul class="rightbar-ul">
-                <li class="rightbar-li">
-                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
-                </li>
-                <hr class="sidebar-linha leftbar-linha">
-                <li class="rightbar-li">
-                    <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
-                </li>
-            </ul>
-            <p class="whitney-12-regular-tiny copyright-text">
-                Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
-            </p>
-        </nav>
-
-        <nav class="feed-bottombar">
-            <a href="../home/home.page.php" class="bottombar-a">
-                <img src="../../../../views/images/components/dashboard-img.svg" alt="">
-            </a>
-            <a href="#" class="bottombar-a">
-                <img src="../../../../views/images/components/following-icon.svg" alt="">
-            </a>
-            <a href="#" class="bottombar-a">
-                <img src="../../../../views/images/components/notifications-icon.svg" alt="">
-            </a>
-            <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
-                <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
-            </a>
-        </nav>
         </div>
+    </div>
+
+    <nav class="feed-leftbar feed-rightbar">
+        <ul class="rightbar-ul">
+            <li class="rightbar-li">
+                <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+            </li>
+            <hr class="sidebar-linha leftbar-linha">
+            <li class="rightbar-li">
+                <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
+            </li>
+        </ul>
+        <p class="whitney-12-regular-tiny copyright-text">
+            Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
+        </p>
+    </nav>
+
+    <nav class="feed-bottombar">
+        <a href="../home/home.page.php" class="bottombar-a">
+            <img src="../../../../views/images/components/dashboard-img.svg" alt="">
+        </a>
+        <a href="#" class="bottombar-a">
+            <img src="../../../../views/images/components/following-icon.svg" alt="">
+        </a>
+        <a href="#" class="bottombar-a">
+            <img src="../../../../views/images/components/notifications-icon.svg" alt="">
+        </a>
+        <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
+            <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
+        </a>
+    </nav>
     </div>
 
     <!-- JS JQuery ⬇️ -->
