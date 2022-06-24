@@ -809,8 +809,7 @@ class School extends Social
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT id, name FROM schools
-                                            WHERE have_account = 'Com conta'");
+            $stmt = $connection->prepare("SELECT id, name FROM schools");
             $stmt->execute();
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
