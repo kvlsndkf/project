@@ -161,7 +161,7 @@ try {
                 </div>
 
 
-                <a class="normal-16-bold-title-3 white-text bottom-name" href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <a class="normal-16-bold-title-3 white-text bottom-name text-truncate" href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank" style="max-width: 150px;">
                     <?php echo $studentPerfil->firstName;
                     echo " " . $studentPerfil->surname; ?>
                 </a>
@@ -330,7 +330,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
                                             <?php echo $row->name; ?>
                                         </p>
                                     </div>
@@ -393,7 +393,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
                                             <?php echo $row['first_name']; ?>
                                         </p>
                                     </div>

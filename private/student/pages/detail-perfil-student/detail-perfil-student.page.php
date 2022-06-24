@@ -189,7 +189,7 @@ try {
                 </div>
 
 
-                <a class="normal-16-bold-title-3 white-text bottom-name" href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentProfile->id; ?>" target="_blank">
+                <a class="normal-16-bold-title-3 white-text bottom-name text-truncate" href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentProfile->id; ?>" target="_blank" style="max-width: 150px;">
                     <?php echo $studentProfile->firstName;
                     echo " " . $studentProfile->surname; ?>
                 </a>
@@ -245,7 +245,7 @@ try {
                         </a>
 
                         <!-- Sair -->
-                        <a href="../../../logout/logout.controller.php" class="text-white <?php echo $displayLogout; ?> denuncia-aluno-a" style="width: 30px; height: 30px; margin: 10px; display: flex; align-items: center; justify-content: center;">
+                        <a href="../../../logout/logout.controller.php" class="text-white <?php echo $displayLogout; ?> denuncia-aluno-a" id="sair-aluno-a" style="width: 30px; height: 30px; margin: 10px; align-items: center; justify-content: center;">
                             <img src="../../../../views/images/components/sair-img.svg" alt="" width="16" height="16">
                         </a>
 
@@ -351,7 +351,7 @@ try {
 
                         </div>
 
-                        <p class="normal-16-bold-title-3 white-text question-p">
+                        <p class="normal-16-bold-title-3 white-text question-p text-truncate">
                             <?php echo $studentPerfil->firstName;
                             echo " " . $studentPerfil->surname; ?>
                         </p>
@@ -433,25 +433,25 @@ try {
                     <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                         <li class="nav-item" role="presentation">
                             <?php $styleBadgeAnswers = count($studentAnswer) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="normal-14-bold-p question-p nav-link userProfile-a active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
+                            <a class="normal-14-bold-p question-p nav-link userProfile-a active" id="ex2-tab-11" data-mdb-toggle="tab" href="#ex2-tabs-11" role="tab" aria-controls="ex2-tabs-11" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
                             <?php $styleBadgeQuestions = count($studentQuestion) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link userProfile-a" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-12" data-mdb-toggle="tab" href="#ex2-tabs-12" role="tab" aria-controls="ex2-tabs-12" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
                             <?php $styleBadgeMaterials = count($studentMaterial) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link userProfile-a" id="ex2-tab-3" data-mdb-toggle="tab" href="#ex2-tabs-3" role="tab" aria-controls="ex2-tabs-3" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-13" data-mdb-toggle="tab" href="#ex2-tabs-13" role="tab" aria-controls="ex2-tabs-13" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
                         </li>
                         <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <a class="nav-link userProfile-a" id="ex2-tab-4" data-mdb-toggle="tab" href="#ex2-tabs-4" role="tab" aria-controls="ex2-tabs-4" aria-selected="false">Sobre</a>
+                            <a class="nav-link userProfile-a" id="ex2-tab-14" data-mdb-toggle="tab" href="#ex2-tabs-14" role="tab" aria-controls="ex2-tabs-14" aria-selected="false">Sobre</a>
                         </li>
                     </ul>
                     <!-- Tabs navs -->
 
                     <!-- Tabs content -->
                     <div class="tab-content padding-20" id="ex2-content">
-                        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+                        <div class="tab-pane fade show active" id="ex2-tabs-11" role="tabpanel" aria-labelledby="ex2-tab-11">
 
                             <!-- Lista de respostas ⬇️ -->
                             <?php for ($i = 0; $i < count($studentAnswer); $i++) {
@@ -546,7 +546,7 @@ try {
                             <?php } ?>
 
                         </div>
-                        <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                        <div class="tab-pane fade" id="ex2-tabs-12" role="tabpanel" aria-labelledby="ex2-tab-12">
 
                             <!-- Lista de perguntas ⬇️ -->
                             <?php for ($i = 0; $i < count($studentQuestion); $i++) {
@@ -617,7 +617,7 @@ try {
                             <?php } ?>
 
                         </div>
-                        <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
+                        <div class="tab-pane fade" id="ex2-tabs-13" role="tabpanel" aria-labelledby="ex2-tab-13">
 
                             <!-- Lista de materiais ⬇️ -->
                             <?php for ($i = 0; $i < count($studentMaterial); $i++) {
@@ -686,7 +686,7 @@ try {
                             <?php } ?>
 
                         </div>
-                        <div class="tab-pane fade" id="ex2-tabs-4" role="tabpanel" aria-labelledby="ex2-tab-4">
+                        <div class="tab-pane fade" id="ex2-tabs-14" role="tabpanel" aria-labelledby="ex2-tab-14">
 
                             <!-- Sobre ⬇️ -->
                             <p class="normal-14-bold-p question-p" style="color: var(--gray7);">
@@ -801,7 +801,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
                                             <?php echo $row->name; ?>
                                         </p>
                                     </div>
@@ -864,7 +864,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
                                             <?php echo $row['first_name']; ?>
                                         </p>
                                     </div>

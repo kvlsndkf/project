@@ -284,6 +284,7 @@ a{
     list-style: none;
     margin: 0;
     padding: 0;
+    min-width: 80%;
 }
 
 .rightbar-li{
@@ -821,6 +822,16 @@ p{
     justify-content: space-between;
 }
 
+#sair-aluno-a{
+    display: none;
+}
+
+.name-text{
+    max-width: 20vw; 
+    word-wrap: break-word; 
+    word-break: break-all;
+}
+
 @media (max-width: 1040px){
     .profile-name{
         font-size: 14px;
@@ -828,6 +839,12 @@ p{
 }
 
 @media (max-width: 925px){
+    .name-text{
+        max-width: 45vw;
+    }
+    #sair-aluno-a{
+        display: flex;
+    }
     .stop-following{
         width: auto;
     }

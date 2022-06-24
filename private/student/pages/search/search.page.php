@@ -191,7 +191,7 @@ try {
                 </div>
 
 
-                <a class="normal-16-bold-title-3 white-text bottom-name" href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <a class="normal-16-bold-title-3 white-text bottom-name text-truncate" href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank" style="max-width: 150px;">
                     <?php echo $studentPerfil->firstName;
                     echo " " . $studentPerfil->surname; ?>
                 </a>
@@ -532,17 +532,17 @@ try {
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
                         <li class="nav-item ranking-li" role="presentation">
-                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
+                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-11" data-mdb-toggle="tab" href="#ex2-tabs-11" role="tab" aria-controls="ex2-tabs-11" aria-selected="true">Todos</a>
                         </li>
                         <li class="nav-item ranking-li" role="presentation">
-                            <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>
+                            <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-12" data-mdb-toggle="tab" href="#ex2-tabs-12" role="tab" aria-controls="ex2-tabs-12" aria-selected="false">Seguindo</a>
                         </li>
                     </ul>
                     <!-- Tabs navs -->
 
                     <!-- Tabs content -->
                     <div class="tab-content" id="ex2-content">
-                        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+                        <div class="tab-pane fade show active" id="ex2-tabs-11" role="tabpanel" aria-labelledby="ex2-tab-11">
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -592,7 +592,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
                                             <?php echo $row->name; ?>
                                         </p>
                                     </div>
@@ -603,7 +603,7 @@ try {
                             <?php } ?>
 
                         </div>
-                        <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                        <div class="tab-pane fade" id="ex2-tabs-12" role="tabpanel" aria-labelledby="ex2-tab-12">
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -655,7 +655,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px">
                                             <?php echo $row['first_name']; ?>
                                         </p>
                                     </div>

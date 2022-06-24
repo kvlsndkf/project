@@ -3,6 +3,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-student.c
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
     $idUser = $_SESSION['idUser'];
@@ -19,8 +20,16 @@ try {
     $student = new StudentMethods();
     $studentLogged = $student->getStudentByUserID($idUser);
     $studentPerfil = $student->getDataStudentByID($studentLogged[0]['id']);
+    $studentId = $student->getStudentByUserID($idUser);
 
     $listPreferences = Preference::getPreferencesUser($idUser);
+    
+    $ranking = new Ranking();
+    $colocationTotal = $ranking->colocationTotal();
+    $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+
+    $colocationFollowers = $ranking->colocationFllowers($idUser);
+    $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -160,7 +169,7 @@ try {
                 </div>
 
 
-                <a class="normal-16-bold-title-3 white-text bottom-name" href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <a class="normal-16-bold-title-3 white-text bottom-name text-truncate" href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank" style="max-width: 150px;">
                     <?php echo $studentPerfil->firstName;
                     echo " " . $studentPerfil->surname; ?>
                 </a>
@@ -272,7 +281,7 @@ try {
 
                                 <div class="question-info margin-bot-15">
                                     <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
-                                    <p class="normal-16-bold-title-3 white-text question-p" style="margin-left: 10px;">
+                                    <p class="normal-16-bold-title-3 white-text question-p text-truncate" style="margin-left: 10px;">
                                         <?php echo $row->name; ?>
                                     </p>
 
@@ -299,7 +308,7 @@ try {
                                             <?php echo $row->name; ?>
                                         </p>
 
-                                        <p class="normal-12-medium-tiny" style="color: var(--gray5);">
+                                        <p class="normal-12-medium-tiny" style="color: var(--gray5); word-wrap: break-word; word-break: break-all; max-width: 35vw;">
                                             <?php
                                             foreach ($row->courses as $value) {
                                                 echo $value . " • ";
@@ -322,9 +331,6 @@ try {
 
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
-                <li class="rightbar-li">
-                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
-                </li>
                 <hr class="sidebar-linha leftbar-linha">
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
@@ -334,17 +340,17 @@ try {
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
                         <li class="nav-item ranking-li" role="presentation">
-                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
+                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-11" data-mdb-toggle="tab" href="#ex2-tabs-11" role="tab" aria-controls="ex2-tabs-11" aria-selected="true">Todos</a>
                         </li>
                         <li class="nav-item ranking-li" role="presentation">
-                            <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>
+                            <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-12" data-mdb-toggle="tab" href="#ex2-tabs-12" role="tab" aria-controls="ex2-tabs-12" aria-selected="false">Seguindo</a>
                         </li>
                     </ul>
                     <!-- Tabs navs -->
 
                     <!-- Tabs content -->
                     <div class="tab-content" id="ex2-content">
-                        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+                        <div class="tab-pane fade show active" id="ex2-tabs-11" role="tabpanel" aria-labelledby="ex2-tab-11">
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -361,17 +367,17 @@ try {
                                 if ($i === 0) {
                                     $displayMedal = 'd-block';
                                     $displayNumber = 'd-none';
-                                    $iconMedal = '../../images/icons/gold.svg';
+                                    $iconMedal = '../student/images/icons/gold.svg';
                                     $badgeColor = 'badge rounded-pill bg-gold';
                                 } else if ($i === 1) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
-                                    $iconMedal = '../../images/icons/silver.svg';
+                                    $iconMedal = '../student/images/icons/silver.svg';
                                     $badgeColor = 'badge rounded-pill bg-silver';
                                 } else if ($i === 2) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
-                                    $iconMedal = '../../images/icons/bronze.svg';
+                                    $iconMedal = '../student/images/icons/bronze.svg';
                                     $badgeColor = 'badge rounded-pill bg-copper';
                                 } else if ($i === 3) {
                                     $displayMedal = 'd-none';
@@ -394,7 +400,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px">
                                             <?php echo $row->name; ?>
                                         </p>
                                     </div>
@@ -405,7 +411,7 @@ try {
                             <?php } ?>
 
                         </div>
-                        <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                        <div class="tab-pane fade" id="ex2-tabs-12" role="tabpanel" aria-labelledby="ex2-tab-12">
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -422,17 +428,17 @@ try {
                                 if ($i === 0) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
-                                    $iconMedal = '../../images/icons/gold.svg';
+                                    $iconMedal = '../student/images/icons/gold.svg';
                                     $badgeColor = 'badge rounded-pill bg-gold';
                                 } else if ($i === 1) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
-                                    $iconMedal = '../../images/icons/silver.svg';
+                                    $iconMedal = '../student/images/icons/silver.svg';
                                     $badgeColor = 'badge rounded-pill bg-silver';
                                 } else if ($i === 2) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
-                                    $iconMedal = '../../images/icons/bronze.svg';
+                                    $iconMedal = '../student/images/icons/bronze.svg';
                                     $badgeColor = 'badge rounded-pill bg-copper';
                                 } else if ($i === 3) {
                                     $displayMedal = 'd-none';
@@ -457,7 +463,7 @@ try {
                                             <?php echo $number; ?>
                                         </div>
                                         <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
                                             <?php echo $row['first_name']; ?>
                                         </p>
                                     </div>
