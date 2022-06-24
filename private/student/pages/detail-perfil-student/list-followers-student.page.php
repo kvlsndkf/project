@@ -2,6 +2,8 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/followers/Follow.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
     $idUser = $_SESSION['idUser'];
@@ -13,6 +15,15 @@ try {
 
     $follower = new Follow();
     $listFollowers = $follower->listFollowers($idFollower);
+
+    $listPreferences = Preference::getPreferencesUser($idUser);
+
+    $ranking = new Ranking();
+    $colocationTotal = $ranking->colocationTotal();
+    $positionRankingAll = $ranking->colocationTotalAll($studentSession[0]['id']);
+
+    $colocationFollowers = $ranking->colocationFllowers($idUser);
+    $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -81,6 +92,21 @@ try {
                     <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
+
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+                            <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;" width="32px">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
@@ -205,7 +231,7 @@ try {
                                     <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
                                 </form>
                             </div>
-    
+
                         </div>
 
                         <hr class="detail-question-hr">
@@ -227,6 +253,148 @@ try {
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
+
+                <div>
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
+                        <li class="nav-item ranking-li" role="presentation">
+                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
+                        </li>
+                        <li class="nav-item ranking-li" role="presentation">
+                            <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="ex2-content">
+                        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+
+                            <div class="ranking-position">
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                                <p class="question-p white-text normal-14-bold-p">
+                                    Sua posição é <?php echo $positionRankingAll; ?>º
+                                </p>
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            </div>
+
+                            <!-- Ranking total ⬇️ -->
+                            <?php for ($i = 0; $i < count($colocationTotal); $i++) {
+                                $row = $colocationTotal[$i];
+
+                                if ($i === 0) {
+                                    $displayMedal = 'd-block';
+                                    $displayNumber = 'd-none';
+                                    $iconMedal = '../../images/icons/gold.svg';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
+                                } else if ($i === 1) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/silver.svg';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
+                                } else if ($i === 2) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/bronze.svg';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
+                                } else if ($i === 3) {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '4º';
+                                } else {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '5º';
+                                }
+                            ?>
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                    <div class="question-info">
+                                        <div class="<?php echo $displayMedal; ?>">
+                                            <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row->name; ?>">
+                                        </div>
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                            <?php echo $number; ?>
+                                        </div>
+                                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                            <?php echo $row->name; ?>
+                                        </p>
+                                    </div>
+
+                                    <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                        <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+
+                            <div class="ranking-position">
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                                <p class="question-p white-text normal-14-bold-p">
+                                    Sua posição é <?php echo $positionBetweenFollowers; ?>º
+                                </p>
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            </div>
+
+                            <!-- Ranking seguindo ⬇️ -->
+                            <?php for ($i = 0; $i < count($colocationFollowers); $i++) {
+                                $row = $colocationFollowers[$i];
+
+                                if ($i === 0) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/gold.svg';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
+                                } else if ($i === 1) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/silver.svg';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
+                                } else if ($i === 2) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/bronze.svg';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
+                                } else if ($i === 3) {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '4º';
+                                } else {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '5º';
+                                }
+                            ?>
+
+
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                    <div class="question-info">
+                                        <div class="<?php echo $displayMedal; ?>">
+                                            <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row['first_name']; ?>">
+                                        </div>
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                            <?php echo $number; ?>
+                                        </div>
+                                        <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                            <?php echo $row['first_name']; ?>
+                                        </p>
+                                    </div>
+
+                                    <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                    </div>
+                    <!-- Tabs content -->
+                </div>
             </ul>
             <p class="whitney-12-regular-tiny copyright-text">
                 Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
@@ -251,6 +419,15 @@ try {
 
     </div>
 
+    <!-- JS JQuery ⬇️ -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- JS Bootstrap ⬇️ -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
 </body>
 
 </html>
