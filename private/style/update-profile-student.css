@@ -89,8 +89,8 @@ input[type="file"]{
     padding: 0.6em;
     outline: none;
     border-radius: 10px;
-    padding-left: 5.5em;
-    padding-right: 5.5em;
+    padding-left: 7em;
+    padding-right: 7em;
     /* display: flex;
     align-items: center;
     justify-content: center; */
@@ -333,6 +333,11 @@ input:focus{
     .botao-cancelar{
         margin-top: 2em;
         width: 100%;
+    }
+    .input-file1,
+    .input-file{
+        padding-left: 5em;
+        padding-right: 5em;
     }
 }
 
