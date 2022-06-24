@@ -72,10 +72,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
-                            <img class="leftbar-icon" src="../../../../views/images/components/notifications-icon.svg" alt="">
-                            <p class="leftbar-text normal-18-bold-title-2">Notificações</p>
-                        </a>
+                        
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
 
@@ -216,12 +213,13 @@ try {
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
-                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+                
                 </li>
-                <hr class="sidebar-linha leftbar-linha">
+                
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
+                <hr class="sidebar-linha leftbar-linha">
             </ul>
             <p class="whitney-12-regular-tiny copyright-text">
                 Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>

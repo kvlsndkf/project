@@ -96,12 +96,14 @@ input[type="file"]{
     justify-content: center; */
     width: 100%;
     color: var(--white);
-    
-    
-
     cursor: pointer;
     margin-top: 2em;
     
+}
+
+.input-file1:hover{
+    filter: brightness(1.2);
+    cursor: pointer;
 }
 
 .input2{
@@ -235,13 +237,18 @@ input:focus{
     margin-top: 4em;
     text-align: center;
     border: none;
-    
     padding-right:15% ;
     padding-left: 15%;
     width: 45%;
     height: 35px;
     border-radius: 8px;
    
+}
+
+.botao-Atualizar:hover,
+.botao-cancelar:hover{
+    filter: brightness(1.4);
+    cursor: pointer;
 }
 
 .botao-cancelar{
