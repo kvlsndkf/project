@@ -138,11 +138,10 @@ class Search
                                             ON ss.student_id = stu.id
                                             INNER JOIN schools school
                                             ON school.id = ss.school_id
-                                                                                            
-                                            WHERE stu.first_name LIKE '%$search%' 
-                                            OR stu.surname LIKE '%$search%' 
-                                            AND usr.is_blocked NOT IN(1)
-                                            ORDER BY stu.first_name
+
+                                            WHERE (stu.first_name LIKE '%$search%' OR stu.surname LIKE '%$search%') 
+                                            AND (usr.is_blocked NOT IN(1) AND usr.is_confirmed NOT IN(0))
+                                            ORDER BY stu.first_name     
                                         ");
 
             $students->execute();
