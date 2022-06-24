@@ -86,8 +86,8 @@ try {
                         </a>
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
-                    <li class="sidebar-li leftbar-li">
-                        <p class="leftbar-categoria normal-14-bold-p">Para você</p>
+                    <li class="sidebar-li my-leftbar-li">
+                        <p class="my-leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
                     <!-- Lista de preferências ⬇️ -->
                     <?php for ($i = 0; $i < count($listPreferences); $i++) {
@@ -106,7 +106,7 @@ try {
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../student/pages/question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
-                            <div class="leftbar-button-div">
+                            <div class="my-leftbar-button-div">
                                 <p class="sidebar-button-text">Pedir um heelp!</p>
                             </div>
                         </a>
