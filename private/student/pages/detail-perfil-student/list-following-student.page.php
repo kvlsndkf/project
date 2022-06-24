@@ -2,6 +2,8 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/followers/Follow.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
     $idUser = $_SESSION['idUser'];
@@ -10,9 +12,19 @@ try {
     $student = new StudentMethods();
     $studentSession = $student->getStudentByUserID($idUser);
     $studentPerfil = $student->getDataStudentByID($studentSession[0]['id']);
+    $studentId = $student->getStudentByUserID($idUser);
 
     $follower = new Follow();
     $listFollowing = $follower->listFollowing($idFollower);
+
+    $listPreferences = Preference::getPreferencesUser($idUser);
+
+    $ranking = new Ranking();
+    $colocationTotal = $ranking->colocationTotal();
+    $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+
+    $colocationFollowers = $ranking->colocationFllowers($idUser);
+    $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -31,6 +43,9 @@ try {
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
 
     <!-- Estilos -->
     <link rel="stylesheet" href="../../../../views/styles/style.global.css">
@@ -59,7 +74,7 @@ try {
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../home/home.page.php" class="sidebar-a-items leftbar-a">
-                            <img class="leftbar-icon" src="../../../../views/images/components/dashboard-img.svg" alt="">
+                            <img class="leftbar-icon" src="../../../../views/images/components/dashboard-img.svg" alt="" style="margin-left: 3px;">
                             <p class="normal-18-bold-title-2 leftbar-text">Feed</p>
                         </a>
                     </li>
@@ -82,6 +97,21 @@ try {
                     <li class="sidebar-li leftbar-li">
                         <p class="leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
+
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+                            <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px; margin-left: 3px" width="32px">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
@@ -152,6 +182,15 @@ try {
 
             <div class="feed-div">
 
+                <a href="../question/question.page.php" class="pedir-heelp-responsive">
+                    <div class="pedir-heelp-responsive">
+                        <svg class="pedir-heelp-respo-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="398px" height="397px">
+                            <image class="pedir-heelp-respo-img" x="0px" y="0px" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY4AAAGNCAMAAAAxTmbgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA7VBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////+wm/fd1Pvo4/3Sxvr////////Sxvr08f7////o4/3////////////o4/3///////+7qfiwm/bd1Pzo4/3o4v3////////d1Pz////o4v3o4/3o4v3o4/3////o4v3////////////////////o4/3////////////////////////////o4v3o4/3SxvrSxvrSxvr08f7////////o4/3///////8sZ6vxAAAATnRSTlMAACAwQGCAn6+/z99QEG+Q739fcI+gT7AUCwsjlIICHpcErs5ZBdHGAwMZIhGYniOcBDINIYgZq7FniqIb3It5bnWZg0ECOTQdZnGsTH03kZewAAAAAWJLR0QB/wIt3gAAAAd0SU1FB+YEGQ4hNQTqECAAAAsJSURBVHja7Z2HgurIEUVBEUkIxPDe4LS21znnsI7rsM42//85FgzMA0ZZ1V23pXt+gFs6093VrWZYLDTxPM8PgiA8EZ2JL6ySO9JsFMkD1095+czTp6/LGEEZR/VxWCUvH30YbqJtHCdJ+YyOoGRZmiSreFt6KiV5ufZzk3WwDjfbuPzz1n7KI/ykSSknDHx3zXh+GMWrrNB+lMKUYqJ14JCW/OQhnZqGB4p0Fa197UfdZmK9iR2ek/pTSsEcKXkwMxMfyFabQPvx36vYJROfnFpJIgwl3mb2Kq4kG+VdS7Cd6QRVR7ZVGyTBlsOigixW6LjyXapdNy7Zk91ZK0i0K0YntjZp5RsOjA5kT1Zk7LhidCTbmZ6zKKMXhoVQRl8MTlkBNxkDMCTEYzc1kNjAjLXhPDWcHYcGFJnoAOHQGM1eTEYea9cyBaRWEI8NlQgyE9YTJyohCoGWd6ddxJQY3WG9065gWrwbZ4OLuDDxCBk5dxvipIMvAuV8r2GAwT5owwgDfXDdMMSg9YM9lTEG9Ffcbxik9/5jo5142vTcn3s8GTFK0etqHE8NTZP1aa/e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" />
+                        </svg>
+                        <p class="pedir-heelp-respo-p">+</p>
+                    </div>
+                </a>
+
                 <div class="profile-div" style="padding: 20px;">
 
 
@@ -159,7 +198,7 @@ try {
                         <a onclick="history.back()" class="seta-following" style="margin-right: 25px;">
                             <img src="../../../../views/images/components/arrow-back.svg" alt="">
                         </a>
-                        Seguindo 
+                        Seguindo
                     </label>
 
                     <hr class="detail-question-hr">
@@ -216,12 +255,159 @@ try {
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
-                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+                    <a href="../../../logout/logout.controller.php" class="white-text logout-a">
+                        <div class="logout-div">
+                            <p class="normal-14-bold-p question-p">
+                                Sair
+                            </p>
+                        </div>
+                    </a>
+                    <hr class="detail-question-hr">
                 </li>
-                <hr class="sidebar-linha leftbar-linha">
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
+                <div>
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
+                        <li class="nav-item ranking-li" role="presentation">
+                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
+                        </li>
+                        <li class="nav-item ranking-li" role="presentation">
+                            <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="ex2-content">
+                        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+
+                            <div class="ranking-position">
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                                <p class="question-p white-text normal-14-bold-p">
+                                    Sua posição é <?php echo $positionRankingAll; ?>º
+                                </p>
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            </div>
+
+                            <!-- Ranking total ⬇️ -->
+                            <?php for ($i = 0; $i < count($colocationTotal); $i++) {
+                                $row = $colocationTotal[$i];
+
+                                if ($i === 0) {
+                                    $displayMedal = 'd-block';
+                                    $displayNumber = 'd-none';
+                                    $iconMedal = '../../images/icons/gold.svg';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
+                                } else if ($i === 1) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/silver.svg';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
+                                } else if ($i === 2) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/bronze.svg';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
+                                } else if ($i === 3) {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '4º';
+                                } else {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '5º';
+                                }
+                            ?>
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                    <div class="question-info">
+                                        <div class="<?php echo $displayMedal; ?>">
+                                            <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row->name; ?>">
+                                        </div>
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                            <?php echo $number; ?>
+                                        </div>
+                                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                            <?php echo $row->name; ?>
+                                        </p>
+                                    </div>
+
+                                    <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                        <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+
+                            <div class="ranking-position">
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                                <p class="question-p white-text normal-14-bold-p">
+                                    Sua posição é <?php echo $positionBetweenFollowers; ?>º
+                                </p>
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            </div>
+
+                            <!-- Ranking seguindo ⬇️ -->
+                            <?php for ($i = 0; $i < count($colocationFollowers); $i++) {
+                                $row = $colocationFollowers[$i];
+
+                                if ($i === 0) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/gold.svg';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
+                                } else if ($i === 1) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/silver.svg';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
+                                } else if ($i === 2) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../../images/icons/bronze.svg';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
+                                } else if ($i === 3) {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '4º';
+                                } else {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '5º';
+                                }
+                            ?>
+
+
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                    <div class="question-info">
+                                        <div class="<?php echo $displayMedal; ?>">
+                                            <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row['first_name']; ?>">
+                                        </div>
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                            <?php echo $number; ?>
+                                        </div>
+                                        <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        <p class="question-p white-text text-truncate normal-14-bold-p">
+                                            <?php echo $row['first_name']; ?>
+                                        </p>
+                                    </div>
+
+                                    <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                    </div>
+                    <!-- Tabs content -->
+                </div>
             </ul>
             <p class="whitney-12-regular-tiny copyright-text">
                 Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
@@ -245,7 +431,13 @@ try {
         </nav>
 
     </div>
+    
+    <!-- JS Bootstrap ⬇️ -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
 </body>
 
 </html>

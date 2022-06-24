@@ -84,7 +84,7 @@ try {
 
             <div class="leftbar-top">
 
-                <a href="#" class="feed-logo">
+                <a href="./home.page.php" class="feed-logo">
                     <img src="../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
                     <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
                 </a>
@@ -93,22 +93,15 @@ try {
 
                     <li class="sidebar-li leftbar-li">
                         <a href="./home.page.php" class="sidebar-a-items leftbar-a">
-                            <img class="leftbar-icon" src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
+                            <img class="leftbar-icon" src="../../../../views/images/components/filled-dashboard-img.svg" alt="" style="margin-left: 3px;">
                             <p class="normal-18-bold-title-2 leftbar-text-current">Feed</p>
                         </a>
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser;?>" class="sidebar-a-items leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
-                            <img class="leftbar-icon" src="../../../../views/images/components/notifications-icon.svg" alt="">
-                            <p class="leftbar-text normal-18-bold-title-2">Notificações</p>
                         </a>
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
@@ -123,7 +116,7 @@ try {
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
                             <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
-                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;" width="32px">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px; margin-left: 3px" width="32px">
                                 <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
                                     <?php echo $row->name; ?>
                                 </p>
@@ -541,13 +534,18 @@ try {
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
-                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+                    <a href="../../../logout/logout.controller.php" class="white-text logout-a">
+                        <div class="logout-div">
+                            <p class="normal-14-bold-p question-p">
+                                Sair
+                            </p>
+                        </div>
+                    </a>
+                    <hr class="detail-question-hr">
                 </li>
-                <hr class="sidebar-linha leftbar-linha">
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
-
 
                 <div>
                     <!-- Tabs navs -->
@@ -701,7 +699,7 @@ try {
             <a href="./home.page.php" class="bottombar-a">
                 <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
             </a>
-            <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser;?>" class="bottombar-a">
+            <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">

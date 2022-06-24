@@ -76,7 +76,7 @@
                                 <a href="#vid" class="a-class nav-options normal-14-bold-p white">Video</a>
                             </li>
                             <li>
-                                <a href="#tela7" class="a-class nav-options normal-14-bold-p white">Fale Conosco</a>
+                                <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class nav-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a>
                             </li>
                         </ul>
                         <ul class="nav-list2">
@@ -257,7 +257,7 @@
                 <a href="#vid" class="a-class white footer-options normal-14-bold-p white">Video</a>
 
 
-                <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a>
+                <!-- <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a> -->
 
 
                 <!-- Modal -->
