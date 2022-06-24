@@ -362,15 +362,17 @@ try {
                                         </div>
                                         <div class="q-i-t">
                                             <div class="question-info-text">
-                                                <div class="question-name question-about-a normal-14-medium-p">
-                                                    <?php echo $row->firstName; ?> <?php echo $row->surname; ?>
-                                                </div>
+                                                <a href="<?php echo $row->linkStudent; ?>">
+                                                    <div class="question-name question-about-a normal-14-medium-p">
+                                                        <?php echo $row->firstName; ?> <?php echo $row->surname; ?>
+                                                    </div>
 
-                                                <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
-                                                    <?php echo $row->module; ?> •
-                                                    <?php echo $row->course; ?> •
-                                                    <?php echo $row->school; ?>
-                                                </div>
+                                                    <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
+                                                        <?php echo $row->module; ?> •
+                                                        <?php echo $row->course; ?> •
+                                                        <?php echo $row->school; ?>
+                                                    </div>
+                                                </a>
                                             </div>
                                             <div class="d-flex justify-content-end">
                                                 <a href="<?php echo $row->linkStudent; ?>" target="_blank">
@@ -398,13 +400,15 @@ try {
                                         </div>
                                         <div class="q-i-t">
                                             <div class="question-info-text">
-                                                <div class="question-name question-about-a normal-14-medium-p">
-                                                    <?php echo $row->schoolName; ?>
-                                                </div>
+                                                <a href="<?php echo $row->schoolLink; ?>">
+                                                    <div class="question-name question-about-a normal-14-medium-p">
+                                                        <?php echo $row->schoolName; ?>
+                                                    </div>
 
-                                                <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
-                                                    <?php echo $row->address; ?>, São Paulo
-                                                </div>
+                                                    <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
+                                                        <?php echo $row->address; ?>, São Paulo
+                                                    </div>
+                                                </a>
                                             </div>
                                             <div class=" d-flex justify-content-end">
                                                 <a href="<?php echo $row->schoolLink; ?>" target="_blank">
