@@ -702,9 +702,9 @@ try {
             <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
-            <a href="#" class="bottombar-a">
+            <!-- <a href="#" class="bottombar-a">
                 <img src="../../../../views/images/components/notifications-icon.svg" alt="">
-            </a>
+            </a> -->
             <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
                 <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
             </a>
