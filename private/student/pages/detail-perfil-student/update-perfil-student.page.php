@@ -75,7 +75,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        
+
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
 
@@ -168,14 +168,14 @@ try {
 
                             <div class="border-bottom"></div>
 
-                            <div class="accordion" id="accordionExample">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
                                 <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <h6 class="normal-16-bold-title-3 dadosP"> Dados principais</h6>
+                                    <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                            <h6 class="normal-14-medium-p"> Dados principais</h6>
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <p>
                                                 <label for="" class="normal-14-medium-p nameA">Nome</label><br>
@@ -206,6 +206,7 @@ try {
                                         </div>
                                     </div>
                                 </div>
+                            
 
 
                                 <div class="border-bottom"></div>
@@ -240,36 +241,37 @@ try {
                                                 </p>
 
 
-                                                
+
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="border-bottom"></div>
                                     <div class="accordion-item">
-                                                    <h2 class="accordion-header" id="flush-headingTwo">
-                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                                            <h6 class="normal-14-medium-p">Senha</h6>
-                                                        </button>
-                                                    </h2>
-                                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                                        <div class="accordion-body">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                                <h6 class="normal-14-medium-p">Senha</h6>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
 
-                                                            <p>
-                                                                <label class="normal-14-medium-p nameGeral" for="">Senha antiga</label><br>
-                                                                <input class="input-Geral" type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
-                                                            </p>
+                                                <p>
+                                                    <label class="normal-14-medium-p nameGeral" for="">Senha antiga</label><br>
+                                                    <input class="input-Geral" type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
+                                                </p>
 
-                                                            <p>
-                                                                <label class="normal-14-medium-p nameGeral" for="">Senha atual</label><br>
-                                                                <input class="input-Geral" type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
-                                                            </p>
+                                                <p>
+                                                    <label class="normal-14-medium-p nameGeral" for="">Senha atual</label><br>
+                                                    <input class="input-Geral" type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
+                                                </p>
 
-                                                            <p>
-                                                                <label class="normal-14-medium-p nameGeral" for="">Confirme a sua senha atual</label><br>
-                                                                <input class="input-Geral" type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <p>
+                                                    <label class="normal-14-medium-p nameGeral" for="">Confirme a sua senha atual</label><br>
+                                                    <input class="input-Geral" type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="container posicao-Botao">
@@ -285,7 +287,7 @@ try {
 
     <nav class="feed-leftbar feed-rightbar">
         <ul class="rightbar-ul">
-            
+
             <hr class="sidebar-linha leftbar-linha">
             <li class="rightbar-li">
                 <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
