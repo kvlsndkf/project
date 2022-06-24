@@ -45,24 +45,92 @@ try {
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
 
-    <!-- CSS Search Bar -->
-    <link rel="stylesheet" href="../../../../style/search-bar.style.css">
-
+    <link rel="stylesheet" href="../../../style/style.css">
     <!-- Estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
     <link rel="stylesheet" href="../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/button.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/font-format.style.css">
     <link rel="stylesheet" href="../register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../register/register.styles.css">
     <link rel="stylesheet" href="../../../style/modal-delete-teacher.style.css">
     <link rel="stylesheet" href="../../../style/button-delete-course.style.css">
 
-    <link rel="stylesheet" href="../../../style/style.css">
+    <link rel="stylesheet" href="../../../style/list-denunciation.styles.css">
 </head>
 
 <body>
+    <!-- Mensagem de sucesso ⬇️ -->
+    <div style="z-index: 2; position: absolute; top: 0; right: 0;">
+        <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                </symbol>
+            </svg>
+
+            <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                    <use xlink:href="#check-circle-fill" />
+                </svg>
+                <div>
+                    <strong>Tudo certo!</strong>
+                    <?php echo $_SESSION['statusPositive']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php unset($_SESSION['statusPositive']);
+        } ?>
+    </div>
+    <!-- Mensagem de erro ⬇️ -->
+    <div style="z-index: 2; position: absolute; top: 0; right: 0;">
+        <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </symbol>
+            </svg>
+
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <strong>Ops...</strong>
+                    <?php echo $_SESSION['statusNegative']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        <?php unset($_SESSION['statusNegative']);
+        } ?>
+    </div>
+
+
+    <?php
+    if (empty($search)) {
+        $styleSearch = 'd-none';
+        $styleList = '';
+    } else {
+        $styleSearch = '';
+        $styleList = 'd-none';
+    }
+    ?>
+    <div class="<?php echo $styleSearch; ?>">
+
+        <?php
+        if (count($listSearch) == 0) {
+            $_SESSION['statusNegative'] = "Não existe registros.";
+            header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
+        }
+        ?>
+    </div>
+    <!-- Inicio Wrapper -->
     <div class="wrapper">
+        <!-- NavBar Lateral - SideBar -->
         <nav class="sidebar">
 
             <!-- Logo Heelp! -->
@@ -149,7 +217,6 @@ try {
             </ul>
 
         </nav>
-
         <!-- Corpo -->
         <div class="corpo">
             <div class="cabecalho">
@@ -160,77 +227,18 @@ try {
             </div>
             <!-- Parte Branca -->
             <div class="conteudo">
-                <!-- Mensagem de sucesso ⬇️ -->
-                <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                        </symbol>
-                    </svg>
-
-                    <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
-                            <use xlink:href="#check-circle-fill" />
-                        </svg>
-                        <div>
-                            <strong>Tudo certo!</strong>
-                            <?php echo $_SESSION['statusPositive']; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </div>
-                <?php unset($_SESSION['statusPositive']);
-                } ?>
-
-                <!-- Mensagem de erro ⬇️ -->
-                <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </symbol>
-                    </svg>
-
-                    <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                            <use xlink:href="#exclamation-triangle-fill" />
-                        </svg>
-                        <div>
-                            <strong>Ops...</strong>
-                            <?php echo $_SESSION['statusNegative']; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </div>
-                <?php unset($_SESSION['statusNegative']);
-                } ?>
 
                 <!-- Barra de pesquisa ⬇️ -->
-                <form action="./list-denunciation.page.php" method="GET">
-                    <input type="text" name="searchDenunciation" id="searchMessage" placeholder="Pesquise por denúncias" autocomplete="off">
-                    <input type="submit" value="pesquisar">
+                <form action="./list-denunciation.page.php" method="GET" class="">
+                    <input type="text" name="searchDenunciation" id="searchMessage" placeholder="Pesquise por denúncias" autocomplete="off" class="search-bar margin-top-0">
+                    <input type="submit" value="🔎" class="search-button margin-top-0">
                 </form>
-                
-
-                <?php
-                if (empty($search)) {
-                    $styleSearch = 'd-none';
-                    $styleList = '';
-                } else {
-                    $styleSearch = '';
-                    $styleList = 'd-none';
-                }
-                ?>
 
                 <div class="<?php echo $styleSearch; ?>">
 
-                    <?php
-                    if (count($listSearch) == 0) {
-                        $_SESSION['statusNegative'] = "Não existe registros.";
-                        header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
-                    }
-                    ?>
+
                     <!-- Contador de pesquisas -->
-                    <p>
+                    <p class="contador-prof normal-18-black-title-2" style="margin-bottom: 40px;">
                         <?php echo  $countSearchDenunciations; ?>
                     </p>
 
@@ -241,29 +249,32 @@ try {
                         <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
                         <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                        <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
+                        <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                        <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
+                        <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
+                        <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill white-title bg-deep-blue' : 'd-none'; ?>
                         <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info text-dark' : 'd-none'; ?>
+                        <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary text-dark' : 'd-none'; ?>
+                        <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-primary text-dark' : 'd-none'; ?>
+                        <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
 
-                        <?php $styleContext = $row->context == "Denuncia negada" ? 'badge rounded-pill bg-primary text-dark' : 'd-none'; ?>
+                        <?php $styleContext = $row->context == "Denuncia negada" ? 'badge rounded-pill bg-red white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
 
                         <p>
                             Feito por
+                        </p>
+                        <br /><br />
+                        <p>
                             <?php echo $row->creator; ?>
                             <?php echo $row->surnameCreator; ?>
                         </p>
@@ -279,7 +290,7 @@ try {
                             <?php echo $row->reason; ?>
                         </p>
 
-                        <p>
+                        <p class="my-p-link normal-14-medium-p">
                             <?php
                             $idStudent = $student->getStudentByUserID($row->denouncedId);
                             if ($row->type == "Perfil") {
@@ -290,7 +301,7 @@ try {
                                 $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
                             }
                             ?>
-                            <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                            <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
                         </p>
 
                         <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
@@ -304,15 +315,21 @@ try {
 
                 <div class="<?php echo $styleList; ?>">
                     <!-- Tabs navs -->
-                    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                    <ul class="nav nav-tabs mb-3 tab-ul" id="ex1" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Novas</a>
+                            <a class="nav-link active tab-a" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                                <p class="normal-14-bold-p tab-p">Novas</p>
+                            </a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link " id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Em análise</a>
+                            <a class="nav-link tab-a" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
+                                <p class="normal-14-bold-p tab-p">Em análise</p>
+                            </a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link " id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">Resolvidas</a>
+                            <a class="nav-link tab-a" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">
+                                <p class="normal-14-bold-p tab-p">Resolvidas</p>
+                            </a>
                         </li>
                     </ul>
 
@@ -324,62 +341,72 @@ try {
                             <div id="message-new-list">
 
                                 <!-- Contador de denuncias novas -->
-                                <p>
+                                <p class="contador-prof normal-18-black-title-2" style="margin-bottom: 40px; margin-top: 28px;">
                                     <?php echo  $countNewDenunciations ?>
                                 </p>
+                                <div class="list-prof">
 
-                                <!-- Denuncias novas -->
-                                <?php for ($i = 0; $i < count($listNewDenunciations); $i++) {
-                                    $row = $listNewDenunciations[$i] ?>
+                                    <!-- Denuncias novas -->
+                                    <?php for ($i = 0; $i < count($listNewDenunciations); $i++) {
+                                        $row = $listNewDenunciations[$i] ?>
+                                        <div class="card-contact">
+                                            <div class="badges-container">
+                                                <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark badge-space' : 'd-none'; ?>
+                                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                    <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-deep-blue white-title' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                            </div>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Feito por
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->creator; ?>
+                                            </p>
 
-                                    <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Denunciado
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->denounced; ?>
+                                            </p>
 
-                                    <p>
-                                        Feito por
-                                        <?php echo $row->creator; ?>
-                                    </p>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Motivo
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->reason; ?>
+                                            </p>
 
-                                    <p>
-                                        Denunciado
-                                        <?php echo $row->denounced; ?>
-                                    </p>
+                                            <p class="my-p-link normal-14-medium-p">
+                                                <?php
+                                                $idStudent = $student->getStudentByUserID($row->denouncedId);
+                                                if ($row->type == "Perfil") {
+                                                    $textButton = 'Link do perfil';
+                                                    $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                                                } else {
+                                                    $textButton = 'Link do post';
+                                                    $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
+                                                }
+                                                ?>
+                                                <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                                            </p>
 
-                                    <p>
-                                        Motivo
-                                        <?php echo $row->reason; ?>
-                                    </p>
+                                            <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
+                                                <button type="submit" name="moveDenunciation" id="moveDenunciation" class="d-none">Mover para análise</button>
+                                                <label for="moveDenunciation" class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover">Mover para análise</label>
+                                            </form>
+                                        </div>
 
-                                    <p>
-                                        <?php
-                                        $idStudent = $student->getStudentByUserID($row->denouncedId);
-                                        if ($row->type == "Perfil") {
-                                            $textButton = 'Link do perfil';
-                                            $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
-                                        } else {
-                                            $textButton = 'Link do post';
-                                            $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
-                                        }
-                                        ?>
-                                        <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
-                                    </p>
+                                    <?php } ?>
 
-                                    <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
-                                        <button type="submit" name="moveDenunciation">Mover para análise</button>
-                                    </form>
-
-                                    <hr>
-                                <?php } ?>
-
+                                </div>
                             </div>
                         </div>
 
@@ -387,101 +414,107 @@ try {
                             <div id="message-read-list">
 
                                 <!-- Contador de denuncias em análise -->
-                                <p>
+                                <p class="contador-prof normal-18-black-title-2" style="margin-bottom: 40px; margin-top: 28px;">
                                     <?php echo  $countAnalysisDenunciations ?>
                                 </p>
+                                <div class="list-prof">
+                                    <!-- Denuncias em análise -->
+                                    <?php for ($i = 0; $i < count($listAnalysisDenunciations); $i++) {
+                                        $row = $listAnalysisDenunciations[$i] ?>
+                                        <div class="card-contact">
+                                            <div class="badges-container">
+                                                <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title badge-space' : 'd-none'; ?>
+                                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                <!-- Denuncias em análise -->
-                                <?php for ($i = 0; $i < count($listAnalysisDenunciations); $i++) {
-                                    $row = $listAnalysisDenunciations[$i] ?>
+                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-deep-blue white-title' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                            </div>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Feito por
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->creator; ?>
+                                            </p>
 
-                                    <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Denunciado
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->denounced; ?>
+                                            </p>
 
-                                    <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Motivo
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->reason; ?>
+                                            </p>
 
-                                    <p>
-                                        Feito por
-                                        <?php echo $row->creator; ?>
-                                    </p>
+                                            <p class="my-p-link normal-14-medium-p">
+                                                <?php
+                                                $idStudent = $student->getStudentByUserID($row->denouncedId);
+                                                if ($row->type == "Perfil") {
+                                                    $textButton = 'Link do perfil';
+                                                    $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                                                } else {
+                                                    $textButton = 'Link do post';
+                                                    $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
+                                                }
+                                                ?>
+                                                <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                                            </p>
 
-                                    <p>
-                                        Denunciado
-                                        <?php echo $row->denounced; ?>
-                                    </p>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
+                                                Marcar como resolvida
+                                            </button>
+                                            <label class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">Marcar como resolvida</label>
 
-                                    <p>
-                                        Motivo
-                                        <?php echo $row->reason; ?>
-                                    </p>
-
-                                    <p>
-                                        <?php
-                                        $idStudent = $student->getStudentByUserID($row->denouncedId);
-                                        if ($row->type == "Perfil") {
-                                            $textButton = 'Link do perfil';
-                                            $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
-                                        } else {
-                                            $textButton = 'Link do post';
-                                            $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
-                                        }
-                                        ?>
-                                        <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
-                                    </p>
-
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
-                                        Marcar como resolvida
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->id; ?>" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->id; ?>">Denúncia resolvida</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
-                                                        <label for="">Contexto</label>
-                                                        <select class="form-select" aria-label="Default select example" id="selectContext" name="context">
-                                                            <option selected>Selecione o contexto em que a denúncia se enquadra</option>
-                                                        </select>
-
-                                                        <br>
-
-                                                        <div>
-                                                            <p>
-                                                                Conclusão
-                                                            </p>
-
-                                                            <div id="contentTextArea">
-                                                                <textarea name="conclusion" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()"></textarea>
-                                                                <div><span id="counterTextArea">250</span></div>
-                                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->id; ?>" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->id; ?>">Denúncia resolvida</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="submit" class="btn btn-primary" name="resolveDenunciation">Mover</button>
+                                                        <div class="modal-body">
+                                                            <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
+                                                                <label for="">Contexto</label>
+                                                                <select class="form-select" aria-label="Default select example" id="selectContext" name="context">
+                                                                    <option selected>Selecione o contexto em que a denúncia se enquadra</option>
+                                                                </select>
+
+                                                                <br>
+
+                                                                <div>
+                                                                    <p>
+                                                                        Conclusão
+                                                                    </p>
+
+                                                                    <div id="contentTextArea">
+                                                                        <textarea name="conclusion" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()"></textarea>
+                                                                        <div><span id="counterTextArea">250</span></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="submit" class="btn btn-primary" name="resolveDenunciation">Mover</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <hr>
-
-                                <?php } ?>
-
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
 
@@ -489,66 +522,76 @@ try {
                             <div id="message-read-list">
 
                                 <!-- Contador de denuncias resolvidas -->
-                                <p>
+                                <p class="contador-prof normal-18-black-title-2" style="margin-bottom: 40px; margin-top: 28px;">
                                     <?php echo  $countResolvedDenunciations ?>
                                 </p>
+                                <div class="list-prof">
+                                    <!-- Denuncias resolvidas -->
+                                    <?php for ($i = 0; $i < count($listResolvedDenunciations); $i++) {
+                                        $row = $listResolvedDenunciations[$i] ?>
+                                        <div class="card-contact">
+                                            <div class="badges-container">
+                                                <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title badge-space' : 'd-none'; ?>
+                                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                <!-- Denuncias resolvidas -->
-                                <?php for ($i = 0; $i < count($listResolvedDenunciations); $i++) {
-                                    $row = $listResolvedDenunciations[$i] ?>
+                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-deep-blue white-title badge-space' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title badge-space' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title badge-space' : 'd-none'; ?>
+                                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                                <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'badge rounded-pill bg-red white-title'; ?>
+                                                <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
+                                            </div>
 
-                                    <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary text-dark' : 'd-none'; ?>
-                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                    <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-primary text-dark' : 'badge rounded-pill bg-info text-dark'; ?>
-                                    <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Feito por
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->creator; ?>
+                                            </p>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Denunciado
+                                            </p>
+                                            <p  class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->denounced; ?>
+                                            </p>
 
-                                    <p>
-                                        Feito por
-                                        <?php echo $row->creator; ?>
-                                    </p>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Motivo
+                                            </p>
+                                            <p  class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->reason; ?>
+                                            </p>
 
-                                    <p>
-                                        Denunciado
-                                        <?php echo $row->denounced; ?>
-                                    </p>
+                                            <p class="my-p-link normal-14-medium-p">
+                                                <?php
+                                                $idStudent = $student->getStudentByUserID($row->denouncedId);
+                                                if ($row->type == "Perfil") {
+                                                    $textButton = 'Link do perfil';
+                                                    $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                                                } else {
+                                                    $textButton = 'Link do post';
+                                                    $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
+                                                }
+                                                ?>
+                                                <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                                            </p>
 
-                                    <p>
-                                        Motivo
-                                        <?php echo $row->reason; ?>
-                                    </p>
+                                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                                Conclusão
+                                            </p>
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                                <?php echo $row->conclusion; ?>
+                                            </p>
 
-                                    <p>
-                                        <?php
-                                        $idStudent = $student->getStudentByUserID($row->denouncedId);
-                                        if ($row->type == "Perfil") {
-                                            $textButton = 'Link do perfil';
-                                            $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
-                                        } else {
-                                            $textButton = 'Link do post';
-                                            $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
-                                        }
-                                        ?>
-                                        <a href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
-                                    </p>
-
-                                    <p>
-                                        Conclusão
-                                        <?php echo $row->conclusion; ?>
-                                    </p>
-
-                                    <hr>
-                                <?php } ?>
-
+                                        </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -556,6 +599,7 @@ try {
                 </div>
             </div>
         </div>
+
     </div>
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

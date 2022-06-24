@@ -26,6 +26,15 @@ Outras coisas como: cor, e posição, devem ser adicionados a parte. */
     filter: brightness(1.2);
 }
 
+.button-100 {
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition-duration: 0.3s;
+}
+
 .button-white-primary-text {
     width: 100%;
     color: var(--primary);
@@ -67,6 +76,15 @@ Outras coisas como: cor, e posição, devem ser adicionados a parte. */
 .add-arch:hover {
     filter: brightness(1.2);
     cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.scale-hover:hover {
+    transform: scale(1.05);
+    transition-duration: 1s;
 }
 
 
