@@ -257,7 +257,7 @@
                 <a href="#vid" class="a-class white footer-options normal-14-bold-p white">Video</a>
 
 
-                <!-- <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a> -->
+                <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a>
 
 
                 <!-- Modal -->

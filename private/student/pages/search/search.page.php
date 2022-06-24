@@ -669,10 +669,10 @@ try {
                     </div>
                     <!-- Tabs content -->
                 </div>
-                
+
             </ul>
             <p class="whitney-12-regular-tiny copyright-text">
-                Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
+                Copyright © Cold Wolf - 2022. Todos os direitos reservados
             </p>
         </nav>
 
