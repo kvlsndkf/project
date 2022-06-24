@@ -201,6 +201,22 @@ try {
                     <input type="submit" value="🔍" class="search-submit">
                 </form>
 
+                <?php
+                if (count($feedFollowing) == 0) {
+                    $styleNotFound = 'd-block';
+                    $stylePreferences = 'd-none';
+                    $cardNotFound = 'd-none';
+                } else {
+                    $styleNotFound = 'd-none';
+                    $stylePreferences = 'd-block';
+                    $cardNotFound = 'd-block';
+                }
+                ?>
+
+                <div class="<?php echo $styleNotFound; ?>">
+                    <img src="../../images/no-post-following.svg" alt="">
+                    <p>Parece que seus amigos não postaram nada ainda...</p>
+                </div>
 
                 <div class="<?php echo $stylePreferences; ?>">
                     <!-- Lista de perguntas ⬇️ -->

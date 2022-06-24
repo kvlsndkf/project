@@ -1104,13 +1104,10 @@ class School extends Social
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT t.id, t.name AS 'teacherName', t.photo, c.name AS 'course' FROM teachers t
+            $stmt = $connection->prepare("SELECT DISTINCT t.id, t.name AS 'teacherName', t.photo FROM teachers t
+
                                             INNER JOIN schoolshasteachers st
                                             ON t.id = st.teacher_id
-                                            INNER JOIN schoolshascourses sc
-                                            ON st.school_id = sc.school_id
-                                            INNER JOIN courses c
-                                            ON c.id = sc.course_id
                                             WHERE st.school_id = $schoolID
                                         ");
 
@@ -1128,32 +1125,33 @@ class School extends Social
     {
         $teachers = [];
         $teachers1 = [];
-
+        
         for ($i = 0; $i < count($result); $i++) {
             $row = $result[$i];
             $teacher = $this->buildTeacher($row);
-
+            
             array_push($teachers, $teacher);
         }
+        
+        // array_push($teachers1, $teachers[0]);
+        
+        // for ($i = 0; $i < count($teachers); $i++) {
+        //     $t0 = $teachers[$i];
+            
+        //     for ($j = 0; $j < count($teachers1); $j++) {
+        //         $t = $teachers1[$j];
+                
+        //         if ($t->id == $t0->id) {
+        //             array_push($t->courses, $t0->course);
+        //             break;
+        //         }
+        //         array_push($teachers1, $t0);
+        //     }
+        // }
 
-        array_push($teachers1, $teachers[0]);
+        // return array_splice($teachers1, 0);
 
-        for ($i = 0; $i < count($teachers); $i++) {
-            $t0 = $teachers[$i];
-
-            for ($j = 0; $j < count($teachers1); $j++) {
-                $t = $teachers1[$j];
-
-                if ($t->id == $t0->id) {
-                    array_push($t->courses, $t0->course);
-                    break;
-                }
-                array_push($teachers1, $t0);
-            }
-        }
-
-
-        return $teachers1;
+        return $teachers;
     }
 
     private function buildTeacher($row)
@@ -1162,8 +1160,8 @@ class School extends Social
         $teacher->id = $row['id'];
         $teacher->name = $row['teacherName'];
         $teacher->photo = $row['photo'];
-        $teacher->course = $row['course'];
-        $teacher->courses = [];
+        // $teacher->course = $row['course'];
+        // $teacher->courses = [];
 
         return $teacher;
     }
