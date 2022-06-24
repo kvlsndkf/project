@@ -182,10 +182,13 @@
 }
 
 .nav-tabs .nav-link.active {
-    /* background-color: var(--bg-modal); */
     color: #fff;
     border: none;
     border-bottom: 3px solid var(--primary);    
+}
+
+.nav-tabs .modal-tab.active{
+    background-color: var(--bg-modal);
 }
 
 .nav-tabs .nav-link.active:hover{

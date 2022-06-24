@@ -189,13 +189,13 @@
 
                     <div class="col">
 
-                        <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2" id="emp">Empresas Parceiras</h4>
+                        <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2" id="emp">Em breve...</h4>
 
-                        <h5 class="heelp-emp-title gray1 normal-22-black-title-1">E além de tudo temos um bônus!</h5>
-                        <p class="heelp-emp-text gray1">O Heelp! tem parcerias com empresas diversas, que estão a procura de jovens talentos! Você pode se destacar através do ranking, com a pontuação adquirida.</p>
+                        <h5 class="heelp-emp-title gray1 normal-22-black-title-1">Empresas parceiras!</h5>
+                        <p class="heelp-emp-text gray1">O Heelp! terá parcerias com empresas diversas, que estarão a procura de jovens talentos! Você poderá se destacar através do ranking, com a pontuação adquirida.</p>
 
 
-                        <h3 class="heelp-emp-destaque gray1">É pedindo e dando Heelp! que você se destaca!</h3>
+                        <h3 class="heelp-emp-destaque gray1">Cenas dos próximos capítulos!</h3>
 
                     </div>
 

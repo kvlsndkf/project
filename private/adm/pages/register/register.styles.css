@@ -32,6 +32,10 @@
     justify-content: center;
 }
 
+.modal-tab.active{
+    background-color: var(--bg-modal);
+}
+
 .sidebar-button-a{
     font-weight: 400;
     text-decoration: none;

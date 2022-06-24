@@ -62,7 +62,7 @@ session_start();
                                 </a>
                             </div>
                             <div class="d-flex justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                <a href="#" style="text-decoration: none;">
+                                <a href="" style="text-decoration: none; filter: grayscale(0.8);">
                                     <div class="card-profile gray-card">
                                         <div class="card-content">
                                             <img src="../../../images/profiles/profile-empresa-parceira.svg" alt="Avatar da empresa parceira" class="avt-pic">

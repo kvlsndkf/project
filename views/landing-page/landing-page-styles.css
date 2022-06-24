@@ -346,8 +346,8 @@
     }
 
     .heelp-emp-destaque{
-        font-family: var(--gintoNord-bold);
-        font-size: var(--h3);
+        font-family: var(--gintoNormal-bold);
+        font-size: 50px;
         margin-top: 75px;
         width: 480px;
         animation: fadeInDown;
