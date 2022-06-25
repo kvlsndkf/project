@@ -59,6 +59,10 @@ try {
     <link rel="stylesheet" href="../../../style/button-delete-course.style.css">
 
     <link rel="stylesheet" href="../../../style/list-denunciation.styles.css">
+
+    <link rel="stylesheet" href="../../../../views/landing-page/fale-conosco.css">
+
+
 </head>
 
 <body>
@@ -144,7 +148,7 @@ try {
                 <a href="../register/registration panel/registration-panel-page.php" class="seta-voltar-a seta-voltar-a-responsividade">
                     <img src="../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
                 </a>
-                <p class="add-info-text add-info-text-responsividade normal-22-black-title-1">Fale Conosco </p>
+                <p class="add-info-text add-info-text-responsividade normal-22-black-title-1">Denúncias </p>
             </div>
 
             <!-- Menu Sanduíche da Responsividade -->
@@ -186,15 +190,15 @@ try {
                 <li class="sidebar-li">
                     <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
                     <a href="../denunciation/list-denunciation.page.php" class="sidebar-a">
-                        <img class="sidebar-img" src="../../../../views/images/components/denuncia-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Denuncias</p>
+                        <img class="sidebar-img" src="../../images/components/icon-denunciation.svg" alt="">
+                        <p class="sidebar-option sidebar-current-option normal-18-bold-title-2">Denúncias</p>
                     </a>
                 </li>
 
                 <li class="sidebar-li">
                     <a href="../message/list-message.page.php" class="sidebar-a-items">
-                        <img class="sidebar-img" src="../../../../views/images/components/fale-conosco-current.svg" alt="">
-                        <p class="sidebar-option sidebar-current-option normal-18-bold-title-2">Fale Conosco</p>
+                        <img class="sidebar-img" src="../../../../views/images/components/fale-conosco-img.svg" alt="">
+                        <p class="sidebar-option normal-18-bold-title-2">Fale Conosco</p>
                     </a>
                 </li>
 
@@ -255,13 +259,13 @@ try {
                         <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill white-title bg-deep-blue' : 'd-none'; ?>
+                        <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill white-title bg-primary-button' : 'd-none'; ?>
                         <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title' : 'd-none'; ?>
+                        <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title' : 'd-none'; ?>
+                        <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                         <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
                         <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'd-none'; ?>
@@ -354,13 +358,13 @@ try {
                                                 <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-deep-blue white-title' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
@@ -426,13 +430,13 @@ try {
                                                 <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-deep-blue white-title' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
@@ -479,35 +483,37 @@ try {
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->id; ?>" aria-hidden="true">
                                                 <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->id; ?>">Denúncia resolvida</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
-                                                                <label for="">Contexto</label>
-                                                                <select class="form-select" aria-label="Default select example" id="selectContext" name="context">
-                                                                    <option selected>Selecione o contexto em que a denúncia se enquadra</option>
-                                                                </select>
+                                                    <div class="modal-content corM">
+                                                        <div class="contianer containerM">
+                                                            <div class="modal-header border-bottom-0">
+                                                                <h5 class="modal-titleM normal-20-bold-modaltitle" id="exampleModalLabel-<?php echo $row->id; ?>">Denúncia resolvida</h5>
+                                                                <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
+                                                                    <label class="subtituloM normal-14-bold-p sub-titulo-plusM">Contexto</label>
+                                                                    <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" id="selectContext" name="context">
+                                                                        <option selected class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
+                                                                    </select>
 
-                                                                <br>
+                                                                    <br>
 
-                                                                <div>
-                                                                    <p>
-                                                                        Conclusão
-                                                                    </p>
+                                                                    <div class="mb-3">
+                                                                        <p class="subtituloM normal-14-bold-p sub-titulo-plusM">
+                                                                            Conclusão
+                                                                        </p>
 
-                                                                    <div id="contentTextArea">
-                                                                        <textarea name="conclusion" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()"></textarea>
-                                                                        <div><span id="counterTextArea">250</span></div>
+                                                                        <div id="contentTextArea">
+                                                                            <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()"></textarea>
+                                                                            <div class="counter-container"><span class="counterTextArea whitney-8-medium-littletiny" id="counterTextArea">250</span></div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                    <button type="submit" class="btn btn-primary" name="resolveDenunciation">Mover</button>
-                                                                </div>
-                                                            </form>
+                                                                    <div class="modal-footer" style="border: none; padding:0;">
+                                                                    <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title">Mover</label>
+                                                                    <label data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title">Cancelar</label>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -534,13 +540,13 @@ try {
                                                 <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-deep-blue white-title badge-space' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill bg-primary-button white-title badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-info white-title badge-space' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary white-title badge-space' : 'd-none'; ?>
+                                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
                                                 <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'badge rounded-pill bg-red white-title'; ?>
@@ -557,14 +563,14 @@ try {
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Denunciado
                                             </p>
-                                            <p  class="my-p-bold normal-14-bold-p bg-list-text">
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
                                                 <?php echo $row->denounced; ?>
                                             </p>
 
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
                                             </p>
-                                            <p  class="my-p-bold normal-14-bold-p bg-list-text">
+                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
                                                 <?php echo $row->reason; ?>
                                             </p>
 

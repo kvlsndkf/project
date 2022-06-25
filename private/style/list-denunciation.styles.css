@@ -17,3 +17,13 @@
 .badge-space {
     margin-right: 10px;
 }
+
+.select-modal {
+    background-color: var(--gray2);
+    color: var(--white);
+    border: solid 1px var(--gray1);
+}
+
+.select-modal:focus {
+    border: solid 1px var(--blue-sky);
+}
