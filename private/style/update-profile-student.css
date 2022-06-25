@@ -181,7 +181,7 @@ input:focus{
     padding-top: 10px;
     padding-bottom: 8px;
     padding-left: 10px;
-    padding-left: 4px;
+    
     margin-bottom: 0.6em;
     font-family: var(--gintoNormal-medium);
     font-style: normal;
@@ -196,7 +196,8 @@ input:focus{
 
 
 .accordion-flush .accordion-item .accordion-button{
-    margin-top: 2.5em;
+    margin-top: 1.7em;
+    
     background-color: var(--bg-modal) !important;
     color: var(--white);
     padding:10px;
@@ -204,6 +205,10 @@ input:focus{
     border: transparent;
     
     /* border-radius: 3px; */
+}
+
+.accordion-item{
+    background-color: var(--bg-modal) !important;
 }
 
 .accordion-flush .accordion-item{
@@ -284,7 +289,12 @@ input:focus{
 }
 
 .accordion-button:not(.collapsed)::after{
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    background-image: url("../../views/images/components/seta-accordion.svg")
+}
+
+.accordion-button::after{
+    background-image: url("../../views/images/components/seta-accordion.svg")
+
 }
 
 @media(max-width: 925px){
