@@ -548,7 +548,7 @@ try {
                                     <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                                 </a>
                                 <div class="question-info-text">
-                                    <a href="<?php echo $row->creator; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p">
+                                    <a href="<?php echo $row->creator; ?>" target="_blank" class="question-name question-about-a text-truncate normal-14-medium-p" style="max-width: 40vw;">
                                         <?php echo $row->firstName; ?>
                                         <?php echo $row->surname; ?>
                                     </a>
