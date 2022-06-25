@@ -836,17 +836,17 @@ try {
                                     $displayMedal = 'd-block';
                                     $displayNumber = 'd-none';
                                     $iconMedal = '../../images/icons/gold.svg';
-                                    $badgeColor = 'badge rounded-pill bg-danger';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
                                 } else if ($i === 1) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
                                     $iconMedal = '../../images/icons/silver.svg';
-                                    $badgeColor = 'badge rounded-pill bg-info';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
                                 } else if ($i === 2) {
                                     $displayNumber = 'd-none';
                                     $displayMedal = 'd-block';
                                     $iconMedal = '../../images/icons/bronze.svg';
-                                    $badgeColor = 'badge rounded-pill bg-warning';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
                                 } else if ($i === 3) {
                                     $displayMedal = 'd-none';
                                     $displayNumber = 'd-block';
