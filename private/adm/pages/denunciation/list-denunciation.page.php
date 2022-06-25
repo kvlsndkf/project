@@ -62,6 +62,7 @@ try {
 
     <link rel="stylesheet" href="../../../../views/landing-page/fale-conosco.css">
 
+    <link rel="shortcut icon" href="../../../../views/images/favicon/favicon-16x16.png" type="image/x-icon">
 
 </head>
 
@@ -245,76 +246,81 @@ try {
                     <p class="contador-prof normal-18-black-title-2" style="margin-bottom: 40px;">
                         <?php echo  $countSearchDenunciations; ?>
                     </p>
+                    <div class="list-prof">
+                        <!-- Lista de pesquisa -->
+                        <?php for ($i = 0; $i < count($listSearch); $i++) {
+                            $row = $listSearch[$i] ?>
+                            <div class="card-contact">
+                            <div class="badges-container">
+                                <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
+                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                    <!-- Lista de pesquisa -->
-                    <?php for ($i = 0; $i < count($listSearch); $i++) {
-                        $row = $listSearch[$i] ?>
+                                <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title' : 'd-none'; ?>
+                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                        <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                        <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title' : 'd-none'; ?>
+                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                        <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title' : 'd-none'; ?>
-                        <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill white-title bg-primary-button' : 'd-none'; ?>
+                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title' : 'd-none'; ?>
-                        <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
+                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill white-title bg-primary-button' : 'd-none'; ?>
-                        <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
+                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
-                        <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'd-none'; ?>
+                                <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
 
-                        <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
-                        <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                <?php $styleContext = $row->context == "Denuncia negada" ? 'badge rounded-pill bg-red white-title' : 'd-none'; ?>
+                                <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
+                            </div>
+                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                    Feito por
+                                </p>
+                                <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                    <?php echo $row->creator; ?>
+                                    <?php echo $row->surnameCreator; ?>
+                                </p>
 
-                        <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'd-none'; ?>
-                        <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
+                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                    Denunciado
+                                </p>
+                                    <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                    <?php echo $row->denounced; ?>
+                                    <?php echo $row->surnameDenounced; ?>
+                                </p>
 
-                        <?php $styleContext = $row->context == "Denuncia negada" ? 'badge rounded-pill bg-red white-title' : 'd-none'; ?>
-                        <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
+                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                    Motivo
+                                </p>
+                                    <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                    <?php echo $row->reason; ?>
+                                </p>
 
-                        <p>
-                            Feito por
-                        </p>
-                        <br /><br />
-                        <p>
-                            <?php echo $row->creator; ?>
-                            <?php echo $row->surnameCreator; ?>
-                        </p>
+                                <p class="my-p-link normal-14-medium-p">
+                                    <?php
+                                    $idStudent = $student->getStudentByUserID($row->denouncedId);
+                                    if ($row->type == "Perfil") {
+                                        $textButton = 'Link do perfil';
+                                        $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
+                                    } else {
+                                        $textButton = 'Link do post';
+                                        $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
+                                    }
+                                    ?>
+                                    <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
+                                </p>
 
-                        <p>
-                            Denunciado
-                            <?php echo $row->denounced; ?>
-                            <?php echo $row->surnameDenounced; ?>
-                        </p>
+                                <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
+                                <label for="moveDenunciation" class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover">Mover para análise</label>
+                                    <button type="submit" name="moveDenunciation" id="moveDenunciation" class="d-none">Mover para análise</button>
+                                </form>
 
-                        <p>
-                            Motivo
-                            <?php echo $row->reason; ?>
-                        </p>
-
-                        <p class="my-p-link normal-14-medium-p">
-                            <?php
-                            $idStudent = $student->getStudentByUserID($row->denouncedId);
-                            if ($row->type == "Perfil") {
-                                $textButton = 'Link do perfil';
-                                $link = "./detail-profile-student/detail-profile-student.page.php?idStudent=" . $idStudent[0]['id'];
-                            } else {
-                                $textButton = 'Link do post';
-                                $link = "./detail-question/detail-question.page.php?idQuestion=" . $row->questionId . "&idStudent=" . $row->denouncedId;
-                            }
-                            ?>
-                            <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
-                        </p>
-
-                        <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
-                            <button type="submit" name="moveDenunciation">Mover para análise</button>
-                        </form>
-
-                        <hr>
-                    <?php } ?>
-
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
 
                 <div class="<?php echo $styleList; ?>">
@@ -509,8 +515,8 @@ try {
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer" style="border: none; padding:0;">
-                                                                    <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title">Mover</label>
-                                                                    <label data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title">Cancelar</label>
+                                                                        <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
+                                                                        <label data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title cursor-pointer">Cancelar</label>
                                                                     </div>
                                                                 </form>
                                                             </div>
