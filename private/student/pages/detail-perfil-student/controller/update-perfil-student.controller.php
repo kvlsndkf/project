@@ -3,10 +3,9 @@ include_once('/xampp/htdocs' . '/project/database/connection.php');
 require_once('/xampp/htdocs' . '/project/classes/users/Student.class.php');
 
 if (isset($_POST['update'])) {
-
+    
     $studentID = $_GET['idStudentLogged'];
     $userId = $_GET['idUser'];
-
 
     if (is_uploaded_file($_FILES['updatePhoto']['tmp_name'])) {
         $studentPhoto = $_FILES['updatePhoto'];
@@ -45,7 +44,7 @@ if (isset($_POST['update'])) {
                 $student->setFacebook($_POST['facebook']);
                 $student->setInstagram($_POST['instagram']);
 
-                if (isset($_POST['oldPassword'])) {
+                if (!empty($_POST['oldPassword'])) {
                     $password = $student->checkPassword($_POST['oldPassword'], $_POST['newPassword'], $_POST['passwordConfirm'], $userId);
 
                     if ($password != true) {
@@ -66,7 +65,6 @@ if (isset($_POST['update'])) {
     } else {
         if (is_string($_POST['firstName'])) {
             $oldPhoto = $_POST['oldPhoto'];
-
             $student = new Student();
             $student->setPhoto($oldPhoto);
             $student->setFirstName($_POST['firstName']);
@@ -77,10 +75,9 @@ if (isset($_POST['update'])) {
             $student->setFacebook($_POST['facebook']);
             $student->setInstagram($_POST['instagram']);
 
-            if (isset($_POST['oldPassword'])) {
+            if (!empty($_POST['oldPassword'])) {
                 $password = $student->checkPassword($_POST['oldPassword'], $_POST['newPassword'], $_POST['passwordConfirm'], $userId);
-                echo $password;
-
+                
                 if (!is_null($password)) {
                     $_SESSION['statusNegative'] = $password;
                     header('Location: /project/private/student/pages/detail-perfil-student/update-perfil-student.page.php?idStudentLogged=' . $studentID);
@@ -89,6 +86,8 @@ if (isset($_POST['update'])) {
                     $student->updateStudent($student, $studentID);
                 }
             } else {
+                $password = $student->getOldPassword($userId);
+                $student->setPassword($password['password']);
                 $student->updateStudent($student, $studentID);
             }
         }

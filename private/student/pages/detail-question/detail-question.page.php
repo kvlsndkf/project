@@ -16,7 +16,7 @@ try {
     $idUser = $_SESSION['idUser'];
 
     $listPreferences = Preference::getPreferencesUser($idUser);
-    
+
     $student = new StudentMethods();
     $studentId = $student->getStudentByUserID($idUser);
     $userCreatorQuestion = $student->getUserByStudentID($creatorQuestion[0]['student_id']);
@@ -103,7 +103,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
@@ -437,16 +437,28 @@ try {
 
                         </div>
 
-                        <a class="question-give-heelp-a pedir-heelp-button-a" href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
-                            <div class="question-toAnswer question-footer-div">
+                        <div class="<?php echo $styleDelete; ?>">
+                            <a class="question-give-heelp-a pedir-heelp-button-a" href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
+                                <div class="question-toAnswer question-footer-div">
 
-                                <p class="normal-14-bold-p question-p white-text">Dar um help</p>
-                                <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
-                                <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
-                                <p class="normal-14-bold-p question-p yellow-text"> <?php echo $listDetailsQuestions->xp; ?> xp </p>
+                                    <p class="normal-14-bold-p question-p white-text">Dar um help</p>
+                        
+                                </div>
+                            </a>
+                        </div>
 
-                            </div>
-                        </a>
+                        <div class="<?php echo $styleDenunciationQuestion; ?>">
+                            <a class="question-give-heelp-a pedir-heelp-button-a" href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
+                                <div class="question-toAnswer question-footer-div">
+
+                                    <p class="normal-14-bold-p question-p white-text">Dar um help</p>
+                                    <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
+                                    <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
+                                    <p class="normal-14-bold-p question-p yellow-text"> <?php echo $listDetailsQuestions->xp; ?> xp </p>
+
+                                </div>
+                            </a>
+                        </div>
 
                     </div>
                 </div>
@@ -550,11 +562,11 @@ try {
                         <div class="space-between-header">
 
                             <div class="question-info">
-                                <a href="<?php echo $row->linkProfile; ?>" target="_blank">
+                                <a href="<?php echo $row->creator; ?>" target="_blank">
                                     <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                                 </a>
                                 <div class="question-info-text">
-                                    <a href="<?php echo $row->linkProfile; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p">
+                                    <a href="<?php echo $row->creator; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p">
                                         <?php echo $row->firstName; ?>
                                         <?php echo $row->surname; ?>
                                     </a>

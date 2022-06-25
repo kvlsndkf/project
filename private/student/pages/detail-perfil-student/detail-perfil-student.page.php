@@ -718,9 +718,8 @@ try {
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
 
+
                 <hr class="sidebar-linha leftbar-linha">
-
-
                 <div>
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">

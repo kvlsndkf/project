@@ -99,7 +99,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser;?>" class="sidebar-a leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
@@ -111,8 +111,8 @@ try {
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
 
-                    <li class="sidebar-li leftbar-li">
-                        <p class="leftbar-categoria normal-14-bold-p">Para você</p>
+                    <li class="sidebar-li my-leftbar-li">
+                        <p class="my-leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
 
                     <!-- Lista de preferências ⬇️ -->
@@ -120,9 +120,9 @@ try {
                         $row = $listPreferences[$i] ?>
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
-                            <div class="d-flex question-info margin-bot-15">
+                            <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;" width="32px">
-                                <p class="white-text question-p normal-16-bold-title-3 text-truncate">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
                                     <?php echo $row->name; ?>
                                 </p>
                             </div>
@@ -132,7 +132,7 @@ try {
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
-                            <div class="leftbar-button-div">
+                            <div class="my-leftbar-button-div">
                                 <p class="sidebar-button-text">Pedir um heelp!</p>
                             </div>
                         </a>
@@ -445,16 +445,26 @@ try {
                                 </p>
                             </div>
 
-                            <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
-                                <div class="question-toAnswer question-footer-div">
+                            <div class="<?php echo $styleDeleteQuestion; ?>">
+                                <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                                    <div class="question-toAnswer question-footer-div">
+                                        <p class="normal-14-bold-p question-p white-text">Ver</p>
+                                    </div>
+                                </a>
+                            </div>
 
-                                    <p class="normal-14-bold-p question-p white-text">Dar um help</p>
-                                    <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
-                                    <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
-                                    <p class="normal-14-bold-p question-p yellow-text"> <?php echo $row->xp; ?> xp </p>
+                            <div class="<?php echo $styleDenunciationQuestion; ?>">
+                                <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                                    <div class="question-toAnswer question-footer-div">
 
-                                </div>
-                            </a>
+                                        <p class="normal-14-bold-p question-p white-text">Ver</p>
+                                        <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
+                                        <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
+                                        <p class="normal-14-bold-p question-p yellow-text"> <?php echo $row->xp; ?> xp </p>
+
+                                    </div>
+                                </a>
+                            </div>
 
                         </div>
 
@@ -700,7 +710,7 @@ try {
             <a href="./home.page.php" class="bottombar-a">
                 <img src="../../../../views/images/components/filled-dashboard-img.svg" alt="">
             </a>
-            <a href="#" class="bottombar-a">
+            <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
             <a href="#" class="bottombar-a">

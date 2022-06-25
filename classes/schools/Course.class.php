@@ -454,7 +454,6 @@ class Course
                                         INNER JOIN schools s
                                         ON s.id = sc.school_id
                                         WHERE sc.course_id = $idCourse)
-                                        AND s.have_account = 'Com conta'
                                         ");
 
         $stmt->execute();

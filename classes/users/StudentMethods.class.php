@@ -187,9 +187,9 @@ class StudentMethods
         $student->facebook = $row['facebook'];
         $student->instagram = $row['instagram'];
         $student->linkProfile = $row['profile_link'];
-
-        setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-        $student->created =  date('d F Y', strtotime($row['created_at']));
+        $student->created = $row['created_at'];
+        // setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        // $student->created =  date('d F Y', strtotime($row['created_at']));
        
 
         return $student;
@@ -203,7 +203,7 @@ class StudentMethods
             $stmt = $connection->prepare("SELECT answ.id AS 'answer_id', answ.answer, answ.photo AS 'imageAnswer', 
                                             answ.avg_avaliation, answ.like_answer, answ.document, answ.document_name, 
                                             answ.created_at, quest.id AS 'question_id', quest.link_question, quest.question, 
-                                            course.name AS 'course', cate.name AS 'category', subj.name AS 'subject' 
+                                            course.name AS 'course', cate.name AS 'category', subj.name AS 'subject', quest.student_id
                                             FROM students stu
                                                                                             
                                             INNER JOIN answers answ
@@ -288,6 +288,7 @@ class StudentMethods
         $student->question = $row['question'];
         $student->course = $row['course'];
         $student->category = $row['category'];
+        $student->creatorId = $row['student_id'];
         $student->subject = $row['subject'];
 
         return $student;
@@ -300,7 +301,7 @@ class StudentMethods
         try {
             $stmt = $connection->prepare("SELECT quest.id, quest.link_question, quest.question, quest.created_at, quest.photo,
                                             quest.document, quest.document_name, course.name AS 'course', cate.name AS 'category', 
-                                            subj.name AS 'subject' FROM questions quest
+                                            subj.name AS 'subject', quest.student_id FROM questions quest
                                                 
                                             INNER JOIN courses course
                                             ON quest.course_id = course.id
@@ -350,6 +351,7 @@ class StudentMethods
         $student->photo = $row['photo'];
         $student->document = $row['document'];
         $student->documentName = $row['document_name'];
+        $student->creatorId = $row['student_id'];
         $student->created = Answer::countCreatedAnswer($row['created_at']);
 
         return $student;
@@ -362,7 +364,7 @@ class StudentMethods
         try {
             $stmt = $connection->prepare("SELECT quest.id, quest.link_question, quest.question, quest.created_at, quest.photo,
                                             quest.document, quest.document_name, course.name AS 'course', cate.name AS 'category', 
-                                            subj.name AS 'subject' FROM questions quest
+                                            subj.name AS 'subject', quest.student_id FROM questions quest
                                                 
                                             INNER JOIN courses course
                                             ON quest.course_id = course.id
@@ -412,6 +414,7 @@ class StudentMethods
         $student->photo = $row['photo'];
         $student->document = $row['document'];
         $student->documentName = $row['document_name'];
+        $student->creatorId = $row['student_id'];
         $student->created = Answer::countCreatedAnswer($row['created_at']);
 
         return $student;
