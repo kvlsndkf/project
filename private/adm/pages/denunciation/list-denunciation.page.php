@@ -376,7 +376,7 @@ try {
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Feito por
                                             </p>
-                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                            <p class="prof-text school-name normal-14-bold-p text-truncate">
                                                 <?php echo $row->creator; ?>
                                             </p>
 
@@ -510,9 +510,10 @@ try {
                                                                         </p>
 
                                                                         <div id="contentTextArea">
-                                                                            <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()"></textarea>
+                                                                            <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()" maxlength="240"></textarea>
                                                                             <div class="counter-container"><span class="counterTextArea whitney-8-medium-littletiny" id="counterTextArea">250</span></div>
                                                                         </div>
+                                                                        <span id="min-length"></span>
                                                                     </div>
                                                                     <div class="modal-footer" style="border: none; padding:0;">
                                                                         <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
@@ -645,6 +646,39 @@ try {
 
             return;
         }());
+    </script>
+
+        <!-- JS tamanho minimo text area -->
+        <script>
+        var textArea = document.getElementById('about');
+        var minLength = document.getElementById('min-length');
+
+        function checkLength() {
+            if (textArea.value.length < 100) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Mínimo de caracteres: 100";
+            } if (textArea.value.length > 240) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Máximo de caracteres: 240";
+            }
+        }
+    </script>
+
+    <!-- JS tamanho máximo textarea  -->
+
+    <script>
+        $(document).ready(function() {
+            $('#about').on('input propertychange', function() {
+                charLimit(this, 240);
+            });
+        });
+
+        function charLimit(input, maxChar) {
+            var len = $(input).val().length;
+            if (len > maxChar) {
+                $(input).val($(input).val().substring(0, maxChar));
+            }
+        }
     </script>
 </body>
 
