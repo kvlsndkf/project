@@ -113,7 +113,7 @@ try {
 
                 <li class="sidebar-li">
                     <p class="sidebar-categoria normal-14-bold-p">Contas</p>
-                    <a href="#" class="sidebar-a">
+                    <a href="../list-profiles/list-profiles.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../views/images/components/listagem-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Listagem</p>
                     </a>
