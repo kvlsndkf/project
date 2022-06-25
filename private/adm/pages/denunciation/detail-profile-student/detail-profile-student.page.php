@@ -211,7 +211,7 @@ try {
 
                                 <div class="avaliation-answer">
 
-                                    <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalLikeAnswer; ?>
+                                    <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalAvaliationAnswer; ?>
                                     <div class="star-icon question-info">
                                         <p class="normal-14-bold-p question-p avaliation-text" style="color: var(--yellow);" style="margin-bottom: -10px;">
                                             <span class="functions-answer-text avaliation-text">
