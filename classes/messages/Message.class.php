@@ -109,7 +109,7 @@ class Message
 
             $stmt->execute();
 
-            header('Location: /project/views/landing-page/landing-page.php');
+            header('Location: /project/index.php');
         } catch (Exception $e) {
             echo $e->getMessage();
         }

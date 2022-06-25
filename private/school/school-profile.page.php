@@ -307,13 +307,13 @@ try {
                                             <?php echo $row->name; ?>
                                         </p>
 
-                                        <p class="normal-12-medium-tiny" style="color: var(--gray5);">
+                                        <!-- <p class="normal-12-medium-tiny" style="color: var(--gray5);">
                                             <?php
                                             foreach ($row->courses as $value) {
                                                 echo $value . " • ";
                                             }
                                             ?>
-                                        </p>
+                                        </p> -->
                                     </div>
 
                                 </div>
