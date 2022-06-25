@@ -322,7 +322,7 @@ try {
                         <img src="<?php echo $listDetailsQuestions->photo; ?>" alt="<?php echo $listDetailsQuestions->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                     </a>
                     <div class="question-info-text">
-                        <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p">
+                        <a href="<?php echo $listDetailsQuestions->linkProfile; ?>" target="_blank" class="question-name question-about-a normal-14-medium-p text-truncate" style="max-width: 40vw;">
                             <?php echo $listDetailsQuestions->firstName; ?>
                             <?php echo $listDetailsQuestions->surname; ?>
                         </a>
@@ -864,7 +864,7 @@ try {
                                         <div class="<?php echo $displayMedal; ?>">
                                             <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row->name; ?>">
                                         </div>
-                                        <div class="<?php echo $displayNumber; ?>">
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
                                         <a href="<?php echo $row->linkProfile; ?>">
@@ -964,12 +964,12 @@ try {
             <a href="../home/home.page.php" class="bottombar-a">
                 <img src="../../../../views/images/components/dashboard-img.svg" alt="">
             </a>
-            <a href="#" class="bottombar-a">
+            <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
-            <a href="#" class="bottombar-a">
+            <!-- <a href="#" class="bottombar-a">
                 <img src="../../../../views/images/components/notifications-icon.svg" alt="">
-            </a>
+            </a> -->
             <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
                 <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
             </a>
