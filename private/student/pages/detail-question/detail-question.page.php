@@ -152,29 +152,6 @@ try {
                         </div>
                     </a>
 
-                    <!-- Mais Opções -->
-                    <div class="drop-edit-exclud-about drop-leftbar">
-                        <img src="../../../../views/images/components/three-dots.svg">
-
-                        <!-- Parte do Update e Delete -->
-                        <div class="drop-edit-exclud-content-about drop-leftbar-content">
-                            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank" class="drop-edit-exclud-a">
-                                <div class="drop-edit-exclud-option-about">
-                                    <img src="../../../../views/images/components/settings-icon.svg" class="drop-edit-exclud-img">
-                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Configurações</p>
-                                </div>
-                            </a>
-                            <div class=" pedir-heelp-button-a">
-                                <a href="../../../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
-                                        <img src="../../../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
-                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
 
                 </div>
 

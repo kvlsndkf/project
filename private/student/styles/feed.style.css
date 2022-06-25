@@ -280,6 +280,10 @@ a{
     padding: 1vw 0;
 }
 
+.ranking-ul{
+    border: none;
+}
+
 .rightbar-ul{
     list-style: none;
     margin: 0;
@@ -643,7 +647,7 @@ p{
 }
 
 .denuncia-aluno-a:hover{
-    background-color: var(--red);
+    background-color: var(--bg-modal);
     border-radius: 8px;
     transition: .5s ease;
 }

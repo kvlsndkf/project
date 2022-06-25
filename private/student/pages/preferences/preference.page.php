@@ -148,30 +148,6 @@ try {
                         </div>
                     </a>
 
-                    <!-- Mais Opções -->
-                    <div class="drop-edit-exclud-about drop-leftbar">
-                        <img src="../../../../views/images/components/three-dots.svg">
-
-                        <!-- Parte do Update e Delete -->
-                        <div class="drop-edit-exclud-content-about drop-leftbar-content">
-                            <a href="../detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank" class="drop-edit-exclud-a">
-                                <div class="drop-edit-exclud-option-about">
-                                    <img src="../../../../views/images/components/settings-icon.svg" class="drop-edit-exclud-img">
-                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Configurações</p>
-                                </div>
-                            </a>
-                            <div class=" pedir-heelp-button-a">
-                                <a href="../../../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
-                                        <img src="../../../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
-                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
                 </div>
 
 
@@ -370,7 +346,7 @@ try {
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50px; margin-right: 8px;">
                             </a>
                             <div class="question-info-text">
-                                <a href="<?php echo $row->linkProfile; ?>" class="question-name question-about-a normal-14-medium-p" target="_blank">
+                                <a href="<?php echo $row->linkProfile; ?>" class="question-name question-about-a normal-14-medium-p text-truncate" style="max-width: 40vw;" target="_blank">
                                     <?php echo $row->firstName; ?>
                                     <?php echo $row->surname; ?>
                                 </a>
