@@ -357,9 +357,11 @@ try {
                                 <div class="<?php echo $displayProfileStudent; ?>">
 
                                     <div class="my-question-info">
-                                        <div class="img-container">
-                                            <img style="width: 75px; height: 75px; object-fit: cover; border-radius: 50px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
-                                        </div>
+                                        <a href="<?php echo $row->linkStudent; ?>">
+                                            <div class="img-container">
+                                                <img style="width: 75px; height: 75px; object-fit: cover; border-radius: 50px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
+                                            </div>
+                                        </a>
                                         <div class="q-i-t">
                                             <div class="question-info-text">
                                                 <a href="<?php echo $row->linkStudent; ?>">
@@ -395,9 +397,11 @@ try {
 
                                     <div class="my-question-info">
 
-                                        <div>
-                                            <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
-                                        </div>
+                                        <a href="<?php echo $row->schoolLink; ?>">
+                                            <div>
+                                                <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
+                                            </div>
+                                        </a>
                                         <div class="q-i-t">
                                             <div class="question-info-text">
                                                 <a href="<?php echo $row->schoolLink; ?>">
