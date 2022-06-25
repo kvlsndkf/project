@@ -251,32 +251,32 @@ try {
                         <?php for ($i = 0; $i < count($listSearch); $i++) {
                             $row = $listSearch[$i] ?>
                             <div class="card-contact">
-                            <div class="badges-container">
-                                <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
-                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                <div class="badges-container">
+                                    <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
+                                    <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title' : 'd-none'; ?>
-                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                    <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title' : 'd-none'; ?>
+                                    <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title' : 'd-none'; ?>
-                                <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
+                                    <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title' : 'd-none'; ?>
+                                    <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
 
-                                <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill white-title bg-primary-button' : 'd-none'; ?>
-                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                    <?php $styleAnswer = $row->type == "Resposta" ? 'badge rounded-pill white-title bg-primary-button' : 'd-none'; ?>
+                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
-                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                    <?php $styleAnswer = $row->type == "Pergunta" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
+                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
-                                <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
+                                    <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
+                                    <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
 
-                                <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'd-none'; ?>
-                                <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
+                                    <?php $styleContext = $row->context == "Denuncia acatada" ? 'badge rounded-pill bg-blue-sky white-title' : 'd-none'; ?>
+                                    <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
 
-                                <?php $styleContext = $row->context == "Denuncia negada" ? 'badge rounded-pill bg-red white-title' : 'd-none'; ?>
-                                <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
-                            </div>
-                            <p class="my-p normal-14-medium-p bg-modal-text">
+                                    <?php $styleContext = $row->context == "Denuncia negada" ? 'badge rounded-pill bg-red white-title' : 'd-none'; ?>
+                                    <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
+                                </div>
+                                <p class="my-p normal-14-medium-p bg-modal-text">
                                     Feito por
                                 </p>
                                 <p class="my-p-bold normal-14-bold-p bg-list-text">
@@ -287,7 +287,7 @@ try {
                                 <p class="my-p normal-14-medium-p bg-modal-text">
                                     Denunciado
                                 </p>
-                                    <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                <p class="my-p-bold normal-14-bold-p bg-list-text">
                                     <?php echo $row->denounced; ?>
                                     <?php echo $row->surnameDenounced; ?>
                                 </p>
@@ -295,7 +295,7 @@ try {
                                 <p class="my-p normal-14-medium-p bg-modal-text">
                                     Motivo
                                 </p>
-                                    <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                <p class="my-p-bold normal-14-bold-p bg-list-text">
                                     <?php echo $row->reason; ?>
                                 </p>
 
@@ -314,9 +314,11 @@ try {
                                 </p>
 
                                 <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
-                                <label for="moveDenunciation" class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover">Mover para análise</label>
+                                    <label for="moveDenunciation" class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover">Mover para análise</label>
                                     <button type="submit" name="moveDenunciation" id="moveDenunciation" class="d-none">Mover para análise</button>
                                 </form>
+
+                                
 
                             </div>
                         <?php } ?>
@@ -409,8 +411,8 @@ try {
                                             </p>
 
                                             <form action="./controller/analysis-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
-                                                <button type="submit" name="moveDenunciation" id="moveDenunciation" class="d-none">Mover para análise</button>
-                                                <label for="moveDenunciation" class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover">Mover para análise</label>
+                                                <button type="submit" name="moveDenunciation" id="moveDenunciationn" class="d-none">Mover para análise</button>
+                                                <label for="moveDenunciationn" class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover">Mover para análise</label>
                                             </form>
                                         </div>
 
@@ -516,8 +518,11 @@ try {
                                                                         <span id="min-length"></span>
                                                                     </div>
                                                                     <div class="modal-footer" style="border: none; padding:0;">
-                                                                        <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
+                                                                        <button type="reset" class="btn btn-secondary d-none" data-bs-dismiss="modal">Cancelar</button>
+                                                                        <button type="submit" class="btn btn-primary d-none" id="resolveDenunciation" name="resolveDenunciation">Mover</button>
+                                                                        <label for="resolveDenunciation"  class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
                                                                         <label data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title cursor-pointer">Cancelar</label>
+
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -648,8 +653,8 @@ try {
         }());
     </script>
 
-        <!-- JS tamanho minimo text area -->
-        <script>
+    <!-- JS tamanho minimo text area -->
+    <script>
         var textArea = document.getElementById('about');
         var minLength = document.getElementById('min-length');
 
@@ -657,7 +662,8 @@ try {
             if (textArea.value.length < 100) {
                 minLength.style.color = "#ED4245";
                 minLength.innerText = "Mínimo de caracteres: 100";
-            } if (textArea.value.length > 240) {
+            }
+            if (textArea.value.length > 240) {
                 minLength.style.color = "#ED4245";
                 minLength.innerText = "Máximo de caracteres: 240";
             }
