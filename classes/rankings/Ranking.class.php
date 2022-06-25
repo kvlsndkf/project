@@ -12,6 +12,7 @@ class Ranking
                                             
                                             INNER JOIN users usr
                                             ON stu.user_id = usr.id
+                                            WHERE (usr.is_blocked NOT IN(1) AND usr.is_confirmed NOT IN(0))
                                             ORDER BY stu.xp DESC
                                             LIMIT 5 
                                         ");
@@ -59,6 +60,7 @@ class Ranking
                                             
                                             INNER JOIN users usr
                                             ON stu.user_id = usr.id
+                                            WHERE (usr.is_blocked NOT IN(1) AND usr.is_confirmed NOT IN(0))
                                             ORDER BY stu.xp DESC
                                         ");
             $stmt->execute();
@@ -99,6 +101,7 @@ class Ranking
                                             INNER JOIN usershasfollowers uf
                                             ON stu.user_id = uf.following_id
                                             WHERE uf.follower_id = $idStudent
+                                            AND (usr.is_blocked NOT IN(1) AND usr.is_confirmed NOT IN(0))
                                             ORDER BY stu.xp DESC
                                             LIMIT 5
                                         ");
@@ -114,6 +117,7 @@ class Ranking
                                             INNER JOIN users usr
                                             ON stu.user_id = usr.id
                                             WHERE stu.user_id = $idStudent
+                                            AND (usr.is_blocked NOT IN(1) AND usr.is_confirmed NOT IN(0))
                                         ");
             $student->execute();
             $resultStudent = $student->fetchAll(PDO::FETCH_ASSOC);
@@ -151,6 +155,7 @@ class Ranking
                                             INNER JOIN usershasfollowers uf
                                             ON stu.user_id = uf.following_id
                                             WHERE uf.follower_id = $idStudent
+                                            AND (usr.is_blocked NOT IN(1) AND usr.is_confirmed NOT IN(0))
                                         ");
             $followers->execute();
             $resultFollowers = $followers->fetchAll(PDO::FETCH_ASSOC);
@@ -164,6 +169,7 @@ class Ranking
                                             INNER JOIN users usr
                                             ON stu.user_id = usr.id
                                             WHERE stu.user_id = $idStudent
+                                            AND (usr.is_blocked NOT IN(1) AND usr.is_confirmed NOT IN(0))
                                         ");
             $student->execute();
             $resultStudent = $student->fetchAll(PDO::FETCH_ASSOC);

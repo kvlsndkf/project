@@ -416,16 +416,26 @@ try {
                                 </p>
                             </div>
 
-                            <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
-                                <div class="question-toAnswer question-footer-div">
+                            <div class="<?php echo $styleDeleteQuestion; ?>">
+                                <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                                    <div class="question-toAnswer question-footer-div">
+                                        <p class="normal-14-bold-p question-p white-text">Ver</p>
+                                    </div>
+                                </a>
+                            </div>
 
-                                    <p class="normal-14-bold-p question-p white-text">Dar um help</p>
-                                    <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
-                                    <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
-                                    <p class="normal-14-bold-p question-p yellow-text"> <?php echo $row->xp; ?> xp </p>
+                            <div class="<?php echo $styleDenunciationQuestion; ?>">
+                                <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                                    <div class="question-toAnswer question-footer-div">
 
-                                </div>
-                            </a>
+                                        <p class="normal-14-bold-p question-p white-text">Ver</p>
+                                        <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
+                                        <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
+                                        <p class="normal-14-bold-p question-p yellow-text"> <?php echo $row->xp; ?> xp </p>
+
+                                    </div>
+                                </a>
+                            </div>
 
                         </div>
 

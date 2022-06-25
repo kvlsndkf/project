@@ -21,7 +21,11 @@ try {
 
     $ranking = new Ranking();
     $colocationTotal = $ranking->colocationTotal();
+
     $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+
+    $positionRankingAll = $ranking->colocationTotalAll($studentSession[0]['id']);
+
 
     $colocationFollowers = $ranking->colocationFllowers($idUser);
     $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
@@ -96,7 +100,9 @@ try {
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
                             <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
+
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px; margin-left: 3px" width="32px">
+
                                 <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
                                     <?php echo $row->name; ?>
                                 </p>
@@ -312,6 +318,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row->linkProfile; ?>">
                                             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -320,6 +327,7 @@ try {
                                                 <?php echo $row->name; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
@@ -379,6 +387,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row['profile_link']; ?>">
                                             <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -387,6 +396,7 @@ try {
                                                 <?php echo $row['first_name']; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
@@ -422,6 +432,10 @@ try {
         </nav>
 
     </div>
+
+
+    <!-- JS JQuery ⬇️ -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
     <!-- JS Bootstrap ⬇️ -->

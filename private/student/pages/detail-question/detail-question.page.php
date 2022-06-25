@@ -419,16 +419,28 @@ try {
 
                         </div>
 
-                        <a class="question-give-heelp-a pedir-heelp-button-a" href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
-                            <div class="question-toAnswer question-footer-div">
+                        <div class="<?php echo $styleDelete; ?>">
+                            <a class="question-give-heelp-a pedir-heelp-button-a" href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
+                                <div class="question-toAnswer question-footer-div">
 
-                                <p class="normal-14-bold-p question-p white-text">Dar um help</p>
-                                <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
-                                <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
-                                <p class="normal-14-bold-p question-p yellow-text"> <?php echo $listDetailsQuestions->xp; ?> xp </p>
+                                    <p class="normal-14-bold-p question-p white-text">Dar um help</p>
+                        
+                                </div>
+                            </a>
+                        </div>
 
-                            </div>
-                        </a>
+                        <div class="<?php echo $styleDenunciationQuestion; ?>">
+                            <a class="question-give-heelp-a pedir-heelp-button-a" href="../answer-question/answer-question.page.php?idQuestion=<?php echo $listDetailsQuestions->id; ?>">
+                                <div class="question-toAnswer question-footer-div">
+
+                                    <p class="normal-14-bold-p question-p white-text">Dar um help</p>
+                                    <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
+                                    <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
+                                    <p class="normal-14-bold-p question-p yellow-text"> <?php echo $listDetailsQuestions->xp; ?> xp </p>
+
+                                </div>
+                            </a>
+                        </div>
 
                     </div>
                 </div>

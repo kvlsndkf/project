@@ -19,7 +19,6 @@ try {
     $studentPerfil = $student->getDataStudentByID($idStudent);
     $idUserPerfil = $student->getUserByStudentID($studentPerfil->id);
     $studentAnswer = $student->listAnswersByStudent($idStudent);
-    // echo json_encode($studentAnswer);
     $studentQuestion = $student->listQuestionsByStudent($idStudent);
     $studentMaterial = $student->listMaterialsByStudent($idStudent);
     $studentPreference = $student->listPreferencesStudent($idStudent);
@@ -29,7 +28,8 @@ try {
 
     $ranking = new Ranking();
     $colocationTotal = $ranking->colocationTotal();
-    $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+    $positionRankingAll = $ranking->colocationTotalAll($studentLogged[0]['id']);
+
 
     $colocationFollowers = $ranking->colocationFllowers($idUser);
     $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
@@ -123,9 +123,11 @@ try {
                         $row = $listPreferences[$i] ?>
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+
                             <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px; margin-left: 3px;" width="32px">
                                 <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
+
                                     <?php echo $row->name; ?>
                                 </p>
                             </div>
@@ -725,17 +727,21 @@ try {
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
                         <li class="nav-item ranking-li" role="presentation">
+
                             <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
                         </li>
                         <li class="nav-item ranking-li" role="presentation">
                             <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>
+
                         </li>
                     </ul>
                     <!-- Tabs navs -->
 
                     <!-- Tabs content -->
                     <div class="tab-content" id="ex2-content">
-                        <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+
+                        <div class="tab-pane fade show active" id="ex2-tabs-9" role="tabpanel" aria-labelledby="ex2-tab-9">
+
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -784,6 +790,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row->linkProfile; ?>">
                                             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -792,6 +799,7 @@ try {
                                                 <?php echo $row->name; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
@@ -801,6 +809,7 @@ try {
 
                         </div>
                         <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -851,6 +860,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row['profile_link']; ?>">
                                             <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -859,6 +869,7 @@ try {
                                                 <?php echo $row['first_name']; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>

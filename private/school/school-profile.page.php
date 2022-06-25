@@ -309,12 +309,13 @@ try {
                                         </p>
 
                                         <p class="normal-12-medium-tiny" style="color: var(--gray5); word-wrap: break-word; word-break: break-all; max-width: 35vw;">
+
                                             <?php
                                             foreach ($row->courses as $value) {
                                                 echo $value . " • ";
                                             }
                                             ?>
-                                        </p>
+                                        </p> -->
                                     </div>
 
                                 </div>

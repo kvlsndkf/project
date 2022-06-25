@@ -217,16 +217,16 @@ class Student extends User
         try {
             //Server settings
             $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
+            $mail->Host       = 'smtp.mailtrap.io';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'heelp.suporte@gmail.com';
-            $mail->Password   = 'help.sUporte@2022';
+            $mail->Username   = 'f2483f99099d1d';
+            $mail->Password   = '63a5067f2d0612';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
+            $mail->Port       = 2525;
             $mail->CharSet    = 'UTF-8';
 
             //Recipients
-            $mail->setFrom('heelp.suporte@gmail.com', 'Heelp!');
+            $mail->setFrom('heelp.suporte@help.com.br', 'Heelp!');
             $mail->addAddress($email, $name);
 
             //Content

@@ -27,7 +27,7 @@ try {
 
     $ranking = new Ranking();
     $colocationTotal = $ranking->colocationTotal();
-    $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+    $positionRankingAll = $ranking->colocationTotalAll($studentLogged[0]['id']);
 
     $colocationFollowers = $ranking->colocationFllowers($idUser);
     $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
@@ -126,7 +126,9 @@ try {
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
                             <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
+
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px; margin-left: 3px;" width="32px">
+
                                 <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
                                     <?php echo $row->name; ?>
                                 </p>
@@ -337,20 +339,26 @@ try {
                                 <div class="<?php echo $displayProfileStudent; ?>">
 
                                     <div class="my-question-info">
-                                        <div class="img-container">
-                                            <img style="width: 75px; height: 75px; object-fit: cover; border-radius: 50px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
-                                        </div>
+                                        <a href="<?php echo $row->linkStudent; ?>">
+                                            <div class="img-container">
+                                                <img style="width: 75px; height: 75px; object-fit: cover; border-radius: 50px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->photoStudent; ?>" alt="<?php echo $row->firstName; ?>">
+                                            </div>
+                                        </a>
                                         <div class="q-i-t">
                                             <div class="question-info-text">
-                                                <div class="question-name question-about-a normal-14-medium-p">
-                                                    <?php echo $row->firstName; ?> <?php echo $row->surname; ?>
-                                                </div>
 
-                                                <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
-                                                    <?php echo $row->module; ?> •
-                                                    <?php echo $row->course; ?> •
-                                                    <?php echo $row->school; ?>
-                                                </div>
+                                                <a href="<?php echo $row->linkStudent; ?>">
+                                                    <div class="question-name question-about-a normal-14-medium-p">
+                                                        <?php echo $row->firstName; ?> <?php echo $row->surname; ?>
+                                                    </div>
+
+                                                    <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
+                                                        <?php echo $row->module; ?> •
+                                                        <?php echo $row->course; ?> •
+                                                        <?php echo $row->school; ?>
+                                                    </div>
+                                                </a>
+
                                             </div>
                                             <div class="d-flex justify-content-end">
                                                 <a href="<?php echo $row->linkStudent; ?>" target="_blank">
@@ -373,18 +381,22 @@ try {
 
                                     <div class="my-question-info">
 
-                                        <div>
-                                            <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
-                                        </div>
+                                        <a href="<?php echo $row->schoolLink; ?>">
+                                            <div>
+                                                <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 50px; margin-right: 8px; margin-top: 25px; margin-bottom: 25px;" src="<?php echo $row->schoolPhoto; ?>" alt="<?php echo $row->schoolName; ?>" width="100">
+                                            </div>
+                                        </a>
                                         <div class="q-i-t">
                                             <div class="question-info-text">
-                                                <div class="question-name question-about-a normal-14-medium-p">
-                                                    <?php echo $row->schoolName; ?>
-                                                </div>
+                                                <a href="<?php echo $row->schoolLink; ?>">
+                                                    <div class="question-name question-about-a normal-14-medium-p">
+                                                        <?php echo $row->schoolName; ?>
+                                                    </div>
 
-                                                <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
-                                                    <?php echo $row->address; ?>, São Paulo
-                                                </div>
+                                                    <div class="question-about normal-12-medium-tiny" style="margin-top: 4px;">
+                                                        <?php echo $row->address; ?>, São Paulo
+                                                    </div>
+                                                </a>
                                             </div>
                                             <div class=" d-flex justify-content-end">
                                                 <a href="<?php echo $row->schoolLink; ?>" target="_blank">
@@ -508,17 +520,21 @@ try {
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
                         <li class="nav-item ranking-li" role="presentation">
+
                             <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-11" data-mdb-toggle="tab" href="#ex2-tabs-11" role="tab" aria-controls="ex2-tabs-11" aria-selected="true">Todos</a>
                         </li>
                         <li class="nav-item ranking-li" role="presentation">
                             <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-12" data-mdb-toggle="tab" href="#ex2-tabs-12" role="tab" aria-controls="ex2-tabs-12" aria-selected="false">Seguindo</a>
+
                         </li>
                     </ul>
                     <!-- Tabs navs -->
 
                     <!-- Tabs content -->
                     <div class="tab-content" id="ex2-content">
+
                         <div class="tab-pane fade show active" id="ex2-tabs-11" role="tabpanel" aria-labelledby="ex2-tab-11">
+
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -567,6 +583,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row->linkProfile; ?>">
                                             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -575,6 +592,7 @@ try {
                                                 <?php echo $row->name; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
@@ -584,6 +602,7 @@ try {
 
                         </div>
                         <div class="tab-pane fade" id="ex2-tabs-12" role="tabpanel" aria-labelledby="ex2-tab-12">
+
 
                             <div class="ranking-position">
                                 <img src="../../../../views/images/components/trophy-primary.svg" alt="">
@@ -634,6 +653,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row['profile_link']; ?>">
                                             <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -642,6 +662,7 @@ try {
                                                 <?php echo $row['first_name']; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>

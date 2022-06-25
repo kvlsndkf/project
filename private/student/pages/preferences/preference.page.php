@@ -14,14 +14,19 @@ try {
     $listPreference = $preference->listPrefereces($preferenceID);
     $detailsPreference = $preference->getNamePreference($preferenceID);
 
+    $listPreferences = $preference->getPreferencesUser($idUser);
+
+
     $question = new Question();
 
     $student = new StudentMethods();
     $studentId = $student->getStudentByUserID($idUser);
     $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
+
     $studentId = $student->getStudentByUserID($idUser);
 
     $listPreferences = Preference::getPreferencesUser($idUser);
+
 
     $ranking = new Ranking();
     $colocationTotal = $ranking->colocationTotal();
@@ -116,7 +121,9 @@ try {
 
                         <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
                             <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
+
                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px; margin-left: 3px;" width="32px">
+
                                 <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
                                     <?php echo $row->name; ?>
                                 </p>
@@ -438,16 +445,28 @@ try {
                                     </p>
                                 </div>
 
-                                <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
-                                    <div class="question-toAnswer question-footer-div">
+                                <div class="<?php echo $styleDeleteQuestion; ?>">
+                                    <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                                        <div class="question-toAnswer question-footer-div">
 
-                                        <p class="normal-14-bold-p question-p white-text">Dar um help</p>
-                                        <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
-                                        <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
-                                        <p class="normal-14-bold-p question-p yellow-text"> <?php echo $row->xp; ?> xp </p>
+                                            <p class="normal-14-bold-p question-p white-text">Ver</p>
 
-                                    </div>
-                                </a>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="<?php echo $styleDenunciationQuestion; ?>">
+                                    <a class="question-give-heelp-a pedir-heelp-button-a" href="../detail-question/detail-question.page.php?idQuestion=<?php echo $row->id; ?>">
+                                        <div class="question-toAnswer question-footer-div">
+
+                                            <p class="normal-14-bold-p question-p white-text">Ver</p>
+                                            <img src="../../../../views/images/components/upper-line.svg" class="upper-line">
+                                            <img src="../../../../views/images/components/star-icon.svg" class="xp-star">
+                                            <p class="normal-14-bold-p question-p yellow-text"> <?php echo $row->xp; ?> xp </p>
+
+                                        </div>
+                                    </a>
+                                </div>
 
                             </div>
                         </div>
@@ -542,6 +561,7 @@ try {
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
+
                 <div>
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
@@ -605,6 +625,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row->linkProfile; ?>">
                                             <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -613,6 +634,7 @@ try {
                                                 <?php echo $row->name; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
@@ -672,6 +694,7 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
+
                                         <a href="<?php echo $row['profile_link']; ?>">
                                             <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
                                         </a>
@@ -680,6 +703,7 @@ try {
                                                 <?php echo $row['first_name']; ?>
                                             </p>
                                         </a>
+
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
