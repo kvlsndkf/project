@@ -2,6 +2,7 @@
     width: 100%;
 }
 
+/* Select do Primeiro Accordion (Dados principaos) */
 .select2-container--default .select2-selection--single .select2-selection__rendered{
     outline: none;
     background-color: var(--gray2);
@@ -13,17 +14,19 @@
     /* padding: 0.8em; */
     /* margin-bottom: 10em; */
     /* border: solid 1px var(--gray1) !important; */
+    line-height: 26px;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow{
     background-color: var(--gray2);
 }
 
-
+/* Opções do Select */
 .select2-container--default .select2-results__option .select2-results__option{
     color: var(--white);
-    background-color: var(--gray2);
+    background-color: var(--gray1);
 }
+
 
 .select2-container--default .select2-results__group{
     color: var(--gray7);
@@ -38,7 +41,6 @@
     background-color: var(--gray2);
 
 }
-
 .select2-container .select2-selection--single .select2-selection__clear{
     background-color: var(--gray2);
 }
@@ -46,10 +48,11 @@
 .select2-container--default .select2-search--dropdown .select2-search__field{
     border: solid 1px var(--gray1) !important;
     background-color: var(--gray2);
+    outline: transparent;
 }
 
 .select2-dropdown{
-    border: 1px solid var(--gray1) !important;
+    border: none !important;
     background-color: var(--gray2) !important;
 }
 
@@ -60,91 +63,46 @@
 .select2-container{
     width: 100% !important;
 }
-
 .select2-container--default .select2-selection--single{
     background-color: unset;
     border: 1px solid var(--gray1) !important;
     border-radius: 4px;
+
+   
 }
 
-.select2-container--default .select2-search--dropdown .select2-search__field:focus{
-    border: solid 1px var(--blue-sky);
-    outline: none;
+.select2-container--open .select2-dropdown--above{
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
 }
+ /* Fim do select do accordion */
 
+
+ /* Ajuste da foto */
 .profile-header-left-u{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-input[type="file"]{
-    display: none;
+
+/* Nome Geral das caixas dentro dos accordions */
+.nameGeral{
+    margin-bottom: 0.6em;
 }
 
-.input-file1,
-.input-file{
-    text-align: center;
-    background-color: #B376D4;
-    padding: 0.6em;
+
+/* Input focus geral */
+input:focus{
+    border: solid 1px var(--blue-sky);
     outline: none;
-    border-radius: 10px;
-    padding-left: 7em;
-    padding-right: 7em;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    width: 100%;
-    color: var(--white);
-    cursor: pointer;
-    margin-top: 2em;
-    
 }
 
-.input-file1:hover{
-    filter: brightness(1.2);
-    cursor: pointer;
-}
 
-.input2{
-    display: flex;
-    width: 100%;
-    
-}
+/* Primeiro Accordion */
 
-/* .input-file1{
-
-
-} */
-
-.dadosP{
-    color: var(--white);
-    margin-top: 2em;
-    padding-left: 0.5em;
-}
-
-.border-bottom {
-    margin-top: 2em;
-    border-bottom: 0.1em solid var(--gray3) !important;
-}
-
-.nameA,
-.sobrenomeA{
-    color: var(--white); 
-}
-
-.sobrenomeA{
-    margin-bottom: 1em;
-}
-
-.nameA{
-    margin-top: 3em;
-}
-
-.moduloA{
-    color: var(--gray7);
-}
-
+/* Inputs do primeiro Accordion: Dados principais */
 .input-name,
 .input-sobrenome{
     outline: none;
@@ -167,11 +125,27 @@ input[type="file"]{
     margin-bottom: 2em;
 }
 
-input:focus{
-    border: solid 1px var(--blue-sky);
-    outline: none;
+/* Dados do primeiro accordion */
+.nameA,
+.sobrenomeA{
+    color: var(--white); 
 }
 
+.sobrenomeA{
+    margin-bottom: 1em;
+}
+
+.nameA{
+    margin-top: 2em;
+}
+
+.moduloA{
+    color: var(--gray7);
+}
+
+/* Fim do primeiro accordion */
+
+/* Input dos accordions: Link e Senha */
 .input-Geral{
     width: 100%;
     border-radius: 3px;
@@ -190,11 +164,92 @@ input:focus{
     line-height: var(--lh-tiny);
 }
 
-.nameGeral{
-    margin-bottom: 0.6em;
+/* Botão de atualizar foto */
+
+input[type="file"]{
+    display: none;
+}
+.input-file1,
+.input-file{
+    background-color: #B376D4;
+    padding: 0.6em;
+    outline: none;
+    width: 50%;
+    border-radius: 10px;
+    color: var(--white);
+    cursor: pointer;
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} 
+
+.input-file1:hover{
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+.margin-botao-foto{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 
+
+.dadosP{
+    color: var(--white);
+    margin-top: 2em;
+    padding-left: 0.5em;
+}
+
+.border-bottom {
+    margin-top: 1.5em;
+    border-bottom: 0.1em solid var(--gray3) !important;
+
+}
+
+/* Botões Inferiores */
+
+.posicao-Botao{
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+}
+.botao-Atualizar,
+.botao-cancelar{
+    margin-top: 4em;
+    text-align: center;
+    border: none;
+    padding-right:15% ;
+    padding-left: 15%;
+    width: 45%;
+    height: 35px;
+    border-radius: 8px;
+   
+}
+
+.botao-Atualizar:hover,
+.botao-cancelar:hover{
+    filter: brightness(1.4);
+    cursor: pointer;
+}
+
+.botao-cancelar{
+    background-color: var(--white);
+}
+.botao-Atualizar{
+    background-color: #8080FF;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+}
+
+/* Fim dos Botões */
+
+/* Accordions Gerais*/
 .accordion-flush .accordion-item .accordion-button{
     margin-top: 1.7em;
     
@@ -226,76 +281,26 @@ input:focus{
     box-shadow: var(--gray2) !important;
 }
 
-
-
 .accordion-item:last-of-type .accordion-button.collapsed {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
-
-
-.container-update-foto{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.botao-Atualizar,
-.botao-cancelar{
-    margin-top: 4em;
-    text-align: center;
-    border: none;
-    padding-right:15% ;
-    padding-left: 15%;
-    width: 45%;
-    height: 35px;
-    border-radius: 8px;
-   
-}
-
-.botao-Atualizar:hover,
-.botao-cancelar:hover{
-    filter: brightness(1.4);
-    cursor: pointer;
-}
-
-.botao-cancelar{
-    background-color: var(--white);
-}
-.botao-Atualizar{
-    background-color: #8080FF;
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-}
-
-.posicao-Botao{
-    justify-content: space-between;
-    width: 100%;
-    display: flex;
-}
-
-
-.accordion-item:first-of-type{
-    background-color: var(--bg-modal) !important;
-    border: 0 !important;
-}
-
-.accordion-button:not(.collapsed),
-.accordion-item:first-of-type .accordion-button{
-    background-color: var(--bg-modal) !important;
-    box-shadow:var(--bg-modal) !important ;
-
+.accordion-button:not(.collapsed){
+    box-shadow: none;
 }
 
 .accordion-button:not(.collapsed)::after{
     background-image: url("../../views/images/components/seta-accordion.svg")
+
 }
 
 .accordion-button::after{
     background-image: url("../../views/images/components/seta-accordion.svg")
 
 }
+
+/* Fim dos accordions    */
+
 
 @media(max-width: 925px){
     .feed-div{
@@ -349,8 +354,8 @@ input:focus{
     }
     .input-file1,
     .input-file{
+        padding: 0;
         padding-left: 5em;
         padding-right: 5em;
     }
 }
-

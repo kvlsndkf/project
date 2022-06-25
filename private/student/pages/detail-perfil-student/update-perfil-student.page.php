@@ -159,7 +159,7 @@ try {
 
                             </div>
                             <div class="container container-update-foto">
-                                <p>
+                                <p class="margin-botao-foto">
                                     <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
                                     <input type="file" name="updatePhoto" id="file" onchange="previewImage(this)">
                                     <label class="input-file1  normal-14-bold-p" for="file">Atualizar foto</label>
@@ -288,10 +288,12 @@ try {
     <nav class="feed-leftbar feed-rightbar">
         <ul class="rightbar-ul">
 
-            <hr class="sidebar-linha leftbar-linha">
+            
             <li class="rightbar-li">
                 <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
             </li>
+
+            <hr class="sidebar-linha leftbar-linha">
         </ul>
         <p class="whitney-12-regular-tiny copyright-text">
             Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
