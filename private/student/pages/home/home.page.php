@@ -586,10 +586,14 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
-                                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
-                                            <?php echo $row->name; ?>
-                                        </p>
+                                        <a href="<?php echo $row->linkProfile; ?>">
+                                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        </a>
+                                        <a href="<?php echo $row->linkProfile; ?>">
+                                            <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
+                                                <?php echo $row->name; ?>
+                                            </p>
+                                        </a>
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
@@ -649,10 +653,14 @@ try {
                                         <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
                                             <?php echo $number; ?>
                                         </div>
-                                        <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
-                                        <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
-                                            <?php echo $row['first_name']; ?>
-                                        </p>
+                                        <a href="<?php echo $row['profile_link']; ?>">
+                                            <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        </a>
+                                        <a href="<?php echo $row['profile_link']; ?>">
+                                            <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
+                                                <?php echo $row['first_name']; ?>
+                                            </p>
+                                        </a>
                                     </div>
 
                                     <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
