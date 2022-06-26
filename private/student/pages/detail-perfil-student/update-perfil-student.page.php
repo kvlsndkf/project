@@ -3,7 +3,9 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-student.c
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Module.class.php');
 
+
 try {
+    $idUser = $_SESSION['idUser'];
     $idStudent = $_GET['idStudentLogged'];
 
     $student = new StudentMethods();
@@ -68,7 +70,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
