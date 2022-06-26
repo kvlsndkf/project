@@ -152,7 +152,7 @@
 }
 
 .dash-cards {
-    min-width: 244px;
+    min-width: 304px;
     min-height: 104px;
     border-radius: 10px;
     display: flex;
@@ -262,7 +262,7 @@
 
 @media screen and (min-width: 1200px) {
     .dash-cards {
-        max-width: 244px;
+        max-width: 304px;
         max-height: 104px;
     }
 }
