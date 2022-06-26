@@ -281,7 +281,7 @@ try {
                                 <p class="my-p normal-14-medium-p bg-modal-text">
                                     Feito por
                                 </p>
-                                <p class="prof-text school-name normal-14-bold-p text-truncate">
+                                <p class="proof-text school-name normal-14-bold-p text-truncate">
                                     <?php echo $row->creator; ?>
                                     <?php echo $row->surnameCreator; ?>
                                 </p>
@@ -289,7 +289,7 @@ try {
                                 <p class="my-p normal-14-medium-p bg-modal-text">
                                     Denunciado
                                 </p>
-                                <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                <p class="proof-text school-name normal-14-bold-p text-truncate">
                                     <?php echo $row->denounced; ?>
                                     <?php echo $row->surnameDenounced; ?>
                                 </p>
@@ -380,14 +380,14 @@ try {
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Feito por
                                             </p>
-                                            <p class="prof-text school-name normal-14-bold-p text-truncate">
+                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
                                                 <?php echo $row->creator; ?>
                                             </p>
 
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Denunciado
                                             </p>
-                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
                                                 <?php echo $row->denounced; ?>
                                             </p>
 
@@ -452,14 +452,14 @@ try {
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Feito por
                                             </p>
-                                            <p class="prof-text school-name normal-14-bold-p text-truncate">
+                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
                                                 <?php echo $row->creator; ?>
                                             </p>
 
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Denunciado
                                             </p>
-                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
                                                 <?php echo $row->denounced; ?>
                                             </p>
 
@@ -571,13 +571,13 @@ try {
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Feito por
                                             </p>
-                                            <p class="prof-text school-name normal-14-bold-p text-truncate">
+                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
                                                 <?php echo $row->creator; ?>
                                             </p>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Denunciado
                                             </p>
-                                            <p class="my-p-bold normal-14-bold-p bg-list-text">
+                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
                                                 <?php echo $row->denounced; ?>
                                             </p>
 

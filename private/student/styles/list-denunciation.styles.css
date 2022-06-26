@@ -16,3 +16,20 @@
         padding-top: 30px;
     }
 }
+
+@media (max-width: 350px) {
+    .proof-text {
+        margin-bottom: 2px;
+        color: var(--bg-modal);
+        width: 200px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+}
+.proof-text {
+    margin-bottom: 2px;
+    color: var(--bg-modal);
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+}
