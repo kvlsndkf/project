@@ -465,4 +465,22 @@ class StudentMethods
 
         return $student;
     }
+
+    public function getCourseByStudentId($studentID)
+    {
+        $connection = Connection::connection();
+
+        try {
+            $stmt = $connection->prepare("SELECT course_id FROM students
+
+                                            WHERE id = $studentID
+                                        ");
+
+            $stmt->execute();
+            
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }
