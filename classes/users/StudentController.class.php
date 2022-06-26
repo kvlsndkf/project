@@ -31,14 +31,23 @@ class StudentController
         $this->resultBuildListBlockedStudents = $resultBuildListBlockedStudents;
     }
     //----------------------------
+    public function getResultBuildSearchList()
+    {
+        return $this->resultBuildSearchList;
+    }
+    public function setResultBuildSearchList($resultBuildSearchList)
+    {
+        $this->resultBuildSearchList = $resultBuildSearchList;
+    }
+    //----------------------------
     //methods
     public function ListActiveStudents()
     {
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT stu.id, stu.user_id, stu.first_name, stu.surname, usr.photo, usr.type_user, 
-                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.created_at, 
+            $stmt = $connection->prepare("SELECT stu.id, stu.user_id, stu.first_name, stu.surname, usr.photo, usr.type_user, usr.created_at,
+                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.blocked_at, 
                                             usr.is_blocked FROM students stu
 
                                         INNER JOIN users usr
@@ -100,7 +109,7 @@ class StudentController
         $student->school = $row['school'];
         $student->isBlocked = $row['is_blocked'];
         $student->created = $row['created_at'] ?? '';
-        $student->blocked = $row['updated_at'] ?? '';
+        $student->blocked = $row['blocked_at'] ?? '';
         $student->reason = $row['blocking_reason'] ?? '';
 
         return $student;
@@ -112,7 +121,7 @@ class StudentController
 
         try {
             $stmt = $connection->prepare("SELECT stu.id, stu.user_id, stu.first_name, stu.surname, usr.photo, usr.type_user, 
-                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.updated_at, 
+                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.blocked_at, usr.created_at,
                                             usr.is_blocked, usr.blocking_reason FROM students stu
 
                                         INNER JOIN users usr
@@ -151,7 +160,7 @@ class StudentController
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("UPDATE users SET blocking_reason = ?, is_blocked = ?, updated_at = NOW()
+            $stmt = $connection->prepare("UPDATE users SET blocking_reason = ?, is_blocked = ?, blocked_at = NOW()
 
                                          WHERE id = $userID
                                          ");
@@ -174,13 +183,14 @@ class StudentController
 
 
         try {
-            $stmt = $connection->prepare("UPDATE users SET blocking_reason = ?, is_blocked = ?, updated_at = NOW()
+            $stmt = $connection->prepare("UPDATE users SET blocking_reason = ?, is_blocked = ?, blocked_at = ?
 
                                          WHERE id = $userID
                                          ");
 
             $stmt->bindValue(1, "");
             $stmt->bindValue(2, false);
+            $stmt->bindValue(3, null);
 
             $stmt->execute();
 
@@ -207,7 +217,6 @@ class StudentController
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-
     }
 
     private function buildSearchList($result)
@@ -219,7 +228,7 @@ class StudentController
 
             $student = new StudentController();
             $student->name = $row['name'];
-           
+
 
             array_push($students, $student);
         }
@@ -233,7 +242,7 @@ class StudentController
 
         try {
             $stmt = $connection->prepare("SELECT stu.id, stu.user_id, stu.first_name, stu.surname, usr.photo, usr.type_user, 
-                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.updated_at, 
+                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.blocked_at, usr.created_at,
                                             usr.is_blocked, usr.blocking_reason FROM students stu
 
                                         INNER JOIN users usr
@@ -246,16 +255,30 @@ class StudentController
                                         ON stu.id = ss.student_id
                                         INNER JOIN schools school
                                         ON ss.school_id = school.id
-                                        WHERE (stu.first_name = '$search' OR stu.surname = '$search')
+                                        WHERE (CONCAT(stu.first_name, ' ', stu.surname) LIKE '%$search%')
                                     ");
 
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // $this->setResultBuildListBlockedStudents($result);
+            $lines = $stmt->rowCount();
+
+            if ($lines == 00) {
+                $_SESSION['statusNegative'] = "Não existem registros.";
+            }
+
+            $this->setResultBuildSearchList($result);
             return $this->buildStudentList($result);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function countSearchList()
+    {
+        $resultBuildList = $this->getResultBuildSearchList();
+
+        $totalSearch = count($resultBuildList);
+        return "Resultado da pesquisa (" . $totalSearch . ")";
     }
 }

@@ -14,6 +14,7 @@ try {
 
     $countActiveStudents = $student->countActiveStudents();
     $countBlockedStudents = $student->countBlockedStudents();
+    $countSearchList = $student->countSearchList();
 
     $listProfilesOfSearch = $student->listSearchBarProfiles();
 
@@ -76,184 +77,361 @@ try {
     <?php unset($_SESSION['statusPositive']);
     } ?>
 
+    <!-- Mensagem de erro ⬇️ -->
+    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+        </svg>
+
+        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <strong>Ops...</strong>
+                <?php echo $_SESSION['statusNegative']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php unset($_SESSION['statusNegative']);
+    } ?>
+
     <!-- Barra de pesquisa ⬇️ -->
     <form action="./list-profiles.page.php" method="GET">
         <input type="text" name="searchProfile" id="searchProfile" placeholder="Pesquise por perfis" autocomplete="off">
         <input type="submit" value="pesquisar">
     </form>
 
-    
+    <?php
+    if (empty($search)) {
+        $displaySearch = 'd-none';
+        $displayList = '';
+    } else {
+        $displaySearch = '';
+        $displayList = 'd-none';
+    }
+    ?>
 
-    <!-- Tabs navs -->
-    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Ativos</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link " id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Bloqueados</a>
-        </li>
-    </ul>
+    <div class="<?php echo $displaySearch; ?>">
 
-    <!-- Tabs navs -->
+        <!-- Contador da pesquisa -->
+        <p>
+            <?php echo  $countSearchList ?>
+        </p>
 
-    <!-- Tabs content -->
-    <div class="tab-content" id="ex1-content">
-        <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-            <div id="message-new-list">
+        <!-- Lista da pesquisa -->
+        <?php for ($i = 0; $i < count($listSearch); $i++) {
+            $row = $listSearch[$i] ?>
 
-                <!-- Contador de usuários ativos -->
-                <p>
-                    <?php echo  $countActiveStudents ?>
-                </p>
+            <?php $styleActive = $row->isBlocked == false ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+            <span class="<?php echo $styleActive; ?>">Ativo</span>
 
-                <!-- Usuários ativos -->
-                <?php for ($i = 0; $i < count($listActiveStudents); $i++) {
-                    $row = $listActiveStudents[$i] ?>
+            <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+            <span class="<?php echo $styleActive; ?>">Aluno</span>
 
-                    <?php $styleActive = $row->isBlocked == false ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
-                    <span class="<?php echo $styleActive; ?>">Ativo</span>
+            <?php $styleActive = $row->isBlocked != false ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+            <span class="<?php echo $styleActive; ?>">Bloqueado</span>
 
-                    <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
-                    <span class="<?php echo $styleActive; ?>">Aluno</span>
+            <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+            <span class="<?php echo $styleActive; ?>">Aluno</span>
 
-                    <div>
-                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
-                        <div>
-                            <?php echo $row->firstName; ?>
-                            <?php echo $row->surname; ?>
-                        </div>
+            <div>
+                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
+                <div>
+                    <?php echo $row->firstName; ?>
+                    <?php echo $row->surname; ?>
+                </div>
 
-                        <div>
-                            <?php echo $row->module; ?> •
-                            <?php echo $row->course; ?> •
-                            <?php echo $row->school; ?>
-                        </div>
-                    </div>
+                <div>
+                    <?php echo $row->module; ?> •
+                    <?php echo $row->course; ?> •
+                    <?php echo $row->school; ?>
+                </div>
+            </div>
 
-                    <div>
-                        <label for="">Entrou em</label>
-                        <?php echo $row->created; ?>
-                    </div>
+            <?php
+            if (empty($row->blocked)) {
+                $displayBlocked = 'd-none';
+                $displayCreated = '';
+            } else {
+                $displayBlocked = '';
+                $displayCreated = 'd-none';
+            }
+            ?>
 
-                    <div>
-                        <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
-                    </div>
+            <div class="<?php echo $displayCreated; ?>">
+                <div>
+                    <label for="">Entrou em</label>
+                    <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                </div>
 
-                    <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->userID; ?>">Bloquear usuário</button>
+                <div>
+                    <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
+                </div>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="modal-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="./controller/block-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
-                                        <div>
-                                            <p>
-                                                Motivo
-                                            </p>
+                <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->userID; ?>">Bloquear usuário</button>
 
-                                            <div id="contentTextArea">
-                                                <textarea name="reason" id="about" cols="30" rows="10" placeholder="Faça uma breve descrição sobre o bloqueio" required onclick="colorDiv()"></textarea>
-                                                <div><span id="counterTextArea">250</span></div>
-                                            </div>
+                <!-- Modal -->
+                <div class="modal fade" id="modal-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="./controller/block-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
+                                    <div>
+                                        <p>
+                                            Motivo
+                                        </p>
+
+                                        <div id="contentTextArea">
+                                            <textarea name="reason" id="about" cols="30" rows="10" placeholder="Faça uma breve descrição sobre o bloqueio" required onclick="colorDiv()"></textarea>
+                                            <div><span id="counterTextArea">250</span></div>
                                         </div>
+                                    </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" name="block" class="btn btn-primary">Bloquear usuário</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" name="block" class="btn btn-primary">Bloquear usuário</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-
-                    <hr>
-                <?php } ?>
-
+                </div>
             </div>
-        </div>
 
-        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-            <div id="message-read-list">
+            <div class="<?php echo $displayBlocked; ?>">
+                <div>
+                    <label for="">Entrou em</label>
+                    <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                </div>
 
-                <!-- Contador de usuários bloqueados -->
-                <p>
-                    <?php echo  $countBlockedStudents ?>
-                </p>
+                <div>
+                    <label for="">Bloqueado em</label>
+                    <span data-date-value=" <?php echo $row->blocked; ?>"> <?php echo $row->blocked; ?></span>
+                </div>
 
-                <!-- Usuários bloqueados -->
-                <?php for ($i = 0; $i < count($listBlockedStudents); $i++) {
-                    $row = $listBlockedStudents[$i] ?>
+                <div>
+                    <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
+                </div>
 
-                    <?php $styleActive = $row->isBlocked != false ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
-                    <span class="<?php echo $styleActive; ?>">Bloqueado</span>
+                <div>
+                    Motivo
+                    <?php echo $row->reason; ?>
+                </div>
 
-                    <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
-                    <span class="<?php echo $styleActive; ?>">Aluno</span>
+                <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->studentID; ?>">Desbloquear usuário</button>
 
-                    <div>
-                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
-                        <div>
-                            <?php echo $row->firstName; ?>
-                            <?php echo $row->surname; ?>
-                        </div>
-
-                        <div>
-                            <?php echo $row->module; ?> •
-                            <?php echo $row->course; ?> •
-                            <?php echo $row->school; ?>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="">Bloqueado em</label>
-                        <?php echo $row->blocked; ?>
-                    </div>
-
-                    <div>
-                        <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
-                    </div>
-
-                    <div>
-                        Motivo
-                        <?php echo $row->reason; ?>
-                    </div>
-
-                    <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->userID; ?>">Desbloquear usuário</button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="modal-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Tem certeza de que deseja desbloquear este usuário?
-                                    <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
-                                        </div>
-                                    </form>
-                                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="modal-<?php echo $row->studentID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->studentID; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->studentID; ?>">Desbloquear usuário</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza de que deseja desbloquear este usuário?
+                                <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-
-                    <hr>
-                <?php } ?>
-
+                </div>
             </div>
-        </div>
+
+            <hr>
+        <?php } ?>
+
     </div>
-    <!-- Tabs content -->
+
+    <div class="<?php echo $displayList; ?>">
+        <!-- Tabs navs -->
+        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Ativos</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link " id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">Bloqueados</a>
+            </li>
+        </ul>
+
+        <!-- Tabs navs -->
+
+        <!-- Tabs content -->
+        <div class="tab-content" id="ex1-content">
+            <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                <div id="message-new-list">
+
+                    <!-- Contador de usuários ativos -->
+                    <p>
+                        <?php echo  $countActiveStudents ?>
+                    </p>
+
+                    <!-- Usuários ativos -->
+                    <?php for ($i = 0; $i < count($listActiveStudents); $i++) {
+                        $row = $listActiveStudents[$i] ?>
+
+                        <?php $styleActive = $row->isBlocked == false ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+                        <span class="<?php echo $styleActive; ?>">Ativo</span>
+
+                        <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+                        <span class="<?php echo $styleActive; ?>">Aluno</span>
+
+                        <div>
+                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
+                            <div>
+                                <?php echo $row->firstName; ?>
+                                <?php echo $row->surname; ?>
+                            </div>
+
+                            <div>
+                                <?php echo $row->module; ?> •
+                                <?php echo $row->course; ?> •
+                                <?php echo $row->school; ?>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="">Entrou em</label>
+                            <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                        </div>
+
+                        <div>
+                            <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
+                        </div>
+
+                        <button data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">Bloquear usuário</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="./controller/block-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
+                                            <div>
+                                                <p>
+                                                    Motivo
+                                                </p>
+
+                                                <div id="contentTextArea">
+                                                    <textarea name="reason" id="about" cols="30" rows="10" placeholder="Faça uma breve descrição sobre o bloqueio" required onclick="colorDiv()"></textarea>
+                                                    <div><span id="counterTextArea">250</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" name="block" class="btn btn-primary">Bloquear usuário</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                    <?php } ?>
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                <div id="message-read-list">
+
+                    <!-- Contador de usuários bloqueados -->
+                    <p>
+                        <?php echo  $countBlockedStudents ?>
+                    </p>
+
+                    <!-- Usuários bloqueados -->
+                    <?php for ($i = 0; $i < count($listBlockedStudents); $i++) {
+                        $row = $listBlockedStudents[$i] ?>
+
+                        <?php $styleActive = $row->isBlocked != false ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+                        <span class="<?php echo $styleActive; ?>">Bloqueado</span>
+
+                        <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+                        <span class="<?php echo $styleActive; ?>">Aluno</span>
+
+                        <div>
+                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
+                            <div>
+                                <?php echo $row->firstName; ?>
+                                <?php echo $row->surname; ?>
+                            </div>
+
+                            <div>
+                                <?php echo $row->module; ?> •
+                                <?php echo $row->course; ?> •
+                                <?php echo $row->school; ?>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="">Entrou em</label>
+                            <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                        </div>
+
+                        <div>
+                            <label for="">Bloqueado em</label>
+                            <span data-date-value=" <?php echo $row->blocked; ?>"> <?php echo $row->blocked; ?></span>
+                        </div>
+
+                        <div>
+                            <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
+                        </div>
+
+                        <div>
+                            Motivo
+                            <?php echo $row->reason; ?>
+                        </div>
+
+                        <button data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">Desbloquear usuário</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Tem certeza de que deseja desbloquear este usuário?
+                                        <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                    <?php } ?>
+
+                </div>
+            </div>
+        </div>
+        <!-- Tabs content -->
+    </div>
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -275,6 +453,29 @@ try {
             maximumItems: 8,
             treshold: 1,
         });
+    </script>
+
+    <script>
+        (function() {
+            const span = document.querySelectorAll('[data-date-value]');
+
+            console.log(span);
+
+            span.forEach(dateElement => {
+                console.log(dateElement);
+                const date = new Date(dateElement.innerText);
+                if (date.toDateString() === "Invalid Date") {
+                    return;
+                }
+                const formated = new Intl.DateTimeFormat('pt-br', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }).format(date);
+
+                dateElement.innerText = formated;
+            });
+        }());
     </script>
 </body>
 
