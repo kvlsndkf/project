@@ -274,8 +274,7 @@ class Question
                                             ON category.id = quest.category_id
                                             INNER JOIN users usr
                                             ON stu.user_id = usr.id
-                                            INNER JOIN usershasfollowers uf
-                                            ON stu.user_id = uf.following_id
+                                            
                                             WHERE quest.student_id = $studentID
                                             AND quest.is_blocked NOT IN(1)
                                             ORDER BY quest.created_at DESC
