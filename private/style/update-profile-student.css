@@ -1,3 +1,8 @@
+body, html {
+    background: none !important;
+    background-color: #2F3136 !important;
+}
+
 .testechato{
     width: 100%;
 }
