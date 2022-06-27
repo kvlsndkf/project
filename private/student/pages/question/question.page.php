@@ -144,7 +144,9 @@ try {
                     <!-- Create the editor container -->
                     <div id="editor"></div>
                     <textarea name="textQuestion" id="textArea" class="d-none"></textarea>
-                    <br><br>
+                    <br>
+                    <p class="normal-12-bold-tiny blue-title">Dicas de como arrasar nas perguntas!</p>
+                    <br>
 
 
                     <label class="normal-18-bold-title-2">Foto</label>
