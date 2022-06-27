@@ -103,6 +103,13 @@ try {
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
+
+                    </li>
+
+                    <li class="sidebar-li leftbar-li">
+                        
+                        </a>
+
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
 
@@ -529,9 +536,11 @@ try {
                     </a>
                     <hr class="detail-question-hr">
                 </li>
+
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
+                <hr class="sidebar-linha leftbar-linha">
 
                 <div>
                     <!-- Tabs navs -->

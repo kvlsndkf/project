@@ -91,6 +91,11 @@ try {
                             <img class="leftbar-icon" src="../../../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
+                    </li>
+
+                    <li class="sidebar-li leftbar-li">
+                        
+
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
 
@@ -243,6 +248,7 @@ try {
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
+
                     <a href="../../../logout/logout.controller.php" class="white-text logout-a">
                         <div class="logout-div">
                             <p class="normal-14-bold-p question-p">
@@ -252,9 +258,13 @@ try {
                     </a>
                     <hr class="detail-question-hr">
                 </li>
+
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
+
+                <hr class="sidebar-linha leftbar-linha">
+
 
                 <div>
                     <!-- Tabs navs -->
@@ -409,6 +419,7 @@ try {
                     </div>
                     <!-- Tabs content -->
                 </div>
+
             </ul>
             <p class="whitney-12-regular-tiny copyright-text">
                 Copyright © Cold Wolf - 2022. Todos os direitos reservados

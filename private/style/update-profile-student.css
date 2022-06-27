@@ -1,0 +1,383 @@
+body, html {
+    background: none !important;
+    background-color: #2F3136 !important;
+}
+
+.testechato{
+    width: 100%;
+}
+
+/* Select do Primeiro Accordion (Dados principaos) */
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    outline: none;
+    background-color: var(--gray2);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    color: var(--white);
+    /* padding: 0.8em; */
+    /* margin-bottom: 10em; */
+    /* border: solid 1px var(--gray1) !important; */
+    line-height: 26px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    background-color: var(--gray2);
+}
+
+/* Opções do Select */
+.select2-container--default .select2-results__option .select2-results__option{
+    color: var(--white);
+    background-color: var(--gray1);
+}
+
+
+.select2-container--default .select2-results__group{
+    color: var(--gray7);
+    background-color: var(--gray2);
+}
+
+.select2-container--default .select2-selection--single{
+    border: solid 1px var(--gray1) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear{
+    background-color: var(--gray2);
+
+}
+.select2-container .select2-selection--single .select2-selection__clear{
+    background-color: var(--gray2);
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field{
+    border: solid 1px var(--gray1) !important;
+    background-color: var(--gray2);
+    outline: transparent;
+}
+
+.select2-dropdown{
+    border: none !important;
+    background-color: var(--gray2) !important;
+}
+
+.select2-search--dropdown{
+    background-color: var(--gray2);
+}
+
+.select2-container{
+    width: 100% !important;
+}
+.select2-container--default .select2-selection--single{
+    background-color: unset;
+    border: 1px solid var(--gray1) !important;
+    border-radius: 4px;
+
+   
+}
+
+.select2-container--open .select2-dropdown--above{
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+ /* Fim do select do accordion */
+
+
+ /* Ajuste da foto */
+.profile-header-left-u{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Nome Geral das caixas dentro dos accordions */
+.nameGeral{
+    margin-bottom: 0.6em;
+}
+
+
+/* Input focus geral */
+input:focus{
+    border: solid 1px var(--blue-sky);
+    outline: none;
+}
+
+
+/* Primeiro Accordion */
+
+/* Inputs do primeiro Accordion: Dados principais */
+.input-name,
+.input-sobrenome{
+    outline: none;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    background-color: var(--gray2);
+    border: 1px solid var(--gray1);
+    color: var(--white);
+    border-radius: 3px;
+}
+
+.input-sobrenome{
+    margin-bottom: 1.8em;
+}
+
+.input-name{
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+/* Dados do primeiro accordion */
+.nameA,
+.sobrenomeA{
+    color: var(--white); 
+}
+
+.sobrenomeA{
+    margin-bottom: 1em;
+}
+
+.nameA{
+    margin-top: 2em;
+}
+
+.moduloA{
+    color: var(--gray7);
+}
+
+/* Fim do primeiro accordion */
+
+/* Input dos accordions: Link e Senha */
+.input-Geral{
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid var(--gray1);
+    background-color:var(--gray2) !important ;
+    color: var(--white);
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    margin-bottom: 1.8em;
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+/* Botão de atualizar foto */
+
+input[type="file"]{
+    display: none;
+}
+.input-file1,
+.input-file{
+    background-color: var(--primary);
+    padding: 0.6em;
+    outline: none;
+    width: 50%;
+    border-radius: 10px;
+    color: var(--white);
+    cursor: pointer;
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} 
+
+.input-file1:hover{
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+.margin-botao-foto{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+
+
+.dadosP{
+    color: var(--white);
+    margin-top: 2em;
+    padding-left: 0.5em;
+}
+
+.border-bottom {
+    margin-top: 1.5em;
+    border-bottom: 0.1em solid var(--gray3) !important;
+
+}
+
+/* Botões Inferiores */
+
+.posicao-Botao{
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+}
+.botao-Atualizar,
+.botao-cancelar{
+    margin-top: 4em;
+    text-align: center;
+    border: none;
+    padding-right:15% ;
+    padding-left: 15%;
+    width: 45%;
+    height: 35px;
+    border-radius: 8px;
+   
+}
+
+.botao-Atualizar:hover,
+.botao-cancelar:hover{
+    filter: brightness(1.4);
+    cursor: pointer;
+}
+
+.botao-cancelar{
+    background-color: var(--white);
+}
+.botao-Atualizar{
+    background-color: #8080FF;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+}
+
+/* Fim dos Botões */
+
+/* Accordions Gerais*/
+.accordion-flush .accordion-item .accordion-button{
+    margin-top: 1.7em;
+    
+    background-color: var(--bg-modal) !important;
+    color: var(--white);
+    padding:10px;
+    padding-left: 30px;
+    border: transparent;
+    
+    /* border-radius: 3px; */
+}
+
+.accordion-item{
+    background-color: var(--bg-modal) !important;
+}
+
+.accordion-flush .accordion-item{
+    border-bottom: 0;
+}
+
+.accordion-body{
+    background-color: var(--bg-modal) !important;
+    color: var(--gray7);
+    
+}
+
+.accordion-button:focus{
+    border-color: unset !important;
+    box-shadow: var(--gray2) !important;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.accordion-button:not(.collapsed){
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed)::after{
+    background-image: url("../../views/images/components/seta-accordion.svg")
+
+}
+
+.accordion-button::after{
+    background-image: url("../../views/images/components/seta-accordion.svg")
+
+}
+
+/* Fim dos accordions    */
+
+
+@media(min-width: 926px) { /*EMILLIE*/
+    .updt-ph {
+        width: 250px;
+    }
+}
+
+@media(max-width: 925px){
+    .feed-div{
+        padding-top: 20px;
+        padding-bottom: 8vh;
+    }
+    .updt-ph {/*EMILLIE*/
+        width: 250px;
+    }
+}
+
+@media (max-width: 414px){
+    .posicao-Botao{
+        justify-content: center;
+        display: block;
+        margin-top: 3px;
+    }
+
+    .botao-Atualizar,
+    .botao-cancelar{
+        display: block;
+        margin-top: 2em;
+        width: 100%;
+    }
+    .updt-ph {/*EMILLIE*/
+        width: 250px;
+    }
+}
+
+@media (max-width: 375px){
+    .posicao-Botao{
+        justify-content: center;
+        display: block;
+        margin-top: 3px;
+    }
+
+    .botao-Atualizar,
+    .botao-cancelar{
+        display: block;
+        margin-top: 2em;
+        width: 100%;
+    }
+
+    .updt-ph {/*EMILLIE*/
+        width: 250px;
+    }
+
+}
+
+@media (max-width: 280px){
+    .posicao-Botao{
+        display: block;
+        margin-top: 3px;
+    }
+
+    .botao-Atualizar,
+    .botao-cancelar{
+        margin-top: 2em;
+        width: 100%;
+    }
+    .input-file1,
+    .input-file{
+        padding: 0;
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+    .updt-ph {/*EMILLIE*/
+        width: 100%;
+    }
+}
