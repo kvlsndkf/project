@@ -113,7 +113,7 @@ try {
 
                 <li class="sidebar-li">
                     <p class="sidebar-categoria normal-14-bold-p">Contas</p>
-                    <a href="#" class="sidebar-a">
+                    <a href="../list-profiles/list-profiles.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../views/images/components/listagem-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Listagem</p>
                     </a>
@@ -137,25 +137,30 @@ try {
             </div>
             <!-- Parte Branca -->
             <div class="conteudo">
-                <!-- Card ajuda adminsitrador -->
-                <div class="help-adm-email-container d-flex justify-content-between">
-                    <div class="main-help-adm align-self-center ms-4 ms-sm-4 ms-md-4 ms-lg-4 ms-xl-4 me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
-                        <span class="span-help-adm normal-22-black-title-1 white-title">Olá adminisitrador, precisando de ajuda? Entre em contato com a gente!</span>
-                        <br />
 
-                        <div class="button-container">
-                            <a href="mailto:cold.wolf.ck@gmail.com?subject=Administrador%20Heelp" style="text-decoration: none; color: inherit;">
-                                <div class="adm-email-button white-title normal-14-bold-p">
-                                    <span>Enviar e-mail</span>
-                                </div>
-                            </a>
+                <div class="container2">
+                    <div class="row d-lg-flex justify-content-lg-between">
+                        <div class="report dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                            <section class="section">
+                                <span class="card-num"><?php echo $totalDenunciations; ?></span>
+                                <span class="card-label">Denúncias</span>
+                            </section>
                         </div>
-
-                    </div>
-                    <div class="avatar-help-adm d-none d-sm-none d-md-flex d-lg-flex align-self-center me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
-                        <img src="../../../../views/images/avatars/avatar-scotty.svg" alt="">
+                        <div class="requested-info dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                            <section class="section">
+                                <span class="card-num"><?php echo $totalMessages; ?></span>
+                                <span class="card-label">Fale conosco</span>
+                            </section>
+                        </div>
+                        <div class="students-total dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                            <section class="section">
+                                <span class="card-num"><?php echo $totalStudents; ?></span>
+                                <span class="card-label">Total de alunos</span>
+                            </section>
+                        </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="container1 d-lg-flex justify-content-lg-between">
                         <div class="dashboard-chart-container col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -206,46 +211,38 @@ try {
                             <div class="hrtop"></div>
 
                             <?php for ($i = 0; $i < count($listCoursesByStudent); $i++) {
-                                $row = $listCoursesByStudent[$i];?>
-                                <div class="top-courses">
-                                    <span class="normal-14-bold-p number-rank"><?php echo $i+1; ?>°</span>
+                                $row = $listCoursesByStudent[$i]; ?>
+                                <div class="top-courses" style="display: flex; align-items: center;">
+                                    <span class="normal-14-bold-p number-rank"><?php echo $i + 1; ?>°</span>
                                     <img src="<?php echo $row->photo; ?>" class="icon-top">
-                                    <span class="normal-16-bold-title-3"><?php echo $row->name;?></span>
+                                    <p class="normal-16-bold-title-3 text-truncate" style="max-width: 250px; margin: 0"><?php echo $row->name; ?></p>
                                 </div>
-                            <?php 
+                            <?php
                             } ?>
                         </div>
                     </div>
                 </div>
 
-                <div class="container2">
-                    <div class="row d-lg-flex justify-content-lg-between">
-                        <div class="report dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                            <section class="section">
-                                <span class="card-num"><?php echo $totalDenunciations; ?></span>
-                                <span class="card-label">Denúncias</span>
-                            </section>
+                <!-- Card ajuda adminsitrador -->
+                <div class="help-adm-email-container d-flex justify-content-between">
+                    <div class="main-help-adm align-self-center ms-4 ms-sm-4 ms-md-4 ms-lg-4 ms-xl-4 me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
+                        <span class="span-help-adm normal-22-black-title-1 white-title">Olá adminisitrador, precisando de ajuda? Entre em contato com a gente!</span>
+                        <br />
+
+                        <div class="button-container">
+                            <a href="mailto:cold.wolf.ck@gmail.com?subject=Administrador%20Heelp" style="text-decoration: none; color: inherit;">
+                                <div class="adm-email-button white-title normal-14-bold-p">
+                                    <span>Enviar e-mail</span>
+                                </div>
+                            </a>
                         </div>
-                        <div class="requested-info dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                            <section class="section">
-                                <span class="card-num"><?php echo $totalMessages; ?></span>
-                                <span class="card-label">Fale conosco</span>
-                            </section>
-                        </div>
-                        <div class="students-total dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                            <section class="section">
-                                <span class="card-num"><?php echo $totalStudents; ?></span>
-                                <span class="card-label">Total de alunos</span>
-                            </section>
-                        </div>
-                        <div class="company-total dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                            <section class="section">
-                                <span class="card-num">10.000</span>
-                                <span class="card-label">Total de empresas</span>
-                            </section>
-                        </div>
+
+                    </div>
+                    <div class="avatar-help-adm d-none d-sm-none d-md-flex d-lg-flex align-self-center me-4 me-sm-4 me-md-4 me-lg-4 me-xl-4">
+                        <img src="../../../../views/images/avatars/avatar-scotty.svg" alt="">
                     </div>
                 </div>
+
             </div>
         </div>
         <!-- JS Bootstrap ⬇️ -->

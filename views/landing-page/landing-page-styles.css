@@ -505,6 +505,26 @@
         }
       }
 
+      .title2{
+        margin-top: 1em;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: changeColor2 5s infinite; /* propriedade de animação */
+
+    }
+
+    @keyframes changeColor2 {
+        25% {
+          background-color: #B377F3,;
+        }
+        50% {
+          background-color: #dd6ae7;
+        }
+        25% {
+          background-color: #ed40d6;
+        }
+      }
+
     .videoP{
        padding: 1.5em;
        position: relative;

@@ -63,10 +63,10 @@ try {
     <link rel="stylesheet" href="../../../../../views/styles/colors.style.css">
     <link rel="stylesheet" href="../../../../../views/styles/style.global.css">
     <link rel="stylesheet" href="../../../../../views/styles/fonts.style.css">
-    <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../register.styles.css">
     <link rel="stylesheet" href="../../../../style/modal-delete-teacher.style.css">
     <link rel="stylesheet" href="../../../../style/button-delete-course.style.css">
+    <link rel="stylesheet" href="../registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../../../style/modal-about.style.css">
 
 </head>
@@ -391,21 +391,21 @@ try {
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs mb-3 tabs-modal" id="ex1" role="tablist">
                         <li class="nav-item item-tab" role="presentation">
-                            <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                            <a class="nav-link modal-tab active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
                                 <p class="tab-item-text whitney-12-regular-tiny">
                                     Etec's
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item item-tab" role="presentation">
-                            <a class="nav-link link-nav" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
+                            <a class="nav-link modal-tab link-nav" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
                                 <p class="tab-item-text whitney-12-regular-tiny">
                                     Professores
                                 </p> 
                             </a>
                         </li>
                         <li class="nav-item item-tab link-nav" role="presentation">
-                            <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">
+                            <a class="nav-link modal-tab" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">
                                 <p class="tab-item-text whitney-12-regular-tiny">
                                     Matérias
                                 </p> 

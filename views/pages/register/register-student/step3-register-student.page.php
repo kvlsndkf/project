@@ -81,9 +81,9 @@ session_start();
                 <label class="normal-14-bold-p">Etapa 3/4</label>
             </div>
             <div class="text-center form-student-titles">
-                <span class="normal-22-black-title-1 gray-title">Bora lá...</span>
+                <span class="normal-22-black-title-1 gray-title">Estamos quase lá...</span>
                 <br />
-                <span class="nord-32-black-display">Criar uma conta</span>
+                <span class="nord-32-black-display">Identificação</span>
             </div>
             <form action="./controller/step3-cookie.controller.php" method="post" enctype="multipart/form-data">
                 <label class="normal-18-bold-title-2">Foto<span style="color: var(--red);">*</span></label>

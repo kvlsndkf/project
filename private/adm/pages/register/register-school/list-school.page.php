@@ -446,7 +446,7 @@ try {
                                     <!-- Tabs navs -->
                                     <ul class="nav nav-tabs mb-3 nav-teacher" id="ex1" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <a class="nav-link active tab-item" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                                            <a class="nav-link modal-tab active tab-item" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
                                                 <p class="tab-item-text whitney-12-regular-tiny">
                                                     Professores
                                                 </p>
