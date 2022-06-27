@@ -69,72 +69,10 @@ try {
 </head>
 
 <body>
-    <!-- Mensagem de sucesso ⬇️ -->
-    <div style="z-index: 2; position: absolute; top: 0; right: 0;">
-        <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
-
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                </symbol>
-            </svg>
-
-            <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
-                    <use xlink:href="#check-circle-fill" />
-                </svg>
-                <div>
-                    <strong>Tudo certo!</strong>
-                    <?php echo $_SESSION['statusPositive']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-        <?php unset($_SESSION['statusPositive']);
-        } ?>
-    </div>
-    <!-- Mensagem de erro ⬇️ -->
-    <div style="z-index: 2; position: absolute; top: 0; right: 0;">
-        <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
-
-            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                </symbol>
-            </svg>
-
-            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                    <use xlink:href="#exclamation-triangle-fill" />
-                </svg>
-                <div>
-                    <strong>Ops...</strong>
-                    <?php echo $_SESSION['statusNegative']; ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
-        <?php unset($_SESSION['statusNegative']);
-        } ?>
-    </div>
 
 
-    <?php
-    if (empty($search)) {
-        $styleSearch = 'd-none';
-        $styleList = '';
-    } else {
-        $styleSearch = '';
-        $styleList = 'd-none';
-    }
-    ?>
-    <div class="<?php echo $styleSearch; ?>">
 
-        <?php
-        if (count($listSearch) == 0) {
-            $_SESSION['statusNegative'] = "Não existe registros.";
-            header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
-        }
-        ?>
-    </div>
+
     <!-- Inicio Wrapper -->
     <div class="wrapper">
         <!-- NavBar Lateral - SideBar -->
@@ -235,6 +173,76 @@ try {
             <!-- Parte Branca -->
             <div class="conteudo">
 
+
+                <?php
+                if (empty($search)) {
+                    $styleSearch = 'd-none';
+                    $styleList = '';
+                } else {
+                    $styleSearch = '';
+                    $styleList = 'd-none';
+                }
+                ?>
+                <div class="<?php echo $styleSearch; ?>">
+
+                    <?php
+                    if (count($listSearch) == 0) {
+                        $_SESSION['statusNegative'] = "Não existe registros.";
+                        header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
+                    }
+                    ?>
+                </div>
+
+                <!-- Mensagem de sucesso ⬇️ -->
+
+                <div>
+                    <?php if (isset($_SESSION['statusPositive']) && $_SESSION != '') { ?>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </symbol>
+                        </svg>
+
+                        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                                <use xlink:href="#check-circle-fill" />
+                            </svg>
+                            <div>
+                                <strong>Tudo certo!</strong>
+                                <?php echo $_SESSION['statusPositive']; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    <?php unset($_SESSION['statusPositive']);
+                    } ?>
+                </div>
+                <!-- Mensagem de erro ⬇️ -->
+                <div>
+                    <?php if (isset($_SESSION['statusNegative']) && $_SESSION != '') { ?>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </symbol>
+                        </svg>
+
+                        <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                                <use xlink:href="#exclamation-triangle-fill" />
+                            </svg>
+                            <div>
+                                <strong>Ops...</strong>
+                                <?php echo $_SESSION['statusNegative']; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    <?php unset($_SESSION['statusNegative']);
+                    } ?>
+                </div>
+
+
+
                 <!-- Barra de pesquisa ⬇️ -->
                 <form action="./list-denunciation.page.php" method="GET" class="">
                     <input type="text" name="searchDenunciation" id="searchMessage" placeholder="Pesquise por denúncias" autocomplete="off" class="search-bar margin-top-0">
@@ -252,7 +260,7 @@ try {
                         <!-- Lista de pesquisa -->
                         <?php for ($i = 0; $i < count($listSearch); $i++) {
                             $row = $listSearch[$i] ?>
-                            <div class="card-contact">
+                            <div class="card-contact responsive-spacing">
                                 <div class="badges-container">
                                     <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark' : 'd-none'; ?>
                                     <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
@@ -278,22 +286,24 @@ try {
                                     <?php $styleContext = $row->context == "Denuncia negada" ? 'badge rounded-pill bg-red white-title' : 'd-none'; ?>
                                     <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
                                 </div>
-                                <p class="my-p normal-14-medium-p bg-modal-text">
-                                    Feito por
-                                </p>
-                                <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                    <?php echo $row->creator; ?>
-                                    <?php echo $row->surnameCreator; ?>
-                                </p>
-
-                                <p class="my-p normal-14-medium-p bg-modal-text">
-                                    Denunciado
-                                </p>
-                                <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                    <?php echo $row->denounced; ?>
-                                    <?php echo $row->surnameDenounced; ?>
-                                </p>
-
+                                <div class="info-spacing">
+                                    <p class="my-p normal-14-medium-p bg-modal-text">
+                                        Feito por
+                                    </p>
+                                    <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                        <?php echo $row->creator; ?>
+                                        <?php echo $row->surnameCreator; ?>
+                                    </p>
+                                </div>
+                                <div class="info-spacing">
+                                    <p class="my-p normal-14-medium-p bg-modal-text">
+                                        Denunciado
+                                    </p>
+                                    <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                        <?php echo $row->denounced; ?>
+                                        <?php echo $row->surnameDenounced; ?>
+                                    </p>
+                                </div>
                                 <p class="my-p normal-14-medium-p bg-modal-text">
                                     Motivo
                                 </p>
@@ -320,7 +330,7 @@ try {
                                     <button type="submit" name="moveDenunciation" id="moveDenunciation" class="d-none">Mover para análise</button>
                                 </form>
 
-                                
+
 
                             </div>
                         <?php } ?>
@@ -363,7 +373,7 @@ try {
                                     <!-- Denuncias novas -->
                                     <?php for ($i = 0; $i < count($listNewDenunciations); $i++) {
                                         $row = $listNewDenunciations[$i] ?>
-                                        <div class="card-contact">
+                                        <div class="card-contact responsive-spacing">
                                             <div class="badges-container">
                                                 <?php $styleNew = $row->status == "Nova" ? 'badge rounded-pill bg-warning text-dark badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
@@ -377,20 +387,23 @@ try {
                                                 <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Feito por
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->creator; ?>
-                                            </p>
+                                            <div class="info-spacing">
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Feito por
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->creator; ?>
+                                                </p>
+                                            </div>
+                                            <div class="info-spacing">
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Denunciado
+                                                </p>
 
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Denunciado
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->denounced; ?>
-                                            </p>
-
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->denounced; ?>
+                                                </p>
+                                            </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
                                             </p>
@@ -435,7 +448,7 @@ try {
                                     <!-- Denuncias em análise -->
                                     <?php for ($i = 0; $i < count($listAnalysisDenunciations); $i++) {
                                         $row = $listAnalysisDenunciations[$i] ?>
-                                        <div class="card-contact">
+                                        <div class="card-contact responsive-spacing">
                                             <div class="badges-container">
                                                 <?php $styleNew = $row->status == "Em análise" ? 'badge rounded-pill bg-blue white-title badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
@@ -449,19 +462,22 @@ try {
                                                 <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Feito por
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->creator; ?>
-                                            </p>
-
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Denunciado
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->denounced; ?>
-                                            </p>
+                                            <div class="info-spacing">
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Feito por
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->creator; ?>
+                                                </p>
+                                            </div>
+                                            <div class="info-spacing">
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Denunciado
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->denounced; ?>
+                                                </p>
+                                            </div>
 
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
@@ -507,7 +523,7 @@ try {
                                                                     </select>
 
                                                                     <br>
-
+<hr>
                                                                     <div class="mb-3">
                                                                         <p class="subtituloM normal-14-bold-p sub-titulo-plusM">
                                                                             Conclusão
@@ -522,7 +538,7 @@ try {
                                                                     <div class="modal-footer" style="border: none; padding:0;">
                                                                         <button type="reset" class="btn btn-secondary d-none" data-bs-dismiss="modal">Cancelar</button>
                                                                         <button type="submit" class="btn btn-primary d-none" id="resolveDenunciation" name="resolveDenunciation">Mover</button>
-                                                                        <label for="resolveDenunciation"  class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
+                                                                        <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
                                                                         <label data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title cursor-pointer">Cancelar</label>
 
                                                                     </div>
@@ -549,7 +565,7 @@ try {
                                     <!-- Denuncias resolvidas -->
                                     <?php for ($i = 0; $i < count($listResolvedDenunciations); $i++) {
                                         $row = $listResolvedDenunciations[$i] ?>
-                                        <div class="card-contact">
+                                        <div class="card-contact responsive-spacing">
                                             <div class="badges-container">
                                                 <?php $styleNew = $row->status == "Resolvida" ? 'badge rounded-pill bg-green white-title badge-space' : 'd-none'; ?>
                                                 <span class="<?php echo $styleNew; ?>"><?php echo $row->status; ?></span>
@@ -567,20 +583,22 @@ try {
                                                 <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
                                             </div>
 
-
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Feito por
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->creator; ?>
-                                            </p>
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Denunciado
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->denounced; ?>
-                                            </p>
-
+                                            <div class="info-spacing">
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Feito por
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->creator; ?>
+                                                </p>
+                                            </div>
+                                            <div class="info-spacing">
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Denunciado
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->denounced; ?>
+                                                </p>
+                                            </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
                                             </p>
@@ -601,7 +619,7 @@ try {
                                                 ?>
                                                 <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
                                             </p>
-
+<hr>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Conclusão
                                             </p>

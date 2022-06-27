@@ -27,3 +27,7 @@
 .select-modal:focus {
     border: solid 1px var(--blue-sky);
 }
+
+.info-spacing {
+    margin-bottom: 12px;
+}
