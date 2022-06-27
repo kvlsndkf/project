@@ -7,15 +7,17 @@ require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.ph
 require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
-    $question = new Question();
-    $listQuestions = $question->listQuestion();
-
     $idUser = $_SESSION['idUser'];
-
+    
     $student = new StudentMethods();
     $studentId = $student->getStudentByUserID($idUser);
-
+    
     $studentPerfil = $student->getDataStudentByID($studentId[0]['id']);
+    
+    $courseStudent = $student->getCourseByStudentId($studentId[0]['id']);
+    
+    $question = new Question();
+    $listQuestions = $question->listQuestion($courseStudent['course_id'], $idUser, $studentId[0]['id']);
 
     $listPreferences = Preference::getPreferencesUser($idUser);
 
