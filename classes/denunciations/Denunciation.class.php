@@ -328,7 +328,8 @@ class Denunciation
 
         try {
             $stmt = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
-                                            denounced.first_name AS 'denounced', de.denounced_id, de.question_id FROM denunciations de
+                                            denounced.first_name AS 'denounced', de.denounced_id, de.question_id, criated.surname AS 'surname_creator', 
+                                            denounced.surname AS 'surname_denounced' FROM denunciations de
 
                                             INNER JOIN students criated
                                             ON de.created_by_id = criated.user_id
@@ -361,6 +362,8 @@ class Denunciation
             $denunciation->type = $row['type'];
             $denunciation->denouncedId = $row['denounced_id'];
             $denunciation->questionId = $row['question_id'];
+            $denunciation->surnameCreator = $row['surname_creator'];
+            $denunciation->surnameDenounced = $row['surname_denounced'];
             $denunciation->creator = $row['creator'];
             $denunciation->denounced = $row['denounced'];
 
@@ -405,7 +408,8 @@ class Denunciation
 
         try {
             $stmt = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
-                                            denounced.first_name AS 'denounced', de.denounced_id, de.question_id FROM denunciations de
+                                            denounced.first_name AS 'denounced', de.denounced_id, de.question_id, criated.surname AS 'surname_creator', 
+                                            denounced.surname AS 'surname_denounced' FROM denunciations de
 
                                             INNER JOIN students criated
                                             ON de.created_by_id = criated.user_id
@@ -436,6 +440,8 @@ class Denunciation
             $denunciation->link = $row['post_link'];
             $denunciation->status = $row['status'];
             $denunciation->type = $row['type'];
+            $denunciation->surnameCreator = $row['surname_creator'];
+            $denunciation->surnameDenounced = $row['surname_denounced'];
             $denunciation->denouncedId = $row['denounced_id'];
             $denunciation->questionId = $row['question_id'];
             $denunciation->creator = $row['creator'];
@@ -502,8 +508,8 @@ class Denunciation
 
         try {
             $stmt = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
-                                            denounced.first_name AS 'denounced', de.conclusion, con.name, de.denounced_id, de.question_id
-                                            FROM denunciations de
+                                            denounced.first_name AS 'denounced', de.conclusion, con.name, de.denounced_id, de.question_id,
+                                            criated.surname AS 'surname_creator', denounced.surname AS 'surname_denounced' FROM denunciations de
 
                                             INNER JOIN students criated
                                             ON de.created_by_id = criated.user_id
@@ -538,6 +544,8 @@ class Denunciation
             $denunciation->type = $row['type'];
             $denunciation->denouncedId = $row['denounced_id'];
             $denunciation->questionId = $row['question_id'];
+            $denunciation->surnameCreator = $row['surname_creator'];
+            $denunciation->surnameDenounced = $row['surname_denounced'];
             $denunciation->creator = $row['creator'];
             $denunciation->denounced = $row['denounced'];
             $denunciation->conclusion = $row['conclusion'];
@@ -561,9 +569,9 @@ class Denunciation
     public function listSearchDenunciations($search)
     {
         $connection = Connection::connection();
-
+        
         try {
-            $all = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, de.denounced_id,
+            $all1 = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, de.denounced_id,
                                         criated.first_name AS 'creator', criated.surname AS 'surname_creator', denounced.first_name AS 'denounced', 
                                         denounced.surname AS 'surname_denounced', de.conclusion, con.name, de.question_id
                                         FROM denunciations de
@@ -579,14 +587,21 @@ class Denunciation
                                         OR criated.first_name LIKE '%$search%' 
                                         OR denounced.first_name LIKE '%$search%') 
                                         ");
-            $all->execute();
-            $all = $all->fetchAll(PDO::FETCH_ASSOC);
+            $all1->execute();
+            $all = $all1->fetchAll(PDO::FETCH_ASSOC);
+
+            $lines = $all1->rowCount();
+
+            if ($lines == 00) {
+                $_SESSION['statusNegative'] = "Não existem registros.";
+            }
+
         } catch (Exception $e) {
             echo $e->getMessage();
         }
 
         try {
-            $parse = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
+            $parse1 = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
                                             de.denounced_id, criated.surname AS 'surname_creator', denounced.first_name AS 'denounced',
                                             denounced.surname AS 'surname_denounced', de.question_id FROM denunciations de
 
@@ -599,8 +614,14 @@ class Denunciation
                                             OR criated.first_name LIKE '%$search%' 
                                             OR denounced.first_name LIKE '%$search%') 
                                         ");
-            $parse->execute();
-            $parse = $parse->fetchAll(PDO::FETCH_ASSOC);
+            $parse1->execute();
+            $parse = $parse1->fetchAll(PDO::FETCH_ASSOC);
+
+            $lines = $parse1->rowCount();
+
+            if ($lines == 00) {
+                $_SESSION['statusNegative'] = "Não existem registros.";
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
         }
