@@ -64,9 +64,12 @@ try {
     <link rel="stylesheet" href="../../../adm/pages/register/register.styles.css">
     <link rel="stylesheet" href="../../../adm/pages/register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../../styles/feed.style.css">
+    <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
 
     <!-- Estilo do modal de denunciar -->
     <link rel="stylesheet" href="../home/modal.css">
+
+    <link rel="stylesheet" href="../search/style.search.css">
 </head>
 
 <body>
@@ -175,8 +178,8 @@ try {
 
                 <!-- Barra de pesquisa -->
                 <form action="../search/search.page.php" method="get" class="search-form">
-                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off" class="search-input">
-                    <input type="submit" value="🔍" class="search-submit">
+                    <input type="text" name="search" id="" placeholder="Encontre perguntas, pessoas ou materiais" autocomplete="off" class="my-search-input">
+                    <input type="submit" value="🔍" class="my-search-submit">
                 </form>
 
                 <?php
@@ -191,9 +194,11 @@ try {
                 }
                 ?>
 
-                <div class="<?php echo $styleNotFound; ?>">
-                    <img src="../../images/no-post-following.svg" alt="">
-                    <p>Parece que seus amigos não postaram nada ainda...</p>
+                <div class="not-found-container <?php echo $styleNotFound; ?>">
+                    <img src="../../images/no-post-following.svg" class="img-not-found" alt="">
+                    <p class="not-found-text-cont white-title normal-14-medium-p">
+                    <p class="not-found-text-title white-title normal-14-medium-p">Parece que seus amigos não postaram nada ainda...</p>
+                    </p>
                 </div>
 
                 <div class="<?php echo $stylePreferences; ?>">
@@ -308,7 +313,7 @@ try {
                             <!-- Create the editor container -->
                             <div class="ql-snow ql-editor2">
                                 <div class="ql-editor2">
-                                    <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $row->id; ?>">
+                                    <span class="question-text-p white-text line-clamp-2" id="questionText-<?php echo $row->id; ?>">
                                         <?php echo $row->question; ?>
                                     </span>
 
