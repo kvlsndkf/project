@@ -210,6 +210,7 @@ class Question
                                             ON stu.user_id = usr.id
                                             WHERE quest.course_id = $courseStudent
                                             AND quest.is_blocked NOT IN(1)
+                                            AND quest.student_id NOT IN($studentID)
                                             ORDER BY quest.created_at DESC
                                         ");
             $preference->execute();
