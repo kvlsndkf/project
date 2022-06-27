@@ -621,7 +621,7 @@ class Denunciation
     public function listSearchDenunciations($search)
     {
         $connection = Connection::connection();
-
+        
         try {
             $all1 = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, de.denounced_id,
                                         criated.first_name AS 'creator', criated.surname AS 'surname_creator', denounced.first_name AS 'denounced', 
@@ -647,6 +647,7 @@ class Denunciation
             if ($lines == 00) {
                 $_SESSION['statusNegative'] = "Não existem registros.";
             }
+
         } catch (Exception $e) {
             echo $e->getMessage();
         }

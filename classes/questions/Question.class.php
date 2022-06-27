@@ -182,12 +182,12 @@ class Question
      * @method listSchool() lists the schools by 
      * @param string $search 
      */
-    public function listQuestion()
+    public function listQuestion($courseStudent, $followerID, $studentID)
     {
         $connection = Connection::connection();
 
         try {
-            $stmt = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
+            $preference = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
                                         school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
                                         category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
                                         quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
@@ -208,15 +208,107 @@ class Question
                                             ON category.id = quest.category_id
                                             INNER JOIN users usr
                                             ON stu.user_id = usr.id
+                                            WHERE quest.course_id = $courseStudent
+                                            AND quest.is_blocked NOT IN(1)
+                                            AND quest.student_id NOT IN($studentID)
                                             ORDER BY quest.created_at DESC
                                         ");
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            return $this->buildQuestionList($result);
+            $preference->execute();
+            $preferenceResult = $preference->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+
+        try {
+            $following = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
+                                        school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
+                                        category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
+                                        quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
+                                            
+                                            INNER JOIN schoolshasstudents ss
+                                            ON stu.id = ss.student_id
+                                            INNER JOIN schools school
+                                            ON ss.school_id = school.id
+                                            INNER JOIN modules module
+                                            ON module.id = stu.module_id
+                                            INNER JOIN questions quest
+                                            ON stu.id = quest.student_id
+                                            INNER JOIN subjects subj
+                                            ON subj.id = quest.subject_id
+                                            INNER JOIN courses course
+                                            ON course.id = quest.course_id
+                                            INNER JOIN categories category
+                                            ON category.id = quest.category_id
+                                            INNER JOIN users usr
+                                            ON stu.user_id = usr.id
+                                            INNER JOIN usershasfollowers uf
+                                            ON stu.user_id = uf.following_id
+                                            WHERE uf.follower_id = $followerID
+                                            AND quest.is_blocked NOT IN(1)
+                                            ORDER BY quest.created_at DESC
+                                        ");
+            $following->execute();
+            $followingResult = $following->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        try {
+            $student = $connection->prepare("SELECT quest.id, quest.link_question, usr.photo, usr.profile_link, stu.first_name, stu.surname, module.name AS 'module', 
+                                        school.name AS 'school', subj.name AS 'subject', quest.question, quest.xp, 
+                                        category.name AS 'category', course.name AS 'course', quest.photo AS 'imageQuestion', 
+                                        quest.document, quest.document_name, quest.is_denounced, quest.created_at FROM students stu
+                                            
+                                            INNER JOIN schoolshasstudents ss
+                                            ON stu.id = ss.student_id
+                                            INNER JOIN schools school
+                                            ON ss.school_id = school.id
+                                            INNER JOIN modules module
+                                            ON module.id = stu.module_id
+                                            INNER JOIN questions quest
+                                            ON stu.id = quest.student_id
+                                            INNER JOIN subjects subj
+                                            ON subj.id = quest.subject_id
+                                            INNER JOIN courses course
+                                            ON course.id = quest.course_id
+                                            INNER JOIN categories category
+                                            ON category.id = quest.category_id
+                                            INNER JOIN users usr
+                                            ON stu.user_id = usr.id
+                                            
+                                            WHERE quest.student_id = $studentID
+                                            AND quest.is_blocked NOT IN(1)
+                                            ORDER BY quest.created_at DESC
+                                        ");
+            $student->execute();
+            $studentResult = $student->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+        return $this->buildQuestionListFeed($preferenceResult, $followingResult, $studentResult);
+    }
+
+    public function buildQuestionListFeed($preferenceResult, $followingResult, $studentResult)
+    {
+        $questions = [];
+
+        function comparator3($object1, $object2)
+        {
+            return $object1['created_at'] < $object2['created_at'];
+        }
+
+        $compare = array_merge($preferenceResult, $followingResult, $studentResult);
+
+        usort($compare, 'comparator3');
+
+        for ($i = 0; $i < count($compare); $i++) {
+            $row = $compare[$i];
+            $question = $this->buildQuestion($row);
+
+            array_push($questions, $question);
+        }
+        return $questions;
     }
 
     public function buildQuestionList($result)

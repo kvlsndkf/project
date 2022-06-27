@@ -80,9 +80,9 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
 
                     <li class="sidebar-li">
                         <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
-                        <a href="../../denunciation/list-denunciation.page.php" class="sidebar-a">
+                        <a href="../../denunciation/list-denunciation.page.php" class="sidebar-a-items">
                             <img class="sidebar-img" src="../../../../../views/images/components/denuncia-img.svg" alt="">
-                            <p class="sidebar-option normal-18-bold-title-2">Denuncias</p>
+                            <p class="sidebar-option normal-18-bold-title-2">Denúncias</p>
                         </a>
                     </li>
 

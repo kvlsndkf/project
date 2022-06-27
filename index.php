@@ -70,13 +70,13 @@
                                 <a href="#xp" class="a-class nav-options normal-14-bold-p white">Desafios</a>
                             </li>
                             <li>
-                                <a href="#emp" class="a-class nav-options normal-14-bold-p white">Parceria</a>
+                                <a href="#emp" class="a-class nav-options normal-14-bold-p white">Parcerias</a>
                             </li>
                             <li>
                                 <a href="#vid" class="a-class nav-options normal-14-bold-p white">Video</a>
                             </li>
                             <li>
-                                <a href="#tela7" class="a-class nav-options normal-14-bold-p white">Fale Conosco</a>
+                                <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class nav-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a>
                             </li>
                         </ul>
                         <ul class="nav-list2">
@@ -189,13 +189,15 @@
 
                     <div class="col">
 
-                        <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2" id="emp">Empresas Parceiras</h4>
+                        <h6 class="title2 nord-40-black-display" style="text-align: start;">Em breve... </h6>
+
+                        <h4 class="heelp-emp gray1 normal32-black-landingpagetitle-2" id="emp">Empresas parceiras</h4>
 
                         <h5 class="heelp-emp-title gray1 normal-22-black-title-1">E além de tudo temos um bônus!</h5>
                         <p class="heelp-emp-text gray1">O Heelp! tem parcerias com empresas diversas, que estão a procura de jovens talentos! Você pode se destacar através do ranking, com a pontuação adquirida.</p>
 
 
-                        <h3 class="heelp-emp-destaque gray1">É pedindo e dando Heelp! que você se destaca!</h3>
+                        <h3 class="heelp-emp-destaque gray1">É pedindo e dando heelp que você se destaca!</h3>
 
                     </div>
 
