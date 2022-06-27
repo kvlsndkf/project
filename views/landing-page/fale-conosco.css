@@ -217,3 +217,7 @@
     color: var(--red);
     display: none;
 }
+
+.border-div-error{
+    border: 2px solid #ED4245;
+}
