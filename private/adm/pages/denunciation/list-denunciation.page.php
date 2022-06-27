@@ -191,15 +191,6 @@ try {
                     $styleList = 'd-none';
                 }
                 ?>
-                <div class="<?php echo $styleSearch; ?>">
-
-                    <?php
-                    if (count($listSearch) == 0) {
-                        $_SESSION['statusNegative'] = "Não existe registros.";
-                        header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
-                    }
-                    ?>
-                </div>
 
                 <!-- Mensagem de sucesso ⬇️ -->
 
@@ -465,6 +456,7 @@ try {
                                                 <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
+                                            <div class="info-spacing">
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Feito por
                                             </p>
@@ -472,7 +464,8 @@ try {
                                                 <?php echo $row->creator; ?>
                                                 <?php echo $row->surnameCreator; ?>
                                             </p>
-
+                                            </div>
+                                            <div class="info-spacing">
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Denunciado
                                             </p>
@@ -480,7 +473,7 @@ try {
                                                 <?php echo $row->denounced; ?>
                                                 <?php echo $row->surnameDenounced; ?>
                                             </p>
-
+                                            </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
                                             </p>
@@ -539,6 +532,7 @@ try {
                                                 <?php $styleAnswer = $row->type == "Perfil" ? 'badge rounded-pill bg-primary-button white-title' : 'd-none'; ?>
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
+                                            <div class="info-spacing">
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Feito por
                                             </p>
@@ -546,7 +540,8 @@ try {
                                                 <?php echo $row->creator; ?>
                                                 <?php echo $row->surnameCreator; ?>
                                             </p>
-
+                                            </div>
+                                            <div class="info-spacing">
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Denunciado
                                             </p>
@@ -554,6 +549,7 @@ try {
                                                 <?php echo $row->denounced; ?>
                                                 <?php echo $row->surnameDenounced; ?>
                                             </p>
+                                            </div>
 
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
@@ -659,7 +655,7 @@ try {
                                                 <span class="<?php echo $styleContext; ?>"><?php echo $row->context; ?></span>
                                             </div>
 
-
+                                            <div class="info-spacing">
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Feito por
                                             </p>
@@ -667,6 +663,8 @@ try {
                                                 <?php echo $row->creator; ?>
                                                 <?php echo $row->surnameCreator; ?>
                                             </p>
+                                            </div>
+                                            <div class="info-spacing">
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Denunciado
                                             </p>
@@ -674,7 +672,7 @@ try {
                                                 <?php echo $row->denounced; ?>
                                                 <?php echo $row->surnameDenounced; ?>
                                             </p>
-
+                                            </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
                                             </p>

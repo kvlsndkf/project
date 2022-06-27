@@ -36,6 +36,10 @@
     word-break: break-all;
 }
 
+.info-spacing {
+    margin-bottom: 12px;
+}
+
 .my-card-contact{
     width: 500px;
     border-radius: 10px;
