@@ -346,8 +346,8 @@
     }
 
     .heelp-emp-destaque{
-        font-family: var(--gintoNormal-bold);
-        font-size: 50px;
+        font-family: var(--gintoNord-bold);
+        font-size: var(--h3);
         margin-top: 75px;
         width: 480px;
         animation: fadeInDown;
@@ -502,6 +502,26 @@
         }
         25% {
           background-color: #404EED;
+        }
+      }
+
+      .title2{
+        margin-top: 1em;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: changeColor2 5s infinite; /* propriedade de animação */
+
+    }
+
+    @keyframes changeColor2 {
+        25% {
+          background-color: #B377F3,;
+        }
+        50% {
+          background-color: #dd6ae7;
+        }
+        25% {
+          background-color: #ed40d6;
         }
       }
 

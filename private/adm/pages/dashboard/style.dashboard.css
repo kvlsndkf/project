@@ -152,7 +152,7 @@
 }
 
 .dash-cards {
-    min-width: 304px;
+    width: 31%;
     min-height: 104px;
     border-radius: 10px;
     display: flex;
@@ -252,7 +252,7 @@
 
 /* CARDS */
 
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 992px) {
     .dash-cards {
         min-width: 244px;
         max-height: 104px;
@@ -272,7 +272,7 @@
         min-width: 350px;
         max-height: 104px;
     }
-}
+} */
 
 @media screen and (max-width: 1289px) {
     .company-total {

@@ -62,12 +62,13 @@ session_start();
                                 </a>
                             </div>
                             <div class="d-flex justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                <a href="" style="text-decoration: none; filter: grayscale(0.8);">
-                                    <div class="card-profile gray-card">
+                                <a href="" style="text-decoration: none;">
+                                    <div class="card-profile gray-card" style=" filter: grayscale(0.8);">
                                         <div class="card-content">
                                             <img src="../../../images/profiles/profile-empresa-parceira.svg" alt="Avatar da empresa parceira" class="avt-pic">
                                         </div>
                                         <p class="white-title title1 title-profile card-text text-center">Empresa Parceira</p>
+                                        <p class="white-title title1 title-profile card-text text-center title2" style="margin-top: -15px; filter: saturate(3) brightness(1.5);">Em breve...</p>
                                     </div>
                                 </a>
                             </div>
@@ -78,6 +79,28 @@ session_start();
         </div>
 
     </div>
+
+    <style>
+        .title2{
+        margin-top: 1em;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: changeColor2 5s infinite; /* propriedade de animação */
+
+    }
+
+    @keyframes changeColor2 {
+        25% {
+          background-color: #B377F3,;
+        }
+        50% {
+          background-color: #dd6ae7;
+        }
+        25% {
+          background-color: #ed40d6;
+        }
+      }
+    </style>
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
