@@ -401,7 +401,7 @@ try {
                             <div id="message-new-list">
 
                                 <!-- Contador de usuários ativos -->
-                                <p class="contador-prof normal-18-black-title-2">
+                                <p class="contador-prof normal-18-black-title-2" style="margin: 0;">
                                     <?php echo  $countActiveStudents ?>
                                 </p>
 
@@ -437,17 +437,19 @@ try {
                                                 </div>
                                             </div>
 
-                                            <div class="prof-text" style="margin-top: 10px; max-width: 100%">
-                                            <img src="../../../../views/images/components/date-range.svg" alt="">
-                                                <label for="">Entrou em</label>
-                                                <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                                            <div style="margin-top: 10px; max-width: 100%">
+                                                <img src="../../../../views/images/components/date-range.svg" alt="">
+                                                <label class="normal-14-bold-p">Entrou em:</label>
+                                                <span class="normal-14-bold-p" data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
                                             </div>
 
-                                            <div>
-                                                <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank" style="color: var(--blue-sky);">Ver perfil</a>
+                                            <div style="margin-top: 12px; margin-bottom: 20px;">
+                                                <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank" class="normal-14-bold-p" style="color: var(--blue-sky);">Ver perfil</a>
                                             </div>
 
-                                            <button data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">Bloquear usuário</button>
+                                            <button class="block-user" data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">
+                                                <p class="sidebar-button-text normal-14-bold-p" style="font-weight: 400;">Bloquear usuário</p>
+                                            </button>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
@@ -492,78 +494,91 @@ try {
                             <div id="message-read-list">
 
                                 <!-- Contador de usuários bloqueados -->
-                                <p class="contador-prof normal-18-black-title-2">
+                                <p class="contador-prof normal-18-black-title-2" style="margin: 0;">
                                     <?php echo  $countBlockedStudents ?>
                                 </p>
 
-                                <!-- Usuários bloqueados -->
-                                <?php for ($i = 0; $i < count($listBlockedStudents); $i++) {
-                                    $row = $listBlockedStudents[$i] ?>
+                                <div class="list-prof">
 
-                                    <?php $styleActive = $row->isBlocked != false ? 'badge rounded-pill bg-red' : 'd-none'; ?>
-                                    <span class="<?php echo $styleActive; ?> bg-red" style="margin-right: 10px">Bloqueado</span>
+                                    <!-- Usuários bloqueados -->
+                                    <?php for ($i = 0; $i < count($listBlockedStudents); $i++) {
+                                        $row = $listBlockedStudents[$i] ?>
 
-                                    <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-help-primary' : 'd-none'; ?>
-                                    <span class="<?php echo $styleActive; ?> bg-help-primary">Aluno</span>
+                                        <div class="card-contact">
 
-                                    <div>
-                                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
-                                        <div>
-                                            <?php echo $row->firstName; ?>
-                                            <?php echo $row->surname; ?>
-                                        </div>
+                                            <?php $styleActive = $row->isBlocked != false ? 'badge rounded-pill bg-red' : 'd-none'; ?>
+                                            <span class="<?php echo $styleActive; ?> bg-red" style="margin-right: 10px">Bloqueado</span>
 
-                                        <div>
-                                            <?php echo $row->module; ?> •
-                                            <?php echo $row->course; ?> •
-                                            <?php echo $row->school; ?>
-                                        </div>
-                                    </div>
+                                            <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-help-primary' : 'd-none'; ?>
+                                            <span class="<?php echo $styleActive; ?> bg-help-primary">Aluno</span>
 
-                                    <div>
-                                        <label for="">Entrou em</label>
-                                        <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
-                                    </div>
+                                            <div class="user-data" style="margin-top: 20px">
+                                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px; margin-right: 10px;">
+                                                <div class="user-data-text">
+                                                    <p class="prof-text line-clamp-2 message-text school-name normal-14-bold-p">
+                                                        <?php echo $row->firstName; ?>
+                                                        <?php echo $row->surname; ?>
+                                                    </p>
 
-                                    <div>
-                                        <label for="">Bloqueado em</label>
-                                        <span data-date-value=" <?php echo $row->blocked; ?>"> <?php echo $row->blocked; ?></span>
-                                    </div>
-
-                                    <div>
-                                        <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
-                                    </div>
-
-                                    <div>
-                                        Motivo
-                                        <?php echo $row->reason; ?>
-                                    </div>
-
-                                    <button data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">Desbloquear usuário</button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Tem certeza de que deseja desbloquear este usuário?
-                                                    <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                            <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
-                                                        </div>
-                                                    </form>
+                                                    <p class="contato-message normal-14-medium-p line-clamp-2" style="margin-top: 0; max-width: 100%; word-wrap: break-word; word-break: break-all;">
+                                                        <?php echo $row->module; ?> •
+                                                        <?php echo $row->course; ?> •
+                                                        <?php echo $row->school; ?>
+                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <hr>
-                                <?php } ?>
+                                            <div style="margin-top: 10px; max-width: 100%">
+                                                <img src="../../../../views/images/components/date-range.svg" alt="">
+                                                <label class="normal-14-bold-p">Entrou em:</label>
+                                                <span class="normal-14-bold-p" data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                                            </div>
+
+                                            <div style="margin-top: 5px; max-width: 100%">
+                                                <img src="../../../../views/images/components/date-range.svg" alt="">
+                                                <label class="normal-14-bold-p">Bloqueado em:</label>
+                                                <span class="normal-14-bold-p" data-date-value="<?php echo $row->blocked; ?>"><?php echo $row->blocked; ?></span>
+                                            </div>
+
+                                            <div style="margin-top: 12px; margin-bottom: 20px;">
+                                                <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank" class="normal-14-bold-p" style="color: var(--blue-sky);">Ver perfil</a>
+                                            </div>
+
+                                            <hr>
+
+                                            <div>
+                                                Motivo
+                                                <?php echo $row->reason; ?>
+                                            </div>
+
+                                            <button data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">Desbloquear usuário</button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Tem certeza de que deseja desbloquear este usuário?
+                                                            <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    <?php } ?>
+
+                                </div>
 
                             </div>
                         </div>
