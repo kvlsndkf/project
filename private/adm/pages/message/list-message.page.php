@@ -108,7 +108,7 @@ try {
 
         <!-- Opções da NavBar -->
         <li class="sidebar-li">
-          <a onclick="window.history.go(-1)" class="sidebar-button-a normal-14-bold-p">
+          <a href="../register/registration panel/registration-panel-page.php" class="sidebar-button-a normal-14-bold-p">
             <div class="sidebar-button">
               <p class="sidebar-button-text">Adicionar Informações +</p>
             </div>
@@ -279,15 +279,13 @@ try {
                       <?php echo $row->message; ?>
                     </p>
 
-                    <button class="read-btn normal-14-bold-p" id="readMore-newMessages-<?php echo $row->id; ?>" 
-                    onclick="document.querySelector('#messageText-newMessages-<?php echo $row->id; ?>').classList.remove('line-clamp-2');
+                    <button class="read-btn normal-14-bold-p" id="readMore-newMessages-<?php echo $row->id; ?>" onclick="document.querySelector('#messageText-newMessages-<?php echo $row->id; ?>').classList.remove('line-clamp-2');
                     document.querySelector('#readLess-newMessages-<?php echo $row->id; ?>').style.display = 'inline';
                     document.querySelector('#readMore-newMessages-<?php echo $row->id; ?>').style.display = 'none';">
                       Ler mais...
                     </button>
 
-                    <button class="read-btn normal-14-bold-p" id="readLess-newMessages-<?php echo $row->id; ?>"
-                    onclick="document.querySelector('#messageText-newMessages-<?php echo $row->id; ?>').classList.add('line-clamp-2');
+                    <button class="read-btn normal-14-bold-p" id="readLess-newMessages-<?php echo $row->id; ?>" onclick="document.querySelector('#messageText-newMessages-<?php echo $row->id; ?>').classList.add('line-clamp-2');
                     document.querySelector('#readLess-newMessages-<?php echo $row->id; ?>').style.display = 'none';
                     document.querySelector('#readMore-newMessages-<?php echo $row->id; ?>').style.display = 'inline';">
                       Ler menos...
@@ -296,7 +294,6 @@ try {
 
                     <!-- JS Read More Text -->
                     <script>
-
                       var messageNew = document.getElementById('messageText-newMessages-<?php echo $row->id; ?>');
 
                       var readMoreNew = document.getElementById('readMore-newMessages-<?php echo $row->id; ?>');
@@ -316,7 +313,6 @@ try {
                         readLessNew.style.display = "none";
                         readMoreNew.style.display = "none";
                       }
-
                     </script>
 
                     <?php $styleButton = $row->status == "Nova" ? '' : 'd-none'; ?>
@@ -372,15 +368,13 @@ try {
                       <?php echo $row->message; ?>
                     </p>
 
-                    <button class="read-btn normal-14-bold-p" id="readMore-readMessages-<?php echo $row->id; ?>" 
-                    onclick="document.querySelector('#messageText-readMessages-<?php echo $row->id; ?>').classList.remove('line-clamp-2');
+                    <button class="read-btn normal-14-bold-p" id="readMore-readMessages-<?php echo $row->id; ?>" onclick="document.querySelector('#messageText-readMessages-<?php echo $row->id; ?>').classList.remove('line-clamp-2');
                     document.querySelector('#readLess-readMessages-<?php echo $row->id; ?>').style.display = 'inline';
                     document.querySelector('#readMore-readMessages-<?php echo $row->id; ?>').style.display = 'none';">
                       Ler mais...
                     </button>
 
-                    <button class="read-btn normal-14-bold-p" id="readLess-readMessages-<?php echo $row->id; ?>" 
-                    onclick="document.querySelector('#messageText-readMessages-<?php echo $row->id; ?>').classList.add('line-clamp-2');
+                    <button class="read-btn normal-14-bold-p" id="readLess-readMessages-<?php echo $row->id; ?>" onclick="document.querySelector('#messageText-readMessages-<?php echo $row->id; ?>').classList.add('line-clamp-2');
                     document.querySelector('#readLess-readMessages-<?php echo $row->id; ?>').style.display = 'none';
                     document.querySelector('#readMore-readMessages-<?php echo $row->id; ?>').style.display = 'inline';">
                       Ler menos...
@@ -388,13 +382,12 @@ try {
 
                     <!-- JS Read More Text -->
                     <script>
-
                       var messageRead = document.getElementById('messageText-readMessages-<?php echo $row->id; ?>');
 
                       var readMoreRead = document.getElementById('readMore-readMessages-<?php echo $row->id; ?>');
                       var readLessRead = document.getElementById('readLess-readMessages-<?php echo $row->id; ?>');
 
-                      if(messageRead.scrollHeight > messageRead.offsetHeight){
+                      if (messageRead.scrollHeight > messageRead.offsetHeight) {
 
                         // Se ele estiver com o ..., precisa ter o "ler mais"
                         if (messageRead.classList.contains("line-clamp-2")) {
@@ -402,13 +395,11 @@ try {
                           readLessRead.style.display = "none";
                         }
 
-                      }
-                      else{
+                      } else {
                         readLessRead.style.display = "none";
                       }
-
                     </script>
-                    
+
                   </div>
 
                 <?php } ?>

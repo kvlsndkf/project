@@ -26,6 +26,14 @@
     display: none;
 }
 
+.bg-green{
+    background-color: var(--green);
+}
+
+.bg-red{
+    background-color: var(--red);
+}
+
 .sidebar-button{
     display: flex;
     align-items: center;
@@ -615,6 +623,12 @@
     padding-bottom: 13px;
 }
 /* Fim do Botão de sair  */
+
+.user-data{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
 
 /* Responsividade com o Media */
