@@ -280,10 +280,15 @@ a{
     padding: 1vw 0;
 }
 
+.ranking-ul{
+    border: none;
+}
+
 .rightbar-ul{
     list-style: none;
     margin: 0;
     padding: 0;
+    min-width: 80%;
 }
 
 .rightbar-li{
@@ -558,6 +563,30 @@ p{
     margin: 0;
 }
 
+.logout-a{
+    border: 1px solid var(--gray3);
+    background-color: var(--bg-list);
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.logout-a:hover{
+    color: var(--white);
+    background-color: var(--red);
+    border: none;
+    transform: scale(1.05);
+    transition: .5s;
+}
+
+.logout-div{
+    
+}
+
 .feed-logo{
     display: flex;
     flex-direction: row;
@@ -593,6 +622,9 @@ p{
     border-radius: 10px 10px 0 0;
     height: 85px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .profile-pic{
@@ -612,6 +644,12 @@ p{
 
 .bg-bg-modal{
     background-color: var(--bg-modal);
+}
+
+.denuncia-aluno-a:hover{
+    background-color: var(--bg-modal);
+    border-radius: 8px;
+    transition: .5s ease;
 }
 
 .margin-left-20{
@@ -788,6 +826,16 @@ p{
     justify-content: space-between;
 }
 
+#sair-aluno-a{
+    display: none;
+}
+
+.name-text{
+    max-width: 20vw; 
+    word-wrap: break-word; 
+    word-break: break-all;
+}
+
 @media (max-width: 1040px){
     .profile-name{
         font-size: 14px;
@@ -795,6 +843,12 @@ p{
 }
 
 @media (max-width: 925px){
+    .name-text{
+        max-width: 45vw;
+    }
+    #sair-aluno-a{
+        display: flex;
+    }
     .stop-following{
         width: auto;
     }

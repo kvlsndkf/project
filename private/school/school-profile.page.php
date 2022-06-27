@@ -3,6 +3,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-student.c
 require_once('/xampp/htdocs' . '/project/classes/schools/School.class.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 try {
     $idUser = $_SESSION['idUser'];
@@ -19,8 +20,16 @@ try {
     $student = new StudentMethods();
     $studentLogged = $student->getStudentByUserID($idUser);
     $studentPerfil = $student->getDataStudentByID($studentLogged[0]['id']);
+    $studentId = $student->getStudentByUserID($idUser);
 
     $listPreferences = Preference::getPreferencesUser($idUser);
+
+    $ranking = new Ranking();
+    $colocationTotal = $ranking->colocationTotal();
+    $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+
+    $colocationFollowers = $ranking->colocationFllowers($idUser);
+    $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -80,22 +89,14 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
+                        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="sidebar-a-items leftbar-a">
                             <img class="leftbar-icon" src="../../views/images/components/following-icon.svg" alt="">
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
-                    </li>
-
-                    <li class="sidebar-li leftbar-li">
-                        <a href="#" class="sidebar-a leftbar-a">
-                            <img class="leftbar-icon" src="../../views/images/components/notifications-icon.svg" alt="">
-                            <p class="leftbar-text normal-18-bold-title-2">Notificações</p>
-                        </a>
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
-
-                    <li class="sidebar-li leftbar-li">
-                        <p class="leftbar-categoria normal-14-bold-p">Para você</p>
+                    <li class="sidebar-li my-leftbar-li">
+                        <p class="my-leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
                     <!-- Lista de preferências ⬇️ -->
                     <?php for ($i = 0; $i < count($listPreferences); $i++) {
@@ -114,7 +115,7 @@ try {
 
                     <li class="sidebar-li leftbar-li">
                         <a href="../student/pages/question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
-                            <div class="leftbar-button-div">
+                            <div class="my-leftbar-button-div">
                                 <p class="sidebar-button-text">Pedir um heelp!</p>
                             </div>
                         </a>
@@ -135,29 +136,6 @@ try {
                         </div>
                     </a>
 
-                    <!-- Mais Opções -->
-                    <div class="drop-edit-exclud-about drop-leftbar">
-                        <img src="../../views/images/components/three-dots.svg">
-
-                        <!-- Parte do Update e Delete -->
-                        <div class="drop-edit-exclud-content-about drop-leftbar-content">
-                            <a href="../student/pages/detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank" class="drop-edit-exclud-a">
-                                <div class="drop-edit-exclud-option-about">
-                                    <img src="../../views/images/components/settings-icon.svg" class="drop-edit-exclud-img">
-                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Configurações</p>
-                                </div>
-                            </a>
-                            <div class=" pedir-heelp-button-a">
-                                <a href="../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
-                                        <img src="../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
-                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
                 <div class="bottom-xp-div">
@@ -168,7 +146,7 @@ try {
                 </div>
 
 
-                <a class="normal-16-bold-title-3 white-text bottom-name" href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank">
+                <a class="normal-16-bold-title-3 white-text bottom-name text-truncate" href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank" style="max-width: 100%;">
                     <?php echo $studentPerfil->firstName;
                     echo " " . $studentPerfil->surname; ?>
                 </a>
@@ -280,7 +258,7 @@ try {
 
                                 <div class="question-info margin-bot-15">
                                     <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
-                                    <p class="normal-16-bold-title-3 white-text question-p" style="margin-left: 10px;">
+                                    <p class="normal-16-bold-title-3 white-text question-p text-truncate" style="margin-left: 10px;">
                                         <?php echo $row->name; ?>
                                     </p>
 
@@ -307,7 +285,8 @@ try {
                                             <?php echo $row->name; ?>
                                         </p>
 
-                                        <!-- <p class="normal-12-medium-tiny" style="color: var(--gray5);">
+                                        <p class="normal-12-medium-tiny" style="color: var(--gray5); word-wrap: break-word; word-break: break-all; max-width: 35vw;">
+
                                             <?php
                                             foreach ($row->courses as $value) {
                                                 echo $value . " • ";
@@ -331,12 +310,169 @@ try {
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
                 <li class="rightbar-li">
-                    <p class="leftbar-categoria normal-14-bold-p">Desafios</p>
+                    <a href="../logout/logout.controller.php" class="white-text logout-a">
+                        <div class="logout-div">
+                            <p class="normal-14-bold-p question-p">
+                                Sair
+                            </p>
+                        </div>
+                    </a>
+                    <hr class="detail-question-hr">
                 </li>
-                <hr class="sidebar-linha leftbar-linha">
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
+
+                <div>
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
+                        <li class="nav-item ranking-li" role="presentation">
+                            <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-11" data-mdb-toggle="tab" href="#ex2-tabs-11" role="tab" aria-controls="ex2-tabs-11" aria-selected="true">Todos</a>
+                        </li>
+                        <li class="nav-item ranking-li" role="presentation">
+                            <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-12" data-mdb-toggle="tab" href="#ex2-tabs-12" role="tab" aria-controls="ex2-tabs-12" aria-selected="false">Seguindo</a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="ex2-content">
+                        <div class="tab-pane fade show active" id="ex2-tabs-11" role="tabpanel" aria-labelledby="ex2-tab-11">
+
+                            <div class="ranking-position">
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                                <p class="question-p white-text normal-14-bold-p">
+                                    Sua posição é <?php echo $positionRankingAll; ?>º
+                                </p>
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            </div>
+
+                            <!-- Ranking total ⬇️ -->
+                            <?php for ($i = 0; $i < count($colocationTotal); $i++) {
+                                $row = $colocationTotal[$i];
+
+                                if ($i === 0) {
+                                    $displayMedal = 'd-block';
+                                    $displayNumber = 'd-none';
+                                    $iconMedal = '../student/images/icons/gold.svg';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
+                                } else if ($i === 1) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../student/images/icons/silver.svg';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
+                                } else if ($i === 2) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../student/images/icons/bronze.svg';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
+                                } else if ($i === 3) {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '4º';
+                                } else {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '5º';
+                                }
+                            ?>
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                    <div class="question-info">
+                                        <div class="<?php echo $displayMedal; ?>">
+                                            <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row->name; ?>">
+                                        </div>
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                            <?php echo $number; ?>
+                                        </div>
+                                        <a href="<?php echo $row->linkProfile; ?>">
+                                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        </a>
+                                        <a href="<?php echo $row->linkProfile; ?>">
+                                            <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px">
+                                                <?php echo $row->name; ?>
+                                            </p>
+                                        </a>
+                                    </div>
+
+                                    <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                        <div class="tab-pane fade" id="ex2-tabs-12" role="tabpanel" aria-labelledby="ex2-tab-12">
+
+                            <div class="ranking-position">
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                                <p class="question-p white-text normal-14-bold-p">
+                                    Sua posição é <?php echo $positionBetweenFollowers; ?>º
+                                </p>
+                                <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            </div>
+
+                            <!-- Ranking seguindo ⬇️ -->
+                            <?php for ($i = 0; $i < count($colocationFollowers); $i++) {
+                                $row = $colocationFollowers[$i];
+
+                                if ($i === 0) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../student/images/icons/gold.svg';
+                                    $badgeColor = 'badge rounded-pill bg-gold';
+                                } else if ($i === 1) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../student/images/icons/silver.svg';
+                                    $badgeColor = 'badge rounded-pill bg-silver';
+                                } else if ($i === 2) {
+                                    $displayNumber = 'd-none';
+                                    $displayMedal = 'd-block';
+                                    $iconMedal = '../student/images/icons/bronze.svg';
+                                    $badgeColor = 'badge rounded-pill bg-copper';
+                                } else if ($i === 3) {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '4º';
+                                } else {
+                                    $displayMedal = 'd-none';
+                                    $displayNumber = 'd-block';
+                                    $badgeColor = 'badge rounded-pill bg-little-blue';
+                                    $number = '5º';
+                                }
+                            ?>
+
+
+                                <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                    <div class="question-info">
+                                        <div class="<?php echo $displayMedal; ?>">
+                                            <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row['first_name']; ?>">
+                                        </div>
+                                        <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                            <?php echo $number; ?>
+                                        </div>
+                                        <a href="<?php echo $row['profile_link']; ?>">
+                                            <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                        </a>
+                                        <a href="<?php echo $row['profile_link']; ?>">
+                                            <p class="question-p white-text text-truncate normal-14-bold-p" style="max-width: 100px;">
+                                                <?php echo $row['first_name']; ?>
+                                            </p>
+                                        </a>
+                                    </div>
+
+                                    <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                    </div>
+                    <!-- Tabs content -->
+                </div>
+
             </ul>
             <p class="whitney-12-regular-tiny copyright-text">
                 Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
@@ -350,9 +486,9 @@ try {
             <a href="#" class="bottombar-a">
                 <img src="../../views/images/components/following-icon.svg" alt="">
             </a>
-            <a href="#" class="bottombar-a">
+            <!-- <a href="#" class="bottombar-a">
                 <img src="../../views/images/components/notifications-icon.svg" alt="">
-            </a>
+            </a> -->
             <a href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
                 <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
             </a>
