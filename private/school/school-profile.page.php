@@ -136,29 +136,6 @@ try {
                         </div>
                     </a>
 
-                    <!-- Mais Opções -->
-                    <div class="drop-edit-exclud-about drop-leftbar">
-                        <img src="../../views/images/components/three-dots.svg">
-
-                        <!-- Parte do Update e Delete -->
-                        <div class="drop-edit-exclud-content-about drop-leftbar-content">
-                            <a href="../student/pages/detail-perfil-student/update-perfil-student.page.php?idStudentLogged=<?php echo $studentPerfil->id; ?>" target="_blank" class="drop-edit-exclud-a">
-                                <div class="drop-edit-exclud-option-about">
-                                    <img src="../../views/images/components/settings-icon.svg" class="drop-edit-exclud-img">
-                                    <p class="drop-edit-exclud-text-about normal-14-bold-p">Configurações</p>
-                                </div>
-                            </a>
-                            <div class=" pedir-heelp-button-a">
-                                <a href="../logout/logout.controller.php" class="drop-edit-exclud-a pedir-heelp-button-a">
-                                    <div class="drop-edit-exclud-option-about pedir-heelp-button-a drop-sair">
-                                        <img src="../../views/images/components/logout-icon.svg" class="drop-edit-exclud-img">
-                                        <p class="drop-edit-exclud-text-about normal-14-bold-p">Sair</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
                 <div class="bottom-xp-div">
@@ -169,7 +146,7 @@ try {
                 </div>
 
 
-                <a class="normal-16-bold-title-3 white-text bottom-name text-truncate" href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank" style="max-width: 150px;">
+                <a class="normal-16-bold-title-3 white-text bottom-name text-truncate" href="../student/pages/detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" target="_blank" style="max-width: 100%;">
                     <?php echo $studentPerfil->firstName;
                     echo " " . $studentPerfil->surname; ?>
                 </a>
@@ -332,7 +309,16 @@ try {
 
         <nav class="feed-leftbar feed-rightbar">
             <ul class="rightbar-ul">
-                <hr class="sidebar-linha leftbar-linha">
+                <li class="rightbar-li">
+                    <a href="../logout/logout.controller.php" class="white-text logout-a">
+                        <div class="logout-div">
+                            <p class="normal-14-bold-p question-p">
+                                Sair
+                            </p>
+                        </div>
+                    </a>
+                    <hr class="detail-question-hr">
+                </li>
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
