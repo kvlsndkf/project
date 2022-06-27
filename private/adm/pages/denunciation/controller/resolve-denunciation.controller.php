@@ -8,9 +8,14 @@ if (isset($_POST['resolveDenunciation'])) {
     $denunciation = new Denunciation();
 
     $id = $_GET['denunciationID'];
+    $questionID = $_GET['questionID'] ?? '';
+    $type = $_GET['type'];
+    $answerID = $_GET['answerId'] ?? '';
+    $userID = $_GET['denounced'] ?? '';
 
     $denunciation->setStatus("Resolvida");
     $denunciation->setContext($_POST['context']);
     $denunciation->setConclusion($_POST['conclusion']);
-    $denunciation->moveResolved($denunciation, $id);
+    $denunciation->setType($type);
+    $denunciation->moveResolved($denunciation, $id, $questionID, $answerID, $userID);
 }

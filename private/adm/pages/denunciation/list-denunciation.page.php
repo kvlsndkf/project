@@ -338,9 +338,9 @@ try {
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
+                                        <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionID=<?php echo $row->questionId; ?>&answerId=<?php echo $row->answerId; ?>&type=<?php echo $row->type; ?>&denounced=<?php echo $row->denouncedId;?>" method="POST">
                                             <label for="">Contexto</label>
-                                            <select class="form-select" aria-label="Default select example" id="selectContext" name="context">
+                                            <select class="form-select" aria-label="Default select example" name="context" data-select="<?php echo $row->id; ?>">
                                                 <option selected>Selecione o contexto em que a denúncia se enquadra</option>
                                             </select>
 
@@ -455,7 +455,7 @@ try {
     <!-- JS Select da Categoria ⬇️ -->
     <script>
         (async function() {
-            const select = document.getElementById('selectContext');
+            const select = document.querySelectorAll('[data-select]');
             const dados = await fetch('./controller/getContexts.controller.php');
 
             const json_context = await dados.json();
@@ -464,16 +464,16 @@ try {
 
             array_contexts = object_context['contexts'];
 
-            for (i = 0; i < array_contexts.length; i++) {
-                const optionElement = document.createElement("option");
+            select.forEach(selectElement => {
+                for (i = 0; i < array_contexts.length; i++) {
+                    const optionElement = document.createElement("option");
 
-                optionElement.value = array_contexts[i]['id'];
-                optionElement.textContent = array_contexts[i]['name'];
+                    optionElement.value = array_contexts[i]['id'];
+                    optionElement.textContent = array_contexts[i]['name'];
 
-                select.appendChild(optionElement);
-            }
-
-            return;
+                    selectElement.appendChild(optionElement);
+                }
+            });
         }());
     </script>
 </body>
