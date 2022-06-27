@@ -646,6 +646,13 @@
     transition: .5s;
 }
 
+.profile-reason{
+    width: 100%;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
 
 /* Responsividade com o Media */
 @media only screen and  (max-width: 1000px){

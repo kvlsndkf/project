@@ -163,7 +163,7 @@ try {
 
         <!-- Corpo -->
         <div class="corpo">
-            x'
+            
             <div class="cabecalho">
                 <a href="../register/registration panel/registration-panel-page.php" class="seta-voltar-a">
                     <img src="../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
@@ -422,9 +422,11 @@ try {
                                             <span class="<?php echo $styleActive; ?> bg-help-primary">Aluno</span>
 
                                             <div class="user-data" style="margin-top: 20px">
-                                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px; margin-right: 10px;">
+                                                <div class="user-img-adm" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px; margin-right: 10px;">
+                                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px;">
+                                                </div>
                                                 <div class="user-data-text">
-                                                    <p class="prof-text line-clamp-2 message-text school-name normal-14-bold-p">
+                                                    <p class="prof-text text-truncate message-text school-name normal-14-bold-p" style="width: 400px; word-wrap: break-word; word-break: break-all;">
                                                         <?php echo $row->firstName; ?>
                                                         <?php echo $row->surname; ?>
                                                     </p>
@@ -515,7 +517,7 @@ try {
                                             <div class="user-data" style="margin-top: 20px">
                                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px; margin-right: 10px;">
                                                 <div class="user-data-text">
-                                                    <p class="prof-text line-clamp-2 message-text school-name normal-14-bold-p">
+                                                    <p class="prof-text text-truncate message-text school-name normal-14-bold-p" style="width: 400px; word-wrap: break-word; word-break: break-all;">
                                                         <?php echo $row->firstName; ?>
                                                         <?php echo $row->surname; ?>
                                                     </p>
@@ -534,10 +536,10 @@ try {
                                                 <span class="normal-14-bold-p" data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
                                             </div>
 
-                                            <div style="margin-top: 5px; max-width: 100%">
-                                                <img src="../../../../views/images/components/date-range.svg" alt="">
-                                                <label class="normal-14-bold-p">Bloqueado em:</label>
-                                                <span class="normal-14-bold-p" data-date-value="<?php echo $row->blocked; ?>"><?php echo $row->blocked; ?></span>
+                                            <div style="margin-top: 5px; max-width: 100%;">
+                                                <img src="../../../../views/images/components/data-red.svg" alt="">
+                                                <label class="normal-14-bold-p" style="color: var(--red);">Bloqueado em:</label>
+                                                <span class="normal-14-bold-p" style="color: var(--red);" data-date-value="<?php echo $row->blocked; ?>"><?php echo $row->blocked; ?></span>
                                             </div>
 
                                             <div style="margin-top: 12px; margin-bottom: 20px;">
@@ -546,12 +548,19 @@ try {
 
                                             <hr>
 
-                                            <div>
-                                                Motivo
-                                                <?php echo $row->reason; ?>
+                                            <div class="profile-reason">
+                                                <p class="normal-14-medium-p" style="margin: 0">
+                                                    Motivo:
+                                                </p>
+                                                <p class="normal-14-bold-p" style="margin: 0; color: var(--bg-list);">
+                                                    <?php echo $row->reason; ?>
+                                                </p>
+
                                             </div>
 
-                                            <button data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">Desbloquear usuário</button>
+                                            <button class="block-user" style=" background-color: var(--bg-list)" data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->userID; ?>">
+                                                <p class="sidebar-button-text normal-14-bold-p" style="font-weight: 400;">Desbloquear usuário</p>
+                                            </button>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
