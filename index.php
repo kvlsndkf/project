@@ -276,13 +276,14 @@
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe um email para entrarmos em contato</label>
                                             <input name="contact" required type="email" class=" input normal-12-regular-tinyinput input-text" id="exampleFormControlInput1" placeholder="contato@email.com" autocomplete="off">
+                                        <span class="text-email normal-12-medium-tiny" id="messegeG">Email Invalido</span>
                                         </div>
                                         <div class="mb-3">
 
 
                                             <label for="exampleFormControlTextarea1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe sua crítica/avaliação</label>
                                             <div id="contentTextArea">
-                                                <textarea  required name="about" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv()" minlength="15" maxlength="240"></textarea>
+                                                <textarea  required name="message" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv()" minlength="15" maxlength="240"></textarea>
                                                 <div class="counter-container">
                                                     <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">240</span>
                                                 </div>
@@ -291,7 +292,7 @@
                                                 <span></span>
                                             </div>
                                            
-                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="checkLength()">Enviar</button>
+                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="checkLength(); ValidationEmail(event)">Enviar</button>
 
                                         </div>
                                     </form>
@@ -388,6 +389,8 @@
     <!-- JS Visibility Inputs -->
     <script type="text/javascript" src="./private/adm/pages/js/visibility-inputs.js"></script>
     <!-- JS Count Characters TextArea -->
+
+    <script src="./views/js/validation-modal-fale-conosco.js"></script>
 </body>
 
 </html>

@@ -211,3 +211,9 @@
     border: solid 1px var(--blue-sky);
     outline: none;
   }
+
+.text-email{
+    margin-top: 5px;
+    color: var(--red);
+    display: none;
+}
