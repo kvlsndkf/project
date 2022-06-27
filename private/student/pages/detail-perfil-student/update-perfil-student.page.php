@@ -2,6 +2,8 @@
 include_once('/xampp/htdocs' . '/project/private/validation/validation-student.controller.php');
 require_once('/xampp/htdocs' . '/project/classes/users/StudentMethods.class.php');
 require_once('/xampp/htdocs' . '/project/classes/schools/Module.class.php');
+require_once('/xampp/htdocs' . '/project/classes/preferences/Preference.class.php');
+require_once('/xampp/htdocs' . '/project/classes/rankings/Ranking.class.php');
 
 
 try {
@@ -10,6 +12,15 @@ try {
 
     $student = new StudentMethods();
     $studentPerfil = $student->getDataStudentByID($idStudent);
+    $listPreferences = Preference::getPreferencesUser($idUser);
+    $studentId = $student->getStudentByUserID($idUser);
+
+    $ranking = new Ranking();
+    $colocationTotal = $ranking->colocationTotal();
+    $positionRankingAll = $ranking->colocationTotalAll($studentId[0]['id']);
+
+    $colocationFollowers = $ranking->colocationFllowers($idUser);
+    $positionBetweenFollowers = $ranking->colocationFllowersAll($idUser);
 
     $module = new Module();
     $listModules = $module->getModuleForStudentUpdate($studentPerfil->moduleId);
@@ -47,6 +58,10 @@ try {
 
     <!-- Link da estilização especifica do update -->
     <link rel="stylesheet" href="../../../style/update-profile-student.css">
+
+    <link rel="stylesheet" href="../../../style/modal-about.style.css">
+
+    <link rel="stylesheet" href="../../../../views/pages/register/register-student/register-student.style.css">
 </head>
 
 <body>
@@ -82,12 +97,26 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        <p class="leftbar-categoria normal-14-bold-p">Para você</p>
+                        <p class="my-leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
 
+                    <!-- Lista de preferências ⬇️ -->
+                    <?php for ($i = 0; $i < count($listPreferences); $i++) {
+                        $row = $listPreferences[$i] ?>
+
+                        <a href="../preferences/preference.page.php?preference=<?php echo $row->id; ?>">
+                            <div class="d-flex question-info pref-sidebar-a-items" style="padding-top: 6px; padding-bottom: 6px;">
+                                <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="margin-right: 8px;" width="32px">
+                                <p class="white-text question-p normal-16-bold-title-3 text-truncate" style="width: 15vw;">
+                                    <?php echo $row->name; ?>
+                                </p>
+                            </div>
+                        </a>
+
+                    <?php } ?>
                     <li class="sidebar-li leftbar-li">
                         <a href="../question/question.page.php" class="pedir-heelp-button-a normal-14-bold-p">
-                            <div class="leftbar-button-div">
+                            <div class="my-leftbar-button-div">
                                 <p class="sidebar-button-text">Pedir um heelp!</p>
                             </div>
                         </a>
@@ -164,8 +193,15 @@ try {
                                 <p class="margin-botao-foto">
                                     <input type="hidden" name="oldPhoto" value="<?php echo $studentPerfil->photo; ?>">
                                     <input type="file" name="updatePhoto" id="file" onchange="previewImage(this)">
-                                    <label class="input-file1  normal-14-bold-p" for="file">Atualizar foto</label>
+                                <div style="display: flex; flex-direction: column; align-content: center; width: 100%; align-items: center;">
+                                    <div>
+                                        <label class="input-file1  normal-14-bold-p updt-ph" for="file" id="updatePhoto">Atualizar foto</label>
+
+                                        <span id="file-name" class="slc-arch normal-12-medium-tiny gray-text-6">Nenhum arquivo selecionado</span>
+                                    </div>
+                                </div>
                                 </p>
+
                             </div>
 
                             <div class="border-bottom"></div>
@@ -208,7 +244,7 @@ try {
                                         </div>
                                     </div>
                                 </div>
-                            
+
 
 
                                 <div class="border-bottom"></div>
@@ -263,13 +299,16 @@ try {
                                                 </p>
 
                                                 <p>
+                                                <div class="container-input-and-icon">
                                                     <label class="normal-14-medium-p nameGeral" for="">Senha atual</label><br>
-                                                    <input class="input-Geral" type="password" name="newPassword" id="" placeholder="Digite a sua nova senha">
+                                                    <input class="input-Geral pass-input" type="password" name="newPassword" id="newPassword" placeholder="Digite a sua nova senha" minlength="6">
+                                                    <img src="../../../../views/pages/register/image/components/show-pass.svg" class="eye-icon" alt="Visualizar senha" id="eyeOpened" onclick="openEyee()">
+                                                </div>
                                                 </p>
 
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">Confirme a sua senha atual</label><br>
-                                                    <input class="input-Geral" type="password" name="passwordConfirm" id="" placeholder="Confirme a sua senha">
+                                                    <input class="input-Geral" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Confirme a sua senha" minlength="6">
                                                 </p>
                                             </div>
                                         </div>
@@ -277,8 +316,10 @@ try {
                                 </div>
 
                                 <div class="container posicao-Botao">
-                                    <input class="botao-cancelar normal-14-medium-p" type="button" value="Cancelar" onclick="history.go(-1)">
-                                    <input class="botao-Atualizar normal-14-medium-p" type="submit" name="update" value="Atualizar perfil">
+                                    <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="botao-cancelar normal-14-medium-p d-flex justify-content-center">
+                                        <input style="border: none; background-color: #fff;" type="button" value="Cancelar">
+                                    </a>
+                                    <input class="botao-Atualizar normal-14-medium-p" type="submit" onclick="validarSenha();" name="update" value="Atualizar perfil">
                                 </div>
                         </form>
                     </div>
@@ -290,12 +331,153 @@ try {
     <nav class="feed-leftbar feed-rightbar">
         <ul class="rightbar-ul">
 
-            
+
             <li class="rightbar-li">
                 <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
             </li>
 
             <hr class="sidebar-linha leftbar-linha">
+            <div>
+                <!-- Tabs navs -->
+                <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
+                    <li class="nav-item ranking-li" role="presentation">
+                        <a class="nav-link ranking-a active whitney-10-bold-tiny" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Todos</a>
+                    </li>
+                    <li class="nav-item ranking-li" role="presentation">
+                        <a class="nav-link ranking-a whitney-10-bold-tiny" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab" aria-controls="ex2-tabs-2" aria-selected="false">Seguindo</a>
+                    </li>
+                </ul>
+                <!-- Tabs navs -->
+
+                <!-- Tabs content -->
+                <div class="tab-content" id="ex2-content">
+                    <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+
+                        <div class="ranking-position">
+                            <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            <p class="question-p white-text normal-14-bold-p">
+                                Sua posição é <?php echo $positionRankingAll; ?>º
+                            </p>
+                            <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                        </div>
+
+                        <!-- Ranking total ⬇️ -->
+                        <?php for ($i = 0; $i < count($colocationTotal); $i++) {
+                            $row = $colocationTotal[$i];
+
+                            if ($i === 0) {
+                                $displayMedal = 'd-block';
+                                $displayNumber = 'd-none';
+                                $iconMedal = '../../images/icons/gold.svg';
+                                $badgeColor = 'badge rounded-pill bg-gold';
+                            } else if ($i === 1) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/silver.svg';
+                                $badgeColor = 'badge rounded-pill bg-silver';
+                            } else if ($i === 2) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/bronze.svg';
+                                $badgeColor = 'badge rounded-pill bg-copper';
+                            } else if ($i === 3) {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '4º';
+                            } else {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '5º';
+                            }
+                        ?>
+                            <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                <div class="question-info">
+                                    <div class="<?php echo $displayMedal; ?>">
+                                        <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row->name; ?>">
+                                    </div>
+                                    <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                        <?php echo $number; ?>
+                                    </div>
+                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                    <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <?php echo $row->name; ?>
+                                    </p>
+                                </div>
+
+                                <span class="<?php echo $badgeColor; ?>"> <?php echo $row->xp; ?>xp</span>
+                            </div>
+
+                        <?php } ?>
+
+                    </div>
+                    <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+
+                        <div class="ranking-position">
+                            <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                            <p class="question-p white-text normal-14-bold-p">
+                                Sua posição é <?php echo $positionBetweenFollowers; ?>º
+                            </p>
+                            <img src="../../../../views/images/components/trophy-primary.svg" alt="">
+                        </div>
+
+                        <!-- Ranking seguindo ⬇️ -->
+                        <?php for ($i = 0; $i < count($colocationFollowers); $i++) {
+                            $row = $colocationFollowers[$i];
+
+                            if ($i === 0) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/gold.svg';
+                                $badgeColor = 'badge rounded-pill bg-gold';
+                            } else if ($i === 1) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/silver.svg';
+                                $badgeColor = 'badge rounded-pill bg-silver';
+                            } else if ($i === 2) {
+                                $displayNumber = 'd-none';
+                                $displayMedal = 'd-block';
+                                $iconMedal = '../../images/icons/bronze.svg';
+                                $badgeColor = 'badge rounded-pill bg-copper';
+                            } else if ($i === 3) {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '4º';
+                            } else {
+                                $displayMedal = 'd-none';
+                                $displayNumber = 'd-block';
+                                $badgeColor = 'badge rounded-pill bg-little-blue';
+                                $number = '5º';
+                            }
+                        ?>
+
+
+                            <div class="top-ranking" style="margin-top: 25px; margin-bottom: 25px;">
+                                <div class="question-info">
+                                    <div class="<?php echo $displayMedal; ?>">
+                                        <img src="<?php echo $iconMedal; ?>" alt="<?php echo $row['first_name']; ?>">
+                                    </div>
+                                    <div class="<?php echo $displayNumber; ?> normal-14-bold-p question-p" style="color: var(--gray6); margin-right: 5px; margin-left: 5px;">
+                                        <?php echo $number; ?>
+                                    </div>
+                                    <img src="<?php echo $row['photo']; ?>" alt="<?php echo $row['first_name']; ?>" style="width: 40px; height: 40px; border-radius: 40px; object-fit: cover; margin-right: 10px;">
+                                    <p class="question-p white-text text-truncate normal-14-bold-p">
+                                        <?php echo $row['first_name']; ?>
+                                    </p>
+                                </div>
+
+                                <span class="<?php echo $badgeColor; ?>"> <?php echo $row['xp']; ?>xp</span>
+                            </div>
+
+                        <?php } ?>
+
+                    </div>
+                </div>
+                <!-- Tabs content -->
+            </div>
         </ul>
         <p class="whitney-12-regular-tiny copyright-text">
             Copyright © Cold Wolf - 2022. Todos os direitos reservados. • <a href="#" class="copyright-text">Fale conosco</a>
@@ -306,25 +488,77 @@ try {
         <a href="../home/home.page.php" class="bottombar-a">
             <img src="../../../../views/images/components/dashboard-img.svg" alt="">
         </a>
-        <a href="#" class="bottombar-a">
+        <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="bottombar-a">
             <img src="../../../../views/images/components/following-icon.svg" alt="">
-        </a>
-        <a href="#" class="bottombar-a">
-            <img src="../../../../views/images/components/notifications-icon.svg" alt="">
         </a>
         <a href="../detail-perfil-student/detail-perfil-student.page.php?idStudent=<?php echo $studentPerfil->id; ?>" class="bottombar-a" target="_blank">
             <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" style="width: 25px; height: 25px; border-radius: 22px; object-fit: cover;">
         </a>
     </nav>
     </div>
+    <script>
+        const eye = document.getElementById("eyeOpened");
+        const eyeConfirm = document.getElementById("eyeOpenedConfirm");
 
+        const input = document.getElementById("newPassword");
+        const input2 = document.getElementById("passwordConfirm");
+
+        function openEyee() {
+            let inputTypePasswordNew = input.type == "password";
+            let inputTypePasswordNewConfirm = input2.type == "password";
+
+            if (inputTypePasswordNew || inputTypePasswordNewConfirm) {
+                showPassword();
+            } else {
+                hidePassword();
+            }
+        }
+
+        function showPassword() {
+
+            input.setAttribute("type", "text");
+            input2.setAttribute("type", "text");
+            eye.setAttribute("src", "/project/views/pages/register/image/components/hide-pass.svg");
+        }
+
+        function hidePassword() {
+
+
+            input.setAttribute("type", "password");
+            input2.setAttribute("type", "password")
+            eye.setAttribute("src", "/project/views/pages/register/image/components/show-pass.svg");
+        }
+    </script>
+
+    <script>
+        let senha = document.getElementById('newPassword');
+        let senhaC = document.getElementById('passwordConfirm');
+
+        function validarSenha() {
+            if (senha.value != senhaC.value) {
+                senhaC.setCustomValidity("As senhas não coincidem!");
+                senhaC.reportValidity();
+                return false;
+            } else {
+                senhaC.setCustomValidity("");
+                return true;
+            }
+        }
+    </script>
+
+    <!-- JS mostrar senha -->
+    <script src="../../../../views/js/password-visibility.js"></script>
+
+    <!-- JS senhas coincidem e e-mail institucional -->
+    <script src="../../../../views/js/register-student.js"></script>
     <!-- JS JQuery ⬇️ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
     <!-- JS Select Multiple ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
@@ -351,6 +585,18 @@ try {
             }
         }
     </script>
+    <!-- JS arquvio selecionado -->
+    <script>
+        let inputFile = document.getElementById('file');
+        let fileNameField = document.getElementById('file-name');
+        inputFile.addEventListener('change', function(event) {
+            let uploadedFileName = event.target.files[0].name;
+            fileNameField.textContent = uploadedFileName;
+        })
+    </script>
+
+
+
 </body>
 
 </html>

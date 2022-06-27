@@ -55,6 +55,8 @@ if (isset($_POST['update'])) {
                         $student->updateStudent($student, $studentID);
                     }
                 } else {
+                    $password = $student->getOldPassword($userId);
+                    $student->setPassword($password['password']);
                     $student->updateStudent($student, $studentID);
                 }
             } else {

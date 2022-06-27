@@ -302,10 +302,19 @@ input[type="file"]{
 /* Fim dos accordions    */
 
 
+@media(min-width: 926px) { /*EMILLIE*/
+    .updt-ph {
+        width: 250px;
+    }
+}
+
 @media(max-width: 925px){
     .feed-div{
         padding-top: 20px;
         padding-bottom: 8vh;
+    }
+    .updt-ph {/*EMILLIE*/
+        width: 250px;
     }
 }
 
@@ -322,7 +331,9 @@ input[type="file"]{
         margin-top: 2em;
         width: 100%;
     }
-
+    .updt-ph {/*EMILLIE*/
+        width: 250px;
+    }
 }
 
 @media (max-width: 375px){
@@ -337,6 +348,10 @@ input[type="file"]{
         display: block;
         margin-top: 2em;
         width: 100%;
+    }
+
+    .updt-ph {/*EMILLIE*/
+        width: 250px;
     }
 
 }
@@ -357,5 +372,8 @@ input[type="file"]{
         padding: 0;
         padding-left: 5em;
         padding-right: 5em;
+    }
+    .updt-ph {/*EMILLIE*/
+        width: 100%;
     }
 }
