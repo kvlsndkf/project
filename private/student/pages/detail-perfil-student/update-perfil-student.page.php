@@ -71,7 +71,7 @@ try {
 
             <div class="leftbar-top">
 
-                <a href="#" class="feed-logo">
+                <a href="../home/home.page.php" class="feed-logo">
                     <img src="../../../../views/images/logo/logo-help.svg" alt="" class="logo-heelp-img">
                     <h4 class="logo-heelp-text normal-22-black-title-1">heelp!</h4>
                 </a>
@@ -260,22 +260,22 @@ try {
                                             <div class="accordion-body">
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">Linkedin</label><br>
-                                                    <input class="input-Geral" type="text" name="linkedin" id="" value="<?php echo $studentPerfil->linkedin; ?>">
+                                                    <input class="input-Geral" placeholder="Copie e cole a URL" type="text" name="linkedin" id="" value="<?php echo $studentPerfil->linkedin; ?>">
                                                 </p>
 
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">GitHub</label><br>
-                                                    <input class="input-Geral" type="text" name="github" id="" value="<?php echo $studentPerfil->github; ?>">
+                                                    <input class="input-Geral" placeholder="Copie e cole a URL" type="text" name="github" id="" value="<?php echo $studentPerfil->github; ?>">
                                                 </p>
 
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">Facebook</label><br>
-                                                    <input class="input-Geral" type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
+                                                    <input class="input-Geral" placeholder="Copie e cole a URL" type="text" name="facebook" id="" value="<?php echo $studentPerfil->facebook; ?>">
                                                 </p>
 
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">Instagram</label><br>
-                                                    <input class="input-Geral" type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
+                                                    <input class="input-Geral" placeholder="Copie e cole a URL" type="text" name="instagram" id="" value="<?php echo $studentPerfil->instagram; ?>">
                                                 </p>
 
 

@@ -155,8 +155,7 @@ input:focus{
     padding-top: 10px;
     padding-bottom: 8px;
     padding-left: 10px;
-    
-    margin-bottom: 0.6em;
+    margin-bottom: 1.8em;
     font-family: var(--gintoNormal-medium);
     font-style: normal;
     font-weight: var(--regular);
