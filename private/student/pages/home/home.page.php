@@ -347,7 +347,7 @@ try {
                         <div class="ql-snow ql-editor2">
                             <div class="ql-editor2 question-text-div">
 
-                                <span class="question-text-p white-text line-clamp-2 whitney-16-medium-text" id="questionText-<?php echo $row->id; ?>">
+                                <span class="question-text-p white-text line-clamp-2" id="questionText-<?php echo $row->id; ?>">
                                     <?php echo $row->question; ?>
                                 </span>
 
