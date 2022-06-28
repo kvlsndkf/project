@@ -136,30 +136,30 @@ try {
                 <p class="dashboard-title normal-22-black-title-1">Dashboard</p>
             </div>
             <!-- Parte Branca -->
-            <div class="conteudo">
+            <div class="my-conteudo">
 
-                <div class="container2">
-                    <div class="row d-lg-flex justify-content-lg-between">
-                        <div class="report dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+
+                    <div class="container2">
+                        <div class="report dash-cards">
                             <section class="section">
                                 <span class="card-num"><?php echo $totalDenunciations; ?></span>
                                 <span class="card-label">Denúncias</span>
                             </section>
                         </div>
-                        <div class="requested-info dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                        <div class="requested-info dash-cards">
                             <section class="section">
                                 <span class="card-num"><?php echo $totalMessages; ?></span>
                                 <span class="card-label">Fale conosco</span>
                             </section>
                         </div>
-                        <div class="students-total dash-cards col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                        <div class="students-total dash-cards">
                             <section class="section">
                                 <span class="card-num"><?php echo $totalStudents; ?></span>
                                 <span class="card-label">Total de alunos</span>
                             </section>
                         </div>
                     </div>
-                </div>
+
 
                 <div class="row">
                     <div class="container1 d-lg-flex justify-content-lg-between">
