@@ -409,7 +409,7 @@ class Denunciation
         try {
             $stmt = $connection->prepare("SELECT de.id, de.reason, de.post_link, de.status, de.type, criated.first_name AS 'creator', 
                                             denounced.first_name AS 'denounced', de.denounced_id, de.question_id, criated.surname AS 'surname_creator', 
-                                            denounced.surname AS 'surname_denounced' FROM denunciations de
+                                            denounced.surname AS 'surname_denounced', de.answer_id FROM denunciations de
 
                                             INNER JOIN students criated
                                             ON de.created_by_id = criated.user_id
@@ -444,6 +444,7 @@ class Denunciation
             $denunciation->surnameDenounced = $row['surname_denounced'];
             $denunciation->denouncedId = $row['denounced_id'];
             $denunciation->questionId = $row['question_id'];
+            $denunciation->answerId = $row['answer_id'];
             $denunciation->creator = $row['creator'];
             $denunciation->denounced = $row['denounced'];
 
@@ -480,7 +481,7 @@ class Denunciation
         }
     }
 
-    public function moveResolved(Denunciation $denunciation, int $id)
+    public function moveResolved(Denunciation $denunciation, int $id, $questionID = '', $answerId = '', $userId = '')
     {
         $connection = Connection::connection();
 
@@ -493,12 +494,63 @@ class Denunciation
             $stmt->bindValue(3, $denunciation->getContext());
 
             $stmt->execute();
-
-            $_SESSION['statusPositive'] = "Denúncia resolvida para <strong>Resolvidas<strong>.";
-            header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+
+        if($this->getType() == "Pergunta"){
+            if ($this->getContext() == 1) {
+                try {
+    
+                    $stmt = $connection->prepare("UPDATE questions SET is_blocked = ?, denunciation_id = ?
+                                                 WHERE id = $questionID");
+    
+                    $stmt->bindValue(1, true);
+                    $stmt->bindValue(2, $id);
+    
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+        }
+
+        if($this->getType() == "Resposta"){
+            if ($this->getContext() == 1) {
+                try {
+    
+                    $stmt = $connection->prepare("UPDATE answers SET is_blocked = ?, denunciation_id = ?
+                                                 WHERE id = $answerId");
+    
+                    $stmt->bindValue(1, true);
+                    $stmt->bindValue(2, $id);
+    
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+        }
+
+        if($this->getType() == "Perfil"){
+            if ($this->getContext() == 1) {
+                try {
+    
+                    $stmt = $connection->prepare("UPDATE users SET is_blocked = ?, denunciation_id = ?
+                                                 WHERE id = $userId");
+    
+                    $stmt->bindValue(1, true);
+                    $stmt->bindValue(2, $id);
+    
+                    $stmt->execute();
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+        }
+
+        $_SESSION['statusPositive'] = "Denúncia resolvida para <strong>Resolvidas<strong>.";
+        header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
     }
 
     public function listResolvedDenunciations()

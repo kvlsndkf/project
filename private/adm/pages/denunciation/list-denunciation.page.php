@@ -350,47 +350,47 @@ try {
                                     </div>
 
                                     <div class="<?php echo $styleAnalysisSearch; ?>">
+                                        <?php
+                                        $searchID = $row->id . $row->questionId . $row->type . $row->answerId . $row->denounced;
+                                        ?>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">
-                                            Marcar como resolvida
-                                        </button>
-                                        <label class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->id; ?>">Marcar como resolvida</label>
+                                        <label class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $searchID; ?>">Marcar como resolvida</label>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="modal-<?php echo $row->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->id; ?>" aria-hidden="true">
+                                        <div class="modal fade" id="modal-<?php echo $searchID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $searchID; ?>" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content corM">
                                                     <div class="contianer containerM">
                                                         <div class="modal-header border-bottom-0">
-                                                            <h5 class="modal-titleM normal-20-bold-modaltitle" id="exampleModalLabel-<?php echo $row->id; ?>">Denúncia resolvida</h5>
+                                                            <h5 class="modal-titleM normal-20-bold-modaltitle" id="exampleModalLabel-<?php echo $searchID; ?>">Denúncia resolvida</h5>
                                                             <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
+                                                            <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionId=<?php echo $row->questionId; ?>&type=<?php echo $row->type; ?>&answerId=<?php echo $row->answerId; ?>&denounced=<?php echo $row->denouncedId; ?>" method="POST" enctype="multipart/form-data">
                                                                 <label class="subtituloM normal-14-bold-p sub-titulo-plusM">Contexto</label>
-                                                                <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" id="selectContext" name="context">
-                                                                    <option selected class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
+                                                                <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" data-select="<?php echo $searchID; ?>" name="context">
+                                                                    <option class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
                                                                 </select>
 
                                                                 <br>
-
+                                                                <hr>
                                                                 <div class="mb-3">
                                                                     <p class="subtituloM normal-14-bold-p sub-titulo-plusM">
                                                                         Conclusão
                                                                     </p>
 
-                                                                    <div id="contentTextArea">
-                                                                        <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()" maxlength="240"></textarea>
-                                                                        <div class="counter-container"><span class="counterTextArea whitney-8-medium-littletiny" id="counterTextArea">250</span></div>
+                                                                    <div>
+                                                                        <textarea name="conclusion" class="text-area normal-14-medium-p" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" onclick="colorDiv()" maxlength="240"></textarea>
+                                                                        <div class="counter-container"><span class="counterTextArea whitney-8-medium-littletiny" >250</span></div>
                                                                     </div>
-                                                                    <span id="min-length"></span>
+                                                                    
+
                                                                 </div>
                                                                 <div class="modal-footer" style="border: none; padding:0;">
-                                                                    <button type="reset" class="btn btn-secondary d-none" data-bs-dismiss="modal">Cancelar</button>
-                                                                    <button type="submit" class="btn btn-primary d-none" id="resolveDenunciation" name="resolveDenunciation">Mover</button>
-                                                                    <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
-                                                                    <label data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title cursor-pointer">Cancelar</label>
-
+                                                                    <button type="reset" id="resetForm-<?php echo $searchID; ?>" class="btn btn-secondary d-none" data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="submit" class="btn btn-primary d-none" id="resolveDenunciation-<?php echo $searchID; ?>">Mover</button>
+                                                                    <label for="resolveDenunciation-<?php echo $searchID; ?>" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
+                                                                    <label for="resetForm-<?php echo $searchID; ?>" data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title cursor-pointer">Cancelar</label>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -457,22 +457,22 @@ try {
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
                                             <div class="info-spacing">
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Feito por
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->creator; ?>
-                                                <?php echo $row->surnameCreator; ?>
-                                            </p>
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Feito por
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->creator; ?>
+                                                    <?php echo $row->surnameCreator; ?>
+                                                </p>
                                             </div>
                                             <div class="info-spacing">
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Denunciado
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->denounced; ?>
-                                                <?php echo $row->surnameDenounced; ?>
-                                            </p>
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Denunciado
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->denounced; ?>
+                                                    <?php echo $row->surnameDenounced; ?>
+                                                </p>
                                             </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
@@ -533,22 +533,22 @@ try {
                                                 <span class="<?php echo $styleAnswer; ?>"><?php echo $row->type; ?></span>
                                             </div>
                                             <div class="info-spacing">
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Feito por
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->creator; ?>
-                                                <?php echo $row->surnameCreator; ?>
-                                            </p>
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Feito por
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->creator; ?>
+                                                    <?php echo $row->surnameCreator; ?>
+                                                </p>
                                             </div>
                                             <div class="info-spacing">
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Denunciado
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->denounced; ?>
-                                                <?php echo $row->surnameDenounced; ?>
-                                            </p>
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Denunciado
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->denounced; ?>
+                                                    <?php echo $row->surnameDenounced; ?>
+                                                </p>
                                             </div>
 
                                             <p class="my-p normal-14-medium-p bg-modal-text">
@@ -573,46 +573,43 @@ try {
                                             </p>
 
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->denouncedId; ?>">
-                                                Marcar como resolvida
-                                            </button>
-                                            <label class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->denouncedId; ?>">Marcar como resolvida</label>
+                                            <label class="button-100 bg-primary-button align-center normal-14-bold-p white-title cursor-pointer scale-hover" data-bs-toggle="modal" data-bs-target="#modal-tab-<?php echo $row->denouncedId; ?>">Marcar como resolvida</label>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="modal-<?php echo $row->denouncedId; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->denouncedId; ?>" aria-hidden="true">
+                                            <div class="modal fade" id="modal-tab-<?php echo $row->denouncedId; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-tab-<?php echo $row->denouncedId; ?>" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content corM">
                                                         <div class="contianer containerM">
                                                             <div class="modal-header border-bottom-0">
-                                                                <h5 class="modal-titleM normal-20-bold-modaltitle" id="exampleModalLabel-<?php echo $row->denouncedId; ?>">Denúncia resolvida</h5>
-                                                                <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
+                                                                <h5 class="modal-titleM normal-20-bold-modaltitle" id="exampleModalLabel-tab-<?php echo $row->denouncedId; ?>">Denúncia resolvida</h5>
+                                                                <button id="botaotab" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>" method="POST">
+                                                                <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionId=<?php echo $row->questionId; ?>&type=<?php echo $row->type; ?>&answerId=<?php echo $row->answerId; ?>&denounced=<?php echo $row->denouncedId; ?>" method="POST" enctype="multipart/form-data">
                                                                     <label class="subtituloM normal-14-bold-p sub-titulo-plusM">Contexto</label>
-                                                                    <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" id="selectContext" name="context">
-                                                                        <option selected class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
+                                                                    <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" data-select="<?php echo $row->denouncedId; ?>" name="context" required>
+                                                                        <option class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
                                                                     </select>
 
                                                                     <br>
-<hr>
+                                                                    <hr>
                                                                     <div class="mb-3">
                                                                         <p class="subtituloM normal-14-bold-p sub-titulo-plusM">
                                                                             Conclusão
                                                                         </p>
 
                                                                         <div id="contentTextArea">
-                                                                            <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" required onclick="colorDiv()" maxlength="240"></textarea>
+                                                                            <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" onclick="colorDiv()" maxlength="240" required></textarea>
                                                                             <div class="counter-container"><span class="counterTextArea whitney-8-medium-littletiny" id="counterTextArea">250</span></div>
                                                                         </div>
                                                                         <span id="min-length"></span>
+
                                                                     </div>
                                                                     <div class="modal-footer" style="border: none; padding:0;">
-                                                                        <button type="reset" class="btn btn-secondary d-none" data-bs-dismiss="modal">Cancelar</button>
-                                                                        <button type="submit" class="btn btn-primary d-none" id="resolveDenunciation" name="resolveDenunciation">Mover</button>
-                                                                        <label for="resolveDenunciation" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
-                                                                        <label data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title cursor-pointer">Cancelar</label>
-
+                                                                        <button type="reset" id="resetFormTab" class="btn btn-secondary d-none" data-bs-dismiss="modal">Cancelar</button>
+                                                                        <button type="submit" class="btn btn-primary d-none" id="resolveDenunciationtab">Mover</button>
+                                                                        <label for="resolveDenunciationtab" class="button-wide bg-primary-button text-center normal-14-bold-p white-title cursor-pointer">Mover</label>
+                                                                        <label for="resetFormTab" data-bs-dismiss="modal" class="button-wide bg-white text-center normal-14-bold-p primary-title cursor-pointer">Cancelar</label>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -656,22 +653,22 @@ try {
                                             </div>
 
                                             <div class="info-spacing">
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Feito por
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->creator; ?>
-                                                <?php echo $row->surnameCreator; ?>
-                                            </p>
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Feito por
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->creator; ?>
+                                                    <?php echo $row->surnameCreator; ?>
+                                                </p>
                                             </div>
                                             <div class="info-spacing">
-                                            <p class="my-p normal-14-medium-p bg-modal-text">
-                                                Denunciado
-                                            </p>
-                                            <p class="proof-text school-name normal-14-bold-p text-truncate">
-                                                <?php echo $row->denounced; ?>
-                                                <?php echo $row->surnameDenounced; ?>
-                                            </p>
+                                                <p class="my-p normal-14-medium-p bg-modal-text">
+                                                    Denunciado
+                                                </p>
+                                                <p class="proof-text school-name normal-14-bold-p text-truncate">
+                                                    <?php echo $row->denounced; ?>
+                                                    <?php echo $row->surnameDenounced; ?>
+                                                </p>
                                             </div>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Motivo
@@ -693,7 +690,7 @@ try {
                                                 ?>
                                                 <a class="blue-title" href="<?php echo $link; ?>" target="__blank"><?php echo $textButton; ?></a>
                                             </p>
-<hr>
+                                            <hr>
                                             <p class="my-p normal-14-medium-p bg-modal-text">
                                                 Conclusão
                                             </p>
@@ -725,7 +722,7 @@ try {
     <!-- JS Select da Categoria ⬇️ -->
     <script>
         (async function() {
-            const select = document.getElementById('selectContext');
+            const select = document.querySelectorAll('[data-select]');
             const dados = await fetch('./controller/getContexts.controller.php');
 
             const json_context = await dados.json();
@@ -734,16 +731,16 @@ try {
 
             array_contexts = object_context['contexts'];
 
-            for (i = 0; i < array_contexts.length; i++) {
-                const optionElement = document.createElement("option");
+            select.forEach(selectElement => {
+                for (i = 0; i < array_contexts.length; i++) {
+                    const optionElement = document.createElement("option");
 
-                optionElement.value = array_contexts[i]['id'];
-                optionElement.textContent = array_contexts[i]['name'];
+                    optionElement.value = array_contexts[i]['id'];
+                    optionElement.textContent = array_contexts[i]['name'];
 
-                select.appendChild(optionElement);
-            }
-
-            return;
+                    selectElement.appendChild(optionElement);
+                }
+            });
         }());
     </script>
 
@@ -765,7 +762,6 @@ try {
     </script>
 
     <!-- JS tamanho máximo textarea  -->
-
     <script>
         $(document).ready(function() {
             $('#about').on('input propertychange', function() {
