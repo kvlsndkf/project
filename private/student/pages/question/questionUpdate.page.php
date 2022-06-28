@@ -161,11 +161,6 @@ try {
     <!-- Initialize Quill editor -->
     <script>
         var options = [
-            [{
-                'header': '1'
-            }, {
-                'header': '2'
-            }],
             ['bold', 'italic', 'strike', 'underline', 'blockquote'],
             [{
                 'list': 'ordered'

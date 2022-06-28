@@ -145,7 +145,8 @@ try {
                     <div id="editor"></div>
                     <textarea name="textQuestion" id="textArea" class="d-none"></textarea>
                     <br>
-                    <p class="normal-12-bold-tiny blue-title">Dicas de como arrasar nas perguntas!</p>
+                    
+                        <a href="https://erratic-wave-2e1.notion.site/Sintaxe-para-formata-o-de-texto-6b263bfb57f14b7796b684ca543eb4dc" style="text-decoration: none;" target="__blank"><div style="display: flex;"><img src="../../images/icons/link-icon.svg" style="width: 20px; align-self: center; margin-right: 10px;"><div class="normal-12-bold-tiny blue-title">Dicas de como arrasar nas perguntas!</div></div></a>
                     <br>
 
 
@@ -212,11 +213,6 @@ try {
     <!-- Initialize Quill editor -->
     <script>
         var options = [
-            [{
-                'header': '1'
-            }, {
-                'header': '2'
-            }],
             ['bold', 'italic', 'strike', 'underline', 'blockquote'],
             [{
                 'list': 'ordered'
