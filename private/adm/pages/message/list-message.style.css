@@ -1,0 +1,11 @@
+@media (max-width: 1385px) {
+    .card-contact {
+        width: 480px;
+    }
+}
+
+@media (max-width: 1325px) {
+    .card-contact {
+        width: 400px;
+    }
+}

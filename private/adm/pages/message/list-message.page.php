@@ -63,6 +63,8 @@ try {
   <link rel="stylesheet" href="../../../style/modal-delete-teacher.style.css">
   <link rel="stylesheet" href="../../../style/button-delete-course.style.css">
 
+  <link rel="stylesheet" href="list-message.style.css">
+
 </head>
 
 <body>
