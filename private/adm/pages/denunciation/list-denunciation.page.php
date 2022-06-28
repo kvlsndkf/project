@@ -587,7 +587,7 @@ try {
                                                             <div class="modal-body">
                                                                 <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionId=<?php echo $row->questionId; ?>&type=<?php echo $row->type; ?>&answerId=<?php echo $row->answerId; ?>&denounced=<?php echo $row->denouncedId; ?>" method="POST" enctype="multipart/form-data">
                                                                     <label class="subtituloM normal-14-bold-p sub-titulo-plusM">Contexto</label>
-                                                                    <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" data-select="<?php echo $row->denouncedId; ?>" name="context">
+                                                                    <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" data-select="<?php echo $row->denouncedId; ?>" name="context" required>
                                                                         <option class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
                                                                     </select>
 
@@ -599,7 +599,7 @@ try {
                                                                         </p>
 
                                                                         <div id="contentTextArea">
-                                                                            <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" onclick="colorDiv()" maxlength="240"></textarea>
+                                                                            <textarea name="conclusion" class="text-area normal-14-medium-p" id="about" cols="30" rows="10" placeholder="Faça uma breve conclusão sobre a denúncia" onclick="colorDiv()" maxlength="240" required></textarea>
                                                                             <div class="counter-container"><span class="counterTextArea whitney-8-medium-littletiny" id="counterTextArea">250</span></div>
                                                                         </div>
                                                                         <span id="min-length"></span>
