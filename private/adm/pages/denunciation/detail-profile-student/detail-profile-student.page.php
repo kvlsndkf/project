@@ -77,7 +77,7 @@ try {
                     
                    
                         
-                            <p class="normal-16-bold-title-3 white-text question-p text-truncate">
+                            <p class="normal-16-bold-title-3 white-text question-p text-truncateg">
                                 <?php echo $studentPerfil->firstName;
                                 echo " " . $studentPerfil->surname; ?>
                             </p>
