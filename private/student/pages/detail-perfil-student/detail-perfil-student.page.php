@@ -114,7 +114,7 @@ try {
                     </li>
 
                     <li class="sidebar-li leftbar-li">
-                        
+
 
                         <hr class="sidebar-linha leftbar-linha">
                     </li>
@@ -163,7 +163,7 @@ try {
                         </div>
                     </a>
 
-                    
+
                 </div>
 
                 <div class="bottom-xp-div">
@@ -222,491 +222,506 @@ try {
                         <p class="pedir-heelp-respo-p">+</p>
                     </div>
                 </a>
+                
+                <?php 
+                    if($studentPerfil->blocked){
+                        $displayBlocked = '';
+                        $displayProfile = 'd-none';
+                    } else{
+                        $displayBlocked = 'd-none';
+                        $displayProfile = '';
+                    }
+                ?>
+
+                <div class="<?php echo $displayBlocked;?>">
+                    <img src="../../images/profile-blocked.svg" alt="">
+                    Perfil temporariamente fora do ar.
+                </div>
 
                 <div class="profile-div">
+                    <div class="<?php echo $displayProfile;?>">
+                        <div class="profile-top">
 
-                    <div class="profile-top">
+                            <?php $displayDenunciation = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : ''; ?>
+                            <?php $displayLogout = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none'; ?>
 
-                        <?php $displayDenunciation = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : ''; ?>
-                        <?php $displayLogout = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none'; ?>
+                            <!-- Denunciar -->
+                            <a href="" class="text-white <?php echo $displayDenunciation; ?> denuncia-aluno-a" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $studentPerfil->id; ?>" style="width: 30px; height: 30px; margin: 10px; display: flex; align-items: center; justify-content: center;">
+                                <img src="../../../../views/images/components/denuncia-img.svg" alt="" width="16" height="16">
+                            </a>
 
-                        <!-- Denunciar -->
-                        <a href="" class="text-white <?php echo $displayDenunciation; ?> denuncia-aluno-a" data-bs-toggle="modal" data-bs-target="#modal-<?php echo $studentPerfil->id; ?>" style="width: 30px; height: 30px; margin: 10px; display: flex; align-items: center; justify-content: center;">
-                            <img src="../../../../views/images/components/denuncia-img.svg" alt="" width="16" height="16">
-                        </a>
+                            <!-- Sair -->
+                            <a href="../../../logout/logout.controller.php" class="text-white <?php echo $displayLogout; ?> denuncia-aluno-a" id="sair-aluno-a" style="width: 30px; height: 30px; margin: 10px; align-items: center; justify-content: center;">
+                                <img src="../../../../views/images/components/sair-img.svg" alt="" width="16" height="16">
+                            </a>
 
-                        <!-- Sair -->
-                        <a href="../../../logout/logout.controller.php" class="text-white <?php echo $displayLogout; ?> denuncia-aluno-a" id="sair-aluno-a" style="width: 30px; height: 30px; margin: 10px; align-items: center; justify-content: center;">
-                            <img src="../../../../views/images/components/sair-img.svg" alt="" width="16" height="16">
-                        </a>
+                        </div>
 
-                    </div>
+                        <!-- Modal Question -->
+                        <div class="modal fade" id="modal-<?php echo $studentPerfil->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $studentPerfil->id; ?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content cor">
+                                    <div class="container containerMO">
+                                        <div class="modal-header border-bottom-0">
+                                            <h5 class="modal-title" id="modalLabel-<?php echo $studentPerfil->id; ?>">Relatar um problema</h5>
+                                            <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="whitney-16-medium-text styleCor"> Nos ajude a entender o problema, o que está acontecendo com esse perfil? </p>
 
-                    <!-- Modal Question -->
-                    <div class="modal fade" id="modal-<?php echo $studentPerfil->id; ?>" tabindex="-1" aria-labelledby="modalLabel-<?php echo $studentPerfil->id; ?>" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content cor">
-                                <div class="container containerMO">
-                                    <div class="modal-header border-bottom-0">
-                                        <h5 class="modal-title" id="modalLabel-<?php echo $studentPerfil->id; ?>">Relatar um problema</h5>
-                                        <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="whitney-16-medium-text styleCor"> Nos ajude a entender o problema, o que está acontecendo com esse perfil? </p>
+                                            <form action="./controller/denunciation-profile.controller.php" method="post">
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $studentPerfil->id; ?>" value="Não tenho interesse nesse post" required>
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $studentPerfil->id; ?>">
+                                                        Não tenho interesse nesse perfil
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $studentPerfil->id; ?>" value="É suspeito ou está enviando span">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio2-<?php echo $studentPerfil->id; ?>">
+                                                        É suspeito ou está enviando span
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $studentPerfil->id; ?>" value="É abusivo ou nocivo">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio3-<?php echo $studentPerfil->id; ?>">
+                                                        É abusivo ou nocivo
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $studentPerfil->id; ?>" value="As informações são enganosas">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio4-<?php echo $studentPerfil->id; ?>">
+                                                        As informações são enganosas
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div class="form-check questionStyle">
+                                                    <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $studentPerfil->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
+                                                    <label class="form-check-label normal-12-medium-tiny styleCor" for="radio5-<?php echo $studentPerfil->id; ?>">
+                                                        Manifesta intenções de automutilação ou suicídio
+                                                    </label>
+                                                </div>
+                                                <div class="border-bottom"></div>
+                                                <div>
+                                                    <input type="hidden" name="post_link" id="" value="<?php echo $studentPerfil->linkProfile; ?>">
+                                                    <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
+                                                    <input type="hidden" name="denounciedId" id="" value="<?php echo $idUserPerfil[0]['user_id']; ?>">
+                                                    <input type="hidden" name="idSudentProfile" id="" value="<?php echo $studentPerfil->id; ?>">
+                                                </div>
 
-                                        <form action="./controller/denunciation-profile.controller.php" method="post">
-                                            <div class="form-check questionStyle">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio1-<?php echo $studentPerfil->id; ?>" value="Não tenho interesse nesse post" required>
-                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio1-<?php echo $studentPerfil->id; ?>">
-                                                    Não tenho interesse nesse perfil
-                                                </label>
-                                            </div>
-                                            <div class="border-bottom"></div>
-                                            <div class="form-check questionStyle">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio2-<?php echo $studentPerfil->id; ?>" value="É suspeito ou está enviando span">
-                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio2-<?php echo $studentPerfil->id; ?>">
-                                                    É suspeito ou está enviando span
-                                                </label>
-                                            </div>
-                                            <div class="border-bottom"></div>
-                                            <div class="form-check questionStyle">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio3-<?php echo $studentPerfil->id; ?>" value="É abusivo ou nocivo">
-                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio3-<?php echo $studentPerfil->id; ?>">
-                                                    É abusivo ou nocivo
-                                                </label>
-                                            </div>
-                                            <div class="border-bottom"></div>
-                                            <div class="form-check questionStyle">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio4-<?php echo $studentPerfil->id; ?>" value="As informações são enganosas">
-                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio4-<?php echo $studentPerfil->id; ?>">
-                                                    As informações são enganosas
-                                                </label>
-                                            </div>
-                                            <div class="border-bottom"></div>
-                                            <div class="form-check questionStyle">
-                                                <input class="form-check-input" type="radio" name="denunciation" id="radio5-<?php echo $studentPerfil->id; ?>" value="Manifesta intenções de automutilação ou suicídio">
-                                                <label class="form-check-label normal-12-medium-tiny styleCor" for="radio5-<?php echo $studentPerfil->id; ?>">
-                                                    Manifesta intenções de automutilação ou suicídio
-                                                </label>
-                                            </div>
-                                            <div class="border-bottom"></div>
-                                            <div>
-                                                <input type="hidden" name="post_link" id="" value="<?php echo $studentPerfil->linkProfile; ?>">
-                                                <input type="hidden" name="createdBy" id="" value="<?php echo $idUser; ?>">
-                                                <input type="hidden" name="denounciedId" id="" value="<?php echo $idUserPerfil[0]['user_id']; ?>">
-                                                <input type="hidden" name="idSudentProfile" id="" value="<?php echo $studentPerfil->id; ?>">
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar" name="register">Enviar</button>
-                                            </div>
-                                        </form>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="botaoSubmit normal-14-bold-p" value="Enviar" name="register">Enviar</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div style="padding: 20px;">
+                        <div style="padding: 20px;">
 
-                        <div class="profile-header">
+                            <div class="profile-header">
 
-                            <div class="profile-header-left">
-                                <a href="<?php echo $studentPerfil->photo; ?>" class="image-link profile-pic">
-                                    <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" class="profile-pic-img">
-                                </a>
+                                <div class="profile-header-left">
+                                    <a href="<?php echo $studentPerfil->photo; ?>" class="image-link profile-pic">
+                                        <img src="<?php echo $studentPerfil->photo; ?>" alt="<?php echo $studentPerfil->firstName; ?>" class="profile-pic-img">
+                                    </a>
 
-                                <div class="badge rounded-pill bg-purple-light xp-profile-pill margin-left-20">
-                                    <?php echo $studentPerfil->xp; ?>xp
+                                    <div class="badge rounded-pill bg-purple-light xp-profile-pill margin-left-20">
+                                        <?php echo $studentPerfil->xp; ?>xp
+                                    </div>
                                 </div>
+
+                                <?php
+                                $buttonEdit = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none';
+                                $buttonFollow = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : '';
+
+                                $textButton = $checkFollow == false ? 'Seguir' : 'Deixar de seguir';
+                                ?>
+
+                                <div class="<?php echo $buttonEdit; ?> edit-profile">
+                                    <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>" class="normal-14-bold-p edit-profile-btn">
+                                        Editar perfil
+                                    </a>
+                                </div>
+
+                                <div class="<?php echo $buttonFollow; ?> follow-profile-div">
+                                    <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
+                                        <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
+                                    </form>
+                                </div>
+
                             </div>
 
-                            <?php
-                            $buttonEdit = $studentLogged[0]['id'] == $studentPerfil->id ? '' : 'd-none';
-                            $buttonFollow = $studentLogged[0]['id'] == $studentPerfil->id ? 'd-none' : '';
+                            <p class="normal-16-bold-title-3 white-text question-p text-truncate">
+                                <?php echo $studentPerfil->firstName;
+                                echo " " . $studentPerfil->surname; ?>
+                            </p>
 
-                            $textButton = $checkFollow == false ? 'Seguir' : 'Deixar de seguir';
-                            ?>
+                            <p class="question-about margin-bot-15 normal-12-medium-tiny">
+                                <?php echo $studentPerfil->module; ?> •
+                                <?php echo $studentPerfil->course; ?> •
+                                <?php echo $studentPerfil->school; ?>
+                            </p>
 
-                            <div class="<?php echo $buttonEdit; ?> edit-profile">
+                            <div class="<?php echo $buttonEdit; ?> responsive-edit-profile margin-bot-15">
                                 <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>" class="normal-14-bold-p edit-profile-btn">
                                     Editar perfil
                                 </a>
                             </div>
 
-                            <div class="<?php echo $buttonFollow; ?> follow-profile-div">
+                            <div class="<?php echo $buttonFollow; ?> responsive-follow-profile-div margin-bot-15">
                                 <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
                                     <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
                                 </form>
                             </div>
 
-                        </div>
+                            <div class="profile-follows">
 
-                        <p class="normal-16-bold-title-3 white-text question-p text-truncate">
-                            <?php echo $studentPerfil->firstName;
-                            echo " " . $studentPerfil->surname; ?>
-                        </p>
+                                <div class="margin-right-20">
+                                    <?php $following = $follow->getFollowing($idUserPerfil[0]['user_id']); ?>
+                                    <a href="./list-following-student.page.php?idFollowers=<?php echo $idUserPerfil[0]['user_id']; ?>" class="profile-follows profile-follows-a">
+                                        <p class="normal-14-bold-p white-text question-p">
+                                            <?php echo $following[0]['total'] ?>&nbsp
+                                        </p>
+                                        <p class="question-about normal-12-medium-tiny">
+                                            Seguindo
+                                        </p>
 
-                        <p class="question-about margin-bot-15 normal-12-medium-tiny">
-                            <?php echo $studentPerfil->module; ?> •
-                            <?php echo $studentPerfil->course; ?> •
-                            <?php echo $studentPerfil->school; ?>
-                        </p>
+                                    </a>
+                                </div>
 
-                        <div class="<?php echo $buttonEdit; ?> responsive-edit-profile margin-bot-15">
-                            <a href="./update-perfil-student.page.php?idStudentLogged=<?php echo $studentLogged[0]['id']; ?>" class="normal-14-bold-p edit-profile-btn">
-                                Editar perfil
-                            </a>
-                        </div>
+                                <div>
+                                    <?php $followers = $follow->getFollowers($idUserPerfil[0]['user_id']); ?>
+                                    <a href="./list-followers-student.page.php?idFollowers=<?php echo $idUserPerfil[0]['user_id']; ?>" class="profile-follows profile-follows-a">
+                                        <p class="normal-14-bold-p white-text question-p">
+                                            <?php echo $followers[0]['total'] ?>&nbsp
+                                        </p>
+                                        <p class="question-about normal-12-medium-tiny">
+                                            Seguidores
+                                        </p>
 
-                        <div class="<?php echo $buttonFollow; ?> responsive-follow-profile-div margin-bot-15">
-                            <form action="./controller/follow-user.controller.php?idfollower=<?php echo $idUser; ?>&idFollowing=<?php echo $idUserPerfil[0]['user_id']; ?>&idStudentPerfil=<?php echo $studentPerfil->id; ?>" method="post">
-                                <input type="submit" class="normal-14-bold-p follow-profile-submit" id="follow" value="<?php echo $textButton; ?>" name="follow">
-                            </form>
-                        </div>
+                                    </a>
+                                </div>
 
-                        <div class="profile-follows">
-
-                            <div class="margin-right-20">
-                                <?php $following = $follow->getFollowing($idUserPerfil[0]['user_id']); ?>
-                                <a href="./list-following-student.page.php?idFollowers=<?php echo $idUserPerfil[0]['user_id']; ?>" class="profile-follows profile-follows-a">
-                                    <p class="normal-14-bold-p white-text question-p">
-                                        <?php echo $following[0]['total'] ?>&nbsp
-                                    </p>
-                                    <p class="question-about normal-12-medium-tiny">
-                                        Seguindo
-                                    </p>
-
-                                </a>
                             </div>
 
-                            <div>
-                                <?php $followers = $follow->getFollowers($idUserPerfil[0]['user_id']); ?>
-                                <a href="./list-followers-student.page.php?idFollowers=<?php echo $idUserPerfil[0]['user_id']; ?>" class="profile-follows profile-follows-a">
-                                    <p class="normal-14-bold-p white-text question-p">
-                                        <?php echo $followers[0]['total'] ?>&nbsp
-                                    </p>
-                                    <p class="question-about normal-12-medium-tiny">
-                                        Seguidores
-                                    </p>
 
+                            <p>
+                                <?php $styleLinkedin = empty($studentPerfil->linkedin) ? 'd-none' : ''; ?>
+                                <a href="<?php echo $studentPerfil->linkedin; ?>" class="<?php echo $styleLinkedin; ?>" target="_blank">
+                                    <img src="../../../adm/images/icons/linkedin.svg" alt="linkedin">
                                 </a>
+
+                                <?php $styleGithub = empty($studentPerfil->github) ? 'd-none' : ''; ?>
+                                <a href="<?php echo $studentPerfil->github; ?>" class="<?php echo $styleGithub; ?>" target="_blank">
+                                    <img src="../../../adm/images/icons/github.svg" alt="github">
+                                </a>
+
+                                <?php $styleFacebook = empty($studentPerfil->facebook) ? 'd-none' : ''; ?>
+                                <a href="<?php echo $studentPerfil->facebook; ?>" class="<?php echo $styleFacebook; ?>" target="_blank">
+                                    <img src="../../../adm/images/icons/facebook.svg" alt="facebook">
+                                </a>
+
+                                <?php $styleInstagram = empty($studentPerfil->instagram) ? 'd-none' : ''; ?>
+                                <a href="<?php echo $studentPerfil->instagram; ?>" class="<?php echo $styleInstagram; ?>" target="_blank">
+                                    <img src="../../../adm/images/icons/instagram.svg" alt="instagram">
+                                </a>
+                            </p>
+
+                        </div>
+
+                        <!-- Tabs navs -->
+                        <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <?php $styleBadgeAnswers = count($studentAnswer) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
+                                <a class="normal-14-bold-p question-p nav-link userProfile-a active" id="ex2-tab-11" data-mdb-toggle="tab" href="#ex2-tabs-11" role="tab" aria-controls="ex2-tabs-11" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
+                            </li>
+                            <li class="normal-14-bold-p question-p nav-item" role="presentation">
+                                <?php $styleBadgeQuestions = count($studentQuestion) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
+                                <a class="nav-link userProfile-a" id="ex2-tab-12" data-mdb-toggle="tab" href="#ex2-tabs-12" role="tab" aria-controls="ex2-tabs-12" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
+                            </li>
+                            <li class="normal-14-bold-p question-p nav-item" role="presentation">
+                                <?php $styleBadgeMaterials = count($studentMaterial) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
+                                <a class="nav-link userProfile-a" id="ex2-tab-13" data-mdb-toggle="tab" href="#ex2-tabs-13" role="tab" aria-controls="ex2-tabs-13" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
+                            </li>
+                            <li class="normal-14-bold-p question-p nav-item" role="presentation">
+                                <a class="nav-link userProfile-a" id="ex2-tab-14" data-mdb-toggle="tab" href="#ex2-tabs-14" role="tab" aria-controls="ex2-tabs-14" aria-selected="false">Sobre</a>
+                            </li>
+                        </ul>
+                        <!-- Tabs navs -->
+
+                        <!-- Tabs content -->
+                        <div class="tab-content padding-20" id="ex2-content">
+                            <div class="tab-pane fade show active" id="ex2-tabs-11" role="tabpanel" aria-labelledby="ex2-tab-11">
+
+                                <!-- Lista de respostas ⬇️ -->
+                                <?php for ($i = 0; $i < count($studentAnswer); $i++) {
+                                    $row = $studentAnswer[$i] ?>
+
+                                    <div class="question-info-2">
+                                        <p class="normal-14-medium-p white-text question-p" style="margin-right: 8px;">
+                                            respondeu
+                                        </p>
+                                        <a href="<?php echo $row->linkQuestion; ?>" class="normal-14-bold-p question-p text-truncate" style="max-width: 80%; color: var(--blue-sky);" target="_blank">
+                                            <?php echo $row->question; ?>
+                                        </a>
+                                        <p style="color: var(--blue-sky);">
+                                            &nbsp...
+                                        </p>
+                                    </div>
+
+                                    <p class="question-about margin-bot-15 normal-12-medium-tiny">
+                                        <?php echo $row->created; ?> •
+                                        <?php echo $row->course; ?> •
+                                        <?php echo $row->category; ?> •
+                                        <?php echo $row->subject; ?>
+                                    </p>
+
+                                    <!-- Create the editor container -->
+
+                                    <div class="ql-snow ql-editor2">
+                                        <div class="ql-editor2">
+                                            <span class="line-clamp-2 white-text question-text-p">
+                                                <?php echo $row->answer; ?>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                    <?php $styleImageAnswer = !empty($row->photo) ? '' : 'd-none'; ?>
+                                    <p class="<?php echo $styleImageAnswer; ?> image-question">
+                                        <a href="<?php echo $row->photo; ?>" class="image-link question-img">
+                                            <img src="<?php echo $row->photo; ?>" alt="" width="150px">
+                                        </a>
+                                    </p>
+
+
+                                    <?php $styleDocumentAnswer = !empty($row->document) ? '' : 'd-none'; ?>
+                                    <p class="<?php echo $styleDocumentAnswer; ?> document-question">
+                                        <span class="document-icon">
+                                            <img src="../../../../views/images/components/file-icon.svg">
+                                        </span>
+                                        <span class="normal-14-medium-p white-text text-truncate document-name">
+                                            <?php echo $row->documentName; ?>
+                                        </span>
+                                        <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
+                                            <img src="../../../../views/images/components/download-icon.svg" alt="">
+                                        </a>
+                                    </p>
+
+
+                                    <?php $counterLikeAnswer = empty($row->totalLikeAnswer) ? 0 : $row->totalLikeAnswer; ?>
+                                    <div class="functions-answer">
+                                        <div class="like-answer">
+                                            <div class="heart">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewbox="0 0 50 50">
+                                                    <path d="M21.95 40.2 19.3 37.75Q13.1 32 8.55 26.775Q4 21.55 4 15.85Q4 11.35 7.025 8.325Q10.05 5.3 14.5 5.3Q17.05 5.3 19.55 6.525Q22.05 7.75 24 10.55Q26.2 7.75 28.55 6.525Q30.9 5.3 33.5 5.3Q37.95 5.3 40.975 8.325Q44 11.35 44 15.85Q44 21.55 39.45 26.775Q34.9 32 28.7 37.75L26.05 40.2Q25.2 41 24 41Q22.8 41 21.95 40.2Z" />
+                                                </svg>
+                                            </div>
+                                            <p class="normal-14-bold-p question-p" style="color: var(--fuchsia); margin-top: 2px;">
+                                                <?php echo $counterLikeAnswer; ?>
+                                            </p>
+
+                                        </div>
+
+                                        <div class="avaliation-answer">
+
+                                            <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalAvaliationAnswer; ?>
+                                            <div class="star-icon question-info">
+                                                <p class="normal-14-bold-p question-p avaliation-text" style="color: var(--yellow);" style="margin-bottom: -10px;">
+                                                    <span class="functions-answer-text avaliation-text">
+                                                        <?php echo $row->avgAvaliation; ?>
+                                                        (<?php echo $counterAvaliationAnswer; ?>)
+                                                    </span>
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <hr class="detail-question-hr">
+
+                                <?php } ?>
+
                             </div>
+                            <div class="tab-pane fade" id="ex2-tabs-12" role="tabpanel" aria-labelledby="ex2-tab-12">
 
-                        </div>
+                                <!-- Lista de perguntas ⬇️ -->
+                                <?php for ($i = 0; $i < count($studentQuestion); $i++) {
+                                    $row = $studentQuestion[$i] ?>
 
-
-                        <p>
-                            <?php $styleLinkedin = empty($studentPerfil->linkedin) ? 'd-none' : ''; ?>
-                            <a href="<?php echo $studentPerfil->linkedin; ?>" class="<?php echo $styleLinkedin; ?>" target="_blank">
-                                <img src="../../../adm/images/icons/linkedin.svg" alt="linkedin">
-                            </a>
-
-                            <?php $styleGithub = empty($studentPerfil->github) ? 'd-none' : ''; ?>
-                            <a href="<?php echo $studentPerfil->github; ?>" class="<?php echo $styleGithub; ?>" target="_blank">
-                                <img src="../../../adm/images/icons/github.svg" alt="github">
-                            </a>
-
-                            <?php $styleFacebook = empty($studentPerfil->facebook) ? 'd-none' : ''; ?>
-                            <a href="<?php echo $studentPerfil->facebook; ?>" class="<?php echo $styleFacebook; ?>" target="_blank">
-                                <img src="../../../adm/images/icons/facebook.svg" alt="facebook">
-                            </a>
-
-                            <?php $styleInstagram = empty($studentPerfil->instagram) ? 'd-none' : ''; ?>
-                            <a href="<?php echo $studentPerfil->instagram; ?>" class="<?php echo $styleInstagram; ?>" target="_blank">
-                                <img src="../../../adm/images/icons/instagram.svg" alt="instagram">
-                            </a>
-                        </p>
-
-                    </div>
-
-                    <!-- Tabs navs -->
-                    <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <?php $styleBadgeAnswers = count($studentAnswer) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="normal-14-bold-p question-p nav-link userProfile-a active" id="ex2-tab-11" data-mdb-toggle="tab" href="#ex2-tabs-11" role="tab" aria-controls="ex2-tabs-11" aria-selected="true">Respostas &nbsp<?php echo count($studentAnswer); ?></a>
-                        </li>
-                        <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <?php $styleBadgeQuestions = count($studentQuestion) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link userProfile-a" id="ex2-tab-12" data-mdb-toggle="tab" href="#ex2-tabs-12" role="tab" aria-controls="ex2-tabs-12" aria-selected="false">Perguntas &nbsp<?php echo count($studentQuestion); ?></a>
-                        </li>
-                        <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <?php $styleBadgeMaterials = count($studentMaterial) != 0 ? 'badge bg-primary ms-2' : 'd-none'; ?>
-                            <a class="nav-link userProfile-a" id="ex2-tab-13" data-mdb-toggle="tab" href="#ex2-tabs-13" role="tab" aria-controls="ex2-tabs-13" aria-selected="false">Materiais &nbsp<?php echo count($studentMaterial); ?></a>
-                        </li>
-                        <li class="normal-14-bold-p question-p nav-item" role="presentation">
-                            <a class="nav-link userProfile-a" id="ex2-tab-14" data-mdb-toggle="tab" href="#ex2-tabs-14" role="tab" aria-controls="ex2-tabs-14" aria-selected="false">Sobre</a>
-                        </li>
-                    </ul>
-                    <!-- Tabs navs -->
-
-                    <!-- Tabs content -->
-                    <div class="tab-content padding-20" id="ex2-content">
-                        <div class="tab-pane fade show active" id="ex2-tabs-11" role="tabpanel" aria-labelledby="ex2-tab-11">
-
-                            <!-- Lista de respostas ⬇️ -->
-                            <?php for ($i = 0; $i < count($studentAnswer); $i++) {
-                                $row = $studentAnswer[$i] ?>
-
-                                <div class="question-info-2">
-                                    <p class="normal-14-medium-p white-text question-p" style="margin-right: 8px;">
-                                        respondeu
+                                    <p class="question-about normal-12-medium-tiny margin-bot-15">
+                                        <?php echo $row->created; ?> •
+                                        <?php echo $row->course; ?> •
+                                        <?php echo $row->category; ?> •
+                                        <?php echo $row->subject; ?>
                                     </p>
-                                    <a href="<?php echo $row->linkQuestion; ?>" class="normal-14-bold-p question-p text-truncate" style="max-width: 80%; color: var(--blue-sky);" target="_blank">
-                                        <?php echo $row->question; ?>
-                                    </a>
-                                    <p style="color: var(--blue-sky);">
-                                        &nbsp...
+
+                                    <!-- Create the editor container -->
+                                    <div class="ql-snow ql-editor2">
+                                        <div class="ql-editor2">
+                                            <span class="white-text line-clamp-2">
+                                                <?php echo $row->question; ?>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <?php $styleImageQuestions = !empty($row->photo) ? '' : 'd-none'; ?>
+                                    <p class="<?php echo $styleImageQuestions; ?> image-question">
+                                        <a href="<?php echo $row->photo; ?>" class="image-link question-img">
+                                            <img src="<?php echo $row->photo; ?>" alt="" width="150">
+                                        </a>
                                     </p>
-                                </div>
 
-                                <p class="question-about margin-bot-15 normal-12-medium-tiny">
-                                    <?php echo $row->created; ?> •
-                                    <?php echo $row->course; ?> •
-                                    <?php echo $row->category; ?> •
-                                    <?php echo $row->subject; ?>
-                                </p>
-
-                                <!-- Create the editor container -->
-
-                                <div class="ql-snow ql-editor2">
-                                    <div class="ql-editor2">
-                                        <span class="line-clamp-2 white-text question-text-p">
-                                            <?php echo $row->answer; ?>
+                                    <?php $styleDocumentQuestion = !empty($row->document) ? '' : 'd-none'; ?>
+                                    <p class="<?php echo $styleDocumentQuestion; ?> document-question">
+                                        <span class="document-icon">
+                                            <img src="../../../../views/images/components/file-icon.svg">
                                         </span>
-
-                                    </div>
-                                </div>
-
-                                <?php $styleImageAnswer = !empty($row->photo) ? '' : 'd-none'; ?>
-                                <p class="<?php echo $styleImageAnswer; ?> image-question">
-                                    <a href="<?php echo $row->photo; ?>" class="image-link question-img">
-                                        <img src="<?php echo $row->photo; ?>" alt="" width="150px">
-                                    </a>
-                                </p>
-
-
-                                <?php $styleDocumentAnswer = !empty($row->document) ? '' : 'd-none'; ?>
-                                <p class="<?php echo $styleDocumentAnswer; ?> document-question">
-                                    <span class="document-icon">
-                                        <img src="../../../../views/images/components/file-icon.svg">
-                                    </span>
-                                    <span class="normal-14-medium-p white-text text-truncate document-name">
-                                        <?php echo $row->documentName; ?>
-                                    </span>
-                                    <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
-                                        <img src="../../../../views/images/components/download-icon.svg" alt="">
-                                    </a>
-                                </p>
-
-
-                                <?php $counterLikeAnswer = empty($row->totalLikeAnswer) ? 0 : $row->totalLikeAnswer; ?>
-                                <div class="functions-answer">
-                                    <div class="like-answer">
-                                        <div class="heart">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewbox="0 0 50 50">
-                                                <path d="M21.95 40.2 19.3 37.75Q13.1 32 8.55 26.775Q4 21.55 4 15.85Q4 11.35 7.025 8.325Q10.05 5.3 14.5 5.3Q17.05 5.3 19.55 6.525Q22.05 7.75 24 10.55Q26.2 7.75 28.55 6.525Q30.9 5.3 33.5 5.3Q37.95 5.3 40.975 8.325Q44 11.35 44 15.85Q44 21.55 39.45 26.775Q34.9 32 28.7 37.75L26.05 40.2Q25.2 41 24 41Q22.8 41 21.95 40.2Z" />
-                                            </svg>
-                                        </div>
-                                        <p class="normal-14-bold-p question-p" style="color: var(--fuchsia); margin-top: 2px;">
-                                            <?php echo $counterLikeAnswer; ?>
-                                        </p>
-
-                                    </div>
-
-                                    <div class="avaliation-answer">
-
-                                        <?php $counterAvaliationAnswer = empty($row->totalAvaliationAnswer) ? 0 : $row->totalAvaliationAnswer; ?>
-                                        <div class="star-icon question-info">
-                                            <p class="normal-14-bold-p question-p avaliation-text" style="color: var(--yellow);" style="margin-bottom: -10px;">
-                                                <span class="functions-answer-text avaliation-text">
-                                                    <?php echo $row->avgAvaliation; ?>
-                                                    (<?php echo $counterAvaliationAnswer; ?>)
-                                                </span>
-
-                                            </p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <hr class="detail-question-hr">
-
-                            <?php } ?>
-
-                        </div>
-                        <div class="tab-pane fade" id="ex2-tabs-12" role="tabpanel" aria-labelledby="ex2-tab-12">
-
-                            <!-- Lista de perguntas ⬇️ -->
-                            <?php for ($i = 0; $i < count($studentQuestion); $i++) {
-                                $row = $studentQuestion[$i] ?>
-
-                                <p class="question-about normal-12-medium-tiny margin-bot-15">
-                                    <?php echo $row->created; ?> •
-                                    <?php echo $row->course; ?> •
-                                    <?php echo $row->category; ?> •
-                                    <?php echo $row->subject; ?>
-                                </p>
-
-                                <!-- Create the editor container -->
-                                <div class="ql-snow ql-editor2">
-                                    <div class="ql-editor2">
-                                        <span class="white-text line-clamp-2">
-                                            <?php echo $row->question; ?>
+                                        <span class="normal-14-medium-p white-text text-truncate document-name">
+                                            <?php echo $row->documentName; ?>
                                         </span>
+                                        <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
+                                            <img src="../../../../views/images/components/download-icon.svg" alt="">
+                                        </a>
+                                    </p>
 
-                                    </div>
-                                </div>
+                                    <div class="question-footer">
 
+                                        <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId);
 
+                                        $styleCounter = empty($countAnswersOfQuestion) ? 'question-footer-div' : 'question-answers question-footer-div'; ?>
 
-                                <?php $styleImageQuestions = !empty($row->photo) ? '' : 'd-none'; ?>
-                                <p class="<?php echo $styleImageQuestions; ?> image-question">
-                                    <a href="<?php echo $row->photo; ?>" class="image-link question-img">
-                                        <img src="<?php echo $row->photo; ?>" alt="" width="150">
-                                    </a>
-                                </p>
-
-                                <?php $styleDocumentQuestion = !empty($row->document) ? '' : 'd-none'; ?>
-                                <p class="<?php echo $styleDocumentQuestion; ?> document-question">
-                                    <span class="document-icon">
-                                        <img src="../../../../views/images/components/file-icon.svg">
-                                    </span>
-                                    <span class="normal-14-medium-p white-text text-truncate document-name">
-                                        <?php echo $row->documentName; ?>
-                                    </span>
-                                    <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
-                                        <img src="../../../../views/images/components/download-icon.svg" alt="">
-                                    </a>
-                                </p>
-
-                                <div class="question-footer">
-
-                                    <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId);
-
-                                    $styleCounter = empty($countAnswersOfQuestion) ? 'question-footer-div' : 'question-answers question-footer-div'; ?>
-
-                                    <div class="<?php echo $styleCounter ?>">
-                                        <p class="normal-14-bold-p white-text question-p">
-                                            <?php echo $countAnswersOfQuestion; ?>
-                                        </p>
-                                    </div>
-
-                                    <a href="<?php echo $row->linkQuestion; ?>" class="question-give-heelp-a pedir-heelp-button-a" target="_blank">
-                                        <div class="question-toAnswer question-footer-div">
-                                            <p class="normal-14-bold-p question-p white-text">
-                                                Ver
+                                        <div class="<?php echo $styleCounter ?>">
+                                            <p class="normal-14-bold-p white-text question-p">
+                                                <?php echo $countAnswersOfQuestion; ?>
                                             </p>
                                         </div>
-                                    </a>
-                                </div>
 
-                                <hr class="detail-question-hr">
+                                        <a href="<?php echo $row->linkQuestion; ?>" class="question-give-heelp-a pedir-heelp-button-a" target="_blank">
+                                            <div class="question-toAnswer question-footer-div">
+                                                <p class="normal-14-bold-p question-p white-text">
+                                                    Ver
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
 
-                            <?php } ?>
+                                    <hr class="detail-question-hr">
 
-                        </div>
-                        <div class="tab-pane fade" id="ex2-tabs-13" role="tabpanel" aria-labelledby="ex2-tab-13">
+                                <?php } ?>
 
-                            <!-- Lista de materiais ⬇️ -->
-                            <?php for ($i = 0; $i < count($studentMaterial); $i++) {
-                                $row = $studentMaterial[$i] ?>
+                            </div>
+                            <div class="tab-pane fade" id="ex2-tabs-13" role="tabpanel" aria-labelledby="ex2-tab-13">
 
-                                <p class="question-about normal-12-medium-tiny margin-bot-15">
-                                    <?php echo $row->created; ?> •
-                                    <?php echo $row->course; ?> •
-                                    <?php echo $row->category; ?> •
-                                    <?php echo $row->subject; ?>
-                                </p>
+                                <!-- Lista de materiais ⬇️ -->
+                                <?php for ($i = 0; $i < count($studentMaterial); $i++) {
+                                    $row = $studentMaterial[$i] ?>
 
-                                <!-- Create the editor container -->
-                                <div class="ql-snow ql-editor2">
-                                    <div class="ql-editor2">
-                                        <span class="line-clamp-2 white-text question-text-p">
-                                            <?php echo $row->question; ?>
+                                    <p class="question-about normal-12-medium-tiny margin-bot-15">
+                                        <?php echo $row->created; ?> •
+                                        <?php echo $row->course; ?> •
+                                        <?php echo $row->category; ?> •
+                                        <?php echo $row->subject; ?>
+                                    </p>
+
+                                    <!-- Create the editor container -->
+                                    <div class="ql-snow ql-editor2">
+                                        <div class="ql-editor2">
+                                            <span class="line-clamp-2 white-text question-text-p">
+                                                <?php echo $row->question; ?>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                    <?php $styleImageMaterials = !empty($row->photo) ? '' : 'd-none'; ?>
+                                    <p class="<?php echo $styleImageMaterials; ?> image-question">
+                                        <a href="<?php echo $row->photo; ?>" class="image-link question-img">
+                                            <img src="<?php echo $row->photo; ?>" alt="" width="150px">
+                                        </a>
+                                    </p>
+
+                                    <?php $styleDocumentMaterials = !empty($row->document) ? '' : 'd-none'; ?>
+                                    <p class="<?php echo $styleDocumentMaterials; ?> document-question">
+                                        <span class="document-icon">
+                                            <img src="../../../../views/images/components/file-icon.svg">
                                         </span>
+                                        <span class="normal-14-medium-p white-text text-truncate document-name">
+                                            <?php echo $row->documentName; ?>
+                                        </span>
+                                        <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
+                                            <img src="../../../../views/images/components/download-icon.svg" alt="">
+                                        </a>
+                                    </p>
 
-                                    </div>
-                                </div>
+                                    <div class="question-footer">
 
-                                <?php $styleImageMaterials = !empty($row->photo) ? '' : 'd-none'; ?>
-                                <p class="<?php echo $styleImageMaterials; ?> image-question">
-                                    <a href="<?php echo $row->photo; ?>" class="image-link question-img">
-                                        <img src="<?php echo $row->photo; ?>" alt="" width="150px">
-                                    </a>
-                                </p>
+                                        <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId);
+                                        $styleCounter = empty($countAnswersOfQuestion) ? 'question-footer-div' : 'question-answers question-footer-div'; ?>
 
-                                <?php $styleDocumentMaterials = !empty($row->document) ? '' : 'd-none'; ?>
-                                <p class="<?php echo $styleDocumentMaterials; ?> document-question">
-                                    <span class="document-icon">
-                                        <img src="../../../../views/images/components/file-icon.svg">
-                                    </span>
-                                    <span class="normal-14-medium-p white-text text-truncate document-name">
-                                        <?php echo $row->documentName; ?>
-                                    </span>
-                                    <a href="<?php echo $row->document; ?>" class="download-file-button" download="<?php echo $row->documentName; ?>">
-                                        <img src="../../../../views/images/components/download-icon.svg" alt="">
-                                    </a>
-                                </p>
-
-                                <div class="question-footer">
-
-                                    <?php $countAnswersOfQuestion = Answer::countAnswers($row->questionId);
-                                    $styleCounter = empty($countAnswersOfQuestion) ? 'question-footer-div' : 'question-answers question-footer-div'; ?>
-
-                                    <div class="<?php echo $styleCounter ?>">
-                                        <p class="normal-14-bold-p white-text question-p">
-                                            <?php echo $countAnswersOfQuestion; ?>
-                                        </p>
-                                    </div>
-
-                                    <a href="<?php echo $row->linkQuestion; ?>" class="question-give-heelp-a pedir-heelp-button-a" target="_blank">
-                                        <div class="question-toAnswer question-footer-div">
-                                            <p class="normal-14-bold-p question-p white-text">
-                                                Ver
+                                        <div class="<?php echo $styleCounter ?>">
+                                            <p class="normal-14-bold-p white-text question-p">
+                                                <?php echo $countAnswersOfQuestion; ?>
                                             </p>
                                         </div>
-                                    </a>
 
-                                </div>
+                                        <a href="<?php echo $row->linkQuestion; ?>" class="question-give-heelp-a pedir-heelp-button-a" target="_blank">
+                                            <div class="question-toAnswer question-footer-div">
+                                                <p class="normal-14-bold-p question-p white-text">
+                                                    Ver
+                                                </p>
+                                            </div>
+                                        </a>
 
-                                <hr class="detail-question-hr">
+                                    </div>
 
-                            <?php } ?>
+                                    <hr class="detail-question-hr">
 
-                        </div>
-                        <div class="tab-pane fade" id="ex2-tabs-14" role="tabpanel" aria-labelledby="ex2-tab-14">
+                                <?php } ?>
 
-                            <!-- Sobre ⬇️ -->
-                            <p class="normal-14-bold-p question-p" style="color: var(--gray7);">
-                                <img src="../../../../views/images/components/date-range.svg" alt="">
-                                Entrou em:
-                                <input type="hidden" id="dayValue" value="<?php echo $studentPerfil->created; ?>">
-                                <span id="dayText"></span>
-                            </p>
+                            </div>
+                            <div class="tab-pane fade" id="ex2-tabs-14" role="tabpanel" aria-labelledby="ex2-tab-14">
 
-                            <br>
-
-                            <p class="normal-14-bold-p question-p margin-bot-15" style="color: var(--gray6);">
-                                Preferências
-                            </p>
-
-                            <!-- Lista de preferencias ⬇️ -->
-                            <?php for ($i = 0; $i < count($studentPreference); $i++) {
-                                $row = $studentPreference[$i] ?>
-
-                                <p class="normal-16-bold-title-3 white-text question-p margin-bot-15">
-                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
-                                    <?php echo $row->name; ?>
+                                <!-- Sobre ⬇️ -->
+                                <p class="normal-14-bold-p question-p" style="color: var(--gray7);">
+                                    <img src="../../../../views/images/components/date-range.svg" alt="">
+                                    Entrou em:
+                                    <input type="hidden" id="dayValue" value="<?php echo $studentPerfil->created; ?>">
+                                    <span id="dayText"></span>
                                 </p>
 
-                            <?php } ?>
+                                <br>
+
+                                <p class="normal-14-bold-p question-p margin-bot-15" style="color: var(--gray6);">
+                                    Preferências
+                                </p>
+
+                                <!-- Lista de preferencias ⬇️ -->
+                                <?php for ($i = 0; $i < count($studentPreference); $i++) {
+                                    $row = $studentPreference[$i] ?>
+
+                                    <p class="normal-16-bold-title-3 white-text question-p margin-bot-15">
+                                        <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->name; ?>">
+                                        <?php echo $row->name; ?>
+                                    </p>
+
+                                <?php } ?>
+                            </div>
                         </div>
+                        <!-- Tabs content -->
                     </div>
-                    <!-- Tabs content -->
-
                 </div>
 
             </div>

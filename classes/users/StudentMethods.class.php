@@ -144,7 +144,7 @@ class StudentMethods
 
         try {
             $stmt = $connection->prepare("SELECT stu.id, stu.first_name, stu.surname, stu.user_id, stu.xp, usr.photo, stu.created_at, module.id AS 'moduleId',
-                                            module.name AS 'module', course.name AS 'course', school.name AS 'school', usr.linkedin, usr.github, 
+                                            module.name AS 'module', course.name AS 'course', school.name AS 'school', usr.linkedin, usr.github, usr.is_blocked,
                                             usr.facebook, usr.instagram, usr.profile_link FROM students stu
 
                                             INNER JOIN users usr
@@ -188,9 +188,7 @@ class StudentMethods
         $student->instagram = $row['instagram'];
         $student->linkProfile = $row['profile_link'];
         $student->created = $row['created_at'];
-        // setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-        // $student->created =  date('d F Y', strtotime($row['created_at']));
-       
+        $student->blocked = $row['is_blocked'];
 
         return $student;
     }

@@ -4,13 +4,16 @@ require_once('/xampp/htdocs' . '/project/classes/denunciations/denunciation.clas
 
 session_start();
 
-if (isset($_POST['resolveDenunciation'])) {
-    $denunciation = new Denunciation();
+$denunciation = new Denunciation();
 
-    $id = $_GET['denunciationID'];
+$id = $_GET['denunciationID'];
+$questionID = $_GET['questionId'] ?? '';
+$type = $_GET['type'];
+$answerID = $_GET['answerId'] ?? '';
+$userID = $_GET['denounced'] ?? '';
 
-    $denunciation->setStatus("Resolvida");
-    $denunciation->setContext($_POST['context']);
-    $denunciation->setConclusion($_POST['conclusion']);
-    $denunciation->moveResolved($denunciation, $id);
-}
+$denunciation->setStatus("Resolvida");
+$denunciation->setContext($_POST['context']);
+$denunciation->setConclusion($_POST['conclusion']);
+$denunciation->setType($type);
+$denunciation->moveResolved($denunciation, $id, $questionID, $answerID, $userID);
