@@ -481,6 +481,11 @@ body {
     }
     .link {
         padding-bottom: 10px;
+        margin-left: 20px;
+    }
+    .btn-heelp {
+        width: 200px;
+        margin-left: 20px;
     }
 }
 
