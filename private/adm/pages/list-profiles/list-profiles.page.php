@@ -130,7 +130,7 @@ try {
                     <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
                     <a href="../denunciation/list-denunciation.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../views/images/components/denuncia-img.svg" alt="">
-                        <p class="sidebar-option normal-18-bold-title-2">Denuncias</p>
+                        <p class="sidebar-option normal-18-bold-title-2">Denúncias</p>
                     </a>
                 </li>
 
@@ -413,7 +413,7 @@ try {
                                     <?php for ($i = 0; $i < count($listActiveStudents); $i++) {
                                         $row = $listActiveStudents[$i] ?>
 
-                                        <div class="card-contact">
+                                        <div class="card-contact" style="margin-bottom: 25px;">
 
                                             <?php $styleActive = $row->isBlocked == false ? 'badge rounded-pill bg-green' : 'd-none'; ?>
                                             <span class="<?php echo $styleActive; ?> bg-green" style="margin-right: 10px">Ativo</span>
