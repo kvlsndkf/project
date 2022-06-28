@@ -550,7 +550,7 @@ class Denunciation
         }
 
         $_SESSION['statusPositive'] = "Denúncia resolvida para <strong>Resolvidas<strong>.";
-        // header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
+        header('Location: /project/private/adm/pages/denunciation/list-denunciation.page.php');
     }
 
     public function listResolvedDenunciations()

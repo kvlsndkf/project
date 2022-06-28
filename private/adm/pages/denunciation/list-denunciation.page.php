@@ -366,7 +366,7 @@ try {
                                                             <button id="botao" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionId=<?php echo $row->questionId; ?>&type=<?php echo $row->type; ?>&answerId=<?php echo $row->answerId; ?>&denounced=<?php echo $row->denounced; ?>" method="POST" enctype="multipart/form-data">
+                                                            <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionId=<?php echo $row->questionId; ?>&type=<?php echo $row->type; ?>&answerId=<?php echo $row->answerId; ?>&denounced=<?php echo $row->denouncedId; ?>" method="POST" enctype="multipart/form-data">
                                                                 <label class="subtituloM normal-14-bold-p sub-titulo-plusM">Contexto</label>
                                                                 <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" data-select="<?php echo $searchID; ?>" name="context">
                                                                     <option class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
@@ -585,7 +585,7 @@ try {
                                                                 <button id="botaotab" class="setaM"><img type="button" data-bs-dismiss="modal" aria-label="Close" src="../../../../views/images/components/x-button.svg" class="close fechar"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionId=<?php echo $row->questionId; ?>&type=<?php echo $row->type; ?>&answerId=<?php echo $row->answerId; ?>&denounced=<?php echo $row->denounced; ?>" method="POST" enctype="multipart/form-data">
+                                                                <form action="./controller/resolve-denunciation.controller.php?denunciationID=<?php echo $row->id; ?>&questionId=<?php echo $row->questionId; ?>&type=<?php echo $row->type; ?>&answerId=<?php echo $row->answerId; ?>&denounced=<?php echo $row->denouncedId; ?>" method="POST" enctype="multipart/form-data">
                                                                     <label class="subtituloM normal-14-bold-p sub-titulo-plusM">Contexto</label>
                                                                     <select class="form-select select-modal normal-14-bold-p" aria-label="Default select example" data-select="<?php echo $row->denouncedId; ?>" name="context">
                                                                         <option class="normal-14-bold-p">Selecione o contexto em que a denúncia se enquadra</option>
@@ -745,7 +745,7 @@ try {
     </script>
 
     <!-- JS tamanho minimo text area -->
-    <!-- <script>
+    <script>
         var textArea = document.getElementById('about');
         var minLength = document.getElementById('min-length');
 
@@ -759,11 +759,10 @@ try {
                 minLength.innerText = "Máximo de caracteres: 240";
             }
         }
-    </script> -->
+    </script>
 
     <!-- JS tamanho máximo textarea  -->
-
-    <!-- <script>
+    <script>
         $(document).ready(function() {
             $('#about').on('input propertychange', function() {
                 charLimit(this, 240);
@@ -776,7 +775,7 @@ try {
                 $(input).val($(input).val().substring(0, maxChar));
             }
         }
-    </script> -->
+    </script>
 </body>
 
 </html>
