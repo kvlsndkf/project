@@ -295,7 +295,7 @@ try {
 
                                                 <p>
                                                     <label class="normal-14-medium-p nameGeral" for="">Senha antiga</label><br>
-                                                    <input class="input-Geral" type="password" name="oldPassword" id="" placeholder="Digite a sua senha antiga">
+                                                    <input class="input-Geral" type="password" name="oldPassword" id="oldPassword" placeholder="Digite a sua senha antiga">
                                                 </p>
 
                                                 <p>
@@ -502,6 +502,7 @@ try {
 
         const input = document.getElementById("newPassword");
         const input2 = document.getElementById("passwordConfirm");
+        const input3 = document.getElementById("oldPassword");
 
         function openEyee() {
             let inputTypePasswordNew = input.type == "password";
@@ -518,6 +519,7 @@ try {
 
             input.setAttribute("type", "text");
             input2.setAttribute("type", "text");
+            input3.setAttribute("type", "text");
             eye.setAttribute("src", "/project/views/pages/register/image/components/hide-pass.svg");
         }
 
@@ -525,7 +527,8 @@ try {
 
 
             input.setAttribute("type", "password");
-            input2.setAttribute("type", "password")
+            input2.setAttribute("type", "password");
+            input3.setAttribute("type", "password");
             eye.setAttribute("src", "/project/views/pages/register/image/components/show-pass.svg");
         }
     </script>
