@@ -50,6 +50,12 @@
     left: 300px;
 }
 
+.border-div{
+    border: 2px solid #00AFF4;
+}
+
+
+
 
 
 
@@ -160,7 +166,8 @@
 }
 
 .text-area {
-    background-color: #303339;
+    background-color: transparent;
+    resize: none;
     color: white;
     width: 100%;
     border: solid 1px var(--gray1);
@@ -173,9 +180,7 @@
     border: none;
 }
 
-.min-length {
-    margin-top: 10px;
-}
+
 
 .text-area::placeholder {
     font-family: var(--gintoNormal-medium);
@@ -206,3 +211,13 @@
     border: solid 1px var(--blue-sky);
     outline: none;
   }
+
+.text-email{
+    margin-top: 5px;
+    color: var(--red);
+    display: none;
+}
+
+.border-div-error{
+    border: 2px solid #ED4245;
+}

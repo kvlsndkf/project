@@ -306,8 +306,17 @@ class Question
             $row = $compare[$i];
             $question = $this->buildQuestion($row);
 
+            $filteredQuestions = array_filter($questions, function ($var) use ($question) {
+                return $var->id === $question->id;
+            });
+
+            if(count($filteredQuestions) > 0){
+                continue;
+            }
+
             array_push($questions, $question);
         }
+
         return $questions;
     }
 

@@ -277,19 +277,24 @@
                                     <form class="row g-3 needs-validation" action="./views/landing-page/form-register-message/controller/message-unit-registration.controller.php" method="POST" enctype="multipart/form-data" novalidate>
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe um email para entrarmos em contato</label>
-                                            <input name="contact" type="email" class=" input normal-12-regular-tinyinput input-text" id="exampleFormControlInput1" required placeholder="contato@email.com" autocomplete="off">
+                                            <input name="contact" required type="email" class=" input normal-12-regular-tinyinput input-text" id="exampleFormControlInput1" placeholder="contato@email.com" autocomplete="off">
+                                        <span class="text-email normal-12-medium-tiny" id="messegeG">Email Invalido</span>
                                         </div>
                                         <div class="mb-3">
 
 
                                             <label for="exampleFormControlTextarea1" class="subtituloM normal-14-bold-p sub-titulo-plusM">Deixe sua crítica/avaliação</label>
                                             <div id="contentTextArea">
-                                                <textarea name="message" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" required onclick="colorDiv()" minlength="15" maxlength="240"></textarea>
-                                                <div id="counter-container" class="counter-container">
+                                                <textarea  required name="message" rows="7" id="about" class="text-area normal-14-medium-p" placeholder="Nos conte como foi/está sendo a sua experiência" onclick="colorDiv()" minlength="15" maxlength="240"></textarea>
+                                                <div class="counter-container">
                                                     <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">240</span>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="GFG_Fun()">Enviar</button>
+                                            <div class="min-length slc-arch normal-12-medium-tiny gray-text-6" id="min-length">
+                                                <span></span>
+                                            </div>
+                                           
+                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="checkLength(); ValidationEmail(event)">Enviar</button>
 
                                         </div>
                                     </form>
@@ -338,6 +343,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
+
+    
+<!-- JS tamanho minimo text area -->
+    <script>
+        var textArea = document.getElementById('about');
+        var minLength = document.getElementById('min-length');
+
+        function checkLength() {
+            if (textArea.value.length < 100) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Mínimo de caracteres: 100";
+            }
+            if (textArea.value.length > 250) {
+                minLength.style.color = "#ED4245";
+                minLength.innerText = "Máximo de caracteres: 250";
+            }
+        }
+    </script>
+
     <!--Cod Java alert-->
     <script type="text/javascript">
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -361,11 +385,14 @@
         })()
     </script>
 
-    <script type="text/javascript" src="../../private/adm/pages/js/textarea.js"></script>
+    
+
+    <script type="text/javascript" src="./private/adm/pages/js/textarea.js"></script>
     <!-- JS Visibility Inputs -->
-    <script type="text/javascript" src="../../private/adm/pages/js/visibility-inputs.js"></script>
+    <script type="text/javascript" src="./private/adm/pages/js/visibility-inputs.js"></script>
     <!-- JS Count Characters TextArea -->
-    <script type="text/javascript" src="../../private/adm/pages/js/textarea.js"></script>
+
+    <script src="./views/js/validation-modal-fale-conosco.js"></script>
 </body>
 
 </html>
