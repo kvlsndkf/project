@@ -64,8 +64,13 @@ try {
     <link rel="stylesheet" href="../../../../views/styles/fonts.style.css">
     <link rel="stylesheet" href="../../../style/modal-delete-teacher.style.css">
     <link rel="stylesheet" href="../../../style/button-delete-course.style.css">
+    <link rel="stylesheet" href="../../../style/modal-about.style.css">
     <link rel="stylesheet" href="../register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../register/register.styles.css">
+    <link rel="stylesheet" href="../../../../views/landing-page/fale-conosco.css">
+    <link rel="stylesheet" href="../../../style/style.css">
+
+
 </head>
 
 <body>
@@ -163,7 +168,7 @@ try {
 
         <!-- Corpo -->
         <div class="corpo">
-            
+
             <div class="cabecalho">
                 <a href="../register/registration panel/registration-panel-page.php" class="seta-voltar-a">
                     <img src="../../../../views/images/components/arrow-back.svg" class="seta-voltar-img">
@@ -456,27 +461,37 @@ try {
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
                                                 <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <div class="modal-content bg-modal-gray">
+                                                        <div class="modal-header cabecalho-modal">
+                                                            <h5 class="modal-title titulo-modal" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
+                                                            <button type="button" class="x-button" data-bs-dismiss="modal">
+                                                                <img src="../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                                                            </button>
                                                         </div>
-                                                        <div class="modal-body">
+                                                        <div class="modal-body corpo-modal">
                                                             <form action="./controller/block-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
                                                                 <div>
-                                                                    <p>
+                                                                    <p class="normal-14-medium-p" style="color: white">
                                                                         Motivo
                                                                     </p>
 
-                                                                    <div id="contentTextArea">
+                                                                    <!-- <div id="contentTextArea">
                                                                         <textarea name="reason" id="about" cols="30" rows="10" placeholder="Faça uma breve descrição sobre o bloqueio" required onclick="colorDiv()"></textarea>
                                                                         <div><span id="counterTextArea">250</span></div>
+                                                                    </div> -->
+
+                                                                    <div id="contentTextArea">
+                                                                        <textarea required name="reason" rows="7" cols="25" id="about" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv()" minlength="15" maxlength="250"></textarea>
+                                                                        <div class="counter-container">
+                                                                            <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span>
+                                                                        </div>
                                                                     </div>
+
                                                                 </div>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                    <button type="submit" name="block" class="btn btn-primary">Bloquear usuário</button>
+                                                                <div class="modal-footer" style="border: none;">
+                                                                    <button type="submit" name="block" class="block-user normal-14-bold-p" style="color: white;">Bloquear</button>
+                                                                    <button type="reset" class="block-user normal-14-bold-p" style="background-color: white;">Limpar</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -565,17 +580,19 @@ try {
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
                                                 <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <div class="modal-content bg-modal-gray">
+                                                        <div class="modal-header cabecalho-modal">
+                                                            <h5 class="modal-title titulo-modal" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
+                                                            <button type="button" class="x-button" data-bs-dismiss="modal">
+                                                                <img src="../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                                                            </button>
                                                         </div>
-                                                        <div class="modal-body">
+                                                        <div class="modal-body normal-16-bold-title-3" style="color: white; font-weight: 400; text-align: center;">
                                                             Tem certeza de que deseja desbloquear este usuário?
-                                                            <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                    <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
+                                                            <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post" style="margin-top: 20px">
+                                                                <div class="modal-footer" style="border: none;">
+                                                                    <button type="submit" name="unlock" class="block-user normal-14-bold-p" style="background-color: var(--primary); color: white;">Sim, quero</button>
+                                                                    <button type="button" class="block-user normal-14-bold-p" style="background-color: white;" data-bs-dismiss="modal">Cancelar</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -610,6 +627,7 @@ try {
 
     <!-- JS Search bar -->
     <script src="../js/autocomplete.js"></script>
+
 
     <!-- JS Search bar ⬇️ -->
     <script>
