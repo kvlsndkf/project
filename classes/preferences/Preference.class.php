@@ -78,6 +78,7 @@ class Preference
                                             INNER JOIN users usr
                                             ON stu.user_id = usr.id
                                             WHERE quest.course_id = $preferenceID
+                                            AND quest.is_blocked NOT IN(1)
                                             ORDER BY quest.created_at DESC
                                         ");
             $stmt->execute();

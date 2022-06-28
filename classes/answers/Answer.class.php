@@ -246,6 +246,7 @@ class Answer
                                         INNER JOIN questions quest
                                         ON answ.question_id = quest.id
                                         WHERE quest.id = '$idQuestion'
+                                        AND answ.is_blocked NOT IN(1)
                                         ORDER BY answ.avg_avaliation DESC
                                         ");
             $stmt->execute();
@@ -516,6 +517,7 @@ class Answer
         try {
             $stmt = $connection->prepare("SELECT COUNT(id) AS total FROM answers
                                             WHERE question_id = $idQuestion
+                                            AND is_blocked NOT IN(1)
                                         ");
             $stmt->execute();
 

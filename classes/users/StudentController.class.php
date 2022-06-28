@@ -110,7 +110,7 @@ class StudentController
         $student->isBlocked = $row['is_blocked'];
         $student->created = $row['created_at'] ?? '';
         $student->blocked = $row['blocked_at'] ?? '';
-        $student->reason = $row['blocking_reason'] ?? '';
+        $student->reason = $row['conclusion'] ?? '';
 
         return $student;
     }
@@ -122,7 +122,7 @@ class StudentController
         try {
             $stmt = $connection->prepare("SELECT stu.id, stu.user_id, stu.first_name, stu.surname, usr.photo, usr.type_user, 
                                             cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.blocked_at, usr.created_at,
-                                            usr.is_blocked, usr.blocking_reason FROM students stu
+                                            usr.is_blocked, de.conclusion FROM students stu
 
                                         INNER JOIN users usr
                                         ON stu.user_id = usr.id
@@ -134,6 +134,8 @@ class StudentController
                                         ON stu.id = ss.student_id
                                         INNER JOIN schools school
                                         ON ss.school_id = school.id
+                                        INNER JOIN denunciations de
+                                        ON stu.user_id = de.denounced_id
                                         WHERE usr.is_blocked = 1
                                     ");
 
@@ -243,7 +245,7 @@ class StudentController
         try {
             $stmt = $connection->prepare("SELECT stu.id, stu.user_id, stu.first_name, stu.surname, usr.photo, usr.type_user, 
                                             cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.blocked_at, usr.created_at,
-                                            usr.is_blocked, usr.blocking_reason FROM students stu
+                                            usr.is_blocked FROM students stu
 
                                         INNER JOIN users usr
                                         ON stu.user_id = usr.id
