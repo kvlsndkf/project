@@ -249,103 +249,135 @@ try {
                     <!-- Lista da pesquisa -->
                     <?php for ($i = 0; $i < count($listSearch); $i++) {
                         $row = $listSearch[$i] ?>
+                        <div class="card-contact">
+                            <?php $styleActive = $row->isBlocked == false ? 'badge rounded-pill bg-success' : 'd-none'; ?>
+                            <span class="<?php echo $styleActive; ?>">Ativo</span>
 
-                        <?php $styleActive = $row->isBlocked == false ? 'badge rounded-pill bg-success' : 'd-none'; ?>
-                        <span class="<?php echo $styleActive; ?>">Ativo</span>
+                            <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+                            <span class="<?php echo $styleActive; ?>">Aluno</span>
 
-                        <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
-                        <span class="<?php echo $styleActive; ?>">Aluno</span>
+                            <?php $styleActive = $row->isBlocked != false ? 'badge rounded-pill bg-danger' : 'd-none'; ?>
+                            <span class="<?php echo $styleActive; ?>">Bloqueado</span>
 
-                        <?php $styleActive = $row->isBlocked != false ? 'badge rounded-pill bg-danger' : 'd-none'; ?>
-                        <span class="<?php echo $styleActive; ?>">Bloqueado</span>
+                            <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
+                            <span class="<?php echo $styleActive; ?>">Aluno</span>
 
-                        <?php $styleTypeUser = $row->typeUser == 'student' ? 'badge rounded-pill bg-primary' : 'd-none'; ?>
-                        <span class="<?php echo $styleActive; ?>">Aluno</span>
+                            <div class="user-data" style="margin-top: 20px">
+                                <div class="user-img-adm" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px; margin-right: 10px;">
+                                    <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
+                                </div>
+                                <div>
+                                    <?php echo $row->firstName; ?>
+                                    <?php echo $row->surname; ?>
+                                </div>
 
-                        <div>
-                            <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" width="100">
-                            <div>
-                                <?php echo $row->firstName; ?>
-                                <?php echo $row->surname; ?>
+                                <div>
+                                    <?php echo $row->module; ?> •
+                                    <?php echo $row->course; ?> •
+                                    <?php echo $row->school; ?>
+                                </div>
                             </div>
 
-                            <div>
-                                <?php echo $row->module; ?> •
-                                <?php echo $row->course; ?> •
-                                <?php echo $row->school; ?>
-                            </div>
-                        </div>
+                            <?php
+                            if (empty($row->blocked)) {
+                                $displayBlocked = 'd-none';
+                                $displayCreated = '';
+                            } else {
+                                $displayBlocked = '';
+                                $displayCreated = 'd-none';
+                            }
+                            ?>
 
-                        <?php
-                        if (empty($row->blocked)) {
-                            $displayBlocked = 'd-none';
-                            $displayCreated = '';
-                        } else {
-                            $displayBlocked = '';
-                            $displayCreated = 'd-none';
-                        }
-                        ?>
+                            <div class="<?php echo $displayCreated; ?>">
+                                <div>
+                                    <label for="">Entrou em</label>
+                                    <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                                </div>
 
-                        <div class="<?php echo $displayCreated; ?>">
-                            <div>
-                                <label for="">Entrou em</label>
-                                <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
-                            </div>
+                                <div>
+                                    <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
+                                </div>
 
-                            <div>
-                                <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
-                            </div>
+                                <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->userID; ?>">Bloquear usuário</button>
 
-                            <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->userID; ?>">Bloquear usuário</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="./controller/block-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
+                                                    <div>
+                                                        <p>
+                                                            Motivo
+                                                        </p>
 
-                            <!-- Modal de bloquear-->
-                            
-                        </div>
+                                                        <div id="contentTextArea">
+                                                            <textarea name="reason" id="about" cols="30" rows="10" placeholder="Faça uma breve descrição sobre o bloqueio" required onclick="colorDiv()"></textarea>
+                                                            <div><span id="counterTextArea">250</span></div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="<?php echo $displayBlocked; ?>">
-                            <div>
-                                <label for="">Entrou em</label>
-                                <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
-                            </div>
-
-                            <div>
-                                <label for="">Bloqueado em</label>
-                                <span data-date-value=" <?php echo $row->blocked; ?>"> <?php echo $row->blocked; ?></span>
-                            </div>
-
-                            <div>
-                                <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
-                            </div>
-
-                            <div>
-                                Motivo
-                                <?php echo $row->reason; ?>
-                            </div>
-
-                            <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->studentID; ?>">Desbloquear usuário</button>
-
-                            <!-- Modal desbloquear-->
-                            <div class="modal fade" id="modal-<?php echo $row->studentID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->studentID; ?>" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->studentID; ?>">Desbloquear usuário</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" name="block" class="btn btn-primary">Bloquear usuário</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            Tem certeza de que deseja desbloquear este usuário?
-                                            <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
-                                                </div>
-                                            </form>
+                                    </div>
+                                </div>
+                                <!-- Modal de bloquear-->
+
+                            </div>
+
+                            <div class="<?php echo $displayBlocked; ?>">
+                                <div>
+                                    <label for="">Entrou em</label>
+                                    <span data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
+                                </div>
+
+                                <div>
+                                    <label for="">Bloqueado em</label>
+                                    <span data-date-value=" <?php echo $row->blocked; ?>"> <?php echo $row->blocked; ?></span>
+                                </div>
+
+                                <div>
+                                    <a href="../denunciation/detail-profile-student/detail-profile-student.page.php?idStudent=<?php echo $row->studentID; ?>" target="__blank">Ver perfil</a>
+                                </div>
+
+                                <div>
+                                    Motivo
+                                    <?php echo $row->reason; ?>
+                                </div>
+
+                                <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->studentID; ?>">Desbloquear usuário</button>
+
+                                <!-- Modal desbloquear-->
+                                <div class="modal fade" id="modal-<?php echo $row->studentID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->studentID; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->studentID; ?>">Desbloquear usuário</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Tem certeza de que deseja desbloquear este usuário?
+                                                <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" name="unlock" class="btn btn-primary">Sim, quero</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <hr>
                     <?php } ?>
 
@@ -435,7 +467,7 @@ try {
                                                 <div class="modal-dialog">
                                                     <div class="modal-content bg-modal-gray">
                                                         <div class="modal-header cabecalho-modal">
-                                                            <h5 class="modal-title titulo-modal" id="exampleModalLabel1-<?php echo $row->userID; ?>">Bloquear usuário</h5>
+                                                            <h5 class="modal-title titulo-modal normal-20-bold-modaltitle" id="exampleModalLabel1-<?php echo $row->userID; ?>">Bloquear usuário</h5>
                                                             <button type="button" class="x-button" data-bs-dismiss="modal">
                                                                 <img src="../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
                                                             </button>
@@ -452,17 +484,17 @@ try {
                                                                         <div><span id="counterTextArea">250</span></div>
                                                                     </div> -->
 
-                                                                    <div id="contentTextArea">
-                                                                        <textarea required name="reason" rows="7" cols="25" id="about" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv()" minlength="15" maxlength="250"></textarea>
+                                                                    <div id="contentTextArea2">
+                                                                        <textarea required name="reason" rows="7" cols="25" id="about2" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv()" minlength="15" maxlength="250"></textarea>
                                                                         <div class="counter-container">
-                                                                            <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span>
+                                                                            <span id="counterTextArea2" class="counterTextArea whitney-8-medium-littletiny">250</span>
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
 
-                                                                <div class="modal-footer" style="border: none;">
-                                                                    <button type="submit" name="block" class="block-user normal-14-bold-p" style="color: white;">Bloquear</button>
+                                                                <div class="" style="border: none;">
+                                                                    <button type="submit" name="block" class="block-user normal-14-bold-p" style="color: white; margin-bottom: 10px; margin-top: 10px;">Bloquear</button>
                                                                     <button type="reset" class="block-user normal-14-bold-p" style="background-color: white;">Limpar</button>
                                                                 </div>
                                                             </form>
@@ -553,20 +585,24 @@ try {
                                             <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content bg-modal-gray">
-                                                        <div class="modal-header cabecalho-modal">
-                                                            <h5 class="modal-title titulo-modal" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
-                                                            <button type="button" class="x-button" data-bs-dismiss="modal">
-                                                                <img src="../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body normal-16-bold-title-3" style="color: white; font-weight: 400; text-align: center;">
-                                                            Tem certeza de que deseja desbloquear este usuário?
-                                                            <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post" style="margin-top: 20px">
-                                                                <div class="modal-footer" style="border: none;">
-                                                                    <button type="submit" name="unlock" class="block-user normal-14-bold-p" style="background-color: var(--primary); color: white;">Sim, quero</button>
-                                                                    <button type="button" class="block-user normal-14-bold-p" style="background-color: white;" data-bs-dismiss="modal">Cancelar</button>
-                                                                </div>
-                                                            </form>
+                                                        <div class="container" style="padding: 30px;">
+                                                            <div class="modal-header" style="border: none; padding-left: 1rem; padding-right: 1rem; padding-top: 1rem;">
+                                                                <h5 class="modal-title titulo-modal normal-20-bold-modaltitle" id="exampleModalLabel-<?php echo $row->userID; ?>">Desbloquear usuário</h5>
+                                                                <button type="button" class="x-button" data-bs-dismiss="modal">
+                                                                    <img src="../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
+                                                                </button>
+                                                            </div>
+                                                            <div class="normal-14-bold-p" style="color: white; font-weight: 400;     position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;">
+                                                                Tem certeza de que deseja desbloquear este usuário?
+                                                                <form action="./controller/unlock-student.controller.php?userID=<?php echo $row->userID; ?>" method="post" style="margin-top: 20px;">
+                                                                    <div style="border: none;">
+                                                                        <button type="submit" name="unlock" class="block-user normal-14-bold-p" style="background-color: var(--primary); color: white; margin-bottom: 10px;">Sim, quero</button>
+                                                                        <button type="button" class="block-user normal-14-bold-p" style="background-color: white;" data-bs-dismiss="modal">Cancelar</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -587,7 +623,7 @@ try {
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="../js/textarea2.js"></script>
     <script type="text/javascript" src="../js/textarea.js"></script>
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -596,7 +632,7 @@ try {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
 
     <!-- JS Count Characters TextArea -->
-    
+
 
     <!-- JS Search bar -->
     <script src="../js/autocomplete.js"></script>
@@ -635,7 +671,7 @@ try {
         }());
     </script>
 
-    
+
 </body>
 
 </html>
