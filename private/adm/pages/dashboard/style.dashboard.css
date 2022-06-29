@@ -161,7 +161,8 @@
 }
 
 .container2 {
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* TOP 10 */
@@ -312,3 +313,23 @@
     padding-bottom: 13px;
 }
 
+@media (max-width:991px) {
+
+}
+
+@media (max-width: 1025px) {
+    .container2 {
+        display: block;
+    }
+    .dash-cards {
+        width: 100%;
+    }
+}
+
+
+.my-conteudo {
+    padding: 20px 40px 20px 40px;
+    background-color: var(--white);
+    border-radius: 20px 20px 0 0;
+    min-height: 85vh;
+}

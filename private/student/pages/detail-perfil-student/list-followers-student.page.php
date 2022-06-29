@@ -263,9 +263,6 @@ try {
                 </li>
 
 
-                <hr class="sidebar-linha leftbar-linha">
-
-
 
                 <div>
                     <!-- Tabs navs -->

@@ -82,6 +82,10 @@ try {
 
     <!-- Estilo do modal de denunciar -->
     <link rel="stylesheet" href="../home/modal.css">
+
+    <link rel="stylesheet" href="../../styles/not-found.styles.css">
+
+    <link rel="stylesheet" href="../../../../views/styles/colors.style.css">
 </head>
 
 <body>
@@ -112,13 +116,7 @@ try {
                             <p class="leftbar-text normal-18-bold-title-2">Seguindo</p>
                         </a>
                     </li>
-
-                    <li class="sidebar-li leftbar-li">
-
-
                         <hr class="sidebar-linha leftbar-linha">
-                    </li>
-
                     <li class="sidebar-li my-leftbar-li">
                         <p class="my-leftbar-categoria normal-14-bold-p">Para você</p>
                     </li>
@@ -233,10 +231,17 @@ try {
                     }
                 ?>
 
-                <div class="<?php echo $displayBlocked;?>">
-                    <img src="../../images/profile-blocked.svg" alt="">
+                <div class="not-found-container <?php echo $displayBlocked;?>">
+                
+                    <img src="../../images/profile-blocked.svg" class="img-not-found">
+                    <p class="not-found-text-cont white-title normal-14-medium-p">
+                    <p class="not-found-text-title white-title normal-14-medium-p">
                     Perfil temporariamente fora do ar.
+                    </p>
+                    </p>
                 </div>
+
+                
 
                 <div class="profile-div">
                     <div class="<?php echo $displayProfile;?>">
@@ -745,7 +750,6 @@ try {
                 </li>
 
 
-                <hr class="sidebar-linha leftbar-linha">
                 <div>
                     <!-- Tabs navs -->
                     <ul class="nav nav-tabs nav-fill ranking-ul mb-3" id="ex1" role="tablist">
