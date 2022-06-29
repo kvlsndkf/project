@@ -56,7 +56,8 @@ try {
                     <img src="./images/arrow-back-mod.svg">
                 </a>
 
-                <div>
+                <div class="container-btn-link">
+                    <a href="https://erratic-wave-2e1.notion.site/Sintaxe-para-formata-o-de-texto-6b263bfb57f14b7796b684ca543eb4dc" style="text-decoration: none;" target="__blank"><div class="normal-12-bold-tiny blue-title link"><img src="../../images/icons/link-icon.svg" class="link-icon">Dicas de como arrasar nas respostas!</div></a>
                     <label for="answer" class="btn-heelp normal-14-bold-p pointer"><img src="./images/blue-logo.svg" class="d-none d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">Dar um help</label>
                 </div>
             </div>
@@ -225,11 +226,6 @@ try {
     <!-- Initialize Quill editor -->
     <script>
         var options = [
-            [{
-                'header': '1'
-            }, {
-                'header': '2'
-            }],
             ['bold', 'italic', 'strike', 'underline', 'blockquote'],
             [{
                 'list': 'ordered'

@@ -108,12 +108,8 @@ try {
 
                     </li>
 
-                    <li class="sidebar-li leftbar-li">
-                        
-                        </a>
-
                         <hr class="sidebar-linha leftbar-linha">
-                    </li>
+
 
                     <li class="sidebar-li my-leftbar-li">
                         <p class="my-leftbar-categoria normal-14-bold-p">Para você</p>
@@ -542,7 +538,6 @@ try {
                 <li class="rightbar-li">
                     <p class="leftbar-categoria normal-14-bold-p">Ranking de usuários</p>
                 </li>
-                <hr class="sidebar-linha leftbar-linha">
 
                 <div>
                     <!-- Tabs navs -->
