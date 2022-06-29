@@ -33,6 +33,7 @@ class Following
                                             INNER JOIN usershasfollowers uf
                                             ON stu.user_id = uf.following_id
                                             WHERE uf.follower_id = $followerID
+                                            AND quest.is_blocked NOT IN(1)
                                             ORDER BY quest.created_at DESC
                                         ");
             $stmt->execute();
