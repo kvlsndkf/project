@@ -536,11 +536,12 @@ class Denunciation
             if ($this->getContext() == 1) {
                 try {
     
-                    $stmt = $connection->prepare("UPDATE users SET is_blocked = ?, denunciation_id = ?
+                    $stmt = $connection->prepare("UPDATE users SET is_blocked = ?, denunciation_id = ?, blocking_reason = ?, blocked_at = NOW()
                                                  WHERE id = $userId");
     
                     $stmt->bindValue(1, true);
                     $stmt->bindValue(2, $id);
+                    $stmt->bindValue(3, $denunciation->getConclusion());
     
                     $stmt->execute();
                 } catch (Exception $e) {
