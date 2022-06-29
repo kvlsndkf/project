@@ -294,7 +294,7 @@
                                                 <span></span>
                                             </div>
                                            
-                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="checkLength(); ValidationEmail(event)">Enviar</button>
+                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="checkLength2(); ValidationEmail(event)">Enviar</button>
 
                                         </div>
                                     </form>
@@ -350,10 +350,10 @@
         var textArea = document.getElementById('about');
         var minLength = document.getElementById('min-length');
 
-        function checkLength() {
-            if (textArea.value.length < 100) {
+        function checkLength2() {
+            if (textArea.value.length < 15) {
                 minLength.style.color = "#ED4245";
-                minLength.innerText = "Mínimo de caracteres: 100";
+                minLength.innerText = "Mínimo de caracteres: 15";
             }
             if (textArea.value.length > 250) {
                 minLength.style.color = "#ED4245";

@@ -51,7 +51,7 @@
 }
 
 .border-div{
-    border: 2px solid #00AFF4;
+    border: 2px solid #00AFF4 !important;
 }
 
 
@@ -219,5 +219,5 @@
 }
 
 .border-div-error{
-    border: 2px solid #ED4245;
+    border: 2px solid #ED4245 !important;
 }

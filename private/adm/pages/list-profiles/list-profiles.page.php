@@ -67,8 +67,8 @@ try {
     <link rel="stylesheet" href="../../../style/modal-about.style.css">
     <link rel="stylesheet" href="../register/registration panel/registration-panel-style.css">
     <link rel="stylesheet" href="../register/register.styles.css">
-    <link rel="stylesheet" href="../../../../views/landing-page/fale-conosco.css">
     <link rel="stylesheet" href="../../../style/style.css">
+    <link rel="stylesheet" href="../../../../views/landing-page/fale-conosco.css">
 
 
 </head>
@@ -298,36 +298,8 @@ try {
 
                             <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->userID; ?>">Bloquear usuário</button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="modal-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="./controller/block-student.controller.php?userID=<?php echo $row->userID; ?>" method="post">
-                                                <div>
-                                                    <p>
-                                                        Motivo
-                                                    </p>
-
-                                                    <div id="contentTextArea">
-                                                        <textarea name="reason" id="about" cols="30" rows="10" placeholder="Faça uma breve descrição sobre o bloqueio" required onclick="colorDiv()"></textarea>
-                                                        <div><span id="counterTextArea">250</span></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="submit" name="block" class="btn btn-primary">Bloquear usuário</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Modal de bloquear-->
+                            
                         </div>
 
                         <div class="<?php echo $displayBlocked; ?>">
@@ -352,7 +324,7 @@ try {
 
                             <button data-bs-toggle="modal" data-bs-target="#modal-<?php echo $row->studentID; ?>">Desbloquear usuário</button>
 
-                            <!-- Modal -->
+                            <!-- Modal desbloquear-->
                             <div class="modal fade" id="modal-<?php echo $row->studentID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->studentID; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -458,12 +430,12 @@ try {
                                                 <p class="sidebar-button-text normal-14-bold-p" style="font-weight: 400;">Bloquear usuário</p>
                                             </button>
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $row->userID; ?>" aria-hidden="true">
+                                            <!-- Modal bloquear -->
+                                            <div class="modal fade" id="modal-tab-<?php echo $row->userID; ?>" tabindex="-1" aria-labelledby="exampleModalLabel1-<?php echo $row->userID; ?>" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content bg-modal-gray">
                                                         <div class="modal-header cabecalho-modal">
-                                                            <h5 class="modal-title titulo-modal" id="exampleModalLabel-<?php echo $row->userID; ?>">Bloquear usuário</h5>
+                                                            <h5 class="modal-title titulo-modal" id="exampleModalLabel1-<?php echo $row->userID; ?>">Bloquear usuário</h5>
                                                             <button type="button" class="x-button" data-bs-dismiss="modal">
                                                                 <img src="../../../../views/images/components/x-button.svg" alt="Fechar" class="x-button-img">
                                                             </button>
@@ -616,6 +588,7 @@ try {
         </div>
     </div>
 
+    <script type="text/javascript" src="../js/textarea.js"></script>
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
@@ -623,7 +596,7 @@ try {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
 
     <!-- JS Count Characters TextArea -->
-    <script type="text/javascript" src="../js/textarea.js"></script>
+    
 
     <!-- JS Search bar -->
     <script src="../js/autocomplete.js"></script>
@@ -661,6 +634,8 @@ try {
             });
         }());
     </script>
+
+    
 </body>
 
 </html>
