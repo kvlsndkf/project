@@ -1,6 +1,6 @@
-const textarea1 = document.getElementById('about4');
-const div1 = document.getElementById('contentTextArea4');
-const counter1 = document.getElementById('counterTextArea4');
+const textarea1 = document.getElementById('aboutt');
+const div1 = document.getElementById('contentTextAreaa');
+const counter1 = document.getElementById('counterTextAreaa');
 
 function colorDiv1() {
     div1.classList.add("border-div");
@@ -10,7 +10,7 @@ function count(e) {
     const inputLength = textarea1.value.length;
     const maxChars = 240;
 
-    counte1r.innerText = maxChars - inputLength;
+    counter1.innerText = maxChars - inputLength;
 
     if (inputLength >= maxChars) {
         e.preventDefault();

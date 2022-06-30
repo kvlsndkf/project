@@ -324,10 +324,10 @@ try {
                                                                 Motivo
                                                             </p>
 
-                                                            <div id="contentTextArea4">
-                                                                <textarea required name="reason" rows="7" cols="25" id="about4" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv1()" minlength="15" maxlength="250"></textarea>
+                                                            <div id="contentTextArea">
+                                                                <textarea required name="reason" rows="7" cols="25" id="about" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv1()" minlength="15" maxlength="250"></textarea>
                                                                 <div class="counter-container">
-                                                                    <span id="counterTextArea4" class="counterTextArea whitney-8-medium-littletiny">250</span>
+                                                                    <span id="counterTextArea" class="counterTextArea whitney-8-medium-littletiny">250</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -510,12 +510,12 @@ try {
                                                                         <div><span id="counterTextArea">250</span></div>
                                                                     </div> -->
 
-                                                                    <div id="contentTextArea3">
-                                                                        <textarea required name="reason" rows="7" cols="25" id="about3" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv()" minlength="15" maxlength="250"></textarea>
-                                                                        <div class="counter-container">
-                                                                            <span id="counterTextArea3" class="counterTextArea whitney-8-medium-littletiny">250</span>
-                                                                        </div>
-                                                                    </div>
+                                                                    <div id="contentTextAreaa">
+                                                                <textarea required name="reason" rows="7" cols="25" id="aboutt" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv1()" minlength="15" maxlength="250"></textarea>
+                                                                <div class="counter-container">
+                                                                    <span id="counterTextAreaa" class="counterTextArea whitney-8-medium-littletiny">250</span>
+                                                                </div>
+                                                            </div>
 
                                                                 </div>
 
@@ -647,9 +647,9 @@ try {
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="../js/textarea3.js"></script>
-    <script type="text/javascript" src="../js/textarea2.js"></script>
     <script type="text/javascript" src="../js/textarea.js"></script>
+    <!-- <script type="text/javascript" src="../js/textarea3.js"></script> -->
+    <script type="text/javascript" src="../js/textarea2.js"></script>
     <!-- JS Bootstrap ⬇️ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

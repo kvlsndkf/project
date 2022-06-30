@@ -1,36 +1,36 @@
-const textarea = document.getElementById('about3');
-const div = document.getElementById('contentTextArea3');
-const counter = document.getElementById('counterTextArea3');
+const textarea2 = document.getElementById('about');
+const div2 = document.getElementById('contentTextArea');
+const counter2 = document.getElementById('counterTextArea');
 
 function colorDiv() {
-    div.classList.add("border-div");
+    div2.classList.add("border-div");
 };
 
 function count(e) {
-    const inputLength = textarea.value.length;
+    const inputLength = textarea2.value.length;
     const maxChars = 240;
 
-    counter.innerText = maxChars - inputLength;
+    counter2.innerText = maxChars - inputLength;
 
     if (inputLength >= maxChars) {
         e.preventDefault();
-        div.classList.add("border-div-error");
-        counter.classList.add("font-color-red");
+        div2.classList.add("border-div-error");
+        counter2.classList.add("font-color-red");
 
-        textarea.setAttribute('readonly', 'true');
+        textarea2.setAttribute('readonly', 'true');
 
         if (e.key === 'Backspace') {
-            textarea.removeAttribute('readonly');
-            textarea.value = textarea.value.substring(0, inputLength - 1);
+            textarea2.removeAttribute('readonly');
+            textarea2.value = textarea2.value.substring(0, inputLength - 1);
         }
     } else {
-        div.classList.remove("border-div-error");
-        counter.classList.remove("font-color-red");
+        div2.classList.remove("border-div-error");
+        counter2.classList.remove("font-color-red");
     }
 
 };
 
-textarea.addEventListener("keyup", function (e) {
+textarea2.addEventListener("keyup", function (e) {
     count(e);
 });
 
