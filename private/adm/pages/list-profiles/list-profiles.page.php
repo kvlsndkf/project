@@ -133,7 +133,7 @@ try {
 
                 <li class="sidebar-li">
                     <p class="sidebar-categoria normal-14-bold-p">Mensagens</p>
-                    <a href="../denunciation/list-denunciation.page.php" class="sidebar-a-items">
+                    <a href="../denunciation/list-denunciation.page.php" class="sidebar-a">
                         <img class="sidebar-img" src="../../../../views/images/components/denuncia-img.svg" alt="">
                         <p class="sidebar-option normal-18-bold-title-2">Denúncias</p>
                     </a>
@@ -510,10 +510,10 @@ try {
                                                                         <div><span id="counterTextArea">250</span></div>
                                                                     </div> -->
 
-                                                                    <div id="contentTextArea2">
-                                                                        <textarea required name="reason" rows="7" cols="25" id="about2" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv()" minlength="15" maxlength="250"></textarea>
+                                                                    <div id="contentTextArea3">
+                                                                        <textarea required name="reason" rows="7" cols="25" id="about3" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv()" minlength="15" maxlength="250"></textarea>
                                                                         <div class="counter-container">
-                                                                            <span id="counterTextArea2" class="counterTextArea whitney-8-medium-littletiny">250</span>
+                                                                            <span id="counterTextArea3" class="counterTextArea whitney-8-medium-littletiny">250</span>
                                                                         </div>
                                                                     </div>
 
@@ -647,6 +647,7 @@ try {
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="../js/textarea3.js"></script>
     <script type="text/javascript" src="../js/textarea2.js"></script>
     <script type="text/javascript" src="../js/textarea.js"></script>
     <!-- JS Bootstrap ⬇️ -->
