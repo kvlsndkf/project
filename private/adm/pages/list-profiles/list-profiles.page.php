@@ -324,10 +324,10 @@ try {
                                                                 Motivo
                                                             </p>
 
-                                                            <div id="contentTextArea2">
-                                                                <textarea required name="reason" rows="7" cols="25" id="about2" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv()" minlength="15" maxlength="250"></textarea>
+                                                            <div id="contentTextArea4">
+                                                                <textarea required name="reason" rows="7" cols="25" id="about4" class="text-area normal-14-medium-p" placeholder="Faça uma breve descrição sobre o bloqueio" onclick="colorDiv1()" minlength="15" maxlength="250"></textarea>
                                                                 <div class="counter-container">
-                                                                    <span id="counterTextArea2" class="counterTextArea whitney-8-medium-littletiny">250</span>
+                                                                    <span id="counterTextArea4" class="counterTextArea whitney-8-medium-littletiny">250</span>
                                                                 </div>
                                                             </div>
                                                         </div>
