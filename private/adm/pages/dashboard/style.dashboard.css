@@ -1,0 +1,335 @@
+.sidebar-option-current {
+    color: var(--primary);
+}
+
+.dashboard-title{
+    color: white;
+    font-weight: 500;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    z-index: 2;
+}
+
+.dashboard-title-responsividade{
+    display: block;
+    margin-right: 25px;margin: 0;
+}
+
+.help-adm-email-container {
+    background-image: url(../../../../views/images/background/dashboard/background-help-adm.svg);
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    background-size: cover;
+    min-height: 174px;
+}
+
+.main-help-adm {
+    width: 550px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.avatar-help-adm {
+    width: 150px;
+    height: 150px;
+}
+
+
+.adm-email-button {
+    background-color: var(--fuchsia);
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration:none; 
+  
+}
+
+.adm-email-button:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+.button-container {
+    max-width: 300px;
+}
+
+/* .dashboard-chart {
+    width: 600px;
+    height: 600px;
+} */
+
+.dashboard-chart-container {
+    border: 1px solid var(--gray7);
+    border-radius: 10px;
+}
+
+
+.chart-title {
+    width: 100%;
+    text-align: center;
+}
+
+.container1 {
+    margin-top: 20px;
+}
+
+.top10 {
+    border: 1px solid var(--gray7);
+    border-radius: 10px;
+    padding: 28px 20px 28px 20px;
+}
+
+.hrtop {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--gray7);
+    height: 1px;
+    margin-top: 13px;
+}
+
+.span-top10 {
+    margin: 0 4px 0 4px;
+}
+
+.number-rank {
+    color: var(--gray5);
+    margin-right: 10px;
+}
+
+.icon-top {
+    margin-right: 8px;
+}
+
+.top-courses {
+    margin-top: 20px;
+}
+
+.card-num {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--h3);
+    line-height: var(--lh-big);
+    color: var(--white);
+}
+
+.card-label {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--black);
+    font-size: var(--title);
+    line-height: var(--lh-medium);
+    color: var(--white);
+}
+
+.section {
+    margin-top: 18px;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.requested-info {
+    background-color: var(--primary);
+}
+
+.report {
+    background-color: var(--ocean);
+}
+
+.company-total {
+    background-color: var(--blue);
+}
+
+.students-total {
+    background-color: var(--fuchsia);
+}
+
+.dash-cards {
+    width: 31%;
+    min-height: 104px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.container2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* TOP 10 */
+
+@media screen and (min-width: 576px) {
+    .top10 {
+        max-width: 100%;
+        height: fit-content;
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .top10 {
+        max-width: 100%;
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .top10 {
+        max-width: 350px;
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .top10 {
+        max-width: 400px;
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .top10 {
+        max-width: 500px;
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 1850px) {
+    .top10 {
+        max-width: 690px;
+        height: fit-content;
+    }
+}
+
+
+
+/* CONTAINER GRÁFICO */
+
+
+@media screen and (min-width: 280px) {
+    .dashboard-chart-container {
+        padding: 5% 5% 5% 5%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .dashboard-chart-container {
+        padding: 5% 5% 5% 5%;
+        margin-bottom: 20px;
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .dashboard-chart-container {
+        padding: 5% 5% 5% 5%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .dashboard-chart-container {
+        padding: 5% 5% 5% 5%;
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .dashboard-chart-container {
+        padding: 5% 5% 5% 5%;
+
+    }
+}
+
+
+/* CARDS */
+
+/* @media screen and (min-width: 992px) {
+    .dash-cards {
+        min-width: 244px;
+        max-height: 104px;
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .dash-cards {
+        max-width: 304px;
+        max-height: 104px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .dash-cards {
+        min-width: 350px;
+        max-height: 104px;
+    }
+} */
+
+@media screen and (max-width: 1289px) {
+    .company-total {
+        margin-top: 10px;
+    }
+}
+
+/* TITULO DO CABEÇALHO DUPLICADO SUMIR NA RESPONSIVIDADE */
+
+@media screen and (max-width:1000px) {
+    .dashboard-title {
+        display: none;
+    }
+}
+
+/* HOVER MENU QUE EXISTEM PÁGINAS */
+
+.sidebar-a-items{
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    transition: 0.2s; /* Animação */
+    width: 100%;
+    height: auto; 
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+.sidebar-a-items:hover{
+    background-color: var(--gray3);
+    border-radius: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+@media (max-width:991px) {
+
+}
+
+@media (max-width: 1025px) {
+    .container2 {
+        display: block;
+    }
+    .dash-cards {
+        width: 100%;
+    }
+}
+
+
+.my-conteudo {
+    padding: 20px 40px 20px 40px;
+    background-color: var(--white);
+    border-radius: 20px 20px 0 0;
+    min-height: 85vh;
+}

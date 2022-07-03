@@ -11,7 +11,7 @@
 
 <div align="center">
   
-  # Seja bem vindo repô do Heelp!
+  # Seja bem vindo repô do Here!
   
 </div>
   
@@ -52,12 +52,10 @@
 </div>
 
 ##
-
-
   
-### <div><img src="https://user-images.githubusercontent.com/79329906/154810593-7a01d842-efc2-4e3a-868c-05fdd8283386.svg" align="center">  Sobre o Here</div>
+### <div><img src="https://user-images.githubusercontent.com/79329906/176339541-0a6264c6-c673-4452-852b-a25c463f1e44.svg" align="center" width=40>  Sobre o Here</div>
 
-Here é uma plataforma institucional com o foco de criar um canal que facilite a comunicação entre professores e seus alunos, assim, melhorando a autonomia do professor em compartilhar conteúdo e enviar tarefas, contando com o auxílio da comunidade que influencia os alunos ajudarem uns aos outros com dúvidas nas matérias.
+Here é a nova rede socila dos etequianos, ela veio para facilitar a comunicação e aumentar o network entre os alunos. Além dar uma mão na resolução de tarefas, ainda traz uma experiência gameficada. Quer saber mais?! acesse: <a href="https://www.youtube.com/watch?v=pLp3B8M251s">youtube</a>.
   
 
 ##
@@ -227,3 +225,13 @@ Durante a semana, todos farão testes em `QA`. <br/>
 😍 Repositório lindo, sem bugs e atualizadinho! 😌
 
 <a href="https://www.youtube.com/watch?v=plB4aj1bKlY&list=PL4e74ugWhB0p-_wA4dbHORz7fODHuD8nZ&index=8" target="_blank"><img src="https://img.shields.io/badge/Mantendo o repositório local sempre atualizado-FF0000?style=for-the-badge&logo=youtube&logoColor=white"></a>
+
+##
+
+<br>
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/79329906/176339678-095a9521-d129-4361-bc0f-fc971151edc5.svg" width="150">
+
+</div>

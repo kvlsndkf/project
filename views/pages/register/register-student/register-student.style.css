@@ -1,0 +1,697 @@
+/* BACKGROUND */
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background: url("../image/background/bg-stars.svg") repeat-y, linear-gradient(0deg, rgba(205, 131, 203, 1) 0%, rgba(182, 116, 241, 1) 100%);
+    background-position: center; 
+    background-repeat: repeat-y;
+    background-size: 100% 600vh;
+}
+
+.my-container {  
+    width: 100%;
+    height: 100%;
+}
+
+.my-container-er {
+    width: 100%;
+    height: 100%;
+}
+
+.page-container {
+    padding: 20px 0px 20px 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FORMS */
+
+.form-base {
+    width: 500px;
+    height: fit-content;
+    padding: 40px;
+    color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-header {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+}
+
+.arrow {
+    margin-right: 12px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: -5px;
+}
+
+::placeholder {
+    color: #ADB0B3;
+}
+
+.input-text {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    background-color: #303339;
+    border: solid 1px #202225;
+    border-radius: 2px;
+    color: var(--white);
+    -webkit-transition: 0.5s;
+}
+
+.input-text:focus {
+    border: solid 1px var(--blue-sky);
+    outline: none;
+}
+
+.nome-professor {
+    margin-bottom: 8px;
+}
+
+.hr {
+    margin-top: 28px;
+    margin-bottom: 28px;
+    background-color: #40444B;
+}
+
+.foto-text {
+    margin-bottom: 12px;
+}
+
+.register {
+    margin-top: 60px;
+    color: var(--white);
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--primary);
+    transition-duration: 0.3s;
+}
+
+.register:hover {
+    filter: brightness(1.2);
+}
+
+.clean {
+    margin-top: 10px;
+    width: 100%;
+    color: var(--primary);
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--white);
+    transition-duration: 0.3s;
+}
+
+.clean:hover {
+    filter: brightness(1.2);
+}
+
+.photo {
+    display: none;
+}
+
+.add-arch {
+    background-color: var(--purple-light);
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.add-arch:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+/* BARRA DE ROLAGEM */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-list);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bfbfff;
+    border-radius: 5px;
+
+}
+
+/* CSS REGISTER ETEC */
+
+.accordion-body {
+    background-color: #303339;
+}
+
+.etec-location-label {
+    margin-top: 28px;
+}
+
+.acc-btn {
+    background-color: var(--gray2);
+    color: var(--gray6);
+    border: solid #202225 1px;
+}
+
+.acc-btn:after {
+
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+      
+}
+
+.acc-btn:not(.collapsed) {
+    color: inherit;
+    background-color: var(--gray2);
+    color: white;
+}
+
+.acc-btn:focus {
+    box-shadow: inherit;
+}
+
+/* CONTADOR DE 250 CARACTERES */
+
+.counterTextArea {
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    border-top: none;
+}
+
+.text-area {
+    background-color: var(--gray2);
+    color: white;
+    width: 100%;
+    border: solid 1px var(--gray1);
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    padding: 10px;
+}
+
+.text-area:focus {
+    border: none;
+}
+
+.min-length {
+    margin-top: 10px;
+}
+
+.text-area::placeholder {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+    color: var(--gray6);
+}
+
+.text-area:disabled {
+    background-color: var(--gray4);
+}
+
+.label-social {
+    margin-top: 8px;
+}
+  
+/* ESTILIZAÇÃO DOS SELECT2 */
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    background-color: var(--gray2);
+    border: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow  {
+    background-color: var(--gray2);
+    border: none;
+}
+
+.select2-container--default .select2-selection--single {
+    border: solid 1px var(--gray1);
+    border-radius: 0;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__clear {
+    color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--white);
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    color: var(--white);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    background-color: var(--gray2);
+    color: white;
+}
+
+  .custom .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    background-color: #888;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    color: black;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--multiple {
+    background-color: var(--gray2);
+    border: solid 1px var(--gray1);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    background-color: var(--gray2);
+
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+background-color: var(--gray2);
+color: white;
+font-family: var(--gintoNormal-medium);
+font-style: normal;
+font-weight: var(--regular);
+font-size: var(--tiny);
+}
+
+.select2-container--default .select2-selection--multiple {
+    background-color: var(--gray2);
+    border: solid 1px var(--gray1);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    background-color: var(--gray2);
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: solid 1px var(--blue-sky);
+    outline: none;
+}
+
+.checkbox-label {
+    margin-right: 25px;
+}
+
+.select2-dropdown {
+    background-color: #202225;
+    color: white;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #303339;
+    color: white;
+    border: none;
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--small);
+}
+
+.select2-results__option--selectable {
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--small);
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background-color: var(--gray6);
+    border: none;
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--small);
+}
+
+/* INPUT TEXT DESATIVADOS */
+
+.disabled-area:disabled {
+    background-color: var(--gray4);
+}
+
+.select2 {
+width:100%!important;
+}
+
+/* STYLE REGISTER STUDENT ST1 */
+
+.form-student-titles {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.subtitle-data {
+    margin-bottom: 28px;
+}
+
+.forms-label-student {
+    margin-bottom: 8px;
+}
+
+.submit-button-primary {
+    color: var(--white);
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--primary);
+    transition-duration: 0.3s;
+}
+
+.form-base-plump {
+    margin-bottom: 20px;
+    width: 575px;
+    height: fit-content;
+    padding:  40px 78px 40px 78px ;
+    color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.eye-icon {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.container-input-and-icon {
+    position: relative;
+}
+
+.img-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  
+  .current-photo {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  @media screen and (min-width: 280px) {
+    .responsive-title {
+        font-style: normal;
+        font-weight: var(--black);
+        font-family: var(--gintoNord-bold);
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .responsive-title {
+        font-style: normal;
+        font-weight: var(--black);
+        font-family: var(--gintoNord-bold);
+        font-size: 20px;
+
+    }
+}
+
+@media screen and (min-width: 450px) {
+    .responsive-title {
+        font-style: normal;
+        font-weight: var(--black);
+        font-family: var(--gintoNord-bold);
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .responsive-title {
+        font-style: normal;
+        font-weight: var(--black);
+        font-family: var(--gintoNord-bold);
+        font-size: 32px;
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .responsive-title {
+        font-style: normal;
+        font-weight: var(--black);
+        line-height: var(--lh-bigger);
+        font-family: var(--gintoNord-bold);
+        font-size: 32px;
+
+    }
+}
+
+/* CSS question page */
+
+/* --------------- QUILL EDITOR --------------- */
+
+/* PLACEHOLDER INPUT COLOR AND FONT */
+
+.ql-editor.ql-blank::before {
+    color: var(--gray7);
+    font-family: var(--gintoNormal-medium);
+    font-style: normal;
+    font-weight: var(--regular);
+    font-size: var(--tiny);
+    line-height: var(--lh-tiny);
+}
+
+/* TOOLBAR  */
+.ql-toolbar.ql-snow {
+    border-color: var(--gray1);
+    border-radius: 2px 2px 0 0;
+    background-color: var(--gray6);
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+    color: var(--blue) !important;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-miter, .ql-snow .ql-toolbar button:hover .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+    color: var(--blue) !important;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+    color: var(--blue) !important;
+}
+
+.ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+    color: var(--blue) !important;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+    fill: var(--blue);
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-miter, .ql-snow .ql-toolbar button:hover .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+    stroke: var(--blue);
+}
+/* TEXT AREA */
+
+.ql-container.ql-snow {
+    border-color: var(--gray1);
+    border-radius: 0 0 2px 2px;
+    background-color: var(--gray2);
+
+    word-break: break-all;
+}
+
+/* FORM STYLE */
+
+.form-base-question {
+    margin-bottom: 20px;
+    max-width: 500px;
+    height: fit-content;
+    padding: 40px;
+    color: var(--white);
+    border-radius: 4px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.title-question {
+    margin-bottom: 28px;
+}
+
+.ql-snow .ql-tooltip {
+    background-color: var(--gray1);
+    color: white;
+}
+
+.ql-snow .ql-tooltip.ql-editing input[type=text] {
+    background-color: var(--gray-background);
+    color: var(--white);
+
+}
+
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+    background-color: var(--gray1);
+}
+
+/* CSS Global */
+
+/* Início */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+  
+body {
+     font-size: 100%;
+     height: 100%;
+}
+
+/* Raíz do Arquivo */
+:root{
+
+    /* Cor */
+    --white: #FFFFFF;
+    --gray1: #202225;
+    --gray2: #303339;
+    --gray3: #40444B;
+    --gray4: #4F5660;
+    --gray5: #72767D;
+    --gray6: #ADB0B3;
+    --gray7: #DCDDDE;
+    --gray-background: #050607;
+    --bg-modal: #36393F;
+    --bg-list: #2F3136;
+    --silver: #9B9B9B;
+    --bronze: #A97142;
+    --fuchsia: #EB459F;
+    --red: #ED4245;
+    --red-alert: #6A3233;
+    --yellow: #FFC619;
+    --ocean: #29CC7A;
+    --green: #3BA561;
+    --blue-sky: #00AFF4;
+    --sea-blue: #3F70DD;
+    --deep-blue: #176E90;
+    --little-blue: #5883F2;
+    --primary: #8080FF;
+    --blue: #404EED;
+    --purple-light: #B377F3;
+
+    /* Gradientes */
+    --gradient-purple: linear-gradient(180deg, #CD83CB 0%, #B674F1 100%);
+    --gradient-little-blue: linear-gradient(180deg, #9FA9FF 0%, #DBF3FA 100%);
+    --gradient-blue: linear-gradient(90deg, #3F70DD 0%, #B377F3 100%);
+    
+    /* Tamanho */
+    --h3: 40px;
+    --h4: 32px;
+    --h5: 22px;
+    --h6: 20px;
+    --title: 18px;
+    --p: 16px;
+    --small: 14px;
+    --tiny: 12px;
+    --miniscule: 10px;
+    --little-tiny: 8px;
+
+    /* Line Height(Caixa Alta) */
+    --lh-bigger: 48px;
+    --lh-big: 40px;
+    --lh-medium: 24px;
+    --lh-little: 18px;
+    --lh-tiny: 16px; 
+    --lh-miniscule: 12px;
+    --lh-little-tiny: 9px;
+
+    /* Peso */
+    --regular: 400;
+    --medium: 500;
+    --semi-bold: 600;
+    --bold: 700;
+    --black: 800;
+
+    /* Fontes */
+    --gintoNord-medium: 'GintoNord Medium';
+    --gintoNord-bold: 'GintoNord Bold';
+    --gintoNord-thin: 'GintoNord Thin';
+    --gintoNormal-medium: 'GintoNormal Medium';
+    --gintoNormal-bold: 'GintoNormal Bold';
+    --gintoNormal-thin: 'GintoNormal Thin';
+    --whitney-medium: 'Whitney Medium';
+    --whitney-bold: 'Whitney Bold';
+    --whitney-light: 'Whitney Light';
+    --roboto: 'Roboto';
+}
+
+/* Referenciamentos das Fontes */
+
+/* Fontes GintoNord */
+@font-face {
+    font-family: 'GintoNord Medium';
+    src: url(../../../../views/styles/fonts/ABCGintoNord-Medium-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNord Bold';
+    src: url(../../../../views/styles/fonts/ABCGintoNord-Bold-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNord Thin';
+    src: url(../../../../views/styles/fonts/ABCGintoNord-Thin-Trial.otf);
+}
+
+/* Fontes GintoNormal */
+@font-face {
+    font-family: 'GintoNormal Medium';
+    src: url(../../../../views/styles/fonts/ABCGintoNormal-Medium-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Bold';
+    src: url(../../../../views/styles/fonts/ABCGintoNormal-Bold-Trial.otf);
+}
+@font-face {
+    font-family: 'GintoNormal Thin';
+    src: url(../../../../views/styles/fonts/ABCGintoNormal-Thin-Trial.otf);
+}
+
+/* Fontes Whitney */
+@font-face {
+    font-family: 'Whitney Medium';
+    src: url(../../../../views/styles/fonts/whitneymedium.otf);
+}
+@font-face {
+    font-family: 'Whitney Bold';
+    src: url(../../../../views/styles/fonts/whitneybold.otf);
+}
+@font-face {
+    font-family: 'Whitney Light';
+    src: url(../../../../views/styles/fonts/whitneylight.otf);
+}

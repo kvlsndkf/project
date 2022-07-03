@@ -1,0 +1,19 @@
+.bg-help-primary{
+    background-color: #8080FF;
+}
+
+.border-div{
+    border: 2px solid #00AFF4;
+}
+
+.border-div-error{
+    border: 2px solid #ED4245;
+}
+
+.font-color-red{
+    color: #ED4245;
+}
+
+.bg-help-purple{
+    background-color: #B376D4;
+}

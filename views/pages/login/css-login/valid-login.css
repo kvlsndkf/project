@@ -1,0 +1,26 @@
+/* Parte de validação do form */
+
+.error{
+    color: var(--red);
+    display: none;
+}
+
+span.error{
+    padding: 0;
+    
+} 
+
+span.error.active{
+    padding: 2px;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.container-input-and-icon {
+    position: relative;
+}

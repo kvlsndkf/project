@@ -1,0 +1,148 @@
+.cor{
+    background-color: var(--bg-modal);
+}
+
+.modal-title
+, .styleCor{
+    color: var(--white);
+    
+}
+
+.setaM{
+    margin-right: 10px;
+    background-color: var(--bg-modal);
+    border: 0;
+    padding-left: -100px;
+}
+
+.fecharM{
+    width: 15px;
+}
+
+.containerMO{
+    padding: 20px;
+}
+
+.border-bottom {
+    border-bottom: 0.1em solid var(--bg-list) !important;
+}
+
+.questionStyle{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.modal-footer{
+    border-top: unset !important;
+    display: unset !important;
+    padding: 0 !important;
+    margin: 0;
+}
+
+.form-check-input[type=radio]{
+    background-color: var(--gray2) !important;
+}
+
+.botaoSubmit{
+    margin-top: 3em ;
+    width: 100%;
+    height: 38px;
+    border-radius: 8px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition-duration: 0.3s;
+    background-color: var(--fuchsia);
+    color: var(--white);
+}
+
+
+/* Parte de exclusão */
+
+
+.button {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.button:hover {
+    filter: brightness(1.2) !important; 
+}
+
+.body-modal {
+    background-color: var(--bg-modal);
+    overflow-wrap: break-word;
+}
+
+.start {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.excluir {
+    background-color: var(--red);
+}
+
+.cancelar {
+    color: var(--bg-list);
+    background-color: var(--white);
+    margin-top: 10px;
+}
+
+.teste {
+    padding: 40px;
+    background-color: var(--bg-modal);
+}
+
+.my {
+    background-color: var(--white);
+    padding: 40px;
+}
+
+.modal-buttons {
+    margin-top: 60px;
+}
+
+.warning-container {
+    margin-top: 1.3em !important;
+    background-color:var(--blue-info);
+    padding: 14px 18px 14px 18px;
+    border: solid 2px var(--blue-sky);
+    border-radius: 10px;
+}
+
+.title{
+    color: var(--white);
+}
+.colortext1{
+    color: var(--blue-sky);
+}
+
+
+.warning-container1{
+    margin-top: 1.3em !important;
+    background-color: var(--red-alert);
+    padding: 14px 18px 14px 18px;
+    border: solid 2px var(--red);
+    border-radius: 10px;
+}
+
+.colortext2{
+    color: var(--red);
+}
+
+.corXp{
+    color: var(--yellow);
+}
+
+.modal-content{
+    background-color: var(--bg-modal) !important;
+}
+
+.form-check-input[type=radio]:after{
+    background-color: var(--gray2) !important;
+}
+
+

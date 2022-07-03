@@ -1,0 +1,53 @@
+
+@media (min-width: 1300px) {
+    .card-contact {
+        width: 480px;
+
+    }
+}
+
+@media (max-width: 1225px) {
+    .card-contact {
+        width: 350px;
+
+    }
+}
+
+@media (max-width: 305px) {
+    .contador-prof {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 350px) {
+    .proof-text {
+        margin-bottom: 2px;
+        color: var(--bg-modal);
+        width: 200px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+}
+.proof-text {
+    margin-bottom: 2px;
+    color: var(--bg-modal);
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.info-spacing {
+    margin-bottom: 12px;
+}
+
+.my-card-contact{
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid var(--gray7);
+    margin: 30px;
+    padding: 20px;
+}
+
+.responsive-spacing {
+    margin-bottom: 25px;
+}

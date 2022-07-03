@@ -1,0 +1,104 @@
+.background-color{
+    background-color: var(--bg-modal);
+}
+
+.gray-title {
+    color: var(--gray7);
+}
+
+.gray6-title {
+    color: var(--gray6);
+}
+
+.white-title {
+    color: var(--white);
+}
+
+
+.primary-title {
+    color: var(--primary);
+}
+
+.gray-card {
+    background-color: var(--gray3);
+}
+
+.gray-text-6 {
+    color: var(--gray6);
+}
+
+.bg-modal-text {
+    color: var(--bg-modal);
+}
+
+.bg-list-text {
+    color: var(--bg-list);
+}
+
+.gray-text-5 {
+    color: var(--gray5);
+}
+
+.gray-text-7 {
+    color: var(--gray7);
+}
+
+.bg-modal-gray {
+    background-color: var(--bg-modal);
+}
+
+.bg-gray1 {
+    background-color: var(--gray1);
+}
+
+.bg-list {
+    background-color: var(--bg-list);
+}
+
+.bg-input-gray {
+    background-color: #303339;
+}
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-primary-button {
+    background-color: var(--primary);
+}
+
+.red-title {
+    color: var(--red);
+}
+
+.blue-title {
+    color: var(--blue-sky) !important;
+}
+
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.gray7-title {
+    color: var(--gray7);
+}
+
+.bg-pink {
+    background-color: var(--fuchsia);
+}
+
+.bg-deep-blue {
+    background-color: var(--deep-blue);
+}
+
+.bg-green {
+    background-color: var(--green);
+}
+
+.bg-blue-sky {
+    background-color: var(--blue-sky);
+}
+
+.bg-red {
+    background-color: var(--red);
+}

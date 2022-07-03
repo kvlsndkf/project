@@ -1,0 +1,33 @@
+.avaliacao{
+    display: flex;
+    margin-top: -5px;
+    margin-right: 5px;
+}
+
+.star-icon{
+    list-style-type:none;
+    /* border: 1px solid #fff; */
+    cursor: pointer;
+    color: var(--yellow);
+}
+
+.star-icon::before{
+     content: "\2605";
+     font-size: 22px;
+}
+
+.star-icon.ativo ~ .star-icon::before{
+    content: "\2606";
+    font-size: 22px;
+}
+
+.avaliacao:hover .star-icon::before{
+    content: "\2605";
+    font-size: 22px;
+}
+
+.star-icon:hover ~ .star-icon::before{
+    content: "\2606";
+    font-size: 22px;
+}
+
