@@ -11,7 +11,7 @@
 
 <div align="center">
   
-  # Seja bem vindo repô do Here!
+  # Seja bem vindo repô do Heelp!
   
 </div>
   
@@ -55,7 +55,7 @@
   
 ### <div><img src="https://user-images.githubusercontent.com/79329906/176339541-0a6264c6-c673-4452-852b-a25c463f1e44.svg" align="center" width=40>  Sobre o Here</div>
 
-Here é a nova rede socila dos etequianos, ela veio para facilitar a comunicação e aumentar o network entre os alunos. Além dar uma mão na resolução de tarefas, ainda traz uma experiência gameficada. Quer saber mais?! acesse: <a href="https://www.youtube.com/watch?v=pLp3B8M251s">youtube</a>.
+Heelp é a nova rede social dos etequianos, ela veio para facilitar a comunicação e aumentar o network entre os alunos. Além dar uma mão na resolução de tarefas, ainda traz uma experiência gameficada. Quer saber mais?! acesse: <a href="https://www.youtube.com/watch?v=pLp3B8M251s">youtube</a>.
   
 
 ##
