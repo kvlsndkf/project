@@ -67,7 +67,7 @@
                                 <a href="#net" class="a-class nav-options normal-14-bold-p white">Networking</a>
                             </li>
                             <li>
-                                <a href="#xp" class="a-class nav-options normal-14-bold-p white">Desafios</a>
+                                <a href="#xp" class="a-class nav-options normal-14-bold-p white">XP</a>
                             </li>
                             <li>
                                 <a href="#emp" class="a-class nav-options normal-14-bold-p white">Parcerias</a>
@@ -155,17 +155,15 @@
 
             <div id="tela4">
 
-                <h4 class="heelp-xp normal32-black-landingpagetitle-2 gray1">Complete os desafios e conquiste XP</h4>
+                <h4 class="heelp-xp normal32-black-landingpagetitle-2 gray1">Ajude seus amigos e conquiste XP</h4>
 
                 <div class="row g-0 row-tela4">
 
-                    <div class="col coln1">
-                        <img src="./views/landing-page/img/foto3-desafios.svg" class="img3">
-                    </div>
+                    
 
                     <div class="col-5 coln2">
                         <h5 class="heelp-xp-title gray1 normal-22-black-title-1">Respondendo você também aprende!</h5>
-                        <p class="heelp-xp-text gray1">&nbsp&nbsp&nbsp&nbsp&nbspAlém de aprender respondendo, tornamos o aprendizado mais divertido! Complete os desafios e aumente os seus XP's, fique em primeiro lugar no ranking!</p>
+                        <p class="heelp-xp-text gray1">Além de aprender respondendo, tornamos o aprendizado mais divertido! Ajude seus amigos respondendo suas duvidas e aumente os seus XP's, fique em primeiro lugar no ranking!</p>
                     </div>
 
                     <div class="col coln3">
@@ -254,7 +252,7 @@
 
                 <a href="#com" class="a-class white footer-options normal-14-bold-p white">Comunidade</a>
                 <a href="#net" class="a-class white footer-options normal-14-bold-p white">Networking</a>
-                <a href="#xp" class="a-class white footer-options normal-14-bold-p white">Desafios</a>
+                <a href="#xp" class="a-class white footer-options normal-14-bold-p white">XP</a>
                 <a href="#emp" class="a-class white footer-options normal-14-bold-p white">Parcerias</a>
                 <a href="#vid" class="a-class white footer-options normal-14-bold-p white">Video</a>
 
@@ -294,7 +292,7 @@
                                                 <span></span>
                                             </div>
                                            
-                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="checkLength(); ValidationEmail(event)">Enviar</button>
+                                            <button type="submit" class="botaoM button-wide buttonCadastrarM normal-14-bold-p" value="Enviar" name="register" onclick="checkLength2(); ValidationEmail(event)">Enviar</button>
 
                                         </div>
                                     </form>
@@ -350,10 +348,10 @@
         var textArea = document.getElementById('about');
         var minLength = document.getElementById('min-length');
 
-        function checkLength() {
-            if (textArea.value.length < 100) {
+        function checkLength2() {
+            if (textArea.value.length < 15) {
                 minLength.style.color = "#ED4245";
-                minLength.innerText = "Mínimo de caracteres: 100";
+                minLength.innerText = "Mínimo de caracteres: 15";
             }
             if (textArea.value.length > 250) {
                 minLength.style.color = "#ED4245";

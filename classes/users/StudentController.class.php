@@ -110,7 +110,7 @@ class StudentController
         $student->isBlocked = $row['is_blocked'];
         $student->created = $row['created_at'] ?? '';
         $student->blocked = $row['blocked_at'] ?? '';
-        $student->reason = $row['conclusion'] ?? '';
+        $student->reason = $row['blocking_reason'] ?? '';
 
         return $student;
     }
@@ -121,23 +121,22 @@ class StudentController
 
         try {
             $stmt = $connection->prepare("SELECT stu.id, stu.user_id, stu.first_name, stu.surname, usr.photo, usr.type_user, 
-                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.blocked_at, usr.created_at,
-                                            usr.is_blocked, de.conclusion FROM students stu
-
-                                        INNER JOIN users usr
-                                        ON stu.user_id = usr.id
-                                        INNER JOIN courses cour
-                                        ON stu.course_id = cour.id
-                                        INNER JOIN modules module
-                                        ON stu.module_id = module.id
-                                        INNER JOIN schoolshasstudents ss
-                                        ON stu.id = ss.student_id
-                                        INNER JOIN schools school
-                                        ON ss.school_id = school.id
-                                        INNER JOIN denunciations de
-                                        ON stu.user_id = de.denounced_id
-                                        WHERE usr.is_blocked = 1
-                                    ");
+                                            cour.name AS 'course', module.name AS 'module', school.name AS 'school', usr.blocked_at, 
+                                            usr.created_at, usr.blocking_reason, usr.is_blocked FROM students stu
+            
+                                            INNER JOIN users usr
+                                            ON stu.user_id = usr.id
+                                            INNER JOIN courses cour
+                                            ON stu.course_id = cour.id
+                                            INNER JOIN modules module
+                                            ON stu.module_id = module.id
+                                            INNER JOIN schoolshasstudents ss
+                                            ON stu.id = ss.student_id
+                                            INNER JOIN schools school
+                                            ON ss.school_id = school.id
+                                            
+                                            WHERE usr.is_blocked = 1
+                                        ");
 
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
