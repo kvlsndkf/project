@@ -73,7 +73,7 @@
                                 <a href="#emp" class="a-class nav-options normal-14-bold-p white">Parcerias</a>
                             </li>
                             <li>
-                                <a href="#vid" class="a-class nav-options normal-14-bold-p white">Video</a>
+                                <a href="#vid" class="a-class nav-options normal-14-bold-p white">Vídeo</a>
                             </li>
                             <li>
                                 <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class nav-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a>
@@ -254,7 +254,7 @@
                 <a href="#net" class="a-class white footer-options normal-14-bold-p white">Networking</a>
                 <a href="#xp" class="a-class white footer-options normal-14-bold-p white">XP</a>
                 <a href="#emp" class="a-class white footer-options normal-14-bold-p white">Parcerias</a>
-                <a href="#vid" class="a-class white footer-options normal-14-bold-p white">Video</a>
+                <a href="#vid" class="a-class white footer-options normal-14-bold-p white">Vídeo</a>
 
 
                 <a href="./views/landing-page/form-register-message/form-register-message.pages.php" class="a-class white footer-options normal-14-bold-p white" data-bs-toggle="modal" data-bs-target="#exampleModal">Fale Conosco</a>
