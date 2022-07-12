@@ -784,4 +784,9 @@
     .contador-prof{
         margin-top: 50px;
     } 
+
+    /* texto do card que quebra */
+    .message-text{
+        max-width: 60px;
+    }
 }
