@@ -269,12 +269,12 @@ try {
                                         <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px;">
                                     </div>
                                     <div class="user-data-text">
-                                        <p class="prof-text text-truncate message-text school-name normal-14-bold-p" style="width: 400px; word-wrap: break-word; word-break: break-all;">
+                                        <p class="prof-text text-truncate message-text school-name normal-14-bold-p">
                                             <?php echo $row->firstName; ?>
                                             <?php echo $row->surname; ?>
                                         </p>
 
-                                        <p class="contato-message normal-14-medium-p line-clamp-2" style="margin-top: 0; max-width: 100%; word-wrap: break-word; word-break: break-all;">
+                                        <p class="contato-message normal-14-medium-p line-clamp-2" style="margin-top: 0;">
                                             <?php echo $row->module; ?> •
                                             <?php echo $row->course; ?> •
                                             <?php echo $row->school; ?>
@@ -293,7 +293,7 @@ try {
                                 ?>
 
                                 <div class="<?php echo $displayCreated; ?>">
-                                    <div style="margin-top: 10px; max-width: 100%">
+                                    <div class="entrou-em">
                                         <img src="../../../../views/images/components/date-range.svg" alt="">
                                         <label class="normal-14-bold-p" for="">Entrou em:</label>
                                         <span class="normal-14-bold-p" data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
@@ -436,7 +436,7 @@ try {
                             <div id="message-new-list">
 
                                 <!-- Contador de usuários ativos -->
-                                <p class="contador-prof normal-18-black-title-2" style="margin: 0;">
+                                <p class="contador-prof normal-18-black-title-2">
                                     <?php echo  $countActiveStudents ?>
                                 </p>
 
@@ -461,12 +461,12 @@ try {
                                                     <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px;">
                                                 </div>
                                                 <div class="user-data-text">
-                                                    <p class="prof-text text-truncate message-text school-name normal-14-bold-p" style="width: 400px; word-wrap: break-word; word-break: break-all;">
+                                                    <p class="prof-text text-truncate message-text school-name normal-14-bold-p">
                                                         <?php echo $row->firstName; ?>
                                                         <?php echo $row->surname; ?>
                                                     </p>
 
-                                                    <p class="contato-message normal-14-medium-p line-clamp-2" style="margin-top: 0; max-width: 100%; word-wrap: break-word; word-break: break-all;">
+                                                    <p class="contato-message normal-14-medium-p line-clamp-2" style="margin-top: 0; ">
                                                         <?php echo $row->module; ?> •
                                                         <?php echo $row->course; ?> •
                                                         <?php echo $row->school; ?>
@@ -474,7 +474,7 @@ try {
                                                 </div>
                                             </div>
 
-                                            <div style="margin-top: 10px; max-width: 100%">
+                                            <div class="entrou-em">
                                                 <img src="../../../../views/images/components/date-range.svg" alt="">
                                                 <label class="normal-14-bold-p">Entrou em:</label>
                                                 <span class="normal-14-bold-p" data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
@@ -541,7 +541,7 @@ try {
                             <div id="message-read-list">
 
                                 <!-- Contador de usuários bloqueados -->
-                                <p class="contador-prof normal-18-black-title-2" style="margin: 0;">
+                                <p class="contador-prof normal-18-black-title-2">
                                     <?php echo  $countBlockedStudents ?>
                                 </p>
 
@@ -562,12 +562,12 @@ try {
                                             <div class="user-data" style="margin-top: 20px">
                                                 <img src="<?php echo $row->photo; ?>" alt="<?php echo $row->firstName; ?>" style="height: 56px; width: 56px; object-fit: cover; border-radius: 56px; margin-right: 10px;">
                                                 <div class="user-data-text">
-                                                    <p class="prof-text text-truncate message-text school-name normal-14-bold-p" style="width: 400px; word-wrap: break-word; word-break: break-all;">
+                                                    <p class="prof-text text-truncate message-text school-name normal-14-bold-p">
                                                         <?php echo $row->firstName; ?>
                                                         <?php echo $row->surname; ?>
                                                     </p>
 
-                                                    <p class="contato-message normal-14-medium-p line-clamp-2" style="margin-top: 0; max-width: 100%; word-wrap: break-word; word-break: break-all;">
+                                                    <p class="contato-message normal-14-medium-p line-clamp-2" style="margin-top: 0;">
                                                         <?php echo $row->module; ?> •
                                                         <?php echo $row->course; ?> •
                                                         <?php echo $row->school; ?>
@@ -575,7 +575,7 @@ try {
                                                 </div>
                                             </div>
 
-                                            <div style="margin-top: 10px; max-width: 100%">
+                                            <div class="entrou-em">
                                                 <img src="../../../../views/images/components/date-range.svg" alt="">
                                                 <label class="normal-14-bold-p">Entrou em:</label>
                                                 <span class="normal-14-bold-p" data-date-value="<?php echo $row->created; ?>"><?php echo $row->created; ?></span>
