@@ -789,4 +789,8 @@
     .message-text{
         max-width: 60px;
     }
+
+    .tab-ul{
+        border-bottom: unset
+    }
 }
