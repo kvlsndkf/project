@@ -264,6 +264,11 @@
     margin-bottom: 4px;
 }
 
+.entrou-em{
+    margin-top: 30px; 
+    max-width: 100%
+}
+
 .img-curso{
     width: 32px;
     height: 32px;
@@ -340,8 +345,6 @@
 }
 
 .line-clamp-2{
-    overflow: hidden;
-    display: -webkit-box;
     -webkit-box-orient: vertical;
     /* truncate to 4 lines */
     -webkit-line-clamp: 2;
@@ -738,6 +741,9 @@
     .corpo{
         padding-left: 0;
     }
+    .card-contact{
+        width: 100%;
+    }
 }
 
 @media (max-width: 740px){
@@ -757,6 +763,9 @@
     .search-button{
         width: 15%;
     }
+    .entrou-em{
+        margin-top: 40px;
+    }
 }
 
 @media (max-width: 300px){
@@ -769,4 +778,10 @@
     .filtro-option, .filtro-option-2{
         margin: 5px;
     }
+    .entrou-em{
+        margin-top: 20px;
+    }
+    .contador-prof{
+        margin-top: 50px;
+    } 
 }
