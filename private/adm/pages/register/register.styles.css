@@ -339,9 +339,9 @@
     word-wrap: break-word;
     word-break: break-all;
 }
-
+/* Outro texto maldito */
 .message-text{
-    max-width: 460px;
+    max-width: 100px;
 }
 
 .line-clamp-2{
