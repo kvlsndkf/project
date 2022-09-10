@@ -15,7 +15,7 @@ a, a:hover, a:focus, a:active, a:focus {
     padding-top: 40px;
     padding-bottom: 40px;
     height: 100%;
-    overflow: hidden;
+
 }
 
 /* CONTEÚDO */
@@ -23,7 +23,7 @@ a, a:hover, a:focus, a:active, a:focus {
 /* Botão de voltar setinha */
 
 .back-button {
-    position: fixed;
+    position: absolute;
     z-index: 1;
 }
 
