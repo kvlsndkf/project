@@ -31,7 +31,6 @@ body, html {
 /* FORMS */
 
 .form-base {
-    width: 500px;
     height: fit-content;
     padding: 40px;
     color: var(--white);
