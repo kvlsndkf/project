@@ -42,7 +42,7 @@ include_once('/xampp/htdocs' . '/project/private/validation/validation-administr
                         <button class="download-model normal-14-bold-p">Baixar modelo de planilha</button>
                     </a>
 
-                    <hr class="hr-batch-modal">
+                    <hr style="margin-top: 15px; border: 1px solid var(--gray6);">
 
                     <form action="./controller/subject-batch-resgistration.controller.php" name="subject-batch-registration" method="post" enctype="multipart/form-data">
                         <br />

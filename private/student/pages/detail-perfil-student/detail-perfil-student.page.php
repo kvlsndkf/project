@@ -919,7 +919,7 @@ try {
             <a href="../home/home.page.php" class="bottombar-a">
                 <img src="../../../../views/images/components/dashboard-img.svg" alt="">
             </a>
-            <a href="#" class="bottombar-a">
+            <a href="../feed-following/feed-following.page.php?userID=<?php echo $idUser; ?>" class="bottombar-a">
                 <img src="../../../../views/images/components/following-icon.svg" alt="">
             </a>
             <!-- <a href="#" class="bottombar-a">
